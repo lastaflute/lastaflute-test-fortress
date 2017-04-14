@@ -45,6 +45,7 @@ public class WxValidatorThreadSafeTest extends UnitFortressTestCase {
         Locale locale = requestManager.getUserLocale();
         cannonball(new CannonballRun() {
             public void drive(CannonballCar car) {
+                xdoPrepareWebMockContext(); // for web environment
                 ActionValidator<FortressMessages> validator = createValidator(locale, conf -> {});
                 MockMaihama maihama = new MockMaihama(null);
 
@@ -65,12 +66,7 @@ public class WxValidatorThreadSafeTest extends UnitFortressTestCase {
     //                                                                        Assist Logic
     //                                                                        ============
     private ActionValidator<FortressMessages> createValidator(Locale locale, VaConfigSetupper confLambda) {
-        return new ActionValidator<FortressMessages>(requestManager, () -> new FortressMessages()) {
-            @Override
-            protected Locale provideUserLocale() {
-                return locale;
-            }
-        };
+        return new ActionValidator<FortressMessages>(requestManager, () -> new FortressMessages());
     }
 
     public static class MockMaihama {
