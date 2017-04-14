@@ -57,7 +57,7 @@ public class WxMailAction extends FortressBaseAction {
             postcard.setFromSupport(fortressConfig);
             postcard.addTo("sea@docksidestage.org");
         });
-        return JsonResponse.asJsonDirectly("{sea: land}");
+        return JsonResponse.asJsonDirectly("{result: sent}");
     }
 
     @Execute
@@ -70,7 +70,7 @@ public class WxMailAction extends FortressBaseAction {
             postcard.setAccount("land");
             postcard.setToken("piary");
         });
-        return JsonResponse.asJsonDirectly("{sea: land}");
+        return JsonResponse.asJsonDirectly("{result: sent}");
     }
 
     @Execute
@@ -82,7 +82,7 @@ public class WxMailAction extends FortressBaseAction {
             postcard.setMemberName(member.getMemberName());
             postcard.setMember(member); // not allowed
         });
-        return JsonResponse.asJsonDirectly("{sea: land}");
+        return JsonResponse.asJsonDirectly("{result: sent}");
     }
 
     @Execute
@@ -98,7 +98,7 @@ public class WxMailAction extends FortressBaseAction {
             });
             postcard.setProductList(productList); // not allowed
         });
-        return JsonResponse.asJsonDirectly("{sea: land}");
+        return JsonResponse.asJsonDirectly("{result: sent}");
     }
 
     @Execute
@@ -114,6 +114,6 @@ public class WxMailAction extends FortressBaseAction {
             postcard.setBeansRowList(beansRowList);
             postcard.async();
         });
-        return JsonResponse.asJsonDirectly("{sea: land}");
+        return JsonResponse.asJsonDirectly("{result: sent}");
     }
 }

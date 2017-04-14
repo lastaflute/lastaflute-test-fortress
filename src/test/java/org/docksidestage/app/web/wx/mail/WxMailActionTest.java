@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.dbflute.utflute.lastaflute.mail.TestingPreparedMessage;
 import org.docksidestage.mylasta.mail.whitebox.LoopBeansPostcard;
+import org.docksidestage.mylasta.mail.whitebox.NoVariablePostcard;
 import org.docksidestage.unit.UnitFortressTestCase;
 import org.lastaflute.web.response.JsonResponse;
 
@@ -26,6 +27,24 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 public class WxMailActionTest extends UnitFortressTestCase {
+
+    public void test_index() {
+        // ## Arrange ##
+        WxMailAction action = new WxMailAction();
+        inject(action);
+        reserveMailAssertion(mailData -> {
+            List<TestingPreparedMessage> messageList = mailData.required(NoVariablePostcard.class);
+            assertHasOnlyOneElement(messageList);
+            TestingPreparedMessage message = messageList.get(0);
+            message.assertPlainTextContains("Hello, no variable");
+        });
+
+        // ## Act ##
+        action.index();
+
+        // ## Assert ##
+        // (reserved)
+    }
 
     public void test_loopbeans() {
         // ## Arrange ##

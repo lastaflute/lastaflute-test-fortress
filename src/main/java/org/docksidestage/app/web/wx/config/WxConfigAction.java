@@ -43,6 +43,7 @@ public class WxConfigAction extends FortressBaseAction {
     public JsonResponse<String> index() {
         logger.debug("fortressConfig: {}", fortressConfig.isProduction());
         logger.debug("myFortressProp: {}", myFortressProp.isProduction());
-        return JsonResponse.asJsonDirectly("{sea: land}");
+        String json = "{config: " + fortressConfig.isProduction() + ", myprop: " + myFortressProp.isProduction() + "}";
+        return JsonResponse.asJsonDirectly(json);
     }
 }
