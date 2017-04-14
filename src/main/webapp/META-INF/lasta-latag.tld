@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<display-name>Lasta taglibs</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>la</short-name>
+	<uri>http://lastaflute.org/latags</uri>
+
+	<!-- ================================================================================= -->
+	<!--                                                                           la:form -->
+	<!--                                                                           ======= -->
+	<tag>
+		<name>form</name>
+		<tag-class>org.lastaflute.taglib.html.MappingHtmlFormTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute><name>action</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>acceptCharset</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>enctype</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>focus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>focusIndex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>method</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onreset</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onsubmit</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>readonly</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>scriptLanguage</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>target</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                         la:hidden -->
+	<!--                                                                         ========= -->
+	<tag>
+		<name>hidden</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlHiddenTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>alt</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>altKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>indexed</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onchange</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>property</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>title</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>titleKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>write</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                         la:select -->
+	<!--                                                                         ========= -->
+	<tag>
+		<name>select</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlSelectTag</tag-class>
+		<body-content>JSP</body-content>
+		<!-- Native Item -->
+		<attribute><name>multiple</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>property</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>size</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Navigation Management -->
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>tabindex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Indexing ability for Iterate -->
+		<attribute><name>indexed</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Mouse Events -->
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Keyboard Events -->
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Text Events -->
+		<attribute><name>onchange</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Focus Events and States -->
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>readonly</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- CSS Style Support -->
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyle</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Other Common Attributes -->
+		<attribute><name>alt</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>altKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>title</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>titleKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                         la:option -->
+	<!--                                                                         ========= -->
+	<tag>
+		<name>option</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlOptionTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute><name>value</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>key</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                     la:optionsCls -->
+	<!--                                                                     ============= -->
+	<tag>
+		<name>optionsCls</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlOptionsClsTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute><name>name</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute> <!-- classification -->
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                       la:checkbox -->
+	<!--                                                                       =========== -->
+	<tag>
+		<name>checkbox</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlCheckboxTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute> <!-- bean -->
+		<attribute><name>property</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>alt</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>altKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyle</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>indexed</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onchange</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>tabindex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>title</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>titleKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                          la:radio -->
+	<!--                                                                          ======== -->
+	<tag>
+		<name>radio</name>
+		<tag-class>org.lastaflute.taglib.html.RadioTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>alt</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>altKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyle</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>indexed</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onchange</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>property</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>tabindex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>title</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>titleKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>idName</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                           la:text -->
+	<!--                                                                           ======= -->
+	<tag>
+		<name>text</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlTextTag</tag-class>
+		<body-content>empty</body-content>
+		<!-- Native Item -->
+		<attribute><name>maxlength</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>property</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>size</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>placeholder</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>autocomplete</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Navigation Management -->
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>tabindex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Indexing ability for Iterate -->
+		<attribute><name>indexed</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Mouse Events -->
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Keyboard Events -->
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Text Events -->
+		<attribute><name>onchange</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Focus Events and States -->
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>readonly</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- CSS Style Support -->
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyle</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Other Common Attributes -->
+		<attribute><name>alt</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>altKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>title</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>titleKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                       la:password -->
+	<!--                                                                       =========== -->
+	<tag>
+		<name>password</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlPasswordTag</tag-class>
+		<body-content>empty</body-content>
+		<!-- Native Item -->
+		<attribute><name>maxlength</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>property</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>size</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>placeholder</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>autocomplete</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Navigation Management -->
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>tabindex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Indexing ability for Iterate -->
+		<attribute><name>indexed</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Mouse Events -->
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Keyboard Events -->
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Text Events -->
+		<attribute><name>onchange</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Focus Events and States -->
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>readonly</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- CSS Style Support -->
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyle</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>errorStyleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- Other Common Attributes -->
+		<attribute><name>alt</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>altKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>title</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>titleKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                       la:textarea -->
+	<!--                                                                       =========== -->
+	<tag>
+		<name>textarea</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlTextareaTag</tag-class>
+		<body-content>empty</body-content>
+		<!-- added attributes -->
+		<attribute><name>placeholder</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>autocomplete</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<!-- inherit attributes -->
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>property</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>tabindex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>cols</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>rows</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>target</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onchange</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                         la:submit -->
+	<!--                                                                         ========= -->
+	<tag>
+		<name>submit</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlSubmitTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute><name>property</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>alt</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>altKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>disabled</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>indexed</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onchange</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>tabindex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>title</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>titleKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                           la:link -->
+	<!--                                                                           ======= -->
+	<tag>
+		<name>link</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlLinkTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute><name>accesskey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>action</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>property</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>module</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>anchor</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>href</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>indexed</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>indexId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>linkName</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onblur</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>ondblclick</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onfocus</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeydown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeypress</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onkeyup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousedown</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmousemove</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseout</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseover</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>onmouseup</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>page</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>paramId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>paramName</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>paramProperty</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>paramScope</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>scope</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>style</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleId</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>tabindex</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>target</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>title</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>titleKey</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>transaction</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                           la:info -->
+	<!--                                                                           ======= -->
+	<tag>
+		<name>info</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlInfoTag</tag-class>
+		<tei-class>org.lastaflute.taglib.html.HtmlInfoTei</tei-class>
+		<body-content>JSP</body-content>
+		<attribute><name>id</name><required>true</required><rtexprvalue>false</rtexprvalue></attribute>
+		<attribute><name>property</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>header</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>footer</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                         la:errors -->
+	<!--                                                                         ========= -->
+	<tag>
+		<name>errors</name>
+		<tag-class>org.lastaflute.taglib.html.HtmlErrorsTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute><name>property</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute> <!-- item name on HTML -->
+		<attribute><name>header</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>footer</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>prefix</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>suffix</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>styleClass</name><required>false</required><rtexprvalue>false</rtexprvalue></attribute>
+	</tag>
+
+	<!-- _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/ -->
+	<!--                                                                                    -->
+	<!--                                     Non HTML                                       -->
+	<!--                                                                                    -->
+	<!-- _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/ -->
+
+	<!-- ================================================================================= -->
+	<!--                                                                        la:caption -->
+	<!--                                                                        ========== -->
+	<tag>
+		<name>caption</name>
+		<tag-class>org.lastaflute.taglib.bean.BeanCaptionTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute><name>key</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                     la:captionCls -->
+	<!--                                                                     ============= -->
+	<tag>
+		<name>captionCls</name>
+		<tag-class>org.lastaflute.taglib.bean.BeanCaptionClsTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute><name>name</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>value</name><required>true</required><rtexprvalue>true</rtexprvalue></attribute>
+	</tag>
+
+	<!-- ================================================================================= -->
+	<!--                                                                        la:message -->
+	<!--                                                                        ========== -->
+	<tag>
+		<name>message</name>
+		<tag-class>org.lastaflute.taglib.bean.BeanMessageTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute><name>arg0</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>arg1</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>arg2</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>arg3</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>arg4</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>key</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>name</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>property</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+		<attribute><name>scope</name><required>false</required><rtexprvalue>true</rtexprvalue></attribute>
+	</tag>
+</taglib>

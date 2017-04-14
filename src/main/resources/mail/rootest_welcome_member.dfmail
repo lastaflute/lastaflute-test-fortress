@@ -1,0 +1,14 @@
+/*
+ [New Member's Registration]
+ The member will be formalized after click.
+*/
+subject: Welcome to your sign up, /*pmb.memberName*/
+>>>
+Hello, /*pmb.memberName*/
+
+How are you?
+/*IF pmb.birthdate != null*/
+Happy birthdate! Today is /*pmb.birthdate*/.
+/*END*/
+
+Thanks

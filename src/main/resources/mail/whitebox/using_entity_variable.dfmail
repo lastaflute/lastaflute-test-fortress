@@ -1,0 +1,25 @@
+/*
+ [Using Entity Variable]
+ The test of entity variable.
+*/
+subject: Welcome to your sign up, /*pmb.memberName*/
+-- !!org.docksidestage.dbflute.exentity.Member member!!
+-- !!List<org.docksidestage.dbflute.exentity.Product> productList!!
+>>>
+Hello, /*pmb.member.memberAccount*/
+
+How are you? Thank you for signing up to Maihama!
+
+You are now temporaly registered to the site. 
+Please click on the link below to become a formal member. 
+
+[Product List]
+/*FOR pmb.productList*/
+/*#current*/
+/*END*/
+
+We hope you will enjoy your time in Maihama.
+Thank you. 
+
+Regards, 
+Docksidestage Support Team

@@ -1,0 +1,12 @@
+/*
+ [Loop Beans]
+ the test of for loop of beans
+*/
+subject: test of Loop Beans
+-- !!List<LoopBeansRowBean> beansRowList!!
+>>>
+Hello, /*pmb.memberName*/
+
+/*FOR pmb.beansRowList*/
+/*#current.showName*/, /*#current.stage*/
+/*END*/

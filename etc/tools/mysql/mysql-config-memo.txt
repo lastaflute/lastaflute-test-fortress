@@ -1,0 +1,15 @@
+
+# ========================================================================================
+#                                                                            Configuration
+#                                                                            =============
+Set up the following recommended settings to my.ini or my.cnf:
+
+# /* * * * * * * * * * * * * * * * * * * * * * * * Custom Settings
+character_set_server=utf8mb4
+lower_case_table_names=1
+transaction-isolation = READ-COMMITTED
+
+# GroupBy restriction is off because many projects use the wrong style
+# TRADITIONAL contains STRICT_ALL_TABLES, NO_ZERO_DATE and so on...
+sql_mode="TRADITIONAL"
+# * * * * * * * * * */

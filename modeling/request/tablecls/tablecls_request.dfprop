@@ -1,0 +1,25 @@
+# /---------------------------------------------------------------------------
+# tablecls_requset: (NotRequired - Default map:{})
+#
+# You can inject table classification defined at this request file
+# to your ERFlute file automatically.
+#
+# Example for CLS_MEMBER_STATUS:
+# map:{
+#     ; MEMBER_STATUS = map:{
+#         ; alias = Member Status
+#         ; comment = The status of member e.g. Formalized, Withdrawal
+#         ; codeType = char
+#     }
+# }
+#
+# *The line that starts with '#' means comment-out.
+#
+map:{
+    ; SEA_MYSTIC = map:{
+        ; alias = Sea Mystic
+        ; comment = Sea is Mystic
+        ; codeType = char
+    }
+}
+# ----------------/

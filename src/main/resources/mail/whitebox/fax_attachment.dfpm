@@ -1,0 +1,11 @@
+/*
+ [test of free located template]
+ ...
+*/
+option: genAsIs
+-- !!Integer iks!!
+>>>
+abc
+/*pmb.sea*//*pmb.land*/
+
+/*pmb.iks*/
