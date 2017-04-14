@@ -17,6 +17,7 @@ package org.docksidestage.app.web.wx.response.stream;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
@@ -33,7 +34,7 @@ public class WxResponseStreamAction extends FortressBaseAction {
 
     private static final Logger logger = LoggerFactory.getLogger(WxResponseStreamAction.class);
 
-    // http://localhost:8151/fortress/wx/response/stream/small
+    // http://localhost:8151/fortress/wx/response/stream/small/
     @Execute
     public StreamResponse small() {
         return asStream("sea.txt").stream(out -> {
@@ -46,7 +47,7 @@ public class WxResponseStreamAction extends FortressBaseAction {
         });
     }
 
-    // http://localhost:8151/fortress/wx/response/stream/large
+    // http://localhost:8151/fortress/wx/response/stream/large/
     @Execute
     public StreamResponse large() {
         return asStream("sea.txt").stream(out -> {
@@ -60,6 +61,15 @@ public class WxResponseStreamAction extends FortressBaseAction {
                 out.write(ins);
                 logger.debug("#download end writing");
             }
+        });
+    }
+
+    // http://localhost:8151/fortress/wx/response/stream/output/
+    @Execute
+    public StreamResponse output() {
+        return asStream("sea.txt").stream(out -> {
+            OutputStream ous = out.writer();
+            ous.write(904);
         });
     }
 }

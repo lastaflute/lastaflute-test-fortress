@@ -13,23 +13,18 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.response.html;
+package org.docksidestage.app.web.wx.response.html.add;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import org.docksidestage.dbflute.allcommon.CDef;
-import org.lastaflute.web.validation.ClientError;
 import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.theme.conversion.ValidateTypeFailure;
 
 /**
  * @author jflute
  */
-public class WxResponseHtmlEditForm {
-
-    @Required(groups = ClientError.class)
-    public Integer memberId;
+public class WxResponseHtmlAddForm {
 
     @Required
     public String memberName;
@@ -40,18 +35,6 @@ public class WxResponseHtmlEditForm {
     @ValidateTypeFailure // using calendar so basically unneeded but just in case
     public LocalDate birthdate;
 
-    public LocalDate formalizedDate;
-
     @Required
     public CDef.MemberStatus memberStatus;
-
-    public LocalDateTime latestLoginDatetime; // only view
-
-    public LocalDateTime updateDatetime; // only view
-
-    @Required(groups = ClientError.class)
-    public CDef.MemberStatus previousStatus;
-
-    @Required(groups = ClientError.class)
-    public Long versionNo;
 }

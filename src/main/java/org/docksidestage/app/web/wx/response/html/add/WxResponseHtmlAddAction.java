@@ -13,11 +13,12 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.response.html;
+package org.docksidestage.app.web.wx.response.html.add;
 
 import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
+import org.docksidestage.app.web.wx.response.html.list.WxResponseHtmlListAction;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.dbflute.exentity.Member;
 import org.lastaflute.core.time.TimeManager;

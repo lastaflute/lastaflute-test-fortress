@@ -13,28 +13,31 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.response.html;
+package org.docksidestage.app.web.wx.response.html.list;
 
 import java.time.LocalDate;
 
 import org.docksidestage.dbflute.allcommon.CDef;
-import org.lastaflute.web.validation.Required;
+import org.hibernate.validator.constraints.Length;
 import org.lastaflute.web.validation.theme.conversion.ValidateTypeFailure;
 
 /**
  * @author jflute
  */
-public class WxResponseHtmlAddForm {
+public class WxResponseHtmlSearchForm {
 
-    @Required
+    @Length(max = 5) // #simple_for_example just for validtion example
     public String memberName;
 
-    @Required
-    public String memberAccount;
+    public CDef.MemberStatus memberStatus; // select-box so no validation (client error if invalid code)
 
-    @ValidateTypeFailure // using calendar so basically unneeded but just in case
-    public LocalDate birthdate;
+    @Length(max = 10) // #simple_for_example just for validtion example
+    public String purchaseProductName;
 
-    @Required
-    public CDef.MemberStatus memberStatus;
+    public boolean unpaid; // checkbox cannot send 'off' status so primitive here
+
+    @ValidateTypeFailure // you can customize message by "constraints.TypeLocalDate.message"
+    public LocalDate formalizedFrom;
+    @ValidateTypeFailure
+    public LocalDate formalizedTo;
 }

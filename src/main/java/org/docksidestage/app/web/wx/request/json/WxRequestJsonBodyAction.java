@@ -37,9 +37,16 @@ public class WxRequestJsonBodyAction extends FortressBaseAction {
         return asJson(map);
     }
 
-    // http://localhost:8151/fortress/wx/request/json/body/error
+    // http://localhost:8151/fortress/wx/request/json/body/clienterror
     @Execute
-    public JsonResponse<Map<String, Object>> error(WxRequestJsonBodyBody body) {
+    public JsonResponse<Map<String, Object>> clienterror(WxRequestJsonBodyBody body) {
+        verifyOrClientError("forcedly client error", false);
+        throw new IllegalStateException("no way");
+    }
+
+    // http://localhost:8151/fortress/wx/request/json/body/systemerror
+    @Execute
+    public JsonResponse<Map<String, Object>> systemerror(WxRequestJsonBodyBody body) {
         throw new IllegalStateException("body: " + body);
     }
 }
