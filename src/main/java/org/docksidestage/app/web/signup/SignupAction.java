@@ -18,10 +18,11 @@ import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard;
 import org.lastaflute.core.mail.Postbox;
-import org.lastaflute.core.security.PrimaryCipher;
 import org.lastaflute.core.util.LaStringUtil;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.response.HtmlResponse;
+import org.lastaflute.web.servlet.request.ResponseManager;
+import org.lastaflute.web.servlet.session.SessionManager;
 
 /**
  * @author annie_pocket
@@ -30,22 +31,29 @@ import org.lastaflute.web.response.HtmlResponse;
 public class SignupAction extends FortressBaseAction {
 
     // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
+    private static final String SIGNUP_TOKEN_KEY = "signupToken";
+
+    // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     @Resource
     private Postbox postbox;
     @Resource
-    private PrimaryCipher primaryCipher;
+    private SessionManager sessionManager;
     @Resource
-    private FortressConfig fortressConfig;
+    private ResponseManager responseManager;
     @Resource
-    private FortressLoginAssist fortressLoginAssist;
+    private FortressConfig config;
     @Resource
     private MemberBhv memberBhv;
     @Resource
     private MemberSecurityBhv memberSecurityBhv;
     @Resource
     private MemberServiceBhv memberServiceBhv;
+    @Resource
+    private FortressLoginAssist loginAssist;
 
     // ===================================================================================
     //                                                                             Execute
@@ -57,23 +65,16 @@ public class SignupAction extends FortressBaseAction {
 
     @Execute
     public HtmlResponse signup(SignupForm form) {
-        validate(form, messages -> {
-            moreValidate(form, messages);
-        }, () -> {
+        validate(form, messages -> moreValidate(form, messages), () -> {
             return asHtml(path_Signup_SignupHtml);
         });
-        Integer memberId = newMember(form);
-        fortressLoginAssist.identityLogin(memberId, op -> {}); // no remember-me here
+        Integer memberId = insertProvisionalMember(form);
 
-        WelcomeMemberPostcard.droppedInto(postbox, postcard -> {
-            postcard.setFromSupport(fortressConfig);
-            postcard.addTo(deriveMemberMailAddress(form));
-            postcard.setDomain(fortressConfig.getServerDomain());
-            postcard.setMemberName(form.memberName);
-            postcard.setAccount(form.memberAccount);
-            postcard.setToken(generateToken());
+        String signupToken = saveSignupToken();
+        sendSignupMail(form, signupToken);
+        return redirect(MypageAction.class).afterTxCommit(() -> { // for asynchronous DB access
+            loginAssist.identityLogin(memberId, op -> {}); // no remember-me here
         });
-        return redirect(MypageAction.class);
     }
 
     private void moreValidate(SignupForm form, FortressMessages messages) {
@@ -87,28 +88,54 @@ public class SignupAction extends FortressBaseAction {
         }
     }
 
+    private String saveSignupToken() {
+        String token = Integer.toHexString(new Random().nextInt()); // #simple_for_example
+        sessionManager.setAttribute(SIGNUP_TOKEN_KEY, token);
+        return token;
+    }
+
+    private void sendSignupMail(SignupForm form, String signupToken) {
+        WelcomeMemberPostcard.droppedInto(postbox, postcard -> {
+            postcard.setFrom(config.getMailAddressSupport(), "Harbor Support"); // #simple_for_example
+            postcard.addTo(form.memberAccount + "@docksidestage.org"); // #simple_for_example
+            postcard.setDomain(config.getServerDomain());
+            postcard.setMemberName(form.memberName);
+            postcard.setAccount(form.memberAccount);
+            postcard.setToken(signupToken);
+            postcard.async();
+            postcard.retry(3, 1000L);
+        });
+    }
+
     @Execute
     public HtmlResponse register(String account, String token) { // from mail link
-        Member member = new Member();
-        member.setMemberAccount(account);
-        member.setMemberStatusCode_Formalized();
-        memberBhv.update(member);
+        verifySignupTokenMatched(account, token);
+        updateStatusFormalized(account);
         return redirect(SigninAction.class);
     }
 
+    private void verifySignupTokenMatched(String account, String token) {
+        String saved = sessionManager.getAttribute(SIGNUP_TOKEN_KEY, String.class).orElseTranslatingThrow(cause -> {
+            return responseManager.new404("Not found the signupToken in session: " + account, op -> op.cause(cause));
+        });
+        if (!saved.equals(token)) {
+            throw responseManager.new404("Unmatched signupToken in session: saved=" + saved + ", requested=" + token);
+        }
+    }
+
     // ===================================================================================
-    //                                                                        Assist Logic
-    //                                                                        ============
-    private Integer newMember(SignupForm form) {
+    //                                                                              Update
+    //                                                                              ======
+    private Integer insertProvisionalMember(SignupForm form) {
         Member member = new Member();
         member.setMemberName(form.memberName);
         member.setMemberAccount(form.memberAccount);
         member.setMemberStatusCode_Provisional();
-        memberBhv.insert(member);
+        memberBhv.insert(member); // #simple_for_example same-name concurrent access as application exception
 
         MemberSecurity security = new MemberSecurity();
         security.setMemberId(member.getMemberId());
-        security.setLoginPassword(fortressLoginAssist.encryptPassword(form.password));
+        security.setLoginPassword(loginAssist.encryptPassword(form.password));
         security.setReminderQuestion(form.reminderQuestion);
         security.setReminderAnswer(form.reminderAnswer);
         security.setReminderUseCount(0);
@@ -122,11 +149,10 @@ public class SignupAction extends FortressBaseAction {
         return member.getMemberId();
     }
 
-    private String deriveMemberMailAddress(SignupForm form) {
-        return form.memberAccount + "@fortressstage.org"; // #simple_for_example
-    }
-
-    private String generateToken() {
-        return primaryCipher.encrypt(String.valueOf(new Random().nextInt())); // simple for example
+    private void updateStatusFormalized(String account) {
+        Member member = new Member();
+        member.setMemberAccount(account);
+        member.setMemberStatusCode_Formalized();
+        memberBhv.updateNonstrict(member);
     }
 }
