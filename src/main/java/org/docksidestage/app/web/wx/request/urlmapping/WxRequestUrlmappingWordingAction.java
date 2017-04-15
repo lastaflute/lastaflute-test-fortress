@@ -30,29 +30,29 @@ public class WxRequestUrlmappingWordingAction extends FortressBaseAction {
     //                                                                             Execute
     //                                                                             =======
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/wording/3
+    // http://localhost:8151/fortress/wx/mapping/wording/3
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/wording/
-    // http://localhost:8155/fortress/wx/mapping/wording/dockside
+    // http://localhost:8151/fortress/wx/mapping/wording/
+    // http://localhost:8151/fortress/wx/mapping/wording/dockside
     @Execute
     public JsonResponse<CheckJsonBean> index(Integer wordingId) {
         return asJson(new CheckJsonBean("index()", wordingId, null));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/wording/mystic/sea
+    // http://localhost:8151/fortress/wx/mapping/wording/mystic/sea
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/wording/sea
-    // http://localhost:8155/fortress/wx/mapping/wording/sea/3
+    // http://localhost:8151/fortress/wx/mapping/wording/sea
+    // http://localhost:8151/fortress/wx/mapping/wording/sea/3
     @Execute(urlPattern = "{}/@word")
     public JsonResponse<CheckJsonBean> sea(String wordingId) {
         return asJson(new CheckJsonBean("sea()", wordingId, null));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/wording/land/oneman/3
+    // http://localhost:8151/fortress/wx/mapping/wording/land/oneman/3
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/wording/land/oneman/piari
+    // http://localhost:8151/fortress/wx/mapping/wording/land/oneman/piari
     @Execute
     public JsonResponse<CheckJsonBean> land(String wordingId, Integer piariId) {
         return asJson(new CheckJsonBean("sea()", wordingId, piariId));

@@ -69,34 +69,34 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // to suppress unexpected override by sub-class
     // you should remove the 'final' if you need to override this
     @Override
-    public final ActionResponse godHandPrologue(ActionRuntime runtimeMeta) {
-        return super.godHandPrologue(runtimeMeta);
+    public final ActionResponse godHandPrologue(ActionRuntime runtime) {
+        return super.godHandPrologue(runtime);
     }
 
     @Override
-    public final ActionResponse godHandMonologue(ActionRuntime runtimeMeta) {
-        return super.godHandMonologue(runtimeMeta);
+    public final ActionResponse godHandMonologue(ActionRuntime runtime) {
+        return super.godHandMonologue(runtime);
     }
 
     @Override
-    public final void godHandEpilogue(ActionRuntime runtimeMeta) {
-        super.godHandEpilogue(runtimeMeta);
+    public final void godHandEpilogue(ActionRuntime runtime) {
+        super.godHandEpilogue(runtime);
     }
 
     // #app_customize you can customize the action hook
     @Override
-    public ActionResponse hookBefore(ActionRuntime runtimeMeta) { // application may override
-        return super.hookBefore(runtimeMeta);
+    public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
+        return super.hookBefore(runtime);
     }
 
     @Override
-    public void hookFinally(ActionRuntime runtimeMeta) { // application may override
-        if (runtimeMeta.isForwardToHtml()) {
-            runtimeMeta.registerData("headerBean", getUserBean().map(userBean -> {
+    public void hookFinally(ActionRuntime runtime) { // application may override
+        if (runtime.isForwardToHtml()) {
+            runtime.registerData("headerBean", getUserBean().map(userBean -> {
                 return new FortressHeaderBean(userBean);
             }).orElse(FortressHeaderBean.empty()));
         }
-        super.hookFinally(runtimeMeta);
+        super.hookFinally(runtime);
     }
 
     // ===================================================================================

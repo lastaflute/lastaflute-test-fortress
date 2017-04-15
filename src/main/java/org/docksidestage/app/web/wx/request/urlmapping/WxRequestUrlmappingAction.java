@@ -37,19 +37,19 @@ public class WxRequestUrlmappingAction extends FortressBaseAction {
     //}
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/maihama
+    // http://localhost:8151/fortress/wx/mapping/maihama
     // [not]
-    // http://localhost:8155/fortress/wx/mapping
-    // http://localhost:8155/fortress/wx/mapping/maihama/dockside
+    // http://localhost:8151/fortress/wx/mapping
+    // http://localhost:8151/fortress/wx/mapping/maihama/dockside
     @Execute
     public JsonResponse<CheckJsonBean> maihama() {
         return asJson(new CheckJsonBean("maihama()", null, null));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/sea/dockside
+    // http://localhost:8151/fortress/wx/mapping/sea/dockside
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/sea/dockside/hangar
+    // http://localhost:8151/fortress/wx/mapping/sea/dockside/hangar
     @Execute
     public JsonResponse<CheckJsonBean> sea(String first) {
         return asJson(new CheckJsonBean("sea()", first, null));
@@ -62,96 +62,96 @@ public class WxRequestUrlmappingAction extends FortressBaseAction {
     //}
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/land/dockside/hangar
+    // http://localhost:8151/fortress/wx/mapping/land/dockside/hangar
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/land/dockside
-    // http://localhost:8155/fortress/wx/mapping/land/dockside/hangar/magiclamp
+    // http://localhost:8151/fortress/wx/mapping/land/dockside
+    // http://localhost:8151/fortress/wx/mapping/land/dockside/hangar/magiclamp
     @Execute
     public JsonResponse<CheckJsonBean> land(String first, String second) {
         return asJson(new CheckJsonBean("land()", first, second));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/piari
-    // http://localhost:8155/fortress/wx/mapping/piari/dockside
+    // http://localhost:8151/fortress/wx/mapping/piari
+    // http://localhost:8151/fortress/wx/mapping/piari/dockside
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/piari/dockside/hangar
+    // http://localhost:8151/fortress/wx/mapping/piari/dockside/hangar
     @Execute
     public JsonResponse<CheckJsonBean> piari(OptionalThing<String> first) {
         return asJson(new CheckJsonBean("piari()", first.orElse("*first"), null));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/dstore
-    // http://localhost:8155/fortress/wx/mapping/dstore/dockside
-    // http://localhost:8155/fortress/wx/mapping/dstore/dockside/hangar
+    // http://localhost:8151/fortress/wx/mapping/dstore
+    // http://localhost:8151/fortress/wx/mapping/dstore/dockside
+    // http://localhost:8151/fortress/wx/mapping/dstore/dockside/hangar
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/dstore/dockside/hangar/magiclamp
+    // http://localhost:8151/fortress/wx/mapping/dstore/dockside/hangar/magiclamp
     @Execute
     public JsonResponse<CheckJsonBean> dstore(OptionalThing<String> first, OptionalThing<String> second) {
         return asJson(new CheckJsonBean("dstore()", first.orElse("*first"), second.orElse("*second")));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/bonvo/dockside
-    // http://localhost:8155/fortress/wx/mapping/bonvo/dockside/hangar
+    // http://localhost:8151/fortress/wx/mapping/bonvo/dockside
+    // http://localhost:8151/fortress/wx/mapping/bonvo/dockside/hangar
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/bonvo
-    // http://localhost:8155/fortress/wx/mapping/bonvo/dockside/hangar/magiclamp
+    // http://localhost:8151/fortress/wx/mapping/bonvo
+    // http://localhost:8151/fortress/wx/mapping/bonvo/dockside/hangar/magiclamp
     @Execute
     public JsonResponse<CheckJsonBean> bonvo(String first, OptionalThing<String> second) {
         return asJson(new CheckJsonBean("bonvo()", first, second.orElse("*second")));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/amba/dockside/hangar
-    // http://localhost:8155/fortress/wx/mapping/amba/dockside/hangar/magiclamp
+    // http://localhost:8151/fortress/wx/mapping/amba/dockside/hangar
+    // http://localhost:8151/fortress/wx/mapping/amba/dockside/hangar/magiclamp
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/amba/dockside
-    // http://localhost:8155/fortress/wx/mapping/amba/dockside/hangar/magiclamp/orleans
+    // http://localhost:8151/fortress/wx/mapping/amba/dockside
+    // http://localhost:8151/fortress/wx/mapping/amba/dockside/hangar/magiclamp/orleans
     @Execute
     public JsonResponse<CheckJsonBean> amba(String first, String second, OptionalThing<String> third) {
         return asJson(new CheckJsonBean("amba()", first, second + " :: " + third.orElse("*third")));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/miraco/dockside/hangar/magiclamp
-    // http://localhost:8155/fortress/wx/mapping/miraco/dockside/hangar/magiclamp/orleans
+    // http://localhost:8151/fortress/wx/mapping/miraco/dockside/hangar/magiclamp
+    // http://localhost:8151/fortress/wx/mapping/miraco/dockside/hangar/magiclamp/orleans
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/miraco/dockside
-    // http://localhost:8155/fortress/wx/mapping/miraco/dockside/hangar
+    // http://localhost:8151/fortress/wx/mapping/miraco/dockside
+    // http://localhost:8151/fortress/wx/mapping/miraco/dockside/hangar
     @Execute
     public JsonResponse<CheckJsonBean> miraco(String first, String second, String third, OptionalThing<String> fourth) {
         return asJson(new CheckJsonBean("miraco()", first, second + " :: " + third + " :: " + fourth.orElse("*fourth")));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/dohotel/dockside
-    // http://localhost:8155/fortress/wx/mapping/dohotel/dockside/hangar
-    // http://localhost:8155/fortress/wx/mapping/dohotel/dockside/hangar?param=magiclamp
+    // http://localhost:8151/fortress/wx/mapping/dohotel/dockside
+    // http://localhost:8151/fortress/wx/mapping/dohotel/dockside/hangar
+    // http://localhost:8151/fortress/wx/mapping/dohotel/dockside/hangar?param=magiclamp
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/dohotel/dockside/hangar/magiclamp
+    // http://localhost:8151/fortress/wx/mapping/dohotel/dockside/hangar/magiclamp
     @Execute
     public JsonResponse<CheckJsonBean> dohotel(String first, OptionalThing<String> second, CheckForm form) {
         return asJson(new CheckJsonBean("dohotel()", first, second.orElse("*second") + " :: " + form));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/celeb/1
-    // http://localhost:8155/fortress/wx/mapping/celeb/1/2
+    // http://localhost:8151/fortress/wx/mapping/celeb/1
+    // http://localhost:8151/fortress/wx/mapping/celeb/1/2
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/celeb/dockside
-    // http://localhost:8155/fortress/wx/mapping/celeb/1/2/3
+    // http://localhost:8151/fortress/wx/mapping/celeb/dockside
+    // http://localhost:8151/fortress/wx/mapping/celeb/1/2/3
     @Execute
     public JsonResponse<CheckJsonBean> celeb(Integer first, OptionalThing<Long> second) {
         return asJson(new CheckJsonBean("celeb()", String.valueOf(first), String.valueOf(second.orElse(-99999L))));
     }
 
     // [hit]
-    // http://localhost:8155/fortress/wx/mapping/amphi/1/theater
+    // http://localhost:8151/fortress/wx/mapping/amphi/1/theater
     // [not]
-    // http://localhost:8155/fortress/wx/mapping/amphi/1/2
-    // http://localhost:8155/fortress/wx/mapping/amphi/1/dockside
+    // http://localhost:8151/fortress/wx/mapping/amphi/1/2
+    // http://localhost:8151/fortress/wx/mapping/amphi/1/dockside
     @Execute(urlPattern = "@word/{}/@word")
     public JsonResponse<CheckJsonBean> amphiTheater(Integer first) {
         return asJson(new CheckJsonBean("amphiTheater()", String.valueOf(first), null));

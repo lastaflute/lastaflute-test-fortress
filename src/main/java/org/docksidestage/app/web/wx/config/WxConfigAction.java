@@ -39,6 +39,7 @@ public class WxConfigAction extends FortressBaseAction {
     @Resource
     private MyFortressProp myFortressProp;
 
+    // http://localhost:8151/fortress/wx/config/
     @Execute
     public JsonResponse<String> index() {
         logger.debug("fortressConfig: {}", fortressConfig.isProduction());

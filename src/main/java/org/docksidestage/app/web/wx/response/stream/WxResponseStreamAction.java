@@ -68,7 +68,7 @@ public class WxResponseStreamAction extends FortressBaseAction {
     @Execute
     public StreamResponse output() {
         return asStream("sea.txt").stream(out -> {
-            OutputStream ous = out.writer();
+            OutputStream ous = out.stream();
             ous.write(904);
         });
     }
