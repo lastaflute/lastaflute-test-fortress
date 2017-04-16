@@ -123,8 +123,6 @@ public class FortressApiFailureHook implements ApiFailureHook { // #change_it fo
     //                                                                      ==============
     public static class UnifiedFailureResult {
 
-        public final String notice = "[Attension] tentative JSON so you should change it: " + FortressApiFailureHook.class;
-
         @Required
         public final UnifiedFailureType cause;
 
