@@ -21,7 +21,7 @@ import org.lastaflute.web.login.TypicalUserBean;
 /**
  * @author jflute
  */
-public class FortressUserBean extends TypicalUserBean<Integer> {
+public class FortressUserBean extends TypicalUserBean<Integer> { // #change_it also LoginAssist
 
     // ===================================================================================
     //                                                                          Definition
@@ -34,13 +34,15 @@ public class FortressUserBean extends TypicalUserBean<Integer> {
     //                                                                           =========
     protected final Integer memberId;
     protected final String memberName;
+    protected final String memberAccount;
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public FortressUserBean(Member member) { // #change_it
+    public FortressUserBean(Member member) {
         memberId = member.getMemberId();
         memberName = member.getMemberName();
+        memberAccount = member.getMemberAccount();
     }
 
     // ===================================================================================
@@ -60,5 +62,9 @@ public class FortressUserBean extends TypicalUserBean<Integer> {
 
     public String getMemberName() {
         return memberName;
+    }
+
+    public String getMemberAccount() {
+        return memberAccount;
     }
 }
