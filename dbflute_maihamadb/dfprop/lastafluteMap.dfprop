@@ -32,7 +32,7 @@ map:{
     ; appMap = map:{
         ; fortress = map:{
             ; path = ..
-            ; freeGenList = list:{ env ; config ; label ; message ; mail ; template ; jsp ; doc ; appcls }
+            ; freeGenList = list:{ env ; config ; label ; message ; mail ; template ; doc ; appcls }
             ; propertiesHtmlList = list:{ env ; config ; label ; message }
             ; configPluginInterface = org.docksidestage.mylasta.direction.MyFortressProp
             ; mailPluginInterface = org.docksidestage.mylasta.mail.PluggedinFortressPostcard
