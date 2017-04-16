@@ -21,7 +21,7 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.1.2</dbflute.version>
 		<mysql.jdbc.version>5.1.37</mysql.jdbc.version>
-		<lastaflute.version>0.9.5-RC2</lastaflute.version>
+		<lastaflute.version>0.9.5</lastaflute.version>
 		<lasta.thymeleaf.version>0.3.0</lasta.thymeleaf.version>
 
 		<!-- Partner Library -->
@@ -39,7 +39,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.7.2</utflute.version>
+		<utflute.version>0.7.3</utflute.version>
 	</properties>
 
 	<licenses>
