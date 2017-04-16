@@ -24,7 +24,6 @@ import org.dbflute.cbean.result.PagingResultBean;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
-import org.docksidestage.app.web.base.view.DisplayAssist;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
@@ -44,10 +43,6 @@ public class ProductListAction extends FortressBaseAction {
     private ProductBhv productBhv;
     @Resource
     private PagingAssist pagingAssist;
-    @Resource
-    private DisplayAssist displayAssist;
-    @Resource
-    private ProductListAssist productListAssist;
 
     // ===================================================================================
     //                                                                             Execute
@@ -74,7 +69,27 @@ public class ProductListAction extends FortressBaseAction {
     //                                                                              ======
     private PagingResultBean<Product> selectProductPage(int pageNumber, ProductSearchForm form) {
         verifyOrClientError("The pageNumber should be positive number: " + pageNumber, pageNumber > 0);
-        return productListAssist.selectProductPage(pageNumber, form);
+        return productBhv.selectPage(cb -> {
+            cb.setupSelect_ProductStatus();
+            cb.setupSelect_ProductCategory();
+            cb.specify().derivedPurchase().max(purchaseCB -> {
+                purchaseCB.specify().columnPurchaseDatetime();
+            }, Product.ALIAS_latestPurchaseDate);
+            if (form.productName != null) {
+                cb.query().setProductName_LikeSearch(form.productName, op -> op.likeContain());
+            }
+            if (form.purchaseMemberName != null) {
+                cb.query().existsPurchase(purchaseCB -> {
+                    purchaseCB.query().queryMember().setMemberName_LikeSearch(form.purchaseMemberName, op -> op.likeContain());
+                });
+            }
+            if (form.productStatus != null) {
+                cb.query().setProductStatusCode_Equal_AsProductStatus(form.productStatus);
+            }
+            cb.query().addOrderBy_ProductName_Asc();
+            cb.query().addOrderBy_ProductId_Asc();
+            cb.paging(4, pageNumber);
+        });
     }
 
     // ===================================================================================
