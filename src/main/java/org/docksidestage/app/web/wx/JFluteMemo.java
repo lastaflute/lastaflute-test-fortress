@@ -21,6 +21,7 @@ package org.docksidestage.app.web.wx;
 public class JFluteMemo {
 
     // TODO jflute lastaflute: [A] example: more
+    // TODO jflute lastaflute: [A] fitting: Gson, Enum failure, null to exception
     // TODO jflute lastaflute: [A] fitting: type-safe messages property
     // TODO jflute lastaflute: [A] fitting: Correlation validation for JsonResult
     // TODO jflute lastaflute: [A] fitting: SlaveDB follow
