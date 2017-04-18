@@ -17,6 +17,7 @@ package org.docksidestage.app.web.wx.request.json;
 
 import java.time.LocalDate;
 
+import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.core.util.Lato;
 
 /**
@@ -29,6 +30,10 @@ public class WxRequestJsonBodyBody {
     public Integer land;
 
     public LocalDate piari;
+
+    public Boolean bonvo;
+
+    public CDef.MemberStatus dstore;
 
     @Override
     public String toString() {

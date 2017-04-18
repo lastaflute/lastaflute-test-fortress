@@ -21,9 +21,14 @@ public class WxRequestJsonBodyActionTest extends UnitFortressTestCase {
         requestJsonBody(url, "{sea: \"mystic\"}");
     }
 
-    public void test_request_clienterror() {
+    public void test_request_clienterror_integer() {
         String url = "http://localhost:8151/fortress/wx/request/json/body/clienterror/";
         requestJsonBody(url, "{land: \"415\"}");
+    }
+
+    public void test_request_clienterror_cdef() {
+        String url = "http://localhost:8151/fortress/wx/request/json/body/clienterror/";
+        requestJsonBody(url, "{dstore: \"detarame\"}");
     }
 
     public void test_request_systemerror() {
