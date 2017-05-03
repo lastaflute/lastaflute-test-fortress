@@ -20,14 +20,11 @@ package org.docksidestage.app.web.wx;
  */
 public class JFluteMemo {
 
-    // TODO jflute lastaflute: [A] example: more
-    // TODO jflute lastaflute: [A] fitting: Gson, Enum failure, null to exception
-    // TODO jflute lastaflute: [A] fitting: type-safe messages property
-    // TODO jflute lastaflute: [A] fitting: Correlation validation for JsonResult
-    // TODO jflute lastaflute: [A] fitting: SlaveDB follow
-    // TODO jflute lastaflute: [A] fitting: empty HTTP session for shared-storege-only pattern
-    // TODO jflute lastaflute: [A] fitting: {}/@word/{} with OptionalThing parameter
-    // TODO jflute lastaflute: [A] fitting: Form, Result, Optional property (related to Gson, Validator)
+    // TODO jflute lastaflute: [B] fitting: Gson, Enum failure, null to exception
+    // TODO jflute lastaflute: [B] fitting: type-safe messages property
+    // TODO jflute lastaflute: [B] fitting: {}/@word/{} with OptionalThing parameter
+    // TODO jflute lastaflute: [B] fitting: Form, Result, Optional property (related to Gson, Validator)
+    // TODO jflute lastaflute: [B] fitting: SlaveDB follow
     // TODO jflute lastaflute: [B] fitting: throw 404 when No routing action by option?
     // TODO jflute lastaflute: [B] fitting: @Execute(camelToUrlElement=true)
     // TODO jflute lastaflute: [B] fitting: Thymeleaf: render parts manager for Ajax
