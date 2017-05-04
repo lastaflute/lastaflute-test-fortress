@@ -157,7 +157,7 @@ public class WxAsyncManagerTest extends UnitFortressTestCase {
             String msg = cause.getMessage() + ln() + "..." + ln() + cause.getCause().getMessage();
             log(msg);
             assertContains(msg, EntityAlreadyDeletedException.class.getSimpleName());
-            assertContainsAll(msg, "sea", "land", "piari", "bonvo");
+            assertContainsAll(msg, "sea", "land", "bonvo");
             assertNull(cause.getCause().getCause());
         });
     }
