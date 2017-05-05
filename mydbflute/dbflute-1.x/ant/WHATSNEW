@@ -885,7 +885,7 @@ Other changes:
 * Allow file attribute of <move> to rename a directory.
   Bugzilla Report 22863.
 
-* Add xmlfortress nested element to XmlProperty. Bugzilla report 27053.
+* Add xmlcatalog nested element to XmlProperty. Bugzilla report 27053.
 
 * New attribute alwayslog for <redirector> type.
 
@@ -1751,7 +1751,7 @@ Fixed bugs:
 * <splash> could fail on JVMs that use null to indicate the system classloader.
   Bugzilla Report 23320.
 
-* <xmlfortress>s only worked when defined inside of tasks.  Bugzilla
+* <xmlcatalog>s only worked when defined inside of tasks.  Bugzilla
   Report 20965.
 
 * <csc> and siblings (<vbc> <jsharpc>) handle large filesets by
@@ -1828,8 +1828,8 @@ Other changes:
   define ids or paths and use Ant's location magic for filename resolutions
   in the XML file.
 
-* <xmlfortress> will now support external fortresss according to the
-  OASIS "Open Fortress" standard - if resolver.jar (newer than version
+* <xmlcatalog> will now support external catalogs according to the
+  OASIS "Open Catalog" standard - if resolver.jar (newer than version
   1.0) from Apache's xml-commons is in your CLASSPATH.
 
 * Starteam tasks now have support for revision labels and build labels.
