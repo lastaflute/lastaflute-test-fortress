@@ -1,0 +1,36 @@
+# /---------------------------------------------------------------------------
+# appcls: (NotRequired - Default map:{})
+#
+# The definition of application classification.
+#
+# Specification:
+# map: {
+#     [classification-name] = list:{
+#         ; map:{ topComment=[comment]; codeType=[String(default) or Number or Boolean] }
+#         ; map:{ refCls=[projectName]@[DB classification name] ; refType=[included or exists or matches] }
+#         ; map:{ code=[code]; name=[name]; alias=[alias]; comment=[comment] }
+#     }
+# }
+#
+# *The line that starts with '#' means comment-out.
+#
+map:{
+    ; DaSea = list:{
+        ; map:{ topComment=Sea Cls ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
+    }
+    ; DaLand = list:{
+        ; map:{ topComment=Land Cls ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=exists }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized ; subItemMap=map:{keyword=shining}}
+        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal ; subItemMap=map:{keyword=party}}
+    }
+    ; DaPiari = list:{
+        ; map:{ topComment=Piari Cls ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=matches }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+        ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
+        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    }
+}
+# ----------------/

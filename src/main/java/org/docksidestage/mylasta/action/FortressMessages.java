@@ -165,6 +165,9 @@ public class FortressMessages extends FortressLabels {
     /** The key of the message: escaped "あいうえお" and plain "あいうえお" */
     public static final String WHITEBOX_MESSAGE_JAPANESE_CAOS = "{whitebox.message.japanese.caos}";
 
+    /** The key of the message: sea:{0}, land:{1} */
+    public static final String WHITEBOX_MESSAGE_VALUES_FILTERED = "{whitebox.message.values.filtered}";
+
     /**
      * Add the created action message for the key 'errors.header' with parameters.
      * <pre>
@@ -832,6 +835,22 @@ public class FortressMessages extends FortressLabels {
     public FortressMessages addWhiteboxMessageJapaneseCaos(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(WHITEBOX_MESSAGE_JAPANESE_CAOS));
+        return this;
+    }
+
+    /**
+     * Add the created action message for the key 'whitebox.message.values.filtered' with parameters.
+     * <pre>
+     * message: sea:{0}, land:{1}
+     * </pre>
+     * @param property The property name for the message. (NotNull)
+     * @param arg0 The parameter arg0 for message. (NotNull)
+     * @param arg1 The parameter arg1 for message. (NotNull)
+     * @return this. (NotNull)
+     */
+    public FortressMessages addWhiteboxMessageValuesFiltered(String property, String arg0, String arg1) {
+        assertPropertyNotNull(property);
+        add(property, new UserMessage(WHITEBOX_MESSAGE_VALUES_FILTERED, arg0, arg1));
         return this;
     }
 }

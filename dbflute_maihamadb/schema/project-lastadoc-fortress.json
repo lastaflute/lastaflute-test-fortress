@@ -178,7 +178,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -397,7 +397,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -429,7 +429,7 @@
           {
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -585,7 +585,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -617,7 +617,7 @@
           {
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -738,7 +738,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -977,7 +977,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -1157,7 +1157,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -1326,7 +1326,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -1358,7 +1358,7 @@
           {
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -1539,7 +1539,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -1571,7 +1571,7 @@
           {
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -1777,7 +1777,7 @@
           {
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
             "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
             "description": null,
             "comment": null,
@@ -2007,7 +2007,7 @@
           {
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
             "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
             "description": null,
             "comment": null,
@@ -2127,7 +2127,7 @@
           {
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
             "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
             "description": null,
             "comment": null,
@@ -2956,7 +2956,7 @@
           {
             "name": "reasonCode",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$WithdrawalReason",
-            "simpleTypeName": "WithdrawalReason",
+            "simpleTypeName": "CDef.WithdrawalReason",
             "value": "{OTH\u003dOTH, PRD\u003dPRD, FRT\u003dFRT, SIT\u003dSIT}",
             "description": null,
             "comment": null,
@@ -3052,7 +3052,7 @@
           {
             "name": "reasonCode",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$WithdrawalReason",
-            "simpleTypeName": "WithdrawalReason",
+            "simpleTypeName": "CDef.WithdrawalReason",
             "value": "{OTH\u003dOTH, PRD\u003dPRD, FRT\u003dFRT, SIT\u003dSIT}",
             "description": null,
             "comment": null,
@@ -3085,6 +3085,129 @@
       },
       "fileLineCount": 54,
       "methodLineCount": 21
+    },
+    {
+      "url": "/wx/appex/message/json/",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexMessageJsonAction",
+      "simpleTypeName": "WxAppexMessageJsonAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "jsonManager",
+          "typeName": "org.lastaflute.core.json.JsonManager",
+          "simpleTypeName": "JsonManager",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.String\u003e",
+        "simpleTypeName": "JsonResponse\u003cString\u003e",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 30,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/appex/message/json/direct",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexMessageJsonAction",
+      "simpleTypeName": "WxAppexMessageJsonAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "jsonManager",
+          "typeName": "org.lastaflute.core.json.JsonManager",
+          "simpleTypeName": "JsonManager",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "direct",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.String\u003e",
+        "simpleTypeName": "JsonResponse\u003cString\u003e",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 30,
+      "methodLineCount": 5
+    },
+    {
+      "url": "/wx/appex/message/json/novalues",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexMessageJsonAction",
+      "simpleTypeName": "WxAppexMessageJsonAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "jsonManager",
+          "typeName": "org.lastaflute.core.json.JsonManager",
+          "simpleTypeName": "JsonManager",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "novalues",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.String\u003e",
+        "simpleTypeName": "JsonResponse\u003cString\u003e",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 30,
+      "methodLineCount": 3
     },
     {
       "url": "/wx/config/",
@@ -3781,6 +3904,128 @@
       "methodLineCount": 14
     },
     {
+      "url": "/wx/namedcls/",
+      "typeName": "org.docksidestage.app.web.wx.namedcls.WxNamedclsAction",
+      "simpleTypeName": "WxNamedclsAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "org.docksidestage.app.web.wx.namedcls.WxNamedclsAction$MyNamedClsForm",
+        "simpleTypeName": "MyNamedClsForm",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "status",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
+            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "description": "DB cls",
+            "comment": "DB cls",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "sea",
+            "typeName": "org.docksidestage.mylasta.namedcls.LeonardoCDef$DaSea",
+            "simpleTypeName": "LeonardoCDef.DaSea",
+            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "description": "named",
+            "comment": "named",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "typeName": "org.docksidestage.mylasta.namedcls.VinciCDef$DaLand",
+            "simpleTypeName": "VinciCDef.DaLand",
+            "value": "{FML\u003dShowBase, WDL\u003dOrlean}",
+            "description": "named",
+            "comment": "named",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.namedcls.WxNamedclsAction$MyNamedClsForm\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxNamedclsAction$MyNamedClsForm\u003e",
+        "value": "asJson(form)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "status",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
+            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "description": "DB cls",
+            "comment": "DB cls",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "sea",
+            "typeName": "org.docksidestage.mylasta.namedcls.LeonardoCDef$DaSea",
+            "simpleTypeName": "LeonardoCDef.DaSea",
+            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "description": "named",
+            "comment": "named",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "typeName": "org.docksidestage.mylasta.namedcls.VinciCDef$DaLand",
+            "simpleTypeName": "VinciCDef.DaLand",
+            "value": "{FML\u003dShowBase, WDL\u003dOrlean}",
+            "description": "named",
+            "comment": "named",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 13,
+      "methodLineCount": 7
+    },
+    {
       "url": "/wx/request/form/eccolle",
       "typeName": "org.docksidestage.app.web.wx.request.form.WxRequestFormAction",
       "simpleTypeName": "WxRequestFormAction",
@@ -3920,7 +4165,7 @@
           {
             "name": "dstore",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -4008,7 +4253,7 @@
           {
             "name": "dstore",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -4096,7 +4341,7 @@
           {
             "name": "dstore",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -8573,7 +8818,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -8792,7 +9037,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -8824,7 +9069,7 @@
           {
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -8980,7 +9225,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -9012,7 +9257,7 @@
           {
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -9133,7 +9378,7 @@
           {
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -9852,7 +10097,7 @@
           {
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
             "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
             "description": null,
             "comment": null,
@@ -9997,7 +10242,7 @@
           {
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
             "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
             "description": null,
             "comment": null,
@@ -10116,7 +10361,7 @@
           {
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
             "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
             "description": null,
             "comment": null,
@@ -10222,7 +10467,7 @@
           {
             "name": "bonvoStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -10761,7 +11006,7 @@
           {
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
             "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
             "description": null,
             "comment": null,
@@ -10867,7 +11112,7 @@
           {
             "name": "bonvoStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
@@ -11523,7 +11768,7 @@
           {
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
             "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
             "description": null,
             "comment": null,
@@ -11629,7 +11874,7 @@
           {
             "name": "bonvoStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
-            "simpleTypeName": "MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
             "description": null,
             "comment": null,
