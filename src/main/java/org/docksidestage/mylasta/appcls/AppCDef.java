@@ -360,27 +360,6 @@ public interface AppCDef extends Classification {
             return new ArrayList<WebLand>(4);
         }
 
-        /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty) 
-         * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
-         */
-        public static OptionalThing<WebLand> fromDBCls(CDef.MemberStatus dbCls) {
-            String dbCode = dbCls != null ? dbCls.code() : null;
-            return OptionalThing.ofNullable(codeOf(dbCode), () -> {
-                throw new IllegalStateException("Cannot convert CDef.MemberStatus to WebLand by the DB code: " + dbCode);
-            });
-        }
-
-        /**
-         * @return The DB classification corresponding to the app classification. (NotNull, EmptyAllowed: when no-related to DB)
-         */
-        public OptionalThing<CDef.MemberStatus> toDBCls() {
-            String appCode = code();
-            return OptionalThing.ofNullable(CDef.MemberStatus.codeOf(appCode), () -> {
-                throw new IllegalStateException("Cannot convert WebLand to MemberStatus by the app code: " + appCode);
-            });
-        }
-
         @Override public String toString() { return code(); }
     }
 
