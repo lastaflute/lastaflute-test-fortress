@@ -173,7 +173,7 @@ to fortress
 <p class="sisterneighborlink">
     <a href="#lastadoc_action">to action(99)</a>
     | <a href="#lastadoc_mail">to mail(5)</a>
-    | <a href="#lastadoc_template">to template(2)</a>
+    | <a href="#lastadoc_template">to template(3)</a>
     | <a href="#lastadoc_appcls">to appcls(3)</a>
     | <a href="#lastadoc_namedcls">to namedcls</a>
 </p>
@@ -12854,13 +12854,20 @@ Using&nbsp;Entity&nbsp;Variable
     <tbody id="table-list-body">
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#bean/Nested.dfpm">bean/Nested.dfpm</a></td>
-        <td class="rowcell"><span title="org.docksidestage.mylasta.NestedBean">NestedBean</span></td>
+        <td class="rowcell"><a href="#bean/BasicTemplate.dfpm">bean/BasicTemplate.dfpm</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.BasicTemplateBean">BasicTemplateBean</span></td>
         <td class="rowcell">test&nbsp;of&nbsp;nested&nbsp;template</td>
         <td class="rowcellnum">2</td>
     </tr>
     <tr>
         <td class="rowcellnum">2</td>
+        <td class="rowcell"><a href="#bean/SeaStageTemplate.dfpm">bean/SeaStageTemplate.dfpm</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.SeaStageTemplateBean">SeaStageTemplateBean</span></td>
+        <td class="rowcell">test&nbsp;of&nbsp;property&nbsp;generation</td>
+        <td class="rowcellnum">2</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">3</td>
         <td class="rowcell"><a href="#mail/whitebox/fax_attachment.dfpm">mail/whitebox/fax_attachment.dfpm</a></td>
         <td class="rowcell"><span title="org.docksidestage.mylasta.FaxAttachment">FaxAttachment</span></td>
         <td class="rowcell">test&nbsp;of&nbsp;free&nbsp;located&nbsp;template</td>
@@ -12869,14 +12876,14 @@ Using&nbsp;Entity&nbsp;Variable
     </tbody>
 </table>
 
-<h3 id="bean/Nested.dfpm">
-bean/Nested.dfpm
+<h3 id="bean/BasicTemplate.dfpm">
+bean/BasicTemplate.dfpm
 </h3>
 <h4>
 test&nbsp;of&nbsp;nested&nbsp;template
 </h4>
 <p>
-<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.NestedBean</span>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.BasicTemplateBean</span>
 </p>
 
 <p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[test&nbsp;of&nbsp;nested&nbsp;template]<br>&nbsp;...<br></p>
@@ -12897,6 +12904,38 @@ test&nbsp;of&nbsp;nested&nbsp;template
     <tr>
         <td class="rowcellnum">2</td>
         <td>land</td>
+        <td>String</td>
+    </tr>
+</table>
+
+<h3 id="bean/SeaStageTemplate.dfpm">
+bean/SeaStageTemplate.dfpm
+</h3>
+<h4>
+test&nbsp;of&nbsp;property&nbsp;generation
+</h4>
+<p>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.SeaStageTemplateBean</span>
+</p>
+
+<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[test&nbsp;of&nbsp;property&nbsp;generation]<br>&nbsp;...<br></p>
+
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum">1</td>
+        <td>docksidestage</td>
+        <td>String</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">2</td>
+        <td>magiclamp</td>
         <td>String</td>
     </tr>
 </table>

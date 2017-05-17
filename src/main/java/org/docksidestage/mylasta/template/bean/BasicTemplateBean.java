@@ -23,12 +23,12 @@ import org.lastaflute.core.template.TPCall;
  * The Parameter-comMent style template (called PM template) on LastaFlute.
  * @author FreeGen
  */
-public class NestedBean implements TemplatePmb {
+public class BasicTemplateBean implements TemplatePmb {
 
-    public static final String PATH = "bean/Nested.dfpm";
+    public static final String PATH = "bean/BasicTemplate.dfpm";
 
-    public static String parsedBy(TemplateManager templateManager, TPCall<NestedBean> oneArgLambda) {
-        NestedBean pmb = new NestedBean();
+    public static String parsedBy(TemplateManager templateManager, TPCall<BasicTemplateBean> oneArgLambda) {
+        BasicTemplateBean pmb = new BasicTemplateBean();
         oneArgLambda.setup(pmb);
         return templateManager.parse(pmb);
     }
@@ -44,7 +44,7 @@ public class NestedBean implements TemplatePmb {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("NestedBean:{");
+        sb.append("BasicTemplateBean:{");
         sb.append(sea);
         sb.append(", ").append(land);
         sb.append("}");

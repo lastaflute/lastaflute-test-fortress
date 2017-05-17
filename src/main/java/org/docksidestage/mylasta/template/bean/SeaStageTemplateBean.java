@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.mylasta.template;
+package org.docksidestage.mylasta.template.bean;
 
 import org.lastaflute.core.template.TemplateManager;
 import org.lastaflute.core.template.TemplatePmb;
@@ -23,18 +23,18 @@ import org.lastaflute.core.template.TPCall;
  * The Parameter-comMent style template (called PM template) on LastaFlute.
  * @author FreeGen
  */
-public class Rootest implements TemplatePmb {
+public class SeaStageTemplateBean implements TemplatePmb {
 
-    public static final String PATH = "rootest.dfpm";
+    public static final String PATH = "bean/SeaStageTemplate.dfpm";
 
-    public static String parsedBy(TemplateManager templateManager, TPCall<Rootest> oneArgLambda) {
-        Rootest pmb = new Rootest();
+    public static String parsedBy(TemplateManager templateManager, TPCall<SeaStageTemplateBean> oneArgLambda) {
+        SeaStageTemplateBean pmb = new SeaStageTemplateBean();
         oneArgLambda.setup(pmb);
         return templateManager.parse(pmb);
     }
 
-    protected String sea;
-    protected String land;
+    protected String docksidestage;
+    protected String magiclamp;
 
     @Override
     public String getTemplatePath() {
@@ -44,44 +44,44 @@ public class Rootest implements TemplatePmb {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Rootest:{");
-        sb.append(sea);
-        sb.append(", ").append(land);
+        sb.append("SeaStageTemplateBean:{");
+        sb.append(docksidestage);
+        sb.append(", ").append(magiclamp);
         sb.append("}");
         return sb.toString();
     }
 
     /**
-     * Get the value of sea, called by parameter comment.
-     * @return The parameter value of sea. (NullAllowed: e.g. when no setting)
+     * Get the value of docksidestage, called by parameter comment.
+     * @return The parameter value of docksidestage. (NullAllowed: e.g. when no setting)
      */
-    public String getSea() {
-        return sea;
+    public String getDocksidestage() {
+        return docksidestage;
     }
 
     /**
-     * Set the value of sea, used in parameter comment. <br>
+     * Set the value of docksidestage, used in parameter comment. <br>
      * Even if empty string, treated as empty plainly. So "IF pmb != null" is false if empty.
-     * @param sea The parameter value for parameter comment. (NullAllowed)
+     * @param docksidestage The parameter value for parameter comment. (NullAllowed)
      */
-    public void setSea(String sea) {
-        this.sea = sea;
+    public void setDocksidestage(String docksidestage) {
+        this.docksidestage = docksidestage;
     }
 
     /**
-     * Get the value of land, called by parameter comment.
-     * @return The parameter value of land. (NullAllowed: e.g. when no setting)
+     * Get the value of magiclamp, called by parameter comment.
+     * @return The parameter value of magiclamp. (NullAllowed: e.g. when no setting)
      */
-    public String getLand() {
-        return land;
+    public String getMagiclamp() {
+        return magiclamp;
     }
 
     /**
-     * Set the value of land, used in parameter comment. <br>
+     * Set the value of magiclamp, used in parameter comment. <br>
      * Even if empty string, treated as empty plainly. So "IF pmb != null" is false if empty.
-     * @param land The parameter value for parameter comment. (NullAllowed)
+     * @param magiclamp The parameter value for parameter comment. (NullAllowed)
      */
-    public void setLand(String land) {
-        this.land = land;
+    public void setMagiclamp(String magiclamp) {
+        this.magiclamp = magiclamp;
     }
 }

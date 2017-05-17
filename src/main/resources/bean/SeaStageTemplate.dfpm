@@ -1,0 +1,11 @@
+/*
+ [test of property generation]
+ ...
+*/
+>>>
+/*IF pmb.docksidestage != null*/
+docksidestage: /*pmb.docksidestage*/
+-- ELSE
+not found docksidestage so hangar: /*pmb.hangar*/
+/*END*/
+magiclamp: /*pmb.magiclamp*/
