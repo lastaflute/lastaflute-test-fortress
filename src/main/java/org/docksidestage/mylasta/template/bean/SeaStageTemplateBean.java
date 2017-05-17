@@ -33,7 +33,7 @@ public class SeaStageTemplateBean implements TemplatePmb {
         return templateManager.parse(pmb);
     }
 
-    protected String docksidestage;
+    protected String dockside;
     protected String magiclamp;
 
     @Override
@@ -45,27 +45,27 @@ public class SeaStageTemplateBean implements TemplatePmb {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("SeaStageTemplateBean:{");
-        sb.append(docksidestage);
+        sb.append(dockside);
         sb.append(", ").append(magiclamp);
         sb.append("}");
         return sb.toString();
     }
 
     /**
-     * Get the value of docksidestage, called by parameter comment.
-     * @return The parameter value of docksidestage. (NullAllowed: e.g. when no setting)
+     * Get the value of dockside, called by parameter comment.
+     * @return The parameter value of dockside. (NullAllowed: e.g. when no setting)
      */
-    public String getDocksidestage() {
-        return docksidestage;
+    public String getDockside() {
+        return dockside;
     }
 
     /**
-     * Set the value of docksidestage, used in parameter comment. <br>
+     * Set the value of dockside, used in parameter comment. <br>
      * Even if empty string, treated as empty plainly. So "IF pmb != null" is false if empty.
-     * @param docksidestage The parameter value for parameter comment. (NullAllowed)
+     * @param dockside The parameter value for parameter comment. (NullAllowed)
      */
-    public void setDocksidestage(String docksidestage) {
-        this.docksidestage = docksidestage;
+    public void setDockside(String dockside) {
+        this.dockside = dockside;
     }
 
     /**

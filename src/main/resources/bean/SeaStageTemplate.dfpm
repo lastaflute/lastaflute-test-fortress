@@ -3,8 +3,8 @@
  ...
 */
 >>>
-/*IF pmb.docksidestage != null*/
-docksidestage: /*pmb.docksidestage*/
+/*IF pmb.dockside != null*/
+docksidestage: /*pmb.dockside*/
 -- ELSE
 not found docksidestage so hangar: /*pmb.hangar*/
 /*END*/
