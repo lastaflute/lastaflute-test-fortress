@@ -1,0 +1,7 @@
+/*
+ [orElse() mail]
+ the test of orElse()
+*/
+subject: orElse()
+>>>
+map:{sea = /*pmb.sea:orElse('mystic')*/; land = /*pmb.land:orElse('')*/}

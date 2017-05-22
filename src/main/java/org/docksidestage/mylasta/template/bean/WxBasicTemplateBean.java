@@ -23,18 +23,18 @@ import org.lastaflute.core.template.TPCall;
  * The Parameter-comMent style template (called PM template) on LastaFlute.
  * @author FreeGen
  */
-public class SeaStageTemplateBean implements TemplatePmb {
+public class WxBasicTemplateBean implements TemplatePmb {
 
-    public static final String PATH = "bean/SeaStageTemplate.dfpm";
+    public static final String PATH = "bean/wx_basic_template.dfpm";
 
-    public static String parsedBy(TemplateManager templateManager, TPCall<SeaStageTemplateBean> oneArgLambda) {
-        SeaStageTemplateBean pmb = new SeaStageTemplateBean();
+    public static String parsedBy(TemplateManager templateManager, TPCall<WxBasicTemplateBean> oneArgLambda) {
+        WxBasicTemplateBean pmb = new WxBasicTemplateBean();
         oneArgLambda.setup(pmb);
         return templateManager.parse(pmb);
     }
 
-    protected String dockside;
-    protected String magiclamp;
+    protected String sea;
+    protected String land;
 
     @Override
     public String getTemplatePath() {
@@ -44,44 +44,44 @@ public class SeaStageTemplateBean implements TemplatePmb {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("SeaStageTemplateBean:{");
-        sb.append(dockside);
-        sb.append(", ").append(magiclamp);
+        sb.append("WxBasicTemplateBean:{");
+        sb.append(sea);
+        sb.append(", ").append(land);
         sb.append("}");
         return sb.toString();
     }
 
     /**
-     * Get the value of dockside, called by parameter comment.
-     * @return The parameter value of dockside. (NullAllowed: e.g. when no setting)
+     * Get the value of sea, called by parameter comment.
+     * @return The parameter value of sea. (NullAllowed: e.g. when no setting)
      */
-    public String getDockside() {
-        return dockside;
+    public String getSea() {
+        return sea;
     }
 
     /**
-     * Set the value of dockside, used in parameter comment. <br>
+     * Set the value of sea, used in parameter comment. <br>
      * Even if empty string, treated as empty plainly. So "IF pmb != null" is false if empty.
-     * @param dockside The parameter value for parameter comment. (NullAllowed)
+     * @param sea The parameter value for parameter comment. (NullAllowed)
      */
-    public void setDockside(String dockside) {
-        this.dockside = dockside;
+    public void setSea(String sea) {
+        this.sea = sea;
     }
 
     /**
-     * Get the value of magiclamp, called by parameter comment.
-     * @return The parameter value of magiclamp. (NullAllowed: e.g. when no setting)
+     * Get the value of land, called by parameter comment.
+     * @return The parameter value of land. (NullAllowed: e.g. when no setting)
      */
-    public String getMagiclamp() {
-        return magiclamp;
+    public String getLand() {
+        return land;
     }
 
     /**
-     * Set the value of magiclamp, used in parameter comment. <br>
+     * Set the value of land, used in parameter comment. <br>
      * Even if empty string, treated as empty plainly. So "IF pmb != null" is false if empty.
-     * @param magiclamp The parameter value for parameter comment. (NullAllowed)
+     * @param land The parameter value for parameter comment. (NullAllowed)
      */
-    public void setMagiclamp(String magiclamp) {
-        this.magiclamp = magiclamp;
+    public void setLand(String land) {
+        this.land = land;
     }
 }

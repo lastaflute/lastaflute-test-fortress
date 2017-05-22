@@ -1878,8 +1878,8 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 122,
-      "methodLineCount": 56
+      "fileLineCount": 117,
+      "methodLineCount": 51
     },
     {
       "url": "/product/detail/{productId}",

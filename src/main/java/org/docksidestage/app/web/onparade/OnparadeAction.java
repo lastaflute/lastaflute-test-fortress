@@ -31,7 +31,7 @@ import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard;
 import org.docksidestage.mylasta.mail.whitebox.FaxAttachment;
-import org.docksidestage.mylasta.template.bean.BasicTemplateBean;
+import org.docksidestage.mylasta.template.bean.WxBasicTemplateBean;
 import org.lastaflute.core.mail.Postbox;
 import org.lastaflute.core.template.TemplateManager;
 import org.lastaflute.core.util.LaStringUtil;
@@ -98,7 +98,7 @@ public class OnparadeAction extends FortressBaseAction {
             bean.setIks(7);
         });
         System.out.println("fax: " + fax);
-        String nested = BasicTemplateBean.parsedBy(templateManager, bean -> {
+        String nested = WxBasicTemplateBean.parsedBy(templateManager, bean -> {
             bean.setSea("aa");
             bean.setLand("");
         });

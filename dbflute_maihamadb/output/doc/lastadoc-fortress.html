@@ -172,8 +172,8 @@ to fortress
 
 <p class="sisterneighborlink">
     <a href="#lastadoc_action">to action(99)</a>
-    | <a href="#lastadoc_mail">to mail(5)</a>
-    | <a href="#lastadoc_template">to template(3)</a>
+    | <a href="#lastadoc_mail">to mail(6)</a>
+    | <a href="#lastadoc_template">to template(4)</a>
     | <a href="#lastadoc_appcls">to appcls(3)</a>
     | <a href="#lastadoc_namedcls">to namedcls</a>
 </p>
@@ -400,8 +400,8 @@ to fortress
             <span title="org.lastaflute.web.response.HtmlResponse">HtmlResponse</span>
         </td>
         <td class="rowcellnum">7</td>
-        <td class="rowcellnum">122</td>
-        <td class="rowcellnum">56</td>
+        <td class="rowcellnum">117</td>
+        <td class="rowcellnum">51</td>
     </tr>
     <tr>
         <td class="rowcellnum">15</td>
@@ -12641,23 +12641,30 @@ to fortress
     </tr>
     <tr>
         <td class="rowcellnum">3</td>
-        <td class="rowcell"><a href="#whitebox/loop_beans.dfmail">whitebox/loop_beans.dfmail</a></td>
-        <td class="rowcell"><span title="org.docksidestage.mylasta.mail.LoopBeansPostcard">LoopBeansPostcard</span></td>
-        <td class="rowcell">Loop&nbsp;Beans</td>
+        <td class="rowcell"><a href="#whitebox/wx_loop_beans.dfmail">whitebox/wx_loop_beans.dfmail</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxLoopBeansPostcard">WxLoopBeansPostcard</span></td>
+        <td class="rowcell">Loop&nbsp;Beans&nbsp;Mail</td>
         <td class="rowcellnum">2</td>
     </tr>
     <tr>
         <td class="rowcellnum">4</td>
-        <td class="rowcell"><a href="#whitebox/no_variable.dfmail">whitebox/no_variable.dfmail</a></td>
-        <td class="rowcell"><span title="org.docksidestage.mylasta.mail.NoVariablePostcard">NoVariablePostcard</span></td>
-        <td class="rowcell">No&nbsp;Variable&nbsp;Mail&nbsp;Template</td>
+        <td class="rowcell"><a href="#whitebox/wx_no_variable.dfmail">whitebox/wx_no_variable.dfmail</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxNoVariablePostcard">WxNoVariablePostcard</span></td>
+        <td class="rowcell">No&nbsp;Variable&nbsp;Mail</td>
         <td class="rowcellnum">0</td>
     </tr>
     <tr>
         <td class="rowcellnum">5</td>
-        <td class="rowcell"><a href="#whitebox/using_entity_variable.dfmail">whitebox/using_entity_variable.dfmail</a></td>
-        <td class="rowcell"><span title="org.docksidestage.mylasta.mail.UsingEntityVariablePostcard">UsingEntityVariablePostcard</span></td>
-        <td class="rowcell">Using&nbsp;Entity&nbsp;Variable</td>
+        <td class="rowcell"><a href="#whitebox/wx_orlse_variable.dfmail">whitebox/wx_orlse_variable.dfmail</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxOrlseVariablePostcard">WxOrlseVariablePostcard</span></td>
+        <td class="rowcell">orElse()&nbsp;mail</td>
+        <td class="rowcellnum">2</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">6</td>
+        <td class="rowcell"><a href="#whitebox/wx_using_entity_variable.dfmail">whitebox/wx_using_entity_variable.dfmail</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxUsingEntityVariablePostcard">WxUsingEntityVariablePostcard</span></td>
+        <td class="rowcell">Entity&nbsp;Variable&nbsp;Mail</td>
         <td class="rowcellnum">3</td>
     </tr>
     </tbody>
@@ -12745,21 +12752,21 @@ New&nbsp;Member's&nbsp;Registration
     </tr>
 </table>
 
-<h3 id="whitebox/loop_beans.dfmail">
-whitebox/loop_beans.dfmail
+<h3 id="whitebox/wx_loop_beans.dfmail">
+whitebox/wx_loop_beans.dfmail
 </h3>
 <h4>
-Loop&nbsp;Beans
+Loop&nbsp;Beans&nbsp;Mail
 </h4>
 <p>
-<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.mail.LoopBeansPostcard</span>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.mail.WxLoopBeansPostcard</span>
 </p>
 <p class="docsubitem">
 <span class="docsubtitle">hasOptionPlusHtml:</span>
 <span class="docannotations docsubvalue">false</span>
 </p>
 
-<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[Loop&nbsp;Beans]<br>&nbsp;the&nbsp;test&nbsp;of&nbsp;for&nbsp;loop&nbsp;of&nbsp;beans<br></p>
+<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[Loop&nbsp;Beans&nbsp;Mail]<br>&nbsp;the&nbsp;test&nbsp;of&nbsp;for&nbsp;loop&nbsp;of&nbsp;beans<br></p>
 
 <table>
     <thead>
@@ -12781,38 +12788,74 @@ Loop&nbsp;Beans
     </tr>
 </table>
 
-<h3 id="whitebox/no_variable.dfmail">
-whitebox/no_variable.dfmail
+<h3 id="whitebox/wx_no_variable.dfmail">
+whitebox/wx_no_variable.dfmail
 </h3>
 <h4>
-No&nbsp;Variable&nbsp;Mail&nbsp;Template
+No&nbsp;Variable&nbsp;Mail
 </h4>
 <p>
-<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.mail.NoVariablePostcard</span>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.mail.WxNoVariablePostcard</span>
 </p>
 <p class="docsubitem">
 <span class="docsubtitle">hasOptionPlusHtml:</span>
 <span class="docannotations docsubvalue">false</span>
 </p>
 
-<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[No&nbsp;Variable&nbsp;Mail&nbsp;Template]<br>&nbsp;The&nbsp;test&nbsp;of&nbsp;no&nbsp;variable.<br></p>
+<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[No&nbsp;Variable&nbsp;Mail]<br>&nbsp;The&nbsp;test&nbsp;of&nbsp;no&nbsp;variable.<br></p>
 
 
-<h3 id="whitebox/using_entity_variable.dfmail">
-whitebox/using_entity_variable.dfmail
+<h3 id="whitebox/wx_orlse_variable.dfmail">
+whitebox/wx_orlse_variable.dfmail
 </h3>
 <h4>
-Using&nbsp;Entity&nbsp;Variable
+orElse()&nbsp;mail
 </h4>
 <p>
-<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.mail.UsingEntityVariablePostcard</span>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.mail.WxOrlseVariablePostcard</span>
 </p>
 <p class="docsubitem">
 <span class="docsubtitle">hasOptionPlusHtml:</span>
 <span class="docannotations docsubvalue">false</span>
 </p>
 
-<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[Using&nbsp;Entity&nbsp;Variable]<br>&nbsp;The&nbsp;test&nbsp;of&nbsp;entity&nbsp;variable.<br></p>
+<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[orElse()&nbsp;mail]<br>&nbsp;the&nbsp;test&nbsp;of&nbsp;orElse()<br></p>
+
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum">1</td>
+        <td>sea</td>
+        <td>String</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">2</td>
+        <td>land</td>
+        <td>String</td>
+    </tr>
+</table>
+
+<h3 id="whitebox/wx_using_entity_variable.dfmail">
+whitebox/wx_using_entity_variable.dfmail
+</h3>
+<h4>
+Entity&nbsp;Variable&nbsp;Mail
+</h4>
+<p>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.mail.WxUsingEntityVariablePostcard</span>
+</p>
+<p class="docsubitem">
+<span class="docsubtitle">hasOptionPlusHtml:</span>
+<span class="docannotations docsubvalue">false</span>
+</p>
+
+<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[Entity&nbsp;Variable&nbsp;Mail]<br>&nbsp;The&nbsp;test&nbsp;of&nbsp;entity&nbsp;variable.<br></p>
 
 <table>
     <thead>
@@ -12854,39 +12897,46 @@ Using&nbsp;Entity&nbsp;Variable
     <tbody id="table-list-body">
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#bean/BasicTemplate.dfpm">bean/BasicTemplate.dfpm</a></td>
-        <td class="rowcell"><span title="org.docksidestage.mylasta.BasicTemplateBean">BasicTemplateBean</span></td>
-        <td class="rowcell">test&nbsp;of&nbsp;nested&nbsp;template</td>
+        <td class="rowcell"><a href="#bean/wx_basic_template.dfpm">bean/wx_basic_template.dfpm</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.WxBasicTemplateBean">WxBasicTemplateBean</span></td>
+        <td class="rowcell">Basic&nbsp;Template</td>
         <td class="rowcellnum">2</td>
     </tr>
     <tr>
         <td class="rowcellnum">2</td>
-        <td class="rowcell"><a href="#bean/SeaStageTemplate.dfpm">bean/SeaStageTemplate.dfpm</a></td>
-        <td class="rowcell"><span title="org.docksidestage.mylasta.SeaStageTemplateBean">SeaStageTemplateBean</span></td>
-        <td class="rowcell">test&nbsp;of&nbsp;template&nbsp;property&nbsp;generation</td>
+        <td class="rowcell"><a href="#bean/wx_orelse_variable_template.dfpm">bean/wx_orelse_variable_template.dfpm</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.WxOrelseVariableTemplateBean">WxOrelseVariableTemplateBean</span></td>
+        <td class="rowcell">orElse()&nbsp;template</td>
         <td class="rowcellnum">2</td>
     </tr>
     <tr>
         <td class="rowcellnum">3</td>
-        <td class="rowcell"><a href="#mail/whitebox/fax_attachment.dfpm">mail/whitebox/fax_attachment.dfpm</a></td>
-        <td class="rowcell"><span title="org.docksidestage.mylasta.FaxAttachment">FaxAttachment</span></td>
+        <td class="rowcell"><a href="#bean/wx_property_generation_template.dfpm">bean/wx_property_generation_template.dfpm</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.WxPropertyGenerationTemplateBean">WxPropertyGenerationTemplateBean</span></td>
+        <td class="rowcell">test&nbsp;of&nbsp;template&nbsp;property&nbsp;generation</td>
+        <td class="rowcellnum">2</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">4</td>
+        <td class="rowcell"><a href="#mail/whitebox/wx_fax_attachment.dfpm">mail/whitebox/wx_fax_attachment.dfpm</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.WxFaxAttachment">WxFaxAttachment</span></td>
         <td class="rowcell">test&nbsp;of&nbsp;free&nbsp;located&nbsp;template</td>
         <td class="rowcellnum">3</td>
     </tr>
     </tbody>
 </table>
 
-<h3 id="bean/BasicTemplate.dfpm">
-bean/BasicTemplate.dfpm
+<h3 id="bean/wx_basic_template.dfpm">
+bean/wx_basic_template.dfpm
 </h3>
 <h4>
-test&nbsp;of&nbsp;nested&nbsp;template
+Basic&nbsp;Template
 </h4>
 <p>
-<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.BasicTemplateBean</span>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.WxBasicTemplateBean</span>
 </p>
 
-<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[test&nbsp;of&nbsp;nested&nbsp;template]<br>&nbsp;...<br></p>
+<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[Basic&nbsp;Template]<br>&nbsp;test&nbsp;of&nbsp;template&nbsp;basic&nbsp;functions<br></p>
 
 <table>
     <thead>
@@ -12908,14 +12958,46 @@ test&nbsp;of&nbsp;nested&nbsp;template
     </tr>
 </table>
 
-<h3 id="bean/SeaStageTemplate.dfpm">
-bean/SeaStageTemplate.dfpm
+<h3 id="bean/wx_orelse_variable_template.dfpm">
+bean/wx_orelse_variable_template.dfpm
+</h3>
+<h4>
+orElse()&nbsp;template
+</h4>
+<p>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.WxOrelseVariableTemplateBean</span>
+</p>
+
+<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[orElse()&nbsp;template]<br>&nbsp;the&nbsp;test&nbsp;of&nbsp;orElse()<br></p>
+
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum">1</td>
+        <td>sea</td>
+        <td>String</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">2</td>
+        <td>land</td>
+        <td>String</td>
+    </tr>
+</table>
+
+<h3 id="bean/wx_property_generation_template.dfpm">
+bean/wx_property_generation_template.dfpm
 </h3>
 <h4>
 test&nbsp;of&nbsp;template&nbsp;property&nbsp;generation
 </h4>
 <p>
-<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.SeaStageTemplateBean</span>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.WxPropertyGenerationTemplateBean</span>
 </p>
 
 <p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[test&nbsp;of&nbsp;template&nbsp;property&nbsp;generation]<br>&nbsp;...<br></p>
@@ -12940,14 +13022,14 @@ test&nbsp;of&nbsp;template&nbsp;property&nbsp;generation
     </tr>
 </table>
 
-<h3 id="mail/whitebox/fax_attachment.dfpm">
-mail/whitebox/fax_attachment.dfpm
+<h3 id="mail/whitebox/wx_fax_attachment.dfpm">
+mail/whitebox/wx_fax_attachment.dfpm
 </h3>
 <h4>
 test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
 </h4>
 <p>
-<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.FaxAttachment</span>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.WxFaxAttachment</span>
 </p>
 
 <p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[test&nbsp;of&nbsp;free&nbsp;located&nbsp;template]<br>&nbsp;...<br></p>

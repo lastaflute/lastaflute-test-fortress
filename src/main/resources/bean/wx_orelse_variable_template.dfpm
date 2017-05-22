@@ -1,0 +1,6 @@
+/*
+ [orElse() template]
+ the test of orElse()
+*/
+>>>
+map:{sea = /*pmb.sea:orElse('mystic')*/; land = /*pmb.land:orElse('')*/}

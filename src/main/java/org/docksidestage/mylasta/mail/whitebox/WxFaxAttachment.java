@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.mylasta.template.bean;
+package org.docksidestage.mylasta.mail.whitebox;
 
 import org.lastaflute.core.template.TemplateManager;
 import org.lastaflute.core.template.TemplatePmb;
@@ -23,18 +23,19 @@ import org.lastaflute.core.template.TPCall;
  * The Parameter-comMent style template (called PM template) on LastaFlute.
  * @author FreeGen
  */
-public class BasicTemplateBean implements TemplatePmb {
+public class WxFaxAttachment implements TemplatePmb {
 
-    public static final String PATH = "bean/BasicTemplate.dfpm";
+    public static final String PATH = "mail/whitebox/wx_fax_attachment.dfpm";
 
-    public static String parsedBy(TemplateManager templateManager, TPCall<BasicTemplateBean> oneArgLambda) {
-        BasicTemplateBean pmb = new BasicTemplateBean();
+    public static String parsedBy(TemplateManager templateManager, TPCall<WxFaxAttachment> oneArgLambda) {
+        WxFaxAttachment pmb = new WxFaxAttachment();
         oneArgLambda.setup(pmb);
         return templateManager.parse(pmb);
     }
 
     protected String sea;
     protected String land;
+    protected Integer iks;
 
     @Override
     public String getTemplatePath() {
@@ -44,9 +45,10 @@ public class BasicTemplateBean implements TemplatePmb {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("BasicTemplateBean:{");
+        sb.append("WxFaxAttachment:{");
         sb.append(sea);
         sb.append(", ").append(land);
+        sb.append(", ").append(iks);
         sb.append("}");
         return sb.toString();
     }
@@ -83,5 +85,22 @@ public class BasicTemplateBean implements TemplatePmb {
      */
     public void setLand(String land) {
         this.land = land;
+    }
+
+    /**
+     * Get the value of iks, called by parameter comment.
+     * @return The parameter value of iks. (NullAllowed: e.g. when no setting)
+     */
+    public Integer getIks() {
+        return iks;
+    }
+
+    /**
+     * Set the value of iks, used in parameter comment. <br>
+     * Even if empty string, treated as empty plainly. So "IF pmb != null" is false if empty.
+     * @param iks The parameter value for parameter comment. (NullAllowed)
+     */
+    public void setIks(Integer iks) {
+        this.iks = iks;
     }
 }
