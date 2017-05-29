@@ -18,8 +18,8 @@ package org.docksidestage.app.web.wx.mail;
 import java.util.List;
 
 import org.dbflute.utflute.lastaflute.mail.TestingPreparedMessage;
-import org.docksidestage.mylasta.mail.whitebox.LoopBeansPostcard;
-import org.docksidestage.mylasta.mail.whitebox.NoVariablePostcard;
+import org.docksidestage.mylasta.mail.whitebox.WxLoopBeansPostcard;
+import org.docksidestage.mylasta.mail.whitebox.WxNoVariablePostcard;
 import org.docksidestage.unit.UnitFortressTestCase;
 import org.lastaflute.web.response.JsonResponse;
 
@@ -33,7 +33,7 @@ public class WxMailActionTest extends UnitFortressTestCase {
         WxMailAction action = new WxMailAction();
         inject(action);
         reserveMailAssertion(mailData -> {
-            List<TestingPreparedMessage> messageList = mailData.required(NoVariablePostcard.class);
+            List<TestingPreparedMessage> messageList = mailData.required(WxNoVariablePostcard.class);
             assertHasOnlyOneElement(messageList);
             TestingPreparedMessage message = messageList.get(0);
             message.assertPlainTextContains("Hello, no variable");
@@ -51,7 +51,7 @@ public class WxMailActionTest extends UnitFortressTestCase {
         WxMailAction action = new WxMailAction();
         inject(action);
         reserveMailAssertion(mailData -> {
-            List<TestingPreparedMessage> messageList = mailData.required(LoopBeansPostcard.class);
+            List<TestingPreparedMessage> messageList = mailData.required(WxLoopBeansPostcard.class);
             assertHasOnlyOneElement(messageList);
             TestingPreparedMessage message = messageList.get(0);
             message.assertPlainTextContains("mystic, hangar");

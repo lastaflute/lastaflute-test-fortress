@@ -112,7 +112,7 @@ public class WxLoopBeansPostcard extends LaTypicalPostcard implements org.docksi
      * Even if empty string, treated as empty plainly. So "IF pmb != null" is false if empty.
      * @param beansRowList The parameter value of beansRowList. (NotNull)
      */
-    public void setBeansRowList(java.util.List<LoopBeansRowBean> beansRowList) {
+    public void setBeansRowList(java.util.List<WxLoopBeansRowBean> beansRowList) {
         registerVariable("beansRowList", beansRowList);
     }
 }

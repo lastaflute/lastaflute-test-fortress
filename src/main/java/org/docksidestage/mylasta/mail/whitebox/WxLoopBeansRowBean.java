@@ -18,12 +18,12 @@ package org.docksidestage.mylasta.mail.whitebox;
 /**
  * @author jflute
  */
-public class LoopBeansRowBean {
+public class WxLoopBeansRowBean {
 
     private final String showName;
     private final String stage;
 
-    public LoopBeansRowBean(String showName, String stage) {
+    public WxLoopBeansRowBean(String showName, String stage) {
         this.showName = showName;
         this.stage = stage;
     }

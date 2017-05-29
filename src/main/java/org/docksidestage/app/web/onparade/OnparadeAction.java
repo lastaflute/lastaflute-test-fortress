@@ -30,7 +30,7 @@ import org.docksidestage.dbflute.exentity.Product;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard;
-import org.docksidestage.mylasta.mail.whitebox.FaxAttachment;
+import org.docksidestage.mylasta.mail.whitebox.WxFaxAttachment;
 import org.docksidestage.mylasta.template.bean.WxBasicTemplateBean;
 import org.lastaflute.core.mail.Postbox;
 import org.lastaflute.core.template.TemplateManager;
@@ -92,7 +92,7 @@ public class OnparadeAction extends FortressBaseAction {
             postcard.addReplyTo("rep@example.com");
         });
 
-        String fax = FaxAttachment.parsedBy(templateManager, bean -> {
+        String fax = WxFaxAttachment.parsedBy(templateManager, bean -> {
             bean.setSea("aa");
             bean.setLand("");
             bean.setIks(7);

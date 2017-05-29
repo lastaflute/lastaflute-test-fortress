@@ -27,10 +27,10 @@ import org.docksidestage.dbflute.exentity.Member;
 import org.docksidestage.dbflute.exentity.Product;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard;
-import org.docksidestage.mylasta.mail.whitebox.LoopBeansPostcard;
-import org.docksidestage.mylasta.mail.whitebox.LoopBeansRowBean;
-import org.docksidestage.mylasta.mail.whitebox.NoVariablePostcard;
-import org.docksidestage.mylasta.mail.whitebox.UsingEntityVariablePostcard;
+import org.docksidestage.mylasta.mail.whitebox.WxLoopBeansPostcard;
+import org.docksidestage.mylasta.mail.whitebox.WxLoopBeansRowBean;
+import org.docksidestage.mylasta.mail.whitebox.WxNoVariablePostcard;
+import org.docksidestage.mylasta.mail.whitebox.WxUsingEntityVariablePostcard;
 import org.lastaflute.core.mail.Postbox;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -53,7 +53,7 @@ public class WxMailAction extends FortressBaseAction {
 
     @Execute
     public JsonResponse<String> index() {
-        NoVariablePostcard.droppedInto(postbox, postcard -> {
+        WxNoVariablePostcard.droppedInto(postbox, postcard -> {
             postcard.setFromSupport(fortressConfig);
             postcard.addTo("sea@docksidestage.org");
         });
@@ -75,7 +75,7 @@ public class WxMailAction extends FortressBaseAction {
 
     @Execute
     public JsonResponse<String> entity() {
-        UsingEntityVariablePostcard.droppedInto(postbox, postcard -> {
+        WxUsingEntityVariablePostcard.droppedInto(postbox, postcard -> {
             postcard.setFromSupport(fortressConfig);
             postcard.addTo("sea@docksidestage.org");
             Member member = memberBhv.selectByPK(1).get();
@@ -87,7 +87,7 @@ public class WxMailAction extends FortressBaseAction {
 
     @Execute
     public JsonResponse<String> entitylist() {
-        UsingEntityVariablePostcard.droppedInto(postbox, postcard -> {
+        WxUsingEntityVariablePostcard.droppedInto(postbox, postcard -> {
             postcard.setFromSupport(fortressConfig);
             postcard.addTo("sea@docksidestage.org");
             Member member = memberBhv.selectByPK(1).get();
@@ -103,10 +103,10 @@ public class WxMailAction extends FortressBaseAction {
 
     @Execute
     public JsonResponse<String> loopbeans() {
-        List<LoopBeansRowBean> beansRowList = new ArrayList<>();
-        beansRowList.add(new LoopBeansRowBean("mystic", "hangar"));
-        beansRowList.add(new LoopBeansRowBean("oneman", "showbase"));
-        LoopBeansPostcard.droppedInto(postbox, postcard -> {
+        List<WxLoopBeansRowBean> beansRowList = new ArrayList<>();
+        beansRowList.add(new WxLoopBeansRowBean("mystic", "hangar"));
+        beansRowList.add(new WxLoopBeansRowBean("oneman", "showbase"));
+        WxLoopBeansPostcard.droppedInto(postbox, postcard -> {
             postcard.setFromSupport(fortressConfig);
             postcard.addTo("sea@docksidestage.org");
             Member member = memberBhv.selectByPK(1).get();
