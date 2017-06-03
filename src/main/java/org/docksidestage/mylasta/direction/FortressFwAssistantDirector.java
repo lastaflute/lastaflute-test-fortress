@@ -90,7 +90,7 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
     }
 
     protected FortressSecurityResourceProvider createSecurityResourceProvider() { // #change_it
-        final InvertibleCryptographer inver = InvertibleCryptographer.createAesCipher("fortress:test");
+        final InvertibleCryptographer inver = InvertibleCryptographer.createAesCipher("fortress12345678");
         final OneWayCryptographer oneWay = OneWayCryptographer.createSha256Cryptographer();
         return new FortressSecurityResourceProvider(inver, oneWay);
     }
@@ -142,7 +142,7 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
     }
 
     protected FortressCookieResourceProvider createCookieResourceProvider() { // #change_it
-        final InvertibleCryptographer cr = InvertibleCryptographer.createAesCipher("test:fortress");
+        final InvertibleCryptographer cr = InvertibleCryptographer.createAesCipher("12345678fortress");
         return new FortressCookieResourceProvider(config, cr);
     }
 

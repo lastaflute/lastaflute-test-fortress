@@ -3,7 +3,7 @@
  the test of for loop of beans
 */
 subject: test of Loop Beans
--- !!List<LoopBeansRowBean> beansRowList!!
+-- !!List<WxLoopBeansRowBean> beansRowList!!
 >>>
 Hello, /*pmb.memberName*/
 

@@ -1858,8 +1858,8 @@
           },
           {
             "name": "fields",
-            "typeName": "java.util.Map",
-            "simpleTypeName": "Map",
+            "typeName": "java.util.Map\u003cString, String[]\u003e",
+            "simpleTypeName": "Map\u003cString, String[]\u003e",
             "value": null,
             "description": null,
             "comment": null,
@@ -4061,8 +4061,8 @@
         "nestTypeDocMetaList": [
           {
             "name": "strList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList",
-            "simpleTypeName": "ImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
             "comment": null,
@@ -4084,8 +4084,8 @@
         "nestTypeDocMetaList": [
           {
             "name": "strList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList",
-            "simpleTypeName": "ImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
             "comment": null,
@@ -6602,8 +6602,8 @@
         "nestTypeDocMetaList": [
           {
             "name": "strList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList",
-            "simpleTypeName": "ImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
             "comment": null,
@@ -6626,8 +6626,8 @@
         "nestTypeDocMetaList": [
           {
             "name": "strList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList",
-            "simpleTypeName": "ImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
             "comment": null,
@@ -9790,8 +9790,8 @@
         "nestTypeDocMetaList": [
           {
             "name": "strList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList",
-            "simpleTypeName": "ImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
             "comment": null,
@@ -9854,8 +9854,8 @@
         "nestTypeDocMetaList": [
           {
             "name": "strList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList",
-            "simpleTypeName": "ImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
             "comment": null,
@@ -10676,8 +10676,8 @@
               },
               {
                 "name": "roomList",
-                "typeName": "java.util.List",
-                "simpleTypeName": "List",
+                "typeName": "java.util.List\u003cROOM\u003e",
+                "simpleTypeName": "List\u003cROOM\u003e",
                 "value": null,
                 "description": null,
                 "comment": null,
@@ -11321,8 +11321,8 @@
               },
               {
                 "name": "roomList",
-                "typeName": "java.util.List",
-                "simpleTypeName": "List",
+                "typeName": "java.util.List\u003cROOM\u003e",
+                "simpleTypeName": "List\u003cROOM\u003e",
                 "value": null,
                 "description": null,
                 "comment": null,
@@ -12083,8 +12083,8 @@
               },
               {
                 "name": "roomList",
-                "typeName": "java.util.List",
-                "simpleTypeName": "List",
+                "typeName": "java.util.List\u003cROOM\u003e",
+                "simpleTypeName": "List\u003cROOM\u003e",
                 "value": null,
                 "description": null,
                 "comment": null,

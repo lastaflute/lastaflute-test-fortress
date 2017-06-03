@@ -15,14 +15,14 @@
  */
 package org.docksidestage;
 
-import org.dbflute.jetty.JettyBoot;
+import org.dbflute.tomcat.TomcatBoot;
 
 /**
  * @author jflute
  */
-public class FortressBoot {
+public class FortressTomcatBoot {
 
     public static void main(String[] args) {
-        new JettyBoot(8151, "/fortress").asDevelopment().bootAwait();
+        new TomcatBoot(8152, "/fortress").asDevelopment().bootAwait();
     }
 }
