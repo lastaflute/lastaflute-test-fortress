@@ -1,6 +1,7 @@
 /target
 /build
 /bin
+/.idea/artifacts
 /.idea/libraries
 /.idea/modules
 /.idea/compiler.xml
