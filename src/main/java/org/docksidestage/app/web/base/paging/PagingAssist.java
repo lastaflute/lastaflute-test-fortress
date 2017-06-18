@@ -30,6 +30,7 @@ public class PagingAssist { // #app_customize
     //                                                                       HTML Response
     //                                                                       =============
     // #delete_ifapi
+
     /**
      * Register the paging navigation as page-range for HTML response.
      * @param data The data object to render the HTML. (NotNull)
@@ -43,13 +44,15 @@ public class PagingAssist { // #app_customize
     // ===================================================================================
     //                                                                       JSON Response
     //                                                                       =============
+
     /**
      * Create paging result for JSON response.
      * @param page The selected result bean of paging. (NotNull)
      * @param items The list of actual data to display. (NotNull)
      * @return The new-created result of paging. (NotNull)
      */
-    public <ENTITY extends Entity, BEAN> SearchPagingResult<BEAN> createPagingResult(PagingResultBean<ENTITY> page, List<BEAN> items) { // application may call
+    public <ENTITY extends Entity, BEAN> SearchPagingResult<BEAN> createPagingResult(PagingResultBean<ENTITY> page,
+            List<BEAN> items) { // application may call
         return new SearchPagingResult<BEAN>(page, items);
     }
 }

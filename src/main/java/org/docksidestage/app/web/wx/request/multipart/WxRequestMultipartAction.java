@@ -38,7 +38,7 @@ public class WxRequestMultipartAction extends FortressBaseAction {
 
     @Execute
     public HtmlResponse upload(WxRequestMultipartForm form) {
-        validate(form, messages -> {} , () -> {
+        validate(form, messages -> {}, () -> {
             return asHtml(path_WxMultipart_WxMultipartHtml);
         });
         logger.debug("/- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");

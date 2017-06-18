@@ -55,6 +55,7 @@ public class PagingNavi implements Serializable { // #app_customize
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+
     /**
      * @param page The selected page as bean of paging result. (NotNull)
      * @param opLambda The callback for option of page range. (NotNull)
@@ -79,6 +80,7 @@ public class PagingNavi implements Serializable { // #app_customize
     // ===================================================================================
     //                                                                     PageNumber Link
     //                                                                     ===============
+
     /**
      * Create target page number link.
      * @param pageNumber Target page number.
