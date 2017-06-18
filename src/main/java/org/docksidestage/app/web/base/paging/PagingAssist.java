@@ -36,7 +36,7 @@ public class PagingAssist { // #app_customize
      * @param page The selected page as bean of paging result. (NotNull)
      * @param form The form for query string added to link. (NotNull)
      */
-    public void registerPagingNavi(RenderData data, PagingResultBean<? extends Entity> page, Object form) { // application may call
+    public void registerPagingNavi(RenderData data, PagingResultBean<? extends Entity> page, Object form) {
         data.register("pagingNavi", new PagingNavi(page, op -> op.rangeSize(3).fillLimit(), form));
     }
 
@@ -49,7 +49,7 @@ public class PagingAssist { // #app_customize
      * @param items The list of actual data to display. (NotNull)
      * @return The new-created result of paging. (NotNull)
      */
-    public <ENTITY extends Entity, BEAN> SearchPagingResult<BEAN> createPagingResult(PagingResultBean<ENTITY> page, List<BEAN> items) { // application may call
+    public <ENTITY extends Entity, BEAN> SearchPagingResult<BEAN> createPagingResult(PagingResultBean<ENTITY> page, List<BEAN> items) {
         return new SearchPagingResult<BEAN>(page, items);
     }
 }
