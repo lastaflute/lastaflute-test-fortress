@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lastaflute-test-fortress:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="lastaflute-test-fortress.war">
+      <element id="artifact" artifact-name="lastaflute-test-fortress:war exploded" />
+    </root>
+  </artifact>
+</component>
