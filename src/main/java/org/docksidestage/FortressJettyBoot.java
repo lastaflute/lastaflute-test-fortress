@@ -20,9 +20,13 @@ import org.dbflute.jetty.JettyBoot;
 /**
  * @author jflute
  */
-public class FortressJettyBoot {
+public class FortressJettyBoot { // #change_it_first
 
-    public static void main(String[] args) {
-        new JettyBoot(8151, "/fortress").asDevelopment().bootAwait();
+    public static void main(String[] args) { // e.g. java -Dlasta.env=production -jar fortress.war
+        new JettyBoot(8151, "/fortress").asDevelopment(isDevelopment()).bootAwait();
+    }
+
+    private static boolean isDevelopment() {
+        return System.getProperty("lasta.env") == null;
     }
 }
