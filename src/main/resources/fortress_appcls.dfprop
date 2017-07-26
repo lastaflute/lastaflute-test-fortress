@@ -26,8 +26,26 @@ map:{
         ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal ; subItemMap=map:{keyword=party}}
     }
     ; WebPiari = list:{
-        ; map:{ topComment=Piari Cls ; codeType=String }
+        ; map:{
+            ; topComment=Piari Cls
+            ; codeType=String
+        }
         ; map:{ refCls=maihamadb@MemberStatus ; refType=matches }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+        ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
+        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    }
+    ; WebBonvo = list:{
+        ; map:{
+            ; topComment=Piari Cls
+            ; codeType=String
+            ; groupingMap = map:{
+                ; serviceAvailable = map:{
+                    ; groupComment = can login
+                    ; elementList = list:{ OneMan ; Dstore }
+                }
+            }
+        }
         ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
         ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
         ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }

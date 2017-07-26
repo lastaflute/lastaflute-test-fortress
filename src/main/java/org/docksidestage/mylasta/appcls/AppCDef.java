@@ -530,6 +530,154 @@ public interface AppCDef extends Classification {
         @Override public String toString() { return code(); }
     }
 
+    /**
+     * Piari Cls
+     */
+    public enum WebBonvo implements AppCDef {
+        /** ShowBase: Formalized */
+        OneMan("FML", "ShowBase", emptyStrings())
+        ,
+        /** Dstore: Provisional */
+        Dstore("PRV", "Dstore", emptyStrings())
+        ,
+        /** Orlean: Withdrawal */
+        MiniO("WDL", "Orlean", emptyStrings())
+        ;
+        private static final Map<String, WebBonvo> _codeClsMap = new HashMap<String, WebBonvo>();
+        private static final Map<String, WebBonvo> _nameClsMap = new HashMap<String, WebBonvo>();
+        static {
+            for (WebBonvo value : values()) {
+                _codeClsMap.put(value.code().toLowerCase(), value);
+                for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
+            }
+        }
+        private String _code; private String _alias; private Set<String> _sisterSet;
+        private WebBonvo(String code, String alias, String[] sisters)
+        { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
+        public String code() { return _code; } public String alias() { return _alias; }
+        public Set<String> sisterSet() { return _sisterSet; }
+        public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
+        public ClassificationMeta meta() { return AppCDef.DefMeta.WebBonvo; }
+
+        /**
+         * Is the classification in the group? <br>
+         * can login <br>
+         * The group elements:[OneMan, Dstore]
+         * @return The determination, true or false.
+         */
+        public boolean isServiceAvailable() {
+            return OneMan.equals(this) || Dstore.equals(this);
+        }
+
+        public boolean inGroup(String groupName) {
+            if ("serviceAvailable".equals(groupName)) { return isServiceAvailable(); }
+            return false;
+        }
+
+        /**
+         * Get the classification of the code. (CaseInsensitive)
+         * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
+         * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
+         */
+        public static OptionalThing<WebBonvo> of(Object code) {
+            if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
+            if (code instanceof WebBonvo) { return OptionalThing.of((WebBonvo)code); }
+            if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
+            return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
+                throw new ClassificationNotFoundException("Unknown classification code: " + code);
+            });
+        }
+
+        /**
+         * Find the classification by the name. (CaseInsensitive)
+         * @param name The string of name, which is case-insensitive. (NotNull)
+         * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
+         */
+        public static OptionalThing<WebBonvo> byName(String name) {
+            if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
+            return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
+                throw new ClassificationNotFoundException("Unknown classification name: " + name);
+            });
+        }
+
+        /**
+         * <span style="color: #AD4747; font-size: 120%">Old style so use of(code).</span> <br>
+         * Get the classification by the code. (CaseInsensitive)
+         * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
+         * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
+         * @deprecated use of()
+         */
+        public static WebBonvo codeOf(Object code) {
+            if (code == null) { return null; }
+            if (code instanceof WebBonvo) { return (WebBonvo)code; }
+            return _codeClsMap.get(code.toString().toLowerCase());
+        }
+
+        /**
+         * <span style="color: #AD4747; font-size: 120%">Old style so use byName(name).</span> <br>
+         * Get the classification by the name (also called 'value' in ENUM world).
+         * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
+         * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
+         */
+        public static WebBonvo nameOf(String name) {
+            if (name == null) { return null; }
+            try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
+        }
+
+        /**
+         * Get the list of all classification elements. (returns new copied list)
+         * @return The snapshot list of all classification elements. (NotNull)
+         */
+        public static List<WebBonvo> listAll() {
+            return new ArrayList<WebBonvo>(Arrays.asList(values()));
+        }
+
+        /**
+         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * @param groupName The string of group name, which is case-insensitive. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
+         */
+        public static List<WebBonvo> listByGroup(String groupName) {
+            if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
+            throw new ClassificationNotFoundException("Unknown classification group: WebBonvo." + groupName);
+        }
+
+        /**
+         * Get the list of classification elements corresponding to the specified codes. (returns new copied list) <br>
+         * @param codeList The list of plain code, which is case-insensitive. (NotNull)
+         * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
+         */
+        public static List<WebBonvo> listOf(Collection<String> codeList) {
+            if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
+            List<WebBonvo> clsList = new ArrayList<WebBonvo>(codeList.size());
+            for (String code : codeList) { clsList.add(of(code).get()); }
+            return clsList;
+        }
+
+        /**
+         * Get the list of group classification elements. (returns new copied list) <br>
+         * can login <br>
+         * The group elements:[OneMan, Dstore]
+         * @return The snapshot list of classification elements in the group. (NotNull)
+         */
+        public static List<WebBonvo> listOfServiceAvailable() {
+            return new ArrayList<WebBonvo>(Arrays.asList(OneMan, Dstore));
+        }
+
+        /**
+         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
+         */
+        public static List<WebBonvo> groupOf(String groupName) {
+            if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
+            return new ArrayList<WebBonvo>(4);
+        }
+
+        @Override public String toString() { return code(); }
+    }
+
     public enum DefMeta implements ClassificationMeta {
         /** Sea Cls */
         WebSea
@@ -539,6 +687,9 @@ public interface AppCDef extends Classification {
         ,
         /** Piari Cls */
         WebPiari
+        ,
+        /** Piari Cls */
+        WebBonvo
         ;
         public String classificationName() {
             return name(); // same as definition name
@@ -548,6 +699,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return AppCDef.WebSea.of(code); }
             if (WebLand.name().equals(name())) { return AppCDef.WebLand.of(code); }
             if (WebPiari.name().equals(name())) { return AppCDef.WebPiari.of(code); }
+            if (WebBonvo.name().equals(name())) { return AppCDef.WebBonvo.of(code); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -555,6 +707,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return AppCDef.WebSea.byName(name); }
             if (WebLand.name().equals(name())) { return AppCDef.WebLand.byName(name); }
             if (WebPiari.name().equals(name())) { return AppCDef.WebPiari.byName(name); }
+            if (WebBonvo.name().equals(name())) { return AppCDef.WebBonvo.byName(name); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -562,6 +715,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return AppCDef.WebSea.codeOf(code); }
             if (WebLand.name().equals(name())) { return AppCDef.WebLand.codeOf(code); }
             if (WebPiari.name().equals(name())) { return AppCDef.WebPiari.codeOf(code); }
+            if (WebBonvo.name().equals(name())) { return AppCDef.WebBonvo.codeOf(code); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -569,6 +723,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return AppCDef.WebSea.valueOf(name); }
             if (WebLand.name().equals(name())) { return AppCDef.WebLand.valueOf(name); }
             if (WebPiari.name().equals(name())) { return AppCDef.WebPiari.valueOf(name); }
+            if (WebBonvo.name().equals(name())) { return AppCDef.WebBonvo.valueOf(name); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -576,6 +731,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return toClsList(AppCDef.WebSea.listAll()); }
             if (WebLand.name().equals(name())) { return toClsList(AppCDef.WebLand.listAll()); }
             if (WebPiari.name().equals(name())) { return toClsList(AppCDef.WebPiari.listAll()); }
+            if (WebBonvo.name().equals(name())) { return toClsList(AppCDef.WebBonvo.listAll()); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -583,6 +739,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return toClsList(AppCDef.WebSea.listByGroup(groupName)); }
             if (WebLand.name().equals(name())) { return toClsList(AppCDef.WebLand.listByGroup(groupName)); }
             if (WebPiari.name().equals(name())) { return toClsList(AppCDef.WebPiari.listByGroup(groupName)); }
+            if (WebBonvo.name().equals(name())) { return toClsList(AppCDef.WebBonvo.listByGroup(groupName)); }
             throw new IllegalStateException("Unknown groupName: " + groupName + ", " + this); // basically unreachable
         }
 
@@ -590,6 +747,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return toClsList(AppCDef.WebSea.listOf(codeList)); }
             if (WebLand.name().equals(name())) { return toClsList(AppCDef.WebLand.listOf(codeList)); }
             if (WebPiari.name().equals(name())) { return toClsList(AppCDef.WebPiari.listOf(codeList)); }
+            if (WebBonvo.name().equals(name())) { return toClsList(AppCDef.WebBonvo.listOf(codeList)); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -597,6 +755,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return toClsList(AppCDef.WebSea.groupOf(groupName)); }
             if (WebLand.name().equals(name())) { return toClsList(AppCDef.WebLand.groupOf(groupName)); }
             if (WebPiari.name().equals(name())) { return toClsList(AppCDef.WebPiari.groupOf(groupName)); }
+            if (WebBonvo.name().equals(name())) { return toClsList(AppCDef.WebBonvo.groupOf(groupName)); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -609,6 +768,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return ClassificationCodeType.String; }
             if (WebLand.name().equals(name())) { return ClassificationCodeType.String; }
             if (WebPiari.name().equals(name())) { return ClassificationCodeType.String; }
+            if (WebBonvo.name().equals(name())) { return ClassificationCodeType.String; }
             return ClassificationCodeType.String; // as default
         }
 
@@ -616,6 +776,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
             if (WebLand.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
             if (WebPiari.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
+            if (WebBonvo.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
             return ClassificationUndefinedHandlingType.LOGGING; // as default
         }
 
@@ -624,6 +785,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.WebSea); }
             if (WebLand.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.WebLand); }
             if (WebPiari.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.WebPiari); }
+            if (WebBonvo.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.WebBonvo); }
             return OptionalThing.ofNullable(null, () -> {
                 throw new ClassificationNotFoundException("Unknown classification: " + classificationName);
             });
@@ -634,6 +796,7 @@ public interface AppCDef extends Classification {
             if (WebSea.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.WebSea; }
             if (WebLand.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.WebLand; }
             if (WebPiari.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.WebPiari; }
+            if (WebBonvo.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.WebBonvo; }
             throw new IllegalStateException("Unknown classification: " + classificationName);
         }
 

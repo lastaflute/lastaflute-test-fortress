@@ -86,7 +86,7 @@ public interface FortressEnv {
     /** The key of the configuration. e.g. true */
     String TOMCAT_USE_BODY_ENCODING_FORURI = "tomcat.useBodyEncodingForURI";
 
-    /** The key of the configuration. e.g. /tmp/lastaflute/tomcat */
+    /** The key of the configuration. e.g. /tmp/lastaflute/fortress/tomcat */
     String TOMCAT_LOG_HOME = "tomcat.log.home";
 
     /**
@@ -323,7 +323,7 @@ public interface FortressEnv {
 
     /**
      * Get the value for the key 'tomcat.log.home'. <br>
-     * The value is, e.g. /tmp/lastaflute/tomcat <br>
+     * The value is, e.g. /tmp/lastaflute/fortress/tomcat <br>
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
     String getTomcatLogHome();
