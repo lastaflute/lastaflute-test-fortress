@@ -16,6 +16,7 @@
 package org.docksidestage.app.web.product;
 
 import org.docksidestage.dbflute.allcommon.CDef;
+import org.eclipse.collections.api.list.ImmutableList;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.util.Lato;
 
@@ -26,6 +27,7 @@ public class ProductSearchForm {
 
     @Length(max = 10) // #simple_for_example just for validtion example
     public String productName;
+    public ImmutableList<String> sea;
 
     public CDef.ProductStatus productStatus;
 

@@ -49,6 +49,7 @@ public class ProductListAction extends FortressBaseAction {
     //                                                                             =======
     @Execute
     public HtmlResponse index(OptionalThing<Integer> pageNumber, ProductSearchForm form) {
+        System.out.println("@@@@: " + form.sea);
         validate(form, messages -> {}, () -> {
             return asHtml(path_Product_ProductListHtml);
         });

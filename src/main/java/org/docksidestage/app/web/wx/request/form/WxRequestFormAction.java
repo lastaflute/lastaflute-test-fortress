@@ -15,12 +15,14 @@
  */
 package org.docksidestage.app.web.wx.request.form;
 
+import java.util.List;
+
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.eclipse.collections.api.list.ImmutableList;
+import org.eclipse.collections.api.list.MutableList;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
-import org.lastaflute.web.validation.Required;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,17 +34,30 @@ public class WxRequestFormAction extends FortressBaseAction {
 
     private static final Logger logger = LoggerFactory.getLogger(WxRequestFormAction.class);
 
-    // http://localhost:8151/fortress/wx/request/form/eccolle?strList=sea&strList=land
+    // http://localhost:8151/fortress/wx/request/form/eccolle?sea=mystic&sea=bigband
+    // http://localhost:8151/fortress/wx/request/form/eccolle?sea[]=mystic&sea[]=bigband
+    // http://localhost:8151/fortress/wx/request/form/eccolle?sea[0]=mystic&sea[1]=bigband
+    // http://localhost:8151/fortress/wx/request/form/eccolle?land=oneman&land=minnie
+    // http://localhost:8151/fortress/wx/request/form/eccolle?land[]=oneman&land[]=minnie
+    // http://localhost:8151/fortress/wx/request/form/eccolle?land[0]=oneman&land[1]=minnie
+    // http://localhost:8151/fortress/wx/request/form/eccolle?piari=first&piari=second
+    // http://localhost:8151/fortress/wx/request/form/eccolle?piari[]=first&piari[]=second
+    // http://localhost:8151/fortress/wx/request/form/eccolle?piari[0]=first&piari[1]=second
     @Execute
     public JsonResponse<MyEcColleForm> eccolle(MyEcColleForm form) {
         validateApi(form, messages -> {});
-        logger.debug("strList: {}", form.strList);
+        logger.debug("sea: {}", form.sea);
+        logger.debug("land: {}", form.land);
+        logger.debug("piari: {}", form.piari);
         return asJson(form); // for visual check
     }
 
     public static class MyEcColleForm {
 
-        @Required
-        public ImmutableList<String> strList;
+        public ImmutableList<String> sea;
+
+        public MutableList<String> land;
+
+        public List<String> piari;
     }
 }
