@@ -20,8 +20,8 @@
 
 		<!-- Main Framework -->
 		<dbflute.version>1.1.4-RC1</dbflute.version>
-		<mysql.jdbc.version>5.1.37</mysql.jdbc.version>
-		<lastaflute.version>1.0.0-RC1</lastaflute.version>
+		<mysql.jdbc.version>5.1.12</mysql.jdbc.version>
+		<lastaflute.version>1.0.0-RC3</lastaflute.version>
 		<lasta.thymeleaf.version>0.3.0</lasta.thymeleaf.version>
 
 		<!-- Partner Library -->
@@ -30,7 +30,7 @@
 		<servlet.version>3.1.0</servlet.version>
 		<jsp.version>2.3.1</jsp.version>
 		<jetty.boot.version>0.4.8</jetty.boot.version>
-		<tomcat.boot.version>0.5.6-RC1</tomcat.boot.version>
+		<tomcat.boot.version>0.5.6</tomcat.boot.version>
 
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.4</commons.lang.version>
