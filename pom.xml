@@ -30,7 +30,7 @@
 		<servlet.version>3.1.0</servlet.version>
 		<jsp.version>2.3.1</jsp.version>
 		<jetty.boot.version>0.4.8</jetty.boot.version>
-		<tomcat.boot.version>0.5.6</tomcat.boot.version>
+		<tomcat.boot.version>0.5.7</tomcat.boot.version>
 
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.4</commons.lang.version>
