@@ -45,6 +45,15 @@
       <maxHistory>${backup.max.history}</maxHistory>
     </rollingPolicy>
   </appender>
+  <appender name="inoutfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${log.file.basedir}/inout_${domain.name}.log</File>
+    <Append>true</Append>
+    <encoder><pattern>${log.pattern}</pattern></encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${log.file.basedir}/backup/inout_${domain.name}${backup.date.suffix}.log</fileNamePattern>
+      <maxHistory>${backup.max.history}</maxHistory>
+    </rollingPolicy>
+  </appender>
 
   <logger name="org.dbflute" additivity="false" level="${log.level}">
     <appender-ref ref="console"/><appender-ref ref="appfile"/><appender-ref ref="errorfile"/>
@@ -60,6 +69,9 @@
   </logger>
   <logger name="mailflute.sending" additivity="false" level="${log.level}">
     <appender-ref ref="mailfile"/>
+  </logger>
+  <logger name="lastaflute.inout" additivity="false" level="${log.level}">
+    <appender-ref ref="inoutfile"/>
   </logger>
   <root level="error">
     <appender-ref ref="console"/><appender-ref ref="errorfile"/>

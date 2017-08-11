@@ -20,6 +20,7 @@ import java.util.List;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.api.list.MutableList;
+import org.eclipse.collections.api.map.ImmutableMap;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -49,6 +50,7 @@ public class WxRequestFormAction extends FortressBaseAction {
         logger.debug("sea: {}", form.sea);
         logger.debug("land: {}", form.land);
         logger.debug("piari: {}", form.piari);
+        logger.debug("bonvo: {}", form.bonvo);
         return asJson(form); // for visual check
     }
 
@@ -59,5 +61,7 @@ public class WxRequestFormAction extends FortressBaseAction {
         public MutableList<String> land;
 
         public List<String> piari;
+
+        public ImmutableMap<String, String> bonvo;
     }
 }

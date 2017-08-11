@@ -77,6 +77,14 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     }
 
     // ===================================================================================
+    //                                                                       InOut Logging
+    //                                                                       =============
+    @Override
+    public boolean isUseInOutLogging() {
+        return true;
+    }
+
+    // ===================================================================================
     //                                                                      Basic Override
     //                                                                      ==============
     @Override
