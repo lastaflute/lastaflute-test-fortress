@@ -54,6 +54,9 @@ public class FortressMessages extends FortressLabels {
     /** The key of the message: numeric value out of bounds (&lt;{integer} digits&gt;.&lt;{fraction} digits&gt; expected) */
     public static final String CONSTRAINTS_Digits_MESSAGE = "{constraints.Digits.message}";
 
+    /** The key of the message: not a well-formed email address */
+    public static final String CONSTRAINTS_Email_MESSAGE = "{constraints.Email.message}";
+
     /** The key of the message: must be in the future */
     public static final String CONSTRAINTS_Future_MESSAGE = "{constraints.Future.message}";
 
@@ -62,6 +65,12 @@ public class FortressMessages extends FortressLabels {
 
     /** The key of the message: must be greater than or equal to {value} */
     public static final String CONSTRAINTS_Min_MESSAGE = "{constraints.Min.message}";
+
+    /** The key of the message: may not be empty */
+    public static final String CONSTRAINTS_NotBlank_MESSAGE = "{constraints.NotBlank.message}";
+
+    /** The key of the message: may not be empty */
+    public static final String CONSTRAINTS_NotEmpty_MESSAGE = "{constraints.NotEmpty.message}";
 
     /** The key of the message: may not be null */
     public static final String CONSTRAINTS_NotNull_MESSAGE = "{constraints.NotNull.message}";
@@ -84,9 +93,6 @@ public class FortressMessages extends FortressLabels {
     /** The key of the message: invalid {type} barcode */
     public static final String CONSTRAINTS_EAN_MESSAGE = "{constraints.EAN.message}";
 
-    /** The key of the message: not a well-formed email address */
-    public static final String CONSTRAINTS_Email_MESSAGE = "{constraints.Email.message}";
-
     /** The key of the message: length must be between {min} and {max} */
     public static final String CONSTRAINTS_Length_MESSAGE = "{constraints.Length.message}";
 
@@ -101,12 +107,6 @@ public class FortressMessages extends FortressLabels {
 
     /** The key of the message: The check digit for ${value} is invalid, ${modType} checksum failed */
     public static final String CONSTRAINTS_ModCheck_MESSAGE = "{constraints.ModCheck.message}";
-
-    /** The key of the message: may not be empty */
-    public static final String CONSTRAINTS_NotBlank_MESSAGE = "{constraints.NotBlank.message}";
-
-    /** The key of the message: may not be empty */
-    public static final String CONSTRAINTS_NotEmpty_MESSAGE = "{constraints.NotEmpty.message}";
 
     /** The key of the message: script expression "{script}" didn't evaluate to true */
     public static final String CONSTRAINTS_ParametersScriptAssert_MESSAGE = "{constraints.ParametersScriptAssert.message}";
@@ -165,8 +165,14 @@ public class FortressMessages extends FortressLabels {
     /** The key of the message: escaped "あいうえお" and plain "あいうえお" */
     public static final String WHITEBOX_MESSAGE_JAPANESE_CAOS = "{whitebox.message.japanese.caos}";
 
-    /** The key of the message: sea:{0}, land:{1} */
-    public static final String WHITEBOX_MESSAGE_VALUES_FILTERED = "{whitebox.message.values.filtered}";
+    /** The key of the message: sea:{0}, land:{1} as indexed parameter */
+    public static final String WHITEBOX_MESSAGE_VALUES_INDEXED = "{whitebox.message.values.indexed}";
+
+    /** The key of the message: sea:{hangar}, land:{showbase} as named parameter */
+    public static final String WHITEBOX_MESSAGE_VALUES_NAMED = "{whitebox.message.values.named}";
+
+    /** The key of the message: sea:{0}, land:{showbase} as various parameter */
+    public static final String WHITEBOX_MESSAGE_VALUES_VARIOUS = "{whitebox.message.values.various}";
 
     /**
      * Add the created action message for the key 'errors.header' with parameters.
@@ -301,6 +307,20 @@ public class FortressMessages extends FortressLabels {
     }
 
     /**
+     * Add the created action message for the key 'constraints.Email.message' with parameters.
+     * <pre>
+     * message: not a well-formed email address
+     * </pre>
+     * @param property The property name for the message. (NotNull)
+     * @return this. (NotNull)
+     */
+    public FortressMessages addConstraintsEmailMessage(String property) {
+        assertPropertyNotNull(property);
+        add(property, new UserMessage(CONSTRAINTS_Email_MESSAGE));
+        return this;
+    }
+
+    /**
      * Add the created action message for the key 'constraints.Future.message' with parameters.
      * <pre>
      * message: must be in the future
@@ -341,6 +361,34 @@ public class FortressMessages extends FortressLabels {
     public FortressMessages addConstraintsMinMessage(String property, String value) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_Min_MESSAGE, value));
+        return this;
+    }
+
+    /**
+     * Add the created action message for the key 'constraints.NotBlank.message' with parameters.
+     * <pre>
+     * message: may not be empty
+     * </pre>
+     * @param property The property name for the message. (NotNull)
+     * @return this. (NotNull)
+     */
+    public FortressMessages addConstraintsNotBlankMessage(String property) {
+        assertPropertyNotNull(property);
+        add(property, new UserMessage(CONSTRAINTS_NotBlank_MESSAGE));
+        return this;
+    }
+
+    /**
+     * Add the created action message for the key 'constraints.NotEmpty.message' with parameters.
+     * <pre>
+     * message: may not be empty
+     * </pre>
+     * @param property The property name for the message. (NotNull)
+     * @return this. (NotNull)
+     */
+    public FortressMessages addConstraintsNotEmptyMessage(String property) {
+        assertPropertyNotNull(property);
+        add(property, new UserMessage(CONSTRAINTS_NotEmpty_MESSAGE));
         return this;
     }
 
@@ -448,20 +496,6 @@ public class FortressMessages extends FortressLabels {
     }
 
     /**
-     * Add the created action message for the key 'constraints.Email.message' with parameters.
-     * <pre>
-     * message: not a well-formed email address
-     * </pre>
-     * @param property The property name for the message. (NotNull)
-     * @return this. (NotNull)
-     */
-    public FortressMessages addConstraintsEmailMessage(String property) {
-        assertPropertyNotNull(property);
-        add(property, new UserMessage(CONSTRAINTS_Email_MESSAGE));
-        return this;
-    }
-
-    /**
      * Add the created action message for the key 'constraints.Length.message' with parameters.
      * <pre>
      * message: length must be between {min} and {max}
@@ -535,34 +569,6 @@ public class FortressMessages extends FortressLabels {
     public FortressMessages addConstraintsModCheckMessage(String property, String value, String modType) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(CONSTRAINTS_ModCheck_MESSAGE, value, modType));
-        return this;
-    }
-
-    /**
-     * Add the created action message for the key 'constraints.NotBlank.message' with parameters.
-     * <pre>
-     * message: may not be empty
-     * </pre>
-     * @param property The property name for the message. (NotNull)
-     * @return this. (NotNull)
-     */
-    public FortressMessages addConstraintsNotBlankMessage(String property) {
-        assertPropertyNotNull(property);
-        add(property, new UserMessage(CONSTRAINTS_NotBlank_MESSAGE));
-        return this;
-    }
-
-    /**
-     * Add the created action message for the key 'constraints.NotEmpty.message' with parameters.
-     * <pre>
-     * message: may not be empty
-     * </pre>
-     * @param property The property name for the message. (NotNull)
-     * @return this. (NotNull)
-     */
-    public FortressMessages addConstraintsNotEmptyMessage(String property) {
-        assertPropertyNotNull(property);
-        add(property, new UserMessage(CONSTRAINTS_NotEmpty_MESSAGE));
         return this;
     }
 
@@ -644,6 +650,7 @@ public class FortressMessages extends FortressLabels {
      * Add the created action message for the key 'constraints.Required.message' with parameters.
      * <pre>
      * message: is required
+     * comment: --------------------
      * </pre>
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
@@ -839,18 +846,50 @@ public class FortressMessages extends FortressLabels {
     }
 
     /**
-     * Add the created action message for the key 'whitebox.message.values.filtered' with parameters.
+     * Add the created action message for the key 'whitebox.message.values.indexed' with parameters.
      * <pre>
-     * message: sea:{0}, land:{1}
+     * message: sea:{0}, land:{1} as indexed parameter
      * </pre>
      * @param property The property name for the message. (NotNull)
      * @param arg0 The parameter arg0 for message. (NotNull)
      * @param arg1 The parameter arg1 for message. (NotNull)
      * @return this. (NotNull)
      */
-    public FortressMessages addWhiteboxMessageValuesFiltered(String property, String arg0, String arg1) {
+    public FortressMessages addWhiteboxMessageValuesIndexed(String property, String arg0, String arg1) {
         assertPropertyNotNull(property);
-        add(property, new UserMessage(WHITEBOX_MESSAGE_VALUES_FILTERED, arg0, arg1));
+        add(property, new UserMessage(WHITEBOX_MESSAGE_VALUES_INDEXED, arg0, arg1));
+        return this;
+    }
+
+    /**
+     * Add the created action message for the key 'whitebox.message.values.named' with parameters.
+     * <pre>
+     * message: sea:{hangar}, land:{showbase} as named parameter
+     * </pre>
+     * @param property The property name for the message. (NotNull)
+     * @param hangar The parameter hangar for message. (NotNull)
+     * @param showbase The parameter showbase for message. (NotNull)
+     * @return this. (NotNull)
+     */
+    public FortressMessages addWhiteboxMessageValuesNamed(String property, String hangar, String showbase) {
+        assertPropertyNotNull(property);
+        add(property, new UserMessage(WHITEBOX_MESSAGE_VALUES_NAMED, hangar, showbase));
+        return this;
+    }
+
+    /**
+     * Add the created action message for the key 'whitebox.message.values.various' with parameters.
+     * <pre>
+     * message: sea:{0}, land:{showbase} as various parameter
+     * </pre>
+     * @param property The property name for the message. (NotNull)
+     * @param arg0 The parameter arg0 for message. (NotNull)
+     * @param showbase The parameter showbase for message. (NotNull)
+     * @return this. (NotNull)
+     */
+    public FortressMessages addWhiteboxMessageValuesVarious(String property, String arg0, String showbase) {
+        assertPropertyNotNull(property);
+        add(property, new UserMessage(WHITEBOX_MESSAGE_VALUES_VARIOUS, arg0, showbase));
         return this;
     }
 }

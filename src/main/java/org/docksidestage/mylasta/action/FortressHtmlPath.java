@@ -26,9 +26,6 @@ public interface FortressHtmlPath {
     /** The path of the HTML: /error/show_errors.html */
     HtmlNext path_Error_ShowErrorsHtml = new HtmlNext("/error/show_errors.html");
 
-    /** The path of the HTML: /error/show_errors.jsp */
-    HtmlNext path_Error_ShowErrorsJsp = new HtmlNext("/error/show_errors.jsp");
-
     /** The path of the HTML: /member/member_add.html */
     HtmlNext path_Member_MemberAddHtml = new HtmlNext("/member/member_add.html");
 
@@ -41,8 +38,8 @@ public interface FortressHtmlPath {
     /** The path of the HTML: /mypage/mypage.html */
     HtmlNext path_Mypage_MypageHtml = new HtmlNext("/mypage/mypage.html");
 
-    /** The path of the HTML: /onparade/onparade.jsp */
-    HtmlNext path_Onparade_OnparadeJsp = new HtmlNext("/onparade/onparade.jsp");
+    /** The path of the HTML: /onparade/onparade.html */
+    HtmlNext path_Onparade_OnparadeHtml = new HtmlNext("/onparade/onparade.html");
 
     /** The path of the HTML: /product/product_detail.html */
     HtmlNext path_Product_ProductDetailHtml = new HtmlNext("/product/product_detail.html");
@@ -59,17 +56,17 @@ public interface FortressHtmlPath {
     /** The path of the HTML: /signup/signup.html */
     HtmlNext path_Signup_SignupHtml = new HtmlNext("/signup/signup.html");
 
-    /** The path of the HTML: /withdrawal/withdrawal.jsp */
-    HtmlNext path_Withdrawal_WithdrawalJsp = new HtmlNext("/withdrawal/withdrawal.jsp");
+    /** The path of the HTML: /withdrawal/withdrawal_confirm.html */
+    HtmlNext path_Withdrawal_WithdrawalConfirmHtml = new HtmlNext("/withdrawal/withdrawal_confirm.html");
 
-    /** The path of the HTML: /withdrawal/withdrawal_confirm.jsp */
-    HtmlNext path_Withdrawal_WithdrawalConfirmJsp = new HtmlNext("/withdrawal/withdrawal_confirm.jsp");
+    /** The path of the HTML: /withdrawal/withdrawal_entry.html */
+    HtmlNext path_Withdrawal_WithdrawalEntryHtml = new HtmlNext("/withdrawal/withdrawal_entry.html");
+
+    /** The path of the HTML: /wx/message/wx_message_list.html */
+    HtmlNext path_WxMessage_WxMessageListHtml = new HtmlNext("/wx/message/wx_message_list.html");
 
     /** The path of the HTML: /wx/multipart/wx_multipart.html */
     HtmlNext path_WxMultipart_WxMultipartHtml = new HtmlNext("/wx/multipart/wx_multipart.html");
-
-    /** The path of the HTML: /wx/multipart/wx_multipart.jsp */
-    HtmlNext path_WxMultipart_WxMultipartJsp = new HtmlNext("/wx/multipart/wx_multipart.jsp");
 
     /** The path of the HTML: /wx/thymeleaf/wx_thymeleaf_add.html */
     HtmlNext path_WxThymeleaf_WxThymeleafAddHtml = new HtmlNext("/wx/thymeleaf/wx_thymeleaf_add.html");

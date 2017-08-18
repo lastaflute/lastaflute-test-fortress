@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.product;
+package org.docksidestage.app.web.wx.message;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +24,8 @@ import org.dbflute.cbean.result.PagingResultBean;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
+import org.docksidestage.app.web.product.ProductSearchForm;
+import org.docksidestage.app.web.product.ProductSearchRowBean;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
@@ -34,7 +36,7 @@ import org.lastaflute.web.response.HtmlResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class ProductListAction extends FortressBaseAction {
+public class WxMessageAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -49,14 +51,19 @@ public class ProductListAction extends FortressBaseAction {
     //                                                                             =======
     @Execute
     public HtmlResponse index(OptionalThing<Integer> pageNumber, ProductSearchForm form) {
-        validate(form, messages -> {}, () -> {
-            return asHtml(path_Product_ProductListHtml);
+        validate(form, messages -> {
+            String property = "productName";
+            messages.addWhiteboxMessageValuesIndexed(property, "mystic", "oneman");
+            messages.addWhiteboxMessageValuesNamed(property, "mystic", "oneman");
+            messages.addWhiteboxMessageValuesVarious(property, "mystic", "oneman");
+        }, () -> {
+            return asHtml(path_WxMessage_WxMessageListHtml);
         });
         PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
         List<ProductSearchRowBean> beans = page.stream().map(product -> {
             return mappingToBean(product);
         }).collect(Collectors.toList());
-        return asHtml(path_Product_ProductListHtml).renderWith(data -> {
+        return asHtml(path_WxMessage_WxMessageListHtml).renderWith(data -> {
             data.register("beans", beans);
             pagingAssist.registerPagingNavi(data, page, form);
         });

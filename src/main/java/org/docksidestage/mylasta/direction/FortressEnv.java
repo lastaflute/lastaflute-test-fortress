@@ -89,6 +89,12 @@ public interface FortressEnv {
     /** The key of the configuration. e.g. /tmp/lastaflute/fortress/tomcat */
     String TOMCAT_LOG_HOME = "tomcat.log.home";
 
+    /** The key of the configuration. e.g. true */
+    String TOMCAT_ACCESSLOG_ENABLED = "tomcat.accesslog.enabled";
+
+    /** The key of the configuration. e.g. /tmp/lastaflute/fortress/tomcat */
+    String TOMCAT_ACCESSLOG_LOG_DIR = "tomcat.accesslog.logDir";
+
     /**
      * Get the value of property as {@link String}.
      * @param propertyKey The key of the property. (NotNull)
@@ -324,9 +330,34 @@ public interface FortressEnv {
     /**
      * Get the value for the key 'tomcat.log.home'. <br>
      * The value is, e.g. /tmp/lastaflute/fortress/tomcat <br>
+     * comment: The directory path of tomcat log e.g. catalina_out
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
     String getTomcatLogHome();
+
+    /**
+     * Get the value for the key 'tomcat.accesslog.enabled'. <br>
+     * The value is, e.g. true <br>
+     * comment: Is access-log of tomcat enabled?
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getTomcatAccesslogEnabled();
+
+    /**
+     * Is the property for the key 'tomcat.accesslog.enabled' true? <br>
+     * The value is, e.g. true <br>
+     * comment: Is access-log of tomcat enabled?
+     * @return The determination, true or false. (if not found, exception but basically no way)
+     */
+    boolean isTomcatAccesslogEnabled();
+
+    /**
+     * Get the value for the key 'tomcat.accesslog.logDir'. <br>
+     * The value is, e.g. /tmp/lastaflute/fortress/tomcat <br>
+     * comment: The directory path of tomcat access-log
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getTomcatAccesslogLogDir();
 
     /**
      * The simple implementation for configuration.
@@ -447,6 +478,18 @@ public interface FortressEnv {
 
         public String getTomcatLogHome() {
             return get(FortressEnv.TOMCAT_LOG_HOME);
+        }
+
+        public String getTomcatAccesslogEnabled() {
+            return get(FortressEnv.TOMCAT_ACCESSLOG_ENABLED);
+        }
+
+        public boolean isTomcatAccesslogEnabled() {
+            return is(FortressEnv.TOMCAT_ACCESSLOG_ENABLED);
+        }
+
+        public String getTomcatAccesslogLogDir() {
+            return get(FortressEnv.TOMCAT_ACCESSLOG_LOG_DIR);
         }
     }
 }

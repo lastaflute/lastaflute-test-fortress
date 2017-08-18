@@ -89,8 +89,8 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 45,
-      "methodLineCount": 4
+      "fileLineCount": 47,
+      "methodLineCount": 6
     },
     {
       "url": "/member/add/register",
@@ -199,7 +199,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 45,
+      "fileLineCount": 47,
       "methodLineCount": 10
     },
     {
@@ -3904,6 +3904,114 @@
       "methodLineCount": 14
     },
     {
+      "url": "/wx/message/{pageNumber}",
+      "typeName": "org.docksidestage.app.web.wx.message.WxMessageAction",
+      "simpleTypeName": "WxMessageAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "pageNumber",
+          "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.Integer\u003e",
+          "simpleTypeName": "OptionalThing\u003cInteger\u003e",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "org.docksidestage.app.web.product.ProductSearchForm",
+        "simpleTypeName": "ProductSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Length{max\u003d10}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Length{max\u003d5}"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_WxMessage_WxMessageListHtml),mappingToBean(product),asHtml(path_WxMessage_WxMessageListHtml)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 81,
+      "methodLineCount": 18
+    },
+    {
       "url": "/wx/namedcls/",
       "typeName": "org.docksidestage.app.web.wx.namedcls.WxNamedclsAction",
       "simpleTypeName": "WxNamedclsAction",
@@ -4060,15 +4168,43 @@
         "annotationList": [],
         "nestTypeDocMetaList": [
           {
-            "name": "strList",
+            "name": "sea",
             "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
             "comment": null,
-            "annotationList": [
-              "Required"
-            ],
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "typeName": "org.eclipse.collections.api.list.MutableList\u003cString\u003e",
+            "simpleTypeName": "MutableList\u003cString\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piari",
+            "typeName": "java.util.List\u003cString\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "bonvo",
+            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cString, String\u003e",
+            "simpleTypeName": "ImmutableMap\u003cString, String\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
             "nestTypeDocMetaList": []
           }
         ]
@@ -4083,21 +4219,49 @@
         "annotationList": [],
         "nestTypeDocMetaList": [
           {
-            "name": "strList",
+            "name": "sea",
             "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
             "comment": null,
-            "annotationList": [
-              "Required"
-            ],
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "typeName": "org.eclipse.collections.api.list.MutableList\u003cString\u003e",
+            "simpleTypeName": "MutableList\u003cString\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piari",
+            "typeName": "java.util.List\u003cString\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "bonvo",
+            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cString, String\u003e",
+            "simpleTypeName": "ImmutableMap\u003cString, String\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
             "nestTypeDocMetaList": []
           }
         ]
       },
-      "fileLineCount": 4,
-      "methodLineCount": 5
+      "fileLineCount": 9,
+      "methodLineCount": 8
     },
     {
       "url": "/wx/request/json/body/",
@@ -9742,7 +9906,7 @@
       "methodLineCount": 3
     },
     {
-      "url": "/wx/response/json/eccolle/",
+      "url": "/wx/response/json/eccolle/list",
       "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonEccolleAction",
       "simpleTypeName": "WxResponseJsonEccolleAction",
       "description": "@author jflute",
@@ -9757,21 +9921,9 @@
           "comment": null,
           "annotationList": [],
           "nestTypeDocMetaList": []
-        },
-        {
-          "name": "displayAssist",
-          "typeName": "org.docksidestage.app.web.base.view.DisplayAssist",
-          "simpleTypeName": "DisplayAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
         }
       ],
-      "methodName": "index",
+      "methodName": "list",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
@@ -9781,15 +9933,15 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonEccolleAction$MyEcColleJsonBean\u003e",
-        "simpleTypeName": "JsonResponse\u003cWxResponseJsonEccolleAction$MyEcColleJsonBean\u003e",
-        "value": "asJson(new MyEcColleJsonBean(strList)",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonEccolleAction$MyEcColleImmutableListResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxResponseJsonEccolleAction$MyEcColleImmutableListResult\u003e",
+        "value": "asJson(new MyEcColleImmutableListResult(list)",
         "description": null,
         "comment": null,
         "annotationList": [],
         "nestTypeDocMetaList": [
           {
-            "name": "strList",
+            "name": "list",
             "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
@@ -9806,7 +9958,7 @@
       "methodLineCount": 7
     },
     {
-      "url": "/wx/response/json/eccolle/emptyerror",
+      "url": "/wx/response/json/eccolle/listempty",
       "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonEccolleAction",
       "simpleTypeName": "WxResponseJsonEccolleAction",
       "description": "@author jflute",
@@ -9821,21 +9973,9 @@
           "comment": null,
           "annotationList": [],
           "nestTypeDocMetaList": []
-        },
-        {
-          "name": "displayAssist",
-          "typeName": "org.docksidestage.app.web.base.view.DisplayAssist",
-          "simpleTypeName": "DisplayAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
         }
       ],
-      "methodName": "emptyerror",
+      "methodName": "listempty",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
@@ -9845,15 +9985,15 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonEccolleAction$MyEcColleJsonBean\u003e",
-        "simpleTypeName": "JsonResponse\u003cWxResponseJsonEccolleAction$MyEcColleJsonBean\u003e",
-        "value": "asJson(new MyEcColleJsonBean(strList)",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonEccolleAction$MyEcColleImmutableListResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxResponseJsonEccolleAction$MyEcColleImmutableListResult\u003e",
+        "value": "asJson(new MyEcColleImmutableListResult(Lists.immutable.empty()",
         "description": null,
         "comment": null,
         "annotationList": [],
         "nestTypeDocMetaList": [
           {
-            "name": "strList",
+            "name": "list",
             "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
@@ -9867,7 +10007,59 @@
         ]
       },
       "fileLineCount": 8,
-      "methodLineCount": 7
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/response/json/eccolle/map",
+      "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonEccolleAction",
+      "simpleTypeName": "WxResponseJsonEccolleAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "map",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonEccolleAction$MyEcColleImmutableMapResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxResponseJsonEccolleAction$MyEcColleImmutableMapResult\u003e",
+        "value": "asJson(new MyEcColleImmutableMapResult(new ImmutableUnifiedMap\u003c\u003e(map)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "map",
+            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cString, String\u003e",
+            "simpleTypeName": "ImmutableMap\u003cString, String\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 8,
+      "methodLineCount": 4
     },
     {
       "url": "/wx/response/stream/small",

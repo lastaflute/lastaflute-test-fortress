@@ -106,13 +106,13 @@ public class OnparadeAction extends FortressBaseAction {
         // _/_/_/_/_/_/_/_/_/_/
 
         validate(form, messages -> {}, () -> {
-            return asHtml(path_Onparade_OnparadeJsp);
+            return asHtml(path_Onparade_OnparadeHtml);
         });
         PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
         List<OnparadeSearchRowBean> beans = page.mappingList(product -> {
             return mappingToBean(product);
         });
-        return asHtml(path_Onparade_OnparadeJsp).renderWith(data -> {
+        return asHtml(path_Onparade_OnparadeHtml).renderWith(data -> {
             data.register("beans", beans);
             pagingAssist.registerPagingNavi(data, page, form);
         });
