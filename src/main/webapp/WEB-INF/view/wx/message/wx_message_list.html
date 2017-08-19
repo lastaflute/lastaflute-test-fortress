@@ -38,6 +38,9 @@
 	<section class="product-search-box">
 		<h3 class="content-title-second" th:text="#{labels.search.condition}">labels.search.condition</h3>
 		<form class="product-search-form" th:action="@{/wx/message/}" action="#" method="get">
+			<div>
+				<span la:errors="_global"/>
+			</div>
 			<ul class="product-search-condition-list">
 				<li>
 					<span th:text="#{labels.productName}">labels.productName</span>

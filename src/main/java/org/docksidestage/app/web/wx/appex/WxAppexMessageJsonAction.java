@@ -47,7 +47,8 @@ public class WxAppexMessageJsonAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/appex/message/json/
     @Execute
     public JsonResponse<String> index() {
-        throw new MessagingApplicationException("none", createMessages().addWhiteboxMessageValuesIndexed(GLOBAL, "mystic", "3"));
+        throw new MessagingApplicationException("none",
+                createMessages().addWhiteboxMessageValuesIndexed(GLOBAL, "mystic", "onaman", "angel"));
     }
 
     // http://localhost:8151/fortress/wx/appex/message/json/direct/

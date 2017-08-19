@@ -24,8 +24,6 @@ import org.dbflute.cbean.result.PagingResultBean;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
-import org.docksidestage.app.web.product.ProductSearchForm;
-import org.docksidestage.app.web.product.ProductSearchRowBean;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
@@ -49,18 +47,21 @@ public class WxMessageAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
+    // http://localhost:8151/fortress/wx/message/
     @Execute
-    public HtmlResponse index(OptionalThing<Integer> pageNumber, ProductSearchForm form) {
+    public HtmlResponse index(OptionalThing<Integer> pageNumber, WxMessageForm form) {
         validate(form, messages -> {
-            String property = "productName";
-            messages.addWhiteboxMessageValuesIndexed(property, "mystic", "oneman");
-            messages.addWhiteboxMessageValuesNamed(property, "mystic", "oneman");
-            messages.addWhiteboxMessageValuesVarious(property, "mystic", "oneman");
+            messages.addConstraintsLengthMessage(GLOBAL, "3", "6");
+            messages.addWhiteboxMessageValuesIndexed(GLOBAL, "mystic", "oneman", "angel");
+            messages.addWhiteboxMessageValuesNamed(GLOBAL, "angel", "mystic", "oneman");
+            messages.addWhiteboxMessageValuesReversed(GLOBAL, "angel", "mystic", "max", "mou", "oneman");
+            messages.addWhiteboxMessageValuesSkipped(GLOBAL, "mystic", "oneman");
+            messages.addWhiteboxMessageValuesVarious(GLOBAL, "mou", "mystic", "angel", "oneman");
         }, () -> {
             return asHtml(path_WxMessage_WxMessageListHtml);
         });
         PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
-        List<ProductSearchRowBean> beans = page.stream().map(product -> {
+        List<WxMessageRowBean> beans = page.stream().map(product -> {
             return mappingToBean(product);
         }).collect(Collectors.toList());
         return asHtml(path_WxMessage_WxMessageListHtml).renderWith(data -> {
@@ -74,7 +75,7 @@ public class WxMessageAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                              Select
     //                                                                              ======
-    private PagingResultBean<Product> selectProductPage(int pageNumber, ProductSearchForm form) {
+    private PagingResultBean<Product> selectProductPage(int pageNumber, WxMessageForm form) {
         verifyOrClientError("The pageNumber should be positive number: " + pageNumber, pageNumber > 0);
         return productBhv.selectPage(cb -> {
             cb.setupSelect_ProductStatus();
@@ -102,8 +103,8 @@ public class WxMessageAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Mapping
     //                                                                             =======
-    private ProductSearchRowBean mappingToBean(Product product) {
-        ProductSearchRowBean bean = new ProductSearchRowBean();
+    private WxMessageRowBean mappingToBean(Product product) {
+        WxMessageRowBean bean = new WxMessageRowBean();
         bean.productId = product.getProductId();
         bean.productName = product.getProductName();
         product.getProductStatus().alwaysPresent(status -> {

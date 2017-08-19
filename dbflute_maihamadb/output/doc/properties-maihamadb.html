@@ -205,7 +205,7 @@ table.child, table.child td, table.child th {
 			<td class="filecell"><strong>../src/main/resources/fortress_env.properties</strong></td>
 			<td class="envtypecell">-</td>
 			<td class="langtypecell">-</td>
-			<td class="sizecell">22</td>
+			<td class="sizecell">24</td>
 			<td>&nbsp;</td>
 			<td class="markcell">-</td>
 			<td class="markcell">-</td>
@@ -222,6 +222,8 @@ table.child, table.child td, table.child th {
 				<p class="diffprop">tomcat.URIEncoding</p>
 				<p class="diffprop">tomcat.useBodyEncodingForURI</p>
 				<p class="diffprop">tomcat.log.home</p>
+				<p class="diffprop">tomcat.accesslog.enabled</p>
+				<p class="diffprop">tomcat.accesslog.logDir</p>
 			</td>
 		</tr>
 		<tr>
@@ -236,6 +238,8 @@ table.child, table.child td, table.child th {
 				<p class="diffprop">tomcat.URIEncoding</p>
 				<p class="diffprop">tomcat.useBodyEncodingForURI</p>
 				<p class="diffprop">tomcat.log.home</p>
+				<p class="diffprop">tomcat.accesslog.enabled</p>
+				<p class="diffprop">tomcat.accesslog.logDir</p>
 			</td>
 		</tr>
 	</tbody>
@@ -311,7 +315,7 @@ table.child, table.child td, table.child th {
 			<td class="filecell"><strong>../src/main/resources/fortress_message.properties</strong></td>
 			<td class="envtypecell">-</td>
 			<td class="langtypecell">-</td>
-			<td class="sizecell">46</td>
+			<td class="sizecell">51</td>
 			<td class="extendsfilecell">../src/main/resources/fortress_label.properties</td>
 			<td>&nbsp;</td>
 			<td class="markcell">-</td>
@@ -1052,12 +1056,58 @@ table.child, table.child td, table.child th {
 					<th>Lang</th>
 					<th>Property</th>
 					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
 				</tr>
 				<tr>
 					<td class="envtypecell">-</td>
 					<td class="langtypecell">-</td>
-					<td class="valuecell">/tmp/lastaflute/tomcat</td>
+					<td class="valuecell">/tmp/lastaflute/fortress/tomcat</td>
 					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;directory&nbsp;path&nbsp;of&nbsp;tomcat&nbsp;log&nbsp;e.g.&nbsp;catalina_out</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">23</td>
+		<td class="keycell">tomcat.accesslog.enabled</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">true</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">Is&nbsp;access-log&nbsp;of&nbsp;tomcat&nbsp;enabled?</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">24</td>
+		<td class="keycell">tomcat.accesslog.logDir</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">/tmp/lastaflute/fortress/tomcat</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;directory&nbsp;path&nbsp;of&nbsp;tomcat&nbsp;access-log</td>
 				</tr>
 			</table>
 		</td>
@@ -3019,6 +3069,26 @@ table.child, table.child td, table.child th {
 	</tr>
 	<tr>
 		<td class="rownumcell">10</td>
+		<td class="keycell">constraints.Email.message</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">not&nbsp;a&nbsp;well-formed&nbsp;email&nbsp;address</td>
+					<td class="uniquenocell">1</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">11</td>
 		<td class="keycell">constraints.Future.message</td>
 		<td>
 			<table class="child">
@@ -3038,7 +3108,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">11</td>
+		<td class="rownumcell">12</td>
 		<td class="keycell">constraints.Max.message</td>
 		<td>
 			<table class="child">
@@ -3058,7 +3128,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">12</td>
+		<td class="rownumcell">13</td>
 		<td class="keycell">constraints.Min.message</td>
 		<td>
 			<table class="child">
@@ -3078,7 +3148,47 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">13</td>
+		<td class="rownumcell">14</td>
+		<td class="keycell">constraints.NotBlank.message</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">may&nbsp;not&nbsp;be&nbsp;empty</td>
+					<td class="uniquenocell">1</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">15</td>
+		<td class="keycell">constraints.NotEmpty.message</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">may&nbsp;not&nbsp;be&nbsp;empty</td>
+					<td class="uniquenocell">1</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">16</td>
 		<td class="keycell">constraints.NotNull.message</td>
 		<td>
 			<table class="child">
@@ -3098,7 +3208,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">14</td>
+		<td class="rownumcell">17</td>
 		<td class="keycell">constraints.Null.message</td>
 		<td>
 			<table class="child">
@@ -3118,7 +3228,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">15</td>
+		<td class="rownumcell">18</td>
 		<td class="keycell">constraints.Past.message</td>
 		<td>
 			<table class="child">
@@ -3138,7 +3248,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">16</td>
+		<td class="rownumcell">19</td>
 		<td class="keycell">constraints.Pattern.message</td>
 		<td>
 			<table class="child">
@@ -3158,7 +3268,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">17</td>
+		<td class="rownumcell">20</td>
 		<td class="keycell">constraints.Size.message</td>
 		<td>
 			<table class="child">
@@ -3178,7 +3288,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">18</td>
+		<td class="rownumcell">21</td>
 		<td class="keycell">constraints.CreditCardNumber.message</td>
 		<td>
 			<table class="child">
@@ -3200,7 +3310,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">19</td>
+		<td class="rownumcell">22</td>
 		<td class="keycell">constraints.EAN.message</td>
 		<td>
 			<table class="child">
@@ -3220,27 +3330,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">20</td>
-		<td class="keycell">constraints.Email.message</td>
-		<td>
-			<table class="child">
-				<tr>
-					<th>Env</th>
-					<th>Lang</th>
-					<th>Property</th>
-					<th><span title="Unique No (same value, same No)">uq</span></th>
-				</tr>
-				<tr>
-					<td class="envtypecell">-</td>
-					<td class="langtypecell">-</td>
-					<td class="valuecell">not&nbsp;a&nbsp;well-formed&nbsp;email&nbsp;address</td>
-					<td class="uniquenocell">1</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">21</td>
+		<td class="rownumcell">23</td>
 		<td class="keycell">constraints.Length.message</td>
 		<td>
 			<table class="child">
@@ -3260,7 +3350,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">22</td>
+		<td class="rownumcell">24</td>
 		<td class="keycell">constraints.LuhnCheck.message</td>
 		<td>
 			<table class="child">
@@ -3280,7 +3370,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">23</td>
+		<td class="rownumcell">25</td>
 		<td class="keycell">constraints.Mod10Check.message</td>
 		<td>
 			<table class="child">
@@ -3300,7 +3390,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">24</td>
+		<td class="rownumcell">26</td>
 		<td class="keycell">constraints.Mod11Check.message</td>
 		<td>
 			<table class="child">
@@ -3320,7 +3410,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">25</td>
+		<td class="rownumcell">27</td>
 		<td class="keycell">constraints.ModCheck.message</td>
 		<td>
 			<table class="child">
@@ -3334,46 +3424,6 @@ table.child, table.child td, table.child th {
 					<td class="envtypecell">-</td>
 					<td class="langtypecell">-</td>
 					<td class="valuecell">The&nbsp;check&nbsp;digit&nbsp;for&nbsp;${value}&nbsp;is&nbsp;invalid,&nbsp;${modType}&nbsp;checksum&nbsp;failed</td>
-					<td class="uniquenocell">1</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">26</td>
-		<td class="keycell">constraints.NotBlank.message</td>
-		<td>
-			<table class="child">
-				<tr>
-					<th>Env</th>
-					<th>Lang</th>
-					<th>Property</th>
-					<th><span title="Unique No (same value, same No)">uq</span></th>
-				</tr>
-				<tr>
-					<td class="envtypecell">-</td>
-					<td class="langtypecell">-</td>
-					<td class="valuecell">may&nbsp;not&nbsp;be&nbsp;empty</td>
-					<td class="uniquenocell">1</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">27</td>
-		<td class="keycell">constraints.NotEmpty.message</td>
-		<td>
-			<table class="child">
-				<tr>
-					<th>Env</th>
-					<th>Lang</th>
-					<th>Property</th>
-					<th><span title="Unique No (same value, same No)">uq</span></th>
-				</tr>
-				<tr>
-					<td class="envtypecell">-</td>
-					<td class="langtypecell">-</td>
-					<td class="valuecell">may&nbsp;not&nbsp;be&nbsp;empty</td>
 					<td class="uniquenocell">1</td>
 				</tr>
 			</table>
@@ -3489,12 +3539,14 @@ table.child, table.child td, table.child th {
 					<th>Lang</th>
 					<th>Property</th>
 					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
 				</tr>
 				<tr>
 					<td class="envtypecell">-</td>
 					<td class="langtypecell">-</td>
 					<td class="valuecell">is&nbsp;required</td>
 					<td class="uniquenocell">1</td>
+					<td class="commentcell">--------------------</td>
 				</tr>
 			</table>
 		</td>
@@ -3756,6 +3808,106 @@ table.child, table.child td, table.child th {
 					<td class="envtypecell">-</td>
 					<td class="langtypecell">-</td>
 					<td class="valuecell">escaped&nbsp;"あいうえお"&nbsp;and&nbsp;plain&nbsp;"あいうえお"</td>
+					<td class="uniquenocell">1</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">47</td>
+		<td class="keycell">whitebox.message.values.indexed</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">*[indexed&nbsp;parameter]&nbsp;sea:{0},&nbsp;land:{1},&nbsp;piari:{2}</td>
+					<td class="uniquenocell">1</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">48</td>
+		<td class="keycell">whitebox.message.values.named</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">*[named&nbsp;parameter]&nbsp;sea:{hangar},&nbsp;land:{showbase},&nbsp;piari:{celeb}</td>
+					<td class="uniquenocell">1</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">49</td>
+		<td class="keycell">whitebox.message.values.reversed</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">*[reversed&nbsp;parameter]&nbsp;sea:{1},&nbsp;land:{showbase},&nbsp;piari:{0},&nbsp;bonvo:{mic},&nbsp;dstore:{2}</td>
+					<td class="uniquenocell">1</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">50</td>
+		<td class="keycell">whitebox.message.values.skipped</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">*[skipped&nbsp;parameter]&nbsp;sea:{1},&nbsp;land:{4}</td>
+					<td class="uniquenocell">1</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">51</td>
+		<td class="keycell">whitebox.message.values.various</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">*[various&nbsp;parameter]&nbsp;sea:{1},&nbsp;land:{showbase},&nbsp;piari:{celeb},&nbsp;bonvo:{00}</td>
 					<td class="uniquenocell">1</td>
 				</tr>
 			</table>
