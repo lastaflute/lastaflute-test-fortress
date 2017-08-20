@@ -17,15 +17,43 @@ package org.docksidestage.app.web.wx.validator;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.AssertTrue;
+
+import org.docksidestage.dbflute.allcommon.CDef;
+import org.lastaflute.web.validation.Required;
+
 /**
  * @author jflute
  */
 public class WxValidatorRowBean {
 
+    @Required
     public Integer productId;
+    @Required
     public String productName;
+    @Required
     public String productStatusName;
+    @Required
     public Integer regularPrice;
+    @Required
     public LocalDateTime registerDatetime;
+    @Required
     public String productCategoryName;
+
+    @AssertTrue
+    public boolean isProductNameToStatus() {
+        if (productName == null) {
+            return true;
+        }
+        if (productName.equals("sea")) {
+            return CDef.ProductStatus.OnSaleProduction.name().equals(productStatusName);
+        } else {
+            return true;
+        }
+    }
+    //
+    //    @Override
+    //    public String toString() {
+    //        return Lato.string(this);
+    //    }
 }
