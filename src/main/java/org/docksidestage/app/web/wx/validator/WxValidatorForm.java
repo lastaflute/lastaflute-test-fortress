@@ -20,9 +20,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
 import org.docksidestage.dbflute.allcommon.CDef;
+import org.docksidestage.mylasta.action.FortressMessages;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.theme.conversion.ValidateTypeFailure;
@@ -32,6 +34,12 @@ import org.lastaflute.web.validation.theme.conversion.ValidateTypeFailure;
  */
 public class WxValidatorForm {
 
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    // -----------------------------------------------------
+    //                                                 Basic
+    //                                                 -----
     @Length(max = 10)
     public String productName;
 
@@ -40,6 +48,9 @@ public class WxValidatorForm {
     @Length(max = 5)
     public String purchaseMemberName;
 
+    // -----------------------------------------------------
+    //                                          Type Failure
+    //                                          ------------
     @ValidateTypeFailure
     public Integer seaInteger;
     @ValidateTypeFailure
@@ -57,16 +68,13 @@ public class WxValidatorForm {
     @ValidateTypeFailure
     public CDef.MemberStatus bonvoStatus;
 
+    // -----------------------------------------------------
+    //                                              Sea Bean
+    //                                              --------
     @Valid
     public SeaBean seaBean;
     @Valid
     public List<SeaBean> seaBeanList;
-    @Valid
-    public LandBean<PiariBean> landBean;
-    @Valid
-    public DstoreBean<List<GoodsBean>> dstoreBean;
-    @Valid
-    public AmbaBean<RoomBean> ambaBean;
 
     public static class SeaBean {
         @Required
@@ -74,6 +82,12 @@ public class WxValidatorForm {
         @Required
         public Boolean mystic;
     }
+
+    // -----------------------------------------------------
+    //                                             Land Bean
+    //                                             ---------
+    @Valid
+    public LandBean<PiariBean> landBean;
 
     public static class LandBean<HAUNTED> {
         @Required
@@ -98,6 +112,12 @@ public class WxValidatorForm {
         public Integer yage;
     }
 
+    // -----------------------------------------------------
+    //                                           Dstore Bean
+    //                                           -----------
+    @Valid
+    public DstoreBean<List<GoodsBean>> dstoreBean;
+
     public static class DstoreBean<GOODS> {
         @Required
         public GOODS goods;
@@ -107,6 +127,12 @@ public class WxValidatorForm {
         @Required
         public Integer goodsId;
     }
+
+    // -----------------------------------------------------
+    //                                             Amba Bean
+    //                                             ---------
+    @Valid
+    public AmbaBean<RoomBean> ambaBean;
 
     public static class AmbaBean<ROOM> {
         @Required
@@ -120,6 +146,24 @@ public class WxValidatorForm {
         public Integer roomNo;
     }
 
+    // ===================================================================================
+    //                                                                          Validation
+    //                                                                          ==========
+    @AssertTrue(message = FortressMessages.ERRORS_PRODUCT_NAME_THEN_ONSALE)
+    public boolean isProductNameToStatus() {
+        if (productName == null) {
+            return true;
+        }
+        if (productName.equals("sea")) {
+            return CDef.ProductStatus.OnSaleProduction.equals(productStatus);
+        } else {
+            return true;
+        }
+    }
+
+    // ===================================================================================
+    //                                                                      Basic Override
+    //                                                                      ==============
     @Override
     public String toString() {
         return "{" + productName + ", " + productStatus + ", " + purchaseMemberName //

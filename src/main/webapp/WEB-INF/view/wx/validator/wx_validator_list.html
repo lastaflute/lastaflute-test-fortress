@@ -48,18 +48,19 @@
 			<ul class="product-search-condition-list">
 				<li>
 					<span>Product Name</span><input type="text" name="productName" th:value="${productName}"/>
-					<span class="errors" th:each="er : ${errors.part('productName')}" th:text="${er.message}"/>
+					<span la:errors="productName"></span>
 				</li>
 				<li>
-					<span th:text="#{labels.product.status}">labels.product.status</span>
+					<span th:text="#{labels.productStatus}">labels.product.status</span>
 					<select la:property="productStatus">
 						<option value="" th:text="#{labels.listbox.caption.tell}"></option>
 						<option la:optionCls="ProductStatus"></option>
 					</select>
+					<span la:errors="productStatus"></span>
 				</li>
 				<li>
 					<span>Purchased Member</span><input type="text" name="purchaseMemberName" th:value="${purchaseMemberName}"/>
-					<span class="errors" th:each="er : ${errors.part('purchaseMemberName')}" th:text="${er.message}"/>
+					<span la:errors="purchaseMemberName"></span>
 				</li>
 			</ul>
 			<input type="submit" th:value="#{labels.search}" value="search"/>

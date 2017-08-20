@@ -5075,8 +5075,8 @@
       ],
       "formTypeDocMeta": {
         "name": null,
-        "typeName": "org.docksidestage.app.web.product.ProductSearchForm",
-        "simpleTypeName": "ProductSearchForm",
+        "typeName": "org.docksidestage.app.web.wx.message.WxMessageForm",
+        "simpleTypeName": "WxMessageForm",
         "value": null,
         "description": "@author jflute",
         "comment": "@author jflute",

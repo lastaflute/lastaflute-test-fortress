@@ -162,6 +162,9 @@ public class FortressMessages extends FortressLabels {
     /** The key of the message: the account already exists so input others */
     public static final String ERRORS_SIGNUP_ACCOUNT_ALREADY_EXISTS = "{errors.signup.account.already.exists}";
 
+    /** The key of the message: the product should be on sale */
+    public static final String ERRORS_PRODUCT_NAME_THEN_ONSALE = "{errors.product.name.then.onsale}";
+
     /** The key of the message: escaped "あいうえお" and plain "あいうえお" */
     public static final String WHITEBOX_MESSAGE_JAPANESE_CAOS = "{whitebox.message.japanese.caos}";
 
@@ -834,6 +837,20 @@ public class FortressMessages extends FortressLabels {
     public FortressMessages addErrorsSignupAccountAlreadyExists(String property) {
         assertPropertyNotNull(property);
         add(property, new UserMessage(ERRORS_SIGNUP_ACCOUNT_ALREADY_EXISTS));
+        return this;
+    }
+
+    /**
+     * Add the created action message for the key 'errors.product.name.then.onsale' with parameters.
+     * <pre>
+     * message: the product should be on sale
+     * </pre>
+     * @param property The property name for the message. (NotNull)
+     * @return this. (NotNull)
+     */
+    public FortressMessages addErrorsProductNameThenOnsale(String property) {
+        assertPropertyNotNull(property);
+        add(property, new UserMessage(ERRORS_PRODUCT_NAME_THEN_ONSALE));
         return this;
     }
 
