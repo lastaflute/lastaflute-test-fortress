@@ -84,6 +84,12 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
         return true;
     }
 
+    // example:
+    //@Override
+    //public InOutLogOption adjustInOutLogging() {
+    //    return new InOutLogOption().async();
+    //}
+
     // ===================================================================================
     //                                                                      Basic Override
     //                                                                      ==============
