@@ -24,7 +24,7 @@ public class FortressTomcatBoot { // #change_it_first
 
     public static void main(String[] args) { // e.g. java -Dlasta.env=production -jar fortress.war
         new TomcatBoot(8152, "/fortress").asDevelopment(isDevelopment())
-                .configure("fortress_env.properties") // e.g. URIEncoding
+                .configure("fortress_config.properties", "fortress_env.properties") // e.g. URIEncoding
                 .logging("tomcat_logging.properties", op -> {
                     op.replace("tomcat.log.name", "catalina_out");
                 }) // uses jdk14logger
