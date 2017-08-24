@@ -23,12 +23,16 @@ import org.dbflute.tomcat.TomcatBoot;
 public class FortressTomcatBoot { // #change_it_first
 
     public static void main(String[] args) { // e.g. java -Dlasta.env=production -jar fortress.war
-        new TomcatBoot(8152, "/fortress").asDevelopment(isDevelopment())
-                .configure("fortress_config.properties", "fortress_env.properties") // e.g. URIEncoding
-                .logging("tomcat_logging.properties", op -> {
-                    op.replace("tomcat.log.name", "catalina_out");
-                }) // uses jdk14logger
-                .bootAwait();
+        TomcatBoot boot = new TomcatBoot(8152, "/fortress");
+        boot.asDevelopment(isDevelopment());
+        boot.useMetaInfoResourceDetect().useWebFragmentsDetect(jarName -> { // both for swagger
+            return jarName.contains("swagger-ui"); // meanwhile, restricted by [app]_env.properties
+        });
+        boot.configure("fortress_config.properties", "fortress_env.properties"); // e.g. URIEncoding
+        boot.logging("tomcat_logging.properties", op -> {
+            op.replace("tomcat.log.name", "catalina_out");
+        }); // uses jdk14logger
+        boot.bootAwait();
     }
 
     private static boolean isDevelopment() {

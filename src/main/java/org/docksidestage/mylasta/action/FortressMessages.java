@@ -162,7 +162,7 @@ public class FortressMessages extends FortressLabels {
     /** The key of the message: the account already exists so input others */
     public static final String ERRORS_SIGNUP_ACCOUNT_ALREADY_EXISTS = "{errors.signup.account.already.exists}";
 
-    /** The key of the message: the product should be on sale */
+    /** The key of the message: the product should be on sale if you input the name */
     public static final String ERRORS_PRODUCT_NAME_THEN_ONSALE = "{errors.product.name.then.onsale}";
 
     /** The key of the message: escaped "あいうえお" and plain "あいうえお" */
@@ -843,7 +843,7 @@ public class FortressMessages extends FortressLabels {
     /**
      * Add the created action message for the key 'errors.product.name.then.onsale' with parameters.
      * <pre>
-     * message: the product should be on sale
+     * message: the product should be on sale if you input the name
      * </pre>
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)

@@ -31,4 +31,5 @@ public class ProductSearchBody {
 
     @Length(max = 5) // #simple_for_example just for validtion example
     public String purchaseMemberName;
+    public Integer sea;
 }

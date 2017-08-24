@@ -23,6 +23,7 @@
 		<mysql.jdbc.version>5.1.37</mysql.jdbc.version>
 		<lastaflute.version>1.0.0-RC8</lastaflute.version>
 		<lasta.thymeleaf.version>0.3.1</lasta.thymeleaf.version>
+		<lasta.doc.version>0.2.6</lasta.doc.version>
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.12</slf4j.version>
@@ -31,6 +32,7 @@
 		<jsp.version>2.3.1</jsp.version>
 		<jetty.boot.version>0.4.8</jetty.boot.version>
 		<tomcat.boot.version>0.5.7</tomcat.boot.version>
+		<swagger.ui.version>2.2.8</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.6</commons.lang.version>
@@ -299,6 +301,12 @@
 			<artifactId>lasta-thymeleaf</artifactId>
 			<version>${lasta.thymeleaf.version}</version>
 		</dependency>
+		<dependency> <!-- utflute depends but runtime scope here for swagger -->
+			<groupId>org.lastaflute.doc</groupId>
+			<artifactId>lasta-doc</artifactId>
+			<version>${lasta.doc.version}</version>
+			<scope>runtime</scope>
+		</dependency>
 
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
 		<!--                                                               Partner Library -->
@@ -341,6 +349,14 @@
 			<groupId>org.dbflute.tomcat</groupId>
 			<artifactId>tomcat-boot</artifactId>
 			<version>${tomcat.boot.version}</version>
+		</dependency>
+
+		<!-- swagger -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>swagger-ui</artifactId>
+			<version>${swagger.ui.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->

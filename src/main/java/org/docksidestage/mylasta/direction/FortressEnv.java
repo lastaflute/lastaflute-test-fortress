@@ -80,6 +80,9 @@ public interface FortressEnv {
     /** The key of the configuration. e.g. localhost:8097 */
     String SERVER_DOMAIN = "server.domain";
 
+    /** The key of the configuration. e.g. true */
+    String SWAGGER_ENABLED = "swagger.enabled";
+
     /** The key of the configuration. e.g. UTF-8 */
     String TOMCAT_URIEncoding = "tomcat.URIEncoding";
 
@@ -306,6 +309,22 @@ public interface FortressEnv {
     String getServerDomain();
 
     /**
+     * Get the value for the key 'swagger.enabled'. <br>
+     * The value is, e.g. true <br>
+     * comment: is it use swagger in this environment?
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSwaggerEnabled();
+
+    /**
+     * Is the property for the key 'swagger.enabled' true? <br>
+     * The value is, e.g. true <br>
+     * comment: is it use swagger in this environment?
+     * @return The determination, true or false. (if not found, exception but basically no way)
+     */
+    boolean isSwaggerEnabled();
+
+    /**
      * Get the value for the key 'tomcat.URIEncoding'. <br>
      * The value is, e.g. UTF-8 <br>
      * comment: ------
@@ -462,6 +481,14 @@ public interface FortressEnv {
 
         public String getServerDomain() {
             return get(FortressEnv.SERVER_DOMAIN);
+        }
+
+        public String getSwaggerEnabled() {
+            return get(FortressEnv.SWAGGER_ENABLED);
+        }
+
+        public boolean isSwaggerEnabled() {
+            return is(FortressEnv.SWAGGER_ENABLED);
         }
 
         public String getTomcatURIEncoding() {
