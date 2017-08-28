@@ -210,12 +210,18 @@
 							<directory>${project.build.outputDirectory}</directory>
 							<includes>
 								<include>**/*Boot*.class</include>
+								<include>*_config.properties</include>
+								<include>*_env*.properties</include>
+								<include>jetty_*.properties</include>
+								<include>tomcat_*.properties</include>
 							</includes>
 						</resource>
 					</webResources>
 					<archive>
 						<manifest>
-							<mainClass>org.docksidestage.FortressJettyBoot</mainClass>
+							<mainClass>org.docksidestage.FortressTomcatBoot</mainClass>
+							<!-- you can switch:
+							 <mainClass>org.docksidestage.FortressJettyBoot</mainClass> -->
 						</manifest>
 					</archive>
 				</configuration>
@@ -301,11 +307,10 @@
 			<artifactId>lasta-thymeleaf</artifactId>
 			<version>${lasta.thymeleaf.version}</version>
 		</dependency>
-		<dependency> <!-- utflute depends but runtime scope here for swagger -->
+		<dependency> <!-- compile scope for swagger -->
 			<groupId>org.lastaflute.doc</groupId>
 			<artifactId>lasta-doc</artifactId>
 			<version>${lasta.doc.version}</version>
-			<scope>runtime</scope>
 		</dependency>
 
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
