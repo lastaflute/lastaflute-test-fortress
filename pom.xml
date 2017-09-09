@@ -23,6 +23,7 @@
 		<mysql.jdbc.version>5.1.37</mysql.jdbc.version>
 		<lastaflute.version>1.0.0-RC9</lastaflute.version>
 		<lasta.thymeleaf.version>0.3.1</lasta.thymeleaf.version>
+		<lasta.remoteapi.version>0.1.5</lasta.remoteapi.version>
 		<lasta.doc.version>0.2.6</lasta.doc.version>
 
 		<!-- Partner Library -->
@@ -306,6 +307,11 @@
 			<groupId>org.lastaflute.html</groupId>
 			<artifactId>lasta-thymeleaf</artifactId>
 			<version>${lasta.thymeleaf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.lastaflute.remoteapi</groupId>
+			<artifactId>lasta-remoteapi</artifactId>
+			<version>${lasta.remoteapi.version}</version>
 		</dependency>
 		<dependency> <!-- compile scope for swagger -->
 			<groupId>org.lastaflute.doc</groupId>
