@@ -1,14 +1,18 @@
 package org.docksidestage.remote.harbor;
 
-import org.dbflute.remoteapi.FlutyRemoteApiOption;
+import org.dbflute.optional.OptionalThing;
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy;
 import org.docksidestage.remote.harbor.base.HbSearchPagingResult;
+import org.docksidestage.remote.harbor.mypage.HbMypageProductResult;
 import org.docksidestage.remote.harbor.product.HbProductRowResult;
 import org.docksidestage.remote.harbor.product.HbProductSearchBody;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.remoteapi.LastaRemoteBehavior;
-import org.lastaflute.remoteapi.converter.LaJsonRequestConverter;
-import org.lastaflute.remoteapi.converter.LaJsonResponseConverter;
+import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
+import org.lastaflute.remoteapi.sender.body.LaJsonSender;
+import org.lastaflute.remoteapi.sender.query.LaQuerySender;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -21,10 +25,10 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     }
 
     @Override
-    protected void yourOption(FlutyRemoteApiOption option) {
+    protected void yourDefaultRule(FlutyRemoteApiRule rule) {
         JsonMappingOption jsonMappingOption = new JsonMappingOption();
-        option.setRequestConverter(new LaJsonRequestConverter(requestManager, jsonMappingOption));
-        option.setResponseConverter(new LaJsonResponseConverter(requestManager, jsonMappingOption));
+        rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption));
+        rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
     }
 
     @Override
@@ -32,8 +36,14 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
         return "http://localhost:8090/harbor";
     }
 
+    public HbMypageProductResult requestMypage() {
+        return doRequestGet(HbMypageProductResult.class, "/lido/mypage", moreUrl(), OptionalThing.empty(), rule -> {
+            rule.sendQueryBy(new LaQuerySender(new FlVacantRemoteMappingPolicy()));
+        });
+    }
+
     public HbSearchPagingResult<HbProductRowResult> requestProductList(HbProductSearchBody body) {
         return doRequestPost(new ParameterizedRef<HbSearchPagingResult<HbProductRowResult>>() {
-        }.getType(), "/lido/product/list", new Object[] { 1 }, body, op -> {});
+        }.getType(), "/lido/product/list", moreUrl(1), body, rule -> {});
     }
 }
