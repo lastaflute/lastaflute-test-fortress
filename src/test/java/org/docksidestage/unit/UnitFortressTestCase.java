@@ -15,8 +15,6 @@
  */
 package org.docksidestage.unit;
 
-import org.dbflute.remoteapi.FlutyRemoteBehavior;
-import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.dbflute.utflute.lastaflute.WebContainerTestCase;
 
 /**
@@ -40,9 +38,4 @@ import org.dbflute.utflute.lastaflute.WebContainerTestCase;
  * @author jflute
  */
 public abstract class UnitFortressTestCase extends WebContainerTestCase {
-
-    protected <BHV extends FlutyRemoteBehavior> BHV mockClient(BHV bhv, MockHttpClient client) {
-        bhv.xregisterMockHttpClient(client);
-        return bhv;
-    }
 }
