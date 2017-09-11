@@ -17,6 +17,10 @@ public class RemoteHarborBhvTest extends UnitFortressTestCase {
     @Resource
     private RequestManager requestManager;
 
+    // #later jflute Exception test (HTTP status 400)
+    // #later jflute Failure Response type
+    // #later jflute Action test
+    // #later jflute asJson(json)? asJsonAll(json)?
     public void test_requestProductList() {
         // ## Arrange ##
         HbProductSearchBody body = new HbProductSearchBody();
@@ -26,7 +30,7 @@ public class RemoteHarborBhvTest extends UnitFortressTestCase {
             resopnse.peekRequest(request -> {
                 assertContainsAll(request.getBody().get(), "productName", body.productName);
             });
-            resopnse.asJsonDirectly(json, request -> request.getUrl().contains("/harbor/"));
+            resopnse.asJsonDirectly(json, request -> true);
         });
         registerMock(client);
         RemoteHarborBhv bhv = new RemoteHarborBhv(requestManager);
