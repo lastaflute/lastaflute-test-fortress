@@ -13,6 +13,7 @@ import org.lastaflute.remoteapi.LastaRemoteBehavior;
 import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
 import org.lastaflute.remoteapi.sender.body.LaJsonSender;
 import org.lastaflute.remoteapi.sender.query.LaQuerySender;
+import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -29,6 +30,7 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
         JsonMappingOption jsonMappingOption = new JsonMappingOption();
         rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption));
         rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
+        rule.handleFailureResponseAs(FaicliUnifiedFailureResult.class);
     }
 
     @Override
