@@ -4,9 +4,9 @@ import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
-import org.docksidestage.remote.harbor.base.HbSearchPagingResult;
-import org.docksidestage.remote.harbor.product.HbProductRowResult;
-import org.docksidestage.remote.harbor.product.HbProductSearchBody;
+import org.docksidestage.remote.harbor.base.RemoteSearchPagingResult;
+import org.docksidestage.remote.harbor.product.RemoteProductRowResult;
+import org.docksidestage.remote.harbor.product.RemoteProductSearchBody;
 import org.docksidestage.unit.UnitFortressTestCase;
 import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult;
 import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult.FaicliUnifiedFailureType;
@@ -20,12 +20,11 @@ public class RemoteHarborBhvTest extends UnitFortressTestCase {
     @Resource
     private RequestManager requestManager;
 
-    // #later jflute Failure Response type
     // #later jflute Action test
     // #later jflute asJson(json)? asJsonAll(json)?
     public void test_requestProductList_basic() {
         // ## Arrange ##
-        HbProductSearchBody body = new HbProductSearchBody();
+        RemoteProductSearchBody body = new RemoteProductSearchBody();
         body.productName = "S";
         String json = "{pageSize=4, currentPageNumber=1, allRecordCount=20, allPageCount=5, rows=[]}";
         MockHttpClient client = MockHttpClient.create(resopnse -> {
@@ -39,7 +38,7 @@ public class RemoteHarborBhvTest extends UnitFortressTestCase {
         inject(bhv);
 
         // ## Act ##
-        HbSearchPagingResult<HbProductRowResult> result = bhv.requestProductList(body);
+        RemoteSearchPagingResult<RemoteProductRowResult> result = bhv.requestProductList(body);
 
         // ## Assert ##
         assertEquals(4, result.pageSize);
@@ -51,14 +50,10 @@ public class RemoteHarborBhvTest extends UnitFortressTestCase {
 
     public void test_validationError_basic() {
         // ## Arrange ##
-        HbProductSearchBody body = new HbProductSearchBody();
-        body.productName = "S";
+        RemoteProductSearchBody body = new RemoteProductSearchBody();
         String json = "{cause=VALIDATION_ERROR, errors : [{field=productName, code=LENGTH, data={min:0,max:10}}]}";
         MockHttpClient client = MockHttpClient.create(resopnse -> {
-            resopnse.peekRequest(request -> {
-                assertContainsAll(request.getBody().get(), "productName", body.productName);
-            });
-            resopnse.asJsonDirectly(json, request -> true).httpStatus(400);
+            resopnse.asJsonDirectly(json, request -> true);
         });
         registerMock(client);
         RemoteHarborBhv bhv = new RemoteHarborBhv(requestManager);

@@ -19,9 +19,9 @@ import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
-import org.docksidestage.remote.harbor.base.HbSearchPagingResult;
-import org.docksidestage.remote.harbor.product.HbProductRowResult;
-import org.docksidestage.remote.harbor.product.HbProductSearchBody;
+import org.docksidestage.remote.harbor.base.RemoteSearchPagingResult;
+import org.docksidestage.remote.harbor.product.RemoteProductRowResult;
+import org.docksidestage.remote.harbor.product.RemoteProductSearchBody;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -37,10 +37,10 @@ public class WxRemoteHarborAction extends FortressBaseAction {
 
     // http://localhost:8151/fortress/wx/remote/harbor/products/
     @Execute
-    public JsonResponse<HbSearchPagingResult<HbProductRowResult>> products() {
-        HbProductSearchBody body = new HbProductSearchBody();
+    public JsonResponse<RemoteSearchPagingResult<RemoteProductRowResult>> products() {
+        RemoteProductSearchBody body = new RemoteProductSearchBody();
         body.productName = "S";
-        HbSearchPagingResult<HbProductRowResult> result = harborBhv.requestProductList(body);
+        RemoteSearchPagingResult<RemoteProductRowResult> result = harborBhv.requestProductList(body);
         return asJson(result);
     }
 }
