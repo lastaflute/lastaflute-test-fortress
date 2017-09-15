@@ -22,14 +22,14 @@ import java.time.LocalTime;
 import javax.annotation.Resource;
 
 import org.docksidestage.dbflute.allcommon.CDef;
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.web.ruts.process.debugchallenge.JsonDebugChallenge;
 
 /**
  * @author jflute
  */
-public class WxJsonDebugChallengeTest extends UnitFortressTestCase {
+public class WxJsonDebugChallengeTest extends UnitFortressWebTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

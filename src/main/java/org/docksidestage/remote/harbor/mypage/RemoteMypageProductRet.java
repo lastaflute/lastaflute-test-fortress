@@ -6,14 +6,14 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class RemoteMypageProductResult {
+public class RemoteMypageProductRet {
 
     @Required
     public final String productName;
     @Required
     public final Integer regularPrice;
 
-    public RemoteMypageProductResult(Product product) {
+    public RemoteMypageProductRet(Product product) {
         this.productName = product.getProductName();
         this.regularPrice = product.getRegularPrice();
     }

@@ -23,7 +23,7 @@ import javax.annotation.Resource;
 
 import org.dbflute.exception.EntityAlreadyDeletedException;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.exception.ConcurrentParallelRunnerException;
 import org.lastaflute.core.magic.async.future.YourFuture;
@@ -31,7 +31,7 @@ import org.lastaflute.core.magic.async.future.YourFuture;
 /**
  * @author jflute
  */
-public class WxAsyncManagerTest extends UnitFortressTestCase {
+public class WxAsyncManagerTest extends UnitFortressWebTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

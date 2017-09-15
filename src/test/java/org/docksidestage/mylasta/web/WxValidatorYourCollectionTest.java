@@ -25,7 +25,7 @@ import javax.validation.constraints.Size;
 
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
 import org.docksidestage.mylasta.action.FortressMessages;
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.HibernateValidatorConfiguration;
@@ -40,7 +40,7 @@ import org.lastaflute.web.validation.exception.ValidationStoppedException;
 /**
  * @author jflute
  */
-public class WxValidatorYourCollectionTest extends UnitFortressTestCase {
+public class WxValidatorYourCollectionTest extends UnitFortressWebTestCase {
 
     @Resource
     private MessageManager messageManager;

@@ -15,12 +15,12 @@
  */
 package org.docksidestage.mylasta;
 
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 
 /**
  * @author jflute
  */
-public class FortressLastaDocTest extends UnitFortressTestCase {
+public class FortressLastaDocTest extends UnitFortressWebTestCase {
 
     public void test_document() throws Exception {
         saveLastaDocMeta();

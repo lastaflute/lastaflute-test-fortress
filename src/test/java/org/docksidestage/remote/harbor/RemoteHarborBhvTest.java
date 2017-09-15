@@ -4,10 +4,10 @@ import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
-import org.docksidestage.remote.harbor.base.RemoteSearchPagingResult;
-import org.docksidestage.remote.harbor.product.RemoteProductRowResult;
-import org.docksidestage.remote.harbor.product.RemoteProductSearchBody;
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.remote.harbor.base.RemoteSearchPagingRet;
+import org.docksidestage.remote.harbor.product.RemoteProductRowRet;
+import org.docksidestage.remote.harbor.product.RemoteProductSearchParam;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult;
 import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult.FaicliFailureErrorPart;
 import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult.FaicliUnifiedFailureType;
@@ -16,7 +16,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
 /**
  * @author jflute
  */
-public class RemoteHarborBhvTest extends UnitFortressTestCase {
+public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
 
     @Resource
     private RequestManager requestManager;
@@ -25,12 +25,12 @@ public class RemoteHarborBhvTest extends UnitFortressTestCase {
     // #later jflute asJson(json)? asJsonAll(json)?
     public void test_requestProductList_basic() {
         // ## Arrange ##
-        RemoteProductSearchBody body = new RemoteProductSearchBody();
-        body.productName = "S";
+        RemoteProductSearchParam param = new RemoteProductSearchParam();
+        param.productName = "S";
         String json = "{pageSize=4, currentPageNumber=1, allRecordCount=20, allPageCount=5, rows=[]}";
         MockHttpClient client = MockHttpClient.create(resopnse -> {
             resopnse.peekRequest(request -> {
-                assertContainsAll(request.getBody().get(), "productName", body.productName);
+                assertContainsAll(request.getBody().get(), "productName", param.productName);
             });
             resopnse.asJsonDirectly(json, request -> true);
         });
@@ -39,19 +39,19 @@ public class RemoteHarborBhvTest extends UnitFortressTestCase {
         inject(bhv);
 
         // ## Act ##
-        RemoteSearchPagingResult<RemoteProductRowResult> result = bhv.requestProductList(body);
+        RemoteSearchPagingRet<RemoteProductRowRet> ret = bhv.requestProductList(param);
 
         // ## Assert ##
-        assertEquals(4, result.pageSize);
-        assertEquals(5, result.allPageCount);
-        assertEquals(20, result.allRecordCount);
-        assertEquals(5, result.allPageCount);
-        assertEquals(0, result.rows.size());
+        assertEquals(4, ret.pageSize);
+        assertEquals(5, ret.allPageCount);
+        assertEquals(20, ret.allRecordCount);
+        assertEquals(5, ret.allPageCount);
+        assertEquals(0, ret.rows.size());
     }
 
     public void test_validationError_basic() {
         // ## Arrange ##
-        RemoteProductSearchBody body = new RemoteProductSearchBody();
+        RemoteProductSearchParam param = new RemoteProductSearchParam();
         String json = "{cause=VALIDATION_ERROR, errors : [{field=productName, code=LENGTH, data={min:0,max:10}}]}";
         MockHttpClient client = MockHttpClient.create(resopnse -> {
             resopnse.asJsonDirectly(json, request -> true).httpStatus(400);
@@ -61,7 +61,7 @@ public class RemoteHarborBhvTest extends UnitFortressTestCase {
         inject(bhv);
 
         // ## Act ##
-        assertException(RemoteApiHttpClientErrorException.class, () -> bhv.requestProductList(body)).handle(cause -> {
+        assertException(RemoteApiHttpClientErrorException.class, () -> bhv.requestProductList(param)).handle(cause -> {
             // ## Assert ##
             FaicliUnifiedFailureResult result = (FaicliUnifiedFailureResult) cause.getFailureResponse().get();
             log(result);

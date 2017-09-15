@@ -20,13 +20,13 @@ import java.util.Locale;
 import javax.annotation.Resource;
 
 import org.docksidestage.mylasta.direction.FortressConfig;
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.lastaflute.core.message.MessageManager;
 
 /**
  * @author jflute
  */
-public class WxJapanesePropertiesTest extends UnitFortressTestCase {
+public class WxJapanesePropertiesTest extends UnitFortressWebTestCase {
 
     @Resource
     private FortressConfig config;

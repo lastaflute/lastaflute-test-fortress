@@ -17,7 +17,7 @@ package org.docksidestage.whitebox.json;
 
 import javax.annotation.Resource;
 
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.list.immutable.ImmutableListFactoryImpl;
 import org.lastaflute.core.json.JsonManager;
@@ -26,7 +26,7 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class WxJsonYourCollectionsTest extends UnitFortressTestCase {
+public class WxJsonYourCollectionsTest extends UnitFortressWebTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

@@ -2,10 +2,10 @@ package org.docksidestage.remote.harbor;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy;
-import org.docksidestage.remote.harbor.base.RemoteSearchPagingResult;
-import org.docksidestage.remote.harbor.mypage.RemoteMypageProductResult;
-import org.docksidestage.remote.harbor.product.RemoteProductRowResult;
-import org.docksidestage.remote.harbor.product.RemoteProductSearchBody;
+import org.docksidestage.remote.harbor.base.RemoteSearchPagingRet;
+import org.docksidestage.remote.harbor.mypage.RemoteMypageProductRet;
+import org.docksidestage.remote.harbor.product.RemoteProductRowRet;
+import org.docksidestage.remote.harbor.product.RemoteProductSearchParam;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.remoteapi.LastaRemoteBehavior;
@@ -40,12 +40,12 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
         return "http://localhost:8090/harbor";
     }
 
-    public RemoteMypageProductResult requestMypage() {
-        return doRequestGet(RemoteMypageProductResult.class, "/lido/mypage", noMoreUrl(), noQuery(), rule -> {});
+    public RemoteMypageProductRet requestMypage() {
+        return doRequestGet(RemoteMypageProductRet.class, "/lido/mypage", noMoreUrl(), noQuery(), rule -> {});
     }
 
-    public RemoteSearchPagingResult<RemoteProductRowResult> requestProductList(RemoteProductSearchBody body) {
-        return doRequestPost(new ParameterizedRef<RemoteSearchPagingResult<RemoteProductRowResult>>() {
-        }.getType(), "/lido/product/list", moreUrl(1), body, rule -> {});
+    public RemoteSearchPagingRet<RemoteProductRowRet> requestProductList(RemoteProductSearchParam param) {
+        return doRequestPost(new ParameterizedRef<RemoteSearchPagingRet<RemoteProductRowRet>>() {
+        }.getType(), "/lido/product/list", moreUrl(1), param, rule -> {});
     }
 }

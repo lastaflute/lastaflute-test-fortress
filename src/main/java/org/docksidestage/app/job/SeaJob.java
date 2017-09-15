@@ -24,11 +24,15 @@ import org.docksidestage.dbflute.exentity.Member;
 import org.lastaflute.db.jta.stage.TransactionStage;
 import org.lastaflute.job.LaJob;
 import org.lastaflute.job.LaJobRuntime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author jflute
  */
 public class SeaJob implements LaJob {
+
+    private static final Logger logger = LoggerFactory.getLogger(SeaJob.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -49,6 +53,7 @@ public class SeaJob implements LaJob {
     //                                                                             =======
     @Override
     public void run(LaJobRuntime runtime) {
+        waitFirstIfNeeds(runtime);
         int memberId = 3; // #simple_for_example
         stage.requiresNew(tx -> {
             Member before = memberBhv.selectByPK(memberId).get();
@@ -61,6 +66,18 @@ public class SeaJob implements LaJob {
         runtime.showEndTitleRoll(data -> {
             data.register("targetMember", memberId);
         });
+    }
+
+    private void waitFirstIfNeeds(LaJobRuntime runtime) {
+        Long waitFirst = (Long) runtime.getParameterMap().get("waitFirst");
+        if (waitFirst != null) {
+            logger.debug("...Waiting ({}): job={}", waitFirst, getClass().getSimpleName());
+            try {
+                Thread.sleep(waitFirst);
+            } catch (InterruptedException e) {
+                throw new IllegalStateException("Failed to sleep.", e);
+            }
+        }
     }
 
     private void updateMember(Integer memberId) {

@@ -20,14 +20,14 @@ import java.time.LocalDateTime;
 
 import javax.annotation.Resource;
 
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.annotation.JsonDatePattern;
 
 /**
  * @author jflute
  */
-public class WxJsonFieldAnnotationTest extends UnitFortressTestCase {
+public class WxJsonFieldAnnotationTest extends UnitFortressWebTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

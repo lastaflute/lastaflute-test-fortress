@@ -21,7 +21,7 @@ import org.hibernate.validator.constraints.Length;
 /**
  * @author jflute
  */
-public class RemoteProductSearchBody {
+public class RemoteProductSearchParam {
 
     @Length(max = 10) // #simple_for_example just for validtion example
     public String productName;

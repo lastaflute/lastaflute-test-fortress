@@ -22,13 +22,13 @@ import javax.annotation.Resource;
 import org.dbflute.helper.mapstring.MapListString;
 import org.dbflute.mail.send.supplement.SMailPostingDiscloser;
 import org.docksidestage.mylasta.mail.whitebox.WxOrlseVariablePostcard;
-import org.docksidestage.unit.UnitFortressTestCase;
+import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.lastaflute.core.mail.Postbox;
 
 /**
  * @author jflute
  */
-public class WxDfmailBasicTest extends UnitFortressTestCase {
+public class WxDfmailBasicTest extends UnitFortressWebTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

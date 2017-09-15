@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * @author s.tadokoro
  * @author jflute
  */
-public class RemoteProductRowResult {
+public class RemoteProductRowRet {
 
     @Required
     public Integer productId;
