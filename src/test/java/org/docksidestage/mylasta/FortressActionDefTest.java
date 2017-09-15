@@ -56,6 +56,6 @@ public class FortressActionDefTest extends UnitFortressWebTestCase {
     }
 
     public void test_lastaPresentsSomething() throws Exception {
-        policeStoryOfJavaClassChase(new LastaPresentsSomethingPolice());
+        policeStoryOfJavaClassChase(new LastaPresentsSomethingPolice().formImmutable().bodyImmutable());
     }
 }
