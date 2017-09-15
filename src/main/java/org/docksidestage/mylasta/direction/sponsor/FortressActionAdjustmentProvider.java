@@ -45,20 +45,11 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     private static final ResponseReflectingOption responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
 
     // ===================================================================================
-    //                                                                     Option Override
-    //                                                                     ===============
-    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    // you can adjust your actions by overriding
-    // default methods defined at the interface
-    // _/_/_/_/_/_/_/_/_/_/
+    //                                                                        Form Mapping
+    //                                                                        ============
     @Override
     public FormMappingOption adjustFormMapping() {
         return formMappingOption;
-    }
-
-    @Override
-    public ResponseReflectingOption adjustResponseReflecting() {
-        return responseReflectingOption;
     }
 
     // ===================================================================================
@@ -74,6 +65,14 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
         DefaultConstraintMapping mapping = new DefaultConstraintMapping();
         mapping.constraintDefinition(Size.class).validatedBy(SizeValidatorForImmutableList.class);
         ((HibernateValidatorConfiguration) conf).addMapping(mapping); // always can cast
+    }
+
+    // ===================================================================================
+    //                                                                     Action Response
+    //                                                                     ===============
+    @Override
+    public ResponseReflectingOption adjustResponseReflecting() {
+        return responseReflectingOption;
     }
 
     // ===================================================================================
