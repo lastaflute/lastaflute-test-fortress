@@ -1,0 +1,21 @@
+sudo: false
+
+language: java
+
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.m2/repository
+
+services:
+  - mysql
+
+before_script:
+  - java -version
+  - mvn dbflute:replace-schema -Ddbflute.forceExecution=y
+
+script:
+  - mvn test
+
