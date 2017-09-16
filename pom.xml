@@ -23,7 +23,7 @@
 		<mysql.jdbc.version>5.1.37</mysql.jdbc.version>
 		<lastaflute.version>1.0.0-RC9</lastaflute.version>
 		<lasta.thymeleaf.version>0.3.1</lasta.thymeleaf.version>
-		<lasta.job.version>0.5.1-RC4</lasta.job.version>
+		<lasta.job.version>0.5.1-RC6</lasta.job.version>
 		<lasta.remoteapi.version>0.2.7</lasta.remoteapi.version>
 		<lasta.doc.version>0.2.7-RC2</lasta.doc.version>
 
