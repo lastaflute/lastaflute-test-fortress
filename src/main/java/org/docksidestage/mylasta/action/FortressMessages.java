@@ -27,18 +27,6 @@ public class FortressMessages extends FortressLabels {
     /** The serial version UID for object serialization. (Default) */
     private static final long serialVersionUID = 1L;
 
-    /** The key of the message: &lt;font color="red"&gt;&lt;ul&gt; */
-    public static final String ERRORS_HEADER = "{errors.header}";
-
-    /** The key of the message: &lt;/ul&gt;&lt;/font&gt; */
-    public static final String ERRORS_FOOTER = "{errors.footer}";
-
-    /** The key of the message: &lt;li&gt; */
-    public static final String ERRORS_PREFIX = "{errors.prefix}";
-
-    /** The key of the message: &lt;/li&gt; */
-    public static final String ERRORS_SUFFIX = "{errors.suffix}";
-
     /** The key of the message: must be false */
     public static final String CONSTRAINTS_AssertFalse_MESSAGE = "{constraints.AssertFalse.message}";
 
@@ -182,63 +170,6 @@ public class FortressMessages extends FortressLabels {
 
     /** The key of the message: *[various parameter] sea:{1}, land:{showbase}, piari:{celeb}, bonvo:{00} */
     public static final String WHITEBOX_MESSAGE_VALUES_VARIOUS = "{whitebox.message.values.various}";
-
-    /**
-     * Add the created action message for the key 'errors.header' with parameters.
-     * <pre>
-     * message: &lt;font color="red"&gt;&lt;ul&gt;
-     * comment: ------------
-     * </pre>
-     * @param property The property name for the message. (NotNull)
-     * @return this. (NotNull)
-     */
-    public FortressMessages addErrorsHeader(String property) {
-        assertPropertyNotNull(property);
-        add(property, new UserMessage(ERRORS_HEADER));
-        return this;
-    }
-
-    /**
-     * Add the created action message for the key 'errors.footer' with parameters.
-     * <pre>
-     * message: &lt;/ul&gt;&lt;/font&gt;
-     * </pre>
-     * @param property The property name for the message. (NotNull)
-     * @return this. (NotNull)
-     */
-    public FortressMessages addErrorsFooter(String property) {
-        assertPropertyNotNull(property);
-        add(property, new UserMessage(ERRORS_FOOTER));
-        return this;
-    }
-
-    /**
-     * Add the created action message for the key 'errors.prefix' with parameters.
-     * <pre>
-     * message: &lt;li&gt;
-     * </pre>
-     * @param property The property name for the message. (NotNull)
-     * @return this. (NotNull)
-     */
-    public FortressMessages addErrorsPrefix(String property) {
-        assertPropertyNotNull(property);
-        add(property, new UserMessage(ERRORS_PREFIX));
-        return this;
-    }
-
-    /**
-     * Add the created action message for the key 'errors.suffix' with parameters.
-     * <pre>
-     * message: &lt;/li&gt;
-     * </pre>
-     * @param property The property name for the message. (NotNull)
-     * @return this. (NotNull)
-     */
-    public FortressMessages addErrorsSuffix(String property) {
-        assertPropertyNotNull(property);
-        add(property, new UserMessage(ERRORS_SUFFIX));
-        return this;
-    }
 
     /**
      * Add the created action message for the key 'constraints.AssertFalse.message' with parameters.

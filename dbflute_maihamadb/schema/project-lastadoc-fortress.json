@@ -976,7 +976,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -1299,7 +1299,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -1518,7 +1518,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -1550,7 +1550,7 @@
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -1706,7 +1706,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -1738,7 +1738,7 @@
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -1859,7 +1859,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -2098,7 +2098,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -2278,7 +2278,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -2447,7 +2447,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -2479,7 +2479,7 @@
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -2660,7 +2660,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -2692,7 +2692,7 @@
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -2898,7 +2898,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -3128,7 +3128,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -3248,7 +3248,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -3951,6 +3951,112 @@
       "methodLineCount": 5
     },
     {
+      "url": "/swagger/",
+      "typeName": "org.docksidestage.app.web.SwaggerAction",
+      "simpleTypeName": "SwaggerAction",
+      "description": "The action to show swaggar-ui.",
+      "typeComment": "The action to show swaggar-ui.\n\n@author awaawa\n@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "requestManager",
+          "typeName": "org.lastaflute.web.servlet.request.RequestManager",
+          "simpleTypeName": "RequestManager",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "config",
+          "typeName": "org.docksidestage.mylasta.direction.FortressConfig",
+          "simpleTypeName": "FortressConfig",
+          "value": null,
+          "description": "@author FreeGen",
+          "comment": "@author FreeGen",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "new SwaggerAgent(requestManager)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 30,
+      "methodLineCount": 5
+    },
+    {
+      "url": "/swagger/json",
+      "typeName": "org.docksidestage.app.web.SwaggerAction",
+      "simpleTypeName": "SwaggerAction",
+      "description": "The action to show swaggar-ui.",
+      "typeComment": "The action to show swaggar-ui.\n\n@author awaawa\n@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "requestManager",
+          "typeName": "org.lastaflute.web.servlet.request.RequestManager",
+          "simpleTypeName": "RequestManager",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "config",
+          "typeName": "org.docksidestage.mylasta.direction.FortressConfig",
+          "simpleTypeName": "FortressConfig",
+          "value": null,
+          "description": "@author FreeGen",
+          "comment": "@author FreeGen",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "json",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.Map\u003cjava.lang.String, java.lang.Object\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cMap\u003cString, Object\u003e\u003e",
+        "value": "asJson(new SwaggerGenerator()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 30,
+      "methodLineCount": 4
+    },
+    {
       "url": "/withdrawal/",
       "typeName": "org.docksidestage.app.web.withdrawal.WithdrawalAction",
       "simpleTypeName": "WithdrawalAction",
@@ -4077,7 +4183,7 @@
             "name": "selectedReason",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$WithdrawalReason",
             "simpleTypeName": "CDef.WithdrawalReason",
-            "value": "{OTH\u003dOTH, PRD\u003dPRD, FRT\u003dFRT, SIT\u003dSIT}",
+            "value": "{SIT\u003dSIT, PRD\u003dPRD, FRT\u003dFRT, OTH\u003dOTH}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -4173,7 +4279,7 @@
             "name": "selectedReason",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$WithdrawalReason",
             "simpleTypeName": "CDef.WithdrawalReason",
-            "value": "{OTH\u003dOTH, PRD\u003dPRD, FRT\u003dFRT, SIT\u003dSIT}",
+            "value": "{SIT\u003dSIT, PRD\u003dPRD, FRT\u003dFRT, OTH\u003dOTH}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -4639,6 +4745,56 @@
       "methodLineCount": 4
     },
     {
+      "url": "/wx/lastadoc/",
+      "typeName": "org.docksidestage.app.web.wx.lastadoc.WxLastadocAction",
+      "simpleTypeName": "WxLastadocAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "org.docksidestage.app.web.wx.lastadoc.WxLastadocForm",
+        "simpleTypeName": "WxLastadocForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "sea",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Pattern{regexp\u003dmystic\u003e\u003c@\"\u0027bigband}"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.String\u003e",
+        "simpleTypeName": "JsonResponse\u003cString\u003e",
+        "value": "JsonResponse.asJsonDirectly(\"{result: sent}\")",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 7,
+      "methodLineCount": 3
+    },
+    {
       "url": "/wx/mail/",
       "typeName": "org.docksidestage.app.web.wx.mail.WxMailAction",
       "simpleTypeName": "WxMailAction",
@@ -5098,7 +5254,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -5169,7 +5325,7 @@
             "name": "status",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": "DB cls",
             "comment": "DB cls",
             "annotationList": [
@@ -5181,7 +5337,7 @@
             "name": "sea",
             "typeName": "org.docksidestage.mylasta.namedcls.LeonardoCDef$DaSea",
             "simpleTypeName": "LeonardoCDef.DaSea",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": "named",
             "comment": "named",
             "annotationList": [
@@ -5216,7 +5372,7 @@
             "name": "status",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": "DB cls",
             "comment": "DB cls",
             "annotationList": [
@@ -5228,7 +5384,7 @@
             "name": "sea",
             "typeName": "org.docksidestage.mylasta.namedcls.LeonardoCDef$DaSea",
             "simpleTypeName": "LeonardoCDef.DaSea",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": "named",
             "comment": "named",
             "annotationList": [
@@ -5252,6 +5408,158 @@
       },
       "fileLineCount": 13,
       "methodLineCount": 7
+    },
+    {
+      "url": "/wx/remote/harbor/products",
+      "typeName": "org.docksidestage.app.web.wx.remote.WxRemoteHarborAction",
+      "simpleTypeName": "WxRemoteHarborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "products",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.harbor.base.RemoteSearchPagingRet\u003corg.docksidestage.remote.harbor.product.RemoteProductRowRet\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteSearchPagingRet\u003cRemoteProductRowRet\u003e\u003e",
+        "value": "asJson(ret)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "pageSize",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": "row count per one page",
+            "comment": "row count per one page",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "currentPageNumber",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": "number of current page",
+            "comment": "number of current page",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "allRecordCount",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": "count of all records",
+            "comment": "count of all records",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "allPageCount",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": "count of all pages",
+            "comment": "count of all pages",
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "rows",
+            "typeName": "java.util.List\u003corg.docksidestage.remote.harbor.product.RemoteProductRowRet\u003e",
+            "simpleTypeName": "List\u003cRemoteProductRowRet\u003e",
+            "value": null,
+            "description": "paging data for current page",
+            "comment": "paging data for current page",
+            "annotationList": [
+              "NotNull",
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "productId",
+                "typeName": "java.lang.Integer",
+                "simpleTypeName": "Integer",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "productName",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "productStatusName",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "regularPrice",
+                "typeName": "java.lang.Integer",
+                "simpleTypeName": "Integer",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          }
+        ]
+      },
+      "fileLineCount": 14,
+      "methodLineCount": 6
     },
     {
       "url": "/wx/request/form/eccolle",
@@ -5438,6 +5746,16 @@
           },
           {
             "name": "bonvo",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstore",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
@@ -5447,10 +5765,10 @@
             "nestTypeDocMetaList": []
           },
           {
-            "name": "dstore",
+            "name": "amba",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -5526,6 +5844,16 @@
           },
           {
             "name": "bonvo",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstore",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
@@ -5535,10 +5863,10 @@
             "nestTypeDocMetaList": []
           },
           {
-            "name": "dstore",
+            "name": "amba",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -5614,6 +5942,16 @@
           },
           {
             "name": "bonvo",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstore",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
@@ -5623,10 +5961,10 @@
             "nestTypeDocMetaList": []
           },
           {
-            "name": "dstore",
+            "name": "amba",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -10103,7 +10441,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -10322,7 +10660,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -10354,7 +10692,7 @@
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -10510,7 +10848,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -10542,7 +10880,7 @@
             "name": "previousStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -10663,7 +11001,7 @@
             "name": "memberStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -11410,7 +11748,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -11555,7 +11893,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -11674,7 +12012,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -11780,7 +12118,7 @@
             "name": "bonvoStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -12319,7 +12657,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -12425,7 +12763,7 @@
             "name": "bonvoStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -13081,7 +13419,7 @@
             "name": "productStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
-            "value": "{PST\u003dProductionStop, SST\u003dSaleStop, ONS\u003dOnSaleProduction}",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
             "description": null,
             "comment": null,
             "annotationList": [],
@@ -13187,7 +13525,7 @@
             "name": "bonvoStatus",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
-            "value": "{FML\u003dFormalized, PRV\u003dProvisional, WDL\u003dWithdrawal}",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
             "description": null,
             "comment": null,
             "annotationList": [
@@ -13471,6 +13809,273 @@
       },
       "fileLineCount": 1,
       "methodLineCount": 6
+    }
+  ],
+  "jobDocMetaList": [
+    {
+      "jobKey": "seaJob_1",
+      "jobUnique": "mystic",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.SeaJob",
+      "simpleTypeName": "SeaJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "stage",
+          "typeName": "org.lastaflute.db.jta.stage.TransactionStage",
+          "simpleTypeName": "TransactionStage",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "danceSongLogic",
+          "typeName": "org.docksidestage.app.logic.DanceSongLogic",
+          "simpleTypeName": "DanceSongLogic",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "comedyRhythmLogic",
+          "typeName": "org.docksidestage.app.logic.env.ComedyRhythmLogic",
+          "simpleTypeName": "ComedyRhythmLogic",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "itsMyPartyAssist",
+          "typeName": "org.docksidestage.app.job.ItsMyPartyAssist",
+          "simpleTypeName": "ItsMyPartyAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": null,
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "WAIT",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 63,
+      "methodLineCount": 15
+    },
+    {
+      "jobKey": "landJob_2",
+      "jobUnique": "oneman",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.LandJob",
+      "simpleTypeName": "LandJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "stage",
+          "typeName": "org.lastaflute.db.jta.stage.TransactionStage",
+          "simpleTypeName": "TransactionStage",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "danceSongLogic",
+          "typeName": "org.docksidestage.app.logic.DanceSongLogic",
+          "simpleTypeName": "DanceSongLogic",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "itsMyPartyAssist",
+          "typeName": "org.docksidestage.app.job.ItsMyPartyAssist",
+          "simpleTypeName": "ItsMyPartyAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": null,
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "QUIT",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 50,
+      "methodLineCount": 10
+    },
+    {
+      "jobKey": "piariJob_3",
+      "jobUnique": "piari",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.challenge.PiariJob",
+      "simpleTypeName": "PiariJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": {
+        "celebration": "plaza"
+      },
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "QUIT",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 34,
+      "methodLineCount": 26
+    },
+    {
+      "jobKey": "bonvoJob_4",
+      "jobUnique": "bonvo",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.challenge.BonvoJob",
+      "simpleTypeName": "BonvoJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "BOOOOOOOON",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": null,
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "ERROR",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 11,
+      "methodLineCount": 3
+    },
+    {
+      "jobKey": "dstoreJob_5",
+      "jobUnique": "dstore",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.challenge.DstoreJob",
+      "simpleTypeName": "DstoreJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": null,
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "ERROR",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 27,
+      "methodLineCount": 19
     }
   ]
 }
