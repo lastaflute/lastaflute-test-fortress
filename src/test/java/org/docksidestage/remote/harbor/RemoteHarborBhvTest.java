@@ -4,8 +4,8 @@ import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
-import org.docksidestage.remote.harbor.base.RemoteSearchPagingRet;
-import org.docksidestage.remote.harbor.product.RemoteProductRowRet;
+import org.docksidestage.remote.harbor.base.RemoteSearchPagingReturn;
+import org.docksidestage.remote.harbor.product.RemoteProductRowReturn;
 import org.docksidestage.remote.harbor.product.RemoteProductSearchParam;
 import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult;
@@ -39,7 +39,7 @@ public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
         inject(bhv);
 
         // ## Act ##
-        RemoteSearchPagingRet<RemoteProductRowRet> ret = bhv.requestProductList(param);
+        RemoteSearchPagingReturn<RemoteProductRowReturn> ret = bhv.requestProductList(param);
 
         // ## Assert ##
         assertEquals(4, ret.pageSize);

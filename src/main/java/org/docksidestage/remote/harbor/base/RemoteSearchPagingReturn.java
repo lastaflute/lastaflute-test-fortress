@@ -28,7 +28,7 @@ import org.lastaflute.web.validation.Required;
  * @param <BEAN> The type of row bean
  * @author jflute
  */
-public class RemoteSearchPagingRet<BEAN> {
+public class RemoteSearchPagingReturn<BEAN> {
 
     /** row count per one page */
     @Required
@@ -51,7 +51,7 @@ public class RemoteSearchPagingRet<BEAN> {
     @Valid
     public final List<BEAN> rows;
 
-    public RemoteSearchPagingRet(PagingResultBean<? extends Entity> page, List<BEAN> rows) {
+    public RemoteSearchPagingReturn(PagingResultBean<? extends Entity> page, List<BEAN> rows) {
         this.pageSize = page.getPageSize();
         this.currentPageNumber = page.getCurrentPageNumber();
         this.allRecordCount = page.getAllRecordCount();
