@@ -15,13 +15,17 @@
  */
 package org.docksidestage.app.web.wx.remote;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
 import org.docksidestage.remote.harbor.base.RemoteSearchPagingReturn;
+import org.docksidestage.remote.harbor.mypage.RemoteMypageProductReturn;
 import org.docksidestage.remote.harbor.product.RemoteProductRowReturn;
 import org.docksidestage.remote.harbor.product.RemoteProductSearchParam;
+import org.docksidestage.remote.harbor.signin.RemoteSigninParam;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -34,6 +38,23 @@ public class WxRemoteHarborAction extends FortressBaseAction {
 
     @Resource
     private RemoteHarborBhv harborBhv;
+
+    // http://localhost:8151/fortress/wx/remote/harbor/signin/sea
+    @Execute
+    public JsonResponse<Void> signin(String password) { // #simple_for_example
+        RemoteSigninParam param = new RemoteSigninParam();
+        param.account = "Pixy";
+        param.password = password;
+        harborBhv.requestSignin(param);
+        return JsonResponse.asEmptyBody();
+    }
+
+    // http://localhost:8151/fortress/wx/remote/harbor/mypage/
+    @Execute
+    public JsonResponse<List<RemoteMypageProductReturn>> mypage() {
+        List<RemoteMypageProductReturn> retList = harborBhv.requestMypage();
+        return asJson(retList);
+    }
 
     // http://localhost:8151/fortress/wx/remote/harbor/products/
     @Execute

@@ -1,0 +1,28 @@
+# /---------------------------------------------------------------------------
+# appcls: (NotRequired - Default map:{})
+#
+# The definition of application classification.
+#
+# Specification:
+# map: {
+#     [classification-name] = list:{
+#         ; map:{ topComment=[comment]; codeType=[String(default) or Number or Boolean] }
+#         ; map:{ refCls=[projectName]@[DB classification name] ; refType=[included or exists or matches] }
+#         ; map:{ code=[code]; name=[name]; alias=[alias]; comment=[comment] }
+#     }
+# }
+#
+# *The line that starts with '#' means comment-out.
+#
+map:{
+    ; MemberStatus = list:{
+        ; map:{
+            ; topComment=Harbor's Member Status
+            ; codeType=String
+        }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+        ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
+        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    }
+}
+# ----------------/

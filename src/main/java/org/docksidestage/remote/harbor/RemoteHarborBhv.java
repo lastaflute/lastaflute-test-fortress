@@ -1,11 +1,14 @@
 package org.docksidestage.remote.harbor;
 
+import java.util.List;
+
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy;
 import org.docksidestage.remote.harbor.base.RemoteSearchPagingReturn;
 import org.docksidestage.remote.harbor.mypage.RemoteMypageProductReturn;
 import org.docksidestage.remote.harbor.product.RemoteProductRowReturn;
 import org.docksidestage.remote.harbor.product.RemoteProductSearchParam;
+import org.docksidestage.remote.harbor.signin.RemoteSigninParam;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.remoteapi.LastaRemoteBehavior;
@@ -20,10 +23,16 @@ import org.lastaflute.web.servlet.request.RequestManager;
  */
 public class RemoteHarborBhv extends LastaRemoteBehavior {
 
+    // ===================================================================================
+    //                                                                         Constructor
+    //                                                                         ===========
     public RemoteHarborBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
+    // ===================================================================================
+    //                                                                          Initialize
+    //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
         rule.sendQueryBy(new LaQuerySender(new FlVacantRemoteMappingPolicy()));
@@ -40,8 +49,16 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
         return "http://localhost:8090/harbor";
     }
 
-    public RemoteMypageProductReturn requestMypage() {
-        return doRequestGet(RemoteMypageProductReturn.class, "/lido/mypage", noMoreUrl(), noQuery(), rule -> {});
+    // ===================================================================================
+    //                                                                             Execute
+    //                                                                             =======
+    public void requestSignin(RemoteSigninParam param) {
+        doRequestPost(void.class, "/lido/auth/signin", noMoreUrl(), param, rule -> {});
+    }
+
+    public List<RemoteMypageProductReturn> requestMypage() {
+        return doRequestGet(new ParameterizedRef<List<RemoteMypageProductReturn>>() {
+        }.getType(), "/lido/mypage", noMoreUrl(), noQuery(), rule -> {});
     }
 
     public RemoteSearchPagingReturn<RemoteProductRowReturn> requestProductList(RemoteProductSearchParam param) {
