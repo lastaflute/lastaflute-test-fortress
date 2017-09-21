@@ -23,7 +23,13 @@ import org.dbflute.jetty.JettyBoot;
 public class FortressJettyBoot { // #change_it_first
 
     public static void main(String[] args) { // e.g. java -Dlasta.env=production -jar fortress.war
-        new JettyBoot(8151, "/fortress").asDevelopment(isDevelopment()).bootAwait();
+        JettyBoot boot = new JettyBoot(8151, "/fortress");
+        boot.asDevelopment(isDevelopment());
+        // cannot use swagger in jetty for now,
+        // jetty searches only in WEB-INF/lib? not searches classpath resources?
+        // (and needs to remove metadata-complete="true")
+        //boot.useMetaInfoResourceDetect().useWebFragmentsDetect();
+        boot.bootAwait();
     }
 
     private static boolean isDevelopment() {
