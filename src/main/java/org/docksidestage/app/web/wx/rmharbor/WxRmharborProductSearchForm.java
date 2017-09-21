@@ -13,22 +13,21 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.harbor.product;
+package org.docksidestage.app.web.wx.rmharbor;
 
 import org.docksidestage.dbflute.allcommon.CDef;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class RemoteProductSearchParam {
+public class WxRmharborProductSearchForm {
 
-    // for remote server validation
-    //@Length(max = 10)
+    // only required here, length and others are validated by remote API
+    @Required
     public String productName;
 
     public CDef.ProductStatus productStatus;
 
-    // me, too
-    //@Length(max = 5)
     public String purchaseMemberName;
 }
