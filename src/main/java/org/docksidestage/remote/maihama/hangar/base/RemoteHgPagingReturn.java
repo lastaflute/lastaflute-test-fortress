@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.harbor.base;
+package org.docksidestage.remote.maihama.hangar.base;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ import org.lastaflute.web.validation.Required;
  * @param <BEAN> The type of row bean
  * @author jflute
  */
-public class RemotePagingReturn<BEAN> {
+public class RemoteHgPagingReturn<BEAN> {
 
     /** row count per one page */
     @Required
@@ -51,7 +51,7 @@ public class RemotePagingReturn<BEAN> {
     @Valid
     public final List<BEAN> rows;
 
-    public RemotePagingReturn(PagingResultBean<? extends Entity> page, List<BEAN> rows) {
+    public RemoteHgPagingReturn(PagingResultBean<? extends Entity> page, List<BEAN> rows) {
         this.pageSize = page.getPageSize();
         this.currentPageNumber = page.getCurrentPageNumber();
         this.allRecordCount = page.getAllRecordCount();

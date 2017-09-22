@@ -15,20 +15,26 @@
  */
 package org.docksidestage.remote.harbor.product;
 
-import org.docksidestage.dbflute.allcommon.CDef;
+import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
+ * @author s.tadokoro
  * @author jflute
  */
-public class RemoteProductSearchParam {
+public class RemoteHbProductRowReturn {
 
-    // for remote server validation
-    //@Length(max = 10)
+    @Required
+    public Integer productId;
+    @Required
     public String productName;
+    @Required
+    public String productStatusName;
+    @Required
+    public Integer regularPrice;
 
-    public CDef.ProductStatus productStatus;
-
-    // me, too
-    //@Length(max = 5)
-    public String purchaseMemberName;
+    @Override
+    public String toString() {
+        return Lato.string(this);
+    }
 }

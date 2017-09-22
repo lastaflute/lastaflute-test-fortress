@@ -6,7 +6,7 @@ import org.lastaflute.web.validation.Required;
  * @author s.tadokoro
  * @author jflute
  */
-public class RemoteSigninParam {
+public class RemoteHbSigninParam {
 
     @Required
     public String account;

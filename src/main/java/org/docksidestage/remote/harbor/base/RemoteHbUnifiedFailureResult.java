@@ -25,7 +25,7 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class RemoteUnifiedFailureResult {
+public class RemoteHbUnifiedFailureResult {
 
     @Required
     public final RemoteUnifiedFailureType cause;
@@ -57,7 +57,7 @@ public class RemoteUnifiedFailureResult {
         }
     }
 
-    public RemoteUnifiedFailureResult(RemoteUnifiedFailureType cause, List<RemoteFailureErrorPart> errors) {
+    public RemoteHbUnifiedFailureResult(RemoteUnifiedFailureType cause, List<RemoteFailureErrorPart> errors) {
         this.cause = cause;
         this.errors = errors;
     }

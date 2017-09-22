@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmharbor;
+package org.docksidestage.app.web.wx.rmhangar;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,11 +24,11 @@ import org.dbflute.cbean.result.PagingResultBean;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
 import org.docksidestage.dbflute.exentity.Product;
-import org.docksidestage.remote.harbor.RemoteHarborBhv;
-import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
-import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
+import org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv;
+import org.docksidestage.remote.maihama.hangar.base.RemoteHgPagingReturn;
+import org.docksidestage.remote.maihama.hangar.mypage.RemoteHgMypageReturn;
+import org.docksidestage.remote.maihama.hangar.product.RemoteHgProductRowReturn;
+import org.docksidestage.remote.maihama.hangar.product.RemoteHgProductSearchParam;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
@@ -38,10 +38,10 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRmharborAction extends FortressBaseAction {
+public class WxRmhangarAction extends FortressBaseAction {
 
     @Resource
-    private RemoteHarborBhv harborBhv;
+    private RemoteMaihamaHangarBhv hangarBhv;
     @Resource
     private PagingAssist pagingAssist;
 
@@ -51,11 +51,11 @@ public class WxRmharborAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                                Simple
     //                                                ------
-    // http://localhost:8151/fortress/wx/rmharbor/mypage/
+    // http://localhost:8151/fortress/wx/rmhangar/mypage/
     @Execute
-    public JsonResponse<List<RemoteHbMypageProductReturn>> mypage() {
-        List<RemoteHbMypageProductReturn> retList = harborBhv.requestMypage();
-        return asJson(retList);
+    public JsonResponse<RemoteHgMypageReturn> mypage() {
+        RemoteHgMypageReturn ret = hangarBhv.requestMypage();
+        return asJson(ret);
     }
 
     // -----------------------------------------------------
@@ -64,13 +64,13 @@ public class WxRmharborAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/rmharbor/translate/?productName=S
     // http://localhost:8151/fortress/wx/rmharbor/translate/?productName=SeaLandPiariBonvo
     @Execute
-    public HtmlResponse translate(WxRmharborProductSearchForm form) { // can translate validation error automatically
+    public HtmlResponse translate(WxRmhangarProductSearchForm form) { // can translate validation error automatically
         validate(form, messages -> {}, () -> {
             return asHtml(path_Product_ProductListHtml);
         });
-        RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = requestProductList(form);
+        RemoteHgPagingReturn<RemoteHgProductRowReturn> ret = requestProductList(form);
         PagingResultBean<Product> page = mappingToPage(ret);
-        List<WxRmharborProductSearchRowBean> beans = ret.rows.stream().map(row -> {
+        List<WxRmhangarProductSearchRowBean> beans = ret.rows.stream().map(row -> {
             return mappingToRowBean(row);
         }).collect(Collectors.toList());
         return asHtml(path_Product_ProductListHtml).renderWith(data -> {
@@ -79,23 +79,23 @@ public class WxRmharborAction extends FortressBaseAction {
         });
     }
 
-    private RemoteHbPagingReturn<RemoteHbProductRowReturn> requestProductList(WxRmharborProductSearchForm form) {
-        RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+    private RemoteHgPagingReturn<RemoteHgProductRowReturn> requestProductList(WxRmhangarProductSearchForm form) {
+        RemoteHgProductSearchParam param = new RemoteHgProductSearchParam();
         param.productName = form.productName;
-        return harborBhv.requestProductList(param);
+        return hangarBhv.requestProductList(param);
     }
 
-    private WxRmharborProductSearchRowBean mappingToRowBean(RemoteHbProductRowReturn row) {
-        WxRmharborProductSearchRowBean bean = new WxRmharborProductSearchRowBean();
+    private WxRmhangarProductSearchRowBean mappingToRowBean(RemoteHgProductRowReturn row) {
+        WxRmhangarProductSearchRowBean bean = new WxRmhangarProductSearchRowBean();
         bean.productId = row.productId;
         bean.productName = row.productName;
-        bean.productStatus = row.productStatusName;
+        bean.productStatus = row.productStatus;
         bean.productCategory = "unknown category";
         bean.regularPrice = row.regularPrice;
         return bean;
     }
 
-    private PagingResultBean<Product> mappingToPage(RemoteHbPagingReturn<RemoteHbProductRowReturn> ret) {
+    private PagingResultBean<Product> mappingToPage(RemoteHgPagingReturn<RemoteHgProductRowReturn> ret) {
         PagingResultBean<Product> page = new PagingResultBean<Product>(); // dummy generics
         page.setAllRecordCount(ret.allRecordCount);
         page.setCurrentPageNumber(ret.currentPageNumber);

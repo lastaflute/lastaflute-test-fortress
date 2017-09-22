@@ -1,7 +1,21 @@
+/*
+ * Copyright 2015-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.docksidestage.remote.maihama.hangar;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -10,12 +24,12 @@ import javax.annotation.Resource;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy;
 import org.dbflute.util.Srl;
-import org.docksidestage.remote.harbor.base.RemotePagingReturn;
-import org.docksidestage.remote.harbor.base.RemoteUnifiedFailureResult;
-import org.docksidestage.remote.harbor.mypage.RemoteMypageProductReturn;
-import org.docksidestage.remote.harbor.product.RemoteProductRowReturn;
-import org.docksidestage.remote.harbor.product.RemoteProductSearchParam;
-import org.docksidestage.remote.harbor.signin.RemoteSigninParam;
+import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
+import org.docksidestage.remote.maihama.hangar.base.RemoteHgPagingReturn;
+import org.docksidestage.remote.maihama.hangar.mypage.RemoteHgMypageReturn;
+import org.docksidestage.remote.maihama.hangar.product.RemoteHgProductRowReturn;
+import org.docksidestage.remote.maihama.hangar.product.RemoteHgProductSearchParam;
+import org.docksidestage.remote.maihama.hangar.signin.RemoteHgSigninParam;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.message.MessageManager;
 import org.lastaflute.core.message.UserMessage;
@@ -56,15 +70,14 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
         rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption));
         rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
 
-        rule.handleFailureResponseAs(RemoteUnifiedFailureResult.class); // server-managed message way
+        rule.handleFailureResponseAs(RemoteHbUnifiedFailureResult.class); // server-managed message way
         rule.translateClientError(resource -> {
             if (resource.getCause().getHttpStatus() == 400) { // controlled client error
                 FaicliUnifiedFailureResult result = (FaicliUnifiedFailureResult) resource.getCause().getFailureResponse().get();
                 if (FaicliUnifiedFailureType.VALIDATION_ERROR.equals(result.cause)) {
                     UserMessages messages = new UserMessages();
                     result.errors.forEach(error -> {
-                        String completeMessage = convertErrorToMessage(error);
-                        messages.add(error.field, UserMessage.asDirectMessage(completeMessage));
+                        messages.add(error.field, toUserMessage(error));
                     });
                     return resource.asHtmlValidationError(messages);
                 }
@@ -73,33 +86,31 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
         });
     }
 
-    private String convertErrorToMessage(FaicliFailureErrorPart error) {
-        String messageKey = "constraints." + error.code + ".messsage";
-        String plainMessage = messageManager.getMessage(Locale.ENGLISH, messageKey);
+    private UserMessage toUserMessage(FaicliFailureErrorPart error) {
+        String plainMessage = messageManager.getMessage(Locale.ENGLISH, "constraints." + error.code + ".messsage");
         Map<String, String> fromToMap = new HashMap<>();
         error.data.forEach((key, value) -> fromToMap.put("{" + key + "}", value.toString()));
-        return Srl.replaceBy(plainMessage, fromToMap);
+        return UserMessage.asDirectMessage(Srl.replaceBy(plainMessage, fromToMap));
     }
 
     @Override
     protected String getUrlBase() {
-        return "http://localhost:8090/harbor";
+        return "http://localhost:8092/hangar";
     }
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    public void requestSignin(RemoteSigninParam param) {
+    public void requestSignin(RemoteHgSigninParam param) {
         doRequestPost(void.class, "/auth/signin", noMoreUrl(), param, rule -> {});
     }
 
-    public List<RemoteMypageProductReturn> requestMypage() {
-        return doRequestGet(new ParameterizedRef<List<RemoteMypageProductReturn>>() {
-        }.getType(), "/mypage", noMoreUrl(), noQuery(), rule -> {});
+    public RemoteHgMypageReturn requestMypage() {
+        return doRequestGet(RemoteHgMypageReturn.class, "/mypage", noMoreUrl(), noQuery(), rule -> {});
     }
 
-    public RemotePagingReturn<RemoteProductRowReturn> requestProductList(RemoteProductSearchParam param) {
-        return doRequestPost(new ParameterizedRef<RemotePagingReturn<RemoteProductRowReturn>>() {
+    public RemoteHgPagingReturn<RemoteHgProductRowReturn> requestProductList(RemoteHgProductSearchParam param) {
+        return doRequestPost(new ParameterizedRef<RemoteHgPagingReturn<RemoteHgProductRowReturn>>() {
         }.getType(), "/product/list", moreUrl(1), param, rule -> {});
     }
 }
