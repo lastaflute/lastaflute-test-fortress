@@ -1,17 +1,19 @@
 package org.docksidestage.remote.harbor;
 
+import java.util.Iterator;
+
 import javax.annotation.Resource;
 
-import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.harbor.base.RemotePagingReturn;
 import org.docksidestage.remote.harbor.product.RemoteProductRowReturn;
 import org.docksidestage.remote.harbor.product.RemoteProductSearchParam;
 import org.docksidestage.unit.UnitFortressWebTestCase;
-import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult;
-import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult.FaicliFailureErrorPart;
-import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult.FaicliUnifiedFailureType;
+import org.lastaflute.core.magic.ThreadCacheContext;
+import org.lastaflute.core.message.UserMessage;
+import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.web.servlet.request.RequestManager;
+import org.lastaflute.web.validation.exception.ValidationErrorException;
 
 /**
  * @author jflute
@@ -21,6 +23,9 @@ public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
     @Resource
     private RequestManager requestManager;
 
+    // ===================================================================================
+    //                                                                     for Application
+    //                                                                     ===============
     // #later jflute Action test
     // #later jflute asJson(json)? asJsonAll(json)?
     public void test_requestProductList_basic() {
@@ -49,10 +54,13 @@ public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
         assertEquals(0, ret.rows.size());
     }
 
-    public void test_validationError_basic() {
+    // ===================================================================================
+    //                                                                       for Framework
+    //                                                                       =============
+    public void test_framework_validationError_basic() {
         // ## Arrange ##
         RemoteProductSearchParam param = new RemoteProductSearchParam();
-        String json = "{cause=VALIDATION_ERROR, errors : [{field=productName, code=LENGTH, data={min:0,max:10}}]}";
+        String json = "{cause=VALIDATION_ERROR, errors : [{field=productName, messages=[\"sea\"]}]}";
         MockHttpClient client = MockHttpClient.create(resopnse -> {
             resopnse.asJsonDirectly(json, request -> true).httpStatus(400);
         });
@@ -61,17 +69,22 @@ public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
         inject(bhv);
 
         // ## Act ##
-        assertException(RemoteApiHttpClientErrorException.class, () -> bhv.requestProductList(param)).handle(cause -> {
-            // ## Assert ##
-            FaicliUnifiedFailureResult result = (FaicliUnifiedFailureResult) cause.getFailureResponse().get();
-            log(result);
-            assertEquals(FaicliUnifiedFailureType.VALIDATION_ERROR, result.cause);
-            assertHasOnlyOneElement(result.errors);
-            FaicliFailureErrorPart errorPart = result.errors.get(0);
-            assertEquals("productName", errorPart.field);
-            assertEquals("LENGTH", errorPart.code);
-            assertEquals(0, toInteger(errorPart.data.get("min"))); // because it may be decimal type
-            assertEquals(10, toInteger(errorPart.data.get("max"))); // me too
+        // ## Assert ##
+        mockHtmlValidate();
+        assertException(ValidationErrorException.class, () -> bhv.requestProductList(param)).handle(cause -> {
+            UserMessages messages = cause.getMessages();
+            Iterator<UserMessage> ite = messages.silentAccessByIteratorOf("productName");
+            while (ite.hasNext()) {
+                UserMessage message = ite.next();
+                String messageKey = message.getMessageKey();
+                assertEquals("sea", messageKey);
+                markHere("exists");
+            }
+            assertMarked("exists");
         });
+    }
+
+    private void mockHtmlValidate() {
+        ThreadCacheContext.registerValidatorErrorHook(() -> null); // dummy
     }
 }
