@@ -7,8 +7,6 @@ import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
 import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
 import org.docksidestage.unit.UnitFortressWebTestCase;
-import org.lastaflute.core.magic.ThreadCacheContext;
-import org.lastaflute.web.response.ActionResponse;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -56,7 +54,7 @@ public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
     public void test_framework_validationError_basic() {
         // ## Arrange ##
         RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
-        String json = "{cause=VALIDATION_ERROR, errors : [{field=productName, messages=[\"sea\"]}]}";
+        String json = "{cause=VALIDATION_ERROR, errors : [{field=productName, messages=[\"sea land piari\"]}]}";
         MockHttpClient client = MockHttpClient.create(resopnse -> {
             resopnse.asJsonDirectly(json, request -> true).httpStatus(400);
         });
@@ -66,13 +64,10 @@ public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
 
         // ## Act ##
         // ## Assert ##
-        mockHtmlValidate();
+        mockHtmlValidateCall();
         assertValidationError(() -> bhv.requestProductList(param)).handle(data -> {
-            data.requiredMessageOf("productName", "sea");
+            assertTrue(data.requiredMessages().hasMessageOf("productName"));
+            data.requiredMessageOfDirectly("productName", "land");
         });
-    }
-
-    protected void mockHtmlValidate() {
-        ThreadCacheContext.registerValidatorErrorHook(() -> ActionResponse.undefined()); // dummy
     }
 }
