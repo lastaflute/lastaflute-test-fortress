@@ -4,4 +4,5 @@
 <components namespace="remote_api">
     <include path="lastaflute.xml"/>
     <component name="remoteHarborBhv" class="org.docksidestage.remote.harbor.RemoteHarborBhv"/>
+    <component name="remoteMaihamaHangarBhv" class="org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv"/>
 </components>
