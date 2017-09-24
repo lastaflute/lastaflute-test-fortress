@@ -43,19 +43,66 @@ public class ${class} {
 #end
 #if ($property.type == 'array')
 #if (${typeMap[$property.items.format]})
-#set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.format]}>")
+#set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.format]}>>")
 #elseif (${typeMap[$property.items.type]})
 #set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.type]}>")
 #else
-#set ($fieldClass = "${typeMap[$property.type]}<$property.items['$ref'].replace('#/definitions/', '')>")
+#set ($nestType = $property.items['$ref'].replace('#/definitions/', ''))
+#adjustType($property.items['$ref'].replace('#/definitions/', ''))
+#set ($fieldClass = "${typeMap[$property.type]}<$adjustType>")
 #end
 #elseif (${typeMap[$property.format]})
 #set ($fieldClass = ${typeMap[$property.format]})
 #elseif (${typeMap[$property.type]})
 #set ($fieldClass = ${typeMap[$property.type]})
 #else
-#set ($fieldClass = $property['$ref'].replace('#/definitions/', ''))
+#set ($nestType = $property['$ref'].replace('#/definitions/', ''))
+#adjustType($property['$ref'].replace('#/definitions/', ''))
+#set ($fieldClass = $adjustType)
 #end
     public ${fieldClass} ${fieldName};
+#if ($nestType && $nestType != '')
+
+#generateNestType($nestType)
+#end
+#set ($nestType = '')
 #end
 }
+#macro(generateNestType, $type)
+#adjustType($type)
+    public static class $adjustType {
+#foreach($nestPropertyEntry in $definitionMap[$type].properties.entrySet())
+#set ($nestFieldName = $nestPropertyEntry.key)
+#set ($nestProperty = $nestPropertyEntry.value)
+
+#if (${nestProperty.description})
+        /** ${nestProperty.description}. */
+#end
+#if (${nestProperty.required})
+        @Required
+#end
+#if ($nestProperty.type == 'array')
+#if (${typeMap[$nestProperty.items.format]})
+#set ($nestFieldClass = "${typeMap[$nestProperty.type]}<${typeMap[$nestProperty.items.format]}>>")
+#elseif (${typeMap[$nestProperty.items.type]})
+#set ($nestFieldClass = "${typeMap[$nestProperty.type]}<${typeMap[$nestProperty.items.type]}>")
+#else
+        public static class $adjustType {
+        }
+#adjustType($nestProperty.items['$ref'].replace('#/definitions/', ''))
+#set ($nestFieldClass = "${typeMap[$nestProperty.type]}<$adjustType>")
+#end
+#elseif (${typeMap[$nestProperty.format]})
+#set ($nestFieldClass = ${typeMap[$nestProperty.format]})
+#elseif (${typeMap[$nestProperty.type]})
+#set ($nestFieldClass = ${typeMap[$nestProperty.type]})
+#else
+#adjustType($nestProperty['$ref'].replace('#/definitions/', ''))
+        public static class $adjustType {
+        }
+#set ($nestFieldClass = $adjustType)
+#end
+        public ${nestFieldClass} ${nestFieldName};
+#end
+    }
+#end

@@ -24,7 +24,7 @@ map:{
             #; yourCollections = org.eclipse.collections.api.list.ImmutableList
             ; classNamePrefix = Remote
             # TODO p1us2er0 before implementation (2017/09/24)
-            #; requestPrefix = Body
+            #; requestSuffix = Body
             #; responseSuffix = Result
             #; targetContentType
         }

@@ -11,6 +11,12 @@
   "basePath": "/showbase/",
   "tags": [
     {
+      "name": "following"
+    },
+    {
+      "name": "member"
+    },
+    {
       "name": "mypage"
     },
     {
@@ -18,6 +24,12 @@
     },
     {
       "name": "products"
+    },
+    {
+      "name": "profile"
+    },
+    {
+      "name": "purchase"
     },
     {
       "name": "root"
@@ -32,10 +44,313 @@
       "name": "swagger"
     },
     {
+      "name": "withdrawal"
+    },
+    {
       "name": "wx"
     }
   ],
   "paths": {
+    "/following/follow": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "FollowingBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.following.FollowingBody"
+            }
+          }
+        ],
+        "tags": [
+          "following"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.lang.Void"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/member/info": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "parameters": [],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.member.MemberInfoResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/member/status": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "parameters": [],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/member/add/register": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "MemberAddBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.member.MemberAddBody"
+            }
+          }
+        ],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.dbflute.exentity.Member"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/member/edit/{memberId}": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "parameters": [
+          {
+            "name": "memberId",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "in": "path"
+          }
+        ],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.member.MemberEditBody"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/member/edit/update": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "MemberEditBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.member.MemberEditBody"
+            }
+          }
+        ],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.lang.Void"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/member/list/{pageNumber}": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "required": false,
+            "type": "string",
+            "in": "path"
+          },
+          {
+            "name": "MemberSearchBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.member.MemberSearchBody"
+            }
+          }
+        ],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.MemberSearchRowResult\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/member/purchase/list/{memberId}/{pageNumber}": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "memberId",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "in": "path"
+          },
+          {
+            "name": "pageNumber",
+            "required": false,
+            "type": "string",
+            "in": "path"
+          }
+        ],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/member/purchase/list/delete/{purchaseId}": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "purchaseId",
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "in": "path"
+          }
+        ],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.lang.Void"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
     "/mypage/": {
       "get": {
         "summary": "@author jflute",
@@ -189,6 +504,102 @@
             "description": "success",
             "schema": {
               "$ref": "#/definitions/?"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/profile/": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "profile"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.profile.ProfileResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/purchase/count": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "PurchaseProductBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.purchase.PurchaseProductBody"
+            }
+          }
+        ],
+        "tags": [
+          "purchase"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.purchase.PurchasePriceResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/purchase/contract": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "PurchaseProductBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.purchase.PurchaseProductBody"
+            }
+          }
+        ],
+        "tags": [
+          "purchase"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.purchase.PurchasePriceResult"
             }
           },
           "400": {
@@ -381,7 +792,67 @@
         ]
       }
     },
-    "/wx/faihy/": {
+    "/withdrawal/reason": {
+      "post": {
+        "summary": "@author black-trooper",
+        "description": "@author black-trooper",
+        "parameters": [],
+        "tags": [
+          "withdrawal"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/withdrawal/done": {
+      "post": {
+        "summary": "@author black-trooper",
+        "description": "@author black-trooper",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "WithdrawalBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.withdrawal.WithdrawalBody"
+            }
+          }
+        ],
+        "tags": [
+          "withdrawal"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.lang.Integer"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/faicli/": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -417,7 +888,7 @@
         ]
       }
     },
-    "/wx/faihy/unknown": {
+    "/wx/faicli/unknown": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -441,7 +912,7 @@
         ]
       }
     },
-    "/wx/faihy/entity/{account}": {
+    "/wx/faicli/entity/{account}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -474,7 +945,389 @@
     }
   },
   "definitions": {
-    "org.docksidestage.app.web.mypage.MypageResult": {
+    "org.docksidestage.app.web.following.FollowingBody": {
+      "type": "object",
+      "properties": {
+        "yourMemberId": {
+          "name": "yourMemberId",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "java.lang.Void": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.member.MemberInfoResult": {
+      "type": "object",
+      "properties": {
+        "memberId": {
+          "name": "memberId",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        },
+        "memberName": {
+          "name": "memberName",
+          "required": true,
+          "type": "string"
+        },
+        "memberStatusName": {
+          "name": "memberStatusName",
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.member.MemberAddBody": {
+      "type": "object",
+      "properties": {
+        "memberName": {
+          "name": "memberName",
+          "required": true,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 100
+        },
+        "memberAccount": {
+          "name": "memberAccount",
+          "required": true,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 50
+        },
+        "birthdate": {
+          "name": "birthdate",
+          "required": false,
+          "type": "string",
+          "format": "date",
+          "default": "2017-09-24"
+        },
+        "memberStatus": {
+          "name": "memberStatus",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "FML",
+            "WDL",
+            "PRV"
+          ],
+          "default": "FML"
+        }
+      }
+    },
+    "org.docksidestage.dbflute.exentity.Member": {
+      "type": "object",
+      "properties": {
+        "_purchaseCount": {
+          "name": "_purchaseCount",
+          "description": "PURCHASE_COUNT: (Derived Referrer)",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        },
+        "_latestLoginDatetime": {
+          "name": "_latestLoginDatetime",
+          "description": "LATEST_LOGIN_DATETIME: (Derived Referrer)",
+          "required": false,
+          "type": "string",
+          "format": "date-time",
+          "default": "2017-09-24T00:00:00.000"
+        },
+        "_memberId": {
+          "name": "_memberId",
+          "description": "(会員ID)MEMBER_ID: {PK, ID, NotNull, INT(10), FK to MEMBER_ADDRESS}",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        },
+        "_memberName": {
+          "name": "_memberName",
+          "description": "(会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(100)}",
+          "required": false,
+          "type": "string"
+        },
+        "_memberAccount": {
+          "name": "_memberAccount",
+          "description": "(会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}",
+          "required": false,
+          "type": "string"
+        },
+        "_memberStatusCode": {
+          "name": "_memberStatusCode",
+          "description": "(会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to member_status, classification\u003dMemberStatus}",
+          "required": false,
+          "type": "string"
+        },
+        "_formalizedDatetime": {
+          "name": "_formalizedDatetime",
+          "description": "(正式会員日時)FORMALIZED_DATETIME: {IX, DATETIME(19)}",
+          "required": false,
+          "type": "string",
+          "format": "date-time",
+          "default": "2017-09-24T00:00:00.000"
+        },
+        "_birthdate": {
+          "name": "_birthdate",
+          "description": "(生年月日)BIRTHDATE: {DATE(10)}",
+          "required": false,
+          "type": "string",
+          "format": "date",
+          "default": "2017-09-24"
+        },
+        "_registerDatetime": {
+          "name": "_registerDatetime",
+          "description": "(登録日時)REGISTER_DATETIME: {NotNull, DATETIME(19)}",
+          "required": false,
+          "type": "string",
+          "format": "date-time",
+          "default": "2017-09-24T00:00:00.000"
+        },
+        "_registerUser": {
+          "name": "_registerUser",
+          "description": "(登録ユーザー)REGISTER_USER: {NotNull, VARCHAR(200)}",
+          "required": false,
+          "type": "string"
+        },
+        "_updateDatetime": {
+          "name": "_updateDatetime",
+          "description": "(更新日時)UPDATE_DATETIME: {NotNull, DATETIME(19)}",
+          "required": false,
+          "type": "string",
+          "format": "date-time",
+          "default": "2017-09-24T00:00:00.000"
+        },
+        "_updateUser": {
+          "name": "_updateUser",
+          "description": "(更新ユーザー)UPDATE_USER: {NotNull, VARCHAR(200)}",
+          "required": false,
+          "type": "string"
+        },
+        "_versionNo": {
+          "name": "_versionNo",
+          "description": "(バージョン番号)VERSION_NO: {NotNull, BIGINT(19)}",
+          "required": false,
+          "type": "integer",
+          "format": "int64"
+        },
+        "_memberStatus": {
+          "name": "_memberStatus",
+          "description": "(会員ステータス)MEMBER_STATUS by my MEMBER_STATUS_CODE, named \u0027memberStatus\u0027",
+          "required": false,
+          "type": "string"
+        },
+        "_memberAddressAsValid": {
+          "name": "_memberAddressAsValid",
+          "description": "(会員住所情報)MEMBER_ADDRESS by my MEMBER_ID, named \u0027memberAddressAsValid\u0027",
+          "required": false,
+          "type": "string"
+        },
+        "_memberLoginAsLatest": {
+          "name": "_memberLoginAsLatest",
+          "description": "(会員ログイン)MEMBER_LOGIN by my MEMBER_ID, named \u0027memberLoginAsLatest\u0027",
+          "required": false,
+          "type": "string"
+        },
+        "_memberSecurityAsOne": {
+          "name": "_memberSecurityAsOne",
+          "description": "(会員セキュリティ)member_security by MEMBER_ID, named \u0027memberSecurityAsOne\u0027",
+          "required": false,
+          "type": "string"
+        },
+        "_memberServiceAsOne": {
+          "name": "_memberServiceAsOne",
+          "description": "(会員サービス)member_service by MEMBER_ID, named \u0027memberServiceAsOne\u0027",
+          "required": false,
+          "type": "string"
+        },
+        "_memberWithdrawalAsOne": {
+          "name": "_memberWithdrawalAsOne",
+          "description": "(会員退会情報)member_withdrawal by MEMBER_ID, named \u0027memberWithdrawalAsOne\u0027",
+          "required": false,
+          "type": "string"
+        },
+        "_memberAddressList": {
+          "name": "_memberAddressList",
+          "description": "(会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named \u0027memberAddressList\u0027",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_memberFollowingByMyMemberIdList": {
+          "name": "_memberFollowingByMyMemberIdList",
+          "description": "(会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named \u0027memberFollowingByMyMemberIdList\u0027",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_memberFollowingByYourMemberIdList": {
+          "name": "_memberFollowingByYourMemberIdList",
+          "description": "(会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named \u0027memberFollowingByYourMemberIdList\u0027",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_memberLoginList": {
+          "name": "_memberLoginList",
+          "description": "(会員ログイン)MEMBER_LOGIN by MEMBER_ID, named \u0027memberLoginList\u0027",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "_purchaseList": {
+          "name": "_purchaseList",
+          "description": "(購入)PURCHASE by MEMBER_ID, named \u0027purchaseList\u0027",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "__uniqueDrivenProperties": {
+          "name": "__uniqueDrivenProperties",
+          "required": false,
+          "type": "string"
+        },
+        "__modifiedProperties": {
+          "name": "__modifiedProperties",
+          "required": false,
+          "type": "string"
+        },
+        "__specifiedProperties": {
+          "name": "__specifiedProperties",
+          "required": false,
+          "type": "string"
+        },
+        "__derivedMap": {
+          "name": "__derivedMap",
+          "required": false,
+          "type": "string"
+        },
+        "_undefinedClassificationSelectAllowed": {
+          "name": "_undefinedClassificationSelectAllowed",
+          "required": false,
+          "type": "string"
+        },
+        "__createdBySelect": {
+          "name": "__createdBySelect",
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.member.MemberEditBody": {
+      "type": "object",
+      "properties": {
+        "memberId": {
+          "name": "memberId",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "memberName": {
+          "name": "memberName",
+          "required": true,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 100
+        },
+        "memberAccount": {
+          "name": "memberAccount",
+          "required": true,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 50
+        },
+        "memberStatus": {
+          "name": "memberStatus",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "FML",
+            "WDL",
+            "PRV"
+          ],
+          "default": "FML"
+        },
+        "birthdate": {
+          "name": "birthdate",
+          "required": false,
+          "type": "string",
+          "format": "date",
+          "default": "2017-09-24"
+        },
+        "versionNo": {
+          "name": "versionNo",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "org.docksidestage.app.web.member.MemberSearchBody": {
+      "type": "object",
+      "properties": {
+        "memberName": {
+          "name": "memberName",
+          "required": false,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5
+        },
+        "memberStatus": {
+          "name": "memberStatus",
+          "required": false,
+          "type": "string",
+          "enum": [
+            "FML",
+            "WDL",
+            "PRV"
+          ],
+          "default": "FML"
+        },
+        "purchaseProductName": {
+          "name": "purchaseProductName",
+          "required": false,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 10
+        },
+        "unpaid": {
+          "name": "unpaid",
+          "required": false,
+          "type": "string"
+        },
+        "formalizedFrom": {
+          "name": "formalizedFrom",
+          "required": false,
+          "type": "string",
+          "format": "date",
+          "default": "2017-09-24"
+        },
+        "formalizedTo": {
+          "name": "formalizedTo",
+          "required": false,
+          "type": "string",
+          "format": "date",
+          "default": "2017-09-24"
+        }
+      }
+    },
+    "org.docksidestage.app.web.member.MemberSearchRowResult": {
       "type": "object",
       "properties": {
         "memberId": {
@@ -488,25 +1341,196 @@
           "required": true,
           "type": "string"
         },
-        "memberStatus": {
-          "name": "memberStatus",
+        "memberStatusName": {
+          "name": "memberStatusName",
           "required": true,
           "type": "string"
         },
-        "serviceRank": {
-          "name": "serviceRank",
-          "required": true,
-          "type": "string"
-        },
-        "cipheredPassword": {
-          "name": "cipheredPassword",
-          "required": true,
-          "type": "string"
-        },
-        "memberAddress": {
-          "name": "memberAddress",
+        "formalizedDate": {
+          "name": "formalizedDate",
           "required": false,
+          "type": "string",
+          "format": "date",
+          "default": "2017-09-24"
+        },
+        "updateDatetime": {
+          "name": "updateDatetime",
+          "required": true,
+          "type": "string",
+          "format": "date-time",
+          "default": "2017-09-24T00:00:00.000"
+        },
+        "withdrawalMember": {
+          "name": "withdrawalMember",
+          "required": true,
+          "type": "boolean"
+        },
+        "purchaseCount": {
+          "name": "purchaseCount",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.MemberSearchRowResult\u003e": {
+      "type": "object",
+      "properties": {
+        "pageSize": {
+          "name": "pageSize",
+          "description": "row count per one page",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "currentPageNumber": {
+          "name": "currentPageNumber",
+          "description": "number of current page",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "allRecordCount": {
+          "name": "allRecordCount",
+          "description": "count of all records",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "allPageCount": {
+          "name": "allPageCount",
+          "description": "count of all pages",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "rows": {
+          "name": "rows",
+          "description": "paging data for current page",
+          "required": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.member.MemberSearchRowResult"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult": {
+      "type": "object",
+      "properties": {
+        "purchaseId": {
+          "name": "purchaseId",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        },
+        "purchaseDatetime": {
+          "name": "purchaseDatetime",
+          "required": true,
+          "type": "string",
+          "format": "date-time",
+          "default": "2017-09-24T00:00:00.000"
+        },
+        "productName": {
+          "name": "productName",
+          "required": true,
           "type": "string"
+        },
+        "purchasePrice": {
+          "name": "purchasePrice",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "purchaseCount": {
+          "name": "purchaseCount",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentComplete": {
+          "name": "paymentComplete",
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult\u003e": {
+      "type": "object",
+      "properties": {
+        "pageSize": {
+          "name": "pageSize",
+          "description": "row count per one page",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "currentPageNumber": {
+          "name": "currentPageNumber",
+          "description": "number of current page",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "allRecordCount": {
+          "name": "allRecordCount",
+          "description": "count of all records",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "allPageCount": {
+          "name": "allPageCount",
+          "description": "count of all pages",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "rows": {
+          "name": "rows",
+          "description": "paging data for current page",
+          "required": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.mypage.MypageResult$ProductPart": {
+      "type": "object",
+      "properties": {
+        "productName": {
+          "name": "productName",
+          "required": true,
+          "type": "string"
+        },
+        "regularPrice": {
+          "name": "regularPrice",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "org.docksidestage.app.web.mypage.MypageResult": {
+      "type": "object",
+      "properties": {
+        "recentProducts": {
+          "name": "recentProducts",
+          "required": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.mypage.MypageResult$ProductPart"
+          }
+        },
+        "highPriceProducts": {
+          "name": "highPriceProducts",
+          "required": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.mypage.MypageResult$ProductPart"
+          }
         }
       }
     },
@@ -653,10 +1677,6 @@
         }
       }
     },
-    "java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e": {
-      "type": "object",
-      "properties": {}
-    },
     "org.docksidestage.app.web.products.ProductsSearchBody": {
       "type": "object",
       "properties": {
@@ -696,6 +1716,97 @@
     "?": {
       "type": "object",
       "properties": {}
+    },
+    "org.docksidestage.app.web.profile.ProfileResult$PurchasedProductPart": {
+      "type": "object",
+      "properties": {
+        "productName": {
+          "name": "productName",
+          "required": true,
+          "type": "string"
+        },
+        "regularPrice": {
+          "name": "regularPrice",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "purchaseDateTime": {
+          "name": "purchaseDateTime",
+          "required": true,
+          "type": "string",
+          "format": "date-time",
+          "default": "2017-09-24T00:00:00.000"
+        }
+      }
+    },
+    "org.docksidestage.app.web.profile.ProfileResult": {
+      "type": "object",
+      "properties": {
+        "memberId": {
+          "name": "memberId",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "memberName": {
+          "name": "memberName",
+          "required": true,
+          "type": "string"
+        },
+        "memberStatusName": {
+          "name": "memberStatusName",
+          "required": true,
+          "type": "string"
+        },
+        "servicePointCount": {
+          "name": "servicePointCount",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "serviceRankName": {
+          "name": "serviceRankName",
+          "required": true,
+          "type": "string"
+        },
+        "purchaseList": {
+          "name": "purchaseList",
+          "required": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.profile.ProfileResult$PurchasedProductPart"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.purchase.PurchaseProductBody": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "name": "productId",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "purchaseCount": {
+          "name": "purchaseCount",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "org.docksidestage.app.web.purchase.PurchasePriceResult": {
+      "type": "object",
+      "properties": {
+        "price": {
+          "name": "price",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
     },
     "org.lastaflute.web.response.HtmlResponse": {
       "type": "object",
@@ -756,11 +1867,35 @@
         }
       }
     },
-    "java.lang.Void": {
+    "java.util.Map\u003cjava.lang.String, java.lang.Object\u003e": {
       "type": "object",
       "properties": {}
     },
-    "java.util.Map\u003cjava.lang.String, java.lang.Object\u003e": {
+    "org.docksidestage.app.web.withdrawal.WithdrawalBody": {
+      "type": "object",
+      "properties": {
+        "selectedReason": {
+          "name": "selectedReason",
+          "required": false,
+          "type": "string",
+          "enum": [
+            "SIT",
+            "PRD",
+            "FRT",
+            "OTH"
+          ],
+          "default": "SIT"
+        },
+        "reasonInput": {
+          "name": "reasonInput",
+          "required": false,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 30
+        }
+      }
+    },
+    "java.lang.Integer": {
       "type": "object",
       "properties": {}
     }

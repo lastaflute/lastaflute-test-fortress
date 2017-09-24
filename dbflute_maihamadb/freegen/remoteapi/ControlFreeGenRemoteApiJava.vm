@@ -30,7 +30,7 @@ $manager.makeDirectory($request.generateDirPath)
       #if ($swaggerJsonEntry.key == 'definitions')
         #set ($definitionMap = $swaggerJsonEntry.value)
         #foreach($definition in $definitionMap.entrySet())
-          #set ($scheme = $request.requestName.replace($resourceTypeRemoteApi, '').toLowerCase())
+          #set ($scheme = $manager.decamelize($request.requestName.replace($resourceTypeRemoteApi, '')).replaceAll('_', '.').toLowerCase())
           #set ($class = ${definition.key})
           #if ($class.matches($tableMap.targetDefinitionRegex))
             #set ($class = ${definition.key.replaceAll($tableMap.removeKeyword, '')})
@@ -86,4 +86,18 @@ $manager.makeDirectory($request.generateDirPath)
   #if ($tableMap.yourCollections)
     $typeMap.put('array', $tableMap.yourCollections)
   #end
+#end
+
+#macro(adjustType, $type)
+#set ($adjustType = ${type.replaceAll($tableMap.removeKeyword, '')})
+#set ($index = ${adjustType.lastIndexOf('.')})
+#if ($index != -1)
+  #set ($subPackage = "${scheme}${adjustType.substring(0, $index)}")
+  #set ($index = $index + 1)
+  #set ($adjustType = ${adjustType.substring($index)})
+#else
+  #set ($subPackage = "${scheme}")
+#end
+#set ($adjustType = "$!{tableMap.classNamePrefix}${adjustType}")
+#set ($adjustType = $adjustType.replaceAll("^${class}\$", ''))
 #end
