@@ -1,0 +1,768 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "showbase",
+    "description": "showbase",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/showbase/",
+  "tags": [
+    {
+      "name": "mypage"
+    },
+    {
+      "name": "product"
+    },
+    {
+      "name": "products"
+    },
+    {
+      "name": "root"
+    },
+    {
+      "name": "signin"
+    },
+    {
+      "name": "signup"
+    },
+    {
+      "name": "swagger"
+    },
+    {
+      "name": "wx"
+    }
+  ],
+  "paths": {
+    "/mypage/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "mypage"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.mypage.MypageResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/product/detail/{productId}": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "parameters": [
+          {
+            "name": "productId",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "in": "path"
+          }
+        ],
+        "tags": [
+          "product"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.product.ProductDetailResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/product/list/search/{pageNumber}": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "required": false,
+            "type": "string",
+            "in": "path"
+          },
+          {
+            "name": "ProductSearchBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.product.ProductSearchBody"
+            }
+          }
+        ],
+        "tags": [
+          "product"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.product.ProductRowResult\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/product/list/status": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "parameters": [],
+        "tags": [
+          "product"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/products/{productId}": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "required": false,
+            "type": "string",
+            "in": "path"
+          },
+          {
+            "name": "ProductsSearchBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.products.ProductsSearchBody"
+            }
+          }
+        ],
+        "tags": [
+          "products"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/?"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/root/": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "root"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.lastaflute.web.response.HtmlResponse"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "text/html"
+        ]
+      }
+    },
+    "/signin/": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SigninBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.signin.SigninBody"
+            }
+          }
+        ],
+        "tags": [
+          "signin"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.signin.SigninResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/signup/": {
+      "post": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SignupBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.signup.SignupBody"
+            }
+          }
+        ],
+        "tags": [
+          "signup"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.lang.Void"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/signup/register/{account}/{token}": {
+      "get": {
+        "summary": "@author iwamatsu0430",
+        "description": "@author iwamatsu0430",
+        "parameters": [
+          {
+            "name": "account",
+            "required": true,
+            "type": "string",
+            "in": "path"
+          },
+          {
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "in": "path"
+          }
+        ],
+        "tags": [
+          "signup"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.lang.Void"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/swagger/": {
+      "post": {
+        "summary": "The action to show swaggar-ui.",
+        "description": "The action to show swaggar-ui.",
+        "parameters": [],
+        "tags": [
+          "swagger"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.lastaflute.web.response.HtmlResponse"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "text/html"
+        ]
+      }
+    },
+    "/swagger/json": {
+      "post": {
+        "summary": "The action to show swaggar-ui.",
+        "description": "The action to show swaggar-ui.",
+        "parameters": [],
+        "tags": [
+          "swagger"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.util.Map\u003cjava.lang.String, java.lang.Object\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/faihy/": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "text/plain;charset\u003dutf-8"
+        ],
+        "parameters": [
+          {
+            "name": "sea",
+            "required": true,
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 5,
+            "in": "formData"
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.util.Map\u003cjava.lang.String, java.lang.Object\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/faihy/unknown": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.lang.Void"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/faihy/entity/{account}": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "account",
+            "required": true,
+            "type": "string",
+            "in": "path"
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/java.lang.Void"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "org.docksidestage.app.web.mypage.MypageResult": {
+      "type": "object",
+      "properties": {
+        "memberId": {
+          "name": "memberId",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "memberName": {
+          "name": "memberName",
+          "required": true,
+          "type": "string"
+        },
+        "memberStatus": {
+          "name": "memberStatus",
+          "required": true,
+          "type": "string"
+        },
+        "serviceRank": {
+          "name": "serviceRank",
+          "required": true,
+          "type": "string"
+        },
+        "cipheredPassword": {
+          "name": "cipheredPassword",
+          "required": true,
+          "type": "string"
+        },
+        "memberAddress": {
+          "name": "memberAddress",
+          "required": false,
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.product.ProductDetailResult": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "name": "productId",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "productName": {
+          "name": "productName",
+          "required": true,
+          "type": "string"
+        },
+        "categoryName": {
+          "name": "categoryName",
+          "required": true,
+          "type": "string"
+        },
+        "regularPrice": {
+          "name": "regularPrice",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "productHandleCode": {
+          "name": "productHandleCode",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.product.ProductSearchBody": {
+      "type": "object",
+      "properties": {
+        "productName": {
+          "name": "productName",
+          "required": false,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 10
+        },
+        "productStatus": {
+          "name": "productStatus",
+          "required": false,
+          "type": "string",
+          "enum": [
+            "ONS",
+            "PST",
+            "SST"
+          ],
+          "default": "ONS"
+        },
+        "purchaseMemberName": {
+          "name": "purchaseMemberName",
+          "required": false,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5
+        }
+      }
+    },
+    "org.docksidestage.app.web.product.ProductRowResult": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "name": "productId",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "productName": {
+          "name": "productName",
+          "required": true,
+          "type": "string"
+        },
+        "productStatus": {
+          "name": "productStatus",
+          "required": true,
+          "type": "string"
+        },
+        "productCategory": {
+          "name": "productCategory",
+          "required": true,
+          "type": "string"
+        },
+        "regularPrice": {
+          "name": "regularPrice",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "latestPurchaseDate": {
+          "name": "latestPurchaseDate",
+          "required": false,
+          "type": "string",
+          "format": "date",
+          "default": "2017-09-24"
+        }
+      }
+    },
+    "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.product.ProductRowResult\u003e": {
+      "type": "object",
+      "properties": {
+        "pageSize": {
+          "name": "pageSize",
+          "description": "row count per one page",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "currentPageNumber": {
+          "name": "currentPageNumber",
+          "description": "number of current page",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "allRecordCount": {
+          "name": "allRecordCount",
+          "description": "count of all records",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "allPageCount": {
+          "name": "allPageCount",
+          "description": "count of all pages",
+          "required": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "rows": {
+          "name": "rows",
+          "description": "paging data for current page",
+          "required": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.product.ProductRowResult"
+          }
+        }
+      }
+    },
+    "java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.products.ProductsSearchBody": {
+      "type": "object",
+      "properties": {
+        "productName": {
+          "name": "productName",
+          "required": false,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 10
+        },
+        "productStatus": {
+          "name": "productStatus",
+          "required": false,
+          "type": "string",
+          "enum": [
+            "ONS",
+            "PST",
+            "SST"
+          ],
+          "default": "ONS"
+        },
+        "purchaseMemberName": {
+          "name": "purchaseMemberName",
+          "required": false,
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5
+        },
+        "pageNumber": {
+          "name": "pageNumber",
+          "required": false,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "?": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.lastaflute.web.response.HtmlResponse": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.signin.SigninBody": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "name": "account",
+          "required": true,
+          "type": "string"
+        },
+        "password": {
+          "name": "password",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.signin.SigninResult": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "name": "token",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.signup.SignupBody": {
+      "type": "object",
+      "properties": {
+        "memberName": {
+          "name": "memberName",
+          "required": true,
+          "type": "string"
+        },
+        "memberAccount": {
+          "name": "memberAccount",
+          "required": true,
+          "type": "string"
+        },
+        "password": {
+          "name": "password",
+          "required": true,
+          "type": "string"
+        },
+        "reminderQuestion": {
+          "name": "reminderQuestion",
+          "required": true,
+          "type": "string"
+        },
+        "reminderAnswer": {
+          "name": "reminderAnswer",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "java.lang.Void": {
+      "type": "object",
+      "properties": {}
+    },
+    "java.util.Map\u003cjava.lang.String, java.lang.Object\u003e": {
+      "type": "object",
+      "properties": {}
+    }
+  }
+}

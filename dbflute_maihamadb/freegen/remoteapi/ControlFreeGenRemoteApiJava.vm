@@ -1,0 +1,89 @@
+##
+## Copyright 2014-2016 the original author or authors.
+##
+## Licensed under the Apache License, Version 2.0 (the "License");
+## you may not use this file except in compliance with the License.
+## You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing, software
+## distributed under the License is distributed on an "AS IS" BASIS,
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+## either express or implied. See the License for the specific language
+## governing permissions and limitations under the License.
+##
+$manager.info("requestList: ${requestList.size()}")
+
+#foreach ($request in $requestList)
+#set ($tableMap = $request.tableMap)
+$request.enableOutputDirectory()
+$manager.makeDirectory($request.generateDirPath)
+
+#if ($request.isResourceTypeJsonSchema())
+  #set ($resourceTypeRemoteApi = "RemoteApi")
+  #if ($request.requestName.startsWith($resourceTypeRemoteApi))
+    #set ($jsonFreeAgent = $request.getClass().forName("org.dbflute.logic.manage.freegen.table.json.DfJsonFreeAgent").newInstance())
+    #set ($swaggerJsonMap = $jsonFreeAgent.decodeJsonMap($request.resourceName, $tableMap.swaggerJsonPath))
+
+    #foreach($swaggerJsonEntry in $swaggerJsonMap.entrySet())
+      #if ($swaggerJsonEntry.key == 'definitions')
+        #set ($definitionMap = $swaggerJsonEntry.value)
+        #foreach($definition in $definitionMap.entrySet())
+          #set ($scheme = $request.requestName.replace($resourceTypeRemoteApi, '').toLowerCase())
+          #set ($class = ${definition.key})
+          #if ($class.matches($tableMap.targetDefinitionRegex))
+            #set ($class = ${definition.key.replaceAll($tableMap.removeKeyword, '')})
+            #set ($index = ${class.lastIndexOf('.')})
+            #if ($index != -1)
+              #set ($subPackage = "${scheme}${class.substring(0, $index)}")
+              #set ($index = $index + 1)
+              #set ($class = ${class.substring($index)})
+            #else
+              #set ($subPackage = "${scheme}")
+            #end
+            #set ($class = "$!{tableMap.classNamePrefix}${class}")
+            #loadTypeMap()
+            #set ($path = "${request.generateDirPath}/${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+            #mkdir($path)
+            #generate("./remoteapi/RemoteApiBean.vm", $path)
+          #end
+        #end
+      #end
+    #end
+  #end
+#end
+#end
+
+#macro(mkdir, $path)
+  $manager.makeDirectory($path)
+#end
+
+#macro(generate, $src, $dest)
+  $generator.parse($src, $dest, "", "")
+  $request.info("generate('${path}')")
+#end
+
+#macro(generateEx, $src, $dest)
+  #if (!$files.file(${generator.outputPath},$dest).exists())
+    $generator.parse($src, $dest, "", "")
+    $request.info("generate('${path}')")
+  #end
+#end
+
+#macro(loadTypeMap)
+  #set ($typeMap = {})
+  $typeMap.put('int32', 'Integer')
+  $typeMap.put('int64', 'Long')
+  $typeMap.put('float', 'Float')
+  $typeMap.put('double', 'Double')
+  $typeMap.put('string', 'String')
+  $typeMap.put('byte', 'byte[]')
+  $typeMap.put('boolean', 'Boolean')
+  $typeMap.put('date', 'java.time.LocalDate')
+  $typeMap.put('date-time', 'java.time.LocalDateTime')
+  $typeMap.put('array', 'java.util.List')
+  #if ($tableMap.yourCollections)
+    $typeMap.put('array', $tableMap.yourCollections)
+  #end
+#end
