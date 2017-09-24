@@ -18,6 +18,7 @@ package org.docksidestage.remote.harbor;
 import java.util.List;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
@@ -61,8 +62,9 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
 
         rule.handleFailureResponseAs(RemoteHbUnifiedFailureResult.class); // server-managed message way
         rule.translateClientError(resource -> {
-            if (resource.getCause().getHttpStatus() == 400) { // controlled client error
-                RemoteHbUnifiedFailureResult result = (RemoteHbUnifiedFailureResult) resource.getCause().getFailureResponse().get();
+            RemoteApiHttpClientErrorException clientError = resource.getCause();
+            if (clientError.getHttpStatus() == 400) { // controlled client error
+                RemoteHbUnifiedFailureResult result = (RemoteHbUnifiedFailureResult) clientError.getFailureResponse().get();
                 if (RemoteUnifiedFailureType.VALIDATION_ERROR.equals(result.cause)) {
                     UserMessages messages = new UserMessages();
                     result.errors.forEach(error -> {
