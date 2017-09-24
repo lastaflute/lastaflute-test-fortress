@@ -5410,276 +5410,6 @@
       "methodLineCount": 7
     },
     {
-      "url": "/wx/remote/harbor/signin/{password}",
-      "typeName": "org.docksidestage.app.web.wx.remote.WxRemoteHarborAction",
-      "simpleTypeName": "WxRemoteHarborAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "harborBhv",
-          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
-          "simpleTypeName": "RemoteHarborBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "signin",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [
-        {
-          "name": "password",
-          "typeName": "java.lang.String",
-          "simpleTypeName": "String",
-          "value": null,
-          "description": null,
-          "comment": null,
-          "annotationList": [],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
-        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
-        "value": "JsonResponse.asEmptyBody()",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 31,
-      "methodLineCount": 7
-    },
-    {
-      "url": "/wx/remote/harbor/mypage",
-      "typeName": "org.docksidestage.app.web.wx.remote.WxRemoteHarborAction",
-      "simpleTypeName": "WxRemoteHarborAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "harborBhv",
-          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
-          "simpleTypeName": "RemoteHarborBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "mypage",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteMypageProductReturn\u003e\u003e",
-        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteMypageProductReturn\u003e\u003e",
-        "value": "asJson(retList)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "productName",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "regularPrice",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 31,
-      "methodLineCount": 4
-    },
-    {
-      "url": "/wx/remote/harbor/products",
-      "typeName": "org.docksidestage.app.web.wx.remote.WxRemoteHarborAction",
-      "simpleTypeName": "WxRemoteHarborAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "harborBhv",
-          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
-          "simpleTypeName": "RemoteHarborBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "products",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.harbor.base.RemoteSearchPagingReturn\u003corg.docksidestage.remote.harbor.product.RemoteProductRowReturn\u003e\u003e",
-        "simpleTypeName": "JsonResponse\u003cRemoteSearchPagingReturn\u003cRemoteProductRowReturn\u003e\u003e",
-        "value": "asJson(ret)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "pageSize",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": "row count per one page",
-            "comment": "row count per one page",
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "currentPageNumber",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": "number of current page",
-            "comment": "number of current page",
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "allRecordCount",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": "count of all records",
-            "comment": "count of all records",
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "allPageCount",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": "count of all pages",
-            "comment": "count of all pages",
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "rows",
-            "typeName": "java.util.List\u003corg.docksidestage.remote.harbor.product.RemoteProductRowReturn\u003e",
-            "simpleTypeName": "List\u003cRemoteProductRowReturn\u003e",
-            "value": null,
-            "description": "paging data for current page",
-            "comment": "paging data for current page",
-            "annotationList": [
-              "NotNull",
-              "Valid"
-            ],
-            "nestTypeDocMetaList": [
-              {
-                "name": "productId",
-                "typeName": "java.lang.Integer",
-                "simpleTypeName": "Integer",
-                "value": null,
-                "description": null,
-                "comment": null,
-                "annotationList": [
-                  "Required"
-                ],
-                "nestTypeDocMetaList": []
-              },
-              {
-                "name": "productName",
-                "typeName": "java.lang.String",
-                "simpleTypeName": "String",
-                "value": null,
-                "description": null,
-                "comment": null,
-                "annotationList": [
-                  "Required"
-                ],
-                "nestTypeDocMetaList": []
-              },
-              {
-                "name": "productStatusName",
-                "typeName": "java.lang.String",
-                "simpleTypeName": "String",
-                "value": null,
-                "description": null,
-                "comment": null,
-                "annotationList": [
-                  "Required"
-                ],
-                "nestTypeDocMetaList": []
-              },
-              {
-                "name": "regularPrice",
-                "typeName": "java.lang.Integer",
-                "simpleTypeName": "Integer",
-                "value": null,
-                "description": null,
-                "comment": null,
-                "annotationList": [
-                  "Required"
-                ],
-                "nestTypeDocMetaList": []
-              }
-            ]
-          }
-        ]
-      },
-      "fileLineCount": 31,
-      "methodLineCount": 6
-    },
-    {
       "url": "/wx/request/form/eccolle",
       "typeName": "org.docksidestage.app.web.wx.request.form.WxRequestFormAction",
       "simpleTypeName": "WxRequestFormAction",
@@ -11753,6 +11483,354 @@
       },
       "fileLineCount": 43,
       "methodLineCount": 6
+    },
+    {
+      "url": "/wx/rmhangar/mypage",
+      "typeName": "org.docksidestage.app.web.wx.rmhangar.WxRmhangarAction",
+      "simpleTypeName": "WxRmhangarAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "hangarBhv",
+          "typeName": "org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv",
+          "simpleTypeName": "RemoteMaihamaHangarBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "mypage",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.hangar.mypage.RemoteHgMypageReturn\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteHgMypageReturn\u003e",
+        "value": "asJson(ret)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "recentProducts",
+            "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required",
+              "Valid"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "highPriceProducts",
+            "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required",
+              "Valid"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 66,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/rmhangar/translate",
+      "typeName": "org.docksidestage.app.web.wx.rmhangar.WxRmhangarAction",
+      "simpleTypeName": "WxRmhangarAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "hangarBhv",
+          "typeName": "org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv",
+          "simpleTypeName": "RemoteMaihamaHangarBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "translate",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "org.docksidestage.app.web.wx.rmhangar.WxRmhangarProductSearchForm",
+        "simpleTypeName": "WxRmhangarProductSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_Product_ProductListHtml),mappingToRowBean(row),asHtml(path_Product_ProductListHtml)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 66,
+      "methodLineCount": 14
+    },
+    {
+      "url": "/wx/rmharbor/mypage",
+      "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborAction",
+      "simpleTypeName": "WxRmharborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "mypage",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbMypageProductReturn\u003e\u003e",
+        "value": "asJson(retList)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 66,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/rmharbor/translate",
+      "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborAction",
+      "simpleTypeName": "WxRmharborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "translate",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborProductSearchForm",
+        "simpleTypeName": "WxRmharborProductSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_Product_ProductListHtml),mappingToRowBean(row),asHtml(path_Product_ProductListHtml)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 66,
+      "methodLineCount": 14
     },
     {
       "url": "/wx/transaction/memories/fail",
