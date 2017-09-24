@@ -20,12 +20,27 @@ ${manager.allClassCopyright}package ${request.package}.${subPackage};
 #if (${property.required})
 #set($added = $importSet.add('org.lastaflute.web.validation.Required'))
 #end
+#if ($property.items && $property.items['$ref'])
+#set ($nestType = $property.items['$ref'].replace('#/definitions/', ''))
+#elseif ($property['$ref'])
+#set ($nestType = $property['$ref'].replace('#/definitions/', ''))
+#end
+#if ($nestType && $nestType != '')
+#foreach($nestPropertyEntry in $definitionMap[$nestType].properties.entrySet())
+#set ($nestProperty = $nestPropertyEntry.value)
+#if (${nestProperty.required})
+#set($added = $importSet.add('org.lastaflute.web.validation.Required'))
+#end
+#end
+#set ($nestType = '')
+#end
 #end
 #foreach($import in $importSet)
 
 import ${import};
 #end
 
+#set ($nestTypeSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
 /**
  * ${class}.
  * @author FreeGen
@@ -48,7 +63,7 @@ public class ${class} {
 #set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.type]}>")
 #else
 #set ($nestType = $property.items['$ref'].replace('#/definitions/', ''))
-#adjustType($property.items['$ref'].replace('#/definitions/', ''))
+#adjustType($nestType)
 #set ($fieldClass = "${typeMap[$property.type]}<$adjustType>")
 #end
 #elseif (${typeMap[$property.format]})
@@ -57,17 +72,21 @@ public class ${class} {
 #set ($fieldClass = ${typeMap[$property.type]})
 #else
 #set ($nestType = $property['$ref'].replace('#/definitions/', ''))
-#adjustType($property['$ref'].replace('#/definitions/', ''))
+#adjustType($nestType)
 #set ($fieldClass = $adjustType)
 #end
     public ${fieldClass} ${fieldName};
-#if ($nestType && $nestType != '')
+#if ($nestType && $nestType != '' && !$nestTypeSet.contains($nestType))
+#set($added = $nestTypeSet.add($nestType))
 
 #generateNestType($nestType)
 #end
 #set ($nestType = '')
 #end
 }
+##################################################
+## generate nest type.
+##################################################
 #macro(generateNestType, $type)
 #adjustType($type)
     public static class $adjustType {
