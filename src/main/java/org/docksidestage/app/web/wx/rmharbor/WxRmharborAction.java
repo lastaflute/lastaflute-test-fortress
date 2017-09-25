@@ -21,16 +21,21 @@ import java.util.stream.Collectors;
 import javax.annotation.Resource;
 
 import org.dbflute.cbean.result.PagingResultBean;
+import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
 import org.docksidestage.dbflute.exentity.Product;
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
+import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
+import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult.RemoteUnifiedFailureType;
 import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
 import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
 import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
+import org.docksidestage.remote.harbor.signin.RemoteHbSigninParam;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
+import org.lastaflute.web.login.exception.LoginFailureException;
 import org.lastaflute.web.response.HtmlResponse;
 import org.lastaflute.web.response.JsonResponse;
 
@@ -59,12 +64,36 @@ public class WxRmharborAction extends FortressBaseAction {
     }
 
     // -----------------------------------------------------
-    //                                             Translate
-    //                                             ---------
-    // http://localhost:8151/fortress/wx/rmharbor/translate/?productName=S
-    // http://localhost:8151/fortress/wx/rmharbor/translate/?productName=SeaLandPiariBonvo
+    //                                                Signin
+    //                                                ------
+    // http://localhost:8151/fortress/wx/rmharbor/signin/?account=Pixy&password=sea
+    // http://localhost:8151/fortress/wx/rmharbor/signin/?account=Pixy&password=land
     @Execute
-    public HtmlResponse translate(WxRmharborProductSearchForm form) { // can translate validation error automatically
+    public JsonResponse<Void> signin(WxRmharborSigninForm form) {
+        validateApi(form, messages -> {});
+        RemoteHbSigninParam param = new RemoteHbSigninParam();
+        param.account = form.account;
+        param.password = form.password;
+        try {
+            harborBhv.requestSignin(param); // actually, embed this to login assist
+        } catch (RemoteApiHttpClientErrorException e) {
+            if (e.getHttpStatus() == 400) {
+                RemoteHbUnifiedFailureResult result = (RemoteHbUnifiedFailureResult) e.getFailureResponse().get();
+                if (RemoteUnifiedFailureType.LOGIN_FAILURE.equals(result.cause)) {
+                    throw new LoginFailureException("Cannot login by the parameter: " + param, e);
+                }
+            }
+        }
+        return JsonResponse.asEmptyBody();
+    }
+
+    // -----------------------------------------------------
+    //                                              Products
+    //                                              --------
+    // http://localhost:8151/fortress/wx/rmharbor/products/?productName=S
+    // http://localhost:8151/fortress/wx/rmharbor/products/?productName=SeaLandPiariBonvo
+    @Execute
+    public HtmlResponse products(WxRmharborProductSearchForm form) { // can translate validation error automatically
         validate(form, messages -> {}, () -> {
             return asHtml(path_Product_ProductListHtml);
         });
