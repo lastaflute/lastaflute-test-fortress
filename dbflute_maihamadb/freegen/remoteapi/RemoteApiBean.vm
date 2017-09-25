@@ -15,7 +15,7 @@
 ##
 ${manager.allClassCopyright}package ${request.package}.${subPackage};
 #set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
-#foreach($propertyEntry in $definition.value.properties.entrySet())
+#foreach($propertyEntry in $definition.properties.entrySet())
 #set ($property = $propertyEntry.value)
 #if (${property.required})
 #set($added = $importSet.add('org.lastaflute.web.validation.Required'))
@@ -35,18 +35,20 @@ ${manager.allClassCopyright}package ${request.package}.${subPackage};
 #set ($nestType = '')
 #end
 #end
-#foreach($import in $importSet)
 
+import org.lastaflute.core.util.Lato;
+#foreach($import in $importSet)
 import ${import};
 #end
 
-#set ($nestTypeSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
+#set ($generatedClassSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
+#set($added = $generatedClassSet.add($class))
 /**
  * ${class}.
  * @author FreeGen
  */
 public class ${class} {
-#foreach($propertyEntry in $definition.value.properties.entrySet())
+#foreach($propertyEntry in $definition.properties.entrySet())
 #set ($fieldName = $propertyEntry.key)
 #set ($property = $propertyEntry.value)
 
@@ -58,7 +60,7 @@ public class ${class} {
 #end
 #if ($property.type == 'array')
 #if (${typeMap[$property.items.format]})
-#set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.format]}>>")
+#set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.format]}>")
 #elseif (${typeMap[$property.items.type]})
 #set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.type]}>")
 #else
@@ -76,13 +78,18 @@ public class ${class} {
 #set ($fieldClass = $adjustType)
 #end
     public ${fieldClass} ${fieldName};
-#if ($nestType && $nestType != '' && !$nestTypeSet.contains($nestType))
-#set($added = $nestTypeSet.add($nestType))
+#if ($nestType && $nestType != '' && !$generatedClassSet.contains($adjustType))
+#set($added = $generatedClassSet.add($adjustType))
 
 #generateNestType($nestType)
 #end
 #set ($nestType = '')
 #end
+
+    @Override
+    public String toString() {
+        return Lato.string(this);
+    }
 }
 ##################################################
 ## generate nest type.
@@ -102,13 +109,17 @@ public class ${class} {
 #end
 #if ($nestProperty.type == 'array')
 #if (${typeMap[$nestProperty.items.format]})
-#set ($nestFieldClass = "${typeMap[$nestProperty.type]}<${typeMap[$nestProperty.items.format]}>>")
+#set ($nestFieldClass = "${typeMap[$nestProperty.type]}<${typeMap[$nestProperty.items.format]}>")
 #elseif (${typeMap[$nestProperty.items.type]})
 #set ($nestFieldClass = "${typeMap[$nestProperty.type]}<${typeMap[$nestProperty.items.type]}>")
 #else
+#adjustType($nestProperty.items['$ref'].replace('#/definitions/', ''))
+#if (!$generatedClassSet.contains($adjustType))
+#set($added = $generatedClassSet.add($adjustType))
         public static class $adjustType {
         }
-#adjustType($nestProperty.items['$ref'].replace('#/definitions/', ''))
+
+#end
 #set ($nestFieldClass = "${typeMap[$nestProperty.type]}<$adjustType>")
 #end
 #elseif (${typeMap[$nestProperty.format]})
@@ -117,8 +128,12 @@ public class ${class} {
 #set ($nestFieldClass = ${typeMap[$nestProperty.type]})
 #else
 #adjustType($nestProperty['$ref'].replace('#/definitions/', ''))
+#if (!$generatedClassSet.contains($adjustType))
+#set($added = $generatedClassSet.add($adjustType))
         public static class $adjustType {
         }
+
+#end
 #set ($nestFieldClass = $adjustType)
 #end
         public ${nestFieldClass} ${nestFieldName};
