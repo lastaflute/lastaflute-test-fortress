@@ -13,40 +13,46 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-$manager.info("requestList: ${requestList.size()}")
-
+#set ($scriptEngine = $requestList.getClass().forName('javax.script.ScriptEngineManager').newInstance().getEngineByName('JavaScript'))
 #foreach ($request in $requestList)
 #set ($tableMap = $request.tableMap)
 $request.enableOutputDirectory()
 $manager.makeDirectory($request.generateDirPath)
 
 #if ($request.isResourceTypeJsonSchema())
+  #loadTypeMap()
   #set ($resourceTypeRemoteApi = "RemoteApi")
   #if ($request.requestName.startsWith($resourceTypeRemoteApi))
+    $manager.info("gen remote api: ${request.requestName}")
+    $scriptEngine.eval("var requertClassName = $tableMap.requertClassName")
+    $scriptEngine.eval("var responseClassName = $tableMap.responseClassName")
+    $scriptEngine.eval("var nestClassName = $tableMap.nestClassName")
+
     #set ($jsonFreeAgent = $request.getClass().forName("org.dbflute.logic.manage.freegen.table.json.DfJsonFreeAgent").newInstance())
     #set ($swaggerJsonMap = $jsonFreeAgent.decodeJsonMap($request.resourceName, $tableMap.swaggerJsonPath))
+    #set ($scheme = $manager.decamelize($request.requestName.replace($resourceTypeRemoteApi, '')).replaceAll('_', '.').toLowerCase())
 
     #foreach($swaggerJsonEntry in $swaggerJsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'definitions')
         #set ($definitionMap = $swaggerJsonEntry.value)
-        #foreach($definition in $definitionMap.entrySet())
-          #set ($scheme = $manager.decamelize($request.requestName.replace($resourceTypeRemoteApi, '')).replaceAll('_', '.').toLowerCase())
-          #set ($class = ${definition.key})
-          #if ($class.matches($tableMap.targetDefinitionRegex))
-            #set ($class = ${definition.key.replaceAll($tableMap.removeKeyword, '')})
-            #set ($index = ${class.lastIndexOf('.')})
-            #if ($index != -1)
-              #set ($subPackage = "${scheme}${class.substring(0, $index)}")
-              #set ($index = $index + 1)
-              #set ($class = ${class.substring($index)})
-            #else
-              #set ($subPackage = "${scheme}")
+      #end
+    #end
+
+    #foreach($swaggerJsonEntry in $swaggerJsonMap.entrySet())
+      #if ($swaggerJsonEntry.key == 'paths')
+        #set ($pathMap = $swaggerJsonEntry.value)
+        #foreach($pathEntry in $pathMap.entrySet())
+          #if ($pathEntry.key.matches($tableMap.targetUrlRegex))
+            #foreach($methodEntry in $pathEntry.value.entrySet())
+              ## request
+              #foreach($parameter in $methodEntry.value['parameters'])
+                #processRemoteApiBean($parameter, 'requert')
+              #end
+              ## response
+              #foreach($responseEntry in $methodEntry.value['responses'].entrySet())
+                #processRemoteApiBean($responseEntry.value, 'response')
+              #end
             #end
-            #set ($class = "$!{tableMap.classNamePrefix}${class}")
-            #loadTypeMap()
-            #set ($path = "${request.generateDirPath}/${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
-            #mkdir($path)
-            #generate("./remoteapi/RemoteApiBean.vm", $path)
           #end
         #end
       #end
@@ -71,6 +77,41 @@ $manager.makeDirectory($request.generateDirPath)
   #end
 #end
 
+#macro(processRemoteApiBean, $parameter, $type)
+  #set ($definitionKey = '')
+  #if ($parameter.schema && $parameter.schema['$ref'])
+    #set ($definitionKey = $parameter.schema['$ref'].replace('#/definitions/', '')))
+  #end
+  #if ($definitionKey != '')
+    #set ($definition = $definitionMap[$definitionKey])
+    #set ($subPackage = "${scheme}${pathEntry.key.replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.').toLowerCase()}")
+    #set ($class = ${definitionKey.replaceAll($tableMap.removeKeyword, '')})
+    #set ($index = ${class.lastIndexOf('.')})
+    #if ($index != -1)
+      #set ($index = $index + 1)
+      #set ($class = ${class.substring($index)})
+    #end
+    #set ($class = $scriptEngine.invokeFunction("${type}ClassName", $class))
+    #set ($path = "${request.generateDirPath}/${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+    #mkdir($path)
+    #generate("./remoteapi/RemoteApiBean.vm", $path)
+  #end    
+#end
+
+#macro(adjustType, $type, $class)
+#set ($adjustType = ${type.replaceAll($tableMap.removeKeyword, '')})
+#set ($index = ${adjustType.lastIndexOf('.')})
+#if ($index != -1)
+#set ($subPackage = "${scheme}${adjustType.substring(0, $index)}")
+#set ($index = $index + 1)
+#set ($adjustType = ${adjustType.substring($index)})
+#else
+#set ($subPackage = "${scheme}")
+#end
+#set ($adjustType = $scriptEngine.invokeFunction('nestClassName', $adjustType))
+#set ($adjustType = $adjustType.replaceAll("^${class}\$", ''))
+#end
+
 #macro(loadTypeMap)
   #set ($typeMap = {})
   $typeMap.put('int32', 'Integer')
@@ -86,18 +127,4 @@ $manager.makeDirectory($request.generateDirPath)
   #if ($tableMap.yourCollections)
     $typeMap.put('array', $tableMap.yourCollections)
   #end
-#end
-
-#macro(adjustType, $type)
-#set ($adjustType = ${type.replaceAll($tableMap.removeKeyword, '')})
-#set ($index = ${adjustType.lastIndexOf('.')})
-#if ($index != -1)
-  #set ($subPackage = "${scheme}${adjustType.substring(0, $index)}")
-  #set ($index = $index + 1)
-  #set ($adjustType = ${adjustType.substring($index)})
-#else
-  #set ($subPackage = "${scheme}")
-#end
-#set ($adjustType = "$!{tableMap.classNamePrefix}${adjustType}")
-#set ($adjustType = $adjustType.replaceAll("^${class}\$", ''))
 #end

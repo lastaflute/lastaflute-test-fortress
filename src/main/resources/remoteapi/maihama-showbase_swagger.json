@@ -73,10 +73,7 @@
         ],
         "responses": {
           "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.lang.Void"
-            }
+            "description": "success"
           },
           "400": {
             "description": "client error"
@@ -122,9 +119,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -225,10 +220,7 @@
         ],
         "responses": {
           "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.lang.Void"
-            }
+            "description": "success"
           },
           "400": {
             "description": "client error"
@@ -269,7 +261,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.MemberSearchRowResult\u003e"
+              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult"
             }
           },
           "400": {
@@ -307,7 +299,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult\u003e"
+              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult"
             }
           },
           "400": {
@@ -337,10 +329,7 @@
         ],
         "responses": {
           "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.lang.Void"
-            }
+            "description": "success"
           },
           "400": {
             "description": "client error"
@@ -437,7 +426,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.product.ProductRowResult\u003e"
+              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult"
             }
           },
           "400": {
@@ -460,9 +449,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -502,9 +489,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/?"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -622,9 +607,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.lastaflute.web.response.HtmlResponse"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -693,10 +676,7 @@
         ],
         "responses": {
           "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.lang.Void"
-            }
+            "description": "success"
           },
           "400": {
             "description": "client error"
@@ -730,10 +710,7 @@
         ],
         "responses": {
           "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.lang.Void"
-            }
+            "description": "success"
           },
           "400": {
             "description": "client error"
@@ -755,9 +732,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.lastaflute.web.response.HtmlResponse"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -779,9 +754,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.util.Map\u003cjava.lang.String, java.lang.Object\u003e"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -803,9 +776,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -839,9 +810,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.lang.Integer"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -875,9 +844,7 @@
         "responses": {
           "200": {
             "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.util.Map\u003cjava.lang.String, java.lang.Object\u003e"
-            }
+            "type": "string"
           },
           "400": {
             "description": "client error"
@@ -898,10 +865,7 @@
         ],
         "responses": {
           "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.lang.Void"
-            }
+            "description": "success"
           },
           "400": {
             "description": "client error"
@@ -929,10 +893,7 @@
         ],
         "responses": {
           "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/java.lang.Void"
-            }
+            "description": "success"
           },
           "400": {
             "description": "client error"
@@ -956,10 +917,6 @@
         }
       }
     },
-    "java.lang.Void": {
-      "type": "object",
-      "properties": {}
-    },
     "org.docksidestage.app.web.member.MemberInfoResult": {
       "type": "object",
       "properties": {
@@ -980,10 +937,6 @@
           "type": "string"
         }
       }
-    },
-    "java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e": {
-      "type": "object",
-      "properties": {}
     },
     "org.docksidestage.app.web.member.MemberAddBody": {
       "type": "object",
@@ -1007,7 +960,7 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-09-24"
+          "default": "2017-09-26"
         },
         "memberStatus": {
           "name": "memberStatus",
@@ -1038,7 +991,7 @@
           "required": false,
           "type": "string",
           "format": "date-time",
-          "default": "2017-09-24T00:00:00.000"
+          "default": "2017-09-26T00:00:00.000"
         },
         "_memberId": {
           "name": "_memberId",
@@ -1071,7 +1024,7 @@
           "required": false,
           "type": "string",
           "format": "date-time",
-          "default": "2017-09-24T00:00:00.000"
+          "default": "2017-09-26T00:00:00.000"
         },
         "_birthdate": {
           "name": "_birthdate",
@@ -1079,7 +1032,7 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-09-24"
+          "default": "2017-09-26"
         },
         "_registerDatetime": {
           "name": "_registerDatetime",
@@ -1087,7 +1040,7 @@
           "required": false,
           "type": "string",
           "format": "date-time",
-          "default": "2017-09-24T00:00:00.000"
+          "default": "2017-09-26T00:00:00.000"
         },
         "_registerUser": {
           "name": "_registerUser",
@@ -1101,7 +1054,7 @@
           "required": false,
           "type": "string",
           "format": "date-time",
-          "default": "2017-09-24T00:00:00.000"
+          "default": "2017-09-26T00:00:00.000"
         },
         "_updateUser": {
           "name": "_updateUser",
@@ -1268,7 +1221,7 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-09-24"
+          "default": "2017-09-26"
         },
         "versionNo": {
           "name": "versionNo",
@@ -1316,146 +1269,57 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-09-24"
+          "default": "2017-09-26"
         },
         "formalizedTo": {
           "name": "formalizedTo",
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-09-24"
+          "default": "2017-09-26"
         }
       }
     },
-    "org.docksidestage.app.web.member.MemberSearchRowResult": {
+    "java.lang.Object": {
       "type": "object",
       "properties": {
-        "memberId": {
-          "name": "memberId",
+        "productId": {
+          "name": "productId",
           "required": true,
           "type": "integer",
           "format": "int32"
-        },
-        "memberName": {
-          "name": "memberName",
-          "required": true,
-          "type": "string"
-        },
-        "memberStatusName": {
-          "name": "memberStatusName",
-          "required": true,
-          "type": "string"
-        },
-        "formalizedDate": {
-          "name": "formalizedDate",
-          "required": false,
-          "type": "string",
-          "format": "date",
-          "default": "2017-09-24"
-        },
-        "updateDatetime": {
-          "name": "updateDatetime",
-          "required": true,
-          "type": "string",
-          "format": "date-time",
-          "default": "2017-09-24T00:00:00.000"
-        },
-        "withdrawalMember": {
-          "name": "withdrawalMember",
-          "required": true,
-          "type": "boolean"
-        },
-        "purchaseCount": {
-          "name": "purchaseCount",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.MemberSearchRowResult\u003e": {
-      "type": "object",
-      "properties": {
-        "pageSize": {
-          "name": "pageSize",
-          "description": "row count per one page",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "currentPageNumber": {
-          "name": "currentPageNumber",
-          "description": "number of current page",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "allRecordCount": {
-          "name": "allRecordCount",
-          "description": "count of all records",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "allPageCount": {
-          "name": "allPageCount",
-          "description": "count of all pages",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "rows": {
-          "name": "rows",
-          "description": "paging data for current page",
-          "required": false,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.member.MemberSearchRowResult"
-          }
-        }
-      }
-    },
-    "org.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult": {
-      "type": "object",
-      "properties": {
-        "purchaseId": {
-          "name": "purchaseId",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        },
-        "purchaseDatetime": {
-          "name": "purchaseDatetime",
-          "required": true,
-          "type": "string",
-          "format": "date-time",
-          "default": "2017-09-24T00:00:00.000"
         },
         "productName": {
           "name": "productName",
           "required": true,
           "type": "string"
         },
-        "purchasePrice": {
-          "name": "purchasePrice",
+        "productStatus": {
+          "name": "productStatus",
+          "required": true,
+          "type": "string"
+        },
+        "productCategory": {
+          "name": "productCategory",
+          "required": true,
+          "type": "string"
+        },
+        "regularPrice": {
+          "name": "regularPrice",
           "required": true,
           "type": "integer",
           "format": "int32"
         },
-        "purchaseCount": {
-          "name": "purchaseCount",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "paymentComplete": {
-          "name": "paymentComplete",
-          "required": true,
-          "type": "boolean"
+        "latestPurchaseDate": {
+          "name": "latestPurchaseDate",
+          "required": false,
+          "type": "string",
+          "format": "date",
+          "default": "2017-09-26"
         }
       }
     },
-    "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult\u003e": {
+    "org.docksidestage.app.web.base.paging.SearchPagingResult": {
       "type": "object",
       "properties": {
         "pageSize": {
@@ -1492,7 +1356,7 @@
           "required": false,
           "type": "array",
           "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult"
+            "$ref": "#/definitions/java.lang.Object"
           }
         }
       }
@@ -1596,87 +1460,6 @@
         }
       }
     },
-    "org.docksidestage.app.web.product.ProductRowResult": {
-      "type": "object",
-      "properties": {
-        "productId": {
-          "name": "productId",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "productName": {
-          "name": "productName",
-          "required": true,
-          "type": "string"
-        },
-        "productStatus": {
-          "name": "productStatus",
-          "required": true,
-          "type": "string"
-        },
-        "productCategory": {
-          "name": "productCategory",
-          "required": true,
-          "type": "string"
-        },
-        "regularPrice": {
-          "name": "regularPrice",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "latestPurchaseDate": {
-          "name": "latestPurchaseDate",
-          "required": false,
-          "type": "string",
-          "format": "date",
-          "default": "2017-09-24"
-        }
-      }
-    },
-    "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.product.ProductRowResult\u003e": {
-      "type": "object",
-      "properties": {
-        "pageSize": {
-          "name": "pageSize",
-          "description": "row count per one page",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "currentPageNumber": {
-          "name": "currentPageNumber",
-          "description": "number of current page",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "allRecordCount": {
-          "name": "allRecordCount",
-          "description": "count of all records",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "allPageCount": {
-          "name": "allPageCount",
-          "description": "count of all pages",
-          "required": true,
-          "type": "integer",
-          "format": "int32"
-        },
-        "rows": {
-          "name": "rows",
-          "description": "paging data for current page",
-          "required": false,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.product.ProductRowResult"
-          }
-        }
-      }
-    },
     "org.docksidestage.app.web.products.ProductsSearchBody": {
       "type": "object",
       "properties": {
@@ -1713,10 +1496,6 @@
         }
       }
     },
-    "?": {
-      "type": "object",
-      "properties": {}
-    },
     "org.docksidestage.app.web.profile.ProfileResult$PurchasedProductPart": {
       "type": "object",
       "properties": {
@@ -1736,7 +1515,7 @@
           "required": true,
           "type": "string",
           "format": "date-time",
-          "default": "2017-09-24T00:00:00.000"
+          "default": "2017-09-26T00:00:00.000"
         }
       }
     },
@@ -1808,10 +1587,6 @@
         }
       }
     },
-    "org.lastaflute.web.response.HtmlResponse": {
-      "type": "object",
-      "properties": {}
-    },
     "org.docksidestage.app.web.signin.SigninBody": {
       "type": "object",
       "properties": {
@@ -1867,10 +1642,6 @@
         }
       }
     },
-    "java.util.Map\u003cjava.lang.String, java.lang.Object\u003e": {
-      "type": "object",
-      "properties": {}
-    },
     "org.docksidestage.app.web.withdrawal.WithdrawalBody": {
       "type": "object",
       "properties": {
@@ -1894,10 +1665,6 @@
           "maxLength": 30
         }
       }
-    },
-    "java.lang.Integer": {
-      "type": "object",
-      "properties": {}
     }
   }
 }
