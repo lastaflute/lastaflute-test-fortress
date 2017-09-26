@@ -62,7 +62,7 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
 
         rule.handleFailureResponseAs(RemoteHbUnifiedFailureResult.class); // server-managed message way
         rule.translateClientError(resource -> {
-            RemoteApiHttpClientErrorException clientError = resource.getCause();
+            RemoteApiHttpClientErrorException clientError = resource.getClientError();
             if (clientError.getHttpStatus() == 400) { // controlled client error
                 RemoteHbUnifiedFailureResult result = (RemoteHbUnifiedFailureResult) clientError.getFailureResponse().get();
                 if (RemoteUnifiedFailureType.VALIDATION_ERROR.equals(result.cause)) {

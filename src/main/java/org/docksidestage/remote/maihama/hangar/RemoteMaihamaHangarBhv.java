@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy;
 import org.dbflute.util.Srl;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
@@ -72,8 +73,9 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
 
         rule.handleFailureResponseAs(RemoteHbUnifiedFailureResult.class); // server-managed message way
         rule.translateClientError(resource -> {
-            if (resource.getCause().getHttpStatus() == 400) { // controlled client error
-                FaicliUnifiedFailureResult result = (FaicliUnifiedFailureResult) resource.getCause().getFailureResponse().get();
+            RemoteApiHttpClientErrorException clientError = resource.getClientError();
+            if (clientError.getHttpStatus() == 400) { // controlled client error
+                FaicliUnifiedFailureResult result = (FaicliUnifiedFailureResult) clientError.getFailureResponse().get();
                 if (FaicliUnifiedFailureType.VALIDATION_ERROR.equals(result.cause)) {
                     UserMessages messages = new UserMessages();
                     result.errors.forEach(error -> {

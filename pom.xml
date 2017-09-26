@@ -21,11 +21,11 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.1.4</dbflute.version>
 		<mysql.jdbc.version>5.1.37</mysql.jdbc.version>
-		<lastaflute.version>1.0.0-RCB</lastaflute.version>
+		<lastaflute.version>1.0.0</lastaflute.version>
 		<lasta.thymeleaf.version>0.3.1</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.1</lasta.job.version>
-		<lasta.remoteapi.version>0.3.4</lasta.remoteapi.version>
-		<lasta.doc.version>0.2.8-RC1</lasta.doc.version>
+		<lasta.remoteapi.version>0.3.5</lasta.remoteapi.version>
+		<lasta.doc.version>0.2.8</lasta.doc.version>
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.12</slf4j.version>
@@ -43,7 +43,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.8.3-RC1</utflute.version>
+		<utflute.version>0.8.3</utflute.version>
 	</properties>
 
 	<licenses>
