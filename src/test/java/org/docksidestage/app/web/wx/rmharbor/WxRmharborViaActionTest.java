@@ -15,16 +15,51 @@
  */
 package org.docksidestage.app.web.wx.rmharbor;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.dbflute.remoteapi.exception.RemoteApiIOException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
+import org.dbflute.utflute.lastaflute.mock.TestingJsonData;
+import org.docksidestage.remote.harbor.RemoteHarborBhv;
+import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
 import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.lastaflute.web.response.JsonResponse;
+import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * @author jflute
  */
 public class WxRmharborViaActionTest extends UnitFortressWebTestCase {
 
-    public void test_mypage_basic() {
+    @Resource
+    private RequestManager requestManager;
+
+    public void test_mypage_mockBehavior() {
+        // ## Arrange ##
+        String json = "[{productName=\"sea\", regularPrice=100}]";
+        MockHttpClient client = MockHttpClient.create(resopnse -> {
+            resopnse.asJsonDirectly(json, request -> request.getUrl().contains("mypage"));
+        });
+        registerMock(client);
+        registerMock(inject(new RemoteHarborBhv(requestManager))); // avoid no reach
+        WxRmharborViaAction action = new WxRmharborViaAction();
+        inject(action);
+
+        // ## Act ##
+        JsonResponse<List<RemoteHbMypageProductReturn>> response = action.mypage();
+
+        // ## Assert ##
+        TestingJsonData<List<RemoteHbMypageProductReturn>> jsonData = validateJsonData(response);
+        List<RemoteHbMypageProductReturn> productList = jsonData.getJsonResult();
+        assertHasOnlyOneElement(productList);
+        RemoteHbMypageProductReturn product = productList.get(0);
+        assertEquals("sea", product.productName);
+        assertEquals(100, product.regularPrice);
+    }
+
+    public void test_mypage_noReach() {
         // ## Arrange ##
         String json = "[{productName=\"sea\", regularPrice=100}]";
         MockHttpClient client = MockHttpClient.create(resopnse -> {
@@ -38,16 +73,5 @@ public class WxRmharborViaActionTest extends UnitFortressWebTestCase {
         // ## Assert ##
         // nested mock headache for now, and this test may fail if harbor is active
         assertException(RemoteApiIOException.class, () -> action.mypage());
-
-        //// ## Act ##
-        //JsonResponse<List<RemoteHbMypageProductReturn>> response = action.mypage();
-        //
-        //// ## Assert ##
-        //TestingJsonData<List<RemoteHbMypageProductReturn>> jsonData = validateJsonData(response);
-        //List<RemoteHbMypageProductReturn> productList = jsonData.getJsonResult();
-        //assertHasOnlyOneElement(productList);
-        //RemoteHbMypageProductReturn product = productList.get(0);
-        //assertEquals("sea", product.productName);
-        //assertEquals(100, product.regularPrice);
     }
 }
