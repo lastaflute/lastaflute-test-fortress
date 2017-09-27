@@ -72,7 +72,7 @@ $manager.makeDirectory($request.generateDirPath)
     #set ($abstractBehaviorClassName = $scriptEngine.invokeFunction('abstractBehaviorClassName', $scheme))
     #set ($path = "${request.generateDirPath}${abstractBehaviorSubPackage.replaceAll('\.', '/')}/${abstractBehaviorClassName.replaceAll('\.', '/')}.java")
     #mkdir($path)
-    #generate("./remoteapi/RemoteApiAbstractBehavior.vm", $path)    
+    #generateEx("./remoteapi/RemoteApiAbstractBehavior.vm", $path)    
 
     #foreach($bsBehavior in $bsBehaviorMap.values())
       #set ($subPackage = ${bsBehavior['subPackage']})
@@ -89,7 +89,7 @@ $manager.makeDirectory($request.generateDirPath)
       #set ($baseClass = $exBehavior['baseClass'])
       #set ($path = "${request.generateDirPath}${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
       #mkdir($path)
-      #generate("./remoteapi/RemoteApiExBehavior.vm", $path)
+      #generateEx("./remoteapi/RemoteApiExBehavior.vm", $path)
     #end
   #end
 #end
