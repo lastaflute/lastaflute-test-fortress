@@ -18,15 +18,20 @@ map:{
         ; tableMap = map:{
             ; tablePath = map
             ; swaggerJsonPath = ../src/main/resources/remoteapi/maihama-showbase_swagger.json
-            ; removeKeyword = org.docksidestage.app.web
             ; targetUrlRegex = .*
             # TODO p1us2er0 before implementation (2017/09/24)
             #; targetContentType
             # when using Eclipse Collections
             #; yourCollections = org.eclipse.collections.api.list.ImmutableList
-            ; requertClassName = function(className) \{ return "Remote" + className\; \}
-            ; responseClassName = function(className) \{ return "Remote" + className\; \}
-            ; nestClassName = function(className) \{ return className\; \}
+            ; definitionKey = function(definitionKey) \{ return definitionKey\; \}
+            ; subPackage = function(subPackage) \{ return subPackage.replace(/v1\./g, '').replace(/_/g, '')\; \}
+            ; abstractBehaviorClassName = function(scheme) \{ return 'RemoteAbstract' + scheme + 'Bhv'\; \}
+            ; bsBehaviorClassName = function(scheme, className) \{ return 'RemoteBs' + className + 'Bhv'\; \}
+            ; exBehaviorClassName = function(scheme, className) \{ return 'Remote' + className + 'Bhv'\; \}
+            ; requertClassName = function(scheme, className, httpMethod, multipleHttpMethod) \{ return 'Remote' + className + (multipleHttpMethod ? httpMethod : '') + 'Param'\; \}
+            ; responseClassName = function(scheme, className, httpMethod, multipleHttpMethod) \{ return 'Remote' + className + (multipleHttpMethod ? httpMethod : '') + 'Return'\; \}
+            ; nestClassName = function(scheme, className) \{ return className\; \}
+            ; fieldName = function(scheme, fieldName) \{ return fieldName.replace(/_./g, function(s) \{ return s.charAt(1).toUpperCase()\; \})\; \}
         }
     }
 }
