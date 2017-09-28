@@ -24,11 +24,14 @@ import org.hibernate.validator.constraints.Length;
  */
 public class ProductSearchBody {
 
-    @Length(max = 10) // #simple_for_example just for validtion example
+    /** keyword of product name e.g. Stranger */
+    @Length(max = 10)
     public String productName;
 
+    /** status of product e.g. ONS */
     public CDef.ProductStatus productStatus;
 
-    @Length(max = 5) // #simple_for_example just for validtion example
+    /** keyword of member name that purchases e.g. S */
+    @Length(max = 5)
     public String purchaseMemberName;
 }
