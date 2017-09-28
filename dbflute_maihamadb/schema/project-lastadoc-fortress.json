@@ -11734,11 +11734,11 @@
           }
         ]
       },
-      "fileLineCount": 66,
+      "fileLineCount": 90,
       "methodLineCount": 4
     },
     {
-      "url": "/wx/rmharbor/translate",
+      "url": "/wx/rmharbor/signin",
       "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborAction",
       "simpleTypeName": "WxRmharborAction",
       "description": "@author jflute",
@@ -11769,7 +11769,104 @@
           "nestTypeDocMetaList": []
         }
       ],
-      "methodName": "translate",
+      "methodName": "signin",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborSigninForm",
+        "simpleTypeName": "WxRmharborSigninForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "account",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "password",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "rememberMe",
+            "typeName": "boolean",
+            "simpleTypeName": "boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 90,
+      "methodLineCount": 17
+    },
+    {
+      "url": "/wx/rmharbor/products",
+      "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborAction",
+      "simpleTypeName": "WxRmharborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "products",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
@@ -11829,8 +11926,74 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 66,
+      "fileLineCount": 90,
       "methodLineCount": 14
+    },
+    {
+      "url": "/wx/rmharbor/via/mypage",
+      "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborViaAction",
+      "simpleTypeName": "WxRmharborViaAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "rmharborViaAssist",
+          "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborViaAssist",
+          "simpleTypeName": "WxRmharborViaAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "mypage",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbMypageProductReturn\u003e\u003e",
+        "value": "asJson(retList)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 18,
+      "methodLineCount": 4
     },
     {
       "url": "/wx/transaction/memories/fail",

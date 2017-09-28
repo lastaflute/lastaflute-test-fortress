@@ -24,38 +24,72 @@ $manager.makeDirectory($request.generateDirPath)
   #set ($resourceTypeRemoteApi = "RemoteApi")
   #if ($request.requestName.startsWith($resourceTypeRemoteApi))
     $manager.info("gen remote api: ${request.requestName}")
+    $scriptEngine.eval("var definitionKey = $tableMap.definitionKey")
+    $scriptEngine.eval("var subPackage = $tableMap.subPackage")
+    $scriptEngine.eval("var abstractBehaviorClassName = $tableMap.abstractBehaviorClassName")
+    $scriptEngine.eval("var bsBehaviorClassName = $tableMap.bsBehaviorClassName")
+    $scriptEngine.eval("var exBehaviorClassName = $tableMap.exBehaviorClassName")
     $scriptEngine.eval("var requertClassName = $tableMap.requertClassName")
     $scriptEngine.eval("var responseClassName = $tableMap.responseClassName")
     $scriptEngine.eval("var nestClassName = $tableMap.nestClassName")
+    $scriptEngine.eval("var fieldName = $tableMap.fieldName")
 
     #set ($jsonFreeAgent = $request.getClass().forName("org.dbflute.logic.manage.freegen.table.json.DfJsonFreeAgent").newInstance())
     #set ($swaggerJsonMap = $jsonFreeAgent.decodeJsonMap($request.resourceName, $tableMap.swaggerJsonPath))
-    #set ($scheme = $manager.decamelize($request.requestName.replace($resourceTypeRemoteApi, '')).replaceAll('_', '.').toLowerCase())
-
     #foreach($swaggerJsonEntry in $swaggerJsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'definitions')
         #set ($definitionMap = $swaggerJsonEntry.value)
       #end
     #end
 
+    #set ($scheme = $request.requestName.replace($resourceTypeRemoteApi, ''))
+    #set ($schemePackage = $manager.decamelize($request.requestName.replace($resourceTypeRemoteApi, '')).replaceAll('_', '.').toLowerCase())
+    #set ($bsBehaviorMap = {})
+    #set ($exBehaviorMap = {})
     #foreach($swaggerJsonEntry in $swaggerJsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'paths')
         #set ($pathMap = $swaggerJsonEntry.value)
         #foreach($pathEntry in $pathMap.entrySet())
           #if ($pathEntry.key.matches($tableMap.targetUrlRegex))
+            #set ($multipleHttpMethod = $pathEntry.value.size() != 1)
             #foreach($methodEntry in $pathEntry.value.entrySet())
               ## request
               #foreach($parameter in $methodEntry.value['parameters'])
-                #processRemoteApiBean($parameter, 'requert')
+                #processRemoteApiBean('requert', $parameter, $methodEntry.key, $multipleHttpMethod)
               #end
               ## response
               #foreach($responseEntry in $methodEntry.value['responses'].entrySet())
-                #processRemoteApiBean($responseEntry.value, 'response')
+                #processRemoteApiBean('response', $responseEntry.value, $methodEntry.key, $multipleHttpMethod)
               #end
             #end
+            #keepRemoteApiBehavior($pathEntry.key)
           #end
         #end
       #end
+    #end
+
+    #set ($abstractBehaviorSubPackage = "${schemePackage}")
+    #set ($abstractBehaviorClassName = $scriptEngine.invokeFunction('abstractBehaviorClassName', $scheme))
+    #set ($path = "${request.generateDirPath}${abstractBehaviorSubPackage.replaceAll('\.', '/')}/${abstractBehaviorClassName.replaceAll('\.', '/')}.java")
+    #mkdir($path)
+    #generateEx("./remoteapi/RemoteApiAbstractBehavior.vm", $path)    
+
+    #foreach($bsBehavior in $bsBehaviorMap.values())
+      #set ($subPackage = ${bsBehavior['subPackage']})
+      #set ($class = $bsBehavior['class'])
+      #set ($path = "${request.generateDirPath}${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+      #mkdir($path)
+      #generate("./remoteapi/RemoteApiBsBehavior.vm", $path)
+    #end
+
+    #foreach($exBehavior in $exBehaviorMap.values())
+      #set ($subPackage = ${exBehavior['subPackage']})
+      #set ($class = $exBehavior['class'])
+      #set ($baseSubPackage = ${exBehavior['baseSubPackage']})
+      #set ($baseClass = $exBehavior['baseClass'])
+      #set ($path = "${request.generateDirPath}${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+      #mkdir($path)
+      #generateEx("./remoteapi/RemoteApiExBehavior.vm", $path)
     #end
   #end
 #end
@@ -77,39 +111,47 @@ $manager.makeDirectory($request.generateDirPath)
   #end
 #end
 
-#macro(processRemoteApiBean, $parameter, $type)
+#macro(keepRemoteApiBehavior, $url)
+  #set ($subPackage = ${url.replaceAll('_', '').replaceAll('^/', '').replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.').toLowerCase().replaceAll('\.[^.]*$', '')})
+  #set ($subPackage = $scriptEngine.invokeFunction('subPackage', $subPackage))
+  #set ($class = $scriptEngine.invokeFunction('bsBehaviorClassName', $scheme, $manager.camelize($subPackage.replaceAll('\.', '_'))))
+  #set ($subPackage = "${schemePackage}.${subPackage}")
+  $bsBehaviorMap.put("${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class} })
+  #set ($baseSubPackage = $subPackage)
+  #set ($baseClass = $class)
+  #set ($subPackage = ${url.replaceAll('_', '').replaceAll('^/', '').replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.').toLowerCase().replaceAll('\.[^.]*$', '')})
+  #set ($subPackage = $scriptEngine.invokeFunction('subPackage', $subPackage))
+  #set ($class = $scriptEngine.invokeFunction('exBehaviorClassName', $scheme, $manager.camelize($subPackage.replaceAll('\.', '_'))))
+  #set ($subPackage = "${schemePackage}.${subPackage}")
+  $exBehaviorMap.put("${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'baseSubPackage': ${baseSubPackage}, 'baseClass': ${baseClass} })
+#end
+
+#macro(processRemoteApiBean, $type, $parameter, $httpMethod, $multipleHttpMethod)
   #set ($definitionKey = '')
   #if ($parameter.schema && $parameter.schema['$ref'])
     #set ($definitionKey = $parameter.schema['$ref'].replace('#/definitions/', '')))
   #end
   #if ($definitionKey != '')
-    #set ($definition = $definitionMap[$definitionKey])
-    #set ($subPackage = "${scheme}${pathEntry.key.replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.').toLowerCase()}")
-    #set ($class = ${definitionKey.replaceAll($tableMap.removeKeyword, '')})
-    #set ($index = ${class.lastIndexOf('.')})
-    #if ($index != -1)
-      #set ($index = $index + 1)
-      #set ($class = ${class.substring($index)})
-    #end
-    #set ($class = $scriptEngine.invokeFunction("${type}ClassName", $class))
-    #set ($path = "${request.generateDirPath}/${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+    #set ($definition = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)])
+    #set ($subPackage = ${pathEntry.key.replaceAll('_', '').replaceAll('^/', '').replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.').toLowerCase()})
+    #set ($subPackage = $scriptEngine.invokeFunction('subPackage', $subPackage))
+    #set ($class = $scriptEngine.invokeFunction("${type}ClassName", $scheme, $manager.camelize($subPackage.replaceAll('\.', '_')), $manager.initCap($httpMethod), $multipleHttpMethod))
+    #set ($subPackage = "${schemePackage}.${subPackage}")
+    #set ($path = "${request.generateDirPath}${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
     #mkdir($path)
     #generate("./remoteapi/RemoteApiBean.vm", $path)
   #end    
 #end
 
 #macro(adjustType, $type, $class)
-#set ($adjustType = ${type.replaceAll($tableMap.removeKeyword, '')})
+#set ($adjustType = ${type})
 #set ($index = ${adjustType.lastIndexOf('.')})
 #if ($index != -1)
-#set ($subPackage = "${scheme}${adjustType.substring(0, $index)}")
 #set ($index = $index + 1)
 #set ($adjustType = ${adjustType.substring($index)})
-#else
-#set ($subPackage = "${scheme}")
 #end
-#set ($adjustType = $scriptEngine.invokeFunction('nestClassName', $adjustType))
-#set ($adjustType = $adjustType.replaceAll("^${class}\$", ''))
+#set ($adjustType = $adjustType.replaceAll("^.*\$", ''))
+#set ($adjustType = $scriptEngine.invokeFunction('nestClassName', $scheme, $adjustType))
 #end
 
 #macro(loadTypeMap)
