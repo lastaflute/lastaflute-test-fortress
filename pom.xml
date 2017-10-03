@@ -25,7 +25,7 @@
 		<lasta.thymeleaf.version>0.3.1</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.1</lasta.job.version>
 		<lasta.remoteapi.version>0.3.6</lasta.remoteapi.version>
-		<lasta.doc.version>0.2.8</lasta.doc.version>
+		<lasta.doc.version>0.2.9-RC1</lasta.doc.version>
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.12</slf4j.version>
@@ -34,7 +34,7 @@
 		<jsp.version>2.3.1</jsp.version>
 		<jetty.boot.version>0.4.8</jetty.boot.version>
 		<tomcat.boot.version>0.5.9</tomcat.boot.version>
-		<swagger.ui.version>2.2.8</swagger.ui.version>
+		<swagger.ui.version>2.2.10-1</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.6</commons.lang.version>

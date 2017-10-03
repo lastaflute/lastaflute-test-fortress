@@ -14,10 +14,34 @@
 ## governing permissions and limitations under the License.
 ##
 ${manager.allClassCopyright}package ${request.package}.${subPackage};
+#set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
+#set ($parameterFlg = false)
+#if ($tableMap.behaviorMethodGeneration == 'true')
+#foreach($method in $methodList)
+#if (${method.requestBean.className} && ${method.requestBean.className} != '')
+#set($added = $importSet.add("${method.requestBean.package}.${method.requestBean.className}"))
+#set ($parameterFlg = true)
+#end
+#if (${method.responseBean.className} && ${method.responseBean.className} != '')
+#set($added = $importSet.add("${method.responseBean.package}.${method.responseBean.className}"))
+#end
+#end
+#end
+#if ($parameterFlg)
 
+import java.util.function.Consumer;
+#end
+
+#if ($tableMap.behaviorMethodGeneration == 'true')
+import org.lastaflute.di.helper.misc.ParameterizedRef;
+#end
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import ${request.package}.${abstractBehaviorSubPackage}.${abstractBehaviorClassName};
+#foreach($import in $importSet)
+import ${import};
+#end
+
 
 /**
  * ${class}.
@@ -31,4 +55,34 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     public ${class}(RequestManager requestManager) {
         super(requestManager);
     }
+#if ($tableMap.behaviorMethodGeneration == 'true')
+#foreach($method in $methodList)
+#set ($parameterDefinition = '')
+#set ($responseBeanClassName = 'void')
+#if (${method.requestBean.className})
+#set ($parameterDefinition = "Consumer<${method.requestBean.className}> paramLamda")
+#end
+#set ($responseBeanClassName = ${method.responseBean.className})
+
+#if ($foreach.index == 0)
+    // ===================================================================================
+    //                                                                             Execute
+    //                                                                             =======
+#end
+    /**
+     * $method.url.
+     */
+    protected ${responseBeanClassName} ${method.name}($!{parameterDefinition}) {
+#if (!${method.requestBean.className})
+       #if ($responseBeanClassName != 'void') return#end doRequest${method.httpMethod}(new ParameterizedRef<${responseBeanClassName.replaceAll('void', 'Void')}>() {
+        }.getType(), "${method.url}", noMoreUrl(), null, op -> {});
+#else
+        ${method.requestBean.className} param = new ${method.requestBean.className}();
+        paramLamda.accept(param);
+       #if ($responseBeanClassName != 'void') return#end doRequest${method.httpMethod}(new ParameterizedRef<${responseBeanClassName.replaceAll('void', 'Void')}>() {
+        }.getType(), "${method.url}", noMoreUrl(), param, op -> {});
+#end
+    }
+#end
+#end
 }

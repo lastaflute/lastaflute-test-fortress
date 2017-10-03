@@ -19,16 +19,21 @@ map:{
             ; tablePath = map
             ; swaggerJsonPath = ../src/main/resources/remoteapi/maihama-showbase_swagger.json
             ; targetUrlRegex = .*
-            # TODO p1us2er0 before implementation (2017/09/24)
-            #; targetContentType
             # when using Eclipse Collections
             #; yourCollections = org.eclipse.collections.api.list.ImmutableList
             ; definitionKey = function(definitionKey) \{ return definitionKey\; \}
-            ; subPackage = function(subPackage) \{ return subPackage.replace(/v1\./g, '').replace(/_/g, '')\; \}
+            ; subPackage = function(subPackage) \{ return subPackage\; \}
+            ; behaviorClassGeneration = true
+            ; behaviorMethodGeneration = true
+            ; frameworkBehaviorClass = org.lastaflute.remoteapi.LastaRemoteBehavior
             ; abstractBehaviorClassName = function(scheme) \{ return 'RemoteAbstract' + scheme + 'Bhv'\; \}
-            ; bsBehaviorClassName = function(scheme, className) \{ return 'RemoteBs' + className + 'Bhv'\; \}
-            ; exBehaviorClassName = function(scheme, className) \{ return 'Remote' + className + 'Bhv'\; \}
-            ; requertClassName = function(scheme, className, httpMethod, multipleHttpMethod) \{ return 'Remote' + className + (multipleHttpMethod ? httpMethod : '') + 'Param'\; \}
+            ; bsBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + 'Bs' + className + 'Bhv'\; \}
+            ; exBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + className + 'Bhv'\; \}
+            ; requestExtendsClass =
+            ; requestImplementsClasses =
+            ; requestClassName = function(scheme, className, httpMethod, multipleHttpMethod) \{ return 'Remote' + className + (multipleHttpMethod ? httpMethod : '') + 'Param'\; \}
+            ; responseExtendsClass =
+            ; responseImplementsClasses =
             ; responseClassName = function(scheme, className, httpMethod, multipleHttpMethod) \{ return 'Remote' + className + (multipleHttpMethod ? httpMethod : '') + 'Return'\; \}
             ; nestClassName = function(scheme, className) \{ return className\; \}
             ; fieldName = function(scheme, fieldName) \{ return fieldName.replace(/_./g, function(s) \{ return s.charAt(1).toUpperCase()\; \})\; \}

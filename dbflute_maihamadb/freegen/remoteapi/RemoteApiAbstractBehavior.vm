@@ -16,7 +16,6 @@
 ${manager.allClassCopyright}package ${request.package}.${abstractBehaviorSubPackage};
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.remoteapi.LastaRemoteBehavior;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -27,7 +26,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * </p>
  * @author FreeGen
  */
-public class ${abstractBehaviorClassName} extends LastaRemoteBehavior {
+public class ${abstractBehaviorClassName} extends ${tableMap.frameworkBehaviorClass} {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -35,6 +34,7 @@ public class ${abstractBehaviorClassName} extends LastaRemoteBehavior {
     public ${abstractBehaviorClassName}(RequestManager requestManager) {
         super(requestManager);
     }
+
 
     // ===================================================================================
     //                                                                          Initialize

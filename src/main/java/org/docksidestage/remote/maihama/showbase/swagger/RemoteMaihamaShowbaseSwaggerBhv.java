@@ -13,41 +13,24 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase;
+package org.docksidestage.remote.maihama.showbase.swagger;
 
-import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteAbstractMaihamaShowbaseBhv.
+ * RemoteMaihamaShowbaseSwaggerBhv.
  * <p>
  * You can implement your original methods here.
  * This class is NOT overrided when re-generating.
  * </p>
  * @author FreeGen
  */
-public class RemoteAbstractMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
+public class RemoteMaihamaShowbaseSwaggerBhv extends RemoteMaihamaShowbaseBsSwaggerBhv {
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RemoteAbstractMaihamaShowbaseBhv(RequestManager requestManager) {
+    public RemoteMaihamaShowbaseSwaggerBhv(RequestManager requestManager) {
         super(requestManager);
-    }
-
-
-    // ===================================================================================
-    //                                                                          Initialize
-    //                                                                          ==========
-    @Override
-    protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
-    }
-
-    @Override
-    protected String getUrlBase() {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
     }
 }

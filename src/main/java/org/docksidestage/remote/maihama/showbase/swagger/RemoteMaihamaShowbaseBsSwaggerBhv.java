@@ -13,41 +13,43 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase;
+package org.docksidestage.remote.maihama.showbase.swagger;
 
-import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
+import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
+
+
 /**
- * RemoteAbstractMaihamaShowbaseBhv.
- * <p>
- * You can implement your original methods here.
- * This class is NOT overrided when re-generating.
- * </p>
+ * RemoteMaihamaShowbaseBsSwaggerBhv.
  * @author FreeGen
  */
-public class RemoteAbstractMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
+public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RemoteAbstractMaihamaShowbaseBhv(RequestManager requestManager) {
+    public RemoteMaihamaShowbaseBsSwaggerBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
-
     // ===================================================================================
-    //                                                                          Initialize
-    //                                                                          ==========
-    @Override
-    protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
+    //                                                                             Execute
+    //                                                                             =======
+    /**
+     * /swagger/.
+     */
+    protected void swagger() {
+        doRequestPost(new ParameterizedRef<Void>() {
+        }.getType(), "/swagger/", noMoreUrl(), null, op -> {});
     }
 
-    @Override
-    protected String getUrlBase() {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
+    /**
+     * /swagger/json.
+     */
+    protected void json() {
+        doRequestPost(new ParameterizedRef<Void>() {
+        }.getType(), "/swagger/json", noMoreUrl(), null, op -> {});
     }
 }

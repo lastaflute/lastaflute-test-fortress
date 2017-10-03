@@ -965,8 +965,8 @@
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "keyword of product name e.g. Stranger",
+            "comment": "keyword of product name e.g. Stranger",
             "annotationList": [
               "Length{max\u003d10}"
             ],
@@ -977,8 +977,8 @@
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
             "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
-            "description": null,
-            "comment": null,
+            "description": "status of product e.g. ONS",
+            "comment": "status of product e.g. ONS",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
@@ -987,8 +987,8 @@
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "keyword of member name that purchases e.g. S",
+            "comment": "keyword of member name that purchases e.g. S",
             "annotationList": [
               "Length{max\u003d5}"
             ],

@@ -13,41 +13,40 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase;
+package org.docksidestage.remote.maihama.showbase.products;
 
-import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import java.util.function.Consumer;
+
+import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
+import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
+import org.docksidestage.remote.maihama.showbase.products.RemoteProductsParam;
+
+
 /**
- * RemoteAbstractMaihamaShowbaseBhv.
- * <p>
- * You can implement your original methods here.
- * This class is NOT overrided when re-generating.
- * </p>
+ * RemoteMaihamaShowbaseBsProductsBhv.
  * @author FreeGen
  */
-public class RemoteAbstractMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
+public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RemoteAbstractMaihamaShowbaseBhv(RequestManager requestManager) {
+    public RemoteMaihamaShowbaseBsProductsBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
-
     // ===================================================================================
-    //                                                                          Initialize
-    //                                                                          ==========
-    @Override
-    protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
-    }
-
-    @Override
-    protected String getUrlBase() {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
+    //                                                                             Execute
+    //                                                                             =======
+    /**
+     * /products/{productId}.
+     */
+    protected void products(Consumer<RemoteProductsParam> paramLamda) {
+        RemoteProductsParam param = new RemoteProductsParam();
+        paramLamda.accept(param);
+        doRequestPost(new ParameterizedRef<Void>() {
+        }.getType(), "/products/{productId}", noMoreUrl(), param, op -> {});
     }
 }

@@ -13,41 +13,40 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase;
+package org.docksidestage.remote.maihama.showbase.following;
 
-import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import java.util.function.Consumer;
+
+import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
+import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
+import org.docksidestage.remote.maihama.showbase.following.follow.RemoteFollowingFollowParam;
+
+
 /**
- * RemoteAbstractMaihamaShowbaseBhv.
- * <p>
- * You can implement your original methods here.
- * This class is NOT overrided when re-generating.
- * </p>
+ * RemoteMaihamaShowbaseBsFollowingBhv.
  * @author FreeGen
  */
-public class RemoteAbstractMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
+public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RemoteAbstractMaihamaShowbaseBhv(RequestManager requestManager) {
+    public RemoteMaihamaShowbaseBsFollowingBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
-
     // ===================================================================================
-    //                                                                          Initialize
-    //                                                                          ==========
-    @Override
-    protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
-    }
-
-    @Override
-    protected String getUrlBase() {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
+    //                                                                             Execute
+    //                                                                             =======
+    /**
+     * /following/follow.
+     */
+    protected void follow(Consumer<RemoteFollowingFollowParam> paramLamda) {
+        RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
+        paramLamda.accept(param);
+        doRequestPost(new ParameterizedRef<Void>() {
+        }.getType(), "/following/follow", noMoreUrl(), param, op -> {});
     }
 }

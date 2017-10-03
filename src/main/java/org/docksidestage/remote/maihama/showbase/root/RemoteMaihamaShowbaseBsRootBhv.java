@@ -13,41 +13,35 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase;
+package org.docksidestage.remote.maihama.showbase.root;
 
-import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
+import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
+
+
 /**
- * RemoteAbstractMaihamaShowbaseBhv.
- * <p>
- * You can implement your original methods here.
- * This class is NOT overrided when re-generating.
- * </p>
+ * RemoteMaihamaShowbaseBsRootBhv.
  * @author FreeGen
  */
-public class RemoteAbstractMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
+public abstract class RemoteMaihamaShowbaseBsRootBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RemoteAbstractMaihamaShowbaseBhv(RequestManager requestManager) {
+    public RemoteMaihamaShowbaseBsRootBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
-
     // ===================================================================================
-    //                                                                          Initialize
-    //                                                                          ==========
-    @Override
-    protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
-    }
-
-    @Override
-    protected String getUrlBase() {
-        // TODO #change_it
-        throw new IllegalStateException("change it.");
+    //                                                                             Execute
+    //                                                                             =======
+    /**
+     * /root/.
+     */
+    protected void root() {
+        doRequestPost(new ParameterizedRef<Void>() {
+        }.getType(), "/root/", noMoreUrl(), null, op -> {});
     }
 }

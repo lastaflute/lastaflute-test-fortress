@@ -15,7 +15,7 @@
 ##
 ${manager.allClassCopyright}package ${request.package}.${subPackage};
 #set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
-#foreach($propertyEntry in $definition.properties.entrySet())
+#foreach($propertyEntry in $properties.entrySet())
 #set ($property = $propertyEntry.value)
 #if (${property.required})
 #set($added = $importSet.add('org.lastaflute.web.validation.Required'))
@@ -47,8 +47,8 @@ import ${import};
  * ${class}.
  * @author FreeGen
  */
-public class ${class} {
-#foreach($propertyEntry in $definition.properties.entrySet())
+public class ${class}#if ($extendsClass && $extendsClass != '') extends $extendsClass#end#if ($implementsClasses && $implementsClasses != '') implements $implementsClasses#end {
+#foreach($propertyEntry in $properties.entrySet())
 #set ($fieldName = $propertyEntry.key)
 #set ($property = $propertyEntry.value)
 
