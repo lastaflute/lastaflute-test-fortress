@@ -13,16 +13,16 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.product.list.search;
+package org.docksidestage.remote.maihama.showbase.product.list.status;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteProductListSearchReturn.
+ * RemoteProductListStatusReturn.
  * @author FreeGen
  */
-public class RemoteProductListSearchReturn {
+public class RemoteProductListStatusReturn {
 
     /** row count per one page. */
     @Required

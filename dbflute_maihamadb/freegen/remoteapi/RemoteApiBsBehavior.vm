@@ -22,7 +22,7 @@ ${manager.allClassCopyright}package ${request.package}.${subPackage};
 #set($added = $importSet.add("${method.requestBean.package}.${method.requestBean.className}"))
 #set ($parameterFlg = true)
 #end
-#if (${method.responseBean.className} && ${method.responseBean.className} != '')
+#if (${method.responseBean.package} && ${method.responseBean.package} != '' && ${method.responseBean.className} && ${method.responseBean.className} != '')
 #set($added = $importSet.add("${method.responseBean.package}.${method.responseBean.className}"))
 #end
 #end

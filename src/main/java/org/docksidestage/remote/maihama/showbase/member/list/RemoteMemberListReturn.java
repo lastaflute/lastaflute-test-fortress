@@ -42,26 +42,29 @@ public class RemoteMemberListReturn {
 
     /** paging data for current page. */
     @javax.validation.Valid
-    public java.util.List<Object> rows;
+    public java.util.List<MemberSearchRowResult> rows;
 
-    public static class Object {
-
-        @Required
-        public Integer productId;
+    public static class MemberSearchRowResult {
 
         @Required
-        public String productName;
+        public Integer memberId;
 
         @Required
-        public String productStatus;
+        public String memberName;
 
         @Required
-        public String productCategory;
+        public String memberStatusName;
+
+        public java.time.LocalDate formalizedDate;
 
         @Required
-        public Integer regularPrice;
+        public java.time.LocalDateTime updateDatetime;
 
-        public java.time.LocalDate latestPurchaseDate;
+        @Required
+        public Boolean withdrawalMember;
+
+        @Required
+        public Integer purchaseCount;
     }
 
     @Override

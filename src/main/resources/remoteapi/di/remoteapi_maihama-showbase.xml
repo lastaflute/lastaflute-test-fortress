@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//DBFLUTE//DTD LastaDi 1.0//EN"
+    "http://dbflute.org/meta/lastadi10.dtd">
+<components namespace="remoteapi_maihama-showbase">
+    <include path="lastaflute_core.xml"/>
+    <include path="lastaflute_web.xml"/>
+    <include path="convention.xml"/>
+
+    <!-- Remote API Behavior -->
+    <component name="remoteMaihamaShowbaseFollowingBhv" class="org.docksidestage.remote.maihama.showbase.following.RemoteMaihamaShowbaseFollowingBhv" />
+    <component name="remoteMaihamaShowbaseMemberBhv" class="org.docksidestage.remote.maihama.showbase.member.RemoteMaihamaShowbaseMemberBhv" />
+    <component name="remoteMaihamaShowbaseMypageBhv" class="org.docksidestage.remote.maihama.showbase.mypage.RemoteMaihamaShowbaseMypageBhv" />
+    <component name="remoteMaihamaShowbaseProductBhv" class="org.docksidestage.remote.maihama.showbase.product.RemoteMaihamaShowbaseProductBhv" />
+    <component name="remoteMaihamaShowbaseProductsBhv" class="org.docksidestage.remote.maihama.showbase.products.RemoteMaihamaShowbaseProductsBhv" />
+    <component name="remoteMaihamaShowbaseProfileBhv" class="org.docksidestage.remote.maihama.showbase.profile.RemoteMaihamaShowbaseProfileBhv" />
+    <component name="remoteMaihamaShowbasePurchaseBhv" class="org.docksidestage.remote.maihama.showbase.purchase.RemoteMaihamaShowbasePurchaseBhv" />
+    <component name="remoteMaihamaShowbaseRootBhv" class="org.docksidestage.remote.maihama.showbase.root.RemoteMaihamaShowbaseRootBhv" />
+    <component name="remoteMaihamaShowbaseSigninBhv" class="org.docksidestage.remote.maihama.showbase.signin.RemoteMaihamaShowbaseSigninBhv" />
+    <component name="remoteMaihamaShowbaseSignupBhv" class="org.docksidestage.remote.maihama.showbase.signup.RemoteMaihamaShowbaseSignupBhv" />
+    <component name="remoteMaihamaShowbaseSwaggerBhv" class="org.docksidestage.remote.maihama.showbase.swagger.RemoteMaihamaShowbaseSwaggerBhv" />
+    <component name="remoteMaihamaShowbaseWithdrawalBhv" class="org.docksidestage.remote.maihama.showbase.withdrawal.RemoteMaihamaShowbaseWithdrawalBhv" />
+    <component name="remoteMaihamaShowbaseWxBhv" class="org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv" />
+</components>

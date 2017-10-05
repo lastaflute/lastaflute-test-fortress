@@ -45,9 +45,10 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * url: /withdrawal/reason
      * httpMethod: POST
      * </pre>
+     * @return java.util.List<java.util.Map<String, Object>>
      */
-    protected void requestReason() {
-        doRequestPost(new ParameterizedRef<Void>() {
+    protected java.util.List<java.util.Map<String, Object>> requestReason() {
+        return doRequestPost(new ParameterizedRef<java.util.List<java.util.Map<String, Object>>>() {
         }.getType(), "/withdrawal/reason", noMoreUrl(), null, op -> {});
     }
 
@@ -58,11 +59,12 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteWithdrawalDoneParam
+     * @return Integer
      */
-    protected void requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
+    protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
         RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
         paramLamda.accept(param);
-        doRequestPost(new ParameterizedRef<Void>() {
+        return doRequestPost(new ParameterizedRef<Integer>() {
         }.getType(), "/withdrawal/done", noMoreUrl(), param, op -> {});
     }
 }

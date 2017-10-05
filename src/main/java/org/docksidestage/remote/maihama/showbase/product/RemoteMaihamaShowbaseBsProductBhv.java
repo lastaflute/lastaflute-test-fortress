@@ -65,7 +65,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * @param paramLamda The callback for RemoteProductListSearchParam
      * @return RemoteProductListSearchReturn
      */
-    protected RemoteProductListSearchReturn requestListSearch(String pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
+    protected RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
         RemoteProductListSearchParam param = new RemoteProductListSearchParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteProductListSearchReturn>() {
@@ -78,9 +78,10 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * url: /product/list/status
      * httpMethod: POST
      * </pre>
+     * @return java.util.List<java.util.Map<String, Object>>
      */
-    protected void requestListStatus() {
-        doRequestPost(new ParameterizedRef<Void>() {
+    protected java.util.List<java.util.Map<String, Object>> requestListStatus() {
+        return doRequestPost(new ParameterizedRef<java.util.List<java.util.Map<String, Object>>>() {
         }.getType(), "/product/list/status", noMoreUrl(), null, op -> {});
     }
 }

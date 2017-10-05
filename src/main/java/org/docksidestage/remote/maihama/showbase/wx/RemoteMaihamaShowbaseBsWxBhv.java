@@ -46,11 +46,12 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteWxFaicliParam
+     * @return java.util.Map<String, Object>
      */
-    protected void requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda) {
+    protected java.util.Map<String, Object> requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda) {
         RemoteWxFaicliParam param = new RemoteWxFaicliParam();
         paramLamda.accept(param);
-        doRequestPost(new ParameterizedRef<Void>() {
+        return doRequestPost(new ParameterizedRef<java.util.Map<String, Object>>() {
         }.getType(), "/wx/faicli/", noMoreUrl(), param, op -> {
             op.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));

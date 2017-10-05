@@ -13,27 +13,31 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.member.list;
+package org.docksidestage.remote.maihama.showbase.withdrawal.reason;
 
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteMemberListParam.
+ * RemoteWithdrawalReasonReturn.
  * @author FreeGen
  */
-public class RemoteMemberListParam {
+public class RemoteWithdrawalReasonReturn {
 
+    @Required
     public String memberName;
 
-    public String memberStatus;
+    @Required
+    public String memberAccount;
 
-    public String purchaseProductName;
+    @Required
+    public String password;
 
-    public Boolean unpaid;
+    @Required
+    public String reminderQuestion;
 
-    public java.time.LocalDate formalizedFrom;
-
-    public java.time.LocalDate formalizedTo;
+    @Required
+    public String reminderAnswer;
 
     @Override
     public String toString() {

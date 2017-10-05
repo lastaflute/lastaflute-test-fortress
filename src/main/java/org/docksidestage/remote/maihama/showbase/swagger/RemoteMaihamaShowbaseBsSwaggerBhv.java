@@ -42,9 +42,10 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
      * url: /swagger/
      * httpMethod: POST
      * </pre>
+     * @return java.util.Map<String, Object>
      */
-    protected void requestSwagger() {
-        doRequestPost(new ParameterizedRef<Void>() {
+    protected java.util.Map<String, Object> requestSwagger() {
+        return doRequestPost(new ParameterizedRef<java.util.Map<String, Object>>() {
         }.getType(), "/swagger/", noMoreUrl(), null, op -> {});
     }
 
@@ -54,9 +55,10 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
      * url: /swagger/json
      * httpMethod: POST
      * </pre>
+     * @return java.util.Map<String, Object>
      */
-    protected void requestJson() {
-        doRequestPost(new ParameterizedRef<Void>() {
+    protected java.util.Map<String, Object> requestJson() {
+        return doRequestPost(new ParameterizedRef<java.util.Map<String, Object>>() {
         }.getType(), "/swagger/json", noMoreUrl(), null, op -> {});
     }
 }

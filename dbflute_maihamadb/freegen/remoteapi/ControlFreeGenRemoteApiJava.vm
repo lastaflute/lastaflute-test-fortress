@@ -24,17 +24,7 @@ $manager.makeDirectory($request.generateDirPath)
   #set ($resourceTypeRemoteApi = "RemoteApi")
   #if ($request.requestName.startsWith($resourceTypeRemoteApi))
     $manager.info("gen remote api: ${request.requestName}")
-    $scriptEngine.eval("var url = $tableMap.url")
-    $scriptEngine.eval("var definitionKey = $tableMap.definitionKey")
-    $scriptEngine.eval("var unDefinitionKey = $tableMap.unDefinitionKey")
-    $scriptEngine.eval("var subPackage = $tableMap.subPackage")
-    $scriptEngine.eval("var abstractBehaviorClassName = $tableMap.abstractBehaviorClassName")
-    $scriptEngine.eval("var bsBehaviorClassName = $tableMap.bsBehaviorClassName")
-    $scriptEngine.eval("var exBehaviorClassName = $tableMap.exBehaviorClassName")
-    $scriptEngine.eval("var requestClassName = $tableMap.requestClassName")
-    $scriptEngine.eval("var responseClassName = $tableMap.responseClassName")
-    $scriptEngine.eval("var nestClassName = $tableMap.nestClassName")
-    $scriptEngine.eval("var fieldName = $tableMap.fieldName")
+    #loadScript()
 
     #set ($jsonFreeAgent = $request.getClass().forName("org.dbflute.logic.manage.freegen.table.json.DfJsonFreeAgent").newInstance())
     #set ($swaggerJsonMap = $jsonFreeAgent.decodeJsonMap($request.resourceName, $tableMap.swaggerJsonPath))
@@ -45,7 +35,7 @@ $manager.makeDirectory($request.generateDirPath)
     #end
 
     #set ($scheme = $request.requestName.replace($resourceTypeRemoteApi, ''))
-    #set ($schemePackage = $manager.decamelize($request.requestName.replace($resourceTypeRemoteApi, '')).replaceAll('_', '.').toLowerCase())
+    #set ($schemePackage = $manager.decamelize($scheme).replaceAll('_', '.').toLowerCase())
     #set ($bsBehaviorMap = {})
     #set ($exBehaviorMap = {})
     #foreach($swaggerJsonEntry in $swaggerJsonMap.entrySet())
@@ -92,9 +82,26 @@ $manager.makeDirectory($request.generateDirPath)
               ## response
               #set ($responseProperties = {})
               #foreach($responseEntry in $methodEntry.value['responses'].entrySet())
-                #set ($definitionKey = '')
-                #if ($responseEntry.value.schema && $responseEntry.value.schema['$ref'])
-                  #set ($definitionKey = $responseEntry.value.schema['$ref'].replace('#/definitions/', '')))
+                #set ($response = $responseEntry.value)
+                #if ($response.type == 'array')
+                  #if (${typeMap[$response.items.format]})
+                    #set ($responseBean = { 'className': "${typeMap[$response.type]}<${typeMap[$response.items.format]}>" })
+                  #elseif (${typeMap[$response.items.type]})
+                    #set ($responseBean = { 'className': "${typeMap[$response.type]}<${typeMap[$response.items.type]}>" })
+                  #else
+                    #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
+                    #set ($responseProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
+                    #if (!$responseProperties.empty)
+                      #processRemoteApiBean('response', $url, $methodEntry.key, $multipleHttpMethod, $responseProperties)
+                      #set ($responseBean = { 'package': "${request.package}.${subPackage}", 'className': ${class} })
+                    #end
+                  #end
+                #elseif (${typeMap[$response.format]})
+                  #set ($responseBean = { 'className': ${typeMap[$response.format]} })
+                #elseif (${typeMap[$response.type]})
+                  #set ($responseBean = { 'className': ${typeMap[$response.type]} })
+                #elseif ($response.schema && $response.schema['$ref'])
+                  #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
                   #set ($responseProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                   #if (!$responseProperties.empty)
                     #processRemoteApiBean('response', $url, $methodEntry.key, $multipleHttpMethod, $responseProperties)
@@ -108,33 +115,7 @@ $manager.makeDirectory($request.generateDirPath)
         #end
       #end
     #end
-
-    #if ($tableMap.behaviorClassGeneration == 'true')
-      #set ($abstractBehaviorSubPackage = "${schemePackage}")
-      #set ($abstractBehaviorClassName = $scriptEngine.invokeFunction('abstractBehaviorClassName', $scheme))
-      #set ($path = "${request.generateDirPath}${abstractBehaviorSubPackage.replaceAll('\.', '/')}/${abstractBehaviorClassName.replaceAll('\.', '/')}.java")
-      #mkdir($path)
-      #generateEx("./remoteapi/RemoteApiAbstractBehavior.vm", $path)
-
-      #foreach($bsBehavior in $bsBehaviorMap.values())
-        #set ($subPackage = ${bsBehavior['subPackage']})
-        #set ($class = $bsBehavior['class'])
-        #set ($methodList = $bsBehavior['methodList'])
-        #set ($path = "${request.generateDirPath}${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
-        #mkdir($path)
-        #generate("./remoteapi/RemoteApiBsBehavior.vm", $path)
-      #end
-
-      #foreach($exBehavior in $exBehaviorMap.values())
-        #set ($subPackage = ${exBehavior['subPackage']})
-        #set ($class = $exBehavior['class'])
-        #set ($baseSubPackage = ${exBehavior['baseSubPackage']})
-        #set ($baseClass = $exBehavior['baseClass'])
-        #set ($path = "${request.generateDirPath}${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
-        #mkdir($path)
-        #generateEx("./remoteapi/RemoteApiExBehavior.vm", $path)
-      #end
-    #end
+    #processRemoteApiBhv()
   #end
 #end
 #end
@@ -155,6 +136,9 @@ $manager.makeDirectory($request.generateDirPath)
   #end
 #end
 
+##################################################
+## keep remote api behavior.
+##################################################
 #macro(keepRemoteApiBehavior, $url, $httpMethod, $multipleHttpMethod, $pathProperties, $requestBean, $responseBean)
   #set ($apiName = $url.replaceAll('_', '').replaceAll('^/', '').replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.'))
   #set ($apiName = $apiName.toLowerCase())
@@ -175,6 +159,9 @@ $manager.makeDirectory($request.generateDirPath)
   $exBehaviorMap.put("${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'baseSubPackage': ${baseSubPackage}, 'baseClass': ${baseClass} })
 #end
 
+##################################################
+## process remote api bean.
+##################################################
 #macro(processRemoteApiBean, $type, $url, $httpMethod, $multipleHttpMethod, $properties_)
   #set ($subPackage = ${url.replaceAll('_', '').replaceAll('^/', '').replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.').toLowerCase()})
   #set ($subPackage = $scriptEngine.invokeFunction('subPackage', $subPackage))
@@ -190,6 +177,52 @@ $manager.makeDirectory($request.generateDirPath)
   #generate("./remoteapi/RemoteApiBean.vm", $path)
 #end
 
+##################################################
+## process remote api bhv.
+##################################################
+#macro(processRemoteApiBhv)
+  #if ($tableMap.behaviorClassGeneration == 'true')
+    #set ($abstractBehaviorSubPackage = "${schemePackage}")
+    #set ($abstractBehaviorClassName = $scriptEngine.invokeFunction('abstractBehaviorClassName', $scheme))
+    #set ($path = "${request.generateDirPath}${abstractBehaviorSubPackage.replaceAll('\.', '/')}/${abstractBehaviorClassName.replaceAll('\.', '/')}.java")
+    #mkdir($path)
+    #generateEx("./remoteapi/RemoteApiAbstractBehavior.vm", $path)
+
+    #foreach($bsBehavior in $bsBehaviorMap.values())
+      #set ($subPackage = ${bsBehavior['subPackage']})
+      #set ($class = $bsBehavior['class'])
+      #set ($methodList = $bsBehavior['methodList'])
+      #set ($path = "${request.generateDirPath}${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+      #mkdir($path)
+      #generate("./remoteapi/RemoteApiBsBehavior.vm", $path)
+    #end
+
+    #foreach($exBehavior in $exBehaviorMap.values())
+      #set ($subPackage = ${exBehavior['subPackage']})
+      #set ($class = $exBehavior['class'])
+      #set ($baseSubPackage = ${exBehavior['baseSubPackage']})
+      #set ($baseClass = $exBehavior['baseClass'])
+      #set ($path = "${request.generateDirPath}${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+      #mkdir($path)
+      #generateEx("./remoteapi/RemoteApiExBehavior.vm", $path)
+    #end
+
+    #if ($manager.isTargetContainerSeasar())
+      #set ($path = "../resources/remoteapi/di/remoteapi_${schemePackage.replaceAll('\.', '-')}.dicon")
+      #mkdir($path)
+      #generate("./remoteapi/container/seasar/RemoteApiDicon.vm", $path)
+    #end
+    #if ($manager.isTargetContainerLastaDi())
+      #set ($path = "../resources/remoteapi/di/remoteapi_${schemePackage.replaceAll('\.', '-')}.xml")
+      #mkdir($path)
+      #generate("./remoteapi/container/lastadi/RemoteApiDiXml.vm", $path)
+    #end
+  #end
+#end
+
+##################################################
+## adjust type.
+##################################################
 #macro(adjustType, $type, $class)
 #set ($adjustType = ${type})
 #set ($index = ${adjustType.lastIndexOf('.')})
@@ -201,8 +234,29 @@ $manager.makeDirectory($request.generateDirPath)
 #set ($adjustType = $scriptEngine.invokeFunction('nestClassName', $scheme, $adjustType))
 #end
 
+##################################################
+## load script.
+##################################################
+#macro(loadScript)
+  $scriptEngine.eval("var url = $tableMap.url")
+  $scriptEngine.eval("var definitionKey = $tableMap.definitionKey")
+  $scriptEngine.eval("var unDefinitionKey = $tableMap.unDefinitionKey")
+  $scriptEngine.eval("var subPackage = $tableMap.subPackage")
+  $scriptEngine.eval("var abstractBehaviorClassName = $tableMap.abstractBehaviorClassName")
+  $scriptEngine.eval("var bsBehaviorClassName = $tableMap.bsBehaviorClassName")
+  $scriptEngine.eval("var exBehaviorClassName = $tableMap.exBehaviorClassName")
+  $scriptEngine.eval("var requestClassName = $tableMap.requestClassName")
+  $scriptEngine.eval("var responseClassName = $tableMap.responseClassName")
+  $scriptEngine.eval("var nestClassName = $tableMap.nestClassName")
+  $scriptEngine.eval("var fieldName = $tableMap.fieldName")
+#end
+
+##################################################
+## load type map.
+##################################################
 #macro(loadTypeMap)
   #set ($typeMap = {})
+  $typeMap.put('object', 'java.util.Map<String, Object>')
   $typeMap.put('int32', 'Integer')
   $typeMap.put('int64', 'Long')
   $typeMap.put('float', 'Float')

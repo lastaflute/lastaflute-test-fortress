@@ -13,27 +13,23 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.member.list;
+package org.docksidestage.remote.maihama.showbase.member.status;
 
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteMemberListParam.
+ * RemoteMemberStatusReturn.
  * @author FreeGen
  */
-public class RemoteMemberListParam {
+public class RemoteMemberStatusReturn {
 
+    public Integer memberId;
+
+    @Required
     public String memberName;
 
-    public String memberStatus;
-
-    public String purchaseProductName;
-
-    public Boolean unpaid;
-
-    public java.time.LocalDate formalizedFrom;
-
-    public java.time.LocalDate formalizedTo;
+    public String memberStatusName;
 
     @Override
     public String toString() {

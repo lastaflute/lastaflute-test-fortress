@@ -65,9 +65,10 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/status
      * httpMethod: POST
      * </pre>
+     * @return java.util.List<java.util.Map<String, Object>>
      */
-    protected void requestStatus() {
-        doRequestPost(new ParameterizedRef<Void>() {
+    protected java.util.List<java.util.Map<String, Object>> requestStatus() {
+        return doRequestPost(new ParameterizedRef<java.util.List<java.util.Map<String, Object>>>() {
         }.getType(), "/member/status", noMoreUrl(), null, op -> {});
     }
 
@@ -126,7 +127,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @param paramLamda The callback for RemoteMemberListParam
      * @return RemoteMemberListReturn
      */
-    protected RemoteMemberListReturn requestList(String pageNumber, Consumer<RemoteMemberListParam> paramLamda) {
+    protected RemoteMemberListReturn requestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLamda) {
         RemoteMemberListParam param = new RemoteMemberListParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteMemberListReturn>() {
@@ -143,7 +144,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @param pageNumber pageNumber
      * @return RemoteMemberPurchaseListReturn
      */
-    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, String pageNumber) {
+    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber) {
         return doRequestPost(new ParameterizedRef<RemoteMemberPurchaseListReturn>() {
         }.getType(), "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, op -> {});
     }

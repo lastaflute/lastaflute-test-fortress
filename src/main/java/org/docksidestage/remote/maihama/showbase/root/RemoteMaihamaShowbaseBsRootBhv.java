@@ -42,9 +42,10 @@ public abstract class RemoteMaihamaShowbaseBsRootBhv extends RemoteAbstractMaiha
      * url: /root/
      * httpMethod: POST
      * </pre>
+     * @return java.util.Map<String, Object>
      */
-    protected void requestRoot() {
-        doRequestPost(new ParameterizedRef<Void>() {
+    protected java.util.Map<String, Object> requestRoot() {
+        return doRequestPost(new ParameterizedRef<java.util.Map<String, Object>>() {
         }.getType(), "/root/", noMoreUrl(), null, op -> {});
     }
 }

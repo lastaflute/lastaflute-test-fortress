@@ -42,26 +42,27 @@ public class RemoteMemberPurchaseListReturn {
 
     /** paging data for current page. */
     @javax.validation.Valid
-    public java.util.List<Object> rows;
+    public java.util.List<MemberPurchaseSearchRowResult> rows;
 
-    public static class Object {
+    public static class MemberPurchaseSearchRowResult {
 
         @Required
-        public Integer productId;
+        public Long purchaseId;
+
+        @Required
+        public java.time.LocalDateTime purchaseDatetime;
 
         @Required
         public String productName;
 
         @Required
-        public String productStatus;
+        public Integer purchasePrice;
 
         @Required
-        public String productCategory;
+        public Integer purchaseCount;
 
         @Required
-        public Integer regularPrice;
-
-        public java.time.LocalDate latestPurchaseDate;
+        public Boolean paymentComplete;
     }
 
     @Override

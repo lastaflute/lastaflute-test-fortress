@@ -47,11 +47,12 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
      * </pre>
      * @param productId productId
      * @param paramLamda The callback for RemoteProductsParam
+     * @return java.util.Map<String, Object>
      */
-    protected void requestProducts(String productId, Consumer<RemoteProductsParam> paramLamda) {
+    protected java.util.Map<String, Object> requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
         RemoteProductsParam param = new RemoteProductsParam();
         paramLamda.accept(param);
-        doRequestPost(new ParameterizedRef<Void>() {
+        return doRequestPost(new ParameterizedRef<java.util.Map<String, Object>>() {
         }.getType(), "/products/{productId}", moreUrl(productId), param, op -> {});
     }
 }
