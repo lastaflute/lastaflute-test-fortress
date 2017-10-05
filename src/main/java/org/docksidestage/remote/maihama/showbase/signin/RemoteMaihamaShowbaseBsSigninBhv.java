@@ -24,7 +24,6 @@ import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.signin.RemoteSigninParam;
 import org.docksidestage.remote.maihama.showbase.signin.RemoteSigninReturn;
 
-
 /**
  * RemoteMaihamaShowbaseBsSigninBhv.
  * @author FreeGen
@@ -42,9 +41,15 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /signin/.
+     * Signin.<br>
+     * <pre>
+     * url: /signin/
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemoteSigninParam
+     * @return RemoteSigninReturn
      */
-    protected RemoteSigninReturn signin(Consumer<RemoteSigninParam> paramLamda) {
+    protected RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda) {
         RemoteSigninParam param = new RemoteSigninParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteSigninReturn>() {

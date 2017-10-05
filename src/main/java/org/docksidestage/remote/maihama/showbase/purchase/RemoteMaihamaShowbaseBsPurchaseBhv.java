@@ -26,7 +26,6 @@ import org.docksidestage.remote.maihama.showbase.purchase.count.RemotePurchaseCo
 import org.docksidestage.remote.maihama.showbase.purchase.contract.RemotePurchaseContractParam;
 import org.docksidestage.remote.maihama.showbase.purchase.contract.RemotePurchaseContractReturn;
 
-
 /**
  * RemoteMaihamaShowbaseBsPurchaseBhv.
  * @author FreeGen
@@ -44,9 +43,15 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /purchase/count.
+     * Count.<br>
+     * <pre>
+     * url: /purchase/count
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemotePurchaseCountParam
+     * @return RemotePurchaseCountReturn
      */
-    protected RemotePurchaseCountReturn count(Consumer<RemotePurchaseCountParam> paramLamda) {
+    protected RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLamda) {
         RemotePurchaseCountParam param = new RemotePurchaseCountParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemotePurchaseCountReturn>() {
@@ -54,9 +59,15 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     }
 
     /**
-     * /purchase/contract.
+     * Contract.<br>
+     * <pre>
+     * url: /purchase/contract
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemotePurchaseContractParam
+     * @return RemotePurchaseContractReturn
      */
-    protected RemotePurchaseContractReturn contract(Consumer<RemotePurchaseContractParam> paramLamda) {
+    protected RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLamda) {
         RemotePurchaseContractParam param = new RemotePurchaseContractParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemotePurchaseContractReturn>() {

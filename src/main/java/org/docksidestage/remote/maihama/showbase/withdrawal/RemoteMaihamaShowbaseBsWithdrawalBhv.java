@@ -23,7 +23,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.withdrawal.done.RemoteWithdrawalDoneParam;
 
-
 /**
  * RemoteMaihamaShowbaseBsWithdrawalBhv.
  * @author FreeGen
@@ -41,17 +40,26 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /withdrawal/reason.
+     * Reason.<br>
+     * <pre>
+     * url: /withdrawal/reason
+     * httpMethod: POST
+     * </pre>
      */
-    protected void reason() {
+    protected void requestReason() {
         doRequestPost(new ParameterizedRef<Void>() {
         }.getType(), "/withdrawal/reason", noMoreUrl(), null, op -> {});
     }
 
     /**
-     * /withdrawal/done.
+     * Done.<br>
+     * <pre>
+     * url: /withdrawal/done
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemoteWithdrawalDoneParam
      */
-    protected void done(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
+    protected void requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
         RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {

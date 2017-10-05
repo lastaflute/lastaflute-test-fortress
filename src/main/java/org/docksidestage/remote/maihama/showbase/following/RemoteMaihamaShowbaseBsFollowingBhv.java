@@ -23,7 +23,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.following.follow.RemoteFollowingFollowParam;
 
-
 /**
  * RemoteMaihamaShowbaseBsFollowingBhv.
  * @author FreeGen
@@ -41,9 +40,14 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /following/follow.
+     * Follow.<br>
+     * <pre>
+     * url: /following/follow
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemoteFollowingFollowParam
      */
-    protected void follow(Consumer<RemoteFollowingFollowParam> paramLamda) {
+    protected void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda) {
         RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {

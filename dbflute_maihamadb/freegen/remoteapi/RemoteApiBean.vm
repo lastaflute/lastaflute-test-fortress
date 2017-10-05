@@ -133,7 +133,6 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
     #generateIndent()@javax.validation.Valid
 #end
     #generateIndent()public ${nestFieldClass} ${scriptEngine.invokeFunction('fieldName', $scheme, $nestPropertyEntry.key)};
-#end
 #if ($ref && $ref != '')
 #if (!$generatedClassSet.contains($adjustType))
 #set($added = $generatedClassSet.add($adjustType))
@@ -142,13 +141,14 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #end
 #set($ref = '')
 #end
+#end
 #generateIndent()}
 #set($i = $nestList.size() - 1)
 #set($removed = $nestList.remove($i))
 #end
 ##################################################
 ## generate indent.
-################################################## 
+##################################################
 #macro(generateIndent)
 #foreach($nest in $nestList)    #end
 #end

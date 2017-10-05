@@ -30,7 +30,6 @@ import org.docksidestage.remote.maihama.showbase.member.list.RemoteMemberListPar
 import org.docksidestage.remote.maihama.showbase.member.list.RemoteMemberListReturn;
 import org.docksidestage.remote.maihama.showbase.member.purchase.list.RemoteMemberPurchaseListReturn;
 
-
 /**
  * RemoteMaihamaShowbaseBsMemberBhv.
  * @author FreeGen
@@ -48,25 +47,40 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /member/info.
+     * Info.<br>
+     * <pre>
+     * url: /member/info
+     * httpMethod: POST
+     * </pre>
+     * @return RemoteMemberInfoReturn
      */
-    protected RemoteMemberInfoReturn info() {
+    protected RemoteMemberInfoReturn requestInfo() {
         return doRequestPost(new ParameterizedRef<RemoteMemberInfoReturn>() {
         }.getType(), "/member/info", noMoreUrl(), null, op -> {});
     }
 
     /**
-     * /member/status.
+     * Status.<br>
+     * <pre>
+     * url: /member/status
+     * httpMethod: POST
+     * </pre>
      */
-    protected void status() {
+    protected void requestStatus() {
         doRequestPost(new ParameterizedRef<Void>() {
         }.getType(), "/member/status", noMoreUrl(), null, op -> {});
     }
 
     /**
-     * /member/add/register.
+     * AddRegister.<br>
+     * <pre>
+     * url: /member/add/register
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemoteMemberAddRegisterParam
+     * @return RemoteMemberAddRegisterReturn
      */
-    protected RemoteMemberAddRegisterReturn addRegister(Consumer<RemoteMemberAddRegisterParam> paramLamda) {
+    protected RemoteMemberAddRegisterReturn requestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLamda) {
         RemoteMemberAddRegisterParam param = new RemoteMemberAddRegisterParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteMemberAddRegisterReturn>() {
@@ -74,17 +88,28 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * /member/edit/{memberId}.
+     * Edit.<br>
+     * <pre>
+     * url: /member/edit/{memberId}
+     * httpMethod: POST
+     * </pre>
+     * @param memberId memberId
+     * @return RemoteMemberEditReturn
      */
-    protected RemoteMemberEditReturn edit() {
+    protected RemoteMemberEditReturn requestEdit(Integer memberId) {
         return doRequestPost(new ParameterizedRef<RemoteMemberEditReturn>() {
-        }.getType(), "/member/edit/{memberId}", noMoreUrl(), null, op -> {});
+        }.getType(), "/member/edit/{memberId}", moreUrl(memberId), null, op -> {});
     }
 
     /**
-     * /member/edit/update.
+     * EditUpdate.<br>
+     * <pre>
+     * url: /member/edit/update
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemoteMemberEditUpdateParam
      */
-    protected void editUpdate(Consumer<RemoteMemberEditUpdateParam> paramLamda) {
+    protected void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLamda) {
         RemoteMemberEditUpdateParam param = new RemoteMemberEditUpdateParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
@@ -92,28 +117,47 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * /member/list/{pageNumber}.
+     * List.<br>
+     * <pre>
+     * url: /member/list/{pageNumber}
+     * httpMethod: POST
+     * </pre>
+     * @param pageNumber pageNumber
+     * @param paramLamda The callback for RemoteMemberListParam
+     * @return RemoteMemberListReturn
      */
-    protected RemoteMemberListReturn list(Consumer<RemoteMemberListParam> paramLamda) {
+    protected RemoteMemberListReturn requestList(String pageNumber, Consumer<RemoteMemberListParam> paramLamda) {
         RemoteMemberListParam param = new RemoteMemberListParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteMemberListReturn>() {
-        }.getType(), "/member/list/{pageNumber}", noMoreUrl(), param, op -> {});
+        }.getType(), "/member/list/{pageNumber}", moreUrl(pageNumber), param, op -> {});
     }
 
     /**
-     * /member/purchase/list/{memberId}/{pageNumber}.
+     * PurchaseList.<br>
+     * <pre>
+     * url: /member/purchase/list/{memberId}/{pageNumber}
+     * httpMethod: POST
+     * </pre>
+     * @param memberId memberId
+     * @param pageNumber pageNumber
+     * @return RemoteMemberPurchaseListReturn
      */
-    protected RemoteMemberPurchaseListReturn purchaseList() {
+    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, String pageNumber) {
         return doRequestPost(new ParameterizedRef<RemoteMemberPurchaseListReturn>() {
-        }.getType(), "/member/purchase/list/{memberId}/{pageNumber}", noMoreUrl(), null, op -> {});
+        }.getType(), "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, op -> {});
     }
 
     /**
-     * /member/purchase/list/delete/{purchaseId}.
+     * PurchaseListDelete.<br>
+     * <pre>
+     * url: /member/purchase/list/delete/{purchaseId}
+     * httpMethod: POST
+     * </pre>
+     * @param purchaseId purchaseId
      */
-    protected void purchaseListDelete() {
+    protected void requestPurchaseListDelete(Long purchaseId) {
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/member/purchase/list/delete/{purchaseId}", noMoreUrl(), null, op -> {});
+        }.getType(), "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, op -> {});
     }
 }

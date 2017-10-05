@@ -19,16 +19,20 @@ map:{
             ; tablePath = map
             ; swaggerJsonPath = ../src/main/resources/remoteapi/maihama-showbase_swagger.json
             ; targetUrlRegex = .*
+            ; url = function(url) \{ return url\; \}
             # when using Eclipse Collections
             #; yourCollections = org.eclipse.collections.api.list.ImmutableList
             ; definitionKey = function(definitionKey) \{ return definitionKey\; \}
-            ; subPackage = function(subPackage) \{ return subPackage\; \}
+            ; unDefinitionKey = function(definitionKey) \{ return definitionKey\; \}
+            ; subPackage = function(subPackage) \{ return subPackage.replace(/_/g, '')\; \}
+
             ; behaviorClassGeneration = true
             ; behaviorMethodGeneration = true
             ; frameworkBehaviorClass = org.lastaflute.remoteapi.LastaRemoteBehavior
             ; abstractBehaviorClassName = function(scheme) \{ return 'RemoteAbstract' + scheme + 'Bhv'\; \}
             ; bsBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + 'Bs' + className + 'Bhv'\; \}
             ; exBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + className + 'Bhv'\; \}
+
             ; requestExtendsClass =
             ; requestImplementsClasses =
             ; requestClassName = function(scheme, className, httpMethod, multipleHttpMethod) \{ return 'Remote' + className + (multipleHttpMethod ? httpMethod : '') + 'Param'\; \}

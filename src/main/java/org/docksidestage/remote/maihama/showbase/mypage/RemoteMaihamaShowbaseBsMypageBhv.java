@@ -21,7 +21,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.mypage.RemoteMypageReturn;
 
-
 /**
  * RemoteMaihamaShowbaseBsMypageBhv.
  * @author FreeGen
@@ -39,10 +38,15 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /mypage/.
+     * Mypage.<br>
+     * <pre>
+     * url: /mypage/
+     * httpMethod: GET
+     * </pre>
+     * @return RemoteMypageReturn
      */
-    protected RemoteMypageReturn mypage() {
+    protected RemoteMypageReturn requestMypage() {
         return doRequestGet(new ParameterizedRef<RemoteMypageReturn>() {
-        }.getType(), "/mypage/", noMoreUrl(), null, op -> {});
+        }.getType(), "/mypage/", noMoreUrl(), noQuery(), op -> {});
     }
 }

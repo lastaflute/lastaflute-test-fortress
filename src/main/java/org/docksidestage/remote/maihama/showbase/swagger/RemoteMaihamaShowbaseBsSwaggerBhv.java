@@ -20,7 +20,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 
-
 /**
  * RemoteMaihamaShowbaseBsSwaggerBhv.
  * @author FreeGen
@@ -38,17 +37,25 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /swagger/.
+     * Swagger.<br>
+     * <pre>
+     * url: /swagger/
+     * httpMethod: POST
+     * </pre>
      */
-    protected void swagger() {
+    protected void requestSwagger() {
         doRequestPost(new ParameterizedRef<Void>() {
         }.getType(), "/swagger/", noMoreUrl(), null, op -> {});
     }
 
     /**
-     * /swagger/json.
+     * Json.<br>
+     * <pre>
+     * url: /swagger/json
+     * httpMethod: POST
+     * </pre>
      */
-    protected void json() {
+    protected void requestJson() {
         doRequestPost(new ParameterizedRef<Void>() {
         }.getType(), "/swagger/json", noMoreUrl(), null, op -> {});
     }

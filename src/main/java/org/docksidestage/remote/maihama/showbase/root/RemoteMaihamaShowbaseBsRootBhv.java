@@ -20,7 +20,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 
-
 /**
  * RemoteMaihamaShowbaseBsRootBhv.
  * @author FreeGen
@@ -38,9 +37,13 @@ public abstract class RemoteMaihamaShowbaseBsRootBhv extends RemoteAbstractMaiha
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /root/.
+     * Root.<br>
+     * <pre>
+     * url: /root/
+     * httpMethod: POST
+     * </pre>
      */
-    protected void root() {
+    protected void requestRoot() {
         doRequestPost(new ParameterizedRef<Void>() {
         }.getType(), "/root/", noMoreUrl(), null, op -> {});
     }

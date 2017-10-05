@@ -25,7 +25,6 @@ import org.docksidestage.remote.maihama.showbase.product.detail.RemoteProductDet
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchParam;
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchReturn;
 
-
 /**
  * RemoteMaihamaShowbaseBsProductBhv.
  * @author FreeGen
@@ -43,27 +42,44 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /product/detail/{productId}.
+     * Detail.<br>
+     * <pre>
+     * url: /product/detail/{productId}
+     * httpMethod: POST
+     * </pre>
+     * @param productId productId
+     * @return RemoteProductDetailReturn
      */
-    protected RemoteProductDetailReturn detail() {
+    protected RemoteProductDetailReturn requestDetail(Integer productId) {
         return doRequestPost(new ParameterizedRef<RemoteProductDetailReturn>() {
-        }.getType(), "/product/detail/{productId}", noMoreUrl(), null, op -> {});
+        }.getType(), "/product/detail/{productId}", moreUrl(productId), null, op -> {});
     }
 
     /**
-     * /product/list/search/{pageNumber}.
+     * ListSearch.<br>
+     * <pre>
+     * url: /product/list/search/{pageNumber}
+     * httpMethod: POST
+     * </pre>
+     * @param pageNumber pageNumber
+     * @param paramLamda The callback for RemoteProductListSearchParam
+     * @return RemoteProductListSearchReturn
      */
-    protected RemoteProductListSearchReturn listSearch(Consumer<RemoteProductListSearchParam> paramLamda) {
+    protected RemoteProductListSearchReturn requestListSearch(String pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
         RemoteProductListSearchParam param = new RemoteProductListSearchParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteProductListSearchReturn>() {
-        }.getType(), "/product/list/search/{pageNumber}", noMoreUrl(), param, op -> {});
+        }.getType(), "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, op -> {});
     }
 
     /**
-     * /product/list/status.
+     * ListStatus.<br>
+     * <pre>
+     * url: /product/list/status
+     * httpMethod: POST
+     * </pre>
      */
-    protected void listStatus() {
+    protected void requestListStatus() {
         doRequestPost(new ParameterizedRef<Void>() {
         }.getType(), "/product/list/status", noMoreUrl(), null, op -> {});
     }

@@ -23,7 +23,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.wx.faicli.RemoteWxFaicliParam;
 
-
 /**
  * RemoteMaihamaShowbaseBsWxBhv.
  * @author FreeGen
@@ -41,28 +40,45 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /wx/faicli/.
+     * Faicli.<br>
+     * <pre>
+     * url: /wx/faicli/
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemoteWxFaicliParam
      */
-    protected void faicli(Consumer<RemoteWxFaicliParam> paramLamda) {
+    protected void requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda) {
         RemoteWxFaicliParam param = new RemoteWxFaicliParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/wx/faicli/", noMoreUrl(), param, op -> {});
+        }.getType(), "/wx/faicli/", noMoreUrl(), param, op -> {
+            op.sendBodyBy(
+                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
+        });
     }
 
     /**
-     * /wx/faicli/unknown.
+     * FaicliUnknown.<br>
+     * <pre>
+     * url: /wx/faicli/unknown
+     * httpMethod: POST
+     * </pre>
      */
-    protected void faicliUnknown() {
+    protected void requestFaicliUnknown() {
         doRequestPost(new ParameterizedRef<Void>() {
         }.getType(), "/wx/faicli/unknown", noMoreUrl(), null, op -> {});
     }
 
     /**
-     * /wx/faicli/entity/{account}.
+     * FaicliEntity.<br>
+     * <pre>
+     * url: /wx/faicli/entity/{account}
+     * httpMethod: POST
+     * </pre>
+     * @param account account
      */
-    protected void faicliEntity() {
+    protected void requestFaicliEntity(String account) {
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/wx/faicli/entity/{account}", noMoreUrl(), null, op -> {});
+        }.getType(), "/wx/faicli/entity/{account}", moreUrl(account), null, op -> {});
     }
 }

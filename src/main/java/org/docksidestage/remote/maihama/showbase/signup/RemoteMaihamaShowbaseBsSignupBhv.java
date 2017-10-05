@@ -23,7 +23,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.signup.RemoteSignupParam;
 
-
 /**
  * RemoteMaihamaShowbaseBsSignupBhv.
  * @author FreeGen
@@ -41,9 +40,14 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /signup/.
+     * Signup.<br>
+     * <pre>
+     * url: /signup/
+     * httpMethod: POST
+     * </pre>
+     * @param paramLamda The callback for RemoteSignupParam
      */
-    protected void signup(Consumer<RemoteSignupParam> paramLamda) {
+    protected void requestSignup(Consumer<RemoteSignupParam> paramLamda) {
         RemoteSignupParam param = new RemoteSignupParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
@@ -51,10 +55,16 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     }
 
     /**
-     * /signup/register/{account}/{token}.
+     * Register.<br>
+     * <pre>
+     * url: /signup/register/{account}/{token}
+     * httpMethod: GET
+     * </pre>
+     * @param account account
+     * @param token token
      */
-    protected void register() {
+    protected void requestRegister(String account, String token) {
         doRequestGet(new ParameterizedRef<Void>() {
-        }.getType(), "/signup/register/{account}/{token}", noMoreUrl(), null, op -> {});
+        }.getType(), "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), op -> {});
     }
 }

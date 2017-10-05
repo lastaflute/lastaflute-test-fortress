@@ -23,7 +23,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.products.RemoteProductsParam;
 
-
 /**
  * RemoteMaihamaShowbaseBsProductsBhv.
  * @author FreeGen
@@ -41,12 +40,18 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /products/{productId}.
+     * Products.<br>
+     * <pre>
+     * url: /products/{productId}
+     * httpMethod: POST
+     * </pre>
+     * @param productId productId
+     * @param paramLamda The callback for RemoteProductsParam
      */
-    protected void products(Consumer<RemoteProductsParam> paramLamda) {
+    protected void requestProducts(String productId, Consumer<RemoteProductsParam> paramLamda) {
         RemoteProductsParam param = new RemoteProductsParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/products/{productId}", noMoreUrl(), param, op -> {});
+        }.getType(), "/products/{productId}", moreUrl(productId), param, op -> {});
     }
 }

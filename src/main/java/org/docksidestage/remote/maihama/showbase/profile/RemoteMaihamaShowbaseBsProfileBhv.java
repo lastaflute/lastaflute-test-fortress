@@ -21,7 +21,6 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.profile.RemoteProfileReturn;
 
-
 /**
  * RemoteMaihamaShowbaseBsProfileBhv.
  * @author FreeGen
@@ -39,9 +38,14 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * /profile/.
+     * Profile.<br>
+     * <pre>
+     * url: /profile/
+     * httpMethod: POST
+     * </pre>
+     * @return RemoteProfileReturn
      */
-    protected RemoteProfileReturn profile() {
+    protected RemoteProfileReturn requestProfile() {
         return doRequestPost(new ParameterizedRef<RemoteProfileReturn>() {
         }.getType(), "/profile/", noMoreUrl(), null, op -> {});
     }
