@@ -44,7 +44,7 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Products.<br>
+     * request Products.<br>
      * <pre>
      * url: /products/{productId}
      * httpMethod: POST

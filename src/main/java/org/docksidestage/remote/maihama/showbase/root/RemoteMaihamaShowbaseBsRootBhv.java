@@ -41,7 +41,7 @@ public abstract class RemoteMaihamaShowbaseBsRootBhv extends RemoteAbstractMaiha
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Root.<br>
+     * request Root.<br>
      * <pre>
      * url: /root/
      * httpMethod: POST

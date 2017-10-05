@@ -44,7 +44,7 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Reason.<br>
+     * request Reason.<br>
      * <pre>
      * url: /withdrawal/reason
      * httpMethod: POST
@@ -68,7 +68,7 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     }
 
     /**
-     * Done.<br>
+     * request Done.<br>
      * <pre>
      * url: /withdrawal/done
      * httpMethod: POST

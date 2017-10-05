@@ -42,7 +42,7 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Profile.<br>
+     * request Profile.<br>
      * <pre>
      * url: /profile/
      * httpMethod: POST

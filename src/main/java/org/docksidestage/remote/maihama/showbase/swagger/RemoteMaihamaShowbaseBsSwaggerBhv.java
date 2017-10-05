@@ -41,7 +41,7 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Swagger.<br>
+     * request Swagger.<br>
      * <pre>
      * url: /swagger/
      * httpMethod: POST
@@ -65,7 +65,7 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
     }
 
     /**
-     * Json.<br>
+     * request Json.<br>
      * <pre>
      * url: /swagger/json
      * httpMethod: POST

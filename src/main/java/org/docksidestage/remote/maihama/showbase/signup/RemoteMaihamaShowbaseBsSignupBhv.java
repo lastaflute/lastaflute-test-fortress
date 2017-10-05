@@ -44,7 +44,7 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Signup.<br>
+     * request Signup.<br>
      * <pre>
      * url: /signup/
      * httpMethod: POST
@@ -70,7 +70,7 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     }
 
     /**
-     * Register.<br>
+     * request Register.<br>
      * <pre>
      * url: /signup/register/{account}/{token}
      * httpMethod: GET

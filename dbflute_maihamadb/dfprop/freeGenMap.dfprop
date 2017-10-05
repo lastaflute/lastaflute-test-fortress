@@ -33,6 +33,8 @@ map:{
             ; abstractBehaviorClassName = function(scheme) \{ return 'RemoteAbstract' + scheme + 'Bhv'\; \}
             ; bsBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + 'Bs' + className + 'Bhv'\; \}
             ; exBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + className + 'Bhv'\; \}
+            ; behaviorRequestMethodName = function(scheme, className, methodName, httpMethod, multipleHttpMethod) \{ return 'request' + methodName + (multipleHttpMethod ? httpMethod : '')\; \}
+            ; behaviorRuleMethodName = function(scheme, className, methodName, httpMethod, multipleHttpMethod) \{ return 'ruleOf' + methodName + (multipleHttpMethod ? httpMethod : '')\; \}
 
             ; requestExtendsClass =
             ; requestImplementsClasses =

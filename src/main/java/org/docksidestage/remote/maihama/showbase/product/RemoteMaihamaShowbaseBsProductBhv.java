@@ -46,7 +46,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Detail.<br>
+     * request Detail.<br>
      * <pre>
      * url: /product/detail/{productId}
      * httpMethod: POST
@@ -71,7 +71,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     }
 
     /**
-     * ListSearch.<br>
+     * request ListSearch.<br>
      * <pre>
      * url: /product/list/search/{pageNumber}
      * httpMethod: POST
@@ -99,7 +99,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     }
 
     /**
-     * ListStatus.<br>
+     * request ListStatus.<br>
      * <pre>
      * url: /product/list/status
      * httpMethod: POST

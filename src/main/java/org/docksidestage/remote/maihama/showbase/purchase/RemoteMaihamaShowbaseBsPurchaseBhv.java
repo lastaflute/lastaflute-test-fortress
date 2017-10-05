@@ -47,7 +47,7 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Count.<br>
+     * request Count.<br>
      * <pre>
      * url: /purchase/count
      * httpMethod: POST
@@ -74,7 +74,7 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     }
 
     /**
-     * Contract.<br>
+     * request Contract.<br>
      * <pre>
      * url: /purchase/contract
      * httpMethod: POST

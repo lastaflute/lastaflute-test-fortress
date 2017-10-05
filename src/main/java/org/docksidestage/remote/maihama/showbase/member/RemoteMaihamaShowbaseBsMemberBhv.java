@@ -51,7 +51,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Info.<br>
+     * request Info.<br>
      * <pre>
      * url: /member/info
      * httpMethod: POST
@@ -75,7 +75,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Status.<br>
+     * request Status.<br>
      * <pre>
      * url: /member/status
      * httpMethod: POST
@@ -99,7 +99,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * AddRegister.<br>
+     * request AddRegister.<br>
      * <pre>
      * url: /member/add/register
      * httpMethod: POST
@@ -126,7 +126,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Edit.<br>
+     * request Edit.<br>
      * <pre>
      * url: /member/edit/{memberId}
      * httpMethod: POST
@@ -151,7 +151,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * EditUpdate.<br>
+     * request EditUpdate.<br>
      * <pre>
      * url: /member/edit/update
      * httpMethod: POST
@@ -177,7 +177,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * List.<br>
+     * request List.<br>
      * <pre>
      * url: /member/list/{pageNumber}
      * httpMethod: POST
@@ -205,7 +205,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * PurchaseList.<br>
+     * request PurchaseList.<br>
      * <pre>
      * url: /member/purchase/list/{memberId}/{pageNumber}
      * httpMethod: POST
@@ -231,7 +231,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * PurchaseListDelete.<br>
+     * request PurchaseListDelete.<br>
      * <pre>
      * url: /member/purchase/list/delete/{purchaseId}
      * httpMethod: POST

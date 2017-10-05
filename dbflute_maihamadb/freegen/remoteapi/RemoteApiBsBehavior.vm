@@ -95,8 +95,10 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     //                                                                             Execute
     //                                                                             =======
 #end
+#set ($behaviorRequestMethodName = $scriptEngine.invokeFunction('behaviorRequestMethodName', $scheme, $class, $method.name, $method.httpMethod, $method.multipleHttpMethod))
+#set ($behaviorRuleMethodName = $scriptEngine.invokeFunction('behaviorRuleMethodName', $scheme, $class, $method.name, $method.httpMethod, $method.multipleHttpMethod))
     /**
-     * ${method.name}.<br>
+     * request ${method.name}.<br>
      * <pre>
      * url: $method.url
      * httpMethod: $method.httpMethod.toUpperCase()
@@ -108,7 +110,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
      * @return return object. (NotNull)
 #end
      */
-    ${tableMap.behaviorMethodAccessModifier} $responseBeanClassName request${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end($!{parameterDefinition}) {
+    ${tableMap.behaviorMethodAccessModifier} $responseBeanClassName $behaviorRequestMethodName($!{parameterDefinition}) {
 #set ($paramMap = {})
 #if ($method.httpMethod == 'Get' || $method.httpMethod == 'Delete')
 #set ($param = 'noQuery()')
@@ -130,10 +132,10 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
         }.getType(), "${method.url}", $moreUrl, $param, rule -> {
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
-            ruleOf${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end(rule);
+            $behaviorRuleMethodName(rule);
         });
 #else
-        }.getType(), "${method.url}", $moreUrl, $param, rule -> ruleOf${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end(rule));
+        }.getType(), "${method.url}", $moreUrl, $param, rule -> $behaviorRuleMethodName(rule));
 #end
     }
 
@@ -145,7 +147,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
      * </pre>
      * @param rule rule. (NotNull)
      */
-    protected void ruleOf${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end(FlutyRemoteApiRule rule) {
+    protected void $behaviorRuleMethodName(FlutyRemoteApiRule rule) {
     }
 #end
 #end

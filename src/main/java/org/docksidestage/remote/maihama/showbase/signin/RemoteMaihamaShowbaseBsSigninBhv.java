@@ -45,7 +45,7 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Signin.<br>
+     * request Signin.<br>
      * <pre>
      * url: /signin/
      * httpMethod: POST

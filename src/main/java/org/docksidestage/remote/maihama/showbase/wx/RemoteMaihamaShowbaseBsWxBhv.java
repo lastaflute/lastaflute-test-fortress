@@ -44,7 +44,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Faicli.<br>
+     * request Faicli.<br>
      * <pre>
      * url: /wx/faicli/
      * httpMethod: POST
@@ -75,7 +75,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     }
 
     /**
-     * FaicliUnknown.<br>
+     * request FaicliUnknown.<br>
      * <pre>
      * url: /wx/faicli/unknown
      * httpMethod: POST
@@ -98,7 +98,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     }
 
     /**
-     * FaicliEntity.<br>
+     * request FaicliEntity.<br>
      * <pre>
      * url: /wx/faicli/entity/{account}
      * httpMethod: POST

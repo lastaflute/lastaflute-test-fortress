@@ -42,7 +42,7 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Mypage.<br>
+     * request Mypage.<br>
      * <pre>
      * url: /mypage/
      * httpMethod: GET

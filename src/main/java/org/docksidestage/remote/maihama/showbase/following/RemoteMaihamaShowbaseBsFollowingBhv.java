@@ -44,7 +44,7 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Follow.<br>
+     * request Follow.<br>
      * <pre>
      * url: /following/follow
      * httpMethod: POST
