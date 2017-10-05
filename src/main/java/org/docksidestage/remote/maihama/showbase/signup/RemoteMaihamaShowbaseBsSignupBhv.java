@@ -32,6 +32,9 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsSignupBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -45,13 +48,13 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * url: /signup/
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteSignupParam
+     * @param paramLamda The callback for RemoteSignupParam. (NotNull)
      */
     protected void requestSignup(Consumer<RemoteSignupParam> paramLamda) {
         RemoteSignupParam param = new RemoteSignupParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/signup/", noMoreUrl(), param, op -> {});
+        }.getType(), "/signup/", noMoreUrl(), param, rule -> {});
     }
 
     /**
@@ -60,11 +63,11 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * url: /signup/register/{account}/{token}
      * httpMethod: GET
      * </pre>
-     * @param account account
-     * @param token token
+     * @param account account. (NotNull)
+     * @param token token. (NotNull)
      */
     protected void requestRegister(String account, String token) {
         doRequestGet(new ParameterizedRef<Void>() {
-        }.getType(), "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), op -> {});
+        }.getType(), "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> {});
     }
 }

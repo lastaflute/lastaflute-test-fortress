@@ -256,7 +256,7 @@ $manager.makeDirectory($request.generateDirPath)
 ##################################################
 #macro(loadTypeMap)
   #set ($typeMap = {})
-  $typeMap.put('object', 'java.util.Map<String, Object>')
+  $typeMap.put('object', 'Object')
   $typeMap.put('int32', 'Integer')
   $typeMap.put('int64', 'Long')
   $typeMap.put('float', 'Float')

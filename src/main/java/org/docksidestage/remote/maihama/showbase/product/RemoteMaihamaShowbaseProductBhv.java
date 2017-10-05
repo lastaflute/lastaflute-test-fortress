@@ -30,6 +30,9 @@ public class RemoteMaihamaShowbaseProductBhv extends RemoteMaihamaShowbaseBsProd
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseProductBhv(RequestManager requestManager) {
         super(requestManager);
     }

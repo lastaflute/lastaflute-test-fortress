@@ -32,6 +32,9 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsProductsBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -45,14 +48,14 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
      * url: /products/{productId}
      * httpMethod: POST
      * </pre>
-     * @param productId productId
-     * @param paramLamda The callback for RemoteProductsParam
-     * @return java.util.Map<String, Object>
+     * @param productId productId. (NotNull)
+     * @param paramLamda The callback for RemoteProductsParam. (NotNull)
+     * @return Object. (NotNull)
      */
-    protected java.util.Map<String, Object> requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
+    protected Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
         RemoteProductsParam param = new RemoteProductsParam();
         paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<java.util.Map<String, Object>>() {
-        }.getType(), "/products/{productId}", moreUrl(productId), param, op -> {});
+        return doRequestPost(new ParameterizedRef<Object>() {
+        }.getType(), "/products/{productId}", moreUrl(productId), param, rule -> {});
     }
 }

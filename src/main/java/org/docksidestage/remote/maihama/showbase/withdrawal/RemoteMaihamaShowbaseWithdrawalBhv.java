@@ -30,6 +30,9 @@ public class RemoteMaihamaShowbaseWithdrawalBhv extends RemoteMaihamaShowbaseBsW
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseWithdrawalBhv(RequestManager requestManager) {
         super(requestManager);
     }

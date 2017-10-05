@@ -63,45 +63,45 @@ public class RemoteMemberAddRegisterReturn {
     public Long VersionNo;
 
     /** (会員ステータス)MEMBER_STATUS by my MEMBER_STATUS_CODE, named 'memberStatus'. */
-    public java.util.Map<String, Object> MemberStatus;
+    public Object MemberStatus;
 
     /** (会員住所情報)MEMBER_ADDRESS by my MEMBER_ID, named 'memberAddressAsValid'. */
-    public java.util.Map<String, Object> MemberAddressAsValid;
+    public Object MemberAddressAsValid;
 
     /** (会員ログイン)MEMBER_LOGIN by my MEMBER_ID, named 'memberLoginAsLatest'. */
-    public java.util.Map<String, Object> MemberLoginAsLatest;
+    public Object MemberLoginAsLatest;
 
     /** (会員セキュリティ)member_security by MEMBER_ID, named 'memberSecurityAsOne'. */
-    public java.util.Map<String, Object> MemberSecurityAsOne;
+    public Object MemberSecurityAsOne;
 
     /** (会員サービス)member_service by MEMBER_ID, named 'memberServiceAsOne'. */
-    public java.util.Map<String, Object> MemberServiceAsOne;
+    public Object MemberServiceAsOne;
 
     /** (会員退会情報)member_withdrawal by MEMBER_ID, named 'memberWithdrawalAsOne'. */
-    public java.util.Map<String, Object> MemberWithdrawalAsOne;
+    public Object MemberWithdrawalAsOne;
 
     /** (会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressList'. */
-    public java.util.List<java.util.Map<String, Object>> MemberAddressList;
+    public java.util.List<Object> MemberAddressList;
 
     /** (会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdList'. */
-    public java.util.List<java.util.Map<String, Object>> MemberFollowingByMyMemberIdList;
+    public java.util.List<Object> MemberFollowingByMyMemberIdList;
 
     /** (会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdList'. */
-    public java.util.List<java.util.Map<String, Object>> MemberFollowingByYourMemberIdList;
+    public java.util.List<Object> MemberFollowingByYourMemberIdList;
 
     /** (会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginList'. */
-    public java.util.List<java.util.Map<String, Object>> MemberLoginList;
+    public java.util.List<Object> MemberLoginList;
 
     /** (購入)PURCHASE by MEMBER_ID, named 'purchaseList'. */
-    public java.util.List<java.util.Map<String, Object>> PurchaseList;
+    public java.util.List<Object> PurchaseList;
 
-    public java.util.Map<String, Object> _uniqueDrivenProperties;
+    public Object _uniqueDrivenProperties;
 
-    public java.util.Map<String, Object> _modifiedProperties;
+    public Object _modifiedProperties;
 
-    public java.util.Map<String, Object> _specifiedProperties;
+    public Object _specifiedProperties;
 
-    public java.util.Map<String, Object> _derivedMap;
+    public Object _derivedMap;
 
     public Boolean UndefinedClassificationSelectAllowed;
 

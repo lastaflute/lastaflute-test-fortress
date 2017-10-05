@@ -32,6 +32,9 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsWithdrawalBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -45,11 +48,11 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * url: /withdrawal/reason
      * httpMethod: POST
      * </pre>
-     * @return java.util.List<java.util.Map<String, Object>>
+     * @return java.util.List<Object>. (NotNull)
      */
-    protected java.util.List<java.util.Map<String, Object>> requestReason() {
-        return doRequestPost(new ParameterizedRef<java.util.List<java.util.Map<String, Object>>>() {
-        }.getType(), "/withdrawal/reason", noMoreUrl(), null, op -> {});
+    protected java.util.List<Object> requestReason() {
+        return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
+        }.getType(), "/withdrawal/reason", noMoreUrl(), null, rule -> {});
     }
 
     /**
@@ -58,13 +61,13 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * url: /withdrawal/done
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteWithdrawalDoneParam
-     * @return Integer
+     * @param paramLamda The callback for RemoteWithdrawalDoneParam. (NotNull)
+     * @return Integer. (NotNull)
      */
     protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
         RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<Integer>() {
-        }.getType(), "/withdrawal/done", noMoreUrl(), param, op -> {});
+        }.getType(), "/withdrawal/done", noMoreUrl(), param, rule -> {});
     }
 }

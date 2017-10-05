@@ -30,6 +30,9 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsMypageBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -43,10 +46,10 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
      * url: /mypage/
      * httpMethod: GET
      * </pre>
-     * @return RemoteMypageReturn
+     * @return RemoteMypageReturn. (NotNull)
      */
     protected RemoteMypageReturn requestMypage() {
         return doRequestGet(new ParameterizedRef<RemoteMypageReturn>() {
-        }.getType(), "/mypage/", noMoreUrl(), noQuery(), op -> {});
+        }.getType(), "/mypage/", noMoreUrl(), noQuery(), rule -> {});
     }
 }

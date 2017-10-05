@@ -24,19 +24,19 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteMemberPurchaseListReturn {
 
-    /** row count per one page. */
+    /** row count per one page. (NullAllowed)*/
     @Required
     public Integer pageSize;
 
-    /** number of current page. */
+    /** number of current page. (NullAllowed)*/
     @Required
     public Integer currentPageNumber;
 
-    /** count of all records. */
+    /** count of all records. (NullAllowed)*/
     @Required
     public Integer allRecordCount;
 
-    /** count of all pages. */
+    /** count of all pages. (NullAllowed)*/
     @Required
     public Integer allPageCount;
 

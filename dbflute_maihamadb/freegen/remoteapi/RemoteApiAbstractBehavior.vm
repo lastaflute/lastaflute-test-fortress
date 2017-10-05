@@ -31,6 +31,9 @@ public class ${abstractBehaviorClassName} extends ${tableMap.frameworkBehaviorCl
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public ${abstractBehaviorClassName}(RequestManager requestManager) {
         super(requestManager);
     }

@@ -30,6 +30,9 @@ public class RemoteMaihamaShowbaseProfileBhv extends RemoteMaihamaShowbaseBsProf
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseProfileBhv(RequestManager requestManager) {
         super(requestManager);
     }

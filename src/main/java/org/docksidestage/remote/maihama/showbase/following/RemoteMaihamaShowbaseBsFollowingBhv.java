@@ -32,6 +32,9 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsFollowingBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -45,12 +48,12 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
      * url: /following/follow
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteFollowingFollowParam
+     * @param paramLamda The callback for RemoteFollowingFollowParam. (NotNull)
      */
     protected void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda) {
         RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/following/follow", noMoreUrl(), param, op -> {});
+        }.getType(), "/following/follow", noMoreUrl(), param, rule -> {});
     }
 }

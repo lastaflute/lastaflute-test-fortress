@@ -34,6 +34,9 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsProductBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -47,12 +50,12 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * url: /product/detail/{productId}
      * httpMethod: POST
      * </pre>
-     * @param productId productId
-     * @return RemoteProductDetailReturn
+     * @param productId productId. (NotNull)
+     * @return RemoteProductDetailReturn. (NotNull)
      */
     protected RemoteProductDetailReturn requestDetail(Integer productId) {
         return doRequestPost(new ParameterizedRef<RemoteProductDetailReturn>() {
-        }.getType(), "/product/detail/{productId}", moreUrl(productId), null, op -> {});
+        }.getType(), "/product/detail/{productId}", moreUrl(productId), null, rule -> {});
     }
 
     /**
@@ -61,15 +64,15 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * url: /product/list/search/{pageNumber}
      * httpMethod: POST
      * </pre>
-     * @param pageNumber pageNumber
-     * @param paramLamda The callback for RemoteProductListSearchParam
-     * @return RemoteProductListSearchReturn
+     * @param pageNumber pageNumber. (NotNull)
+     * @param paramLamda The callback for RemoteProductListSearchParam. (NotNull)
+     * @return RemoteProductListSearchReturn. (NotNull)
      */
     protected RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
         RemoteProductListSearchParam param = new RemoteProductListSearchParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteProductListSearchReturn>() {
-        }.getType(), "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, op -> {});
+        }.getType(), "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, rule -> {});
     }
 
     /**
@@ -78,10 +81,10 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * url: /product/list/status
      * httpMethod: POST
      * </pre>
-     * @return java.util.List<java.util.Map<String, Object>>
+     * @return java.util.List<Object>. (NotNull)
      */
-    protected java.util.List<java.util.Map<String, Object>> requestListStatus() {
-        return doRequestPost(new ParameterizedRef<java.util.List<java.util.Map<String, Object>>>() {
-        }.getType(), "/product/list/status", noMoreUrl(), null, op -> {});
+    protected java.util.List<Object> requestListStatus() {
+        return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
+        }.getType(), "/product/list/status", noMoreUrl(), null, rule -> {});
     }
 }

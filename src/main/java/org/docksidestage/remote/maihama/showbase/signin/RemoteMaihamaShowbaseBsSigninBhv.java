@@ -33,6 +33,9 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsSigninBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -46,13 +49,13 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
      * url: /signin/
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteSigninParam
-     * @return RemoteSigninReturn
+     * @param paramLamda The callback for RemoteSigninParam. (NotNull)
+     * @return RemoteSigninReturn. (NotNull)
      */
     protected RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda) {
         RemoteSigninParam param = new RemoteSigninParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteSigninReturn>() {
-        }.getType(), "/signin/", noMoreUrl(), param, op -> {});
+        }.getType(), "/signin/", noMoreUrl(), param, rule -> {});
     }
 }

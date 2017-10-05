@@ -30,6 +30,9 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsProfileBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -43,10 +46,10 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
      * url: /profile/
      * httpMethod: POST
      * </pre>
-     * @return RemoteProfileReturn
+     * @return RemoteProfileReturn. (NotNull)
      */
     protected RemoteProfileReturn requestProfile() {
         return doRequestPost(new ParameterizedRef<RemoteProfileReturn>() {
-        }.getType(), "/profile/", noMoreUrl(), null, op -> {});
+        }.getType(), "/profile/", noMoreUrl(), null, rule -> {});
     }
 }

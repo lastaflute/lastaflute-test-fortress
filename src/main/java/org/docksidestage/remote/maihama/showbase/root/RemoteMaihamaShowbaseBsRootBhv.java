@@ -29,6 +29,9 @@ public abstract class RemoteMaihamaShowbaseBsRootBhv extends RemoteAbstractMaiha
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsRootBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -42,10 +45,10 @@ public abstract class RemoteMaihamaShowbaseBsRootBhv extends RemoteAbstractMaiha
      * url: /root/
      * httpMethod: POST
      * </pre>
-     * @return java.util.Map<String, Object>
+     * @return Object. (NotNull)
      */
-    protected java.util.Map<String, Object> requestRoot() {
-        return doRequestPost(new ParameterizedRef<java.util.Map<String, Object>>() {
-        }.getType(), "/root/", noMoreUrl(), null, op -> {});
+    protected Object requestRoot() {
+        return doRequestPost(new ParameterizedRef<Object>() {
+        }.getType(), "/root/", noMoreUrl(), null, rule -> {});
     }
 }

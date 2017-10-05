@@ -30,6 +30,9 @@ public class RemoteMaihamaShowbaseSwaggerBhv extends RemoteMaihamaShowbaseBsSwag
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseSwaggerBhv(RequestManager requestManager) {
         super(requestManager);
     }

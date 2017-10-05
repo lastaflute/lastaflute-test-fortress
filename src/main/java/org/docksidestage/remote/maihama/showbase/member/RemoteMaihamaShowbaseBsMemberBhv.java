@@ -39,6 +39,9 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsMemberBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -52,11 +55,11 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/info
      * httpMethod: POST
      * </pre>
-     * @return RemoteMemberInfoReturn
+     * @return RemoteMemberInfoReturn. (NotNull)
      */
     protected RemoteMemberInfoReturn requestInfo() {
         return doRequestPost(new ParameterizedRef<RemoteMemberInfoReturn>() {
-        }.getType(), "/member/info", noMoreUrl(), null, op -> {});
+        }.getType(), "/member/info", noMoreUrl(), null, rule -> {});
     }
 
     /**
@@ -65,11 +68,11 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/status
      * httpMethod: POST
      * </pre>
-     * @return java.util.List<java.util.Map<String, Object>>
+     * @return java.util.List<Object>. (NotNull)
      */
-    protected java.util.List<java.util.Map<String, Object>> requestStatus() {
-        return doRequestPost(new ParameterizedRef<java.util.List<java.util.Map<String, Object>>>() {
-        }.getType(), "/member/status", noMoreUrl(), null, op -> {});
+    protected java.util.List<Object> requestStatus() {
+        return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
+        }.getType(), "/member/status", noMoreUrl(), null, rule -> {});
     }
 
     /**
@@ -78,14 +81,14 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/add/register
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteMemberAddRegisterParam
-     * @return RemoteMemberAddRegisterReturn
+     * @param paramLamda The callback for RemoteMemberAddRegisterParam. (NotNull)
+     * @return RemoteMemberAddRegisterReturn. (NotNull)
      */
     protected RemoteMemberAddRegisterReturn requestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLamda) {
         RemoteMemberAddRegisterParam param = new RemoteMemberAddRegisterParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteMemberAddRegisterReturn>() {
-        }.getType(), "/member/add/register", noMoreUrl(), param, op -> {});
+        }.getType(), "/member/add/register", noMoreUrl(), param, rule -> {});
     }
 
     /**
@@ -94,12 +97,12 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/edit/{memberId}
      * httpMethod: POST
      * </pre>
-     * @param memberId memberId
-     * @return RemoteMemberEditReturn
+     * @param memberId memberId. (NotNull)
+     * @return RemoteMemberEditReturn. (NotNull)
      */
     protected RemoteMemberEditReturn requestEdit(Integer memberId) {
         return doRequestPost(new ParameterizedRef<RemoteMemberEditReturn>() {
-        }.getType(), "/member/edit/{memberId}", moreUrl(memberId), null, op -> {});
+        }.getType(), "/member/edit/{memberId}", moreUrl(memberId), null, rule -> {});
     }
 
     /**
@@ -108,13 +111,13 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/edit/update
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteMemberEditUpdateParam
+     * @param paramLamda The callback for RemoteMemberEditUpdateParam. (NotNull)
      */
     protected void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLamda) {
         RemoteMemberEditUpdateParam param = new RemoteMemberEditUpdateParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/member/edit/update", noMoreUrl(), param, op -> {});
+        }.getType(), "/member/edit/update", noMoreUrl(), param, rule -> {});
     }
 
     /**
@@ -123,15 +126,15 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/list/{pageNumber}
      * httpMethod: POST
      * </pre>
-     * @param pageNumber pageNumber
-     * @param paramLamda The callback for RemoteMemberListParam
-     * @return RemoteMemberListReturn
+     * @param pageNumber pageNumber. (NotNull)
+     * @param paramLamda The callback for RemoteMemberListParam. (NotNull)
+     * @return RemoteMemberListReturn. (NotNull)
      */
     protected RemoteMemberListReturn requestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLamda) {
         RemoteMemberListParam param = new RemoteMemberListParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteMemberListReturn>() {
-        }.getType(), "/member/list/{pageNumber}", moreUrl(pageNumber), param, op -> {});
+        }.getType(), "/member/list/{pageNumber}", moreUrl(pageNumber), param, rule -> {});
     }
 
     /**
@@ -140,13 +143,13 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/purchase/list/{memberId}/{pageNumber}
      * httpMethod: POST
      * </pre>
-     * @param memberId memberId
-     * @param pageNumber pageNumber
-     * @return RemoteMemberPurchaseListReturn
+     * @param memberId memberId. (NotNull)
+     * @param pageNumber pageNumber. (NotNull)
+     * @return RemoteMemberPurchaseListReturn. (NotNull)
      */
     protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber) {
         return doRequestPost(new ParameterizedRef<RemoteMemberPurchaseListReturn>() {
-        }.getType(), "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, op -> {});
+        }.getType(), "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, rule -> {});
     }
 
     /**
@@ -155,10 +158,10 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/purchase/list/delete/{purchaseId}
      * httpMethod: POST
      * </pre>
-     * @param purchaseId purchaseId
+     * @param purchaseId purchaseId. (NotNull)
      */
     protected void requestPurchaseListDelete(Long purchaseId) {
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, op -> {});
+        }.getType(), "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, rule -> {});
     }
 }

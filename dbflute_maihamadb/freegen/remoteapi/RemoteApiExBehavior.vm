@@ -30,6 +30,9 @@ public class ${class} extends ${baseClass} {
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public ${class}(RequestManager requestManager) {
         super(requestManager);
     }

@@ -30,6 +30,9 @@ public class RemoteMaihamaShowbaseSigninBhv extends RemoteMaihamaShowbaseBsSigni
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseSigninBhv(RequestManager requestManager) {
         super(requestManager);
     }

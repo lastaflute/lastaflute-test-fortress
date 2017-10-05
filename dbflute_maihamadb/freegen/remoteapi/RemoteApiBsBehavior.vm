@@ -51,6 +51,9 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public ${class}(RequestManager requestManager) {
         super(requestManager);
     }
@@ -67,16 +70,16 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #set ($parameterClass = ${typeMap[$pathPropertyEntry.value.type]})
 #end
 #if ($pathPropertyEntry.value.description)
-#set ($added = $parameterJavadocList.add("${pathPropertyEntry.key} $pathPropertyEntry.value.description"))
+#set ($added = $parameterJavadocList.add("${pathPropertyEntry.key} $pathPropertyEntry.value.description. (NotNull)"))
 #else
-#set ($added = $parameterJavadocList.add("${pathPropertyEntry.key} $pathPropertyEntry.key"))
+#set ($added = $parameterJavadocList.add("${pathPropertyEntry.key} $pathPropertyEntry.key. (NotNull)"))
 #end
 #set ($parameterDefinition = "${parameterDefinition}${parameterClass} ${pathPropertyEntry.key}, ")
 #set ($moreUrl = "${moreUrl}${pathPropertyEntry.key}, ")
 #end
 #if (${method.requestBean.className})
 #set ($parameterDefinition = "${parameterDefinition}Consumer<${method.requestBean.className}> paramLamda")
-#set ($added = $parameterJavadocList.add("paramLamda The callback for $method.requestBean.className"))
+#set ($added = $parameterJavadocList.add("paramLamda The callback for $method.requestBean.className. (NotNull)"))
 #end
 #set ($parameterDefinition = $parameterDefinition.replaceAll(', $', ''))
 #set ($moreUrl = $moreUrl.replaceAll('^(.+), $', 'moreUrl($1)'))
@@ -101,7 +104,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
      * @param $parameterJavadoc
 #end
 #if ($responseBeanClassName != 'void')
-     * @return $responseBeanClassName
+     * @return ${responseBeanClassName}. (NotNull)
 #end
      */
     protected $responseBeanClassName request${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end($!{parameterDefinition}) {
@@ -123,12 +126,12 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #end
        #if ($responseBeanClassName != 'void') return#end doRequest${method.httpMethod}(new ParameterizedRef<$responseBeanClassName.replaceAll('void', 'Void')>() {
 #if ($method.requestBean.in == 'formData')
-        }.getType(), "${method.url}", $moreUrl, $param, op -> {
-            op.sendBodyBy(
+        }.getType(), "${method.url}", $moreUrl, $param, rule -> {
+            rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
         });
 #else
-        }.getType(), "${method.url}", $moreUrl, $param, op -> {});
+        }.getType(), "${method.url}", $moreUrl, $param, rule -> {});
 #end
     }
 #end

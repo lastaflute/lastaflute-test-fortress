@@ -35,6 +35,9 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
+    /***
+     * @param requestManager requestManager. (NotNull)
+     */
     public RemoteMaihamaShowbaseBsPurchaseBhv(RequestManager requestManager) {
         super(requestManager);
     }
@@ -48,14 +51,14 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
      * url: /purchase/count
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemotePurchaseCountParam
-     * @return RemotePurchaseCountReturn
+     * @param paramLamda The callback for RemotePurchaseCountParam. (NotNull)
+     * @return RemotePurchaseCountReturn. (NotNull)
      */
     protected RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLamda) {
         RemotePurchaseCountParam param = new RemotePurchaseCountParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemotePurchaseCountReturn>() {
-        }.getType(), "/purchase/count", noMoreUrl(), param, op -> {});
+        }.getType(), "/purchase/count", noMoreUrl(), param, rule -> {});
     }
 
     /**
@@ -64,13 +67,13 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
      * url: /purchase/contract
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemotePurchaseContractParam
-     * @return RemotePurchaseContractReturn
+     * @param paramLamda The callback for RemotePurchaseContractParam. (NotNull)
+     * @return RemotePurchaseContractReturn. (NotNull)
      */
     protected RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLamda) {
         RemotePurchaseContractParam param = new RemotePurchaseContractParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemotePurchaseContractReturn>() {
-        }.getType(), "/purchase/contract", noMoreUrl(), param, op -> {});
+        }.getType(), "/purchase/contract", noMoreUrl(), param, rule -> {});
     }
 }
