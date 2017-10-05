@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.showbase.product;
 
 import java.util.function.Consumer;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -51,11 +52,22 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * httpMethod: POST
      * </pre>
      * @param productId productId. (NotNull)
-     * @return RemoteProductDetailReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteProductDetailReturn requestDetail(Integer productId) {
+    public RemoteProductDetailReturn requestDetail(Integer productId) {
         return doRequestPost(new ParameterizedRef<RemoteProductDetailReturn>() {
-        }.getType(), "/product/detail/{productId}", moreUrl(productId), null, rule -> {});
+        }.getType(), "/product/detail/{productId}", moreUrl(productId), null, rule -> ruleOfDetail(rule));
+    }
+
+    /**
+     * Rule of Detail.<br>
+     * <pre>
+     * url: /product/detail/{productId}
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfDetail(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -66,13 +78,24 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * </pre>
      * @param pageNumber pageNumber. (NotNull)
      * @param paramLamda The callback for RemoteProductListSearchParam. (NotNull)
-     * @return RemoteProductListSearchReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
+    public RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
         RemoteProductListSearchParam param = new RemoteProductListSearchParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteProductListSearchReturn>() {
-        }.getType(), "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, rule -> {});
+        }.getType(), "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, rule -> ruleOfListSearch(rule));
+    }
+
+    /**
+     * Rule of ListSearch.<br>
+     * <pre>
+     * url: /product/list/search/{pageNumber}
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfListSearch(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -81,10 +104,21 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * url: /product/list/status
      * httpMethod: POST
      * </pre>
-     * @return java.util.List<Object>. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected java.util.List<Object> requestListStatus() {
+    public java.util.List<Object> requestListStatus() {
         return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
-        }.getType(), "/product/list/status", noMoreUrl(), null, rule -> {});
+        }.getType(), "/product/list/status", noMoreUrl(), null, rule -> ruleOfListStatus(rule));
+    }
+
+    /**
+     * Rule of ListStatus.<br>
+     * <pre>
+     * url: /product/list/status
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfListStatus(FlutyRemoteApiRule rule) {
     }
 }

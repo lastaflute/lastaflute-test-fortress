@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.showbase.wx;
 
 import java.util.function.Consumer;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -49,16 +50,28 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteWxFaicliParam. (NotNull)
-     * @return Object. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda) {
+    public Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda) {
         RemoteWxFaicliParam param = new RemoteWxFaicliParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<Object>() {
         }.getType(), "/wx/faicli/", noMoreUrl(), param, rule -> {
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
+            ruleOfFaicli(rule);
         });
+    }
+
+    /**
+     * Rule of Faicli.<br>
+     * <pre>
+     * url: /wx/faicli/
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfFaicli(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -68,9 +81,20 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
      * httpMethod: POST
      * </pre>
      */
-    protected void requestFaicliUnknown() {
+    public void requestFaicliUnknown() {
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/wx/faicli/unknown", noMoreUrl(), null, rule -> {});
+        }.getType(), "/wx/faicli/unknown", noMoreUrl(), null, rule -> ruleOfFaicliUnknown(rule));
+    }
+
+    /**
+     * Rule of FaicliUnknown.<br>
+     * <pre>
+     * url: /wx/faicli/unknown
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfFaicliUnknown(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -81,8 +105,19 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
      * </pre>
      * @param account account. (NotNull)
      */
-    protected void requestFaicliEntity(String account) {
+    public void requestFaicliEntity(String account) {
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/wx/faicli/entity/{account}", moreUrl(account), null, rule -> {});
+        }.getType(), "/wx/faicli/entity/{account}", moreUrl(account), null, rule -> ruleOfFaicliEntity(rule));
+    }
+
+    /**
+     * Rule of FaicliEntity.<br>
+     * <pre>
+     * url: /wx/faicli/entity/{account}
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfFaicliEntity(FlutyRemoteApiRule rule) {
     }
 }

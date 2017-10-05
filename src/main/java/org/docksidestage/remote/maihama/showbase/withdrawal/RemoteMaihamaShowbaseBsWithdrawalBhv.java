@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.showbase.withdrawal;
 
 import java.util.function.Consumer;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -48,11 +49,22 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * url: /withdrawal/reason
      * httpMethod: POST
      * </pre>
-     * @return java.util.List<Object>. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected java.util.List<Object> requestReason() {
+    public java.util.List<Object> requestReason() {
         return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
-        }.getType(), "/withdrawal/reason", noMoreUrl(), null, rule -> {});
+        }.getType(), "/withdrawal/reason", noMoreUrl(), null, rule -> ruleOfReason(rule));
+    }
+
+    /**
+     * Rule of Reason.<br>
+     * <pre>
+     * url: /withdrawal/reason
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfReason(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -62,12 +74,23 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteWithdrawalDoneParam. (NotNull)
-     * @return Integer. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
+    public Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
         RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<Integer>() {
-        }.getType(), "/withdrawal/done", noMoreUrl(), param, rule -> {});
+        }.getType(), "/withdrawal/done", noMoreUrl(), param, rule -> ruleOfDone(rule));
+    }
+
+    /**
+     * Rule of Done.<br>
+     * <pre>
+     * url: /withdrawal/done
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfDone(FlutyRemoteApiRule rule) {
     }
 }

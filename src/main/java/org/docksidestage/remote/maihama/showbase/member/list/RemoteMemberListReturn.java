@@ -24,23 +24,24 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteMemberListReturn {
 
-    /** row count per one page. (NullAllowed)*/
+    /** row count per one page. */
     @Required
     public Integer pageSize;
 
-    /** number of current page. (NullAllowed)*/
+    /** number of current page. */
     @Required
     public Integer currentPageNumber;
 
-    /** count of all records. (NullAllowed)*/
+    /** count of all records. */
     @Required
     public Integer allRecordCount;
 
-    /** count of all pages. (NullAllowed)*/
+    /** count of all pages. */
     @Required
     public Integer allPageCount;
 
     /** paging data for current page. */
+    @Required
     @javax.validation.Valid
     public java.util.List<MemberSearchRowResult> rows;
 

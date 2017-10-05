@@ -24,6 +24,7 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteMypageReturn {
 
+    @Required
     @javax.validation.Valid
     public java.util.List<ProductPart> recentProducts;
 
@@ -36,6 +37,7 @@ public class RemoteMypageReturn {
         public Integer regularPrice;
     }
 
+    @Required
     @javax.validation.Valid
     public java.util.List<ProductPart> highPriceProducts;
 

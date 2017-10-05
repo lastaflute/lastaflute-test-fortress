@@ -15,6 +15,7 @@
  */
 package org.docksidestage.remote.maihama.showbase.swagger;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -45,11 +46,22 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
      * url: /swagger/
      * httpMethod: POST
      * </pre>
-     * @return Object. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected Object requestSwagger() {
+    public Object requestSwagger() {
         return doRequestPost(new ParameterizedRef<Object>() {
-        }.getType(), "/swagger/", noMoreUrl(), null, rule -> {});
+        }.getType(), "/swagger/", noMoreUrl(), null, rule -> ruleOfSwagger(rule));
+    }
+
+    /**
+     * Rule of Swagger.<br>
+     * <pre>
+     * url: /swagger/
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfSwagger(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -58,10 +70,21 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
      * url: /swagger/json
      * httpMethod: POST
      * </pre>
-     * @return Object. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected Object requestJson() {
+    public Object requestJson() {
         return doRequestPost(new ParameterizedRef<Object>() {
-        }.getType(), "/swagger/json", noMoreUrl(), null, rule -> {});
+        }.getType(), "/swagger/json", noMoreUrl(), null, rule -> ruleOfJson(rule));
+    }
+
+    /**
+     * Rule of Json.<br>
+     * <pre>
+     * url: /swagger/json
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfJson(FlutyRemoteApiRule rule) {
     }
 }

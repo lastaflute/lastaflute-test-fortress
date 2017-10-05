@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.showbase.following;
 
 import java.util.function.Consumer;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -50,10 +51,21 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
      * </pre>
      * @param paramLamda The callback for RemoteFollowingFollowParam. (NotNull)
      */
-    protected void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda) {
+    public void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda) {
         RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/following/follow", noMoreUrl(), param, rule -> {});
+        }.getType(), "/following/follow", noMoreUrl(), param, rule -> ruleOfFollow(rule));
+    }
+
+    /**
+     * Rule of Follow.<br>
+     * <pre>
+     * url: /following/follow
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfFollow(FlutyRemoteApiRule rule) {
     }
 }

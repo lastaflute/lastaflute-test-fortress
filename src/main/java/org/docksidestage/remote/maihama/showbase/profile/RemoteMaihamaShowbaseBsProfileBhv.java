@@ -15,6 +15,7 @@
  */
 package org.docksidestage.remote.maihama.showbase.profile;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -46,10 +47,21 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
      * url: /profile/
      * httpMethod: POST
      * </pre>
-     * @return RemoteProfileReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteProfileReturn requestProfile() {
+    public RemoteProfileReturn requestProfile() {
         return doRequestPost(new ParameterizedRef<RemoteProfileReturn>() {
-        }.getType(), "/profile/", noMoreUrl(), null, rule -> {});
+        }.getType(), "/profile/", noMoreUrl(), null, rule -> ruleOfProfile(rule));
+    }
+
+    /**
+     * Rule of Profile.<br>
+     * <pre>
+     * url: /profile/
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfProfile(FlutyRemoteApiRule rule) {
     }
 }

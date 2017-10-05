@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.showbase.signup;
 
 import java.util.function.Consumer;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -50,11 +51,22 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * </pre>
      * @param paramLamda The callback for RemoteSignupParam. (NotNull)
      */
-    protected void requestSignup(Consumer<RemoteSignupParam> paramLamda) {
+    public void requestSignup(Consumer<RemoteSignupParam> paramLamda) {
         RemoteSignupParam param = new RemoteSignupParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/signup/", noMoreUrl(), param, rule -> {});
+        }.getType(), "/signup/", noMoreUrl(), param, rule -> ruleOfSignup(rule));
+    }
+
+    /**
+     * Rule of Signup.<br>
+     * <pre>
+     * url: /signup/
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfSignup(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -66,8 +78,19 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * @param account account. (NotNull)
      * @param token token. (NotNull)
      */
-    protected void requestRegister(String account, String token) {
+    public void requestRegister(String account, String token) {
         doRequestGet(new ParameterizedRef<Void>() {
-        }.getType(), "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> {});
+        }.getType(), "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> ruleOfRegister(rule));
+    }
+
+    /**
+     * Rule of Register.<br>
+     * <pre>
+     * url: /signup/register/{account}/{token}
+     * httpMethod: GET
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfRegister(FlutyRemoteApiRule rule) {
     }
 }

@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.showbase.member;
 
 import java.util.function.Consumer;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -55,11 +56,22 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/info
      * httpMethod: POST
      * </pre>
-     * @return RemoteMemberInfoReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteMemberInfoReturn requestInfo() {
+    public RemoteMemberInfoReturn requestInfo() {
         return doRequestPost(new ParameterizedRef<RemoteMemberInfoReturn>() {
-        }.getType(), "/member/info", noMoreUrl(), null, rule -> {});
+        }.getType(), "/member/info", noMoreUrl(), null, rule -> ruleOfInfo(rule));
+    }
+
+    /**
+     * Rule of Info.<br>
+     * <pre>
+     * url: /member/info
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfInfo(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -68,11 +80,22 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * url: /member/status
      * httpMethod: POST
      * </pre>
-     * @return java.util.List<Object>. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected java.util.List<Object> requestStatus() {
+    public java.util.List<Object> requestStatus() {
         return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
-        }.getType(), "/member/status", noMoreUrl(), null, rule -> {});
+        }.getType(), "/member/status", noMoreUrl(), null, rule -> ruleOfStatus(rule));
+    }
+
+    /**
+     * Rule of Status.<br>
+     * <pre>
+     * url: /member/status
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfStatus(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -82,13 +105,24 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteMemberAddRegisterParam. (NotNull)
-     * @return RemoteMemberAddRegisterReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteMemberAddRegisterReturn requestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLamda) {
+    public RemoteMemberAddRegisterReturn requestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLamda) {
         RemoteMemberAddRegisterParam param = new RemoteMemberAddRegisterParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteMemberAddRegisterReturn>() {
-        }.getType(), "/member/add/register", noMoreUrl(), param, rule -> {});
+        }.getType(), "/member/add/register", noMoreUrl(), param, rule -> ruleOfAddRegister(rule));
+    }
+
+    /**
+     * Rule of AddRegister.<br>
+     * <pre>
+     * url: /member/add/register
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfAddRegister(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -98,11 +132,22 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * httpMethod: POST
      * </pre>
      * @param memberId memberId. (NotNull)
-     * @return RemoteMemberEditReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteMemberEditReturn requestEdit(Integer memberId) {
+    public RemoteMemberEditReturn requestEdit(Integer memberId) {
         return doRequestPost(new ParameterizedRef<RemoteMemberEditReturn>() {
-        }.getType(), "/member/edit/{memberId}", moreUrl(memberId), null, rule -> {});
+        }.getType(), "/member/edit/{memberId}", moreUrl(memberId), null, rule -> ruleOfEdit(rule));
+    }
+
+    /**
+     * Rule of Edit.<br>
+     * <pre>
+     * url: /member/edit/{memberId}
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfEdit(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -113,11 +158,22 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * </pre>
      * @param paramLamda The callback for RemoteMemberEditUpdateParam. (NotNull)
      */
-    protected void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLamda) {
+    public void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLamda) {
         RemoteMemberEditUpdateParam param = new RemoteMemberEditUpdateParam();
         paramLamda.accept(param);
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/member/edit/update", noMoreUrl(), param, rule -> {});
+        }.getType(), "/member/edit/update", noMoreUrl(), param, rule -> ruleOfEditUpdate(rule));
+    }
+
+    /**
+     * Rule of EditUpdate.<br>
+     * <pre>
+     * url: /member/edit/update
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfEditUpdate(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -128,13 +184,24 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * </pre>
      * @param pageNumber pageNumber. (NotNull)
      * @param paramLamda The callback for RemoteMemberListParam. (NotNull)
-     * @return RemoteMemberListReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteMemberListReturn requestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLamda) {
+    public RemoteMemberListReturn requestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLamda) {
         RemoteMemberListParam param = new RemoteMemberListParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteMemberListReturn>() {
-        }.getType(), "/member/list/{pageNumber}", moreUrl(pageNumber), param, rule -> {});
+        }.getType(), "/member/list/{pageNumber}", moreUrl(pageNumber), param, rule -> ruleOfList(rule));
+    }
+
+    /**
+     * Rule of List.<br>
+     * <pre>
+     * url: /member/list/{pageNumber}
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfList(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -145,11 +212,22 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * </pre>
      * @param memberId memberId. (NotNull)
      * @param pageNumber pageNumber. (NotNull)
-     * @return RemoteMemberPurchaseListReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber) {
+    public RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber) {
         return doRequestPost(new ParameterizedRef<RemoteMemberPurchaseListReturn>() {
-        }.getType(), "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, rule -> {});
+        }.getType(), "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, rule -> ruleOfPurchaseList(rule));
+    }
+
+    /**
+     * Rule of PurchaseList.<br>
+     * <pre>
+     * url: /member/purchase/list/{memberId}/{pageNumber}
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfPurchaseList(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -160,8 +238,19 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * </pre>
      * @param purchaseId purchaseId. (NotNull)
      */
-    protected void requestPurchaseListDelete(Long purchaseId) {
+    public void requestPurchaseListDelete(Long purchaseId) {
         doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, rule -> {});
+        }.getType(), "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, rule -> ruleOfPurchaseListDelete(rule));
+    }
+
+    /**
+     * Rule of PurchaseListDelete.<br>
+     * <pre>
+     * url: /member/purchase/list/delete/{purchaseId}
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfPurchaseListDelete(FlutyRemoteApiRule rule) {
     }
 }

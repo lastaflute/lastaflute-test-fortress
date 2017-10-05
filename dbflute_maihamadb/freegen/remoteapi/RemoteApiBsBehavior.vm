@@ -33,6 +33,7 @@ import java.util.function.Consumer;
 #end
 
 #if ($tableMap.behaviorMethodGeneration == 'true')
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 #end
 import org.lastaflute.web.servlet.request.RequestManager;
@@ -104,10 +105,10 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
      * @param $parameterJavadoc
 #end
 #if ($responseBeanClassName != 'void')
-     * @return ${responseBeanClassName}. (NotNull)
+     * @return return object. (NotNull)
 #end
      */
-    protected $responseBeanClassName request${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end($!{parameterDefinition}) {
+    ${tableMap.behaviorMethodAccessModifier} $responseBeanClassName request${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end($!{parameterDefinition}) {
 #set ($paramMap = {})
 #if ($method.httpMethod == 'Get' || $method.httpMethod == 'Delete')
 #set ($param = 'noQuery()')
@@ -129,10 +130,22 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
         }.getType(), "${method.url}", $moreUrl, $param, rule -> {
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
+            ruleOf${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end(rule);
         });
 #else
-        }.getType(), "${method.url}", $moreUrl, $param, rule -> {});
+        }.getType(), "${method.url}", $moreUrl, $param, rule -> ruleOf${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end(rule));
 #end
+    }
+
+    /**
+     * Rule of ${method.name}.<br>
+     * <pre>
+     * url: $method.url
+     * httpMethod: $method.httpMethod.toUpperCase()
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOf${method.name}#if ($method.multipleHttpMethod)$method.httpMethod#end(FlutyRemoteApiRule rule) {
     }
 #end
 #end

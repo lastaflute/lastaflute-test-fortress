@@ -15,6 +15,7 @@
  */
 package org.docksidestage.remote.maihama.showbase.mypage;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -46,10 +47,21 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
      * url: /mypage/
      * httpMethod: GET
      * </pre>
-     * @return RemoteMypageReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteMypageReturn requestMypage() {
+    public RemoteMypageReturn requestMypage() {
         return doRequestGet(new ParameterizedRef<RemoteMypageReturn>() {
-        }.getType(), "/mypage/", noMoreUrl(), noQuery(), rule -> {});
+        }.getType(), "/mypage/", noMoreUrl(), noQuery(), rule -> ruleOfMypage(rule));
+    }
+
+    /**
+     * Rule of Mypage.<br>
+     * <pre>
+     * url: /mypage/
+     * httpMethod: GET
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfMypage(FlutyRemoteApiRule rule) {
     }
 }

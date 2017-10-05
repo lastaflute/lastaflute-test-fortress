@@ -28,6 +28,7 @@ map:{
 
             ; behaviorClassGeneration = true
             ; behaviorMethodGeneration = true
+            ; behaviorMethodAccessModifier = public
             ; frameworkBehaviorClass = org.lastaflute.remoteapi.LastaRemoteBehavior
             ; abstractBehaviorClassName = function(scheme) \{ return 'RemoteAbstract' + scheme + 'Bhv'\; \}
             ; bsBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + 'Bs' + className + 'Bhv'\; \}

@@ -15,6 +15,7 @@
  */
 package org.docksidestage.remote.maihama.showbase.root;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -45,10 +46,21 @@ public abstract class RemoteMaihamaShowbaseBsRootBhv extends RemoteAbstractMaiha
      * url: /root/
      * httpMethod: POST
      * </pre>
-     * @return Object. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected Object requestRoot() {
+    public Object requestRoot() {
         return doRequestPost(new ParameterizedRef<Object>() {
-        }.getType(), "/root/", noMoreUrl(), null, rule -> {});
+        }.getType(), "/root/", noMoreUrl(), null, rule -> ruleOfRoot(rule));
+    }
+
+    /**
+     * Rule of Root.<br>
+     * <pre>
+     * url: /root/
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfRoot(FlutyRemoteApiRule rule) {
     }
 }

@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.showbase.signin;
 
 import java.util.function.Consumer;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -50,12 +51,23 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteSigninParam. (NotNull)
-     * @return RemoteSigninReturn. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda) {
+    public RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda) {
         RemoteSigninParam param = new RemoteSigninParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<RemoteSigninReturn>() {
-        }.getType(), "/signin/", noMoreUrl(), param, rule -> {});
+        }.getType(), "/signin/", noMoreUrl(), param, rule -> ruleOfSignin(rule));
+    }
+
+    /**
+     * Rule of Signin.<br>
+     * <pre>
+     * url: /signin/
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfSignin(FlutyRemoteApiRule rule) {
     }
 }

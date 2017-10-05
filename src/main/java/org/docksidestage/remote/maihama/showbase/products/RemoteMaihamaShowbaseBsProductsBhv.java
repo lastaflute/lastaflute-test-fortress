@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.showbase.products;
 
 import java.util.function.Consumer;
 
+import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -50,12 +51,23 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
      * </pre>
      * @param productId productId. (NotNull)
      * @param paramLamda The callback for RemoteProductsParam. (NotNull)
-     * @return Object. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
+    public Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
         RemoteProductsParam param = new RemoteProductsParam();
         paramLamda.accept(param);
         return doRequestPost(new ParameterizedRef<Object>() {
-        }.getType(), "/products/{productId}", moreUrl(productId), param, rule -> {});
+        }.getType(), "/products/{productId}", moreUrl(productId), param, rule -> ruleOfProducts(rule));
+    }
+
+    /**
+     * Rule of Products.<br>
+     * <pre>
+     * url: /products/{productId}
+     * httpMethod: POST
+     * </pre>
+     * @param rule rule. (NotNull)
+     */
+    protected void ruleOfProducts(FlutyRemoteApiRule rule) {
     }
 }

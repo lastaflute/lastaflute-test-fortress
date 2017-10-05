@@ -39,6 +39,7 @@ public class RemoteProfileReturn {
     @Required
     public String serviceRankName;
 
+    @Required
     @javax.validation.Valid
     public java.util.List<PurchasedProductPart> purchaseList;
 

@@ -963,7 +963,7 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-10-05"
+          "default": "2017-10-06"
         },
         "memberStatus": {
           "name": "memberStatus",
@@ -994,7 +994,7 @@
           "required": false,
           "type": "string",
           "format": "date-time",
-          "default": "2017-10-05T00:00:00.000"
+          "default": "2017-10-06T00:00:00.000"
         },
         "_memberId": {
           "name": "_memberId",
@@ -1027,7 +1027,7 @@
           "required": false,
           "type": "string",
           "format": "date-time",
-          "default": "2017-10-05T00:00:00.000"
+          "default": "2017-10-06T00:00:00.000"
         },
         "_birthdate": {
           "name": "_birthdate",
@@ -1035,7 +1035,7 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-10-05"
+          "default": "2017-10-06"
         },
         "_registerDatetime": {
           "name": "_registerDatetime",
@@ -1043,7 +1043,7 @@
           "required": false,
           "type": "string",
           "format": "date-time",
-          "default": "2017-10-05T00:00:00.000"
+          "default": "2017-10-06T00:00:00.000"
         },
         "_registerUser": {
           "name": "_registerUser",
@@ -1057,7 +1057,7 @@
           "required": false,
           "type": "string",
           "format": "date-time",
-          "default": "2017-10-05T00:00:00.000"
+          "default": "2017-10-06T00:00:00.000"
         },
         "_updateUser": {
           "name": "_updateUser",
@@ -1224,7 +1224,7 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-10-05"
+          "default": "2017-10-06"
         },
         "versionNo": {
           "name": "versionNo",
@@ -1272,14 +1272,14 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-10-05"
+          "default": "2017-10-06"
         },
         "formalizedTo": {
           "name": "formalizedTo",
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-10-05"
+          "default": "2017-10-06"
         }
       }
     },
@@ -1307,14 +1307,14 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-10-05"
+          "default": "2017-10-06"
         },
         "updateDatetime": {
           "name": "updateDatetime",
           "required": true,
           "type": "string",
           "format": "date-time",
-          "default": "2017-10-05T00:00:00.000"
+          "default": "2017-10-06T00:00:00.000"
         },
         "withdrawalMember": {
           "name": "withdrawalMember",
@@ -1363,7 +1363,7 @@
         "rows": {
           "name": "rows",
           "description": "paging data for current page",
-          "required": false,
+          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.member.MemberSearchRowResult"
@@ -1385,7 +1385,7 @@
           "required": true,
           "type": "string",
           "format": "date-time",
-          "default": "2017-10-05T00:00:00.000"
+          "default": "2017-10-06T00:00:00.000"
         },
         "productName": {
           "name": "productName",
@@ -1445,7 +1445,7 @@
         "rows": {
           "name": "rows",
           "description": "paging data for current page",
-          "required": false,
+          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult"
@@ -1474,7 +1474,7 @@
       "properties": {
         "recentProducts": {
           "name": "recentProducts",
-          "required": false,
+          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.mypage.MypageResult$ProductPart"
@@ -1482,7 +1482,7 @@
         },
         "highPriceProducts": {
           "name": "highPriceProducts",
-          "required": false,
+          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.mypage.MypageResult$ProductPart"
@@ -1587,7 +1587,7 @@
           "required": false,
           "type": "string",
           "format": "date",
-          "default": "2017-10-05"
+          "default": "2017-10-06"
         }
       }
     },
@@ -1625,7 +1625,7 @@
         "rows": {
           "name": "rows",
           "description": "paging data for current page",
-          "required": false,
+          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.product.ProductRowResult"
@@ -1688,7 +1688,7 @@
           "required": true,
           "type": "string",
           "format": "date-time",
-          "default": "2017-10-05T00:00:00.000"
+          "default": "2017-10-06T00:00:00.000"
         }
       }
     },
@@ -1724,7 +1724,7 @@
         },
         "purchaseList": {
           "name": "purchaseList",
-          "required": false,
+          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.profile.ProfileResult$PurchasedProductPart"

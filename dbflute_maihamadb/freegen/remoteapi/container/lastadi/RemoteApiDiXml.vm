@@ -20,6 +20,8 @@
     <include path="lastaflute_core.xml"/>
     <include path="lastaflute_web.xml"/>
     <include path="convention.xml"/>
+    <include condition="#exists('#path')" path="remoteapi/di/remoteapi_all_included.xml"/>
+    <include condition="#exists('#path')" path="remoteapi/di/remoteapi_${schemePackage.replaceAll('\.', '-')}_included.xml"/>
 
     <!-- Remote API Behavior -->
 #foreach($exBehavior in $exBehaviorMap.values())
