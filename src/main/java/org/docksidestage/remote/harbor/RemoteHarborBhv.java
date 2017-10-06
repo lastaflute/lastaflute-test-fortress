@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
-import org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult.RemoteUnifiedFailureType;
@@ -32,6 +31,7 @@ import org.lastaflute.core.message.UserMessage;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.remoteapi.LastaRemoteBehavior;
+import org.lastaflute.remoteapi.mapping.LaVacantMappingPolicy;
 import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
 import org.lastaflute.remoteapi.sender.body.LaJsonSender;
 import org.lastaflute.remoteapi.sender.query.LaQuerySender;
@@ -54,7 +54,7 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        rule.sendQueryBy(new LaQuerySender(new FlVacantRemoteMappingPolicy()));
+        rule.sendQueryBy(new LaQuerySender(new LaVacantMappingPolicy()));
 
         JsonMappingOption jsonMappingOption = new JsonMappingOption();
         rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption));
