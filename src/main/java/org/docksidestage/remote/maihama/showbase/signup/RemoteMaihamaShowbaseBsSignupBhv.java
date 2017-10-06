@@ -66,7 +66,7 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     protected void requestSignup(Consumer<RemoteSignupParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteSignupParam param = new RemoteSignupParam();
         paramLamda.accept(param);
-        doRequestPost(Void.class, "/signup/", noMoreUrl(), param, rule -> {
+        doRequestPost(void.class, "/signup/", noMoreUrl(), param, rule -> {
             ruleOfSignup(rule);
             ruleLambda.accept(rule);
         });
@@ -103,7 +103,7 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void requestRegister(String account, String token, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestGet(Void.class, "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> {
+        doRequestGet(void.class, "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> {
             ruleOfRegisterAccountToken(rule);
             ruleLambda.accept(rule);
         });

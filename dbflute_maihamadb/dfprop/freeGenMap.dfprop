@@ -16,32 +16,7 @@ map:{
         }
         ; tableMap = map:{
             ; tablePath = map
-            ; targetUrlRegex = .*
-            ; url = function(url) \{ return url\; \}
-            # when using Eclipse Collections
-            #; yourCollections = org.eclipse.collections.api.list.ImmutableList
-            ; definitionKey = function(definitionKey) \{ return definitionKey\; \}
-            ; unDefinitionKey = function(definitionKey) \{ return definitionKey\; \}
-            ; subPackage = function(subPackage) \{ return subPackage.replace(/_/g, '')\; \}
-
-            ; behaviorClassGeneration = true
-            ; behaviorMethodGeneration = true
-            ; behaviorMethodAccessModifier = public
-            ; frameworkBehaviorClass = org.lastaflute.remoteapi.LastaRemoteBehavior
-            ; abstractBehaviorClassName = function(scheme) \{ return 'RemoteAbstract' + scheme + 'Bhv'\; \}
-            ; bsBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + 'Bs' + className + 'Bhv'\; \}
-            ; exBehaviorClassName = function(scheme, className) \{ return 'Remote' + scheme + className + 'Bhv'\; \}
-            ; behaviorRequestMethodName = function(scheme, className, methodName, httpMethod, multipleHttpMethod) \{ return 'request' + methodName + (multipleHttpMethod ? httpMethod : '')\; \}
-            ; behaviorRuleMethodName = function(scheme, className, methodName, httpMethod, multipleHttpMethod) \{ return 'ruleOf' + methodName + (multipleHttpMethod ? httpMethod : '')\; \}
-
-            ; requestExtendsClass =
-            ; requestImplementsClasses =
-            ; requestClassName = function(scheme, className, httpMethod, multipleHttpMethod) \{ return 'Remote' + className + (multipleHttpMethod ? httpMethod : '') + 'Param'\; \}
-            ; responseExtendsClass =
-            ; responseImplementsClasses =
-            ; responseClassName = function(scheme, className, httpMethod, multipleHttpMethod) \{ return 'Remote' + className + (multipleHttpMethod ? httpMethod : '') + 'Return'\; \}
-            ; nestClassName = function(scheme, className) \{ return className\; \}
-            ; fieldName = function(scheme, fieldName) \{ return fieldName.replace(/_./g, function(s) \{ return s.charAt(1).toUpperCase()\; \})\; \}
+            ; ruleJsPath = ../src/main/resources/remoteapi/swagger/maihama-showbase_rule.js
         }
     }
 }
