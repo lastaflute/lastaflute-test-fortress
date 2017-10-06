@@ -66,7 +66,7 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     protected void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
         paramLamda.accept(param);
-        doRequestPost(Void.class, "/following/follow", noMoreUrl(), param, rule -> {
+        doRequestPost(void.class, "/following/follow", noMoreUrl(), param, rule -> {
             ruleOfFollow(rule);
             ruleLambda.accept(rule);
         });

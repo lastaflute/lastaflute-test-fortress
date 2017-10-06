@@ -16,7 +16,7 @@
 ${manager.allClassCopyright}package ${request.package}.${subPackage};
 #set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
 #set ($parameterFlg = false)
-#if ($tableMap.behaviorMethodGeneration == 'true')
+#if ($scriptEngine.eval('behaviorMethodGeneration'))
 #foreach($method in $methodList)
 #if (${method.requestBean.className} && ${method.requestBean.className} != '')
 #set($added = $importSet.add("${method.requestBean.package}.${method.requestBean.className}"))
@@ -27,7 +27,7 @@ ${manager.allClassCopyright}package ${request.package}.${subPackage};
 #end
 #end
 #end
-#if ($tableMap.behaviorMethodGeneration == 'true')
+#if ($scriptEngine.eval('behaviorMethodGeneration'))
 
 import java.util.function.Consumer;
 
@@ -55,7 +55,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     public ${class}(RequestManager requestManager) {
         super(requestManager);
     }
-#if ($tableMap.behaviorMethodGeneration == 'true')
+#if ($scriptEngine.eval('behaviorMethodGeneration'))
 #foreach($method in $methodList)
 
 #if ($foreach.index == 0)
@@ -110,7 +110,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
      * @return return object. (NotNull)
 #end
      */
-    ${tableMap.behaviorMethodAccessModifier} $responseBeanClassName $behaviorRequestMethodName($!{parameterDefinition}) {
+    $scriptEngine.eval('behaviorMethodAccessModifier') $responseBeanClassName $behaviorRequestMethodName($!{parameterDefinition}) {
 #set ($ruleParam = 'rule -> {}')
        #if ($responseBeanClassName != 'void') return#end $behaviorRequestMethodName(#foreach($parameter in $parameterList)$parameter.name, #end$ruleParam);
     }

@@ -103,7 +103,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void requestFaicliUnknown(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(Void.class, "/wx/faicli/unknown", noMoreUrl(), null, rule -> {
+        doRequestPost(void.class, "/wx/faicli/unknown", noMoreUrl(), null, rule -> {
             ruleOfFaicliUnknown(rule);
             ruleLambda.accept(rule);
         });
@@ -138,7 +138,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void requestFaicliEntity(String account, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(Void.class, "/wx/faicli/entity/{account}", moreUrl(account), null, rule -> {
+        doRequestPost(void.class, "/wx/faicli/entity/{account}", moreUrl(account), null, rule -> {
             ruleOfFaicliEntityAccount(rule);
             ruleLambda.accept(rule);
         });

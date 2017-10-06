@@ -220,7 +220,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     protected void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteMemberEditUpdateParam param = new RemoteMemberEditUpdateParam();
         paramLamda.accept(param);
-        doRequestPost(Void.class, "/member/edit/update", noMoreUrl(), param, rule -> {
+        doRequestPost(void.class, "/member/edit/update", noMoreUrl(), param, rule -> {
             ruleOfEditUpdate(rule);
             ruleLambda.accept(rule);
         });
@@ -335,7 +335,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void requestPurchaseListDelete(Long purchaseId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(Void.class, "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, rule -> {
+        doRequestPost(void.class, "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, rule -> {
             ruleOfPurchaseListDeletePurchaseId(rule);
             ruleLambda.accept(rule);
         });
