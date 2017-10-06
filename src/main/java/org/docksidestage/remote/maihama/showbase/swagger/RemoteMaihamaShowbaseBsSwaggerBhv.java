@@ -15,8 +15,9 @@
  */
 package org.docksidestage.remote.maihama.showbase.swagger;
 
+import java.util.function.Consumer;
+
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -41,7 +42,7 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Swagger.<br>
+     * Request remote call to  Swagger. (auto-generated method)<br>
      * <pre>
      * url: /swagger/
      * httpMethod: POST
@@ -49,23 +50,34 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
      * @return return object. (NotNull)
      */
     public Object requestSwagger() {
-        return doRequestPost(new ParameterizedRef<Object>() {
-        }.getType(), "/swagger/", noMoreUrl(), null, rule -> ruleOfSwagger(rule));
+        return requestSwagger(rule -> {});
     }
 
     /**
-     * Rule of Swagger.<br>
+     * Set up method-level rule of Swagger. (auto-generated method)<br>
      * <pre>
      * url: /swagger/
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected Object requestSwagger(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(Object.class, "/swagger/", noMoreUrl(), null, rule -> {
+            ruleOfSwagger(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Swagger.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfSwagger(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * request Json.<br>
+     * Request remote call to  Json. (auto-generated method)<br>
      * <pre>
      * url: /swagger/json
      * httpMethod: POST
@@ -73,17 +85,28 @@ public abstract class RemoteMaihamaShowbaseBsSwaggerBhv extends RemoteAbstractMa
      * @return return object. (NotNull)
      */
     public Object requestJson() {
-        return doRequestPost(new ParameterizedRef<Object>() {
-        }.getType(), "/swagger/json", noMoreUrl(), null, rule -> ruleOfJson(rule));
+        return requestJson(rule -> {});
     }
 
     /**
-     * Rule of Json.<br>
+     * Set up method-level rule of Json. (auto-generated method)<br>
      * <pre>
      * url: /swagger/json
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected Object requestJson(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(Object.class, "/swagger/json", noMoreUrl(), null, rule -> {
+            ruleOfJson(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Json.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfJson(FlutyRemoteApiRule rule) {
     }

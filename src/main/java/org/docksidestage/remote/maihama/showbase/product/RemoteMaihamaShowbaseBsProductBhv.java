@@ -18,7 +18,6 @@ package org.docksidestage.remote.maihama.showbase.product;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -46,7 +45,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Detail.<br>
+     * Request remote call to  Detail. (auto-generated method)<br>
      * <pre>
      * url: /product/detail/{productId}
      * httpMethod: POST
@@ -55,23 +54,35 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * @return return object. (NotNull)
      */
     public RemoteProductDetailReturn requestDetail(Integer productId) {
-        return doRequestPost(new ParameterizedRef<RemoteProductDetailReturn>() {
-        }.getType(), "/product/detail/{productId}", moreUrl(productId), null, rule -> ruleOfDetail(rule));
+        return requestDetail(productId, rule -> {});
     }
 
     /**
-     * Rule of Detail.<br>
+     * Set up method-level rule of Detail. (auto-generated method)<br>
      * <pre>
      * url: /product/detail/{productId}
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param productId productId. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected void ruleOfDetail(FlutyRemoteApiRule rule) {
+    protected RemoteProductDetailReturn requestDetail(Integer productId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteProductDetailReturn.class, "/product/detail/{productId}", moreUrl(productId), null, rule -> {
+            ruleOfDetailProductId(rule);
+            ruleLambda.accept(rule);
+        });
     }
 
     /**
-     * request ListSearch.<br>
+     * Set up method-level rule of Detail.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfDetailProductId(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to  ListSearch. (auto-generated method)<br>
      * <pre>
      * url: /product/list/search/{pageNumber}
      * httpMethod: POST
@@ -81,25 +92,38 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * @return return object. (NotNull)
      */
     public RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
-        RemoteProductListSearchParam param = new RemoteProductListSearchParam();
-        paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<RemoteProductListSearchReturn>() {
-        }.getType(), "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, rule -> ruleOfListSearch(rule));
+        return requestListSearch(pageNumber, paramLamda, rule -> {});
     }
 
     /**
-     * Rule of ListSearch.<br>
+     * Set up method-level rule of ListSearch. (auto-generated method)<br>
      * <pre>
      * url: /product/list/search/{pageNumber}
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param pageNumber pageNumber. (NotNull)
+     * @param paramLamda The callback for RemoteProductListSearchParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected void ruleOfListSearch(FlutyRemoteApiRule rule) {
+    protected RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteProductListSearchParam param = new RemoteProductListSearchParam();
+        paramLamda.accept(param);
+        return doRequestPost(RemoteProductListSearchReturn.class, "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, rule -> {
+            ruleOfListSearchPageNumber(rule);
+            ruleLambda.accept(rule);
+        });
     }
 
     /**
-     * request ListStatus.<br>
+     * Set up method-level rule of ListSearch.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfListSearchPageNumber(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to  ListStatus. (auto-generated method)<br>
      * <pre>
      * url: /product/list/status
      * httpMethod: POST
@@ -107,17 +131,29 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * @return return object. (NotNull)
      */
     public java.util.List<Object> requestListStatus() {
-        return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
-        }.getType(), "/product/list/status", noMoreUrl(), null, rule -> ruleOfListStatus(rule));
+        return requestListStatus(rule -> {});
     }
 
     /**
-     * Rule of ListStatus.<br>
+     * Set up method-level rule of ListStatus. (auto-generated method)<br>
      * <pre>
      * url: /product/list/status
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected java.util.List<Object> requestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.List<Object>>() {
+        }.getType(), "/product/list/status", noMoreUrl(), null, rule -> {
+            ruleOfListStatus(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of ListStatus.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfListStatus(FlutyRemoteApiRule rule) {
     }

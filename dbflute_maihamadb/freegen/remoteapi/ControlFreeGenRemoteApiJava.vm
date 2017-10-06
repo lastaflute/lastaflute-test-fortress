@@ -13,7 +13,7 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-#set ($scriptEngine = $requestList.getClass().forName('javax.script.ScriptEngineManager').newInstance().getEngineByName('JavaScript'))
+#set ($scriptEngine = $manager.createJavaScriptEngine())
 #foreach ($request in $requestList)
 #set ($tableMap = $request.tableMap)
 $request.enableOutputDirectory()
@@ -26,9 +26,7 @@ $manager.makeDirectory($request.generateDirPath)
     $manager.info("gen remote api: ${request.requestName}")
     #loadScript()
 
-    #set ($jsonFreeAgent = $request.getClass().forName("org.dbflute.logic.manage.freegen.table.json.DfJsonFreeAgent").newInstance())
-    #set ($swaggerJsonMap = $jsonFreeAgent.decodeJsonMap($request.resourceName, $tableMap.swaggerJsonPath))
-    #foreach($swaggerJsonEntry in $swaggerJsonMap.entrySet())
+    #foreach($swaggerJsonEntry in $tableMap.jsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'definitions')
         #set ($definitionMap = $swaggerJsonEntry.value)
       #end
@@ -38,7 +36,7 @@ $manager.makeDirectory($request.generateDirPath)
     #set ($schemePackage = $manager.decamelize($scheme).replaceAll('_', '.').toLowerCase())
     #set ($bsBehaviorMap = {})
     #set ($exBehaviorMap = {})
-    #foreach($swaggerJsonEntry in $swaggerJsonMap.entrySet())
+    #foreach($swaggerJsonEntry in $tableMap.jsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'paths')
         #set ($pathMap = $swaggerJsonEntry.value)
         #foreach($pathEntry in $pathMap.entrySet())

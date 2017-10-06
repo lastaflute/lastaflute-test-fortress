@@ -18,7 +18,6 @@ package org.docksidestage.remote.maihama.showbase.purchase;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -47,7 +46,7 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Count.<br>
+     * Request remote call to  Count. (auto-generated method)<br>
      * <pre>
      * url: /purchase/count
      * httpMethod: POST
@@ -56,25 +55,37 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
      * @return return object. (NotNull)
      */
     public RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLamda) {
-        RemotePurchaseCountParam param = new RemotePurchaseCountParam();
-        paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<RemotePurchaseCountReturn>() {
-        }.getType(), "/purchase/count", noMoreUrl(), param, rule -> ruleOfCount(rule));
+        return requestCount(paramLamda, rule -> {});
     }
 
     /**
-     * Rule of Count.<br>
+     * Set up method-level rule of Count. (auto-generated method)<br>
      * <pre>
      * url: /purchase/count
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param paramLamda The callback for RemotePurchaseCountParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemotePurchaseCountParam param = new RemotePurchaseCountParam();
+        paramLamda.accept(param);
+        return doRequestPost(RemotePurchaseCountReturn.class, "/purchase/count", noMoreUrl(), param, rule -> {
+            ruleOfCount(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Count.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfCount(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * request Contract.<br>
+     * Request remote call to  Contract. (auto-generated method)<br>
      * <pre>
      * url: /purchase/contract
      * httpMethod: POST
@@ -83,19 +94,31 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
      * @return return object. (NotNull)
      */
     public RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLamda) {
-        RemotePurchaseContractParam param = new RemotePurchaseContractParam();
-        paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<RemotePurchaseContractReturn>() {
-        }.getType(), "/purchase/contract", noMoreUrl(), param, rule -> ruleOfContract(rule));
+        return requestContract(paramLamda, rule -> {});
     }
 
     /**
-     * Rule of Contract.<br>
+     * Set up method-level rule of Contract. (auto-generated method)<br>
      * <pre>
      * url: /purchase/contract
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param paramLamda The callback for RemotePurchaseContractParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemotePurchaseContractParam param = new RemotePurchaseContractParam();
+        paramLamda.accept(param);
+        return doRequestPost(RemotePurchaseContractReturn.class, "/purchase/contract", noMoreUrl(), param, rule -> {
+            ruleOfContract(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Contract.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfContract(FlutyRemoteApiRule rule) {
     }

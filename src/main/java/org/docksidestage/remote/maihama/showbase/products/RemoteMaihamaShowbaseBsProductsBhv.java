@@ -18,7 +18,6 @@ package org.docksidestage.remote.maihama.showbase.products;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -44,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Products.<br>
+     * Request remote call to  Products. (auto-generated method)<br>
      * <pre>
      * url: /products/{productId}
      * httpMethod: POST
@@ -54,20 +53,33 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
      * @return return object. (NotNull)
      */
     public Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
-        RemoteProductsParam param = new RemoteProductsParam();
-        paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<Object>() {
-        }.getType(), "/products/{productId}", moreUrl(productId), param, rule -> ruleOfProducts(rule));
+        return requestProducts(productId, paramLamda, rule -> {});
     }
 
     /**
-     * Rule of Products.<br>
+     * Set up method-level rule of Products. (auto-generated method)<br>
      * <pre>
      * url: /products/{productId}
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param productId productId. (NotNull)
+     * @param paramLamda The callback for RemoteProductsParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected void ruleOfProducts(FlutyRemoteApiRule rule) {
+    protected Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteProductsParam param = new RemoteProductsParam();
+        paramLamda.accept(param);
+        return doRequestPost(Object.class, "/products/{productId}", moreUrl(productId), param, rule -> {
+            ruleOfProductsProductId(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Products.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfProductsProductId(FlutyRemoteApiRule rule) {
     }
 }

@@ -18,7 +18,6 @@ package org.docksidestage.remote.maihama.showbase.signin;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -45,7 +44,7 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Signin.<br>
+     * Request remote call to  Signin. (auto-generated method)<br>
      * <pre>
      * url: /signin/
      * httpMethod: POST
@@ -54,19 +53,31 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
      * @return return object. (NotNull)
      */
     public RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda) {
-        RemoteSigninParam param = new RemoteSigninParam();
-        paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<RemoteSigninReturn>() {
-        }.getType(), "/signin/", noMoreUrl(), param, rule -> ruleOfSignin(rule));
+        return requestSignin(paramLamda, rule -> {});
     }
 
     /**
-     * Rule of Signin.<br>
+     * Set up method-level rule of Signin. (auto-generated method)<br>
      * <pre>
      * url: /signin/
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param paramLamda The callback for RemoteSigninParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteSigninParam param = new RemoteSigninParam();
+        paramLamda.accept(param);
+        return doRequestPost(RemoteSigninReturn.class, "/signin/", noMoreUrl(), param, rule -> {
+            ruleOfSignin(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Signin.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfSignin(FlutyRemoteApiRule rule) {
     }
