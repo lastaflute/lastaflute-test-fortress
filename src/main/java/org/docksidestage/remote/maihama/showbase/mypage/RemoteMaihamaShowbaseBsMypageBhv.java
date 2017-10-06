@@ -15,8 +15,9 @@
  */
 package org.docksidestage.remote.maihama.showbase.mypage;
 
+import java.util.function.Consumer;
+
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -42,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Mypage.<br>
+     * Request remote call to  Mypage. (auto-generated method)<br>
      * <pre>
      * url: /mypage/
      * httpMethod: GET
@@ -50,17 +51,28 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
      * @return return object. (NotNull)
      */
     public RemoteMypageReturn requestMypage() {
-        return doRequestGet(new ParameterizedRef<RemoteMypageReturn>() {
-        }.getType(), "/mypage/", noMoreUrl(), noQuery(), rule -> ruleOfMypage(rule));
+        return requestMypage(rule -> {});
     }
 
     /**
-     * Rule of Mypage.<br>
+     * Set up method-level rule of Mypage. (auto-generated method)<br>
      * <pre>
      * url: /mypage/
      * httpMethod: GET
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected RemoteMypageReturn requestMypage(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestGet(RemoteMypageReturn.class, "/mypage/", noMoreUrl(), noQuery(), rule -> {
+            ruleOfMypage(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Mypage.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfMypage(FlutyRemoteApiRule rule) {
     }

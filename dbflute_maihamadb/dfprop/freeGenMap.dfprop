@@ -5,9 +5,8 @@ map:{
     ; RemoteApiMaihamaShowbase = map:{
         ; resourceMap = map:{
             ; baseDir = ../src/main
-            ; resourceType = JSON_SCHEMA
-            # TODO p1us2er0 want to use tableMap.swaggerJsonPath value. however, if resourceType is JSON_SCHEMA, error occurs. (2017/09/24)
-            ; resourceFile = $$baseDir$$/resources/remoteapi/dummy.json
+            ; resourceType = SWAGGER
+            ; resourceFile = $$baseDir$$/resources/remoteapi/swagger/maihama-showbase_swagger.json
         }
         ; outputMap = map:{
             ; templateFile = unused
@@ -17,7 +16,6 @@ map:{
         }
         ; tableMap = map:{
             ; tablePath = map
-            ; swaggerJsonPath = ../src/main/resources/remoteapi/swagger/maihama-showbase_swagger.json
             ; targetUrlRegex = .*
             ; url = function(url) \{ return url\; \}
             # when using Eclipse Collections

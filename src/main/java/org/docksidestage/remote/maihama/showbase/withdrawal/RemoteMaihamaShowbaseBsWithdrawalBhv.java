@@ -18,7 +18,6 @@ package org.docksidestage.remote.maihama.showbase.withdrawal;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -44,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Reason.<br>
+     * Request remote call to  Reason. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/reason
      * httpMethod: POST
@@ -52,23 +51,35 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * @return return object. (NotNull)
      */
     public java.util.List<Object> requestReason() {
-        return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
-        }.getType(), "/withdrawal/reason", noMoreUrl(), null, rule -> ruleOfReason(rule));
+        return requestReason(rule -> {});
     }
 
     /**
-     * Rule of Reason.<br>
+     * Set up method-level rule of Reason. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/reason
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected java.util.List<Object> requestReason(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.List<Object>>() {
+        }.getType(), "/withdrawal/reason", noMoreUrl(), null, rule -> {
+            ruleOfReason(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Reason.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfReason(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * request Done.<br>
+     * Request remote call to  Done. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/done
      * httpMethod: POST
@@ -77,19 +88,31 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * @return return object. (NotNull)
      */
     public Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
-        RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
-        paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<Integer>() {
-        }.getType(), "/withdrawal/done", noMoreUrl(), param, rule -> ruleOfDone(rule));
+        return requestDone(paramLamda, rule -> {});
     }
 
     /**
-     * Rule of Done.<br>
+     * Set up method-level rule of Done. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/done
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param paramLamda The callback for RemoteWithdrawalDoneParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
+        paramLamda.accept(param);
+        return doRequestPost(Integer.class, "/withdrawal/done", noMoreUrl(), param, rule -> {
+            ruleOfDone(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Done.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfDone(FlutyRemoteApiRule rule) {
     }

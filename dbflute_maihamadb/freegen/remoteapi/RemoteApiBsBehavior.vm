@@ -27,14 +27,11 @@ ${manager.allClassCopyright}package ${request.package}.${subPackage};
 #end
 #end
 #end
-#if ($parameterFlg)
+#if ($tableMap.behaviorMethodGeneration == 'true')
 
 import java.util.function.Consumer;
-#end
 
-#if ($tableMap.behaviorMethodGeneration == 'true')
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 #end
 import org.lastaflute.web.servlet.request.RequestManager;
 
@@ -60,7 +57,18 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     }
 #if ($tableMap.behaviorMethodGeneration == 'true')
 #foreach($method in $methodList)
-#set ($parameterJavadocList = [])
+
+#if ($foreach.index == 0)
+    // ===================================================================================
+    //                                                                             Execute
+    //                                                                             =======
+#end
+#set ($behaviorRequestMethodName = $scriptEngine.invokeFunction('behaviorRequestMethodName', $scheme, $class, $method.name, $method.httpMethod, $method.multipleHttpMethod))
+#set ($behaviorRuleMethodName = $scriptEngine.invokeFunction('behaviorRuleMethodName', $scheme, $class, $method.name, $method.httpMethod, $method.multipleHttpMethod))
+#foreach($pathPropertyEntry in $method.pathProperties.entrySet())
+#set ($behaviorRuleMethodName = "$behaviorRuleMethodName$manager.initCap($pathPropertyEntry.key)")
+#end
+#set ($parameterList = [])
 #set ($parameterDefinition = '')
 #set ($moreUrl = '')
 #set ($responseBeanClassName = 'void')
@@ -71,16 +79,16 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #set ($parameterClass = ${typeMap[$pathPropertyEntry.value.type]})
 #end
 #if ($pathPropertyEntry.value.description)
-#set ($added = $parameterJavadocList.add("${pathPropertyEntry.key} $pathPropertyEntry.value.description. (NotNull)"))
+#set ($added = $parameterList.add({ "name": ${pathPropertyEntry.key}, "description": "$pathPropertyEntry.value.description. (NotNull)"}))
 #else
-#set ($added = $parameterJavadocList.add("${pathPropertyEntry.key} $pathPropertyEntry.key. (NotNull)"))
+#set ($added = $parameterList.add({ "name": ${pathPropertyEntry.key}, "description": "$pathPropertyEntry.key. (NotNull)"}))
 #end
 #set ($parameterDefinition = "${parameterDefinition}${parameterClass} ${pathPropertyEntry.key}, ")
 #set ($moreUrl = "${moreUrl}${pathPropertyEntry.key}, ")
 #end
 #if (${method.requestBean.className})
 #set ($parameterDefinition = "${parameterDefinition}Consumer<${method.requestBean.className}> paramLamda")
-#set ($added = $parameterJavadocList.add("paramLamda The callback for $method.requestBean.className. (NotNull)"))
+#set ($added = $parameterList.add({ "name": "paramLamda",  "description": "The callback for $method.requestBean.className. (NotNull)"}))
 #end
 #set ($parameterDefinition = $parameterDefinition.replaceAll(', $', ''))
 #set ($moreUrl = $moreUrl.replaceAll('^(.+), $', 'moreUrl($1)'))
@@ -89,28 +97,50 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #end
 #set ($responseBeanClassName = ${method.responseBean.className})
 #set ($responseBeanClassName = $scriptEngine.invokeFunction('unDefinitionKey', ${responseBeanClassName}))
-
-#if ($foreach.index == 0)
-    // ===================================================================================
-    //                                                                             Execute
-    //                                                                             =======
-#end
-#set ($behaviorRequestMethodName = $scriptEngine.invokeFunction('behaviorRequestMethodName', $scheme, $class, $method.name, $method.httpMethod, $method.multipleHttpMethod))
-#set ($behaviorRuleMethodName = $scriptEngine.invokeFunction('behaviorRuleMethodName', $scheme, $class, $method.name, $method.httpMethod, $method.multipleHttpMethod))
     /**
-     * request ${method.name}.<br>
+     * Request remote call to  ${method.name}. (auto-generated method)<br>
      * <pre>
      * url: $method.url
      * httpMethod: $method.httpMethod.toUpperCase()
      * </pre>
-#foreach($parameterJavadoc in $parameterJavadocList)
-     * @param $parameterJavadoc
+#foreach($parameter in $parameterList)
+     * @param $parameter.name $parameter.description
 #end
 #if ($responseBeanClassName != 'void')
      * @return return object. (NotNull)
 #end
      */
     ${tableMap.behaviorMethodAccessModifier} $responseBeanClassName $behaviorRequestMethodName($!{parameterDefinition}) {
+#set ($ruleParam = 'rule -> {}')
+       #if ($responseBeanClassName != 'void') return#end $behaviorRequestMethodName(#foreach($parameter in $parameterList)$parameter.name, #end$ruleParam);
+    }
+
+    /**
+     * Set up method-level rule of ${method.name}. (auto-generated method)<br>
+     * <pre>
+     * url: $method.url
+     * httpMethod: $method.httpMethod.toUpperCase()
+     * </pre>
+#foreach($parameter in $parameterList)
+     * @param $parameter.name $parameter.description
+#end
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+#if ($responseBeanClassName != 'void')
+     * @return return object. (NotNull)
+#end
+     */
+#set ($parameterDefinitionRule = "${parameterDefinition}")
+#if ($parameterDefinitionRule && $parameterDefinitionRule != '')
+#set ($parameterDefinitionRule = "${parameterDefinitionRule}, ")
+#end
+#set ($parameterDefinitionRule = "${parameterDefinitionRule}Consumer<FlutyRemoteApiRule> ruleLambda")
+#if ($$responseBeanClassName.contains('<'))
+#set ($returnType = "new org.lastaflute.di.helper.misc.ParameterizedRef<$responseBeanClassName>() {
+        }.getType()")
+#else
+#set ($returnType = "${responseBeanClassName}.class")
+#end
+    protected $responseBeanClassName $behaviorRequestMethodName($!{parameterDefinitionRule}) {
 #set ($paramMap = {})
 #if ($method.httpMethod == 'Get' || $method.httpMethod == 'Delete')
 #set ($param = 'noQuery()')
@@ -127,25 +157,19 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #if ($paramMap.containsKey("$!{method.requestBean.in}"))
 #set ($param = $paramMap["$!{method.requestBean.in}"])
 #end
-       #if ($responseBeanClassName != 'void') return#end doRequest${method.httpMethod}(new ParameterizedRef<$responseBeanClassName.replaceAll('void', 'Void')>() {
+       #if ($responseBeanClassName != 'void') return#end doRequest${method.httpMethod}($returnType, "${method.url}", $moreUrl, $param, rule -> {
 #if ($method.requestBean.in == 'formData')
-        }.getType(), "${method.url}", $moreUrl, $param, rule -> {
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
-            $behaviorRuleMethodName(rule);
-        });
-#else
-        }.getType(), "${method.url}", $moreUrl, $param, rule -> $behaviorRuleMethodName(rule));
 #end
+            $behaviorRuleMethodName(rule);
+            ruleLambda.accept(rule);
+        });
     }
 
     /**
-     * Rule of ${method.name}.<br>
-     * <pre>
-     * url: $method.url
-     * httpMethod: $method.httpMethod.toUpperCase()
-     * </pre>
-     * @param rule rule. (NotNull)
+     * Set up method-level rule of ${method.name}.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void $behaviorRuleMethodName(FlutyRemoteApiRule rule) {
     }

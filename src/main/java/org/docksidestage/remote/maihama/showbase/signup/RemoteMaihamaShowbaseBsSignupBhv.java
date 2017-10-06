@@ -18,7 +18,6 @@ package org.docksidestage.remote.maihama.showbase.signup;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -44,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Signup.<br>
+     * Request remote call to  Signup. (auto-generated method)<br>
      * <pre>
      * url: /signup/
      * httpMethod: POST
@@ -52,25 +51,36 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * @param paramLamda The callback for RemoteSignupParam. (NotNull)
      */
     public void requestSignup(Consumer<RemoteSignupParam> paramLamda) {
-        RemoteSignupParam param = new RemoteSignupParam();
-        paramLamda.accept(param);
-        doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/signup/", noMoreUrl(), param, rule -> ruleOfSignup(rule));
+        requestSignup(paramLamda, rule -> {});
     }
 
     /**
-     * Rule of Signup.<br>
+     * Set up method-level rule of Signup. (auto-generated method)<br>
      * <pre>
      * url: /signup/
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param paramLamda The callback for RemoteSignupParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void requestSignup(Consumer<RemoteSignupParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteSignupParam param = new RemoteSignupParam();
+        paramLamda.accept(param);
+        doRequestPost(Void.class, "/signup/", noMoreUrl(), param, rule -> {
+            ruleOfSignup(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Signup.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfSignup(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * request Register.<br>
+     * Request remote call to  Register. (auto-generated method)<br>
      * <pre>
      * url: /signup/register/{account}/{token}
      * httpMethod: GET
@@ -79,18 +89,30 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * @param token token. (NotNull)
      */
     public void requestRegister(String account, String token) {
-        doRequestGet(new ParameterizedRef<Void>() {
-        }.getType(), "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> ruleOfRegister(rule));
+        requestRegister(account, token, rule -> {});
     }
 
     /**
-     * Rule of Register.<br>
+     * Set up method-level rule of Register. (auto-generated method)<br>
      * <pre>
      * url: /signup/register/{account}/{token}
      * httpMethod: GET
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param account account. (NotNull)
+     * @param token token. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void ruleOfRegister(FlutyRemoteApiRule rule) {
+    protected void requestRegister(String account, String token, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestGet(Void.class, "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> {
+            ruleOfRegisterAccountToken(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Register.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRegisterAccountToken(FlutyRemoteApiRule rule) {
     }
 }

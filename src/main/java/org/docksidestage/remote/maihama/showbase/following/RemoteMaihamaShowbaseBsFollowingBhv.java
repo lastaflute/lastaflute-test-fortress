@@ -18,7 +18,6 @@ package org.docksidestage.remote.maihama.showbase.following;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -44,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Follow.<br>
+     * Request remote call to  Follow. (auto-generated method)<br>
      * <pre>
      * url: /following/follow
      * httpMethod: POST
@@ -52,19 +51,30 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
      * @param paramLamda The callback for RemoteFollowingFollowParam. (NotNull)
      */
     public void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda) {
-        RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
-        paramLamda.accept(param);
-        doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/following/follow", noMoreUrl(), param, rule -> ruleOfFollow(rule));
+        requestFollow(paramLamda, rule -> {});
     }
 
     /**
-     * Rule of Follow.<br>
+     * Set up method-level rule of Follow. (auto-generated method)<br>
      * <pre>
      * url: /following/follow
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param paramLamda The callback for RemoteFollowingFollowParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
+        paramLamda.accept(param);
+        doRequestPost(Void.class, "/following/follow", noMoreUrl(), param, rule -> {
+            ruleOfFollow(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Follow.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfFollow(FlutyRemoteApiRule rule) {
     }

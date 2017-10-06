@@ -18,7 +18,6 @@ package org.docksidestage.remote.maihama.showbase.member;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
@@ -51,7 +50,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * request Info.<br>
+     * Request remote call to  Info. (auto-generated method)<br>
      * <pre>
      * url: /member/info
      * httpMethod: POST
@@ -59,23 +58,34 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @return return object. (NotNull)
      */
     public RemoteMemberInfoReturn requestInfo() {
-        return doRequestPost(new ParameterizedRef<RemoteMemberInfoReturn>() {
-        }.getType(), "/member/info", noMoreUrl(), null, rule -> ruleOfInfo(rule));
+        return requestInfo(rule -> {});
     }
 
     /**
-     * Rule of Info.<br>
+     * Set up method-level rule of Info. (auto-generated method)<br>
      * <pre>
      * url: /member/info
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected RemoteMemberInfoReturn requestInfo(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteMemberInfoReturn.class, "/member/info", noMoreUrl(), null, rule -> {
+            ruleOfInfo(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Info.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfInfo(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * request Status.<br>
+     * Request remote call to  Status. (auto-generated method)<br>
      * <pre>
      * url: /member/status
      * httpMethod: POST
@@ -83,23 +93,35 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @return return object. (NotNull)
      */
     public java.util.List<Object> requestStatus() {
-        return doRequestPost(new ParameterizedRef<java.util.List<Object>>() {
-        }.getType(), "/member/status", noMoreUrl(), null, rule -> ruleOfStatus(rule));
+        return requestStatus(rule -> {});
     }
 
     /**
-     * Rule of Status.<br>
+     * Set up method-level rule of Status. (auto-generated method)<br>
      * <pre>
      * url: /member/status
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected java.util.List<Object> requestStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.List<Object>>() {
+        }.getType(), "/member/status", noMoreUrl(), null, rule -> {
+            ruleOfStatus(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of Status.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfStatus(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * request AddRegister.<br>
+     * Request remote call to  AddRegister. (auto-generated method)<br>
      * <pre>
      * url: /member/add/register
      * httpMethod: POST
@@ -108,25 +130,37 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @return return object. (NotNull)
      */
     public RemoteMemberAddRegisterReturn requestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLamda) {
-        RemoteMemberAddRegisterParam param = new RemoteMemberAddRegisterParam();
-        paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<RemoteMemberAddRegisterReturn>() {
-        }.getType(), "/member/add/register", noMoreUrl(), param, rule -> ruleOfAddRegister(rule));
+        return requestAddRegister(paramLamda, rule -> {});
     }
 
     /**
-     * Rule of AddRegister.<br>
+     * Set up method-level rule of AddRegister. (auto-generated method)<br>
      * <pre>
      * url: /member/add/register
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param paramLamda The callback for RemoteMemberAddRegisterParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
+     */
+    protected RemoteMemberAddRegisterReturn requestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteMemberAddRegisterParam param = new RemoteMemberAddRegisterParam();
+        paramLamda.accept(param);
+        return doRequestPost(RemoteMemberAddRegisterReturn.class, "/member/add/register", noMoreUrl(), param, rule -> {
+            ruleOfAddRegister(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of AddRegister.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfAddRegister(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * request Edit.<br>
+     * Request remote call to  Edit. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/{memberId}
      * httpMethod: POST
@@ -135,23 +169,35 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @return return object. (NotNull)
      */
     public RemoteMemberEditReturn requestEdit(Integer memberId) {
-        return doRequestPost(new ParameterizedRef<RemoteMemberEditReturn>() {
-        }.getType(), "/member/edit/{memberId}", moreUrl(memberId), null, rule -> ruleOfEdit(rule));
+        return requestEdit(memberId, rule -> {});
     }
 
     /**
-     * Rule of Edit.<br>
+     * Set up method-level rule of Edit. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/{memberId}
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param memberId memberId. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected void ruleOfEdit(FlutyRemoteApiRule rule) {
+    protected RemoteMemberEditReturn requestEdit(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteMemberEditReturn.class, "/member/edit/{memberId}", moreUrl(memberId), null, rule -> {
+            ruleOfEditMemberId(rule);
+            ruleLambda.accept(rule);
+        });
     }
 
     /**
-     * request EditUpdate.<br>
+     * Set up method-level rule of Edit.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfEditMemberId(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to  EditUpdate. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/update
      * httpMethod: POST
@@ -159,25 +205,36 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @param paramLamda The callback for RemoteMemberEditUpdateParam. (NotNull)
      */
     public void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLamda) {
-        RemoteMemberEditUpdateParam param = new RemoteMemberEditUpdateParam();
-        paramLamda.accept(param);
-        doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/member/edit/update", noMoreUrl(), param, rule -> ruleOfEditUpdate(rule));
+        requestEditUpdate(paramLamda, rule -> {});
     }
 
     /**
-     * Rule of EditUpdate.<br>
+     * Set up method-level rule of EditUpdate. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/update
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param paramLamda The callback for RemoteMemberEditUpdateParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteMemberEditUpdateParam param = new RemoteMemberEditUpdateParam();
+        paramLamda.accept(param);
+        doRequestPost(Void.class, "/member/edit/update", noMoreUrl(), param, rule -> {
+            ruleOfEditUpdate(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of EditUpdate.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfEditUpdate(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * request List.<br>
+     * Request remote call to  List. (auto-generated method)<br>
      * <pre>
      * url: /member/list/{pageNumber}
      * httpMethod: POST
@@ -187,25 +244,38 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @return return object. (NotNull)
      */
     public RemoteMemberListReturn requestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLamda) {
-        RemoteMemberListParam param = new RemoteMemberListParam();
-        paramLamda.accept(param);
-        return doRequestPost(new ParameterizedRef<RemoteMemberListReturn>() {
-        }.getType(), "/member/list/{pageNumber}", moreUrl(pageNumber), param, rule -> ruleOfList(rule));
+        return requestList(pageNumber, paramLamda, rule -> {});
     }
 
     /**
-     * Rule of List.<br>
+     * Set up method-level rule of List. (auto-generated method)<br>
      * <pre>
      * url: /member/list/{pageNumber}
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param pageNumber pageNumber. (NotNull)
+     * @param paramLamda The callback for RemoteMemberListParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected void ruleOfList(FlutyRemoteApiRule rule) {
+    protected RemoteMemberListReturn requestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteMemberListParam param = new RemoteMemberListParam();
+        paramLamda.accept(param);
+        return doRequestPost(RemoteMemberListReturn.class, "/member/list/{pageNumber}", moreUrl(pageNumber), param, rule -> {
+            ruleOfListPageNumber(rule);
+            ruleLambda.accept(rule);
+        });
     }
 
     /**
-     * request PurchaseList.<br>
+     * Set up method-level rule of List.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfListPageNumber(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to  PurchaseList. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}/{pageNumber}
      * httpMethod: POST
@@ -215,23 +285,36 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @return return object. (NotNull)
      */
     public RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber) {
-        return doRequestPost(new ParameterizedRef<RemoteMemberPurchaseListReturn>() {
-        }.getType(), "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, rule -> ruleOfPurchaseList(rule));
+        return requestPurchaseList(memberId, pageNumber, rule -> {});
     }
 
     /**
-     * Rule of PurchaseList.<br>
+     * Set up method-level rule of PurchaseList. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}/{pageNumber}
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param memberId memberId. (NotNull)
+     * @param pageNumber pageNumber. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return return object. (NotNull)
      */
-    protected void ruleOfPurchaseList(FlutyRemoteApiRule rule) {
+    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, rule -> {
+            ruleOfPurchaseListMemberIdPageNumber(rule);
+            ruleLambda.accept(rule);
+        });
     }
 
     /**
-     * request PurchaseListDelete.<br>
+     * Set up method-level rule of PurchaseList.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfPurchaseListMemberIdPageNumber(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to  PurchaseListDelete. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/delete/{purchaseId}
      * httpMethod: POST
@@ -239,18 +322,29 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @param purchaseId purchaseId. (NotNull)
      */
     public void requestPurchaseListDelete(Long purchaseId) {
-        doRequestPost(new ParameterizedRef<Void>() {
-        }.getType(), "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, rule -> ruleOfPurchaseListDelete(rule));
+        requestPurchaseListDelete(purchaseId, rule -> {});
     }
 
     /**
-     * Rule of PurchaseListDelete.<br>
+     * Set up method-level rule of PurchaseListDelete. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/delete/{purchaseId}
      * httpMethod: POST
      * </pre>
-     * @param rule rule. (NotNull)
+     * @param purchaseId purchaseId. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void ruleOfPurchaseListDelete(FlutyRemoteApiRule rule) {
+    protected void requestPurchaseListDelete(Long purchaseId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestPost(Void.class, "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), null, rule -> {
+            ruleOfPurchaseListDeletePurchaseId(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of PurchaseListDelete.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfPurchaseListDeletePurchaseId(FlutyRemoteApiRule rule) {
     }
 }
