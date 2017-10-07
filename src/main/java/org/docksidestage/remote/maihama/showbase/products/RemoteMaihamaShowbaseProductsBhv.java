@@ -31,7 +31,7 @@ public class RemoteMaihamaShowbaseProductsBhv extends RemoteMaihamaShowbaseBsPro
     //                                                                         Constructor
     //                                                                         ===========
     /***
-     * @param requestManager requestManager. (NotNull)
+     * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public RemoteMaihamaShowbaseProductsBhv(RequestManager requestManager) {
         super(requestManager);
