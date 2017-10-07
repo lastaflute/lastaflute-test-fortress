@@ -32,7 +32,7 @@ public class ${abstractBehaviorClassName} extends $scriptEngine.eval('frameworkB
     //                                                                         Constructor
     //                                                                         ===========
     /***
-     * @param requestManager The manager of request, that is LastaFlute component. (NotNull)
+     * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public ${abstractBehaviorClassName}(RequestManager requestManager) {
         super(requestManager);

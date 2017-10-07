@@ -31,7 +31,7 @@ public class ${class} extends ${baseClass} {
     //                                                                         Constructor
     //                                                                         ===========
     /***
-     * @param requestManager The manager of request, that is LastaFlute component. (NotNull)
+     * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public ${class}(RequestManager requestManager) {
         super(requestManager);
