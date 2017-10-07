@@ -46,7 +46,7 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Count. (auto-generated method)<br>
+     * Request remote call to /purchase/count. (auto-generated method)<br>
      * <pre>
      * url: /purchase/count
      * httpMethod: POST
@@ -59,7 +59,7 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     }
 
     /**
-     * Request remote call to  Count. (auto-generated method)<br>
+     * Request remote call to /purchase/count. (auto-generated method)<br>
      * <pre>
      * url: /purchase/count
      * httpMethod: POST
@@ -78,14 +78,14 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     }
 
     /**
-     * Set up method-level rule of Count.<br>
+     * Set up method-level rule of /purchase/count.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfCount(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  Contract. (auto-generated method)<br>
+     * Request remote call to /purchase/contract. (auto-generated method)<br>
      * <pre>
      * url: /purchase/contract
      * httpMethod: POST
@@ -98,7 +98,7 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     }
 
     /**
-     * Request remote call to  Contract. (auto-generated method)<br>
+     * Request remote call to /purchase/contract. (auto-generated method)<br>
      * <pre>
      * url: /purchase/contract
      * httpMethod: POST
@@ -117,7 +117,7 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     }
 
     /**
-     * Set up method-level rule of Contract.<br>
+     * Set up method-level rule of /purchase/contract.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfContract(FlutyRemoteApiRule rule) {

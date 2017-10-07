@@ -34,7 +34,13 @@ public class RemoteMemberEditReturn {
     public String memberAccount;
 
     @Required
-    public String memberStatus;
+    public MemberStatus memberStatus;
+
+    public enum MemberStatus {
+        //FML
+        //WDL
+        //PRV
+    }
 
     public java.time.LocalDate birthdate;
 

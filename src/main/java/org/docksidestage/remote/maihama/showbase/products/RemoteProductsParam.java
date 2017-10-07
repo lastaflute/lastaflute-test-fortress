@@ -25,7 +25,13 @@ public class RemoteProductsParam {
 
     public String productName;
 
-    public String productStatus;
+    public ProductStatus productStatus;
+
+    public enum ProductStatus {
+        //ONS
+        //PST
+        //SST
+    }
 
     public String purchaseMemberName;
 

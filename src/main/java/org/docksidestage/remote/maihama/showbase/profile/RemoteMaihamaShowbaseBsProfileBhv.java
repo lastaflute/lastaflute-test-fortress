@@ -43,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Profile. (auto-generated method)<br>
+     * Request remote call to /profile/. (auto-generated method)<br>
      * <pre>
      * url: /profile/
      * httpMethod: POST
@@ -55,7 +55,7 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
     }
 
     /**
-     * Request remote call to  Profile. (auto-generated method)<br>
+     * Request remote call to /profile/. (auto-generated method)<br>
      * <pre>
      * url: /profile/
      * httpMethod: POST
@@ -71,7 +71,7 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
     }
 
     /**
-     * Set up method-level rule of Profile.<br>
+     * Set up method-level rule of /profile/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfProfile(FlutyRemoteApiRule rule) {

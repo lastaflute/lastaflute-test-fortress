@@ -43,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Faicli. (auto-generated method)<br>
+     * Request remote call to /wx/faicli/. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/
      * httpMethod: POST
@@ -56,7 +56,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     }
 
     /**
-     * Request remote call to  Faicli. (auto-generated method)<br>
+     * Request remote call to /wx/faicli/. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/
      * httpMethod: POST
@@ -70,21 +70,21 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
         paramLamda.accept(param);
         return doRequestPost(Object.class, "/wx/faicli/", noMoreUrl(), param, rule -> {
             rule.sendBodyBy(
-                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
+                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
             ruleOfFaicli(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of Faicli.<br>
+     * Set up method-level rule of /wx/faicli/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfFaicli(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  FaicliUnknown. (auto-generated method)<br>
+     * Request remote call to /wx/faicli/unknown. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/unknown
      * httpMethod: POST
@@ -95,7 +95,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     }
 
     /**
-     * Request remote call to  FaicliUnknown. (auto-generated method)<br>
+     * Request remote call to /wx/faicli/unknown. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/unknown
      * httpMethod: POST
@@ -110,14 +110,14 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     }
 
     /**
-     * Set up method-level rule of FaicliUnknown.<br>
+     * Set up method-level rule of /wx/faicli/unknown.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfFaicliUnknown(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  FaicliEntity. (auto-generated method)<br>
+     * Request remote call to /wx/faicli/entity/{account}. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/entity/{account}
      * httpMethod: POST
@@ -129,7 +129,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     }
 
     /**
-     * Request remote call to  FaicliEntity. (auto-generated method)<br>
+     * Request remote call to /wx/faicli/entity/{account}. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/entity/{account}
      * httpMethod: POST
@@ -145,7 +145,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     }
 
     /**
-     * Set up method-level rule of FaicliEntity.<br>
+     * Set up method-level rule of /wx/faicli/entity/{account}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfFaicliEntityAccount(FlutyRemoteApiRule rule) {

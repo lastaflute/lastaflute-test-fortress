@@ -43,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Products. (auto-generated method)<br>
+     * Request remote call to /products/{productId}. (auto-generated method)<br>
      * <pre>
      * url: /products/{productId}
      * httpMethod: POST
@@ -57,7 +57,7 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     }
 
     /**
-     * Request remote call to  Products. (auto-generated method)<br>
+     * Request remote call to /products/{productId}. (auto-generated method)<br>
      * <pre>
      * url: /products/{productId}
      * httpMethod: POST
@@ -77,7 +77,7 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     }
 
     /**
-     * Set up method-level rule of Products.<br>
+     * Set up method-level rule of /products/{productId}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfProductsProductId(FlutyRemoteApiRule rule) {

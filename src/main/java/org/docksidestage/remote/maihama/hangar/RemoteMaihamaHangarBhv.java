@@ -23,7 +23,7 @@ import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
-import org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy;
+import org.dbflute.remoteapi.mapping.FlVacantMappingPolicy;
 import org.dbflute.util.Srl;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
 import org.docksidestage.remote.maihama.hangar.base.RemoteHgPagingReturn;
@@ -65,7 +65,7 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        rule.sendQueryBy(new LaQuerySender(new FlVacantRemoteMappingPolicy()));
+        rule.sendQueryBy(new LaQuerySender(new FlVacantMappingPolicy()));
 
         JsonMappingOption jsonMappingOption = new JsonMappingOption();
         rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption));

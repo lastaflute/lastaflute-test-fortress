@@ -33,7 +33,13 @@ public class RemoteMemberAddRegisterParam {
     public java.time.LocalDate birthdate;
 
     @Required
-    public String memberStatus;
+    public MemberStatus memberStatus;
+
+    public enum MemberStatus {
+        //FML
+        //WDL
+        //PRV
+    }
 
     @Override
     public String toString() {

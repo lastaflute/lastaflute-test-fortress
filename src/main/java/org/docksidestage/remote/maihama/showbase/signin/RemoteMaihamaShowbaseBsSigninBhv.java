@@ -44,7 +44,7 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Signin. (auto-generated method)<br>
+     * Request remote call to /signin/. (auto-generated method)<br>
      * <pre>
      * url: /signin/
      * httpMethod: POST
@@ -57,7 +57,7 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  Signin. (auto-generated method)<br>
+     * Request remote call to /signin/. (auto-generated method)<br>
      * <pre>
      * url: /signin/
      * httpMethod: POST
@@ -76,7 +76,7 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of Signin.<br>
+     * Set up method-level rule of /signin/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfSignin(FlutyRemoteApiRule rule) {

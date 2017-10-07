@@ -43,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Reason. (auto-generated method)<br>
+     * Request remote call to /withdrawal/reason. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/reason
      * httpMethod: POST
@@ -55,7 +55,7 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     }
 
     /**
-     * Request remote call to  Reason. (auto-generated method)<br>
+     * Request remote call to /withdrawal/reason. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/reason
      * httpMethod: POST
@@ -72,14 +72,14 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     }
 
     /**
-     * Set up method-level rule of Reason.<br>
+     * Set up method-level rule of /withdrawal/reason.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfReason(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  Done. (auto-generated method)<br>
+     * Request remote call to /withdrawal/done. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/done
      * httpMethod: POST
@@ -92,7 +92,7 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     }
 
     /**
-     * Request remote call to  Done. (auto-generated method)<br>
+     * Request remote call to /withdrawal/done. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/done
      * httpMethod: POST
@@ -111,7 +111,7 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     }
 
     /**
-     * Set up method-level rule of Done.<br>
+     * Set up method-level rule of /withdrawal/done.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfDone(FlutyRemoteApiRule rule) {

@@ -50,7 +50,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Info. (auto-generated method)<br>
+     * Request remote call to /member/info. (auto-generated method)<br>
      * <pre>
      * url: /member/info
      * httpMethod: POST
@@ -62,7 +62,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  Info. (auto-generated method)<br>
+     * Request remote call to /member/info. (auto-generated method)<br>
      * <pre>
      * url: /member/info
      * httpMethod: POST
@@ -78,14 +78,14 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of Info.<br>
+     * Set up method-level rule of /member/info.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfInfo(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  Status. (auto-generated method)<br>
+     * Request remote call to /member/status. (auto-generated method)<br>
      * <pre>
      * url: /member/status
      * httpMethod: POST
@@ -97,7 +97,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  Status. (auto-generated method)<br>
+     * Request remote call to /member/status. (auto-generated method)<br>
      * <pre>
      * url: /member/status
      * httpMethod: POST
@@ -114,14 +114,14 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of Status.<br>
+     * Set up method-level rule of /member/status.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfStatus(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  AddRegister. (auto-generated method)<br>
+     * Request remote call to /member/add/register. (auto-generated method)<br>
      * <pre>
      * url: /member/add/register
      * httpMethod: POST
@@ -134,7 +134,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  AddRegister. (auto-generated method)<br>
+     * Request remote call to /member/add/register. (auto-generated method)<br>
      * <pre>
      * url: /member/add/register
      * httpMethod: POST
@@ -153,14 +153,14 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of AddRegister.<br>
+     * Set up method-level rule of /member/add/register.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfAddRegister(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  Edit. (auto-generated method)<br>
+     * Request remote call to /member/edit/{memberId}. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/{memberId}
      * httpMethod: POST
@@ -173,7 +173,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  Edit. (auto-generated method)<br>
+     * Request remote call to /member/edit/{memberId}. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/{memberId}
      * httpMethod: POST
@@ -190,14 +190,14 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of Edit.<br>
+     * Set up method-level rule of /member/edit/{memberId}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfEditMemberId(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  EditUpdate. (auto-generated method)<br>
+     * Request remote call to /member/edit/update. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/update
      * httpMethod: POST
@@ -209,7 +209,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  EditUpdate. (auto-generated method)<br>
+     * Request remote call to /member/edit/update. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/update
      * httpMethod: POST
@@ -227,14 +227,14 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of EditUpdate.<br>
+     * Set up method-level rule of /member/edit/update.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfEditUpdate(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  List. (auto-generated method)<br>
+     * Request remote call to /member/list/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /member/list/{pageNumber}
      * httpMethod: POST
@@ -248,7 +248,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  List. (auto-generated method)<br>
+     * Request remote call to /member/list/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /member/list/{pageNumber}
      * httpMethod: POST
@@ -268,14 +268,14 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of List.<br>
+     * Set up method-level rule of /member/list/{pageNumber}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfListPageNumber(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  PurchaseList. (auto-generated method)<br>
+     * Request remote call to /member/purchase/list/{memberId}/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}/{pageNumber}
      * httpMethod: POST
@@ -289,7 +289,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  PurchaseList. (auto-generated method)<br>
+     * Request remote call to /member/purchase/list/{memberId}/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}/{pageNumber}
      * httpMethod: POST
@@ -307,14 +307,14 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of PurchaseList.<br>
+     * Set up method-level rule of /member/purchase/list/{memberId}/{pageNumber}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfPurchaseListMemberIdPageNumber(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  PurchaseListDelete. (auto-generated method)<br>
+     * Request remote call to /member/purchase/list/delete/{purchaseId}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/delete/{purchaseId}
      * httpMethod: POST
@@ -326,7 +326,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  PurchaseListDelete. (auto-generated method)<br>
+     * Request remote call to /member/purchase/list/delete/{purchaseId}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/delete/{purchaseId}
      * httpMethod: POST
@@ -342,7 +342,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of PurchaseListDelete.<br>
+     * Set up method-level rule of /member/purchase/list/delete/{purchaseId}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfPurchaseListDeletePurchaseId(FlutyRemoteApiRule rule) {
