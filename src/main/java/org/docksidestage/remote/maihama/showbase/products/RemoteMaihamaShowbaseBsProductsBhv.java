@@ -48,24 +48,24 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
      * url: /products/{productId}
      * httpMethod: POST
      * </pre>
-     * @param productId productId. (NotNull)
+     * @param productId The value of path variable for productId. (NotNull)
      * @param paramLamda The callback for RemoteProductsParam. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
         return requestProducts(productId, paramLamda, rule -> {});
     }
 
     /**
-     * Set up method-level rule of Products. (auto-generated method)<br>
+     * Request remote call to  Products. (auto-generated method)<br>
      * <pre>
      * url: /products/{productId}
      * httpMethod: POST
      * </pre>
-     * @param productId productId. (NotNull)
+     * @param productId The value of path variable for productId. (NotNull)
      * @param paramLamda The callback for RemoteProductsParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductsParam param = new RemoteProductsParam();

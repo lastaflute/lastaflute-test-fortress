@@ -55,7 +55,7 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     }
 
     /**
-     * Set up method-level rule of Follow. (auto-generated method)<br>
+     * Request remote call to  Follow. (auto-generated method)<br>
      * <pre>
      * url: /following/follow
      * httpMethod: POST

@@ -48,20 +48,20 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
      * url: /mypage/
      * httpMethod: GET
      * </pre>
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteMypageReturn requestMypage() {
         return requestMypage(rule -> {});
     }
 
     /**
-     * Set up method-level rule of Mypage. (auto-generated method)<br>
+     * Request remote call to  Mypage. (auto-generated method)<br>
      * <pre>
      * url: /mypage/
      * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteMypageReturn requestMypage(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestGet(RemoteMypageReturn.class, "/mypage/", noMoreUrl(), noQuery(), rule -> {

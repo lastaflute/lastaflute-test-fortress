@@ -50,22 +50,22 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * url: /product/detail/{productId}
      * httpMethod: POST
      * </pre>
-     * @param productId productId. (NotNull)
-     * @return return object. (NotNull)
+     * @param productId The value of path variable for productId. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteProductDetailReturn requestDetail(Integer productId) {
         return requestDetail(productId, rule -> {});
     }
 
     /**
-     * Set up method-level rule of Detail. (auto-generated method)<br>
+     * Request remote call to  Detail. (auto-generated method)<br>
      * <pre>
      * url: /product/detail/{productId}
      * httpMethod: POST
      * </pre>
-     * @param productId productId. (NotNull)
+     * @param productId The value of path variable for productId. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteProductDetailReturn requestDetail(Integer productId, Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(RemoteProductDetailReturn.class, "/product/detail/{productId}", moreUrl(productId), null, rule -> {
@@ -87,24 +87,24 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * url: /product/list/search/{pageNumber}
      * httpMethod: POST
      * </pre>
-     * @param pageNumber pageNumber. (NotNull)
+     * @param pageNumber The value of path variable for pageNumber. (NotNull)
      * @param paramLamda The callback for RemoteProductListSearchParam. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
         return requestListSearch(pageNumber, paramLamda, rule -> {});
     }
 
     /**
-     * Set up method-level rule of ListSearch. (auto-generated method)<br>
+     * Request remote call to  ListSearch. (auto-generated method)<br>
      * <pre>
      * url: /product/list/search/{pageNumber}
      * httpMethod: POST
      * </pre>
-     * @param pageNumber pageNumber. (NotNull)
+     * @param pageNumber The value of path variable for pageNumber. (NotNull)
      * @param paramLamda The callback for RemoteProductListSearchParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductListSearchParam param = new RemoteProductListSearchParam();
@@ -128,20 +128,20 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
      * url: /product/list/status
      * httpMethod: POST
      * </pre>
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public java.util.List<Object> requestListStatus() {
         return requestListStatus(rule -> {});
     }
 
     /**
-     * Set up method-level rule of ListStatus. (auto-generated method)<br>
+     * Request remote call to  ListStatus. (auto-generated method)<br>
      * <pre>
      * url: /product/list/status
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected java.util.List<Object> requestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.List<Object>>() {

@@ -52,21 +52,21 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemotePurchaseCountParam. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLamda) {
         return requestCount(paramLamda, rule -> {});
     }
 
     /**
-     * Set up method-level rule of Count. (auto-generated method)<br>
+     * Request remote call to  Count. (auto-generated method)<br>
      * <pre>
      * url: /purchase/count
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemotePurchaseCountParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemotePurchaseCountParam param = new RemotePurchaseCountParam();
@@ -91,21 +91,21 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemotePurchaseContractParam. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLamda) {
         return requestContract(paramLamda, rule -> {});
     }
 
     /**
-     * Set up method-level rule of Contract. (auto-generated method)<br>
+     * Request remote call to  Contract. (auto-generated method)<br>
      * <pre>
      * url: /purchase/contract
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemotePurchaseContractParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemotePurchaseContractParam param = new RemotePurchaseContractParam();

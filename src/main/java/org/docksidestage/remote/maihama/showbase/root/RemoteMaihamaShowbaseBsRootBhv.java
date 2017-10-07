@@ -47,20 +47,20 @@ public abstract class RemoteMaihamaShowbaseBsRootBhv extends RemoteAbstractMaiha
      * url: /root/
      * httpMethod: POST
      * </pre>
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public Object requestRoot() {
         return requestRoot(rule -> {});
     }
 
     /**
-     * Set up method-level rule of Root. (auto-generated method)<br>
+     * Request remote call to  Root. (auto-generated method)<br>
      * <pre>
      * url: /root/
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected Object requestRoot(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(Object.class, "/root/", noMoreUrl(), null, rule -> {

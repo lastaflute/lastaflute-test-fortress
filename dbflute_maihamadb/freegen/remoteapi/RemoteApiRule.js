@@ -2,14 +2,24 @@
 //                                                                                Base
 //                                                                                ====
 /**
- * @param {{url:string, httpMethod:string}}
+ * Return true if target.
+ * @param {Object} api - API.
+ * @param {string} api.url - URL.
+ * @param {string} api.httpMethod - HttpMethod.
+ * @param {string[]} api.consumes - Consumes.
+ * @param {string[]} api.produces - Produces.
  * @return true if target.
  */
-var target = function(api) { return true; };
+var target = function(api) { return api.produces.indexOf('application/json') != -1 && api.url.indexOf('/swagger/json') != 0; };
 
 /**
- * @param {{url:string, httpMethod:string}}
- * @return filtered url.
+ * Return filtered URL.
+ * @param {Object} api - API.
+ * @param {string} api.url - URL.
+ * @param {string} api.httpMethod - HttpMethod.
+ * @param {string[]} api.consumes - Consumes.
+ * @param {string[]} api.produces - Produces.
+ * @return filtered URL.
  */
 var url = function(api) { return api.url; };
 

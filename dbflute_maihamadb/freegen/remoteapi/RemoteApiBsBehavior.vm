@@ -79,9 +79,9 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #set ($parameterClass = ${typeMap[$pathPropertyEntry.value.type]})
 #end
 #if ($pathPropertyEntry.value.description)
-#set ($added = $parameterList.add({ "name": ${pathPropertyEntry.key}, "description": "$pathPropertyEntry.value.description. (NotNull)"}))
+#set ($added = $parameterList.add({ "name": ${pathPropertyEntry.key}, "description": "The value of path variable for $pathPropertyEntry.key($pathPropertyEntry.value.description). (NotNull)"}))
 #else
-#set ($added = $parameterList.add({ "name": ${pathPropertyEntry.key}, "description": "$pathPropertyEntry.key. (NotNull)"}))
+#set ($added = $parameterList.add({ "name": ${pathPropertyEntry.key}, "description": "The value of path variable for $pathPropertyEntry.key. (NotNull)"}))
 #end
 #set ($parameterDefinition = "${parameterDefinition}${parameterClass} ${pathPropertyEntry.key}, ")
 #set ($moreUrl = "${moreUrl}${pathPropertyEntry.key}, ")
@@ -107,7 +107,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
      * @param $parameter.name $parameter.description
 #end
 #if ($responseBeanClassName != 'void')
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
 #end
      */
     $scriptEngine.eval('behaviorMethodAccessModifier') $responseBeanClassName $behaviorRequestMethodName($!{parameterDefinition}) {
@@ -116,7 +116,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     }
 
     /**
-     * Set up method-level rule of ${method.name}. (auto-generated method)<br>
+     * Request remote call to  ${method.name}. (auto-generated method)<br>
      * <pre>
      * url: $method.url
      * httpMethod: $method.httpMethod.toUpperCase()
@@ -126,7 +126,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #end
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
 #if ($responseBeanClassName != 'void')
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
 #end
      */
 #set ($parameterDefinitionRule = "${parameterDefinition}")
