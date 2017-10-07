@@ -43,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Follow. (auto-generated method)<br>
+     * Request remote call to /following/follow. (auto-generated method)<br>
      * <pre>
      * url: /following/follow
      * httpMethod: POST
@@ -55,7 +55,7 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     }
 
     /**
-     * Request remote call to  Follow. (auto-generated method)<br>
+     * Request remote call to /following/follow. (auto-generated method)<br>
      * <pre>
      * url: /following/follow
      * httpMethod: POST
@@ -73,7 +73,7 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     }
 
     /**
-     * Set up method-level rule of Follow.<br>
+     * Set up method-level rule of /following/follow.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfFollow(FlutyRemoteApiRule rule) {

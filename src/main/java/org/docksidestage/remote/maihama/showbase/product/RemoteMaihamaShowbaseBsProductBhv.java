@@ -45,7 +45,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Detail. (auto-generated method)<br>
+     * Request remote call to /product/detail/{productId}. (auto-generated method)<br>
      * <pre>
      * url: /product/detail/{productId}
      * httpMethod: POST
@@ -58,7 +58,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     }
 
     /**
-     * Request remote call to  Detail. (auto-generated method)<br>
+     * Request remote call to /product/detail/{productId}. (auto-generated method)<br>
      * <pre>
      * url: /product/detail/{productId}
      * httpMethod: POST
@@ -75,14 +75,14 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     }
 
     /**
-     * Set up method-level rule of Detail.<br>
+     * Set up method-level rule of /product/detail/{productId}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfDetailProductId(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  ListSearch. (auto-generated method)<br>
+     * Request remote call to /product/list/search/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /product/list/search/{pageNumber}
      * httpMethod: POST
@@ -96,7 +96,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     }
 
     /**
-     * Request remote call to  ListSearch. (auto-generated method)<br>
+     * Request remote call to /product/list/search/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /product/list/search/{pageNumber}
      * httpMethod: POST
@@ -116,14 +116,14 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     }
 
     /**
-     * Set up method-level rule of ListSearch.<br>
+     * Set up method-level rule of /product/list/search/{pageNumber}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfListSearchPageNumber(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  ListStatus. (auto-generated method)<br>
+     * Request remote call to /product/list/status. (auto-generated method)<br>
      * <pre>
      * url: /product/list/status
      * httpMethod: POST
@@ -135,7 +135,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     }
 
     /**
-     * Request remote call to  ListStatus. (auto-generated method)<br>
+     * Request remote call to /product/list/status. (auto-generated method)<br>
      * <pre>
      * url: /product/list/status
      * httpMethod: POST
@@ -152,7 +152,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     }
 
     /**
-     * Set up method-level rule of ListStatus.<br>
+     * Set up method-level rule of /product/list/status.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfListStatus(FlutyRemoteApiRule rule) {

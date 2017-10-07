@@ -43,10 +43,10 @@
         #set ($pathMap = $swaggerJsonEntry.value)
         #foreach($pathEntry in $pathMap.entrySet())
           #foreach($methodEntry in $pathEntry.value.entrySet())
-            #set ($api = { 'url': $pathEntry.key, 'httpMethod': $methodEntry.key, 'consumes': $methodEntry.value.consumes, 'produces': $methodEntry.value.produces })
+            #set ($multipleHttpMethod = $pathEntry.value.size() > 1)
+            #set ($api = { 'scheme': $scheme, 'url': $pathEntry.key, 'httpMethod': $methodEntry.key, 'multipleHttpMethod': $multipleHttpMethod, 'consumes': $methodEntry.value.consumes, 'produces': $methodEntry.value.produces })
             #if ($scriptEngine.invokeFunction('target', $api))
               #set ($url = $scriptEngine.invokeFunction('url', $api))
-              #set ($multipleHttpMethod = $pathEntry.value.size() != 1)
               ## request
               #set ($bodyProperties = {})
               #set ($pathProperties = {})
@@ -60,7 +60,7 @@
                   #if ($parameter.schema && $parameter.schema['$ref'])
                     #set ($definitionKey = $parameter.schema['$ref'].replace('#/definitions/', '')))
                     #set ($bodyProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
-                    #processRemoteApiBean('request', $url, $methodEntry.key, $multipleHttpMethod, $bodyProperties)
+                    #processRemoteApiBean('request', $api, $bodyProperties)
                     #set ($requestBean = { 'package': "${request.package}.${subPackage}", 'className': ${class}, 'in': 'body' })
                   #end
                 #elseif ($parameter.in == 'path')
@@ -72,11 +72,11 @@
                 #end
               #end
               #if ($queryProperties.size() != 0)
-                #processRemoteApiBean('request', $url, $methodEntry.key, $multipleHttpMethod, $queryProperties)
+                #processRemoteApiBean('request', $api, $queryProperties)
                 #set ($requestBean = { 'package': "${request.package}.${subPackage}", 'className': ${class}, 'in': 'query' }) })
               #end
               #if ($formDataProperties.size() != 0)
-                #processRemoteApiBean('request', $url, $methodEntry.key, $multipleHttpMethod, $formDataProperties)
+                #processRemoteApiBean('request', $api, $formDataProperties)
                 #set ($requestBean = { 'package': "${request.package}.${subPackage}", 'className': ${class}, 'in': 'formData' }) })
               #end
 
@@ -93,7 +93,7 @@
                     #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
                     #set ($responseProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                     #if (!$responseProperties.empty)
-                      #processRemoteApiBean('response', $url, $methodEntry.key, $multipleHttpMethod, $responseProperties)
+                      #processRemoteApiBean('response', $api, $responseProperties)
                       #set ($responseBean = { 'package': "${request.package}.${subPackage}", 'className': ${class} })
                     #end
                   #end
@@ -105,12 +105,12 @@
                   #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
                   #set ($responseProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                   #if (!$responseProperties.empty)
-                    #processRemoteApiBean('response', $url, $methodEntry.key, $multipleHttpMethod, $responseProperties)
+                    #processRemoteApiBean('response', $api, $responseProperties)
                     #set ($responseBean = { 'package': "${request.package}.${subPackage}", 'className': ${class} })
                   #end
                 #end
               #end
-              #keepRemoteApiBehavior($url, $methodEntry.key, $multipleHttpMethod, $pathProperties, $requestBean, $responseBean)
+              #keepRemoteApiBehavior($api, $pathProperties, $requestBean, $responseBean)
             #end
           #end
         #end
@@ -140,22 +140,18 @@
 ##################################################
 ## keep remote api behavior.
 ##################################################
-#macro(keepRemoteApiBehavior, $url, $httpMethod, $multipleHttpMethod, $pathProperties, $requestBean, $responseBean)
-  #set ($apiName = $url.replaceAll('_', '').replaceAll('^/', '').replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.'))
-  #set ($apiName = $apiName.toLowerCase())
-  #set ($apiName = $scriptEngine.invokeFunction('subPackage', $apiName))
-  #set ($subPackage = $apiName.replaceAll('^([^.]*)\.(.+)', '$1'))
-  #set ($methodName = $manager.initCap($manager.camelize($apiName.replaceAll('^([^.]*)\.(.+)', '$2').replaceAll('\.', '_'))))
-  #set ($class = $scriptEngine.invokeFunction('bsBehaviorClassName', $scheme, $manager.camelize($subPackage.replaceAll('\.', '_'))))
+#macro(keepRemoteApiBehavior, $api, $pathProperties, $requestBean, $responseBean)
+  #set ($subPackage = $scriptEngine.invokeFunction('behaviorSubPackage', $api))
+  #set ($class = $scriptEngine.invokeFunction('bsBehaviorClassName', $api))
   #set ($subPackage = "${schemePackage}.${subPackage}")
   #if (!$bsBehaviorMap.containsKey("${subPackage}.${class}")) {
       $bsBehaviorMap.put("${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'methodList': [] })
   #end
-  $bsBehaviorMap.get("${subPackage}.${class}").methodList.add({ 'name': $methodName, 'url': $url, 'httpMethod': $manager.initCap($httpMethod), 'multipleHttpMethod': $multipleHttpMethod, 'pathProperties': $pathProperties, 'requestBean': $requestBean, 'responseBean': $responseBean })
+  $bsBehaviorMap.get("${subPackage}.${class}").methodList.add({ 'api': $api, 'pathProperties': $pathProperties, 'requestBean': $requestBean, 'responseBean': $responseBean })
   #set ($baseSubPackage = $subPackage)
   #set ($baseClass = $class)
-  #set ($subPackage = $apiName.replaceAll('^([^.]*)\.(.+)', '$1'))
-  #set ($class = $scriptEngine.invokeFunction('exBehaviorClassName', $scheme, $manager.camelize($subPackage.replaceAll('\.', '_'))))
+  #set ($subPackage = $scriptEngine.invokeFunction('behaviorSubPackage', $api))
+  #set ($class = $scriptEngine.invokeFunction('exBehaviorClassName', $api)))
   #set ($subPackage = "${schemePackage}.${subPackage}")
   $exBehaviorMap.put("${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'baseSubPackage': ${baseSubPackage}, 'baseClass': ${baseClass} })
 #end
@@ -163,10 +159,9 @@
 ##################################################
 ## process remote api bean.
 ##################################################
-#macro(processRemoteApiBean, $type, $url, $httpMethod, $multipleHttpMethod, $properties_)
-  #set ($subPackage = ${url.replaceAll('_', '').replaceAll('^/', '').replaceAll('/$', '').replaceAll('/\{.*?\}', '').replaceAll('/', '.').toLowerCase()})
-  #set ($subPackage = $scriptEngine.invokeFunction('subPackage', $subPackage))
-  #set ($class = $scriptEngine.invokeFunction("${type}ClassName", $scheme, $manager.camelize($subPackage.replaceAll('\.', '_')), $manager.initCap($httpMethod), $multipleHttpMethod))
+#macro(processRemoteApiBean, $type, $api, $properties_)
+  #set ($subPackage = $scriptEngine.invokeFunction('beanSubPackage', $api))
+  #set ($class = $scriptEngine.invokeFunction("${type}ClassName", $api))
   #set ($subPackage = "${schemePackage}.${subPackage}")
   #set ($extendsClass = '')
   #set ($implementsClasses = '')

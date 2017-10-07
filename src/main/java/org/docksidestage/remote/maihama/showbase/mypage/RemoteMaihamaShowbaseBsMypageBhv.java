@@ -43,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Mypage. (auto-generated method)<br>
+     * Request remote call to /mypage/. (auto-generated method)<br>
      * <pre>
      * url: /mypage/
      * httpMethod: GET
@@ -55,7 +55,7 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  Mypage. (auto-generated method)<br>
+     * Request remote call to /mypage/. (auto-generated method)<br>
      * <pre>
      * url: /mypage/
      * httpMethod: GET
@@ -71,7 +71,7 @@ public abstract class RemoteMaihamaShowbaseBsMypageBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of Mypage.<br>
+     * Set up method-level rule of /mypage/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfMypage(FlutyRemoteApiRule rule) {

@@ -43,7 +43,7 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to  Signup. (auto-generated method)<br>
+     * Request remote call to /signup/. (auto-generated method)<br>
      * <pre>
      * url: /signup/
      * httpMethod: POST
@@ -55,7 +55,7 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     }
 
     /**
-     * Request remote call to  Signup. (auto-generated method)<br>
+     * Request remote call to /signup/. (auto-generated method)<br>
      * <pre>
      * url: /signup/
      * httpMethod: POST
@@ -73,14 +73,14 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     }
 
     /**
-     * Set up method-level rule of Signup.<br>
+     * Set up method-level rule of /signup/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfSignup(FlutyRemoteApiRule rule) {
     }
 
     /**
-     * Request remote call to  Register. (auto-generated method)<br>
+     * Request remote call to /signup/register/{account}/{token}. (auto-generated method)<br>
      * <pre>
      * url: /signup/register/{account}/{token}
      * httpMethod: GET
@@ -88,12 +88,12 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * @param account The value of path variable for account. (NotNull)
      * @param token The value of path variable for token. (NotNull)
      */
-    public void requestRegister(String account, String token) {
-        requestRegister(account, token, rule -> {});
+    public void requestRegister{token}(String account, String token) {
+        requestRegister{token}(account, token, rule -> {});
     }
 
     /**
-     * Request remote call to  Register. (auto-generated method)<br>
+     * Request remote call to /signup/register/{account}/{token}. (auto-generated method)<br>
      * <pre>
      * url: /signup/register/{account}/{token}
      * httpMethod: GET
@@ -102,17 +102,17 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
      * @param token The value of path variable for token. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void requestRegister(String account, String token, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected void requestRegister{token}(String account, String token, Consumer<FlutyRemoteApiRule> ruleLambda) {
         doRequestGet(void.class, "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> {
-            ruleOfRegisterAccountToken(rule);
+            ruleOfRegister{token}AccountToken(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of Register.<br>
+     * Set up method-level rule of /signup/register/{account}/{token}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfRegisterAccountToken(FlutyRemoteApiRule rule) {
+    protected void ruleOfRegister{token}AccountToken(FlutyRemoteApiRule rule) {
     }
 }
