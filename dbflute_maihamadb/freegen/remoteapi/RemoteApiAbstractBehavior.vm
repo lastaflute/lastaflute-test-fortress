@@ -38,7 +38,6 @@ public class ${abstractBehaviorClassName} extends $scriptEngine.eval('frameworkB
         super(requestManager);
     }
 
-
     // ===================================================================================
     //                                                                          Initialize
     //                                                                          ==========
