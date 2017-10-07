@@ -70,7 +70,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
         paramLamda.accept(param);
         return doRequestPost(Object.class, "/wx/faicli/", noMoreUrl(), param, rule -> {
             rule.sendBodyBy(
-                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
+                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
             ruleOfFaicli(rule);
             ruleLambda.accept(rule);
         });

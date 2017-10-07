@@ -28,7 +28,7 @@ import org.docksidestage.remote.maihama.showbase.member.edit.RemoteMemberEditRet
 import org.docksidestage.remote.maihama.showbase.member.edit.update.RemoteMemberEditUpdateParam;
 import org.docksidestage.remote.maihama.showbase.member.list.RemoteMemberListParam;
 import org.docksidestage.remote.maihama.showbase.member.list.RemoteMemberListReturn;
-import org.docksidestage.remote.maihama.showbase.member.purchase.list.{pagenumber}.RemoteMemberPurchaseList{pagenumber}Return;
+import org.docksidestage.remote.maihama.showbase.member.purchase.list.RemoteMemberPurchaseListReturn;
 
 /**
  * RemoteMaihamaShowbaseBsMemberBhv.
@@ -284,8 +284,8 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @param pageNumber The value of path variable for pageNumber. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteMemberPurchaseList{pagenumber}Return requestPurchaseList{pagenumber}(Integer memberId, Integer pageNumber) {
-        return requestPurchaseList{pagenumber}(memberId, pageNumber, rule -> {});
+    public RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber) {
+        return requestPurchaseList(memberId, pageNumber, rule -> {});
     }
 
     /**
@@ -299,9 +299,9 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMemberPurchaseList{pagenumber}Return requestPurchaseList{pagenumber}(Integer memberId, Integer pageNumber, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteMemberPurchaseList{pagenumber}Return.class, "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, rule -> {
-            ruleOfPurchaseList{pagenumber}MemberIdPageNumber(rule);
+    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, rule -> {
+            ruleOfPurchaseListMemberIdPageNumber(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -310,7 +310,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
      * Set up method-level rule of /member/purchase/list/{memberId}/{pageNumber}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfPurchaseList{pagenumber}MemberIdPageNumber(FlutyRemoteApiRule rule) {
+    protected void ruleOfPurchaseListMemberIdPageNumber(FlutyRemoteApiRule rule) {
     }
 
     /**

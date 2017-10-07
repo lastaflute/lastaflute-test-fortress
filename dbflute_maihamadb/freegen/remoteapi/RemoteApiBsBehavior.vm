@@ -160,7 +160,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
        #if ($responseBeanClassName != 'void') return#end doRequest$manager.initCap($method.api.httpMethod)($returnType, "${method.api.url}", $moreUrl, $param, rule -> {
 #if ($method.requestBean.in == 'formData')
             rule.sendBodyBy(
-                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantRemoteMappingPolicy()));
+                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
 #end
             $behaviorRuleMethodName(rule);
             ruleLambda.accept(rule);

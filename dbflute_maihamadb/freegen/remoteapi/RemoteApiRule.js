@@ -15,7 +15,7 @@
 //                                                                                Util
 //                                                                                ====
 var _package = function(api) {
-    return api.url.replace(/(_|^\/|\/$)/g, '').replace(/\/\{.*?\}/, '').replace(/\//g, '.').toLowerCase();
+    return api.url.replace(/(_|^\/|\/$)/g, '').replace(/\/\{.*?\}/g, '').replace(/\//g, '.').toLowerCase();
 };
 
 var _capitalize = function(value) {
