@@ -21,7 +21,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * RemoteMaihamaShowbaseMemberBhv.
  * <p>
  * You can implement your original methods here.
- * This class is NOT overrided when re-generating.
+ * This class remains when re-generating.
  * </p>
  * @author FreeGen
  */
