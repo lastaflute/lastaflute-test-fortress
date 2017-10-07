@@ -102,8 +102,8 @@ var responseImplementsClasses = null;
 var responseClassName = function(api) {
     return 'Remote' + _initCap(_capitalize(beanSubPackage(api))) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '') + 'Return';
 };
-var nestClassName = function(scheme, className) { return className; };
-var fieldName = function(scheme, fieldName) {
+var nestClassName = function(api, className) { return className; };
+var fieldName = function(api, fieldName) {
     return fieldName.replace(/_./g, function(s) { return s.charAt(1).toUpperCase(); });
 };
 

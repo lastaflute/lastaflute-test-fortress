@@ -23,7 +23,14 @@ import org.lastaflute.core.util.Lato;
  */
 public class RemoteWithdrawalDoneParam {
 
-    public String selectedReason;
+    public SelectedReason selectedReason;
+
+    public enum SelectedReason {
+        //SIT
+        //PRD
+        //FRT
+        //OTH
+    }
 
     public String reasonInput;
 

@@ -25,7 +25,13 @@ public class RemoteMemberListParam {
 
     public String memberName;
 
-    public String memberStatus;
+    public MemberStatus memberStatus;
+
+    public enum MemberStatus {
+        //FML
+        //WDL
+        //PRV
+    }
 
     public String purchaseProductName;
 
