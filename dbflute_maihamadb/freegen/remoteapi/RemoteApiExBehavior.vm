@@ -21,7 +21,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * ${class}.
  * <p>
  * You can implement your original methods here.
- * This class is NOT overrided when re-generating.
+ * This class remains when re-generating.
  * </p>
  * @author FreeGen
  */
@@ -31,7 +31,7 @@ public class ${class} extends ${baseClass} {
     //                                                                         Constructor
     //                                                                         ===========
     /***
-     * @param requestManager requestManager. (NotNull)
+     * @param requestManager The manager of request, that is LastaFlute component. (NotNull)
      */
     public ${class}(RequestManager requestManager) {
         super(requestManager);

@@ -22,7 +22,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * ${abstractBehaviorClassName}.
  * <p>
  * You can implement your original methods here.
- * This class is NOT overrided when re-generating.
+ * This class remains when re-generating.
  * </p>
  * @author FreeGen
  */
@@ -32,7 +32,7 @@ public class ${abstractBehaviorClassName} extends $scriptEngine.eval('frameworkB
     //                                                                         Constructor
     //                                                                         ===========
     /***
-     * @param requestManager requestManager. (NotNull)
+     * @param requestManager The manager of request, that is LastaFlute component. (NotNull)
      */
     public ${abstractBehaviorClassName}(RequestManager requestManager) {
         super(requestManager);
@@ -44,12 +44,12 @@ public class ${abstractBehaviorClassName} extends $scriptEngine.eval('frameworkB
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
         // TODO you #change_it set your common default rule here
-        throw new IllegalStateException("change it.");
+        throw new IllegalStateException("set your common default rule here.");
     }
 
     @Override
     protected String getUrlBase() {
         // TODO you #change_it set your base URL for the remote api here
-        throw new IllegalStateException("change it.");
+        throw new IllegalStateException("set your common default rule here.");
     }
 }
