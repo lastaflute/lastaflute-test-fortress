@@ -14,10 +14,8 @@
     <component name="remoteMaihamaShowbaseProductsBhv" class="org.docksidestage.remote.maihama.showbase.products.RemoteMaihamaShowbaseProductsBhv" />
     <component name="remoteMaihamaShowbaseProfileBhv" class="org.docksidestage.remote.maihama.showbase.profile.RemoteMaihamaShowbaseProfileBhv" />
     <component name="remoteMaihamaShowbasePurchaseBhv" class="org.docksidestage.remote.maihama.showbase.purchase.RemoteMaihamaShowbasePurchaseBhv" />
-    <component name="remoteMaihamaShowbaseRootBhv" class="org.docksidestage.remote.maihama.showbase.root.RemoteMaihamaShowbaseRootBhv" />
     <component name="remoteMaihamaShowbaseSigninBhv" class="org.docksidestage.remote.maihama.showbase.signin.RemoteMaihamaShowbaseSigninBhv" />
     <component name="remoteMaihamaShowbaseSignupBhv" class="org.docksidestage.remote.maihama.showbase.signup.RemoteMaihamaShowbaseSignupBhv" />
-    <component name="remoteMaihamaShowbaseSwaggerBhv" class="org.docksidestage.remote.maihama.showbase.swagger.RemoteMaihamaShowbaseSwaggerBhv" />
     <component name="remoteMaihamaShowbaseWithdrawalBhv" class="org.docksidestage.remote.maihama.showbase.withdrawal.RemoteMaihamaShowbaseWithdrawalBhv" />
     <component name="remoteMaihamaShowbaseWxBhv" class="org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv" />
 </components>

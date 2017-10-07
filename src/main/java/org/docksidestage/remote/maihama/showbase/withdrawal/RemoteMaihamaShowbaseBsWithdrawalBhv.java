@@ -48,20 +48,20 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * url: /withdrawal/reason
      * httpMethod: POST
      * </pre>
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public java.util.List<Object> requestReason() {
         return requestReason(rule -> {});
     }
 
     /**
-     * Set up method-level rule of Reason. (auto-generated method)<br>
+     * Request remote call to  Reason. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/reason
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected java.util.List<Object> requestReason(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.List<Object>>() {
@@ -85,21 +85,21 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteWithdrawalDoneParam. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
         return requestDone(paramLamda, rule -> {});
     }
 
     /**
-     * Set up method-level rule of Done. (auto-generated method)<br>
+     * Request remote call to  Done. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/done
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteWithdrawalDoneParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();

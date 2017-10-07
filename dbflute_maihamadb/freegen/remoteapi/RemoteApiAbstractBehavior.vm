@@ -44,13 +44,13 @@ public class ${abstractBehaviorClassName} extends $scriptEngine.eval('frameworkB
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO #change_it
+        // TODO you #change_it set your common default rule here
         throw new IllegalStateException("change it.");
     }
 
     @Override
     protected String getUrlBase() {
-        // TODO #change_it
+        // TODO you #change_it set your base URL for the remote api here
         throw new IllegalStateException("change it.");
     }
 }

@@ -49,21 +49,21 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteWxFaicliParam. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda) {
         return requestFaicli(paramLamda, rule -> {});
     }
 
     /**
-     * Set up method-level rule of Faicli. (auto-generated method)<br>
+     * Request remote call to  Faicli. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteWxFaicliParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWxFaicliParam param = new RemoteWxFaicliParam();
@@ -95,7 +95,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     }
 
     /**
-     * Set up method-level rule of FaicliUnknown. (auto-generated method)<br>
+     * Request remote call to  FaicliUnknown. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/unknown
      * httpMethod: POST
@@ -122,19 +122,19 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
      * url: /wx/faicli/entity/{account}
      * httpMethod: POST
      * </pre>
-     * @param account account. (NotNull)
+     * @param account The value of path variable for account. (NotNull)
      */
     public void requestFaicliEntity(String account) {
         requestFaicliEntity(account, rule -> {});
     }
 
     /**
-     * Set up method-level rule of FaicliEntity. (auto-generated method)<br>
+     * Request remote call to  FaicliEntity. (auto-generated method)<br>
      * <pre>
      * url: /wx/faicli/entity/{account}
      * httpMethod: POST
      * </pre>
-     * @param account account. (NotNull)
+     * @param account The value of path variable for account. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void requestFaicliEntity(String account, Consumer<FlutyRemoteApiRule> ruleLambda) {

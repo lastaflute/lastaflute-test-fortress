@@ -50,21 +50,21 @@ public abstract class RemoteMaihamaShowbaseBsSigninBhv extends RemoteAbstractMai
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteSigninParam. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda) {
         return requestSignin(paramLamda, rule -> {});
     }
 
     /**
-     * Set up method-level rule of Signin. (auto-generated method)<br>
+     * Request remote call to  Signin. (auto-generated method)<br>
      * <pre>
      * url: /signin/
      * httpMethod: POST
      * </pre>
      * @param paramLamda The callback for RemoteSigninParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return return object. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteSigninParam param = new RemoteSigninParam();

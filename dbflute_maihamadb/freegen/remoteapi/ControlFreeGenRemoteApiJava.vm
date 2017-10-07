@@ -14,7 +14,7 @@
 ## governing permissions and limitations under the License.
 ##
 #foreach ($request in $requestList)
-#if ($request.resourceType == 'SWAGGER')
+#if ($request.isResourceTypeSwagger())
   #set ($tableMap = $request.tableMap)
   $request.enableOutputDirectory()
   $manager.makeDirectory($request.generateDirPath)
@@ -43,8 +43,9 @@
         #set ($pathMap = $swaggerJsonEntry.value)
         #foreach($pathEntry in $pathMap.entrySet())
           #foreach($methodEntry in $pathEntry.value.entrySet())
-            #if ($scriptEngine.invokeFunction('target', { 'url': $pathEntry.key, 'httpMethod': $methodEntry.key }))
-              #set ($url = $scriptEngine.invokeFunction('url', { 'url': $pathEntry.key, 'httpMethod': $methodEntry.key }))
+            #set ($api = { 'url': $pathEntry.key, 'httpMethod': $methodEntry.key, 'consumes': $methodEntry.value.consumes, 'produces': $methodEntry.value.produces })
+            #if ($scriptEngine.invokeFunction('target', $api))
+              #set ($url = $scriptEngine.invokeFunction('url', $api))
               #set ($multipleHttpMethod = $pathEntry.value.size() != 1)
               ## request
               #set ($bodyProperties = {})

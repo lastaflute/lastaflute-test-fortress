@@ -9,10 +9,8 @@ map:{
             ; resourceFile = $$baseDir$$/resources/remoteapi/swagger/maihama-showbase_swagger.json
         }
         ; outputMap = map:{
-            ; templateFile = unused
             ; outputDirectory = $$baseDir$$/java
             ; package = org.docksidestage.remote
-            ; className = unused
         }
         ; tableMap = map:{
             ; tablePath = map
