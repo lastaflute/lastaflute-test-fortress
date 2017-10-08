@@ -75,21 +75,21 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #foreach($pathVariableEntry in $method.pathVariables.entrySet())
 #set ($pathVariable = $pathVariableEntry.value)
 #if ($pathVariable.type == 'array')
-#if ($scriptEngine.invokeFunction('pathVariableClassificationDeployment', $api, $pathVariable))
-#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<$scriptEngine.invokeFunction('pathVariableClassificationDeployment', $api, $pathVariable))>"))
+#if ($scriptEngine.invokeFunction('pathVariableManualMappingClass', $api, $pathVariable))
+#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<$scriptEngine.invokeFunction('pathVariableManualMappingClass', $api, $pathVariable))>"))
 #elseif ($pathVariable.items.enum)
 #set ($enumValueList = $pathVariable.enum)
-#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<$manager.initCap($scriptEngine.invokeFunction('fieldName', $api, $fieldName))}>")
+#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<$manager.initCap($behaviorRequestMethodName)$manager.initCap($scriptEngine.invokeFunction('fieldName', $api, $pathVariableEntry.key))}>")
 #elseif (${typeMap[$pathVariable.items.format]})
 #set ($pathVariableClass = "${typeMap[$pathVariable.type]}<${typeMap[$pathVariable.items.format]}>")
 #elseif (${typeMap[$pathVariable.items.type]})
 #set ($pathVariableClass = "${typeMap[$pathVariable.type]}<${typeMap[$pathVariable.items.type]}>")
 #end
-#elseif ($scriptEngine.invokeFunction('pathVariableClassificationDeployment', $api, $pathVariable))
-#set ($pathVariableClass = $scriptEngine.invokeFunction('pathVariableClassificationDeployment', $api, $pathVariable))
+#elseif ($scriptEngine.invokeFunction('pathVariableManualMappingClass', $api, $pathVariable))
+#set ($pathVariableClass = $scriptEngine.invokeFunction('pathVariableManualMappingClass', $api, $pathVariable))
 #elseif ($pathVariable.enum)
 #set ($enumValueList = $pathVariable.enum)
-#set ($pathVariableClass = $manager.initCap($scriptEngine.invokeFunction('fieldName', $api, $fieldName)))
+#set ($pathVariableClass = "$manager.initCap($behaviorRequestMethodName)$manager.initCap($scriptEngine.invokeFunction('fieldName', $api, $pathVariableEntry.key))")
 #elseif (${typeMap[$pathVariable.format]})
 #set ($pathVariableClass = ${typeMap[$pathVariable.format]})
 #elseif (${typeMap[$pathVariable.type]})
@@ -100,6 +100,20 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #else
 #set ($added = $parameterList.add({ "name": ${pathVariableEntry.key}, "description": "The value of path variable for $pathVariableEntry.key. (NotNull)"}))
 #end
+#if ($enumValueList && !$enumValueList.isEmpty())
+
+    /**
+     * ${pathVariableClass}.
+     * @author FreeGen
+     */
+    public enum ${pathVariableClass} {
+#foreach($enumValue in $enumValueList)
+        //$enumValue
+#end
+    }
+
+#end
+#set ($enumValueList = [])
 #set ($parameterDefinition = "${parameterDefinition}${pathVariableClass} ${pathVariableEntry.key}, ")
 #set ($moreUrl = "${moreUrl}${pathVariableEntry.key}, ")
 #end

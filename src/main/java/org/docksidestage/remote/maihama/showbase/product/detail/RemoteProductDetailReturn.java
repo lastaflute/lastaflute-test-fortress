@@ -24,18 +24,23 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteProductDetailReturn {
 
+    /** productId. */
     @Required
     public Integer productId;
 
+    /** productName. */
     @Required
     public String productName;
 
+    /** categoryName. */
     @Required
     public String categoryName;
 
+    /** regularPrice. */
     @Required
     public Integer regularPrice;
 
+    /** productHandleCode. */
     @Required
     public String productHandleCode;
 

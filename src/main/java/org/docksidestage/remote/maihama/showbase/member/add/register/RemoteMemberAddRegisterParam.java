@@ -24,14 +24,18 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteMemberAddRegisterParam {
 
+    /** memberName. */
     @Required
     public String memberName;
 
+    /** memberAccount. */
     @Required
     public String memberAccount;
 
+    /** birthdate. (NullAllowed) */
     public java.time.LocalDate birthdate;
 
+    /** memberStatus. */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 

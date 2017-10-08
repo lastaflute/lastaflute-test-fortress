@@ -24,6 +24,7 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteFollowingFollowParam {
 
+    /** yourMemberId. */
     @Required
     public Integer yourMemberId;
 

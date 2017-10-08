@@ -24,20 +24,26 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteMemberEditReturn {
 
+    /** memberId. */
     @Required
     public Integer memberId;
 
+    /** memberName. */
     @Required
     public String memberName;
 
+    /** memberAccount. */
     @Required
     public String memberAccount;
 
+    /** memberStatus. */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
+    /** birthdate. (NullAllowed) */
     public java.time.LocalDate birthdate;
 
+    /** versionNo. */
     @Required
     public Long versionNo;
 

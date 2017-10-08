@@ -24,6 +24,7 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteWxFaicliParam {
 
+    /** sea. */
     @Required
     public String sea;
 

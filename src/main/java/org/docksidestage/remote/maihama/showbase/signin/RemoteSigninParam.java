@@ -24,9 +24,11 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteSigninParam {
 
+    /** account. */
     @Required
     public String account;
 
+    /** password. */
     @Required
     public String password;
 

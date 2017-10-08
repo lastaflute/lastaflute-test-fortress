@@ -24,9 +24,11 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemotePurchaseCountParam {
 
+    /** productId. */
     @Required
     public Integer productId;
 
+    /** purchaseCount. */
     @Required
     public Integer purchaseCount;
 

@@ -23,18 +23,26 @@ import org.lastaflute.core.util.Lato;
  */
 public class RemoteProductsParam {
 
+    /** productName. (NullAllowed) */
     public String productName;
 
+    /** productStatus. (NullAllowed) */
     public ProductStatus productStatus;
 
+    /**
+     * ProductStatus.
+     * @author FreeGen
+     */
     public enum ProductStatus {
         //ONS
         //PST
         //SST
     }
 
+    /** purchaseMemberName. (NullAllowed) */
     public String purchaseMemberName;
 
+    /** pageNumber. (NullAllowed) */
     public Integer pageNumber;
 
     @Override

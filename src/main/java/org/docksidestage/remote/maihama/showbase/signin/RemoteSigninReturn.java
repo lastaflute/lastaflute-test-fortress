@@ -24,6 +24,7 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteSigninReturn {
 
+    /** token. */
     @Required
     public String token;
 

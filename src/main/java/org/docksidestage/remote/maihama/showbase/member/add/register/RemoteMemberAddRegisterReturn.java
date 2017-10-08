@@ -95,16 +95,22 @@ public class RemoteMemberAddRegisterReturn {
     /** (購入)PURCHASE by MEMBER_ID, named 'purchaseList'. (NullAllowed) */
     public java.util.List<Object> PurchaseList;
 
+    /** __uniqueDrivenProperties. (NullAllowed) */
     public Object _uniqueDrivenProperties;
 
+    /** __modifiedProperties. (NullAllowed) */
     public Object _modifiedProperties;
 
+    /** __specifiedProperties. (NullAllowed) */
     public Object _specifiedProperties;
 
+    /** __derivedMap. (NullAllowed) */
     public Object _derivedMap;
 
+    /** _undefinedClassificationSelectAllowed. (NullAllowed) */
     public Boolean UndefinedClassificationSelectAllowed;
 
+    /** __createdBySelect. (NullAllowed) */
     public Boolean _createdBySelect;
 
     @Override

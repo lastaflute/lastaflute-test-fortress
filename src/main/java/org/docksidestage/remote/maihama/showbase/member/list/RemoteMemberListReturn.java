@@ -45,25 +45,36 @@ public class RemoteMemberListReturn {
     @javax.validation.Valid
     public java.util.List<MemberSearchRowResult> rows;
 
+    /**
+     * MemberSearchRowResult.
+     * @author FreeGen
+     */
     public static class MemberSearchRowResult {
 
+        /** memberId. */
         @Required
         public Integer memberId;
 
+        /** memberName. */
         @Required
         public String memberName;
 
+        /** memberStatusName. */
         @Required
         public String memberStatusName;
 
+        /** formalizedDate. (NullAllowed) */
         public java.time.LocalDate formalizedDate;
 
+        /** updateDatetime. */
         @Required
         public java.time.LocalDateTime updateDatetime;
 
+        /** withdrawalMember. */
         @Required
         public Boolean withdrawalMember;
 
+        /** purchaseCount. */
         @Required
         public Integer purchaseCount;
     }

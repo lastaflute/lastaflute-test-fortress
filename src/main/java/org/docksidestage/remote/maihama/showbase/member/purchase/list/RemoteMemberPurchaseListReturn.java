@@ -45,23 +45,33 @@ public class RemoteMemberPurchaseListReturn {
     @javax.validation.Valid
     public java.util.List<MemberPurchaseSearchRowResult> rows;
 
+    /**
+     * MemberPurchaseSearchRowResult.
+     * @author FreeGen
+     */
     public static class MemberPurchaseSearchRowResult {
 
+        /** purchaseId. */
         @Required
         public Long purchaseId;
 
+        /** purchaseDatetime. */
         @Required
         public java.time.LocalDateTime purchaseDatetime;
 
+        /** productName. */
         @Required
         public String productName;
 
+        /** purchasePrice. */
         @Required
         public Integer purchasePrice;
 
+        /** purchaseCount. */
         @Required
         public Integer purchaseCount;
 
+        /** paymentComplete. */
         @Required
         public Boolean paymentComplete;
     }

@@ -24,11 +24,14 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteMemberInfoReturn {
 
+    /** memberId. (NullAllowed) */
     public Integer memberId;
 
+    /** memberName. */
     @Required
     public String memberName;
 
+    /** memberStatusName. (NullAllowed) */
     public String memberStatusName;
 
     @Override

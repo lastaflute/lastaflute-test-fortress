@@ -24,18 +24,23 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteSignupParam {
 
+    /** memberName. */
     @Required
     public String memberName;
 
+    /** memberAccount. */
     @Required
     public String memberAccount;
 
+    /** password. */
     @Required
     public String password;
 
+    /** reminderQuestion. */
     @Required
     public String reminderQuestion;
 
+    /** reminderAnswer. */
     @Required
     public String reminderAnswer;
 

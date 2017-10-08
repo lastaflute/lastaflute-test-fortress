@@ -23,8 +23,10 @@ import org.lastaflute.core.util.Lato;
  */
 public class RemoteWithdrawalDoneParam {
 
+    /** selectedReason. (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.WithdrawalReason selectedReason;
 
+    /** reasonInput. (NullAllowed) */
     public String reasonInput;
 
     @Override

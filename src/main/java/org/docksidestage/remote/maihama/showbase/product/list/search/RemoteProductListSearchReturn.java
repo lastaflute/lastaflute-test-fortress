@@ -45,23 +45,33 @@ public class RemoteProductListSearchReturn {
     @javax.validation.Valid
     public java.util.List<ProductRowResult> rows;
 
+    /**
+     * ProductRowResult.
+     * @author FreeGen
+     */
     public static class ProductRowResult {
 
+        /** productId. */
         @Required
         public Integer productId;
 
+        /** productName. */
         @Required
         public String productName;
 
+        /** productStatus. */
         @Required
         public String productStatus;
 
+        /** productCategory. */
         @Required
         public String productCategory;
 
+        /** regularPrice. */
         @Required
         public Integer regularPrice;
 
+        /** latestPurchaseDate. (NullAllowed) */
         public java.time.LocalDate latestPurchaseDate;
     }
 

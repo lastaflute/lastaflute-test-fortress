@@ -66,13 +66,15 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 
 #if (${property.description})
     #generateIndent()/** ${property.description}. #if (!${property.required})(NullAllowed) #end*/
+#else
+    #generateIndent()/** ${fieldName}. #if (!${property.required})(NullAllowed) #end*/
 #end
 #if (${property.required})
     #generateIndent()@Required
 #end
 #if ($property.type == 'array')
-#if ($scriptEngine.invokeFunction('beanPropertyClassificationDeployment', $api, $class, $property))
-#set ($fieldClass = "${typeMap[$property.type]}<$scriptEngine.invokeFunction('beanPropertyClassificationDeployment', $api, $class, $property))>"))
+#if ($scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))
+#set ($fieldClass = "${typeMap[$property.type]}<$scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))>"))
 #elseif ($property.items.enum)
 #set ($enumValueList = $property.enum)
 #set ($fieldClass = "${typeMap[$property.type]}<$manager.initCap($scriptEngine.invokeFunction('fieldName', $api, $fieldName))}>")
@@ -86,8 +88,8 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #set ($fieldClass = "${typeMap[$property.type]}<$adjustType>")
     #generateIndent()@javax.validation.Valid
 #end
-#elseif ($scriptEngine.invokeFunction('beanPropertyClassificationDeployment', $api, $class, $property))
-#set ($fieldClass = $scriptEngine.invokeFunction('beanPropertyClassificationDeployment', $api, $class, $property))
+#elseif ($scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))
+#set ($fieldClass = $scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))
 #elseif ($property.enum)
 #set ($enumValueList = $property.enum)
 #set ($fieldClass = $manager.initCap($scriptEngine.invokeFunction('fieldName', $api, $fieldName)))
@@ -104,6 +106,10 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
     #generateIndent()public ${fieldClass} ${scriptEngine.invokeFunction('fieldName', $api, $fieldName)};
 #if ($enumValueList && !$enumValueList.isEmpty())
 
+    #generateIndent()/**
+    #generateIndent() * ${fieldClass}.
+    #generateIndent() * @author FreeGen
+    #generateIndent() */
     #generateIndent()public enum ${fieldClass} {
 #foreach($enumValue in $enumValueList)
         #generateIndent()//$enumValue
@@ -126,6 +132,10 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #macro(generateNestType, $type)
 #set($added = $nestList.add($type))
 #adjustType($type)
+#generateIndent()/**
+#generateIndent() * ${adjustType}.
+#generateIndent() * @author FreeGen
+#generateIndent() */
 #generateIndent()public static class $adjustType {
 #foreach($nestPropertyEntry in $definitionMap[$type].properties.entrySet())
 #generateProperty($adjustType, $nestPropertyEntry)

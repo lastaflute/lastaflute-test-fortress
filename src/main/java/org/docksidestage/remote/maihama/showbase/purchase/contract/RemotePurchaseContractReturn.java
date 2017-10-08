@@ -24,6 +24,7 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemotePurchaseContractReturn {
 
+    /** price. */
     @Required
     public Integer price;
 

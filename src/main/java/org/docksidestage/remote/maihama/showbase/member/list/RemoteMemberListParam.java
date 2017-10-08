@@ -23,16 +23,22 @@ import org.lastaflute.core.util.Lato;
  */
 public class RemoteMemberListParam {
 
+    /** memberName. (NullAllowed) */
     public String memberName;
 
+    /** memberStatus. (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
+    /** purchaseProductName. (NullAllowed) */
     public String purchaseProductName;
 
+    /** unpaid. (NullAllowed) */
     public Boolean unpaid;
 
+    /** formalizedFrom. (NullAllowed) */
     public java.time.LocalDate formalizedFrom;
 
+    /** formalizedTo. (NullAllowed) */
     public java.time.LocalDate formalizedTo;
 
     @Override

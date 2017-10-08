@@ -24,19 +24,27 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteMypageReturn {
 
+    /** recentProducts. */
     @Required
     @javax.validation.Valid
     public java.util.List<ProductPart> recentProducts;
 
+    /**
+     * ProductPart.
+     * @author FreeGen
+     */
     public static class ProductPart {
 
+        /** productName. */
         @Required
         public String productName;
 
+        /** regularPrice. */
         @Required
         public Integer regularPrice;
     }
 
+    /** highPriceProducts. */
     @Required
     @javax.validation.Valid
     public java.util.List<ProductPart> highPriceProducts;

@@ -24,33 +24,46 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteProfileReturn {
 
+    /** memberId. */
     @Required
     public Integer memberId;
 
+    /** memberName. */
     @Required
     public String memberName;
 
+    /** memberStatusName. */
     @Required
     public String memberStatusName;
 
+    /** servicePointCount. */
     @Required
     public Integer servicePointCount;
 
+    /** serviceRankName. */
     @Required
     public String serviceRankName;
 
+    /** purchaseList. */
     @Required
     @javax.validation.Valid
     public java.util.List<PurchasedProductPart> purchaseList;
 
+    /**
+     * PurchasedProductPart.
+     * @author FreeGen
+     */
     public static class PurchasedProductPart {
 
+        /** productName. */
         @Required
         public String productName;
 
+        /** regularPrice. */
         @Required
         public Integer regularPrice;
 
+        /** purchaseDateTime. */
         @Required
         public java.time.LocalDateTime purchaseDateTime;
     }
