@@ -33,13 +33,7 @@ public class RemoteMemberAddRegisterParam {
     public java.time.LocalDate birthdate;
 
     @Required
-    public MemberStatus memberStatus;
-
-    public enum MemberStatus {
-        //FML
-        //WDL
-        //PRV
-    }
+    public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
     @Override
     public String toString() {

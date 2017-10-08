@@ -112,3 +112,11 @@ var fieldName = function(api, fieldName) {
 //                                                                              ======
 // when using Eclipse Collections. var yourCollections = 'org.eclipse.collections.api.list.ImmutableList';
 var yourCollections = null;
+
+var pathVariableClassificationDeployment = function(api, pathVariable) {
+    return null;
+}
+
+var beanPropertyClassificationDeployment = function(api, beanClassName, property) {
+    return null;
+}
