@@ -38,19 +38,18 @@ public class RemoteAbstractMaihamaShowbaseBhv extends org.lastaflute.remoteapi.L
         super(requestManager);
     }
 
-
     // ===================================================================================
     //                                                                          Initialize
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
         // TODO you #change_it set your common default rule here
-        throw new IllegalStateException("change it.");
+        throw new IllegalStateException("set your common default rule here.");
     }
 
     @Override
     protected String getUrlBase() {
         // TODO you #change_it set your base URL for the remote api here
-        throw new IllegalStateException("change it.");
+        throw new IllegalStateException("set your common default rule here.");
     }
 }

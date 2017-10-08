@@ -26,10 +26,10 @@ import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProdu
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchReturn;
 
 /**
- * RemoteMaihamaShowbaseBsProductBhv.
+ * BsRemoteMaihamaShowbaseProductBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseProductBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -37,7 +37,7 @@ public abstract class RemoteMaihamaShowbaseBsProductBhv extends RemoteAbstractMa
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsProductBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseProductBhv(RequestManager requestManager) {
         super(requestManager);
     }
 

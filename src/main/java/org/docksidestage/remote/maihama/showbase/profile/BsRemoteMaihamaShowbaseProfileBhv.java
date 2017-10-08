@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.following;
+package org.docksidestage.remote.maihama.showbase.profile;
 
 import java.util.function.Consumer;
 
@@ -21,13 +21,13 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.following.follow.RemoteFollowingFollowParam;
+import org.docksidestage.remote.maihama.showbase.profile.RemoteProfileReturn;
 
 /**
- * RemoteMaihamaShowbaseBsFollowingBhv.
+ * BsRemoteMaihamaShowbaseProfileBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseProfileBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -35,7 +35,7 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsFollowingBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseProfileBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
@@ -43,39 +43,37 @@ public abstract class RemoteMaihamaShowbaseBsFollowingBhv extends RemoteAbstract
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to /following/follow. (auto-generated method)<br>
+     * Request remote call to /profile/. (auto-generated method)<br>
      * <pre>
-     * url: /following/follow
+     * url: /profile/
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteFollowingFollowParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda) {
-        requestFollow(paramLamda, rule -> {});
+    public RemoteProfileReturn requestProfile() {
+        return requestProfile(rule -> {});
     }
 
     /**
-     * Request remote call to /following/follow. (auto-generated method)<br>
+     * Request remote call to /profile/. (auto-generated method)<br>
      * <pre>
-     * url: /following/follow
+     * url: /profile/
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteFollowingFollowParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
-        paramLamda.accept(param);
-        doRequestPost(void.class, "/following/follow", noMoreUrl(), param, rule -> {
-            ruleOfFollow(rule);
+    protected RemoteProfileReturn requestProfile(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteProfileReturn.class, "/profile/", noMoreUrl(), null, rule -> {
+            ruleOfProfile(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /following/follow.<br>
+     * Set up method-level rule of /profile/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfFollow(FlutyRemoteApiRule rule) {
+    protected void ruleOfProfile(FlutyRemoteApiRule rule) {
     }
 }

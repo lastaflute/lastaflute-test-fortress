@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.profile;
+package org.docksidestage.remote.maihama.showbase.products;
 
 import java.util.function.Consumer;
 
@@ -21,13 +21,13 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.profile.RemoteProfileReturn;
+import org.docksidestage.remote.maihama.showbase.products.RemoteProductsParam;
 
 /**
- * RemoteMaihamaShowbaseBsProfileBhv.
+ * BsRemoteMaihamaShowbaseProductsBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseProductsBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -35,7 +35,7 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsProfileBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseProductsBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
@@ -43,37 +43,43 @@ public abstract class RemoteMaihamaShowbaseBsProfileBhv extends RemoteAbstractMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to /profile/. (auto-generated method)<br>
+     * Request remote call to /products/{productId}. (auto-generated method)<br>
      * <pre>
-     * url: /profile/
+     * url: /products/{productId}
      * httpMethod: POST
      * </pre>
+     * @param productId The value of path variable for productId. (NotNull)
+     * @param paramLamda The callback for RemoteProductsParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteProfileReturn requestProfile() {
-        return requestProfile(rule -> {});
+    public Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
+        return requestProducts(productId, paramLamda, rule -> {});
     }
 
     /**
-     * Request remote call to /profile/. (auto-generated method)<br>
+     * Request remote call to /products/{productId}. (auto-generated method)<br>
      * <pre>
-     * url: /profile/
+     * url: /products/{productId}
      * httpMethod: POST
      * </pre>
+     * @param productId The value of path variable for productId. (NotNull)
+     * @param paramLamda The callback for RemoteProductsParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProfileReturn requestProfile(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteProfileReturn.class, "/profile/", noMoreUrl(), null, rule -> {
-            ruleOfProfile(rule);
+    protected Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteProductsParam param = new RemoteProductsParam();
+        paramLamda.accept(param);
+        return doRequestPost(Object.class, "/products/{productId}", moreUrl(productId), param, rule -> {
+            ruleOfProductsProductId(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /profile/.<br>
+     * Set up method-level rule of /products/{productId}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfProfile(FlutyRemoteApiRule rule) {
+    protected void ruleOfProductsProductId(FlutyRemoteApiRule rule) {
     }
 }

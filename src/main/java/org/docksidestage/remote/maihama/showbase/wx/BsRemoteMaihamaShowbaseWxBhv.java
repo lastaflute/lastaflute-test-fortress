@@ -24,10 +24,10 @@ import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.wx.faicli.RemoteWxFaicliParam;
 
 /**
- * RemoteMaihamaShowbaseBsWxBhv.
+ * BsRemoteMaihamaShowbaseWxBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseWxBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -35,7 +35,7 @@ public abstract class RemoteMaihamaShowbaseBsWxBhv extends RemoteAbstractMaihama
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsWxBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseWxBhv(RequestManager requestManager) {
         super(requestManager);
     }
 

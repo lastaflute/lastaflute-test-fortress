@@ -24,10 +24,10 @@ import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.signup.RemoteSignupParam;
 
 /**
- * RemoteMaihamaShowbaseBsSignupBhv.
+ * BsRemoteMaihamaShowbaseSignupBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseSignupBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -35,7 +35,7 @@ public abstract class RemoteMaihamaShowbaseBsSignupBhv extends RemoteAbstractMai
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsSignupBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseSignupBhv(RequestManager requestManager) {
         super(requestManager);
     }
 

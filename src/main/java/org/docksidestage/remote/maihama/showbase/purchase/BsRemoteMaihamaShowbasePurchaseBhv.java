@@ -27,10 +27,10 @@ import org.docksidestage.remote.maihama.showbase.purchase.contract.RemotePurchas
 import org.docksidestage.remote.maihama.showbase.purchase.contract.RemotePurchaseContractReturn;
 
 /**
- * RemoteMaihamaShowbaseBsPurchaseBhv.
+ * BsRemoteMaihamaShowbasePurchaseBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbasePurchaseBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -38,7 +38,7 @@ public abstract class RemoteMaihamaShowbaseBsPurchaseBhv extends RemoteAbstractM
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsPurchaseBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbasePurchaseBhv(RequestManager requestManager) {
         super(requestManager);
     }
 

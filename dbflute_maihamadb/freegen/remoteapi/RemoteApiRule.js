@@ -64,7 +64,7 @@ var behaviorSubPackage = function(api) {
     return _package(api).replace(/^([^.]*)\.(.+)/, '$1');
 };
 var bsBehaviorClassName = function(api) {
-    return 'Remote' + api.scheme + 'Bs' + _initCap(_capitalize(behaviorSubPackage(api))) + 'Bhv';
+    return 'BsRemote' + api.scheme + _initCap(_capitalize(behaviorSubPackage(api))) + 'Bhv';
 };
 var exBehaviorClassName = function(api) {
     return 'Remote' + api.scheme + _initCap(_capitalize(behaviorSubPackage(api))) + 'Bhv';

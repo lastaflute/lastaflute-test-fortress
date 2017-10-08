@@ -31,10 +31,10 @@ import org.docksidestage.remote.maihama.showbase.member.list.RemoteMemberListRet
 import org.docksidestage.remote.maihama.showbase.member.purchase.list.RemoteMemberPurchaseListReturn;
 
 /**
- * RemoteMaihamaShowbaseBsMemberBhv.
+ * BsRemoteMaihamaShowbaseMemberBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseMemberBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -42,7 +42,7 @@ public abstract class RemoteMaihamaShowbaseBsMemberBhv extends RemoteAbstractMai
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsMemberBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseMemberBhv(RequestManager requestManager) {
         super(requestManager);
     }
 

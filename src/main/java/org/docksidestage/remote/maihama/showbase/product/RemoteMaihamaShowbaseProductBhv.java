@@ -25,7 +25,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * </p>
  * @author FreeGen
  */
-public class RemoteMaihamaShowbaseProductBhv extends RemoteMaihamaShowbaseBsProductBhv {
+public class RemoteMaihamaShowbaseProductBhv extends BsRemoteMaihamaShowbaseProductBhv {
 
     // ===================================================================================
     //                                                                         Constructor

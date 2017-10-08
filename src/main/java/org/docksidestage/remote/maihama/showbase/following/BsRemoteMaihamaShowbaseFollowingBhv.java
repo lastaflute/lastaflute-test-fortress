@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.products;
+package org.docksidestage.remote.maihama.showbase.following;
 
 import java.util.function.Consumer;
 
@@ -21,13 +21,13 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.products.RemoteProductsParam;
+import org.docksidestage.remote.maihama.showbase.following.follow.RemoteFollowingFollowParam;
 
 /**
- * RemoteMaihamaShowbaseBsProductsBhv.
+ * BsRemoteMaihamaShowbaseFollowingBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseFollowingBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -35,7 +35,7 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsProductsBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseFollowingBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
@@ -43,43 +43,39 @@ public abstract class RemoteMaihamaShowbaseBsProductsBhv extends RemoteAbstractM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to /products/{productId}. (auto-generated method)<br>
+     * Request remote call to /following/follow. (auto-generated method)<br>
      * <pre>
-     * url: /products/{productId}
+     * url: /following/follow
      * httpMethod: POST
      * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param paramLamda The callback for RemoteProductsParam. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
+     * @param paramLamda The callback for RemoteFollowingFollowParam. (NotNull)
      */
-    public Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
-        return requestProducts(productId, paramLamda, rule -> {});
+    public void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda) {
+        requestFollow(paramLamda, rule -> {});
     }
 
     /**
-     * Request remote call to /products/{productId}. (auto-generated method)<br>
+     * Request remote call to /following/follow. (auto-generated method)<br>
      * <pre>
-     * url: /products/{productId}
+     * url: /following/follow
      * httpMethod: POST
      * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param paramLamda The callback for RemoteProductsParam. (NotNull)
+     * @param paramLamda The callback for RemoteFollowingFollowParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemoteProductsParam param = new RemoteProductsParam();
+    protected void requestFollow(Consumer<RemoteFollowingFollowParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
         paramLamda.accept(param);
-        return doRequestPost(Object.class, "/products/{productId}", moreUrl(productId), param, rule -> {
-            ruleOfProductsProductId(rule);
+        doRequestPost(void.class, "/following/follow", noMoreUrl(), param, rule -> {
+            ruleOfFollow(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /products/{productId}.<br>
+     * Set up method-level rule of /following/follow.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfProductsProductId(FlutyRemoteApiRule rule) {
+    protected void ruleOfFollow(FlutyRemoteApiRule rule) {
     }
 }

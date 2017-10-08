@@ -24,10 +24,10 @@ import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.withdrawal.done.RemoteWithdrawalDoneParam;
 
 /**
- * RemoteMaihamaShowbaseBsWithdrawalBhv.
+ * BsRemoteMaihamaShowbaseWithdrawalBhv.
  * @author FreeGen
  */
-public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends RemoteAbstractMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -35,7 +35,7 @@ public abstract class RemoteMaihamaShowbaseBsWithdrawalBhv extends RemoteAbstrac
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseBsWithdrawalBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseWithdrawalBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
