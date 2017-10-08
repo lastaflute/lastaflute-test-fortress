@@ -20,7 +20,7 @@ import java.util.function.Consumer;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
-import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
+import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.member.info.RemoteMemberInfoReturn;
 import org.docksidestage.remote.maihama.showbase.member.add.register.RemoteMemberAddRegisterParam;
 import org.docksidestage.remote.maihama.showbase.member.add.register.RemoteMemberAddRegisterReturn;
@@ -34,7 +34,7 @@ import org.docksidestage.remote.maihama.showbase.member.purchase.list.RemoteMemb
  * BsRemoteMaihamaShowbaseMemberBhv.
  * @author FreeGen
  */
-public abstract class BsRemoteMaihamaShowbaseMemberBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor

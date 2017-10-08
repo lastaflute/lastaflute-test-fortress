@@ -20,14 +20,14 @@ import java.util.function.Consumer;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
-import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
+import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.products.RemoteProductsParam;
 
 /**
  * BsRemoteMaihamaShowbaseProductsBhv.
  * @author FreeGen
  */
-public abstract class BsRemoteMaihamaShowbaseProductsBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor

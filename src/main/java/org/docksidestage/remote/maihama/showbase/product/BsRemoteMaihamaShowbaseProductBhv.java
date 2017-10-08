@@ -20,7 +20,7 @@ import java.util.function.Consumer;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
-import org.docksidestage.remote.maihama.showbase.RemoteAbstractMaihamaShowbaseBhv;
+import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.product.detail.RemoteProductDetailReturn;
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchParam;
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchReturn;
@@ -29,7 +29,7 @@ import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProdu
  * BsRemoteMaihamaShowbaseProductBhv.
  * @author FreeGen
  */
-public abstract class BsRemoteMaihamaShowbaseProductBhv extends RemoteAbstractMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor

@@ -52,7 +52,7 @@ var behaviorMethodGeneration = true;
 var behaviorMethodAccessModifier = 'public';
 var frameworkBehaviorClass = 'org.lastaflute.remoteapi.LastaRemoteBehavior';
 var abstractBehaviorClassName = function(scheme) {
-    return 'RemoteAbstract' + scheme + 'Bhv';
+    return 'AbstractRemote' + scheme + 'Bhv';
 };
 
 /**
@@ -92,14 +92,14 @@ var beanSubPackage = function(api) {
 var definitionKey = function(definitionKey) { return definitionKey; };
 var unDefinitionKey = function(definitionKey) { return definitionKey; };
 
-var requestExtendsClass = null;
-var requestImplementsClasses = null;
-var requestClassName = function(api) {
+var paramExtendsClass = null;
+var paramImplementsClasses = null;
+var paramClassName = function(api) {
     return 'Remote' + _initCap(_capitalize(beanSubPackage(api))) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '') + 'Param';
 };
-var responseExtendsClass = null;
-var responseImplementsClasses = null;
-var responseClassName = function(api) {
+var returnExtendsClass = null;
+var returnImplementsClasses = null;
+var returnClassName = function(api) {
     return 'Remote' + _initCap(_capitalize(beanSubPackage(api))) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '') + 'Return';
 };
 var nestClassName = function(api, className) { return className; };

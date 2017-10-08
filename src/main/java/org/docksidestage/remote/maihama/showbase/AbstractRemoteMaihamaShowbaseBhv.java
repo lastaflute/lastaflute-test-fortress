@@ -19,14 +19,14 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteAbstractMaihamaShowbaseBhv.
+ * AbstractRemoteMaihamaShowbaseBhv.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
  */
-public class RemoteAbstractMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
+public class AbstractRemoteMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -34,7 +34,7 @@ public class RemoteAbstractMaihamaShowbaseBhv extends org.lastaflute.remoteapi.L
     /***
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteAbstractMaihamaShowbaseBhv(RequestManager requestManager) {
+    public AbstractRemoteMaihamaShowbaseBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
