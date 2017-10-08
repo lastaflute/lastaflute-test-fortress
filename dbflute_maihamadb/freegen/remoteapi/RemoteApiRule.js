@@ -1,3 +1,4 @@
+// Based on ECMAScript5. Because Nashorn of java 8 is ECMAScript5.
 // ===================================================================================
 //                                                                          Definition
 //                                                                          ==========
@@ -15,12 +16,12 @@
 //                                                                                Util
 //                                                                                ====
 /**
- * Return package.
- * @param {Api} api - API.
- * @return {string} package.
+ * Return capitalize value.
+ * @param {string} value - value.
+ * @return {string} capitalize value.
  */
-var _package = function(api) {
-    return api.url.replace(/(_|^\/|\/$)/g, '').replace(/\/\{.*?\}/g, '').replace(/\//g, '.').toLowerCase();
+var _capitalize = function(value) {
+    return value.replace(/(_|\.)./g, function(s) { return s.charAt(1).toUpperCase(); });
 };
 
 /**
@@ -28,8 +29,8 @@ var _package = function(api) {
  * @param {string} value - value.
  * @return {string} capitalize value.
  */
-var _capitalize = function(value) {
-    return value.replace(/(_|\.)./g, function(s) { return s.charAt(1).toUpperCase(); });
+var _decamelize = function(value) {
+    return value.replace(/([A-Z][^A-Z])/g, function(s) { return '_' + s; }).toUpperCase().replace(/^_/, '');
 };
 
 /**
@@ -60,6 +61,35 @@ var target = function(api) {
  */
 var url = function(api) { return api.url; };
 
+/**
+ * Return scheme package.
+ * @param {Api} api - API.
+ * @return {string} scheme package.
+ */
+var schemePackage = function(scheme) {
+    return _decamelize(scheme).replace(/_/g, '.').toLowerCase();
+};
+
+/**
+ * Return sub package.
+ * @param {Api} api - API.
+ * @return {string} sub package.
+ */
+var subPackage = function(api) {
+    return api.url.replace(/(_|^\/|\/$)/g, '').replace(/\/\{.*?\}/g, '').replace(/\//g, '.').toLowerCase();
+};
+
+// ===================================================================================
+//                                                                               DiXml
+//                                                                               =====
+var diXmlPath = function(scheme, resourceFilePath) {
+    return '../resources/remoteapi/di/remoteapi_' + schemePackage(scheme).replace(/\./g, '-') + '.xml';
+}
+
+var diconPath = function(scheme, resourceFilePath) {
+    return '../resources/remoteapi/di/remoteapi_' + schemePackage(scheme).replace(/\./g, '-') + '.dicon';
+}
+
 // ===================================================================================
 //                                                                            Behavior
 //                                                                            ========
@@ -83,7 +113,7 @@ var abstractBehaviorClassName = function(scheme) {
  * @return {string} filtered Behavior SubPackage.
  */
 var behaviorSubPackage = function(api) {
-    return _package(api).replace(/^([^.]*)\.(.+)/, '$1');
+    return subPackage(api).replace(/^([^.]*)\.(.+)/, '$1');
 };
 
 /**
@@ -110,7 +140,7 @@ var exBehaviorClassName = function(api) {
  * @return {string} behaviorRequestMethodName.
  */
 var behaviorRequestMethodName = function(api) {
-    var methodPart = _capitalize(_package(api).replace(/^([^.]*)\.(.+)/, '$2'));
+    var methodPart = _capitalize(subPackage(api).replace(behaviorSubPackage(api), ''));
     return 'request' + _initCap(methodPart) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '');
 };
 
@@ -120,7 +150,7 @@ var behaviorRequestMethodName = function(api) {
  * @return {string} behaviorRuleMethodName.
  */
 var behaviorRuleMethodName = function(api) {
-    var methodPart = _capitalize(_package(api).replace(/^([^.]*)\.(.+)/, '$2'));
+    var methodPart = _capitalize(subPackage(api).replace(behaviorSubPackage(api), ''));
     return 'ruleOf' + _initCap(methodPart) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '');
 };
 
@@ -133,7 +163,7 @@ var behaviorRuleMethodName = function(api) {
  * @return {string} filtered Bean SubPackage.
  */
 var beanSubPackage = function(api) {
-    return _package(api);
+    return subPackage(api);
 };
 var definitionKey = function(definitionKey) { return definitionKey; };
 var unDefinitionKey = function(definitionKey) { return definitionKey; };

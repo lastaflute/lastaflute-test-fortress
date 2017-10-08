@@ -52,8 +52,8 @@ public abstract class BsRemoteMaihamaShowbaseSigninBhv extends AbstractRemoteMai
      * @param paramLamda The callback for RemoteSigninParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda) {
-        return requestSignin(paramLamda, rule -> {});
+    public RemoteSigninReturn request(Consumer<RemoteSigninParam> paramLamda) {
+        return request(paramLamda, rule -> {});
     }
 
     /**
@@ -66,11 +66,11 @@ public abstract class BsRemoteMaihamaShowbaseSigninBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteSigninReturn requestSignin(Consumer<RemoteSigninParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteSigninReturn request(Consumer<RemoteSigninParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteSigninParam param = new RemoteSigninParam();
         paramLamda.accept(param);
         return doRequestPost(RemoteSigninReturn.class, "/signin/", noMoreUrl(), param, rule -> {
-            ruleOfSignin(rule);
+            ruleOf(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -79,6 +79,6 @@ public abstract class BsRemoteMaihamaShowbaseSigninBhv extends AbstractRemoteMai
      * Set up method-level rule of /signin/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfSignin(FlutyRemoteApiRule rule) {
+    protected void ruleOf(FlutyRemoteApiRule rule) {
     }
 }

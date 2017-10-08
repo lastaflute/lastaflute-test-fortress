@@ -50,8 +50,8 @@ public abstract class BsRemoteMaihamaShowbaseMypageBhv extends AbstractRemoteMai
      * </pre>
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteMypageReturn requestMypage() {
-        return requestMypage(rule -> {});
+    public RemoteMypageReturn request() {
+        return request(rule -> {});
     }
 
     /**
@@ -63,9 +63,9 @@ public abstract class BsRemoteMaihamaShowbaseMypageBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMypageReturn requestMypage(Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteMypageReturn request(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestGet(RemoteMypageReturn.class, "/mypage/", noMoreUrl(), noQuery(), rule -> {
-            ruleOfMypage(rule);
+            ruleOf(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -74,6 +74,6 @@ public abstract class BsRemoteMaihamaShowbaseMypageBhv extends AbstractRemoteMai
      * Set up method-level rule of /mypage/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfMypage(FlutyRemoteApiRule rule) {
+    protected void ruleOf(FlutyRemoteApiRule rule) {
     }
 }

@@ -50,8 +50,8 @@ public abstract class BsRemoteMaihamaShowbaseSignupBhv extends AbstractRemoteMai
      * </pre>
      * @param paramLamda The callback for RemoteSignupParam. (NotNull)
      */
-    public void requestSignup(Consumer<RemoteSignupParam> paramLamda) {
-        requestSignup(paramLamda, rule -> {});
+    public void request(Consumer<RemoteSignupParam> paramLamda) {
+        request(paramLamda, rule -> {});
     }
 
     /**
@@ -63,11 +63,11 @@ public abstract class BsRemoteMaihamaShowbaseSignupBhv extends AbstractRemoteMai
      * @param paramLamda The callback for RemoteSignupParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void requestSignup(Consumer<RemoteSignupParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected void request(Consumer<RemoteSignupParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteSignupParam param = new RemoteSignupParam();
         paramLamda.accept(param);
         doRequestPost(void.class, "/signup/", noMoreUrl(), param, rule -> {
-            ruleOfSignup(rule);
+            ruleOf(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -76,7 +76,7 @@ public abstract class BsRemoteMaihamaShowbaseSignupBhv extends AbstractRemoteMai
      * Set up method-level rule of /signup/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfSignup(FlutyRemoteApiRule rule) {
+    protected void ruleOf(FlutyRemoteApiRule rule) {
     }
 
     /**

@@ -52,8 +52,8 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param paramLamda The callback for RemoteProductsParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
-        return requestProducts(productId, paramLamda, rule -> {});
+    public Object request(Integer productId, Consumer<RemoteProductsParam> paramLamda) {
+        return request(productId, paramLamda, rule -> {});
     }
 
     /**
@@ -67,11 +67,11 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected Object requestProducts(Integer productId, Consumer<RemoteProductsParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected Object request(Integer productId, Consumer<RemoteProductsParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductsParam param = new RemoteProductsParam();
         paramLamda.accept(param);
         return doRequestPost(Object.class, "/products/{productId}", moreUrl(productId), param, rule -> {
-            ruleOfProductsProductId(rule);
+            ruleOfProductId(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -80,6 +80,6 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * Set up method-level rule of /products/{productId}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfProductsProductId(FlutyRemoteApiRule rule) {
+    protected void ruleOfProductId(FlutyRemoteApiRule rule) {
     }
 }

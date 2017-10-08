@@ -13,7 +13,7 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-${manager.allClassCopyright}package ${request.package}.${subPackage};
+${manager.allClassCopyright}package ${request.package}.${schemePackage}.${subPackage};
 #set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
 #set ($parameterFlg = false)
 #if ($scriptEngine.eval('behaviorMethodGeneration'))
@@ -35,7 +35,7 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 #end
 import org.lastaflute.web.servlet.request.RequestManager;
 
-import ${request.package}.${abstractBehaviorSubPackage}.${abstractBehaviorClassName};
+import ${request.package}.${schemePackage}.${abstractBehaviorClassName};
 #foreach($import in $importSet)
 import ${import};
 #end
