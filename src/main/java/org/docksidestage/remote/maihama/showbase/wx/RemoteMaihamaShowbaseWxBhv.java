@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteMaihamaShowbaseWxBhv.
+ * The behavior for remote API of wx.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.

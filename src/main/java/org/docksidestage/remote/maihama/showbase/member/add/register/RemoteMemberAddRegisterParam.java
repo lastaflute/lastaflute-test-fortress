@@ -19,23 +19,23 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteMemberAddRegisterParam.
+ * The bean class as param for remote API of POST /member/add/register.
  * @author FreeGen
  */
 public class RemoteMemberAddRegisterParam {
 
-    /** memberName. */
+    /** The property of memberName. */
     @Required
     public String memberName;
 
-    /** memberAccount. */
+    /** The property of memberAccount. */
     @Required
     public String memberAccount;
 
-    /** birthdate. (NullAllowed) */
+    /** The property of birthdate. (NullAllowed) */
     public java.time.LocalDate birthdate;
 
-    /** memberStatus. */
+    /** The property of memberStatus. */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 

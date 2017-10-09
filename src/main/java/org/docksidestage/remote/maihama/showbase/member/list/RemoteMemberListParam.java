@@ -18,27 +18,27 @@ package org.docksidestage.remote.maihama.showbase.member.list;
 import org.lastaflute.core.util.Lato;
 
 /**
- * RemoteMemberListParam.
+ * The bean class as param for remote API of POST /member/list/{pageNumber}.
  * @author FreeGen
  */
 public class RemoteMemberListParam {
 
-    /** memberName. (NullAllowed) */
+    /** The property of memberName. (NullAllowed) */
     public String memberName;
 
-    /** memberStatus. (NullAllowed) */
+    /** The property of memberStatus. (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
-    /** purchaseProductName. (NullAllowed) */
+    /** The property of purchaseProductName. (NullAllowed) */
     public String purchaseProductName;
 
-    /** unpaid. (NullAllowed) */
+    /** The property of unpaid. (NullAllowed) */
     public Boolean unpaid;
 
-    /** formalizedFrom. (NullAllowed) */
+    /** The property of formalizedFrom. (NullAllowed) */
     public java.time.LocalDate formalizedFrom;
 
-    /** formalizedTo. (NullAllowed) */
+    /** The property of formalizedTo. (NullAllowed) */
     public java.time.LocalDate formalizedTo;
 
     @Override

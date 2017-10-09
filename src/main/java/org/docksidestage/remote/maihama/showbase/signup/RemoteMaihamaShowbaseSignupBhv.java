@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.signup;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteMaihamaShowbaseSignupBhv.
+ * The behavior for remote API of signup.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.

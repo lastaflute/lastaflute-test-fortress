@@ -24,7 +24,7 @@ import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.signup.RemoteSignupParam;
 
 /**
- * BsRemoteMaihamaShowbaseSignupBhv.
+ * The base class as generation gap for remote API of signup.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseSignupBhv extends AbstractRemoteMaihamaShowbaseBhv {

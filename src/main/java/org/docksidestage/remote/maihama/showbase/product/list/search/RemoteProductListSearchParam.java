@@ -18,19 +18,19 @@ package org.docksidestage.remote.maihama.showbase.product.list.search;
 import org.lastaflute.core.util.Lato;
 
 /**
- * RemoteProductListSearchParam.
+ * The bean class as param for remote API of POST /product/list/search/{pageNumber}.
  * @author FreeGen
  */
 public class RemoteProductListSearchParam {
 
-    /** productName. (NullAllowed) */
+    /** The property of productName. (NullAllowed) */
     public String productName;
 
-    /** productStatus. (NullAllowed) */
+    /** The property of productStatus. (NullAllowed) */
     public ProductStatus productStatus;
 
     /**
-     * ProductStatus.
+     * The enumeration of ProductStatus.
      * @author FreeGen
      */
     public enum ProductStatus {
@@ -39,7 +39,7 @@ public class RemoteProductListSearchParam {
         //SST
     }
 
-    /** purchaseMemberName. (NullAllowed) */
+    /** The property of purchaseMemberName. (NullAllowed) */
     public String purchaseMemberName;
 
     @Override

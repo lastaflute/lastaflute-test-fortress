@@ -24,7 +24,7 @@ import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.wx.faicli.RemoteWxFaicliParam;
 
 /**
- * BsRemoteMaihamaShowbaseWxBhv.
+ * The base class as generation gap for remote API of wx.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihamaShowbaseBhv {

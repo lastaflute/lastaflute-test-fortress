@@ -24,7 +24,7 @@ import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.withdrawal.done.RemoteWithdrawalDoneParam;
 
 /**
- * BsRemoteMaihamaShowbaseWithdrawalBhv.
+ * The base class as generation gap for remote API of withdrawal.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemoteMaihamaShowbaseBhv {

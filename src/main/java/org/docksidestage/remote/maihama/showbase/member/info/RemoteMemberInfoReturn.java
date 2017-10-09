@@ -19,19 +19,19 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteMemberInfoReturn.
+ * The bean class as return for remote API of POST /member/info.
  * @author FreeGen
  */
 public class RemoteMemberInfoReturn {
 
-    /** memberId. (NullAllowed) */
+    /** The property of memberId. (NullAllowed) */
     public Integer memberId;
 
-    /** memberName. */
+    /** The property of memberName. */
     @Required
     public String memberName;
 
-    /** memberStatusName. (NullAllowed) */
+    /** The property of memberStatusName. (NullAllowed) */
     public String memberStatusName;
 
     @Override

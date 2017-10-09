@@ -44,7 +44,7 @@ import ${import};
 #set ($generatedClassSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
 #set($added = $generatedClassSet.add($class))
 /**
- * ${class}.
+ * The bean class as ${beanPurposeType} for remote API of ${remoteApiExp}.
  * @author FreeGen
  */
 public class ${class}#if ($extendsClass && $extendsClass != '') extends $extendsClass#end#if ($implementsClasses && $implementsClasses != '') implements $implementsClasses#end {
@@ -67,7 +67,7 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #if (${property.description})
     #generateIndent()/** ${property.description}. #if (!${property.required})(NullAllowed) #end*/
 #else
-    #generateIndent()/** ${fieldName}. #if (!${property.required})(NullAllowed) #end*/
+    #generateIndent()/** The property of ${fieldName}. #if (!${property.required})(NullAllowed) #end*/
 #end
 #if (${property.required})
     #generateIndent()@Required
@@ -107,7 +107,7 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #if ($enumValueList && !$enumValueList.isEmpty())
 
     #generateIndent()/**
-    #generateIndent() * ${fieldClass}.
+    #generateIndent() * The enumeration of ${fieldClass}.
     #generateIndent() * @author FreeGen
     #generateIndent() */
     #generateIndent()public enum ${fieldClass} {
@@ -133,7 +133,7 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #set($added = $nestList.add($type))
 #adjustType($type)
 #generateIndent()/**
-#generateIndent() * ${adjustType}.
+#generateIndent() * The part class of ${adjustType}.
 #generateIndent() * @author FreeGen
 #generateIndent() */
 #generateIndent()public static class $adjustType {

@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.profile;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteMaihamaShowbaseProfileBhv.
+ * The behavior for remote API of profile.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.

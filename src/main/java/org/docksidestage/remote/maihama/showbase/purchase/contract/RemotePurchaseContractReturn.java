@@ -19,12 +19,12 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemotePurchaseContractReturn.
+ * The bean class as return for remote API of POST /purchase/contract.
  * @author FreeGen
  */
 public class RemotePurchaseContractReturn {
 
-    /** price. */
+    /** The property of price. */
     @Required
     public Integer price;
 

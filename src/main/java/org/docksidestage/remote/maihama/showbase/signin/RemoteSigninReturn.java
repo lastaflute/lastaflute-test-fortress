@@ -19,12 +19,12 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteSigninReturn.
+ * The bean class as return for remote API of POST /signin/.
  * @author FreeGen
  */
 public class RemoteSigninReturn {
 
-    /** token. */
+    /** The property of token. */
     @Required
     public String token;
 

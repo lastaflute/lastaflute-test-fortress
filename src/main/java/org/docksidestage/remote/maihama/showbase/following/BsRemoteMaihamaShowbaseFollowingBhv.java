@@ -24,7 +24,7 @@ import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.following.follow.RemoteFollowingFollowParam;
 
 /**
- * BsRemoteMaihamaShowbaseFollowingBhv.
+ * The base class as generation gap for remote API of following.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseFollowingBhv extends AbstractRemoteMaihamaShowbaseBhv {

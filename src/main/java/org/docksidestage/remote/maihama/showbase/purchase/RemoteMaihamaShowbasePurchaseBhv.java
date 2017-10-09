@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.purchase;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteMaihamaShowbasePurchaseBhv.
+ * The behavior for remote API of purchase.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.

@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.member;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteMaihamaShowbaseMemberBhv.
+ * The behavior for remote API of member.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.

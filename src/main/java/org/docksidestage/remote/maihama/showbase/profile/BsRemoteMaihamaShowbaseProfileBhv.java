@@ -24,7 +24,7 @@ import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.profile.RemoteProfileReturn;
 
 /**
- * BsRemoteMaihamaShowbaseProfileBhv.
+ * The base class as generation gap for remote API of profile.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseProfileBhv extends AbstractRemoteMaihamaShowbaseBhv {

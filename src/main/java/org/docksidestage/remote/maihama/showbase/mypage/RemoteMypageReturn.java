@@ -19,32 +19,32 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteMypageReturn.
+ * The bean class as return for remote API of GET /mypage/.
  * @author FreeGen
  */
 public class RemoteMypageReturn {
 
-    /** recentProducts. */
+    /** The property of recentProducts. */
     @Required
     @javax.validation.Valid
     public java.util.List<ProductPart> recentProducts;
 
     /**
-     * ProductPart.
+     * The part class of ProductPart.
      * @author FreeGen
      */
     public static class ProductPart {
 
-        /** productName. */
+        /** The property of productName. */
         @Required
         public String productName;
 
-        /** regularPrice. */
+        /** The property of regularPrice. */
         @Required
         public Integer regularPrice;
     }
 
-    /** highPriceProducts. */
+    /** The property of highPriceProducts. */
     @Required
     @javax.validation.Valid
     public java.util.List<ProductPart> highPriceProducts;

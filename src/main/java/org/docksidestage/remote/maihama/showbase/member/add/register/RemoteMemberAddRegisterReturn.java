@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.member.add.register;
 import org.lastaflute.core.util.Lato;
 
 /**
- * RemoteMemberAddRegisterReturn.
+ * The bean class as return for remote API of POST /member/add/register.
  * @author FreeGen
  */
 public class RemoteMemberAddRegisterReturn {
@@ -95,22 +95,22 @@ public class RemoteMemberAddRegisterReturn {
     /** (購入)PURCHASE by MEMBER_ID, named 'purchaseList'. (NullAllowed) */
     public java.util.List<Object> PurchaseList;
 
-    /** __uniqueDrivenProperties. (NullAllowed) */
+    /** The property of __uniqueDrivenProperties. (NullAllowed) */
     public Object _uniqueDrivenProperties;
 
-    /** __modifiedProperties. (NullAllowed) */
+    /** The property of __modifiedProperties. (NullAllowed) */
     public Object _modifiedProperties;
 
-    /** __specifiedProperties. (NullAllowed) */
+    /** The property of __specifiedProperties. (NullAllowed) */
     public Object _specifiedProperties;
 
-    /** __derivedMap. (NullAllowed) */
+    /** The property of __derivedMap. (NullAllowed) */
     public Object _derivedMap;
 
-    /** _undefinedClassificationSelectAllowed. (NullAllowed) */
+    /** The property of _undefinedClassificationSelectAllowed. (NullAllowed) */
     public Boolean UndefinedClassificationSelectAllowed;
 
-    /** __createdBySelect. (NullAllowed) */
+    /** The property of __createdBySelect. (NullAllowed) */
     public Boolean _createdBySelect;
 
     @Override

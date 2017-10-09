@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.products;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteMaihamaShowbaseProductsBhv.
+ * The behavior for remote API of products.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.

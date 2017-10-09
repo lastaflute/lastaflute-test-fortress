@@ -26,7 +26,7 @@ import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProdu
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchReturn;
 
 /**
- * BsRemoteMaihamaShowbaseProductBhv.
+ * The base class as generation gap for remote API of product.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMaihamaShowbaseBhv {

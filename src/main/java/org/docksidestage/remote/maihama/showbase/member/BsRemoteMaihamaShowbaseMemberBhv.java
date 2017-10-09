@@ -31,7 +31,7 @@ import org.docksidestage.remote.maihama.showbase.member.list.RemoteMemberListRet
 import org.docksidestage.remote.maihama.showbase.member.purchase.list.RemoteMemberPurchaseListReturn;
 
 /**
- * BsRemoteMaihamaShowbaseMemberBhv.
+ * The base class as generation gap for remote API of member.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMaihamaShowbaseBhv {

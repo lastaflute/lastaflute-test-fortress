@@ -19,12 +19,12 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteFollowingFollowParam.
+ * The bean class as param for remote API of POST /following/follow.
  * @author FreeGen
  */
 public class RemoteFollowingFollowParam {
 
-    /** yourMemberId. */
+    /** The property of yourMemberId. */
     @Required
     public Integer yourMemberId;
 

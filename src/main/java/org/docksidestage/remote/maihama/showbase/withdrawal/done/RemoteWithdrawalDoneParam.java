@@ -18,15 +18,15 @@ package org.docksidestage.remote.maihama.showbase.withdrawal.done;
 import org.lastaflute.core.util.Lato;
 
 /**
- * RemoteWithdrawalDoneParam.
+ * The bean class as param for remote API of POST /withdrawal/done.
  * @author FreeGen
  */
 public class RemoteWithdrawalDoneParam {
 
-    /** selectedReason. (NullAllowed) */
+    /** The property of selectedReason. (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.WithdrawalReason selectedReason;
 
-    /** reasonInput. (NullAllowed) */
+    /** The property of reasonInput. (NullAllowed) */
     public String reasonInput;
 
     @Override

@@ -24,7 +24,7 @@ import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.mypage.RemoteMypageReturn;
 
 /**
- * BsRemoteMaihamaShowbaseMypageBhv.
+ * The base class as generation gap for remote API of mypage.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseMypageBhv extends AbstractRemoteMaihamaShowbaseBhv {

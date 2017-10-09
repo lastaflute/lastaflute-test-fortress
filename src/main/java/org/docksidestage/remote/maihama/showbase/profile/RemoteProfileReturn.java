@@ -19,51 +19,51 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteProfileReturn.
+ * The bean class as return for remote API of POST /profile/.
  * @author FreeGen
  */
 public class RemoteProfileReturn {
 
-    /** memberId. */
+    /** The property of memberId. */
     @Required
     public Integer memberId;
 
-    /** memberName. */
+    /** The property of memberName. */
     @Required
     public String memberName;
 
-    /** memberStatusName. */
+    /** The property of memberStatusName. */
     @Required
     public String memberStatusName;
 
-    /** servicePointCount. */
+    /** The property of servicePointCount. */
     @Required
     public Integer servicePointCount;
 
-    /** serviceRankName. */
+    /** The property of serviceRankName. */
     @Required
     public String serviceRankName;
 
-    /** purchaseList. */
+    /** The property of purchaseList. */
     @Required
     @javax.validation.Valid
     public java.util.List<PurchasedProductPart> purchaseList;
 
     /**
-     * PurchasedProductPart.
+     * The part class of PurchasedProductPart.
      * @author FreeGen
      */
     public static class PurchasedProductPart {
 
-        /** productName. */
+        /** The property of productName. */
         @Required
         public String productName;
 
-        /** regularPrice. */
+        /** The property of regularPrice. */
         @Required
         public Integer regularPrice;
 
-        /** purchaseDateTime. */
+        /** The property of purchaseDateTime. */
         @Required
         public java.time.LocalDateTime purchaseDateTime;
     }

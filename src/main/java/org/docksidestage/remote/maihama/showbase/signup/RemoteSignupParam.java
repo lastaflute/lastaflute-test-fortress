@@ -19,28 +19,28 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteSignupParam.
+ * The bean class as param for remote API of POST /signup/.
  * @author FreeGen
  */
 public class RemoteSignupParam {
 
-    /** memberName. */
+    /** The property of memberName. */
     @Required
     public String memberName;
 
-    /** memberAccount. */
+    /** The property of memberAccount. */
     @Required
     public String memberAccount;
 
-    /** password. */
+    /** The property of password. */
     @Required
     public String password;
 
-    /** reminderQuestion. */
+    /** The property of reminderQuestion. */
     @Required
     public String reminderQuestion;
 
-    /** reminderAnswer. */
+    /** The property of reminderAnswer. */
     @Required
     public String reminderAnswer;
 

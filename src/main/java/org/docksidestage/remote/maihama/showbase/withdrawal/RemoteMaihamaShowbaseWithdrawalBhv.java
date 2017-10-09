@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.withdrawal;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * RemoteMaihamaShowbaseWithdrawalBhv.
+ * The behavior for remote API of withdrawal.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.

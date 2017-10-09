@@ -25,7 +25,7 @@ import org.docksidestage.remote.maihama.showbase.signin.RemoteSigninParam;
 import org.docksidestage.remote.maihama.showbase.signin.RemoteSigninReturn;
 
 /**
- * BsRemoteMaihamaShowbaseSigninBhv.
+ * The base class as generation gap for remote API of signin.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbaseSigninBhv extends AbstractRemoteMaihamaShowbaseBhv {

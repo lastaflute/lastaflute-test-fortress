@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteMemberListReturn.
+ * The bean class as return for remote API of POST /member/list/{pageNumber}.
  * @author FreeGen
  */
 public class RemoteMemberListReturn {
@@ -46,35 +46,35 @@ public class RemoteMemberListReturn {
     public java.util.List<MemberSearchRowResult> rows;
 
     /**
-     * MemberSearchRowResult.
+     * The part class of MemberSearchRowResult.
      * @author FreeGen
      */
     public static class MemberSearchRowResult {
 
-        /** memberId. */
+        /** The property of memberId. */
         @Required
         public Integer memberId;
 
-        /** memberName. */
+        /** The property of memberName. */
         @Required
         public String memberName;
 
-        /** memberStatusName. */
+        /** The property of memberStatusName. */
         @Required
         public String memberStatusName;
 
-        /** formalizedDate. (NullAllowed) */
+        /** The property of formalizedDate. (NullAllowed) */
         public java.time.LocalDate formalizedDate;
 
-        /** updateDatetime. */
+        /** The property of updateDatetime. */
         @Required
         public java.time.LocalDateTime updateDatetime;
 
-        /** withdrawalMember. */
+        /** The property of withdrawalMember. */
         @Required
         public Boolean withdrawalMember;
 
-        /** purchaseCount. */
+        /** The property of purchaseCount. */
         @Required
         public Integer purchaseCount;
     }

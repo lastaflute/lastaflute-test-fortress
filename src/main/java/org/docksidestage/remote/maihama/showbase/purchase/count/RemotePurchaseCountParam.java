@@ -19,16 +19,16 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemotePurchaseCountParam.
+ * The bean class as param for remote API of POST /purchase/count.
  * @author FreeGen
  */
 public class RemotePurchaseCountParam {
 
-    /** productId. */
+    /** The property of productId. */
     @Required
     public Integer productId;
 
-    /** purchaseCount. */
+    /** The property of purchaseCount. */
     @Required
     public Integer purchaseCount;
 

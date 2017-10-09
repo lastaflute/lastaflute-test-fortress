@@ -27,7 +27,7 @@ import org.docksidestage.remote.maihama.showbase.purchase.contract.RemotePurchas
 import org.docksidestage.remote.maihama.showbase.purchase.contract.RemotePurchaseContractReturn;
 
 /**
- * BsRemoteMaihamaShowbasePurchaseBhv.
+ * The base class as generation gap for remote API of purchase.
  * @author FreeGen
  */
 public abstract class BsRemoteMaihamaShowbasePurchaseBhv extends AbstractRemoteMaihamaShowbaseBhv {

@@ -41,7 +41,7 @@ import ${import};
 #end
 
 /**
- * ${class}.
+ * The base class as generation gap for remote API of ${remoteApiExp}.
  * @author FreeGen
  */
 public abstract class ${class} extends ${abstractBehaviorClassName} {

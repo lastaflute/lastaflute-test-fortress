@@ -19,31 +19,31 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * RemoteMemberEditUpdateParam.
+ * The bean class as param for remote API of POST /member/edit/update.
  * @author FreeGen
  */
 public class RemoteMemberEditUpdateParam {
 
-    /** memberId. */
+    /** The property of memberId. */
     @Required
     public Integer memberId;
 
-    /** memberName. */
+    /** The property of memberName. */
     @Required
     public String memberName;
 
-    /** memberAccount. */
+    /** The property of memberAccount. */
     @Required
     public String memberAccount;
 
-    /** memberStatus. */
+    /** The property of memberStatus. */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
-    /** birthdate. (NullAllowed) */
+    /** The property of birthdate. (NullAllowed) */
     public java.time.LocalDate birthdate;
 
-    /** versionNo. */
+    /** The property of versionNo. */
     @Required
     public Long versionNo;
 
