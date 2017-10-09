@@ -49,7 +49,9 @@ import ${import};
  */
 public class ${class}#if ($extendsClass && $extendsClass != '') extends $extendsClass#end#if ($implementsClasses && $implementsClasses != '') implements $implementsClasses#end {
 #foreach($propertyEntry in $properties.entrySet())
+#set($nestList = [])
 #generateProperty($class, $propertyEntry)
+#set($nestList = [])
 #end
 
     @Override
@@ -63,11 +65,14 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #macro(generateProperty, $class $propertyEntry)
 #set ($fieldName = $propertyEntry.key)
 #set ($property = $propertyEntry.value)
+## TODO jflute avoid no-name property, what should i do? (2017/10/10)
+## TODO p1us2er0 temporary for beanPropertyManualMappingDescription. (2017/10/10)
+#set ($property.name = $fieldName)
 
 #if ($scriptEngine.invokeFunction('beanPropertyManualMappingDescription', $api, $class, $property))
-    #generateIndent()/** $scriptEngine.invokeFunction('beanPropertyManualMappingDescription', $api, $class, $property). #if (!${property.required})(NullAllowed) #end*/
+    #generateIndent()/** The property of ${fieldName}($scriptEngine.invokeFunction('beanPropertyManualMappingDescription', $api, $class, $property)). #if (!${property.required})(NullAllowed) #end*/
 #elseif (${property.description})
-    #generateIndent()/** ${property.description}. #if (!${property.required})(NullAllowed) #end*/
+    #generateIndent()/** The property of ${fieldName}(${property.description}). #if (!${property.required})(NullAllowed) #end*/
 #else
     #generateIndent()/** The property of ${fieldName}. #if (!${property.required})(NullAllowed) #end*/
 #end
@@ -123,9 +128,7 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #if ($nestType && $nestType != '' && !$generatedClassSet.contains($adjustType))
 #set($added = $generatedClassSet.add($adjustType))
 
-#set($nestList = [])
 #generateNestType($nestType)
-#set($nestList = [])
 #end
 #set ($nestType = '')
 #set ($enumValueList = [])

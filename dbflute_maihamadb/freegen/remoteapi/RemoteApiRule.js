@@ -51,7 +51,7 @@ var _initCap= function(value) {
  * @return {boolean} true if target.
  */
 var target = function(api) {
-    return api.produces.indexOf('application/json') != -1 && api.url.indexOf('/swagger/json') != 0;
+    return ((api.consumes && api.consumes.indexOf('application/json') != -1) || api.produces.indexOf('application/json') != -1) && api.url.indexOf('/swagger/json') != 0;
 };
 
 /**

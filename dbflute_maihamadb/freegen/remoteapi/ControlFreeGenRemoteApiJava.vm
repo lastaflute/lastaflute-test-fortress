@@ -47,7 +47,7 @@
             #set ($multipleHttpMethod = $pathEntry.value.size() > 1)
             #set ($api = { 'scheme': $scheme, 'url': $pathEntry.key, 'httpMethod': $methodEntry.key, 'multipleHttpMethod': $multipleHttpMethod, 'consumes': $methodEntry.value.consumes, 'produces': $methodEntry.value.produces })
             #if ($scriptEngine.invokeFunction('target', $api))
-              #set ($url = $scriptEngine.invokeFunction('url', $api))
+              #set ($api.url = $scriptEngine.invokeFunction('url', $api))
               ## param
               #set ($bodyProperties = {})
               #set ($pathVariables = {})
