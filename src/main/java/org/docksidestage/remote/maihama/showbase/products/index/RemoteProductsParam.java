@@ -32,8 +32,10 @@ public class RemoteProductsParam {
     /**
      * The enumeration of ProductStatus.
      * @author FreeGen
+     * @deprecated auto-generating enumeration is unsupported yet so use beanPropertyManualMappingClass()
      */
     public enum ProductStatus {
+        // TODO you auto-generating enumeration is unsupported yet so use beanPropertyManualMappingClass()
         //ONS
         //PST
         //SST

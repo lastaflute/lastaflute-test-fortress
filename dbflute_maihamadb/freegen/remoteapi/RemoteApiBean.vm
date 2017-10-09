@@ -109,8 +109,10 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
     #generateIndent()/**
     #generateIndent() * The enumeration of ${fieldClass}.
     #generateIndent() * @author FreeGen
+    #generateIndent() * @deprecated auto-generating enumeration is unsupported yet so use beanPropertyManualMappingClass()
     #generateIndent() */
     #generateIndent()public enum ${fieldClass} {
+        #generateIndent()// TODO you auto-generating enumeration is unsupported yet so use beanPropertyManualMappingClass()
 #foreach($enumValue in $enumValueList)
         #generateIndent()//$enumValue
 #end
