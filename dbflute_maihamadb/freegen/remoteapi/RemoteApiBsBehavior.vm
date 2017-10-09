@@ -118,8 +118,8 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #set ($moreUrl = "${moreUrl}${pathVariableEntry.key}, ")
 #end
 #if (${method.paramBean.className})
-#set ($parameterDefinition = "${parameterDefinition}Consumer<${method.paramBean.className}> paramLamda")
-#set ($added = $parameterList.add({ "name": "paramLamda",  "description": "The callback for $method.paramBean.className. (NotNull)"}))
+#set ($parameterDefinition = "${parameterDefinition}Consumer<${method.paramBean.className}> paramLambda")
+#set ($added = $parameterList.add({ "name": "paramLambda",  "description": "The callback for $method.paramBean.className. (NotNull)"}))
 #end
 #set ($parameterDefinition = $parameterDefinition.replaceAll(', $', ''))
 #set ($moreUrl = $moreUrl.replaceAll('^(.+), $', 'moreUrl($1)'))
@@ -180,7 +180,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #end
 #if (${method.paramBean.className} && ${method.paramBean.className} != '')
         ${method.paramBean.className} param = new ${method.paramBean.className}();
-        paramLamda.accept(param);
+        paramLambda.accept(param);
 #set($put = $paramMap.put('query', 'query(param)'))
 #set($put = $paramMap.put('formData', 'param'))
 #set($put = $paramMap.put('body', 'param'))

@@ -84,11 +84,11 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * url: /withdrawal/done
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteWithdrawalDoneParam. (NotNull)
+     * @param paramLambda The callback for RemoteWithdrawalDoneParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda) {
-        return requestDone(paramLamda, rule -> {});
+    public Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda) {
+        return requestDone(paramLambda, rule -> {});
     }
 
     /**
@@ -97,13 +97,13 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * url: /withdrawal/done
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteWithdrawalDoneParam. (NotNull)
+     * @param paramLambda The callback for RemoteWithdrawalDoneParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
-        paramLamda.accept(param);
+        paramLambda.accept(param);
         return doRequestPost(Integer.class, "/withdrawal/done", noMoreUrl(), param, rule -> {
             ruleOfDone(rule);
             ruleLambda.accept(rule);

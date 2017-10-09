@@ -88,11 +88,11 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * httpMethod: POST
      * </pre>
      * @param pageNumber The value of path variable for pageNumber. (NotNull)
-     * @param paramLamda The callback for RemoteProductListSearchParam. (NotNull)
+     * @param paramLambda The callback for RemoteProductListSearchParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda) {
-        return requestListSearch(pageNumber, paramLamda, rule -> {});
+    public RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLambda) {
+        return requestListSearch(pageNumber, paramLambda, rule -> {});
     }
 
     /**
@@ -102,13 +102,13 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * httpMethod: POST
      * </pre>
      * @param pageNumber The value of path variable for pageNumber. (NotNull)
-     * @param paramLamda The callback for RemoteProductListSearchParam. (NotNull)
+     * @param paramLambda The callback for RemoteProductListSearchParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductListSearchParam param = new RemoteProductListSearchParam();
-        paramLamda.accept(param);
+        paramLambda.accept(param);
         return doRequestPost(RemoteProductListSearchReturn.class, "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, rule -> {
             ruleOfListSearchPageNumber(rule);
             ruleLambda.accept(rule);

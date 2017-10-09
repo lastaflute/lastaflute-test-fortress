@@ -51,11 +51,11 @@ public abstract class BsRemoteMaihamaShowbasePurchaseBhv extends AbstractRemoteM
      * url: /purchase/count
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemotePurchaseCountParam. (NotNull)
+     * @param paramLambda The callback for RemotePurchaseCountParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLamda) {
-        return requestCount(paramLamda, rule -> {});
+    public RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLambda) {
+        return requestCount(paramLambda, rule -> {});
     }
 
     /**
@@ -64,13 +64,13 @@ public abstract class BsRemoteMaihamaShowbasePurchaseBhv extends AbstractRemoteM
      * url: /purchase/count
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemotePurchaseCountParam. (NotNull)
+     * @param paramLambda The callback for RemotePurchaseCountParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemotePurchaseCountReturn requestCount(Consumer<RemotePurchaseCountParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemotePurchaseCountParam param = new RemotePurchaseCountParam();
-        paramLamda.accept(param);
+        paramLambda.accept(param);
         return doRequestPost(RemotePurchaseCountReturn.class, "/purchase/count", noMoreUrl(), param, rule -> {
             ruleOfCount(rule);
             ruleLambda.accept(rule);
@@ -90,11 +90,11 @@ public abstract class BsRemoteMaihamaShowbasePurchaseBhv extends AbstractRemoteM
      * url: /purchase/contract
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemotePurchaseContractParam. (NotNull)
+     * @param paramLambda The callback for RemotePurchaseContractParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLamda) {
-        return requestContract(paramLamda, rule -> {});
+    public RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLambda) {
+        return requestContract(paramLambda, rule -> {});
     }
 
     /**
@@ -103,13 +103,13 @@ public abstract class BsRemoteMaihamaShowbasePurchaseBhv extends AbstractRemoteM
      * url: /purchase/contract
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemotePurchaseContractParam. (NotNull)
+     * @param paramLambda The callback for RemotePurchaseContractParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemotePurchaseContractReturn requestContract(Consumer<RemotePurchaseContractParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemotePurchaseContractParam param = new RemotePurchaseContractParam();
-        paramLamda.accept(param);
+        paramLambda.accept(param);
         return doRequestPost(RemotePurchaseContractReturn.class, "/purchase/contract", noMoreUrl(), param, rule -> {
             ruleOfContract(rule);
             ruleLambda.accept(rule);

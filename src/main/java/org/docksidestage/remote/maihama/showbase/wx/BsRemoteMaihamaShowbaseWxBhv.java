@@ -48,11 +48,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * url: /wx/faicli/
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteWxFaicliParam. (NotNull)
+     * @param paramLambda The callback for RemoteWxFaicliParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda) {
-        return requestFaicli(paramLamda, rule -> {});
+    public Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLambda) {
+        return requestFaicli(paramLambda, rule -> {});
     }
 
     /**
@@ -61,13 +61,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * url: /wx/faicli/
      * httpMethod: POST
      * </pre>
-     * @param paramLamda The callback for RemoteWxFaicliParam. (NotNull)
+     * @param paramLambda The callback for RemoteWxFaicliParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLamda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWxFaicliParam param = new RemoteWxFaicliParam();
-        paramLamda.accept(param);
+        paramLambda.accept(param);
         return doRequestPost(Object.class, "/wx/faicli/", noMoreUrl(), param, rule -> {
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
