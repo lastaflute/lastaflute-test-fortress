@@ -43,13 +43,13 @@ public class RemoteMemberPurchaseListReturn {
     /** paging data for current page. */
     @Required
     @javax.validation.Valid
-    public java.util.List<MemberPurchaseSearchRowResult> rows;
+    public java.util.List<MemberPurchaseSearchRowPart> rows;
 
     /**
-     * The part class of MemberPurchaseSearchRowResult.
+     * The part class of MemberPurchaseSearchRowPart.
      * @author FreeGen
      */
-    public static class MemberPurchaseSearchRowResult {
+    public static class MemberPurchaseSearchRowPart {
 
         /** The property of purchaseId. */
         @Required

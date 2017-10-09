@@ -203,7 +203,7 @@ var returnClassName = function(api) {
  * @return {string} nestClassName.
  */
 var nestClassName = function(api, className) {
-    return className;
+    return className.replace(/(Part|Result|Model|Bean)$/, '') + 'Part';
 };
 
 /**

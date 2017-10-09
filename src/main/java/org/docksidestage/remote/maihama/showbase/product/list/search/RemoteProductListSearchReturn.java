@@ -43,13 +43,13 @@ public class RemoteProductListSearchReturn {
     /** paging data for current page. */
     @Required
     @javax.validation.Valid
-    public java.util.List<ProductRowResult> rows;
+    public java.util.List<ProductRowPart> rows;
 
     /**
-     * The part class of ProductRowResult.
+     * The part class of ProductRowPart.
      * @author FreeGen
      */
-    public static class ProductRowResult {
+    public static class ProductRowPart {
 
         /** The property of productId. */
         @Required

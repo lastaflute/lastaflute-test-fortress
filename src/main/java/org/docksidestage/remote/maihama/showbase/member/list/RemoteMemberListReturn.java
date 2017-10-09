@@ -43,13 +43,13 @@ public class RemoteMemberListReturn {
     /** paging data for current page. */
     @Required
     @javax.validation.Valid
-    public java.util.List<MemberSearchRowResult> rows;
+    public java.util.List<MemberSearchRowPart> rows;
 
     /**
-     * The part class of MemberSearchRowResult.
+     * The part class of MemberSearchRowPart.
      * @author FreeGen
      */
-    public static class MemberSearchRowResult {
+    public static class MemberSearchRowPart {
 
         /** The property of memberId. */
         @Required

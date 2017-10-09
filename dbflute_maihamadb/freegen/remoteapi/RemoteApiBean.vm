@@ -64,7 +64,9 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #set ($fieldName = $propertyEntry.key)
 #set ($property = $propertyEntry.value)
 
-#if (${property.description})
+#if ($scriptEngine.invokeFunction('beanPropertyManualMappingDescription', $api, $class, $property))
+    #generateIndent()/** $scriptEngine.invokeFunction('beanPropertyManualMappingDescription', $api, $class, $property). #if (!${property.required})(NullAllowed) #end*/
+#elseif (${property.description})
     #generateIndent()/** ${property.description}. #if (!${property.required})(NullAllowed) #end*/
 #else
     #generateIndent()/** The property of ${fieldName}. #if (!${property.required})(NullAllowed) #end*/
