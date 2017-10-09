@@ -21,7 +21,7 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.mypage.RemoteMypageReturn;
+import org.docksidestage.remote.maihama.showbase.mypage.index.RemoteMypageReturn;
 
 /**
  * The base class as generation gap for remote API of mypage.

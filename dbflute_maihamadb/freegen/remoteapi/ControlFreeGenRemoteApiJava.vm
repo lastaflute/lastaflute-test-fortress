@@ -16,6 +16,7 @@
 #foreach ($request in $requestList)
 #if ($request.isResourceTypeSwagger())
   #set ($tableMap = $request.tableMap)
+  #set ($optionMap = $request.optionMap)
   $request.enableOutputDirectory()
   $manager.makeDirectory($request.generateDirPath)
   #set ($scriptEngine = $manager.createJavaScriptEngine())
@@ -28,7 +29,7 @@
   #if ($request.requestName.startsWith($resourceTypeRemoteApi))
     $manager.info("gen remote api: ${request.requestName}")
 
-    #foreach($swaggerJsonEntry in $tableMap.jsonMap.entrySet())
+    #foreach($swaggerJsonEntry in $optionMap.jsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'definitions')
         #set ($definitionMap = $swaggerJsonEntry.value)
       #end
@@ -38,7 +39,7 @@
     #set ($schemePackage = $scriptEngine.invokeFunction('schemePackage', $scheme))
     #set ($bsBehaviorMap = {})
     #set ($exBehaviorMap = {})
-    #foreach($swaggerJsonEntry in $tableMap.jsonMap.entrySet())
+    #foreach($swaggerJsonEntry in $optionMap.jsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'paths')
         #set ($pathMap = $swaggerJsonEntry.value)
         #foreach($pathEntry in $pathMap.entrySet())

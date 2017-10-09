@@ -163,7 +163,11 @@ var behaviorRuleMethodName = function(api) {
  * @return {string} filtered Bean SubPackage.
  */
 var beanSubPackage = function(api) {
-    return subPackage(api);
+    var package = subPackage(api);
+    if (package === behaviorSubPackage(api)) {
+        package += '.index';
+    }
+    return package;
 };
 var definitionKey = function(definitionKey) { return definitionKey; };
 var unDefinitionKey = function(definitionKey) { return definitionKey; };
@@ -177,7 +181,7 @@ var paramImplementsClasses = null;
  * @return {string} paramClassName.
  */
 var paramClassName = function(api) {
-    return 'Remote' + _initCap(_capitalize(beanSubPackage(api))) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '') + 'Param';
+    return 'Remote' + _initCap(_capitalize(subPackage(api))) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '') + 'Param';
 };
 
 var returnExtendsClass = null;
@@ -189,7 +193,7 @@ var returnImplementsClasses = null;
  * @return {string} returnClassName.
  */
 var returnClassName = function(api) {
-    return 'Remote' + _initCap(_capitalize(beanSubPackage(api))) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '') + 'Return';
+    return 'Remote' + _initCap(_capitalize(subPackage(api))) + (api.multipleHttpMethod ? _initCap(api.httpMethod) : '') + 'Return';
 };
 
 /**
@@ -236,5 +240,26 @@ var pathVariableManualMappingClass = function(api, pathVariable) {
  * @return {string} pathVariableManualMappingClass.
  */
 var beanPropertyManualMappingClass = function(api, beanClassName, property) {
+    return null;
+}
+
+/**
+ * Return pathVariableManualMappingDescription.
+ * @param {Api} api - API.
+ * @param {string} pathVariable - pathVariable.
+ * @return {string} pathVariableManualMappingClass.
+ */
+var pathVariableManualMappingDescription = function(api, pathVariable) {
+    return null;
+}
+
+/**
+ * Return beanPropertyManualMappingDescription.
+ * @param {Api} api - API.
+ * @param {string} beanClassName - beanClassName.
+ * @param {string} property - property.
+ * @return {string} beanPropertyManualMappingDescription.
+ */
+var beanPropertyManualMappingDescription = function(api, beanClassName, property) {
     return null;
 }

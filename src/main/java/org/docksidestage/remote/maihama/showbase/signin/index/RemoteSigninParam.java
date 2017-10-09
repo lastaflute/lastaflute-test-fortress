@@ -13,36 +13,24 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.signup;
+package org.docksidestage.remote.maihama.showbase.signin.index;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as param for remote API of POST /signup/.
+ * The bean class as param for remote API of POST /signin/.
  * @author FreeGen
  */
-public class RemoteSignupParam {
+public class RemoteSigninParam {
 
-    /** The property of memberName. */
+    /** The property of account. */
     @Required
-    public String memberName;
-
-    /** The property of memberAccount. */
-    @Required
-    public String memberAccount;
+    public String account;
 
     /** The property of password. */
     @Required
     public String password;
-
-    /** The property of reminderQuestion. */
-    @Required
-    public String reminderQuestion;
-
-    /** The property of reminderAnswer. */
-    @Required
-    public String reminderAnswer;
 
     @Override
     public String toString() {

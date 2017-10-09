@@ -13,20 +13,37 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.signin;
+package org.docksidestage.remote.maihama.showbase.products.index;
 
 import org.lastaflute.core.util.Lato;
-import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /signin/.
+ * The bean class as param for remote API of POST /products/{productId}.
  * @author FreeGen
  */
-public class RemoteSigninReturn {
+public class RemoteProductsParam {
 
-    /** The property of token. */
-    @Required
-    public String token;
+    /** The property of productName. (NullAllowed) */
+    public String productName;
+
+    /** The property of productStatus. (NullAllowed) */
+    public ProductStatus productStatus;
+
+    /**
+     * The enumeration of ProductStatus.
+     * @author FreeGen
+     */
+    public enum ProductStatus {
+        //ONS
+        //PST
+        //SST
+    }
+
+    /** The property of purchaseMemberName. (NullAllowed) */
+    public String purchaseMemberName;
+
+    /** The property of pageNumber. (NullAllowed) */
+    public Integer pageNumber;
 
     @Override
     public String toString() {

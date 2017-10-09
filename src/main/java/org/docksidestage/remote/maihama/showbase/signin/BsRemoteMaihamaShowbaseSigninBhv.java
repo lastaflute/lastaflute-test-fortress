@@ -21,8 +21,8 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.signin.RemoteSigninParam;
-import org.docksidestage.remote.maihama.showbase.signin.RemoteSigninReturn;
+import org.docksidestage.remote.maihama.showbase.signin.index.RemoteSigninParam;
+import org.docksidestage.remote.maihama.showbase.signin.index.RemoteSigninReturn;
 
 /**
  * The base class as generation gap for remote API of signin.

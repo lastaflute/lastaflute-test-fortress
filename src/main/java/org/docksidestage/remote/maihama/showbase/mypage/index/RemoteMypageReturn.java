@@ -13,47 +13,27 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.profile;
+package org.docksidestage.remote.maihama.showbase.mypage.index;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /profile/.
+ * The bean class as return for remote API of GET /mypage/.
  * @author FreeGen
  */
-public class RemoteProfileReturn {
+public class RemoteMypageReturn {
 
-    /** The property of memberId. */
-    @Required
-    public Integer memberId;
-
-    /** The property of memberName. */
-    @Required
-    public String memberName;
-
-    /** The property of memberStatusName. */
-    @Required
-    public String memberStatusName;
-
-    /** The property of servicePointCount. */
-    @Required
-    public Integer servicePointCount;
-
-    /** The property of serviceRankName. */
-    @Required
-    public String serviceRankName;
-
-    /** The property of purchaseList. */
+    /** The property of recentProducts. */
     @Required
     @javax.validation.Valid
-    public java.util.List<PurchasedProductPart> purchaseList;
+    public java.util.List<ProductPart> recentProducts;
 
     /**
-     * The part class of PurchasedProductPart.
+     * The part class of ProductPart.
      * @author FreeGen
      */
-    public static class PurchasedProductPart {
+    public static class ProductPart {
 
         /** The property of productName. */
         @Required
@@ -62,11 +42,12 @@ public class RemoteProfileReturn {
         /** The property of regularPrice. */
         @Required
         public Integer regularPrice;
-
-        /** The property of purchaseDateTime. */
-        @Required
-        public java.time.LocalDateTime purchaseDateTime;
     }
+
+    /** The property of highPriceProducts. */
+    @Required
+    @javax.validation.Valid
+    public java.util.List<ProductPart> highPriceProducts;
 
     @Override
     public String toString() {
