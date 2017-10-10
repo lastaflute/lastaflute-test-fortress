@@ -26,7 +26,7 @@ public class RemoteMemberListParam {
     /** The property of memberName. (NullAllowed) */
     public String memberName;
 
-    /** The property of memberStatus. (NullAllowed) */
+    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) (memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.) (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
     /** The property of purchaseProductName. (NullAllowed) */

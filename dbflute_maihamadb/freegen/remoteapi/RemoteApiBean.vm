@@ -68,13 +68,20 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 ## TODO jflute avoid no-name property, what should i do? (2017/10/10)
 ## TODO p1us2er0 temporary for beanPropertyManualMappingDescription. (2017/10/10)
 #set ($property.name = $fieldName)
+#set ($enumValueComment = '')
+#set ($nestType = '')
+#if ($property.enum)
+#set ($enumValueComment = "(enumValue=$property.enum) ")
+#elseif ($property.items.enum)
+#set ($enumValueComment = "(enumValue=$property.items.enum) ")
+#end
 
 #if ($scriptEngine.invokeFunction('beanPropertyManualMappingDescription', $api, $class, $property))
-    #generateIndent()/** The property of ${fieldName}($scriptEngine.invokeFunction('beanPropertyManualMappingDescription', $api, $class, $property)). #if (!${property.required})(NullAllowed) #end*/
+    #generateIndent()/** The property of ${fieldName}. ${enumValueComment}($scriptEngine.invokeFunction('beanPropertyManualMappingDescription', $api, $class, $property)) #if (!${property.required})(NullAllowed) #end*/
 #elseif (${property.description})
-    #generateIndent()/** The property of ${fieldName}(${property.description}). #if (!${property.required})(NullAllowed) #end*/
+    #generateIndent()/** The property of ${fieldName}. ${enumValueComment}(${property.description}) #if (!${property.required})(NullAllowed) #end*/
 #else
-    #generateIndent()/** The property of ${fieldName}. #if (!${property.required})(NullAllowed) #end*/
+    #generateIndent()/** The property of ${fieldName}. ${enumValueComment}#if (!${property.required})(NullAllowed) #end*/
 #end
 #if (${property.required})
     #generateIndent()@Required
@@ -82,9 +89,6 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #if ($property.type == 'array')
 #if ($scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))
 #set ($fieldClass = "${typeMap[$property.type]}<$scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))>"))
-#elseif ($property.items.enum)
-#set ($enumValueList = $property.enum)
-#set ($fieldClass = "${typeMap[$property.type]}<$manager.initCap($scriptEngine.invokeFunction('fieldName', $api, $fieldName))}>")
 #elseif (${typeMap[$property.items.format]})
 #set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.format]}>")
 #elseif (${typeMap[$property.items.type]})
@@ -97,9 +101,6 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #end
 #elseif ($scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))
 #set ($fieldClass = $scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))
-#elseif ($property.enum)
-#set ($enumValueList = $property.enum)
-#set ($fieldClass = $manager.initCap($scriptEngine.invokeFunction('fieldName', $api, $fieldName)))
 #elseif (${typeMap[$property.format]})
 #set ($fieldClass = ${typeMap[$property.format]})
 #elseif (${typeMap[$property.type]})
@@ -111,27 +112,11 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
     #generateIndent()@javax.validation.Valid
 #end
     #generateIndent()public ${fieldClass} ${scriptEngine.invokeFunction('fieldName', $api, $fieldName)};
-#if ($enumValueList && !$enumValueList.isEmpty())
-
-    #generateIndent()/**
-    #generateIndent() * The enumeration of ${fieldClass}.
-    #generateIndent() * @author FreeGen
-    #generateIndent() * @deprecated auto-generating enumeration is unsupported yet so use beanPropertyManualMappingClass()
-    #generateIndent() */
-    #generateIndent()public enum ${fieldClass} {
-        #generateIndent()// TODO you auto-generating enumeration is unsupported yet so use beanPropertyManualMappingClass()
-#foreach($enumValue in $enumValueList)
-        #generateIndent()//$enumValue
-#end
-    #generateIndent()}
-#end
 #if ($nestType && $nestType != '' && !$generatedClassSet.contains($adjustType))
 #set($added = $generatedClassSet.add($adjustType))
 
 #generateNestType($nestType)
 #end
-#set ($nestType = '')
-#set ($enumValueList = [])
 #end
 ##################################################
 ## generate nest type.

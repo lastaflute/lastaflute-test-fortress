@@ -35,7 +35,7 @@ public class RemoteMemberAddRegisterParam {
     /** The property of birthdate. (NullAllowed) */
     public java.time.LocalDate birthdate;
 
-    /** The property of memberStatus. */
+    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) (memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.) */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 

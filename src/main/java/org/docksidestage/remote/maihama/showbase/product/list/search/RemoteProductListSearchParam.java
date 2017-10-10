@@ -26,20 +26,8 @@ public class RemoteProductListSearchParam {
     /** The property of productName. (NullAllowed) */
     public String productName;
 
-    /** The property of productStatus. (NullAllowed) */
-    public ProductStatus productStatus;
-
-    /**
-     * The enumeration of ProductStatus.
-     * @author FreeGen
-     * @deprecated auto-generating enumeration is unsupported yet so use beanPropertyManualMappingClass()
-     */
-    public enum ProductStatus {
-        // TODO you auto-generating enumeration is unsupported yet so use beanPropertyManualMappingClass()
-        //ONS
-        //PST
-        //SST
-    }
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) (NullAllowed) */
+    public String productStatus;
 
     /** The property of purchaseMemberName. (NullAllowed) */
     public String purchaseMemberName;
