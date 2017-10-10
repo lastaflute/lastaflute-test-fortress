@@ -27,11 +27,11 @@ public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
         RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
         param.productName = "S";
         String json = "{pageSize=4, currentPageNumber=1, allRecordCount=20, allPageCount=5, rows=[]}";
-        MockHttpClient client = MockHttpClient.create(resopnse -> {
-            resopnse.peekRequest(request -> {
+        MockHttpClient client = MockHttpClient.create(response -> {
+            response.peekRequest(request -> {
                 assertContainsAll(request.getBody().get(), "productName", param.productName);
             });
-            resopnse.asJsonDirectly(json, request -> true);
+            response.asJsonDirectly(json, request -> true);
         });
         registerMock(client);
         RemoteHarborBhv bhv = new RemoteHarborBhv(requestManager);

@@ -16,6 +16,9 @@
 package org.docksidestage.remote.maihama.showbase;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import org.lastaflute.core.json.JsonMappingOption;
+import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
+import org.lastaflute.remoteapi.sender.body.LaJsonSender;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -25,6 +28,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
+ * @author jflute
  */
 public class AbstractRemoteMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
 
@@ -43,13 +47,13 @@ public class AbstractRemoteMaihamaShowbaseBhv extends org.lastaflute.remoteapi.L
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO you #change_it set your common default rule here
-        throw new IllegalStateException("set your common default rule here.");
+        JsonMappingOption mappingOption = new JsonMappingOption();
+        rule.sendBodyBy(new LaJsonSender(requestManager, mappingOption));
+        rule.receiveBodyBy(new LaJsonReceiver(requestManager, mappingOption));
     }
 
     @Override
     protected String getUrlBase() {
-        // TODO you #change_it set your base URL for the remote api here
-        throw new IllegalStateException("set your common default rule here.");
+        return "http://localhost:8098/showbase";
     }
 }
