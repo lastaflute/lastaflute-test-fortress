@@ -26,7 +26,11 @@ public class RemoteProductsParam {
     /** The property of productName. (NullAllowed) */
     public String productName;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) (NullAllowed) */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (productStatus:
+* `ONS` - OnSaleProduction, OnSaleProduction.
+* `PST` - ProductionStop, ProductionStop.
+* `SST` - SaleStop, SaleStop.
+) (NullAllowed) */
     public String productStatus;
 
     /** The property of purchaseMemberName. (NullAllowed) */

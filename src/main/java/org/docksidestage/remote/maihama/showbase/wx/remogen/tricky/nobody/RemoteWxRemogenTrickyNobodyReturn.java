@@ -13,26 +13,21 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.withdrawal.done;
+package org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody;
 
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as param for remote API of POST /withdrawal/done.
+ * The bean class as return for remote API of POST /wx/remogen/tricky/nobody.
  * @author FreeGen
  */
-public class RemoteWithdrawalDoneParam {
+public class RemoteWxRemogenTrickyNobodyReturn {
 
-    /** The property of selectedReason. (enumValue=[SIT, PRD, FRT, OTH]) (selectedReason:
-* `SIT` - Sit, SIT.
-* `PRD` - Prd, PRD.
-* `FRT` - Frt, FRT.
-* `OTH` - Oth, OTH.
-) (NullAllowed) */
-    public org.docksidestage.dbflute.allcommon.CDef.WithdrawalReason selectedReason;
+    /** The property of key. (NullAllowed) */
+    public String key;
 
-    /** The property of reasonInput. (NullAllowed) */
-    public String reasonInput;
+    /** The property of value. (NullAllowed) */
+    public Object value;
 
     @Override
     public String toString() {

@@ -18,10 +18,10 @@ package org.docksidestage.remote.maihama.showbase.wx;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.web.servlet.request.RequestManager;
-
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.wx.faicli.RemoteWxFaicliParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
+import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * The base class as generation gap for remote API of wx.
@@ -49,10 +49,9 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * httpMethod: POST
      * </pre>
      * @param paramLambda The callback for RemoteWxFaicliParam. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLambda) {
-        return requestFaicli(paramLambda, rule -> {});
+    public void requestFaicli(Consumer<RemoteWxFaicliParam> paramLambda) {
+        requestFaicli(paramLambda, rule -> {});
     }
 
     /**
@@ -63,12 +62,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * </pre>
      * @param paramLambda The callback for RemoteWxFaicliParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected Object requestFaicli(Consumer<RemoteWxFaicliParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected void requestFaicli(Consumer<RemoteWxFaicliParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWxFaicliParam param = new RemoteWxFaicliParam();
         paramLambda.accept(param);
-        return doRequestPost(Object.class, "/wx/faicli/", noMoreUrl(), param, rule -> {
+        doRequestPost(void.class, "/wx/faicli/", noMoreUrl(), param, rule -> {
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
             ruleOfFaicli(rule);
@@ -149,5 +147,73 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfFaicliEntityAccount(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/list/getter. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/list/getter
+     * httpMethod: POST
+     * </pre>
+     */
+    public void requestRemogenListGetter() {
+        requestRemogenListGetter(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/list/getter. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/list/getter
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void requestRemogenListGetter(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestPost(void.class, "/wx/remogen/list/getter", noMoreUrl(), null, rule -> {
+            ruleOfRemogenListGetter(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/list/getter.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenListGetter(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/nobody. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/nobody
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenTrickyNobodyReturn requestRemogenTrickyNobody() {
+        return requestRemogenTrickyNobody(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/nobody. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/nobody
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenTrickyNobodyReturn requestRemogenTrickyNobody(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenTrickyNobodyReturn.class, "/wx/remogen/tricky/nobody", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenTrickyNobody(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/tricky/nobody.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenTrickyNobody(FlutyRemoteApiRule rule) {
     }
 }

@@ -1,7 +1,5 @@
 package org.docksidestage.remote.maihama.showbase.product;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.mock.MockHttpClient;
@@ -18,7 +16,7 @@ public class RemoteMaihamaShowbaseProductBhvTest extends UnitFortressWebTestCase
 
     public void test_requestListStatus_returnsList() {
         // ## Arrange ##
-        String json = "{[key=sea, value=mystic], [key=land, value=oneman]}";
+        String json = "[{key=sea, value=mystic}, {key=land, value=oneman}]";
         MockHttpClient client = MockHttpClient.create(response -> {
             response.asJsonDirectly(json, request -> true);
         });
@@ -27,11 +25,12 @@ public class RemoteMaihamaShowbaseProductBhvTest extends UnitFortressWebTestCase
         inject(productBhv);
 
         // ## Act ##
-        List<Object> statusList = productBhv.requestListStatus();
+        productBhv.requestListStatus();
 
         // ## Assert ##
-        for (Object status : statusList) {
-            log(status);
-        }
+        // TODO jflute ...void!? (2017/10/11)
+        //for (Object status : statusList) {
+        //    log(status);
+        //}
     }
 }

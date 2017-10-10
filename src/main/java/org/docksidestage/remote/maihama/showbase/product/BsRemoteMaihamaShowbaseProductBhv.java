@@ -128,10 +128,9 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * url: /product/list/status
      * httpMethod: POST
      * </pre>
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public java.util.List<Object> requestListStatus() {
-        return requestListStatus(rule -> {});
+    public void requestListStatus() {
+        requestListStatus(rule -> {});
     }
 
     /**
@@ -141,11 +140,9 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected java.util.List<Object> requestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.List<Object>>() {
-        }.getType(), "/product/list/status", noMoreUrl(), null, rule -> {
+    protected void requestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestPost(void.class, "/product/list/status", noMoreUrl(), null, rule -> {
             ruleOfListStatus(rule);
             ruleLambda.accept(rule);
         });
