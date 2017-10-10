@@ -85,29 +85,31 @@
               #set ($returnProperties = {})
               #foreach($responseEntry in $methodEntry.value['responses'].entrySet())
                 #set ($response = $responseEntry.value)
-                #if ($response.type == 'array')
-                  #if (${typeMap[$response.items.format]})
-                    #set ($returnBean = { 'className': "${typeMap[$response.type]}<${typeMap[$response.items.format]}>" })
-                  #elseif (${typeMap[$response.items.type]})
-                    #set ($returnBean = { 'className': "${typeMap[$response.type]}<${typeMap[$response.items.type]}>" })
-                  #else
+                #if ($response.schema)
+                  #if ($response.schema.type == 'array')
+                    #if (${typeMap[$response.schema.items.format]})
+                      #set ($returnBean = { 'className': "${typeMap[$response.schema.items.format]}", 'array': true })
+                    #elseif (${typeMap[$response.schema.items.type]})
+                      #set ($returnBean = { 'className': "${typeMap[$response.schema.items.type]}", 'array': true })
+                    #else
+                      #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
+                      #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
+                      #if (!$returnProperties.empty)
+                        #processRemoteApiBean('return', $api, $returnProperties)
+                        #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': "${class}", 'array': true})
+                      #end
+                    #end
+                  #elseif (${typeMap[$response.schema.format]})
+                    #set ($returnBean = { 'className': ${typeMap[$response.schema.format]} })
+                  #elseif (${typeMap[$response.schema.type]})
+                    #set ($returnBean = { 'className': ${typeMap[$response.schema.type]} })
+                  #elseif ($response.schema['$ref'])
                     #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
                     #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                     #if (!$returnProperties.empty)
                       #processRemoteApiBean('return', $api, $returnProperties)
                       #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class} })
                     #end
-                  #end
-                #elseif (${typeMap[$response.format]})
-                  #set ($returnBean = { 'className': ${typeMap[$response.format]} })
-                #elseif (${typeMap[$response.type]})
-                  #set ($returnBean = { 'className': ${typeMap[$response.type]} })
-                #elseif ($response.schema && $response.schema['$ref'])
-                  #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
-                  #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
-                  #if (!$returnProperties.empty)
-                    #processRemoteApiBean('return', $api, $returnProperties)
-                    #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class} })
                   #end
                 #end
               #end

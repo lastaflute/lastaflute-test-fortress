@@ -88,7 +88,7 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #end
 #if ($property.type == 'array')
 #if ($scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))
-#set ($fieldClass = "${typeMap[$property.type]}<$scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property))>"))
+#set ($fieldClass = "${typeMap[$property.type]}<$scriptEngine.invokeFunction('beanPropertyManualMappingClass', $api, $class, $property)>")
 #elseif (${typeMap[$property.items.format]})
 #set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.format]}>")
 #elseif (${typeMap[$property.items.type]})

@@ -118,6 +118,9 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #set ($moreUrl = 'noMoreUrl()')
 #end
 #set ($returnBeanClassName = ${method.returnBean.className})
+#if ($method.returnBean.array)
+#set ($returnBeanClassName = "${typeMap['array']}<${returnBeanClassName}>")
+#end
 #set ($returnBeanClassName = $scriptEngine.invokeFunction('unDefinitionKey', ${returnBeanClassName}))
     /**
      * Request remote call to $method.api.url. (auto-generated method)<br>
