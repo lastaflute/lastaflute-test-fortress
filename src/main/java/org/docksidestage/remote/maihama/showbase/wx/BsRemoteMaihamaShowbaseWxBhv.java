@@ -18,10 +18,11 @@ package org.docksidestage.remote.maihama.showbase.wx;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import org.lastaflute.web.servlet.request.RequestManager;
+
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.wx.faicli.RemoteWxFaicliParam;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
-import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * The base class as generation gap for remote API of wx.
@@ -150,6 +151,39 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
     }
 
     /**
+     * Request remote call to /wx/remogen/list/basic. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/list/basic
+     * httpMethod: POST
+     * </pre>
+     */
+    public void requestRemogenListBasic() {
+        requestRemogenListBasic(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/list/basic. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/list/basic
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void requestRemogenListBasic(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestPost(void.class, "/wx/remogen/list/basic", noMoreUrl(), null, rule -> {
+            ruleOfRemogenListBasic(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/list/basic.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenListBasic(FlutyRemoteApiRule rule) {
+    }
+
+    /**
      * Request remote call to /wx/remogen/list/getter. (auto-generated method)<br>
      * <pre>
      * url: /wx/remogen/list/getter
@@ -204,7 +238,7 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenTrickyNobodyReturn requestRemogenTrickyNobody(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenTrickyNobodyReturn.class, "/wx/remogen/tricky/nobody", noMoreUrl(), noRequestBody(), rule -> {
+        return doRequestPost(RemoteWxRemogenTrickyNobodyReturn.class, "/wx/remogen/tricky/nobody", noMoreUrl(), null, rule -> {
             ruleOfRemogenTrickyNobody(rule);
             ruleLambda.accept(rule);
         });

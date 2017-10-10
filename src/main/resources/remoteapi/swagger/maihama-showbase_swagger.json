@@ -923,6 +923,32 @@
         ]
       }
     },
+    "/wx/remogen/list/basic": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [],
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.base.general.KeyValueResult\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
     "/wx/remogen/list/getter": {
       "post": {
         "summary": "@author jflute",
