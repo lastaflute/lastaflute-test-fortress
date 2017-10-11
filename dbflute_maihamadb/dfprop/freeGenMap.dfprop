@@ -12,8 +12,7 @@ map:{
             ; outputDirectory = $$baseDir$$/java
             ; package = org.docksidestage.remote
         }
-        ; tableMap = map:{
-            ; tablePath = map
+        ; optionMap = map:{
             ; ruleJsPath = ../src/main/resources/remoteapi/swagger/maihama-showbase_rule.js
         }
     }
