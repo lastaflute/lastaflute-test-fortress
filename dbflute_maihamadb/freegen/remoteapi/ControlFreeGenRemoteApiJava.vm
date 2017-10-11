@@ -92,7 +92,7 @@
                     #elseif (${typeMap[$response.schema.items.type]})
                       #set ($returnBean = { 'className': "${typeMap[$response.schema.items.type]}", 'array': true })
                     #else
-                      #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
+                      #set ($definitionKey = $response.schema['items']['$ref'].replace('#/definitions/', '')))
                       #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                       #if (!$returnProperties.empty)
                         #processRemoteApiBean('return', $api, $returnProperties)
