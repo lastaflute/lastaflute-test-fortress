@@ -24,6 +24,7 @@ import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBh
 import org.docksidestage.remote.maihama.showbase.product.detail.RemoteProductDetailReturn;
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchParam;
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchReturn;
+import org.docksidestage.remote.maihama.showbase.product.list.status.RemoteProductListStatusReturn;
 
 /**
  * The base class as generation gap for remote API of product.
@@ -128,9 +129,10 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * url: /product/list/status
      * httpMethod: POST
      * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public void requestListStatus() {
-        requestListStatus(rule -> {});
+    public org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn> requestListStatus() {
+        return requestListStatus(rule -> {});
     }
 
     /**
@@ -140,9 +142,11 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected void requestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/product/list/status", noMoreUrl(), null, rule -> {
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn> requestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn>>() {
+        }.getType(), "/product/list/status", noMoreUrl(), null, rule -> {
             ruleOfListStatus(rule);
             ruleLambda.accept(rule);
         });

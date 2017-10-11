@@ -13,8 +13,8 @@
  */
 
 // ===================================================================================
-//                                                                                Util
-//                                                                                ====
+//                                                                             Utility
+//                                                                             =======
 /**
  * Return capitalize value.
  * @param {string} value - value.
@@ -43,8 +43,8 @@ var _initCap= function(value) {
 };
 
 // ===================================================================================
-//                                                                                Base
-//                                                                                ====
+//                                                                               Base
+//                                                                              ======
 /**
  * Return true if target.
  * @param {Api} api - API.
@@ -155,8 +155,8 @@ var behaviorRuleMethodName = function(api) {
 };
 
 // ===================================================================================
-//                                                                                Bean
-//                                                                                ====
+//                                                                        Param/Return
+//                                                                        ============
 /**
  * Return filtered Bean SubPackage.
  * @param {Api} api - API.

@@ -1,5 +1,5 @@
 ##
-## Copyright 2014-2016 the original author or authors.
+## Copyright 2017-2017 the original author or authors.
 ##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
@@ -15,46 +15,76 @@
 ##
 #foreach ($request in $requestList)
 #if ($request.isResourceTypeSwagger())
-  #set ($tableMap = $request.tableMap)
+  ## only swagger requests here
   #set ($optionMap = $request.optionMap)
   $request.enableOutputDirectory()
   $manager.makeDirectory($request.generateDirPath)
+
+  ## use JavaScript for rule settings
   #set ($scriptEngine = $manager.createJavaScriptEngine())
   $scriptEngine.eval('load("./freegen/remoteapi/RemoteApiRule.js");')
-  #if ($tableMap.ruleJsPath && $tableMap.ruleJsPath != '')
-    $scriptEngine.eval("load('$tableMap.ruleJsPath');")
+  #if ($optionMap.ruleJsPath && $optionMap.ruleJsPath != '')
+    ## load application rule settings if exists
+    $scriptEngine.eval("load('$optionMap.ruleJsPath');")
   #end
+
+  ## load java property type mapping
   #loadTypeMap()
+
   #set ($resourceTypeRemoteApi = "RemoteApi")
   #if ($request.requestName.startsWith($resourceTypeRemoteApi))
-    $manager.info("gen remote api: ${request.requestName}")
+    ## only remote api requests here
+    $manager.info("...Generating remote api: ${request.requestName}")
 
+    ## keep definitions in swagger.json for "$ref" handling
     #foreach($swaggerJsonEntry in $optionMap.jsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'definitions')
         #set ($definitionMap = $swaggerJsonEntry.value)
       #end
     #end
 
+    ## schema name is from part of FreeGen request name e.g. RemoteApiSeaLand => SeaLand
     #set ($scheme = $request.requestName.replace($resourceTypeRemoteApi, ''))
     #set ($schemePackage = $scriptEngine.invokeFunction('schemePackage', $scheme))
     #set ($bsBehaviorMap = {})
     #set ($exBehaviorMap = {})
+
+    ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    ## loop swagger.json's first-level elements e.g. swagger, info, host, basePath, tags, paths, ...
+    ## _/_/_/_/_/_/_/_/_/_/
     #foreach($swaggerJsonEntry in $optionMap.jsonMap.entrySet())
       #if ($swaggerJsonEntry.key == 'paths')
         #set ($pathMap = $swaggerJsonEntry.value)
+
+        ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        ## loop paths's elements, per one API URL: e.g. /sea/land
+        ## _/_/_/_/_/_/_/_/_/_/
         #foreach($pathEntry in $pathMap.entrySet())
+
+          ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+          ## loop path's elements, per HTTP method e.g. get, post, ...
+          ## _/_/_/_/_/_/_/_/_/_/
           #foreach($methodEntry in $pathEntry.value.entrySet())
             #set ($multipleHttpMethod = $pathEntry.value.size() > 1)
             #set ($api = { 'scheme': $scheme, 'url': $pathEntry.key, 'httpMethod': $methodEntry.key, 'multipleHttpMethod': $multipleHttpMethod, 'consumes': $methodEntry.value.consumes, 'produces': $methodEntry.value.produces })
             #if ($scriptEngine.invokeFunction('target', $api))
               #set ($api.url = $scriptEngine.invokeFunction('url', $api))
-              ## param
+
+              ## +------------------------+
+              ## |                        |
+              ## | Generate 'Param' beans |
+              ## |                        |
+              ## +------------------------+
               #set ($bodyProperties = {})
               #set ($pathVariables = {})
               #set ($queryProperties = {})
               #set ($formDataProperties = {})
               #set ($paramBean = {})
               #set ($returnBean = {})
+
+              ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+              ## loop parameters's elements, e.g. in, name, description, required, schema, ...
+              ## _/_/_/_/_/_/_/_/_/_/
               #foreach($parameter in $methodEntry.value['parameters'])
                 #if ($parameter.in == 'body')
                   #set ($definitionKey = '')
@@ -81,8 +111,16 @@
                 #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'formData' }) })
               #end
 
-              ## return
+              ## +-------------------------+
+              ## |                         |
+              ## | Generate 'Return' beans |
+              ## |                         |
+              ## +-------------------------+
               #set ($returnProperties = {})
+
+              ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+              ## loop responses's elements, e.g. in, name, description, required, schema, ...
+              ## _/_/_/_/_/_/_/_/_/_/
               #foreach($responseEntry in $methodEntry.value['responses'].entrySet())
                 #set ($response = $responseEntry.value)
                 #if ($response.schema)
@@ -92,6 +130,7 @@
                     #elseif (${typeMap[$response.schema.items.type]})
                       #set ($returnBean = { 'className': "${typeMap[$response.schema.items.type]}", 'array': true })
                     #else
+                      ## 'schema' -> 'items' -> '$ref' if array
                       #set ($definitionKey = $response.schema['items']['$ref'].replace('#/definitions/', '')))
                       #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                       #if (!$returnProperties.empty)
@@ -104,6 +143,7 @@
                   #elseif (${typeMap[$response.schema.type]})
                     #set ($returnBean = { 'className': ${typeMap[$response.schema.type]} })
                   #elseif ($response.schema['$ref'])
+                    ## 'schema' -> '$ref' if normally
                     #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
                     #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                     #if (!$returnProperties.empty)
@@ -140,9 +180,13 @@
   #end
 #end
 
-##################################################
-## process remote api bean.
-##################################################
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Process remote api bean. (generating class)
+##
+## @param type The bean role type. e.g. param, return (NotNull)
+## @param api The information of api. (NotNull)
+## @param properties_ The information of property for the bean. (NotNull)
+## _/_/_/_/_/_/_/_/_/_/
 #macro(processRemoteApiBean, $type, $api, $properties_)
   #set ($subPackage = $scriptEngine.invokeFunction('beanSubPackage', $api))
   #set ($class = $scriptEngine.invokeFunction("${type}ClassName", $api))
@@ -176,7 +220,7 @@
 #end
 
 ##################################################
-## process remote api bhv.
+## process remote api bhv. (generating class)
 ##################################################
 #macro(processRemoteApiBhv)
   #if ($scriptEngine.eval('behaviorClassGeneration'))
@@ -233,9 +277,10 @@
 #set ($adjustType = $scriptEngine.invokeFunction('nestClassName', $scheme, $adjustType))
 #end
 
-##################################################
-## load type map.
-##################################################
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Load java property type mapping.
+## You can use 'typeMap' variable in your velocity.
+## _/_/_/_/_/_/_/_/_/_/
 #macro(loadTypeMap)
   #set ($typeMap = {})
   $typeMap.put('object', 'Object')
@@ -249,7 +294,8 @@
   $typeMap.put('date', 'java.time.LocalDate')
   $typeMap.put('date-time', 'java.time.LocalDateTime')
   $typeMap.put('array', 'java.util.List')
-  #if ($scriptEngine.eval('yourCollections'))
-    $typeMap.put('array', $scriptEngine.eval('yourCollections'))
+  #set ($yourCollections = $scriptEngine.eval('yourCollections'))
+  #if ($yourCollections)
+    $typeMap.put('array', $yourCollections)
   #end
 #end

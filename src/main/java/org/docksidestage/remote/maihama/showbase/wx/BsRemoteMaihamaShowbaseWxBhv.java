@@ -22,6 +22,9 @@ import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.wx.faicli.RemoteWxFaicliParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.list.basic.RemoteWxRemogenListBasicReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.list.generics.RemoteWxRemogenListGenericsReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.list.innergene.RemoteWxRemogenListInnergeneReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
 
 /**
@@ -156,9 +159,10 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * url: /wx/remogen/list/basic
      * httpMethod: POST
      * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public void requestRemogenListBasic() {
-        requestRemogenListBasic(rule -> {});
+    public org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListBasicReturn> requestRemogenListBasic() {
+        return requestRemogenListBasic(rule -> {});
     }
 
     /**
@@ -168,9 +172,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected void requestRemogenListBasic(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/wx/remogen/list/basic", noMoreUrl(), null, rule -> {
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListBasicReturn> requestRemogenListBasic(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListBasicReturn>>() {
+        }.getType(), "/wx/remogen/list/basic", noMoreUrl(), null, rule -> {
             ruleOfRemogenListBasic(rule);
             ruleLambda.accept(rule);
         });
@@ -184,36 +190,75 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
     }
 
     /**
-     * Request remote call to /wx/remogen/list/getter. (auto-generated method)<br>
+     * Request remote call to /wx/remogen/list/generics. (auto-generated method)<br>
      * <pre>
-     * url: /wx/remogen/list/getter
+     * url: /wx/remogen/list/generics
      * httpMethod: POST
      * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public void requestRemogenListGetter() {
-        requestRemogenListGetter(rule -> {});
+    public org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenericsReturn> requestRemogenListGenerics() {
+        return requestRemogenListGenerics(rule -> {});
     }
 
     /**
-     * Request remote call to /wx/remogen/list/getter. (auto-generated method)<br>
+     * Request remote call to /wx/remogen/list/generics. (auto-generated method)<br>
      * <pre>
-     * url: /wx/remogen/list/getter
+     * url: /wx/remogen/list/generics
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected void requestRemogenListGetter(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/wx/remogen/list/getter", noMoreUrl(), null, rule -> {
-            ruleOfRemogenListGetter(rule);
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenericsReturn> requestRemogenListGenerics(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenericsReturn>>() {
+        }.getType(), "/wx/remogen/list/generics", noMoreUrl(), null, rule -> {
+            ruleOfRemogenListGenerics(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /wx/remogen/list/getter.<br>
+     * Set up method-level rule of /wx/remogen/list/generics.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfRemogenListGetter(FlutyRemoteApiRule rule) {
+    protected void ruleOfRemogenListGenerics(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/list/innergene. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/list/innergene
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListInnergeneReturn> requestRemogenListInnergene() {
+        return requestRemogenListInnergene(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/list/innergene. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/list/innergene
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListInnergeneReturn> requestRemogenListInnergene(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListInnergeneReturn>>() {
+        }.getType(), "/wx/remogen/list/innergene", noMoreUrl(), null, rule -> {
+            ruleOfRemogenListInnergene(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/list/innergene.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenListInnergene(FlutyRemoteApiRule rule) {
     }
 
     /**

@@ -120,9 +120,11 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "array",
-            "items": {
-              "type": "object"
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
+              }
             }
           },
           "400": {
@@ -458,9 +460,11 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.base.general.KeyValueResult\u003e"
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
+              }
             }
           },
           "400": {
@@ -790,9 +794,11 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "array",
-            "items": {
-              "type": "object"
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
+              }
             }
           },
           "400": {
@@ -935,9 +941,11 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.base.general.KeyValueResult\u003e"
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.base.KeyValueResult\u003e"
+              }
             }
           },
           "400": {
@@ -949,7 +957,7 @@
         ]
       }
     },
-    "/wx/remogen/list/getter": {
+    "/wx/remogen/list/generics": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -961,9 +969,39 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "array",
-            "items": {
-              "type": "object"
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.base.ValueGenericsResult\u003cjava.lang.String\u003e\u003e"
+              }
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/list/innergene": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [],
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e"
+              }
             }
           },
           "400": {
@@ -988,7 +1026,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.base.general.KeyValueResult"
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.base.KeyValueResult"
             }
           },
           "400": {
@@ -1030,6 +1068,21 @@
           "name": "memberStatusName",
           "required": false,
           "type": "string"
+        }
+      }
+    },
+    "java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String, java.lang.String\u003e\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "name": "key",
+          "required": false,
+          "type": "object"
+        },
+        "value": {
+          "name": "value",
+          "required": false,
+          "type": "object"
         }
       }
     },
@@ -1710,21 +1763,6 @@
         }
       }
     },
-    "java.util.List\u003corg.docksidestage.app.web.base.general.KeyValueResult\u003e": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "name": "key",
-          "required": false,
-          "type": "string"
-        },
-        "value": {
-          "name": "value",
-          "required": false,
-          "type": "object"
-        }
-      }
-    },
     "org.docksidestage.app.web.products.ProductsSearchBody": {
       "type": "object",
       "properties": {
@@ -1918,7 +1956,37 @@
         }
       }
     },
-    "org.docksidestage.app.web.base.general.KeyValueResult": {
+    "java.util.List\u003corg.docksidestage.app.web.wx.base.KeyValueResult\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "name": "key",
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "name": "value",
+          "required": false,
+          "type": "object"
+        }
+      }
+    },
+    "java.util.List\u003corg.docksidestage.app.web.wx.base.ValueGenericsResult\u003cjava.lang.String\u003e\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "name": "key",
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "name": "value",
+          "required": false,
+          "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.base.KeyValueResult": {
       "type": "object",
       "properties": {
         "key": {

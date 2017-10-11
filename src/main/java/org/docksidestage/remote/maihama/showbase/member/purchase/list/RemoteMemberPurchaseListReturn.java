@@ -43,7 +43,7 @@ public class RemoteMemberPurchaseListReturn {
     /** The property of rows. (paging data for current page) */
     @Required
     @javax.validation.Valid
-    public java.util.List<MemberPurchaseSearchRowPart> rows;
+    public org.eclipse.collections.api.list.ImmutableList<MemberPurchaseSearchRowPart> rows;
 
     /**
      * The part class of MemberPurchaseSearchRowPart.

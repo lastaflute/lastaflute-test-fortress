@@ -81,19 +81,19 @@ public class RemoteMemberAddRegisterReturn {
     public Object MemberWithdrawalAsOne;
 
     /** The property of _memberAddressList. ((会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressList') (NullAllowed) */
-    public java.util.List<Object> MemberAddressList;
+    public org.eclipse.collections.api.list.ImmutableList<Object> MemberAddressList;
 
     /** The property of _memberFollowingByMyMemberIdList. ((会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdList') (NullAllowed) */
-    public java.util.List<Object> MemberFollowingByMyMemberIdList;
+    public org.eclipse.collections.api.list.ImmutableList<Object> MemberFollowingByMyMemberIdList;
 
     /** The property of _memberFollowingByYourMemberIdList. ((会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdList') (NullAllowed) */
-    public java.util.List<Object> MemberFollowingByYourMemberIdList;
+    public org.eclipse.collections.api.list.ImmutableList<Object> MemberFollowingByYourMemberIdList;
 
     /** The property of _memberLoginList. ((会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginList') (NullAllowed) */
-    public java.util.List<Object> MemberLoginList;
+    public org.eclipse.collections.api.list.ImmutableList<Object> MemberLoginList;
 
     /** The property of _purchaseList. ((購入)PURCHASE by MEMBER_ID, named 'purchaseList') (NullAllowed) */
-    public java.util.List<Object> PurchaseList;
+    public org.eclipse.collections.api.list.ImmutableList<Object> PurchaseList;
 
     /** The property of __uniqueDrivenProperties. (NullAllowed) */
     public Object _uniqueDrivenProperties;

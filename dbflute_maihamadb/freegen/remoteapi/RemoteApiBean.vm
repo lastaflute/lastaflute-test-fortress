@@ -1,5 +1,5 @@
 ##
-## Copyright 2014-2016 the original author or authors.
+## Copyright 2017-2017 the original author or authors.
 ##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
@@ -65,7 +65,6 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #macro(generateProperty, $class $propertyEntry)
 #set ($fieldName = $propertyEntry.key)
 #set ($property = $propertyEntry.value)
-## TODO jflute avoid no-name property, what should i do? (2017/10/10)
 ## TODO p1us2er0 temporary for beanPropertyManualMappingDescription. (2017/10/10)
 #set ($property.name = $fieldName)
 #set ($enumValueComment = '')

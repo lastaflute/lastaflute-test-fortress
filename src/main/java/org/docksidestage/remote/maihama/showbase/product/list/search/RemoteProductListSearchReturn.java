@@ -43,7 +43,7 @@ public class RemoteProductListSearchReturn {
     /** The property of rows. (paging data for current page) */
     @Required
     @javax.validation.Valid
-    public java.util.List<ProductRowPart> rows;
+    public org.eclipse.collections.api.list.ImmutableList<ProductRowPart> rows;
 
     /**
      * The part class of ProductRowPart.

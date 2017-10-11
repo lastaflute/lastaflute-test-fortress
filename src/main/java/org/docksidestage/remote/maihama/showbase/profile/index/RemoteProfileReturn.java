@@ -47,7 +47,7 @@ public class RemoteProfileReturn {
     /** The property of purchaseList. */
     @Required
     @javax.validation.Valid
-    public java.util.List<PurchasedProductPart> purchaseList;
+    public org.eclipse.collections.api.list.ImmutableList<PurchasedProductPart> purchaseList;
 
     /**
      * The part class of PurchasedProductPart.

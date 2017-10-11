@@ -27,7 +27,7 @@ public class RemoteMypageReturn {
     /** The property of recentProducts. */
     @Required
     @javax.validation.Valid
-    public java.util.List<ProductPart> recentProducts;
+    public org.eclipse.collections.api.list.ImmutableList<ProductPart> recentProducts;
 
     /**
      * The part class of ProductPart.
@@ -47,7 +47,7 @@ public class RemoteMypageReturn {
     /** The property of highPriceProducts. */
     @Required
     @javax.validation.Valid
-    public java.util.List<ProductPart> highPriceProducts;
+    public org.eclipse.collections.api.list.ImmutableList<ProductPart> highPriceProducts;
 
     @Override
     public String toString() {

@@ -21,6 +21,7 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
+import org.docksidestage.remote.maihama.showbase.withdrawal.reason.RemoteWithdrawalReasonReturn;
 import org.docksidestage.remote.maihama.showbase.withdrawal.done.RemoteWithdrawalDoneParam;
 
 /**
@@ -48,9 +49,10 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * url: /withdrawal/reason
      * httpMethod: POST
      * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public void requestReason() {
-        requestReason(rule -> {});
+    public org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn> requestReason() {
+        return requestReason(rule -> {});
     }
 
     /**
@@ -60,9 +62,11 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected void requestReason(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/withdrawal/reason", noMoreUrl(), null, rule -> {
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn> requestReason(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn>>() {
+        }.getType(), "/withdrawal/reason", noMoreUrl(), null, rule -> {
             ruleOfReason(rule);
             ruleLambda.accept(rule);
         });
