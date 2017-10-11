@@ -957,7 +957,35 @@
         ]
       }
     },
-    "/wx/remogen/list/generics": {
+    "/wx/remogen/list/genebean": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [],
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.base.ValueGenericsResult\u003corg.docksidestage.app.web.wx.base.SuperSimpleResult\u003e\u003e"
+              }
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/list/genestring": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -1957,6 +1985,21 @@
       }
     },
     "java.util.List\u003corg.docksidestage.app.web.wx.base.KeyValueResult\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "name": "key",
+          "required": false,
+          "type": "string"
+        },
+        "value": {
+          "name": "value",
+          "required": false,
+          "type": "object"
+        }
+      }
+    },
+    "java.util.List\u003corg.docksidestage.app.web.wx.base.ValueGenericsResult\u003corg.docksidestage.app.web.wx.base.SuperSimpleResult\u003e\u003e": {
       "type": "object",
       "properties": {
         "key": {

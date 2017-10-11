@@ -23,7 +23,8 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.wx.faicli.RemoteWxFaicliParam;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.basic.RemoteWxRemogenListBasicReturn;
-import org.docksidestage.remote.maihama.showbase.wx.remogen.list.generics.RemoteWxRemogenListGenericsReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genebean.RemoteWxRemogenListGenebeanReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genestring.RemoteWxRemogenListGenestringReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.innergene.RemoteWxRemogenListInnergeneReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
 
@@ -190,39 +191,75 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
     }
 
     /**
-     * Request remote call to /wx/remogen/list/generics. (auto-generated method)<br>
+     * Request remote call to /wx/remogen/list/genebean. (auto-generated method)<br>
      * <pre>
-     * url: /wx/remogen/list/generics
+     * url: /wx/remogen/list/genebean
      * httpMethod: POST
      * </pre>
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenericsReturn> requestRemogenListGenerics() {
-        return requestRemogenListGenerics(rule -> {});
+    public org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenebeanReturn> requestRemogenListGenebean() {
+        return requestRemogenListGenebean(rule -> {});
     }
 
     /**
-     * Request remote call to /wx/remogen/list/generics. (auto-generated method)<br>
+     * Request remote call to /wx/remogen/list/genebean. (auto-generated method)<br>
      * <pre>
-     * url: /wx/remogen/list/generics
+     * url: /wx/remogen/list/genebean
      * httpMethod: POST
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenericsReturn> requestRemogenListGenerics(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenericsReturn>>() {
-        }.getType(), "/wx/remogen/list/generics", noMoreUrl(), null, rule -> {
-            ruleOfRemogenListGenerics(rule);
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenebeanReturn> requestRemogenListGenebean(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenebeanReturn>>() {
+        }.getType(), "/wx/remogen/list/genebean", noMoreUrl(), null, rule -> {
+            ruleOfRemogenListGenebean(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /wx/remogen/list/generics.<br>
+     * Set up method-level rule of /wx/remogen/list/genebean.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfRemogenListGenerics(FlutyRemoteApiRule rule) {
+    protected void ruleOfRemogenListGenebean(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/list/genestring. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/list/genestring
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenestringReturn> requestRemogenListGenestring() {
+        return requestRemogenListGenestring(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/list/genestring. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/list/genestring
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenestringReturn> requestRemogenListGenestring(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenestringReturn>>() {
+        }.getType(), "/wx/remogen/list/genestring", noMoreUrl(), null, rule -> {
+            ruleOfRemogenListGenestring(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/list/genestring.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenListGenestring(FlutyRemoteApiRule rule) {
     }
 
     /**
