@@ -180,21 +180,21 @@
   #end
 #end
 
-## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 ## Process remote api bean. (generating class)
-##
 ## @param type The bean role type. e.g. param, return (NotNull)
 ## @param api The information of api. (NotNull)
 ## @param properties_ The information of property for the bean. (NotNull)
 ## _/_/_/_/_/_/_/_/_/_/
 #macro(processRemoteApiBean, $type, $api, $properties_)
+  #set ($subPackage = '')
   #set ($subPackage = $scriptEngine.invokeFunction('beanSubPackage', $api))
   #set ($class = $scriptEngine.invokeFunction("${type}ClassName", $api))
   #set ($extendsClass = '')
   #set ($implementsClasses = '')
   #set ($extendsClass = $scriptEngine.eval("${type}ExtendsClass"))
   #set ($implementsClasses = $scriptEngine.eval("${type}ImplementsClasses"))
-  #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}/${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+  #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
   #set ($properties = $properties_)
   #set ($beanPurposeType = $type)
   #set ($remoteApiExp = "${api.httpMethod.toUpperCase()} ${api.url}")
@@ -202,10 +202,17 @@
   #generate("./remoteapi/RemoteApiBean.vm", $path)
 #end
 
-##################################################
-## keep remote api behavior.
-##################################################
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Keep information of remote api behavior.
+## @param api The information of api. (NotNull)
+## @param pathVariables The array of path variables. (NotNull)
+## @param paramBean The information of param bean. (NotNull)
+## @param returnBean The information of return bean. (NotNull)
+## @return bsBehaviorMap The map of base behavior information. (NotNull)
+## @return exBehaviorMap The map of extended behavior information. (NotNull)
+## _/_/_/_/_/_/_/_/_/_/
 #macro(keepRemoteApiBehavior, $api, $pathVariables, $paramBean, $returnBean)
+  #set ($subPackage = '')
   #set ($subPackage = $scriptEngine.invokeFunction('behaviorSubPackage', $api))
   #set ($class = $scriptEngine.invokeFunction('bsBehaviorClassName', $api))
   #if (!$bsBehaviorMap.containsKey("${schemePackage}.${subPackage}.${class}")) {
@@ -219,9 +226,10 @@
   $exBehaviorMap.put("${schemePackage}.${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'baseSubPackage': ${baseSubPackage}, 'baseClass': ${baseClass} })
 #end
 
-##################################################
-## process remote api bhv. (generating class)
-##################################################
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Process remote api behavior. (generating class)
+## Also generate DI xml.
+## _/_/_/_/_/_/_/_/_/_/
 #macro(processRemoteApiBhv)
   #if ($scriptEngine.eval('behaviorClassGeneration'))
     #set ($abstractBehaviorClassName = $scriptEngine.invokeFunction('abstractBehaviorClassName', $scheme))
@@ -234,7 +242,7 @@
       #set ($class = $bsBehavior['class'])
       #set ($methodList = $bsBehavior['methodList'])
       #set ($remoteApiExp = $subPackage)
-      #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}/${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+      #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
       #mkdir($path)
       #generate("./remoteapi/RemoteApiBsBehavior.vm", $path)
     #end
@@ -245,7 +253,7 @@
       #set ($baseSubPackage = ${exBehavior['baseSubPackage']})
       #set ($baseClass = $exBehavior['baseClass'])
       #set ($remoteApiExp = $subPackage)
-      #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}/${subPackage.replaceAll('\.', '/')}/${class.replaceAll('\.', '/')}.java")
+      #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
       #mkdir($path)
       #generateEx("./remoteapi/RemoteApiExBehavior.vm", $path)
     #end
@@ -263,10 +271,12 @@
   #end
 #end
 
-##################################################
-## adjust type.
-##################################################
-#macro(adjustType, $type, $class)
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Adjust java type of e.g. property. e.g. java.util.List to List
+## @param type The type of java type. (NotNull)
+## @return adjustType The filtered expression of the type.
+## _/_/_/_/_/_/_/_/_/_/
+#macro(adjustType, $type)
 #set ($adjustType = ${type})
 #set ($index = ${adjustType.lastIndexOf('.')})
 #if ($index != -1)
@@ -277,9 +287,9 @@
 #set ($adjustType = $scriptEngine.invokeFunction('nestClassName', $scheme, $adjustType))
 #end
 
-## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-## Load java property type mapping.
-## You can use 'typeMap' variable in your velocity.
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Load java property type mapping. (initialization)
+## @return typeMap The map of type conversion, swagger type to java type. (NotNull)
 ## _/_/_/_/_/_/_/_/_/_/
 #macro(loadTypeMap)
   #set ($typeMap = {})

@@ -12,6 +12,16 @@
  * @property {string[]} api.produces - Produces.
  */
 
+/**
+ * PathVariable Type.
+ * @typedef {Object} PathVariable
+ */
+
+/**
+ * Property Type.
+ * @typedef {Object} Property
+ */
+
 // ===================================================================================
 //                                                                             Utility
 //                                                                             =======
@@ -21,6 +31,9 @@
  * @return {string} capitalize value.
  */
 var _capitalize = function(value) {
+    if (value == null) {
+        return null;
+    }
     return value.replace(/(_|\.)./g, function(s) { return s.charAt(1).toUpperCase(); });
 };
 
@@ -30,6 +43,9 @@ var _capitalize = function(value) {
  * @return {string} capitalize value.
  */
 var _decamelize = function(value) {
+    if (value == null) {
+        return null;
+    }
     return value.replace(/([A-Z][^A-Z])/g, function(s) { return '_' + s; }).toUpperCase().replace(/^_/, '');
 };
 
@@ -39,6 +55,9 @@ var _decamelize = function(value) {
  * @return {string} init cap value.
  */
 var _initCap= function(value) {
+    if (value == null) {
+        return null;
+    }
     return value.charAt(0).toUpperCase() + value.slice(1);
 };
 
@@ -51,7 +70,10 @@ var _initCap= function(value) {
  * @return {boolean} true if target.
  */
 var target = function(api) {
-    return (api.consumes.indexOf('application/json') != -1 || api.produces.indexOf('application/json') != -1) && api.url.indexOf('/swagger/json') != 0;
+    var contentTypes = [];
+    Array.prototype.push.apply(contentTypes, api.consumes ? api.consumes : []);
+    Array.prototype.push.apply(contentTypes, api.produces ? api.produces : []);
+    return (contentTypes.indexOf('application/json') != -1) && api.url.indexOf('/swagger/json') != 0;
 };
 
 /**
@@ -225,7 +247,7 @@ var yourCollections = null;
 /**
  * Return pathVariableManualMappingClass.
  * @param {Api} api - API.
- * @param {string} pathVariable - pathVariable.
+ * @param {PathVariable} pathVariable - pathVariable.
  * @return {string} pathVariableManualMappingClass.
  */
 var pathVariableManualMappingClass = function(api, pathVariable) {
@@ -236,7 +258,7 @@ var pathVariableManualMappingClass = function(api, pathVariable) {
  * Return pathVariableManualMappingClass.
  * @param {Api} api - API.
  * @param {string} beanClassName - beanClassName.
- * @param {string} property - property.
+ * @param {Property} property - property.
  * @return {string} pathVariableManualMappingClass.
  */
 var beanPropertyManualMappingClass = function(api, beanClassName, property) {
@@ -246,7 +268,7 @@ var beanPropertyManualMappingClass = function(api, beanClassName, property) {
 /**
  * Return pathVariableManualMappingDescription.
  * @param {Api} api - API.
- * @param {string} pathVariable - pathVariable.
+ * @param {PathVariable} pathVariable - pathVariable.
  * @return {string} pathVariableManualMappingClass.
  */
 var pathVariableManualMappingDescription = function(api, pathVariable) {
@@ -257,7 +279,7 @@ var pathVariableManualMappingDescription = function(api, pathVariable) {
  * Return beanPropertyManualMappingDescription.
  * @param {Api} api - API.
  * @param {string} beanClassName - beanClassName.
- * @param {string} property - property.
+ * @param {Property} property - property.
  * @return {string} beanPropertyManualMappingDescription.
  */
 var beanPropertyManualMappingDescription = function(api, beanClassName, property) {

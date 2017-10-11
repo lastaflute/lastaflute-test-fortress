@@ -13,7 +13,7 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-${manager.allClassCopyright}package ${request.package}.${schemePackage}.${subPackage};
+${manager.allClassCopyright}package ${request.package}.${schemePackage}#if ($subPackage && $subPackage != '').${subPackage}#end;
 #set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
 #set ($parameterFlg = false)
 #if ($scriptEngine.eval('behaviorMethodGeneration'))
@@ -49,7 +49,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    /***
+    /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public ${class}(RequestManager requestManager) {
