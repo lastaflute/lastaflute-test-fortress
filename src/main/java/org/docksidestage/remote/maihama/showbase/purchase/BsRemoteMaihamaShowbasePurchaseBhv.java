@@ -35,7 +35,7 @@ public abstract class BsRemoteMaihamaShowbasePurchaseBhv extends AbstractRemoteM
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    /***
+    /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public BsRemoteMaihamaShowbasePurchaseBhv(RequestManager requestManager) {

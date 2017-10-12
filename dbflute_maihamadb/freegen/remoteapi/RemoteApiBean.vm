@@ -27,6 +27,7 @@ ${manager.allClassCopyright}package ${request.package}.${schemePackage}#if (${su
 #end
 #if ($nestType && $nestType != '')
 #foreach($nestPropertyEntry in $definitionMap[$nestType].properties.entrySet())
+#set ($nestPropertyEntry.value.required =  $definitionMap[$nestType].required.contains($nestPropertyEntry.key))
 #set ($nestProperty = $nestPropertyEntry.value)
 #if (${nestProperty.required})
 #set($added = $importSet.add('org.lastaflute.web.validation.Required'))

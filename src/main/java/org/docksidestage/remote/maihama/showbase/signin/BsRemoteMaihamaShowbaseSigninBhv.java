@@ -33,7 +33,7 @@ public abstract class BsRemoteMaihamaShowbaseSigninBhv extends AbstractRemoteMai
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    /***
+    /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public BsRemoteMaihamaShowbaseSigninBhv(RequestManager requestManager) {

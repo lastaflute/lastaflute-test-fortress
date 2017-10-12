@@ -32,7 +32,7 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    /***
+    /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public BsRemoteMaihamaShowbaseProductsBhv(RequestManager requestManager) {
@@ -50,9 +50,10 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * </pre>
      * @param productId The value of path variable for productId. (NotNull)
      * @param paramLambda The callback for RemoteProductsParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public void request(Integer productId, Consumer<RemoteProductsParam> paramLambda) {
-        request(productId, paramLambda, rule -> {});
+    public Object request(Integer productId, Consumer<RemoteProductsParam> paramLambda) {
+        return request(productId, paramLambda, rule -> {});
     }
 
     /**
@@ -64,11 +65,12 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param productId The value of path variable for productId. (NotNull)
      * @param paramLambda The callback for RemoteProductsParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected void request(Integer productId, Consumer<RemoteProductsParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected Object request(Integer productId, Consumer<RemoteProductsParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductsParam param = new RemoteProductsParam();
         paramLambda.accept(param);
-        doRequestPost(void.class, "/products/{productId}", moreUrl(productId), param, rule -> {
+        return doRequestPost(Object.class, "/products/{productId}", moreUrl(productId), param, rule -> {
             ruleOfProductId(rule);
             ruleLambda.accept(rule);
         });

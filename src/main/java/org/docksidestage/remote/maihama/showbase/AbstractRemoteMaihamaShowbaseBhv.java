@@ -35,7 +35,7 @@ public class AbstractRemoteMaihamaShowbaseBhv extends org.lastaflute.remoteapi.L
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    /***
+    /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public AbstractRemoteMaihamaShowbaseBhv(RequestManager requestManager) {

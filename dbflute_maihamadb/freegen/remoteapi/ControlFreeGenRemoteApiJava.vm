@@ -91,6 +91,9 @@
                   #if ($parameter.schema && $parameter.schema['$ref'])
                     #set ($definitionKey = $parameter.schema['$ref'].replace('#/definitions/', '')))
                     #set ($bodyProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
+                    #foreach($bodyPropertyEntry in $bodyProperties.entrySet())
+                      #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
+                    #end
                     #processRemoteApiBean('param', $api, $bodyProperties)
                     #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'body' })
                   #end
@@ -134,6 +137,9 @@
                       #set ($definitionKey = $response.schema['items']['$ref'].replace('#/definitions/', '')))
                       #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                       #if (!$returnProperties.empty)
+                        #foreach($returnPropertyEntry in $returnProperties.entrySet())
+                          #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
+                        #end
                         #processRemoteApiBean('return', $api, $returnProperties)
                         #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': "${class}", 'array': true})
                       #end
@@ -147,6 +153,9 @@
                     #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
                     #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
                     #if (!$returnProperties.empty)
+                      #foreach($returnPropertyEntry in $returnProperties.entrySet())
+                        #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
+                      #end
                       #processRemoteApiBean('return', $api, $returnProperties)
                       #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class} })
                     #end
@@ -303,6 +312,7 @@
   $typeMap.put('boolean', 'Boolean')
   $typeMap.put('date', 'java.time.LocalDate')
   $typeMap.put('date-time', 'java.time.LocalDateTime')
+  $typeMap.put('file', 'org.lastaflute.web.ruts.multipart.MultipartFormFile')
   $typeMap.put('array', 'java.util.List')
   #set ($yourCollections = $scriptEngine.eval('yourCollections'))
   #if ($yourCollections)

@@ -16,7 +16,6 @@
 package org.docksidestage.remote.maihama.showbase.wx.faicli;
 
 import org.lastaflute.core.util.Lato;
-import org.lastaflute.web.validation.Required;
 
 /**
  * The bean class as param for remote API of POST /wx/faicli/.
@@ -24,8 +23,7 @@ import org.lastaflute.web.validation.Required;
  */
 public class RemoteWxFaicliParam {
 
-    /** The property of sea. */
-    @Required
+    /** The property of sea. (NullAllowed) */
     public String sea;
 
     @Override

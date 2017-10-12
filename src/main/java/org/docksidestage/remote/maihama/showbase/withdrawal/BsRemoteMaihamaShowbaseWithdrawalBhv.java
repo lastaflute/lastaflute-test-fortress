@@ -33,7 +33,7 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    /***
+    /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public BsRemoteMaihamaShowbaseWithdrawalBhv(RequestManager requestManager) {
@@ -86,9 +86,10 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * httpMethod: POST
      * </pre>
      * @param paramLambda The callback for RemoteWithdrawalDoneParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public void requestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda) {
-        requestDone(paramLambda, rule -> {});
+    public Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda) {
+        return requestDone(paramLambda, rule -> {});
     }
 
     /**
@@ -99,11 +100,12 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * </pre>
      * @param paramLambda The callback for RemoteWithdrawalDoneParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected void requestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
         paramLambda.accept(param);
-        doRequestPost(void.class, "/withdrawal/done", noMoreUrl(), param, rule -> {
+        return doRequestPost(Integer.class, "/withdrawal/done", noMoreUrl(), param, rule -> {
             ruleOfDone(rule);
             ruleLambda.accept(rule);
         });

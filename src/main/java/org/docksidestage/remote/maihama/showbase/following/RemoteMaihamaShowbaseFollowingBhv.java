@@ -30,7 +30,7 @@ public class RemoteMaihamaShowbaseFollowingBhv extends BsRemoteMaihamaShowbaseFo
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    /***
+    /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public RemoteMaihamaShowbaseFollowingBhv(RequestManager requestManager) {

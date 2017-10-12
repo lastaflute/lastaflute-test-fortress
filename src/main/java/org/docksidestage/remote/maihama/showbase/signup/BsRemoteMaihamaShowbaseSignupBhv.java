@@ -32,7 +32,7 @@ public abstract class BsRemoteMaihamaShowbaseSignupBhv extends AbstractRemoteMai
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    /***
+    /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
     public BsRemoteMaihamaShowbaseSignupBhv(RequestManager requestManager) {
@@ -77,42 +77,5 @@ public abstract class BsRemoteMaihamaShowbaseSignupBhv extends AbstractRemoteMai
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOf(FlutyRemoteApiRule rule) {
-    }
-
-    /**
-     * Request remote call to /signup/register/{account}/{token}. (auto-generated method)<br>
-     * <pre>
-     * url: /signup/register/{account}/{token}
-     * httpMethod: GET
-     * </pre>
-     * @param account The value of path variable for account. (NotNull)
-     * @param token The value of path variable for token. (NotNull)
-     */
-    public void requestRegister(String account, String token) {
-        requestRegister(account, token, rule -> {});
-    }
-
-    /**
-     * Request remote call to /signup/register/{account}/{token}. (auto-generated method)<br>
-     * <pre>
-     * url: /signup/register/{account}/{token}
-     * httpMethod: GET
-     * </pre>
-     * @param account The value of path variable for account. (NotNull)
-     * @param token The value of path variable for token. (NotNull)
-     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     */
-    protected void requestRegister(String account, String token, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestGet(void.class, "/signup/register/{account}/{token}", moreUrl(account, token), noQuery(), rule -> {
-            ruleOfRegisterAccountToken(rule);
-            ruleLambda.accept(rule);
-        });
-    }
-
-    /**
-     * Set up method-level rule of /signup/register/{account}/{token}.<br>
-     * @param rule The rule that class default rule is already set. (NotNull)
-     */
-    protected void ruleOfRegisterAccountToken(FlutyRemoteApiRule rule) {
     }
 }

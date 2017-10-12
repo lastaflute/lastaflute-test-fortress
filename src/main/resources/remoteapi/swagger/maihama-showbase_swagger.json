@@ -60,6 +60,7 @@
         ],
         "parameters": [
           {
+            "name": "FollowingBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -77,17 +78,13 @@
           "400": {
             "description": "client error"
           }
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/member/info": {
       "post": {
         "summary": "@author iwamatsu0430",
         "description": "@author iwamatsu0430",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "member"
@@ -112,7 +109,6 @@
       "post": {
         "summary": "@author iwamatsu0430",
         "description": "@author iwamatsu0430",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "member"
@@ -145,6 +141,7 @@
         ],
         "parameters": [
           {
+            "name": "MemberAddBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -175,14 +172,13 @@
       "post": {
         "summary": "@author iwamatsu0430",
         "description": "@author iwamatsu0430",
-        "consumes": [],
         "parameters": [
           {
             "name": "memberId",
-            "required": true,
             "type": "integer",
             "format": "int32",
-            "in": "path"
+            "in": "path",
+            "required": true
           }
         ],
         "tags": [
@@ -213,6 +209,7 @@
         ],
         "parameters": [
           {
+            "name": "MemberEditBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -230,10 +227,7 @@
           "400": {
             "description": "client error"
           }
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/member/list/{pageNumber}": {
@@ -246,12 +240,13 @@
         "parameters": [
           {
             "name": "pageNumber",
-            "required": false,
             "type": "integer",
             "format": "int32",
-            "in": "path"
+            "in": "path",
+            "required": true
           },
           {
+            "name": "MemberSearchBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -282,21 +277,20 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [
           {
             "name": "memberId",
-            "required": true,
             "type": "integer",
             "format": "int32",
-            "in": "path"
+            "in": "path",
+            "required": true
           },
           {
             "name": "pageNumber",
-            "required": false,
             "type": "integer",
             "format": "int32",
-            "in": "path"
+            "in": "path",
+            "required": true
           }
         ],
         "tags": [
@@ -322,14 +316,13 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [
           {
             "name": "purchaseId",
-            "required": true,
             "type": "integer",
             "format": "int64",
-            "in": "path"
+            "in": "path",
+            "required": true
           }
         ],
         "tags": [
@@ -342,17 +335,13 @@
           "400": {
             "description": "client error"
           }
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/mypage/": {
       "get": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "mypage"
@@ -377,14 +366,13 @@
       "post": {
         "summary": "@author iwamatsu0430",
         "description": "@author iwamatsu0430",
-        "consumes": [],
         "parameters": [
           {
             "name": "productId",
-            "required": true,
             "type": "integer",
             "format": "int32",
-            "in": "path"
+            "in": "path",
+            "required": true
           }
         ],
         "tags": [
@@ -416,12 +404,13 @@
         "parameters": [
           {
             "name": "pageNumber",
-            "required": false,
             "type": "integer",
             "format": "int32",
-            "in": "path"
+            "in": "path",
+            "required": true
           },
           {
+            "name": "ProductSearchBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -452,7 +441,6 @@
       "post": {
         "summary": "@author iwamatsu0430",
         "description": "@author iwamatsu0430",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "product"
@@ -486,12 +474,13 @@
         "parameters": [
           {
             "name": "productId",
-            "required": false,
             "type": "integer",
             "format": "int32",
-            "in": "path"
+            "in": "path",
+            "required": true
           },
           {
+            "name": "ProductsSearchBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -505,7 +494,9 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "object"
+            "schema": {
+              "type": "object"
+            }
           },
           "400": {
             "description": "client error"
@@ -520,7 +511,6 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "profile"
@@ -550,6 +540,7 @@
         ],
         "parameters": [
           {
+            "name": "PurchaseProductBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -585,6 +576,7 @@
         ],
         "parameters": [
           {
+            "name": "PurchaseProductBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -615,7 +607,6 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "root"
@@ -623,7 +614,9 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "object"
+            "schema": {
+              "type": "object"
+            }
           },
           "400": {
             "description": "client error"
@@ -643,6 +636,7 @@
         ],
         "parameters": [
           {
+            "name": "SigninBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -678,6 +672,7 @@
         ],
         "parameters": [
           {
+            "name": "SignupBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -695,29 +690,25 @@
           "400": {
             "description": "client error"
           }
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/signup/register/{account}/{token}": {
       "get": {
         "summary": "@author iwamatsu0430",
         "description": "@author iwamatsu0430",
-        "consumes": [],
         "parameters": [
           {
             "name": "account",
-            "required": true,
             "type": "string",
-            "in": "path"
+            "in": "path",
+            "required": true
           },
           {
             "name": "token",
-            "required": true,
             "type": "string",
-            "in": "path"
+            "in": "path",
+            "required": true
           }
         ],
         "tags": [
@@ -730,17 +721,13 @@
           "400": {
             "description": "client error"
           }
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/swagger/": {
       "post": {
         "summary": "The action to show swaggar-ui.",
         "description": "The action to show swaggar-ui.",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "swagger"
@@ -748,7 +735,9 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "object"
+            "schema": {
+              "type": "object"
+            }
           },
           "400": {
             "description": "client error"
@@ -763,7 +752,6 @@
       "post": {
         "summary": "The action to show swaggar-ui.",
         "description": "The action to show swaggar-ui.",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "swagger"
@@ -771,7 +759,9 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "object"
+            "schema": {
+              "type": "object"
+            }
           },
           "400": {
             "description": "client error"
@@ -786,7 +776,6 @@
       "post": {
         "summary": "@author black-trooper",
         "description": "@author black-trooper",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "withdrawal"
@@ -819,6 +808,7 @@
         ],
         "parameters": [
           {
+            "name": "WithdrawalBody",
             "in": "body",
             "required": true,
             "schema": {
@@ -832,15 +822,17 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "integer",
-            "format": "int32"
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           "400": {
             "description": "client error"
           }
         },
         "produces": [
-          "application/json"
+          "text/plain;charset\u003dUTF-8"
         ]
       }
     },
@@ -849,12 +841,11 @@
         "summary": "@author jflute",
         "description": "@author jflute",
         "consumes": [
-          "text/plain;charset\u003dutf-8"
+          "application/x-www-form-urlencoded"
         ],
         "parameters": [
           {
             "name": "sea",
-            "required": true,
             "type": "string",
             "minLength": 2,
             "maxLength": 5,
@@ -867,7 +858,9 @@
         "responses": {
           "200": {
             "description": "success",
-            "type": "object"
+            "schema": {
+              "type": "object"
+            }
           },
           "400": {
             "description": "client error"
@@ -882,7 +875,6 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "wx"
@@ -894,23 +886,19 @@
           "400": {
             "description": "client error"
           }
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/wx/faicli/entity/{account}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [
           {
             "name": "account",
-            "required": true,
             "type": "string",
-            "in": "path"
+            "in": "path",
+            "required": true
           }
         ],
         "tags": [
@@ -923,17 +911,13 @@
           "400": {
             "description": "client error"
           }
-        },
-        "produces": [
-          "application/json"
-        ]
+        }
       }
     },
     "/wx/remogen/list/basic": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "wx"
@@ -961,7 +945,6 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "wx"
@@ -989,7 +972,6 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "wx"
@@ -1017,7 +999,6 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "wx"
@@ -1045,7 +1026,6 @@
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [],
         "parameters": [],
         "tags": [
           "wx"
@@ -1070,9 +1050,11 @@
   "definitions": {
     "org.docksidestage.app.web.following.FollowingBody": {
       "type": "object",
+      "required": [
+        "yourMemberId"
+      ],
       "properties": {
         "yourMemberId": {
-          "required": true,
           "type": "integer",
           "format": "int32"
         }
@@ -1080,21 +1062,18 @@
     },
     "org.docksidestage.app.web.member.MemberInfoResult": {
       "type": "object",
+      "required": [
+        "memberName"
+      ],
       "properties": {
         "memberId": {
-          "name": "memberId",
-          "required": false,
           "type": "integer",
           "format": "int32"
         },
         "memberName": {
-          "name": "memberName",
-          "required": true,
           "type": "string"
         },
         "memberStatusName": {
-          "name": "memberStatusName",
-          "required": false,
           "type": "string"
         }
       }
@@ -1103,47 +1082,44 @@
       "type": "object",
       "properties": {
         "key": {
-          "name": "key",
-          "required": false,
           "type": "object"
         },
         "value": {
-          "name": "value",
-          "required": false,
           "type": "object"
         }
       }
     },
     "org.docksidestage.app.web.member.MemberAddBody": {
       "type": "object",
+      "required": [
+        "memberName",
+        "memberAccount",
+        "memberStatus"
+      ],
       "properties": {
         "memberName": {
-          "required": true,
           "type": "string",
           "minLength": 0,
           "maxLength": 100
         },
         "memberAccount": {
-          "required": true,
           "type": "string",
           "minLength": 0,
           "maxLength": 50
         },
         "birthdate": {
-          "required": false,
           "type": "string",
           "format": "date",
           "default": "2000-01-01"
         },
         "memberStatus": {
-          "required": true,
           "type": "string",
           "enum": [
             "FML",
             "WDL",
             "PRV"
           ],
-          "description": "memberStatus:\n* `FML` - Formalized, Formalized.\n* `WDL` - Withdrawal, Withdrawal.\n* `PRV` - Provisional, Provisional.\n",
+          "description": "memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.",
           "default": "FML"
         }
       }
@@ -1152,248 +1128,189 @@
       "type": "object",
       "properties": {
         "_purchaseCount": {
-          "name": "_purchaseCount",
           "description": "PURCHASE_COUNT: (Derived Referrer)",
-          "required": false,
           "type": "integer",
           "format": "int32"
         },
         "_latestLoginDatetime": {
-          "name": "_latestLoginDatetime",
           "description": "LATEST_LOGIN_DATETIME: (Derived Referrer)",
-          "required": false,
           "type": "string",
           "format": "date-time",
           "default": "2000-01-01T00:00:00.000"
         },
         "_memberId": {
-          "name": "_memberId",
           "description": "(会員ID)MEMBER_ID: {PK, ID, NotNull, INT(10), FK to MEMBER_ADDRESS}",
-          "required": false,
           "type": "integer",
           "format": "int32"
         },
         "_memberName": {
-          "name": "_memberName",
           "description": "(会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(100)}",
-          "required": false,
           "type": "string"
         },
         "_memberAccount": {
-          "name": "_memberAccount",
           "description": "(会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}",
-          "required": false,
           "type": "string"
         },
         "_memberStatusCode": {
-          "name": "_memberStatusCode",
           "description": "(会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to member_status, classification\u003dMemberStatus}",
-          "required": false,
           "type": "string"
         },
         "_formalizedDatetime": {
-          "name": "_formalizedDatetime",
           "description": "(正式会員日時)FORMALIZED_DATETIME: {IX, DATETIME(19)}",
-          "required": false,
           "type": "string",
           "format": "date-time",
           "default": "2000-01-01T00:00:00.000"
         },
         "_birthdate": {
-          "name": "_birthdate",
           "description": "(生年月日)BIRTHDATE: {DATE(10)}",
-          "required": false,
           "type": "string",
           "format": "date",
           "default": "2000-01-01"
         },
         "_registerDatetime": {
-          "name": "_registerDatetime",
           "description": "(登録日時)REGISTER_DATETIME: {NotNull, DATETIME(19)}",
-          "required": false,
           "type": "string",
           "format": "date-time",
           "default": "2000-01-01T00:00:00.000"
         },
         "_registerUser": {
-          "name": "_registerUser",
           "description": "(登録ユーザー)REGISTER_USER: {NotNull, VARCHAR(200)}",
-          "required": false,
           "type": "string"
         },
         "_updateDatetime": {
-          "name": "_updateDatetime",
           "description": "(更新日時)UPDATE_DATETIME: {NotNull, DATETIME(19)}",
-          "required": false,
           "type": "string",
           "format": "date-time",
           "default": "2000-01-01T00:00:00.000"
         },
         "_updateUser": {
-          "name": "_updateUser",
           "description": "(更新ユーザー)UPDATE_USER: {NotNull, VARCHAR(200)}",
-          "required": false,
           "type": "string"
         },
         "_versionNo": {
-          "name": "_versionNo",
           "description": "(バージョン番号)VERSION_NO: {NotNull, BIGINT(19)}",
-          "required": false,
           "type": "integer",
           "format": "int64"
         },
         "_memberStatus": {
-          "name": "_memberStatus",
           "description": "(会員ステータス)MEMBER_STATUS by my MEMBER_STATUS_CODE, named \u0027memberStatus\u0027",
-          "required": false,
           "type": "object"
         },
         "_memberAddressAsValid": {
-          "name": "_memberAddressAsValid",
           "description": "(会員住所情報)MEMBER_ADDRESS by my MEMBER_ID, named \u0027memberAddressAsValid\u0027",
-          "required": false,
           "type": "object"
         },
         "_memberLoginAsLatest": {
-          "name": "_memberLoginAsLatest",
           "description": "(会員ログイン)MEMBER_LOGIN by my MEMBER_ID, named \u0027memberLoginAsLatest\u0027",
-          "required": false,
           "type": "object"
         },
         "_memberSecurityAsOne": {
-          "name": "_memberSecurityAsOne",
           "description": "(会員セキュリティ)member_security by MEMBER_ID, named \u0027memberSecurityAsOne\u0027",
-          "required": false,
           "type": "object"
         },
         "_memberServiceAsOne": {
-          "name": "_memberServiceAsOne",
           "description": "(会員サービス)member_service by MEMBER_ID, named \u0027memberServiceAsOne\u0027",
-          "required": false,
           "type": "object"
         },
         "_memberWithdrawalAsOne": {
-          "name": "_memberWithdrawalAsOne",
           "description": "(会員退会情報)member_withdrawal by MEMBER_ID, named \u0027memberWithdrawalAsOne\u0027",
-          "required": false,
           "type": "object"
         },
         "_memberAddressList": {
-          "name": "_memberAddressList",
           "description": "(会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named \u0027memberAddressList\u0027",
-          "required": false,
           "type": "array",
           "items": {
             "type": "object"
           }
         },
         "_memberFollowingByMyMemberIdList": {
-          "name": "_memberFollowingByMyMemberIdList",
           "description": "(会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named \u0027memberFollowingByMyMemberIdList\u0027",
-          "required": false,
           "type": "array",
           "items": {
             "type": "object"
           }
         },
         "_memberFollowingByYourMemberIdList": {
-          "name": "_memberFollowingByYourMemberIdList",
           "description": "(会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named \u0027memberFollowingByYourMemberIdList\u0027",
-          "required": false,
           "type": "array",
           "items": {
             "type": "object"
           }
         },
         "_memberLoginList": {
-          "name": "_memberLoginList",
           "description": "(会員ログイン)MEMBER_LOGIN by MEMBER_ID, named \u0027memberLoginList\u0027",
-          "required": false,
           "type": "array",
           "items": {
             "type": "object"
           }
         },
         "_purchaseList": {
-          "name": "_purchaseList",
           "description": "(購入)PURCHASE by MEMBER_ID, named \u0027purchaseList\u0027",
-          "required": false,
           "type": "array",
           "items": {
             "type": "object"
           }
         },
         "__uniqueDrivenProperties": {
-          "name": "__uniqueDrivenProperties",
-          "required": false,
           "type": "object"
         },
         "__modifiedProperties": {
-          "name": "__modifiedProperties",
-          "required": false,
           "type": "object"
         },
         "__specifiedProperties": {
-          "name": "__specifiedProperties",
-          "required": false,
           "type": "object"
         },
         "__derivedMap": {
-          "name": "__derivedMap",
-          "required": false,
           "type": "object"
         },
         "_undefinedClassificationSelectAllowed": {
-          "name": "_undefinedClassificationSelectAllowed",
-          "required": false,
           "type": "boolean"
         },
         "__createdBySelect": {
-          "name": "__createdBySelect",
-          "required": false,
           "type": "boolean"
         }
       }
     },
     "org.docksidestage.app.web.member.MemberEditBody": {
       "type": "object",
+      "required": [
+        "memberId",
+        "memberName",
+        "memberAccount",
+        "memberStatus",
+        "versionNo"
+      ],
       "properties": {
         "memberId": {
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "memberName": {
-          "required": true,
           "type": "string",
           "minLength": 0,
           "maxLength": 100
         },
         "memberAccount": {
-          "required": true,
           "type": "string",
           "minLength": 0,
           "maxLength": 50
         },
         "memberStatus": {
-          "required": true,
           "type": "string",
           "enum": [
             "FML",
             "WDL",
             "PRV"
           ],
-          "description": "memberStatus:\n* `FML` - Formalized, Formalized.\n* `WDL` - Withdrawal, Withdrawal.\n* `PRV` - Provisional, Provisional.\n",
+          "description": "memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.",
           "default": "FML"
         },
         "birthdate": {
-          "required": false,
           "type": "string",
           "format": "date",
           "default": "2000-01-01"
         },
         "versionNo": {
-          "required": true,
           "type": "integer",
           "format": "int64"
         }
@@ -1403,40 +1320,34 @@
       "type": "object",
       "properties": {
         "memberName": {
-          "required": false,
           "type": "string",
           "minLength": 0,
           "maxLength": 5
         },
         "memberStatus": {
-          "required": false,
           "type": "string",
           "enum": [
             "FML",
             "WDL",
             "PRV"
           ],
-          "description": "memberStatus:\n* `FML` - Formalized, Formalized.\n* `WDL` - Withdrawal, Withdrawal.\n* `PRV` - Provisional, Provisional.\n",
+          "description": "memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.",
           "default": "FML"
         },
         "purchaseProductName": {
-          "required": false,
           "type": "string",
           "minLength": 0,
           "maxLength": 10
         },
         "unpaid": {
-          "required": false,
           "type": "boolean"
         },
         "formalizedFrom": {
-          "required": false,
           "type": "string",
           "format": "date",
           "default": "2000-01-01"
         },
         "formalizedTo": {
-          "required": false,
           "type": "string",
           "format": "date",
           "default": "2000-01-01"
@@ -1445,45 +1356,39 @@
     },
     "org.docksidestage.app.web.member.MemberSearchRowResult": {
       "type": "object",
+      "required": [
+        "memberId",
+        "memberName",
+        "memberStatusName",
+        "updateDatetime",
+        "withdrawalMember",
+        "purchaseCount"
+      ],
       "properties": {
         "memberId": {
-          "name": "memberId",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "memberName": {
-          "name": "memberName",
-          "required": true,
           "type": "string"
         },
         "memberStatusName": {
-          "name": "memberStatusName",
-          "required": true,
           "type": "string"
         },
         "formalizedDate": {
-          "name": "formalizedDate",
-          "required": false,
           "type": "string",
           "format": "date",
           "default": "2000-01-01"
         },
         "updateDatetime": {
-          "name": "updateDatetime",
-          "required": true,
           "type": "string",
           "format": "date-time",
           "default": "2000-01-01T00:00:00.000"
         },
         "withdrawalMember": {
-          "name": "withdrawalMember",
-          "required": true,
           "type": "boolean"
         },
         "purchaseCount": {
-          "name": "purchaseCount",
-          "required": true,
           "type": "integer",
           "format": "int32"
         }
@@ -1491,39 +1396,36 @@
     },
     "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.MemberSearchRowResult\u003e": {
       "type": "object",
+      "required": [
+        "pageSize",
+        "currentPageNumber",
+        "allRecordCount",
+        "allPageCount",
+        "rows"
+      ],
       "properties": {
         "pageSize": {
-          "name": "pageSize",
           "description": "row count per one page",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "currentPageNumber": {
-          "name": "currentPageNumber",
           "description": "number of current page",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "allRecordCount": {
-          "name": "allRecordCount",
           "description": "count of all records",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "allPageCount": {
-          "name": "allPageCount",
           "description": "count of all pages",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "rows": {
-          "name": "rows",
           "description": "paging data for current page",
-          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.member.MemberSearchRowResult"
@@ -1533,79 +1435,72 @@
     },
     "org.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult": {
       "type": "object",
+      "required": [
+        "purchaseId",
+        "purchaseDatetime",
+        "productName",
+        "purchasePrice",
+        "purchaseCount",
+        "paymentComplete"
+      ],
       "properties": {
         "purchaseId": {
-          "name": "purchaseId",
-          "required": true,
           "type": "integer",
           "format": "int64"
         },
         "purchaseDatetime": {
-          "name": "purchaseDatetime",
-          "required": true,
           "type": "string",
           "format": "date-time",
           "default": "2000-01-01T00:00:00.000"
         },
         "productName": {
-          "name": "productName",
-          "required": true,
           "type": "string"
         },
         "purchasePrice": {
-          "name": "purchasePrice",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "purchaseCount": {
-          "name": "purchaseCount",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "paymentComplete": {
-          "name": "paymentComplete",
-          "required": true,
           "type": "boolean"
         }
       }
     },
     "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult\u003e": {
       "type": "object",
+      "required": [
+        "pageSize",
+        "currentPageNumber",
+        "allRecordCount",
+        "allPageCount",
+        "rows"
+      ],
       "properties": {
         "pageSize": {
-          "name": "pageSize",
           "description": "row count per one page",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "currentPageNumber": {
-          "name": "currentPageNumber",
           "description": "number of current page",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "allRecordCount": {
-          "name": "allRecordCount",
           "description": "count of all records",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "allPageCount": {
-          "name": "allPageCount",
           "description": "count of all pages",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "rows": {
-          "name": "rows",
           "description": "paging data for current page",
-          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult"
@@ -1615,15 +1510,15 @@
     },
     "org.docksidestage.app.web.mypage.MypageResult$ProductPart": {
       "type": "object",
+      "required": [
+        "productName",
+        "regularPrice"
+      ],
       "properties": {
         "productName": {
-          "name": "productName",
-          "required": true,
           "type": "string"
         },
         "regularPrice": {
-          "name": "regularPrice",
-          "required": true,
           "type": "integer",
           "format": "int32"
         }
@@ -1631,18 +1526,18 @@
     },
     "org.docksidestage.app.web.mypage.MypageResult": {
       "type": "object",
+      "required": [
+        "recentProducts",
+        "highPriceProducts"
+      ],
       "properties": {
         "recentProducts": {
-          "name": "recentProducts",
-          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.mypage.MypageResult$ProductPart"
           }
         },
         "highPriceProducts": {
-          "name": "highPriceProducts",
-          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.mypage.MypageResult$ProductPart"
@@ -1652,32 +1547,29 @@
     },
     "org.docksidestage.app.web.product.ProductDetailResult": {
       "type": "object",
+      "required": [
+        "productId",
+        "productName",
+        "categoryName",
+        "regularPrice",
+        "productHandleCode"
+      ],
       "properties": {
         "productId": {
-          "name": "productId",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "productName": {
-          "name": "productName",
-          "required": true,
           "type": "string"
         },
         "categoryName": {
-          "name": "categoryName",
-          "required": true,
           "type": "string"
         },
         "regularPrice": {
-          "name": "regularPrice",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "productHandleCode": {
-          "name": "productHandleCode",
-          "required": true,
           "type": "string"
         }
       }
@@ -1686,24 +1578,21 @@
       "type": "object",
       "properties": {
         "productName": {
-          "required": false,
           "type": "string",
           "minLength": 0,
           "maxLength": 10
         },
         "productStatus": {
-          "required": false,
           "type": "string",
           "enum": [
             "ONS",
             "PST",
             "SST"
           ],
-          "description": "productStatus:\n* `ONS` - OnSaleProduction, OnSaleProduction.\n* `PST` - ProductionStop, ProductionStop.\n* `SST` - SaleStop, SaleStop.\n",
+          "description": "productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
           "default": "ONS"
         },
         "purchaseMemberName": {
-          "required": false,
           "type": "string",
           "minLength": 0,
           "maxLength": 5
@@ -1712,37 +1601,32 @@
     },
     "org.docksidestage.app.web.product.ProductRowResult": {
       "type": "object",
+      "required": [
+        "productId",
+        "productName",
+        "productStatus",
+        "productCategory",
+        "regularPrice"
+      ],
       "properties": {
         "productId": {
-          "name": "productId",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "productName": {
-          "name": "productName",
-          "required": true,
           "type": "string"
         },
         "productStatus": {
-          "name": "productStatus",
-          "required": true,
           "type": "string"
         },
         "productCategory": {
-          "name": "productCategory",
-          "required": true,
           "type": "string"
         },
         "regularPrice": {
-          "name": "regularPrice",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "latestPurchaseDate": {
-          "name": "latestPurchaseDate",
-          "required": false,
           "type": "string",
           "format": "date",
           "default": "2000-01-01"
@@ -1751,39 +1635,36 @@
     },
     "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.product.ProductRowResult\u003e": {
       "type": "object",
+      "required": [
+        "pageSize",
+        "currentPageNumber",
+        "allRecordCount",
+        "allPageCount",
+        "rows"
+      ],
       "properties": {
         "pageSize": {
-          "name": "pageSize",
           "description": "row count per one page",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "currentPageNumber": {
-          "name": "currentPageNumber",
           "description": "number of current page",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "allRecordCount": {
-          "name": "allRecordCount",
           "description": "count of all records",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "allPageCount": {
-          "name": "allPageCount",
           "description": "count of all pages",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "rows": {
-          "name": "rows",
           "description": "paging data for current page",
-          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.product.ProductRowResult"
@@ -1795,30 +1676,26 @@
       "type": "object",
       "properties": {
         "productName": {
-          "required": false,
           "type": "string",
           "minLength": 0,
           "maxLength": 10
         },
         "productStatus": {
-          "required": false,
           "type": "string",
           "enum": [
             "ONS",
             "PST",
             "SST"
           ],
-          "description": "productStatus:\n* `ONS` - OnSaleProduction, OnSaleProduction.\n* `PST` - ProductionStop, ProductionStop.\n* `SST` - SaleStop, SaleStop.\n",
+          "description": "productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
           "default": "ONS"
         },
         "purchaseMemberName": {
-          "required": false,
           "type": "string",
           "minLength": 0,
           "maxLength": 5
         },
         "pageNumber": {
-          "required": false,
           "type": "integer",
           "format": "int32"
         }
@@ -1826,21 +1703,20 @@
     },
     "org.docksidestage.app.web.profile.ProfileResult$PurchasedProductPart": {
       "type": "object",
+      "required": [
+        "productName",
+        "regularPrice",
+        "purchaseDateTime"
+      ],
       "properties": {
         "productName": {
-          "name": "productName",
-          "required": true,
           "type": "string"
         },
         "regularPrice": {
-          "name": "regularPrice",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "purchaseDateTime": {
-          "name": "purchaseDateTime",
-          "required": true,
           "type": "string",
           "format": "date-time",
           "default": "2000-01-01T00:00:00.000"
@@ -1849,37 +1725,33 @@
     },
     "org.docksidestage.app.web.profile.ProfileResult": {
       "type": "object",
+      "required": [
+        "memberId",
+        "memberName",
+        "memberStatusName",
+        "servicePointCount",
+        "serviceRankName",
+        "purchaseList"
+      ],
       "properties": {
         "memberId": {
-          "name": "memberId",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "memberName": {
-          "name": "memberName",
-          "required": true,
           "type": "string"
         },
         "memberStatusName": {
-          "name": "memberStatusName",
-          "required": true,
           "type": "string"
         },
         "servicePointCount": {
-          "name": "servicePointCount",
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "serviceRankName": {
-          "name": "serviceRankName",
-          "required": true,
           "type": "string"
         },
         "purchaseList": {
-          "name": "purchaseList",
-          "required": true,
           "type": "array",
           "items": {
             "$ref": "#/definitions/org.docksidestage.app.web.profile.ProfileResult$PurchasedProductPart"
@@ -1889,14 +1761,16 @@
     },
     "org.docksidestage.app.web.purchase.PurchaseProductBody": {
       "type": "object",
+      "required": [
+        "productId",
+        "purchaseCount"
+      ],
       "properties": {
         "productId": {
-          "required": true,
           "type": "integer",
           "format": "int32"
         },
         "purchaseCount": {
-          "required": true,
           "type": "integer",
           "format": "int32"
         }
@@ -1904,10 +1778,11 @@
     },
     "org.docksidestage.app.web.purchase.PurchasePriceResult": {
       "type": "object",
+      "required": [
+        "price"
+      ],
       "properties": {
         "price": {
-          "name": "price",
-          "required": true,
           "type": "integer",
           "format": "int32"
         }
@@ -1915,48 +1790,53 @@
     },
     "org.docksidestage.app.web.signin.SigninBody": {
       "type": "object",
+      "required": [
+        "account",
+        "password"
+      ],
       "properties": {
         "account": {
-          "required": true,
           "type": "string"
         },
         "password": {
-          "required": true,
           "type": "string"
         }
       }
     },
     "org.docksidestage.app.web.signin.SigninResult": {
       "type": "object",
+      "required": [
+        "token"
+      ],
       "properties": {
         "token": {
-          "name": "token",
-          "required": true,
           "type": "string"
         }
       }
     },
     "org.docksidestage.app.web.signup.SignupBody": {
       "type": "object",
+      "required": [
+        "memberName",
+        "memberAccount",
+        "password",
+        "reminderQuestion",
+        "reminderAnswer"
+      ],
       "properties": {
         "memberName": {
-          "required": true,
           "type": "string"
         },
         "memberAccount": {
-          "required": true,
           "type": "string"
         },
         "password": {
-          "required": true,
           "type": "string"
         },
         "reminderQuestion": {
-          "required": true,
           "type": "string"
         },
         "reminderAnswer": {
-          "required": true,
           "type": "string"
         }
       }
@@ -1965,7 +1845,6 @@
       "type": "object",
       "properties": {
         "selectedReason": {
-          "required": false,
           "type": "string",
           "enum": [
             "SIT",
@@ -1973,11 +1852,10 @@
             "FRT",
             "OTH"
           ],
-          "description": "selectedReason:\n* `SIT` - Sit, SIT.\n* `PRD` - Prd, PRD.\n* `FRT` - Frt, FRT.\n* `OTH` - Oth, OTH.\n",
+          "description": "selectedReason: * `SIT` - Sit, SIT. * `PRD` - Prd, PRD. * `FRT` - Frt, FRT. * `OTH` - Oth, OTH.",
           "default": "SIT"
         },
         "reasonInput": {
-          "required": false,
           "type": "string",
           "minLength": 0,
           "maxLength": 30
@@ -1988,13 +1866,9 @@
       "type": "object",
       "properties": {
         "key": {
-          "name": "key",
-          "required": false,
           "type": "string"
         },
         "value": {
-          "name": "value",
-          "required": false,
           "type": "object"
         }
       }
@@ -2003,13 +1877,9 @@
       "type": "object",
       "properties": {
         "key": {
-          "name": "key",
-          "required": false,
           "type": "string"
         },
         "value": {
-          "name": "value",
-          "required": false,
           "type": "object"
         }
       }
@@ -2018,13 +1888,9 @@
       "type": "object",
       "properties": {
         "key": {
-          "name": "key",
-          "required": false,
           "type": "string"
         },
         "value": {
-          "name": "value",
-          "required": false,
           "type": "object"
         }
       }
@@ -2033,13 +1899,9 @@
       "type": "object",
       "properties": {
         "key": {
-          "name": "key",
-          "required": false,
           "type": "string"
         },
         "value": {
-          "name": "value",
-          "required": false,
           "type": "object"
         }
       }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//DBFLUTE//DTD LastaDi 1.0//EN"
+    "http://dbflute.org/meta/lastadi10.dtd">
+<components namespace="remoteapi_swagger-petstore">
+    <include path="lastaflute.xml"/>
+    <include condition="#exists('#path')" path="remoteapi/di/remoteapi_all_included.xml"/>
+    <include condition="#exists('#path')" path="remoteapi/di/remoteapi_swagger-petstore_included.xml"/>
+
+    <!-- Remote API Behavior -->
+    <component name="remoteSwaggerPetstorePetBhv" class="org.docksidestage.remote.swagger.petstore.pet.RemoteSwaggerPetstorePetBhv" />
+    <component name="remoteSwaggerPetstoreStoreBhv" class="org.docksidestage.remote.swagger.petstore.store.RemoteSwaggerPetstoreStoreBhv" />
+    <component name="remoteSwaggerPetstoreUserBhv" class="org.docksidestage.remote.swagger.petstore.user.RemoteSwaggerPetstoreUserBhv" />
+</components>
