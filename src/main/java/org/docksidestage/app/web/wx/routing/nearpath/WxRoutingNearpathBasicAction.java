@@ -13,10 +13,10 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.request.urlmapping;
+package org.docksidestage.app.web.wx.routing.nearpath;
 
-import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
+import org.docksidestage.app.web.wx.routing.base.RoutingCheckResult;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -25,37 +25,28 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRequestUrlmappingDefaultAction extends FortressBaseAction {
+public class WxRoutingNearpathBasicAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    // http://localhost:8097/fortress/whitebox/mapping/default/sea/
+    // http://localhost:8151/fortress/wx/routing/nearpath/basic/sea/
+    // http://localhost:8151/fortress/wx/routing/nearpath/basic/string/
+    // http://localhost:8151/fortress/wx/routing/nearpath/basic/number/
     @Execute
-    public JsonResponse<CheckJsonBean> index(String first, OptionalThing<String> second) {
-        return asJson(new CheckJsonBean("index()", first, second.orElse("*second") + " :: "));
+    public JsonResponse<RoutingCheckResult> index(String first) {
+        return asJson(new RoutingCheckResult("index()", first, "*first only"));
     }
 
-    public static class CheckForm {
-
-        public String param;
-
-        @Override
-        public String toString() {
-            return "form:{" + param + "}";
-        }
+    // http://localhost:8151/fortress/wx/routing/nearpath/basic/string/sea
+    @Execute
+    public JsonResponse<RoutingCheckResult> string(String first) {
+        return asJson(new RoutingCheckResult("str()", first, "*first only"));
     }
 
-    public static class CheckJsonBean {
-
-        public final String method;
-        public final String first;
-        public final String second;
-
-        public CheckJsonBean(String method, String first, String second) {
-            this.method = method;
-            this.first = first;
-            this.second = second;
-        }
+    // http://localhost:8151/fortress/wx/routing/nearpath/basic/number/1
+    @Execute
+    public JsonResponse<RoutingCheckResult> number(Integer first) {
+        return asJson(new RoutingCheckResult("num()", first, "*first only"));
     }
 }

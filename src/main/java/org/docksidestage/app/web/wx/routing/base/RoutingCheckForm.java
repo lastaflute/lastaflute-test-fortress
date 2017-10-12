@@ -13,28 +13,16 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.product;
+package org.docksidestage.app.web.wx.routing.base;
 
-import java.util.List;
-
-import org.docksidestage.dbflute.allcommon.CDef;
-import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.util.Lato;
 
 /**
  * @author jflute
  */
-public class ProductSearchForm {
+public class RoutingCheckForm {
 
-    @Length(max = 10) // #simple_for_example just for validtion example
-    public String productName;
-
-    public CDef.ProductStatus productStatus;
-
-    @Length(max = 5) // #simple_for_example just for validtion example
-    public String purchaseMemberName;
-
-    public List<Integer> seaIds;
+    public String param;
 
     @Override
     public String toString() {

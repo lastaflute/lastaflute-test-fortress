@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.request.urlparam;
+package org.docksidestage.app.web.wx.routing.httpmet;
 
 import java.util.Map;
 
@@ -29,16 +29,20 @@ import org.slf4j.LoggerFactory;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRequestUrlparamDollarAction extends FortressBaseAction {
+public class WxRoutingHttpmetAction extends FortressBaseAction {
 
-    private static final Logger logger = LoggerFactory.getLogger(WxRequestUrlparamDollarAction.class);
+    private static final Logger logger = LoggerFactory.getLogger(WxRoutingHttpmetAction.class);
 
+    // [hit]
+    // http://localhost:8151/fortress/wx/routing/httpmet/sea/mystic
     @Execute
     public JsonResponse<Map<String, Object>> get$sea(String param1) {
         logger.debug("param1 = " + param1);
         return asJson(DfCollectionUtil.newHashMap("param1", param1));
     }
 
+    // [hit]
+    // http://localhost:8151/fortress/wx/routing/httpmet/land/1
     @Execute
     public JsonResponse<Map<String, Object>> get$land(Integer param1) {
         logger.debug("param1 = " + param1);

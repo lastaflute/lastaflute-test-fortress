@@ -1,4 +1,4 @@
-package org.docksidestage.app.web.wx.request.urlmapping.restlike;
+package org.docksidestage.app.web.wx.routing.restlike;
 
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
@@ -10,7 +10,7 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRequestUrlmappingRestlikeAction extends FortressBaseAction {
+public class WxRoutingRestlikeAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                             Execute

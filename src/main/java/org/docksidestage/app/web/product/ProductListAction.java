@@ -29,6 +29,7 @@ import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
+import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * @author jflute
@@ -44,6 +45,9 @@ public class ProductListAction extends FortressBaseAction {
     @Resource
     private PagingAssist pagingAssist;
 
+    @Resource
+    private RequestManager requestManager;
+
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
@@ -52,6 +56,8 @@ public class ProductListAction extends FortressBaseAction {
         validate(form, messages -> {}, () -> {
             return asHtml(path_Product_ProductListHtml);
         });
+        System.out.println("@@@@: " + requestManager.getRequest().getQueryString());
+        System.out.println("@@@@: " + requestManager.getRequest().getParameter("sea"));
         PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
         List<ProductSearchRowBean> beans = page.stream().map(product -> {
             return mappingToBean(product);
