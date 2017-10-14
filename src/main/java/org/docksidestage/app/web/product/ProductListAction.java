@@ -56,8 +56,6 @@ public class ProductListAction extends FortressBaseAction {
         validate(form, messages -> {}, () -> {
             return asHtml(path_Product_ProductListHtml);
         });
-        System.out.println("@@@@: " + requestManager.getRequest().getQueryString());
-        System.out.println("@@@@: " + requestManager.getRequest().getParameter("sea"));
         PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
         List<ProductSearchRowBean> beans = page.stream().map(product -> {
             return mappingToBean(product);

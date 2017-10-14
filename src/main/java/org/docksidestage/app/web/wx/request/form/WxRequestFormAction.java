@@ -35,17 +35,23 @@ public class WxRequestFormAction extends FortressBaseAction {
 
     private static final Logger logger = LoggerFactory.getLogger(WxRequestFormAction.class);
 
+    // [success]
     // http://localhost:8151/fortress/wx/request/form/eccolle?sea=mystic&sea=bigband
-    // http://localhost:8151/fortress/wx/request/form/eccolle?sea[]=mystic&sea[]=bigband
-    // http://localhost:8151/fortress/wx/request/form/eccolle?sea[0]=mystic&sea[1]=bigband
-    // http://localhost:8151/fortress/wx/request/form/eccolle?land=oneman&land=minnie
-    // http://localhost:8151/fortress/wx/request/form/eccolle?land[]=oneman&land[]=minnie
-    // http://localhost:8151/fortress/wx/request/form/eccolle?land[0]=oneman&land[1]=minnie
     // http://localhost:8151/fortress/wx/request/form/eccolle?piari=first&piari=second
-    // http://localhost:8151/fortress/wx/request/form/eccolle?piari[]=first&piari[]=second
     // http://localhost:8151/fortress/wx/request/form/eccolle?piari[0]=first&piari[1]=second
+    //
+    // [client error]
+    // http://localhost:8151/fortress/wx/request/form/eccolle?sea[]=mystic&sea[]=bigband
+    // http://localhost:8151/fortress/wx/request/form/eccolle?land[]=oneman&land[]=minnie
+    // http://localhost:8151/fortress/wx/request/form/eccolle?piari[]=first&piari[]=second
+    //
+    // [system error]
+    // http://localhost:8151/fortress/wx/request/form/eccolle?land=oneman&land=minnie
+    // http://localhost:8151/fortress/wx/request/form/eccolle?sea[0]=mystic&sea[1]=bigband
+    // http://localhost:8151/fortress/wx/request/form/eccolle?land[0]=oneman&land[1]=minnie
     @Execute
     public JsonResponse<MyEcColleForm> eccolle(MyEcColleForm form) {
+        "".charAt(1);
         validateApi(form, messages -> {});
         logger.debug("sea: {}", form.sea);
         logger.debug("land: {}", form.land);

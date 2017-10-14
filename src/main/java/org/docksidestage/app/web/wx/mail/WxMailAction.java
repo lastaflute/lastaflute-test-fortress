@@ -51,26 +51,29 @@ public class WxMailAction extends FortressBaseAction {
     @Resource
     private ProductBhv productBhv;
 
+    // http://localhost:8151/fortress/wx/mail/
     @Execute
     public JsonResponse<String> index() {
         WxNoVariablePostcard.droppedInto(postbox, postcard -> {
             postcard.setFromSupport(fortressConfig);
             postcard.addTo("sea@docksidestage.org");
         });
-        return JsonResponse.asJsonDirectly("{result: sent}");
+        return JsonResponse.asJsonDirectly("{\"result\" : \"sent\"}");
     }
 
+    // http://localhost:8151/fortress/wx/mail/basic/
     @Execute
     public JsonResponse<String> basic() {
         WelcomeMemberPostcard.droppedInto(postbox, postcard -> {
             postcard.setFromSupport(fortressConfig);
             postcard.addTo("sea@docksidestage.org");
             postcard.setDomain(fortressConfig.getServerDomain());
-            //            postcard.setMemberName("sea");
+            // has defalut
+            //postcard.setMemberName("sea");
             postcard.setAccount("land");
             postcard.setToken("piary");
         });
-        return JsonResponse.asJsonDirectly("{result: sent}");
+        return JsonResponse.asJsonDirectly("{\"result\" : \"sent\"}");
     }
 
     @Execute
@@ -82,7 +85,7 @@ public class WxMailAction extends FortressBaseAction {
             postcard.setMemberName(member.getMemberName());
             postcard.setMember(member); // not allowed
         });
-        return JsonResponse.asJsonDirectly("{result: sent}");
+        return JsonResponse.asJsonDirectly("{\"result\" : \"sent\"}");
     }
 
     @Execute
@@ -98,7 +101,7 @@ public class WxMailAction extends FortressBaseAction {
             });
             postcard.setProductList(productList); // not allowed
         });
-        return JsonResponse.asJsonDirectly("{result: sent}");
+        return JsonResponse.asJsonDirectly("{\"result\" : \"sent\"}");
     }
 
     @Execute
@@ -114,6 +117,6 @@ public class WxMailAction extends FortressBaseAction {
             postcard.setBeansRowList(beansRowList);
             postcard.async();
         });
-        return JsonResponse.asJsonDirectly("{result: sent}");
+        return JsonResponse.asJsonDirectly("{\"result\" : \"sent\"}");
     }
 }

@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.DfCollectionUtil;
+import org.docksidestage.app.job.challenge.AmbaJob;
 import org.docksidestage.app.job.challenge.BonvoJob;
 import org.docksidestage.app.job.challenge.DstoreJob;
 import org.docksidestage.app.job.challenge.PiariJob;
@@ -53,6 +54,7 @@ public class AllJobScheduler implements LaJobScheduler {
         }));
         cron.registerNonCron(BonvoJob.class, errorIfConcurrent(), op -> op.uniqueBy("bonvo"));
         cron.registerNonCron(DstoreJob.class, errorIfConcurrent(), op -> op.uniqueBy("dstore"));
+        cron.registerNonCron(AmbaJob.class, errorIfConcurrent(), op -> op.uniqueBy("amba"));
     }
 
     @Override

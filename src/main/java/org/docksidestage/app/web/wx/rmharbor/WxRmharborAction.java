@@ -24,6 +24,7 @@ import org.dbflute.cbean.result.PagingResultBean;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
+import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.dbflute.exentity.Product;
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
@@ -47,6 +48,8 @@ public class WxRmharborAction extends FortressBaseAction {
 
     @Resource
     private RemoteHarborBhv harborBhv;
+    @Resource
+    private MemberBhv memberBhv;
     @Resource
     private PagingAssist pagingAssist;
 
