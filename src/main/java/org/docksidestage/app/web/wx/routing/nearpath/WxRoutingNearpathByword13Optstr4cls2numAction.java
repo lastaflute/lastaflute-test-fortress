@@ -15,8 +15,10 @@
  */
 package org.docksidestage.app.web.wx.routing.nearpath;
 
+import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.wx.routing.base.RoutingCheckResult;
+import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -25,25 +27,28 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRoutingNearpathByword1Str2numAction extends FortressBaseAction {
+public class WxRoutingNearpathByword13Optstr4cls2numAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword1/str2num/sea/
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword1/str2num/named/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/FML/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/FML/mystic/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/FML/named/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/named/FML/
     // [not]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword1/str2num/mystic/named/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/
     @Execute
-    public JsonResponse<RoutingCheckResult> index(String first) {
-        return asJson(new RoutingCheckResult("index()", first, null));
+    public JsonResponse<RoutingCheckResult> index(CDef.MemberStatus first, OptionalThing<String> second) {
+        return asJson(new RoutingCheckResult("index()", first, second.orElse("*none")));
     }
 
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword1/str2num/1/named/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/1/named/
+    //  => routing to index() for now
     // [not]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword1/str2num/mystic/named/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/mystic/named/
     @Execute(urlPattern = "{}/@word")
     public JsonResponse<RoutingCheckResult> named(Integer first) {
         return asJson(new RoutingCheckResult("named()", first, null));

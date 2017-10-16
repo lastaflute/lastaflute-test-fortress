@@ -86,6 +86,7 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
             }
             return null; // no translation
         });
+        rule.showSendReceiveLog(op -> {});
     }
 
     private UserMessage toUserMessage(FaicliFailureErrorPart error) {
@@ -93,6 +94,11 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
         Map<String, String> fromToMap = new HashMap<>();
         error.data.forEach((key, value) -> fromToMap.put("{" + key + "}", value.toString()));
         return UserMessage.asDirectMessage(Srl.replaceBy(plainMessage, fromToMap));
+    }
+
+    @Override
+    protected boolean isUseApplicationalUserAgent() {
+        return true;
     }
 
     @Override

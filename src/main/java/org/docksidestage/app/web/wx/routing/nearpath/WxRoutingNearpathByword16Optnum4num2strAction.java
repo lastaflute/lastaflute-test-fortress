@@ -26,42 +26,32 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRoutingNearpathByword4OptonnumAction extends FortressBaseAction {
+public class WxRoutingNearpathByword16Optnum4num2strAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword4/optonnum/1/
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword4/optonnum/1/mystic
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/1/2/
     // [not]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword4/optonnum/mystic/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/sea/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/sea/1
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/sea/mystic/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/sea/named/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/named/3/
     @Execute
-    public JsonResponse<RoutingCheckResult> index(Integer first, OptionalThing<String> second) {
-        return asJson(new RoutingCheckResult("index()", first, second.orElse("*none")));
+    public JsonResponse<RoutingCheckResult> index(Integer first, OptionalThing<Integer> second) {
+        return asJson(new RoutingCheckResult("index()", first, second));
     }
 
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword4/optonnum/mystic/named/
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-    Cannot convert the parameter to argument type.
-    
-    [Action Execute]
-    execute:{public JsonResponse WxRoutingNearpathByword3NumwithoptAction@index(Integer, OptionalThing<String>), urlPattern:{{}/{}, ^([^/&&\-\.\d]+)/([^/]+)$}}@7a3080b8
-    
-    [Parameter Index]
-    0
-    
-    [Parameter Type]
-    java.lang.Integer
-    
-    [Parameter Value]
-    plain   : mystic
-    decoded : mystic
-    
-    [Cause]
-    For input string: "mystic"
-    * * * * * * * * * */
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/sea/named/
+    //  => routing to index() for now
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/1/named/
+    //  => routing to index() for now
+    // [not]
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/mystic/named/
     @Execute(urlPattern = "{}/@word")
     public JsonResponse<RoutingCheckResult> named(String first) {
         return asJson(new RoutingCheckResult("named()", first, null));

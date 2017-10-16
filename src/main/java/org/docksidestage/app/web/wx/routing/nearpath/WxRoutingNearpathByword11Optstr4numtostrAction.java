@@ -26,30 +26,31 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRoutingNearpathByword3OptonstrAction extends FortressBaseAction {
+public class WxRoutingNearpathByword11Optstr4numtostrAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword3/optonstr/sea/
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword3/optonstr/sea/mystic/
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword3/optonstr/sea/named/
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword3/optonstr/named/3/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword11/optstr4numtostr/1/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword11/optstr4numtostr/1/mystic
     // [not]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword3/optonstr/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword11/optstr4numtostr/mystic/
     @Execute
-    public JsonResponse<RoutingCheckResult> index(String first, OptionalThing<String> second) {
+    public JsonResponse<RoutingCheckResult> index(Integer first, OptionalThing<String> second) {
         return asJson(new RoutingCheckResult("index()", first, second.orElse("*none")));
     }
 
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword3/optonstr/1/named/
-    //  => routing to index() for now
-    // [not]
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword3/optonstr/mystic/named/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword11/optstr4numtostr/mystic/named/
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    Cannot convert the parameter to argument type.
+    
+    [Cause]
+    For input string: "mystic"
+    * * * * * * * * * */
     @Execute(urlPattern = "{}/@word")
-    public JsonResponse<RoutingCheckResult> named(Integer first) {
+    public JsonResponse<RoutingCheckResult> named(String first) {
         return asJson(new RoutingCheckResult("named()", first, null));
     }
 }

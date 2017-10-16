@@ -77,12 +77,6 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
             }
             return null; // no translation
         });
-        rule.showSendReceiveLog(op -> {});
-    }
-
-    @Override
-    protected boolean isUseApplicationalUserAgent() {
-        return true;
     }
 
     @Override
