@@ -50,8 +50,8 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     //                                     -----------------
     private static final Pattern PRODUCTS_ENTRY_PATTERN = Pattern.compile("^/products/[0-9]+/?$");
     private static final Pattern PRODUCTS_INTERNAL_PATTERN = Pattern.compile("^/products/detail/[0-9]+/?$");
-    private static final Pattern LMLIKE_ENTRY_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/[a-zA-Z]+/[0-9]+/?$");
-    private static final Pattern LMLIKE_INTERNAL_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/category/[a-zA-Z]+/[0-9]+/?$");
+    private static final Pattern LMLIKE_ENTRY_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/[a-zA-Z0-9]+/[0-9]+/?$");
+    private static final Pattern LMLIKE_INTERNAL_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/category/[a-zA-Z0-9]+/[0-9]+/?$");
     private static final List<RestlikeResource> restlikeResourceList;
     static {
         List<RestlikeResource> workingList = new ArrayList<RestlikeResource>();
