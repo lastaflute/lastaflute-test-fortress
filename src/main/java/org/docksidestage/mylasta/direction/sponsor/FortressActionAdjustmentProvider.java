@@ -15,6 +15,9 @@
  */
 package org.docksidestage.mylasta.direction.sponsor;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.validation.Configuration;
@@ -27,6 +30,8 @@ import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.hibernate.validator.internal.cfg.context.DefaultConstraintMapping;
+import org.lastaflute.core.message.UserMessages;
+import org.lastaflute.web.exception.Forced404NotFoundException;
 import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
@@ -40,15 +45,96 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    private static final Pattern PRODUCTS_PATTERN = Pattern.compile("^/products/[0-9]+/?$");
-    private static final Pattern LMLIKE_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/[a-zA-Z]+/[0-9]+/?$");
+    // -----------------------------------------------------
+    //                                     REST-like Routing
+    //                                     -----------------
+    private static final Pattern PRODUCTS_ENTRY_PATTERN = Pattern.compile("^/products/[0-9]+/?$");
+    private static final Pattern PRODUCTS_INTERNAL_PATTERN = Pattern.compile("^/products/detail/[0-9]+/?$");
+    private static final Pattern LMLIKE_ENTRY_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/[a-zA-Z]+/[0-9]+/?$");
+    private static final Pattern LMLIKE_INTERNAL_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/category/[a-zA-Z]+/[0-9]+/?$");
+    private static final List<RestlikeResource> restlikeResourceList;
+    static {
+        List<RestlikeResource> workingList = new ArrayList<RestlikeResource>();
+        workingList.add(new RestlikeResource(PRODUCTS_ENTRY_PATTERN, PRODUCTS_INTERNAL_PATTERN, "products", "detail"));
+        workingList.add(new RestlikeResource(LMLIKE_ENTRY_PATTERN, LMLIKE_INTERNAL_PATTERN, "lmlike", "category"));
+        restlikeResourceList = Collections.unmodifiableList(workingList);
+    }
+    private static final RestlikeRouter restlikeRouter = new RestlikeRouter();
 
+    protected static class RestlikeResource {
+
+        private Pattern entryPattern;
+        private Pattern internalPattern;
+        private String baseWord;
+        private String internalWord;
+
+        public RestlikeResource(Pattern entryPattern, Pattern internalPattern, String baseWord, String internalWord) {
+            this.entryPattern = entryPattern;
+            this.internalPattern = internalPattern;
+            this.baseWord = baseWord;
+            this.internalWord = internalWord;
+        }
+
+        public Pattern getEntryPattern() {
+            return entryPattern;
+        }
+
+        public Pattern getInternalPattern() {
+            return internalPattern;
+        }
+
+        public String getBaseWord() {
+            return baseWord;
+        }
+
+        public String getInternalWord() {
+            return internalWord;
+        }
+    }
+
+    protected static class RestlikeRouter {
+
+        public String makeRestlike(String requestPath, List<RestlikeResource> resourceList) {
+            for (RestlikeResource resource : resourceList) {
+                Pattern entryPattern = resource.getEntryPattern();
+                Pattern internalPattern = resource.getInternalPattern();
+                String baseWord = resource.getBaseWord();
+                String internalWord = resource.getInternalWord();
+                String restlike = doMakeRestlike(requestPath, entryPattern, internalPattern, baseWord, internalWord);
+                if (restlike != null) {
+                    return restlike;
+                }
+            }
+            return null;
+        }
+
+        private String doMakeRestlike(String requestPath, Pattern entryPattern, Pattern internalPattern, String baseWord,
+                String internalWord) {
+            if (entryPattern.matcher(requestPath).matches()) {
+                return Srl.replace(requestPath, baseWord + "/", baseWord + "/" + internalWord + "/");
+            } else if (internalPattern.matcher(requestPath).matches()) {
+                handleInternalRequestPathDirectAccess(requestPath);
+            }
+            return null;
+        }
+
+        private void handleInternalRequestPathDirectAccess(String requestPath) {
+            throw new Forced404NotFoundException("Cannot access to internal path directly: " + requestPath, UserMessages.empty());
+        }
+    }
+
+    // -----------------------------------------------------
+    //                                          Form Mapping
+    //                                          ------------
     private static final FormMappingOption formMappingOption = new FormMappingOption().filterSimpleTextParameter((parameter, meta) -> {
         return parameter.trim();
     }).yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
         return Lists.immutable.ofAll(mutable);
     }));
 
+    // -----------------------------------------------------
+    //                                       Action Response
+    //                                       ---------------
     private static final ResponseReflectingOption responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
 
     // ===================================================================================
@@ -56,11 +142,9 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     //                                                                             =======
     @Override
     public String customizeActionMappingRequestPath(String requestPath) {
-        if (PRODUCTS_PATTERN.matcher(requestPath).matches()) {
-            return Srl.replace(requestPath, "products/", "products/detail/");
-        }
-        if (LMLIKE_PATTERN.matcher(requestPath).matches()) {
-            return Srl.replace(requestPath, "lmlike/", "lmlike/category/");
+        String restlike = restlikeRouter.makeRestlike(requestPath, restlikeResourceList);
+        if (restlike != null) {
+            return restlike;
         }
         return ActionAdjustmentProvider.super.customizeActionMappingRequestPath(requestPath);
     }
