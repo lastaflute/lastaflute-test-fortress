@@ -15,10 +15,13 @@
  */
 package org.docksidestage.mylasta.direction.sponsor;
 
+import java.util.regex.Pattern;
+
 import javax.validation.Configuration;
 import javax.validation.constraints.Size;
 
 import org.dbflute.util.DfTypeUtil;
+import org.dbflute.util.Srl;
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
@@ -37,12 +40,30 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
+    private static final Pattern PRODUCTS_PATTERN = Pattern.compile("^/products/[0-9]+/?$");
+    private static final Pattern LMLIKE_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/[a-zA-Z]+/[0-9]+/?$");
+
     private static final FormMappingOption formMappingOption = new FormMappingOption().filterSimpleTextParameter((parameter, meta) -> {
         return parameter.trim();
     }).yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
         return Lists.immutable.ofAll(mutable);
     }));
+
     private static final ResponseReflectingOption responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
+
+    // ===================================================================================
+    //                                                                             Routing
+    //                                                                             =======
+    @Override
+    public String customizeActionMappingRequestPath(String requestPath) {
+        if (PRODUCTS_PATTERN.matcher(requestPath).matches()) {
+            return Srl.replace(requestPath, "products/", "products/detail/");
+        }
+        if (LMLIKE_PATTERN.matcher(requestPath).matches()) {
+            return Srl.replace(requestPath, "lmlike/", "lmlike/category/");
+        }
+        return ActionAdjustmentProvider.super.customizeActionMappingRequestPath(requestPath);
+    }
 
     // ===================================================================================
     //                                                                        Form Mapping
