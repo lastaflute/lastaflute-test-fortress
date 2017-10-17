@@ -172,7 +172,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #if ($method.api.httpMethod == 'get' || $method.api.httpMethod == 'delete')
 #set ($param = 'noQuery()')
 #else
-#set ($param = 'null')
+#set ($param = 'noRequestBody()')
 #end
 #if (${method.paramBean.className} && ${method.paramBean.className} != '')
         ${method.paramBean.className} param = new ${method.paramBean.className}();

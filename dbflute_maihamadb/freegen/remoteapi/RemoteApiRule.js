@@ -244,6 +244,11 @@ var fieldName = function(api, fieldName) {
 /** yourCollections. e.g. org.eclipse.collections.api.list.ImmutableList */
 var yourCollections = null;
 
+/** yourDateTime  e.g. String */
+var yourDateTime = null;
+/** yourDate  e.g. String */
+var yourDate = null;
+
 /**
  * Return pathVariableManualMappingClass.
  * @param {Api} api - API.

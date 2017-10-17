@@ -310,8 +310,26 @@
   $typeMap.put('string', 'String')
   $typeMap.put('byte', 'byte[]')
   $typeMap.put('boolean', 'Boolean')
+  
+  ## ------------------------------------------------
+  ##    your Date
+  ## ------------------------------------------------
   $typeMap.put('date', 'java.time.LocalDate')
+  #set( $yourDate = $scriptEngine.eval('yourDate') )
+  #if ($yourDate)
+  	$typeMap.put('date', $yourDate)
+  #end
+  
+  ## ------------------------------------------------
+  ##    your DateTime
+  ## ------------------------------------------------
   $typeMap.put('date-time', 'java.time.LocalDateTime')
+  #set( $yourDateTime = $scriptEngine.eval('yourDateTime') )
+  #if ($yourDateTime)
+  	$typeMap.put('date-time', $yourDateTime)
+  #end
+  
+  
   $typeMap.put('file', 'org.lastaflute.web.ruts.multipart.MultipartFormFile')
   $typeMap.put('array', 'java.util.List')
   #set ($yourCollections = $scriptEngine.eval('yourCollections'))
