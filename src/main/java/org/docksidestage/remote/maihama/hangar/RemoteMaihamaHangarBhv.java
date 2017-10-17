@@ -119,6 +119,6 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
 
     public RemoteHgPagingReturn<RemoteHgProductRowReturn> requestProductList(RemoteHgProductSearchParam param) {
         return doRequestPost(new ParameterizedRef<RemoteHgPagingReturn<RemoteHgProductRowReturn>>() {
-        }.getType(), "/product/list", moreUrl(1), param, rule -> {});
+        }.getType(), "/product/list/search/{pageNumber}", moreUrl(1), param, rule -> {});
     }
 }

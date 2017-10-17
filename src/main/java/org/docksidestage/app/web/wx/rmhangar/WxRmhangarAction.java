@@ -61,8 +61,8 @@ public class WxRmhangarAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                             Translate
     //                                             ---------
-    // http://localhost:8151/fortress/wx/rmharbor/translate/?productName=S
-    // http://localhost:8151/fortress/wx/rmharbor/translate/?productName=SeaLandPiariBonvo
+    // http://localhost:8151/fortress/wx/rmhangar/translate/?productName=S
+    // http://localhost:8151/fortress/wx/rmhangar/translate/?productName=SeaLandPiariBonvo
     @Execute
     public HtmlResponse translate(WxRmhangarProductSearchForm form) { // can translate validation error automatically
         validate(form, messages -> {}, () -> {
