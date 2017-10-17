@@ -17,7 +17,7 @@ package org.docksidestage.app.web.wx.routing.nearpath;
 
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.app.web.wx.routing.base.RoutingCheckResult;
+import org.docksidestage.app.web.wx.routing.RoutingCheckResult;
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;

@@ -64,7 +64,7 @@ public abstract class BsRemoteMaihamaShowbaseProfileBhv extends AbstractRemoteMa
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteProfileReturn request(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteProfileReturn.class, "/profile/", noMoreUrl(), null, rule -> {
+        return doRequestPost(RemoteProfileReturn.class, "/profile/", noMoreUrl(), noRequestBody(), rule -> {
             ruleOf(rule);
             ruleLambda.accept(rule);
         });

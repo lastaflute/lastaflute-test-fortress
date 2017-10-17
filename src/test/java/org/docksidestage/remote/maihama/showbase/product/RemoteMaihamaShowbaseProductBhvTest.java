@@ -3,7 +3,9 @@ package org.docksidestage.remote.maihama.showbase.product;
 import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.mock.MockHttpClient;
+import org.docksidestage.remote.maihama.showbase.product.list.status.RemoteProductListStatusReturn;
 import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.eclipse.collections.api.list.ImmutableList;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -25,12 +27,11 @@ public class RemoteMaihamaShowbaseProductBhvTest extends UnitFortressWebTestCase
         inject(productBhv);
 
         // ## Act ##
-        productBhv.requestListStatus();
+        ImmutableList<RemoteProductListStatusReturn> statusList = productBhv.requestListStatus();
 
         // ## Assert ##
-        // TODO jflute ...void!? (2017/10/11)
-        //for (Object status : statusList) {
-        //    log(status);
-        //}
+        for (RemoteProductListStatusReturn status : statusList) {
+            log(status);
+        }
     }
 }

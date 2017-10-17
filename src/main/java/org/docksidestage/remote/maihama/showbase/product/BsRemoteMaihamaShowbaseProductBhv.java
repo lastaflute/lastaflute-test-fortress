@@ -69,7 +69,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteProductDetailReturn requestDetail(Integer productId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteProductDetailReturn.class, "/product/detail/{productId}", moreUrl(productId), null, rule -> {
+        return doRequestPost(RemoteProductDetailReturn.class, "/product/detail/{productId}", moreUrl(productId), noRequestBody(), rule -> {
             ruleOfDetailProductId(rule);
             ruleLambda.accept(rule);
         });
@@ -146,7 +146,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      */
     protected org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn> requestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn>>() {
-        }.getType(), "/product/list/status", noMoreUrl(), null, rule -> {
+        }.getType(), "/product/list/status", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfListStatus(rule);
             ruleLambda.accept(rule);
         });

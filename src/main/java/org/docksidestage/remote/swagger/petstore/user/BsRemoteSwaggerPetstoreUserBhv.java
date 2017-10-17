@@ -102,7 +102,7 @@ public abstract class BsRemoteSwaggerPetstoreUserBhv extends AbstractRemoteSwagg
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void requestCreatewitharray(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/user/createWithArray", noMoreUrl(), null, rule -> {
+        doRequestPost(void.class, "/user/createWithArray", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfCreatewitharray(rule);
             ruleLambda.accept(rule);
         });
@@ -135,7 +135,7 @@ public abstract class BsRemoteSwaggerPetstoreUserBhv extends AbstractRemoteSwagg
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void requestCreatewithlist(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/user/createWithList", noMoreUrl(), null, rule -> {
+        doRequestPost(void.class, "/user/createWithList", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfCreatewithlist(rule);
             ruleLambda.accept(rule);
         });

@@ -66,7 +66,7 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      */
     protected org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn> requestReason(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn>>() {
-        }.getType(), "/withdrawal/reason", noMoreUrl(), null, rule -> {
+        }.getType(), "/withdrawal/reason", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfReason(rule);
             ruleLambda.accept(rule);
         });

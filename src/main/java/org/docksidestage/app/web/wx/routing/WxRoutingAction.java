@@ -17,8 +17,6 @@ package org.docksidestage.app.web.wx.routing;
 
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.app.web.wx.routing.base.RoutingCheckForm;
-import org.docksidestage.app.web.wx.routing.base.RoutingCheckResult;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;

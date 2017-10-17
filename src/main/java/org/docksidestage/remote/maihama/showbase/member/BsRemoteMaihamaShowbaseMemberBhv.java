@@ -72,7 +72,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteMemberInfoReturn requestInfo(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteMemberInfoReturn.class, "/member/info", noMoreUrl(), null, rule -> {
+        return doRequestPost(RemoteMemberInfoReturn.class, "/member/info", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfInfo(rule);
             ruleLambda.accept(rule);
         });
@@ -108,7 +108,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      */
     protected org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn> requestStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn>>() {
-        }.getType(), "/member/status", noMoreUrl(), null, rule -> {
+        }.getType(), "/member/status", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfStatus(rule);
             ruleLambda.accept(rule);
         });
@@ -184,7 +184,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteMemberEditReturn requestEdit(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteMemberEditReturn.class, "/member/edit/{memberId}", moreUrl(memberId), null, rule -> {
+        return doRequestPost(RemoteMemberEditReturn.class, "/member/edit/{memberId}", moreUrl(memberId), noRequestBody(), rule -> {
             ruleOfEditMemberId(rule);
             ruleLambda.accept(rule);
         });
@@ -301,7 +301,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), null, rule -> {
+        return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), noRequestBody(), rule -> {
             ruleOfPurchaseListMemberIdPageNumber(rule);
             ruleLambda.accept(rule);
         });

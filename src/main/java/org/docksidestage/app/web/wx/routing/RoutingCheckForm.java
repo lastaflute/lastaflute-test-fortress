@@ -13,25 +13,16 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.routing.base;
+package org.docksidestage.app.web.wx.routing;
 
-import org.dbflute.optional.OptionalThing;
 import org.lastaflute.core.util.Lato;
 
 /**
  * @author jflute
  */
-public class RoutingCheckResult {
+public class RoutingCheckForm {
 
-    public final String method;
-    public final Object first;
-    public final Object second;
-
-    public RoutingCheckResult(String method, Object first, Object second) {
-        this.method = method;
-        this.first = first instanceof OptionalThing ? first.toString() : first;
-        this.second = second instanceof OptionalThing ? second.toString() : second;
-    }
+    public String param;
 
     @Override
     public String toString() {
