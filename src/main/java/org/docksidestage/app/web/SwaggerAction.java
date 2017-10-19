@@ -23,6 +23,7 @@ import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.doc.SwaggerGenerator;
 import org.lastaflute.doc.agent.SwaggerAgent;
+import org.lastaflute.doc.web.LaActionSwaggerable;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
@@ -35,7 +36,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class SwaggerAction extends FortressBaseAction {
+public class SwaggerAction extends FortressBaseAction implements LaActionSwaggerable {
 
     // ===================================================================================
     //                                                                           Attribute

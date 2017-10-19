@@ -22,8 +22,10 @@ import org.dbflute.tomcat.TomcatBoot;
  */
 public class FortressTomcatBoot { // #change_it_first
 
+    public static final String CONTEXT = "/fortress";
+
     public static void main(String[] args) { // e.g. java -Dlasta.env=production -jar fortress.war
-        TomcatBoot boot = new TomcatBoot(8152, "/fortress");
+        TomcatBoot boot = new TomcatBoot(8152, CONTEXT);
         boot.asDevelopment(isDevelopment());
         boot.useMetaInfoResourceDetect().useWebFragmentsDetect(jarName -> { // both for swagger
             return jarName.contains("swagger-ui"); // meanwhile, restricted by [app]_env.properties

@@ -15,6 +15,8 @@
  */
 package org.docksidestage.mylasta;
 
+import org.docksidestage.FortressTomcatBoot;
+import org.docksidestage.app.web.SwaggerAction;
 import org.docksidestage.unit.UnitFortressWebTestCase;
 
 /**
@@ -22,7 +24,21 @@ import org.docksidestage.unit.UnitFortressWebTestCase;
  */
 public class FortressLastaDocTest extends UnitFortressWebTestCase {
 
+    @Override
+    protected boolean isUseOneTimeContainer() {
+        return true;
+    }
+
+    @Override
+    protected String prepareMockContextPath() {
+        return FortressTomcatBoot.CONTEXT; // basically for swagger
+    }
+
     public void test_document() throws Exception {
         saveLastaDocMeta();
+    }
+
+    public void test_swaggerJson() throws Exception {
+        saveSwaggerMeta(new SwaggerAction());
     }
 }
