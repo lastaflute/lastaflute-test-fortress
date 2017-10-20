@@ -25,11 +25,6 @@ import org.docksidestage.unit.UnitFortressWebTestCase;
 public class FortressLastaDocTest extends UnitFortressWebTestCase {
 
     @Override
-    protected boolean isUseOneTimeContainer() {
-        return true;
-    }
-
-    @Override
     protected String prepareMockContextPath() {
         return FortressTomcatBoot.CONTEXT; // basically for swagger
     }
