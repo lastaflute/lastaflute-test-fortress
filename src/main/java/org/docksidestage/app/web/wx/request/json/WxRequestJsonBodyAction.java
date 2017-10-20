@@ -16,6 +16,7 @@
 package org.docksidestage.app.web.wx.request.json;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
@@ -35,6 +36,12 @@ public class WxRequestJsonBodyAction extends FortressBaseAction {
         final Map<String, Object> map = new HashMap<String, Object>();
         map.put("body", body);
         return asJson(map);
+    }
+
+    // http://localhost:8151/fortress/wx/request/json/body/list
+    @Execute
+    public JsonResponse<Void> list(List<WxRequestJsonBodyBody> body) {
+        return JsonResponse.asEmptyBody();
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/clienterror

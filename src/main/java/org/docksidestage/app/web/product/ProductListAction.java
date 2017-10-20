@@ -29,7 +29,6 @@ import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
-import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * @author jflute
@@ -44,9 +43,6 @@ public class ProductListAction extends FortressBaseAction {
     private ProductBhv productBhv;
     @Resource
     private PagingAssist pagingAssist;
-
-    @Resource
-    private RequestManager requestManager;
 
     // ===================================================================================
     //                                                                             Execute
