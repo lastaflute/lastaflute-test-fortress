@@ -40,8 +40,10 @@ public class WxRequestJsonBodyAction extends FortressBaseAction {
 
     // http://localhost:8151/fortress/wx/request/json/body/list
     @Execute
-    public JsonResponse<Void> list(List<WxRequestJsonBodyBody> body) {
-        return JsonResponse.asEmptyBody();
+    public JsonResponse<Map<String, Object>> list(List<WxRequestJsonBodyBody> body) {
+        final Map<String, Object> map = new HashMap<String, Object>();
+        map.put("body", body);
+        return asJson(map);
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/clienterror
