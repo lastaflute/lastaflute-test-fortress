@@ -13,15 +13,15 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.products.index;
+package org.docksidestage.remote.maihama.showbase.products.detail;
 
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as param for remote API of POST /products/.
+ * The bean class as param for remote API of POST /products/detail/{productId}.
  * @author FreeGen
  */
-public class RemoteProductsParam {
+public class RemoteProductsDetailParam {
 
     /** The property of productName. (NullAllowed) */
     public String productName;

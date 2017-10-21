@@ -464,7 +464,43 @@
         ]
       }
     },
-    "/products/{productId}": {
+    "/products/": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ProductsSearchBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.products.ProductsSearchBody"
+            }
+          }
+        ],
+        "tags": [
+          "products"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.products.ProductsRowResult\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/products/detail/{productId}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -495,7 +531,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "type": "object"
+              "$ref": "#/definitions/org.docksidestage.app.web.products.ProductDetailResult"
             }
           },
           "400": {
@@ -914,6 +950,66 @@
         }
       }
     },
+    "/wx/remogen/body/basic": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SuperSimpleBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      }
+    },
+    "/wx/remogen/body/list": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "List\u003cSuperSimpleBody\u003e",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      }
+    },
     "/wx/remogen/list/basic": {
       "post": {
         "summary": "@author jflute",
@@ -928,7 +1024,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.base.KeyValueResult\u003e"
+                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.KeyValueResult\u003e"
               }
             }
           },
@@ -955,7 +1051,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.base.ValueGenericsResult\u003corg.docksidestage.app.web.wx.base.SuperSimpleResult\u003e\u003e"
+                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.ValueGenericsResult\u003corg.docksidestage.app.web.wx.remogen.bean.SuperSimpleResult\u003e\u003e"
               }
             }
           },
@@ -982,7 +1078,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.base.ValueGenericsResult\u003cjava.lang.String\u003e\u003e"
+                "$ref": "#/definitions/java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.ValueGenericsResult\u003cjava.lang.String\u003e\u003e"
               }
             }
           },
@@ -1034,7 +1130,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.base.KeyValueResult"
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.KeyValueResult"
             }
           },
           "400": {
@@ -1701,6 +1797,99 @@
         }
       }
     },
+    "org.docksidestage.app.web.products.ProductsRowResult": {
+      "type": "object",
+      "required": [
+        "productId",
+        "productName",
+        "productStatusName",
+        "regularPrice"
+      ],
+      "properties": {
+        "productId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productName": {
+          "type": "string"
+        },
+        "productStatusName": {
+          "type": "string"
+        },
+        "regularPrice": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.products.ProductsRowResult\u003e": {
+      "type": "object",
+      "required": [
+        "pageSize",
+        "currentPageNumber",
+        "allRecordCount",
+        "allPageCount",
+        "rows"
+      ],
+      "properties": {
+        "pageSize": {
+          "description": "row count per one page",
+          "type": "integer",
+          "format": "int32"
+        },
+        "currentPageNumber": {
+          "description": "number of current page",
+          "type": "integer",
+          "format": "int32"
+        },
+        "allRecordCount": {
+          "description": "count of all records",
+          "type": "integer",
+          "format": "int32"
+        },
+        "allPageCount": {
+          "description": "count of all pages",
+          "type": "integer",
+          "format": "int32"
+        },
+        "rows": {
+          "description": "paging data for current page",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.products.ProductsRowResult"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.products.ProductDetailResult": {
+      "type": "object",
+      "required": [
+        "productId",
+        "productName",
+        "categoryName",
+        "regularPrice",
+        "productHandleCode"
+      ],
+      "properties": {
+        "productId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productName": {
+          "type": "string"
+        },
+        "categoryName": {
+          "type": "string"
+        },
+        "regularPrice": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productHandleCode": {
+          "type": "string"
+        }
+      }
+    },
     "org.docksidestage.app.web.profile.ProfileResult$PurchasedProductPart": {
       "type": "object",
       "required": [
@@ -1862,7 +2051,7 @@
         }
       }
     },
-    "java.util.List\u003corg.docksidestage.app.web.wx.base.KeyValueResult\u003e": {
+    "org.docksidestage.app.web.wx.remogen.bean.SuperSimpleBody": {
       "type": "object",
       "properties": {
         "key": {
@@ -1873,7 +2062,7 @@
         }
       }
     },
-    "java.util.List\u003corg.docksidestage.app.web.wx.base.ValueGenericsResult\u003corg.docksidestage.app.web.wx.base.SuperSimpleResult\u003e\u003e": {
+    "java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.KeyValueResult\u003e": {
       "type": "object",
       "properties": {
         "key": {
@@ -1884,7 +2073,7 @@
         }
       }
     },
-    "java.util.List\u003corg.docksidestage.app.web.wx.base.ValueGenericsResult\u003cjava.lang.String\u003e\u003e": {
+    "java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.ValueGenericsResult\u003corg.docksidestage.app.web.wx.remogen.bean.SuperSimpleResult\u003e\u003e": {
       "type": "object",
       "properties": {
         "key": {
@@ -1895,7 +2084,18 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.base.KeyValueResult": {
+    "java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.ValueGenericsResult\u003cjava.lang.String\u003e\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.KeyValueResult": {
       "type": "object",
       "properties": {
         "key": {

@@ -22,6 +22,9 @@ import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsParam;
+import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsReturn;
+import org.docksidestage.remote.maihama.showbase.products.detail.RemoteProductsDetailParam;
+import org.docksidestage.remote.maihama.showbase.products.detail.RemoteProductsDetailReturn;
 
 /**
  * The base class as generation gap for remote API of products.
@@ -43,43 +46,82 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to /products/{productId}. (auto-generated method)<br>
+     * Request remote call to /products/. (auto-generated method)<br>
      * <pre>
-     * url: /products/{productId}
+     * url: /products/
      * httpMethod: POST
      * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
      * @param paramLambda The callback for RemoteProductsParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public Object request(Integer productId, Consumer<RemoteProductsParam> paramLambda) {
-        return request(productId, paramLambda, rule -> {});
+    public RemoteProductsReturn request(Consumer<RemoteProductsParam> paramLambda) {
+        return request(paramLambda, rule -> {});
     }
 
     /**
-     * Request remote call to /products/{productId}. (auto-generated method)<br>
+     * Request remote call to /products/. (auto-generated method)<br>
      * <pre>
-     * url: /products/{productId}
+     * url: /products/
      * httpMethod: POST
      * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
      * @param paramLambda The callback for RemoteProductsParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected Object request(Integer productId, Consumer<RemoteProductsParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductsReturn request(Consumer<RemoteProductsParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductsParam param = new RemoteProductsParam();
         paramLambda.accept(param);
-        return doRequestPost(Object.class, "/products/{productId}", moreUrl(productId), param, rule -> {
-            ruleOfProductId(rule);
+        return doRequestPost(RemoteProductsReturn.class, "/products/", noMoreUrl(), param, rule -> {
+            ruleOf(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /products/{productId}.<br>
+     * Set up method-level rule of /products/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfProductId(FlutyRemoteApiRule rule) {
+    protected void ruleOf(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /products/detail/{productId}. (auto-generated method)<br>
+     * <pre>
+     * url: /products/detail/{productId}
+     * httpMethod: POST
+     * </pre>
+     * @param productId The value of path variable for productId. (NotNull)
+     * @param paramLambda The callback for RemoteProductsDetailParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteProductsDetailReturn requestDetail(Integer productId, Consumer<RemoteProductsDetailParam> paramLambda) {
+        return requestDetail(productId, paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /products/detail/{productId}. (auto-generated method)<br>
+     * <pre>
+     * url: /products/detail/{productId}
+     * httpMethod: POST
+     * </pre>
+     * @param productId The value of path variable for productId. (NotNull)
+     * @param paramLambda The callback for RemoteProductsDetailParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteProductsDetailReturn requestDetail(Integer productId, Consumer<RemoteProductsDetailParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteProductsDetailParam param = new RemoteProductsDetailParam();
+        paramLambda.accept(param);
+        return doRequestPost(RemoteProductsDetailReturn.class, "/products/detail/{productId}", moreUrl(productId), param, rule -> {
+            ruleOfDetailProductId(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /products/detail/{productId}.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfDetailProductId(FlutyRemoteApiRule rule) {
     }
 }

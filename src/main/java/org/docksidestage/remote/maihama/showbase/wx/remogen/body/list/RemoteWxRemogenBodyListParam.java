@@ -13,27 +13,21 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.products.index;
+package org.docksidestage.remote.maihama.showbase.wx.remogen.body.list;
 
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as param for remote API of POST /products/.
+ * The bean class as param for remote API of POST /wx/remogen/body/list.
  * @author FreeGen
  */
-public class RemoteProductsParam {
+public class RemoteWxRemogenBodyListParam {
 
-    /** The property of productName. (NullAllowed) */
-    public String productName;
+    /** The property of key. (NullAllowed) */
+    public String key;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) (NullAllowed) */
-    public String productStatus;
-
-    /** The property of purchaseMemberName. (NullAllowed) */
-    public String purchaseMemberName;
-
-    /** The property of pageNumber. (NullAllowed) */
-    public Integer pageNumber;
+    /** The property of value. (NullAllowed) */
+    public Object value;
 
     @Override
     public String toString() {

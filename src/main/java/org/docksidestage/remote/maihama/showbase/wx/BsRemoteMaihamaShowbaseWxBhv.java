@@ -22,6 +22,8 @@ import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.wx.faicli.RemoteWxFaicliParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.body.basic.RemoteWxRemogenBodyBasicParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.body.list.RemoteWxRemogenBodyListParam;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.basic.RemoteWxRemogenListBasicReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genebean.RemoteWxRemogenListGenebeanReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genestring.RemoteWxRemogenListGenestringReturn;
@@ -86,6 +88,80 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfFaicli(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/body/basic. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/body/basic
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenBodyBasicParam. (NotNull)
+     */
+    public void requestRemogenBodyBasic(Consumer<RemoteWxRemogenBodyBasicParam> paramLambda) {
+        requestRemogenBodyBasic(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/body/basic. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/body/basic
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenBodyBasicParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void requestRemogenBodyBasic(Consumer<RemoteWxRemogenBodyBasicParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenBodyBasicParam param = new RemoteWxRemogenBodyBasicParam();
+        paramLambda.accept(param);
+        doRequestPost(void.class, "/wx/remogen/body/basic", noMoreUrl(), param, rule -> {
+            ruleOfRemogenBodyBasic(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/body/basic.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenBodyBasic(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/body/list. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/body/list
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenBodyListParam. (NotNull)
+     */
+    public void requestRemogenBodyList(Consumer<RemoteWxRemogenBodyListParam> paramLambda) {
+        requestRemogenBodyList(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/body/list. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/body/list
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenBodyListParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void requestRemogenBodyList(Consumer<RemoteWxRemogenBodyListParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenBodyListParam param = new RemoteWxRemogenBodyListParam();
+        paramLambda.accept(param);
+        doRequestPost(void.class, "/wx/remogen/body/list", noMoreUrl(), param, rule -> {
+            ruleOfRemogenBodyList(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/body/list.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenBodyList(FlutyRemoteApiRule rule) {
     }
 
     /**
