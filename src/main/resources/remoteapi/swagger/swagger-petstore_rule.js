@@ -4,25 +4,13 @@
 // =======================================================================================
 //                                                                                  Option
 //                                                                                  ======
-// 
+//
 // -----------------------------------------------------
 //                                          Type Mapping
 //                                          ------------
 // @Override
-var yourCollections = 'org.eclipse.collections.api.list.ImmutableList';
-
-// name and type mapping for e.g. classification
-var manualMappingClassMap = {
-    'memberStatus': 'org.docksidestage.dbflute.allcommon.CDef.MemberStatus',
-    'selectedReason': 'org.docksidestage.dbflute.allcommon.CDef.WithdrawalReason'
-};
-
-// @Override
-var pathVariableManualMappingClass = function(api, pathVariable) {
-    return manualMappingClassMap[pathVariable.name];
-}
-
-// @Override
-var beanPropertyManualMappingClass = function(api, beanClassName, property) {
-    return manualMappingClassMap[property.name];
+remoteApiRule.typeMap = function() {
+    var typeMap = baseRemoteApiRule.typeMap();
+    typeMap['array'] = 'org.eclipse.collections.api.list.ImmutableList';
+    return typeMap;
 }

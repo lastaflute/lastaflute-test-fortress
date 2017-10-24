@@ -4,12 +4,16 @@
 // =======================================================================================
 //                                                                                  Option
 //                                                                                  ======
-// 
+//
 // -----------------------------------------------------
 //                                          Type Mapping
 //                                          ------------
 // @Override
-var yourCollections = 'org.eclipse.collections.api.list.ImmutableList';
+remoteApiRule.typeMap = function() {
+    var typeMap = baseRemoteApiRule.typeMap();
+    typeMap['array'] = 'org.eclipse.collections.api.list.ImmutableList';
+    return typeMap;
+}
 
 // name and type mapping for e.g. classification
 var manualMappingClassMap = {
@@ -18,11 +22,11 @@ var manualMappingClassMap = {
 };
 
 // @Override
-var pathVariableManualMappingClass = function(api, pathVariable) {
+remoteApiRule.pathVariableManualMappingClass = function(api, pathVariable) {
     return manualMappingClassMap[pathVariable.name];
 }
 
 // @Override
-var beanPropertyManualMappingClass = function(api, beanClassName, property) {
+remoteApiRule.beanPropertyManualMappingClass = function(api, beanClassName, property) {
     return manualMappingClassMap[property.name];
 }

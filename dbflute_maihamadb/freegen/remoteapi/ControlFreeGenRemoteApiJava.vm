@@ -22,14 +22,17 @@
 
   ## use JavaScript for rule settings
   #set ($scriptEngine = $manager.createJavaScriptEngine())
+  $scriptEngine.put('manager', $manager);
   $scriptEngine.eval('load("./freegen/remoteapi/RemoteApiRule.js");')
   #if ($optionMap.ruleJsPath && $optionMap.ruleJsPath != '')
     ## load application rule settings if exists
     $scriptEngine.eval("load('$optionMap.ruleJsPath');")
   #end
+  #set ($rule = $scriptEngine.get('remoteApiRule'))
 
   ## load java property type mapping
-  #loadTypeMap()
+  #set ($typeMap = {})
+  $typeMap.putAll($scriptEngine.invokeMethod($rule, 'typeMap'))
 
   #set ($resourceTypeRemoteApi = "RemoteApi")
   #if ($request.requestName.startsWith($resourceTypeRemoteApi))
@@ -45,7 +48,7 @@
 
     ## schema name is from part of FreeGen request name e.g. RemoteApiSeaLand => SeaLand
     #set ($scheme = $request.requestName.replace($resourceTypeRemoteApi, ''))
-    #set ($schemePackage = $scriptEngine.invokeFunction('schemePackage', $scheme))
+    #set ($schemePackage = $scriptEngine.invokeMethod($rule, 'schemePackage', $scheme))
     #set ($bsBehaviorMap = {})
     #set ($exBehaviorMap = {})
 
@@ -67,8 +70,8 @@
           #foreach($methodEntry in $pathEntry.value.entrySet())
             #set ($multipleHttpMethod = $pathEntry.value.size() > 1)
             #set ($api = { 'scheme': $scheme, 'url': $pathEntry.key, 'httpMethod': $methodEntry.key, 'multipleHttpMethod': $multipleHttpMethod, 'consumes': $methodEntry.value.consumes, 'produces': $methodEntry.value.produces })
-            #if ($scriptEngine.invokeFunction('target', $api))
-              #set ($api.url = $scriptEngine.invokeFunction('url', $api))
+            #if ($scriptEngine.invokeMethod($rule, 'target', $api))
+              #set ($api.url = $scriptEngine.invokeMethod($rule, 'url', $api))
 
               ## +------------------------+
               ## |                        |
@@ -90,9 +93,9 @@
                   #set ($definitionKey = '')
                   #if ($parameter.schema && $parameter.schema['$ref'])
                     #set ($definitionKey = $parameter.schema['$ref'].replace('#/definitions/', '')))
-                    #set ($bodyProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
+                    #set ($bodyProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
                     #foreach($bodyPropertyEntry in $bodyProperties.entrySet())
-                      #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
+                      #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
                     #end
                     #processRemoteApiBean('param', $api, $bodyProperties)
                     #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'body' })
@@ -135,10 +138,10 @@
                     #else
                       ## 'schema' -> 'items' -> '$ref' if array
                       #set ($definitionKey = $response.schema['items']['$ref'].replace('#/definitions/', '')))
-                      #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
+                      #set ($returnProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
                       #if (!$returnProperties.empty)
                         #foreach($returnPropertyEntry in $returnProperties.entrySet())
-                          #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
+                          #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
                         #end
                         #processRemoteApiBean('return', $api, $returnProperties)
                         #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': "${class}", 'array': true})
@@ -151,10 +154,10 @@
                   #elseif ($response.schema['$ref'])
                     ## 'schema' -> '$ref' if normally
                     #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
-                    #set ($returnProperties = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].properties)
+                    #set ($returnProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
                     #if (!$returnProperties.empty)
                       #foreach($returnPropertyEntry in $returnProperties.entrySet())
-                        #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeFunction('definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
+                        #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
                       #end
                       #processRemoteApiBean('return', $api, $returnProperties)
                       #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class} })
@@ -197,12 +200,12 @@
 ## _/_/_/_/_/_/_/_/_/_/
 #macro(processRemoteApiBean, $type, $api, $properties_)
   #set ($subPackage = '')
-  #set ($subPackage = $scriptEngine.invokeFunction('beanSubPackage', $api))
-  #set ($class = $scriptEngine.invokeFunction("${type}ClassName", $api))
+  #set ($subPackage = $scriptEngine.invokeMethod($rule, 'beanSubPackage', $api))
+  #set ($class = $scriptEngine.invokeMethod($rule, "${type}ClassName", $api))
   #set ($extendsClass = '')
   #set ($implementsClasses = '')
-  #set ($extendsClass = $scriptEngine.eval("${type}ExtendsClass"))
-  #set ($implementsClasses = $scriptEngine.eval("${type}ImplementsClasses"))
+  #set ($extendsClass = $rule["${type}ExtendsClass"])
+  #set ($implementsClasses = $rule["${type}ImplementsClasses"])
   #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
   #set ($properties = $properties_)
   #set ($beanPurposeType = $type)
@@ -222,16 +225,16 @@
 ## _/_/_/_/_/_/_/_/_/_/
 #macro(keepRemoteApiBehavior, $api, $pathVariables, $paramBean, $returnBean)
   #set ($subPackage = '')
-  #set ($subPackage = $scriptEngine.invokeFunction('behaviorSubPackage', $api))
-  #set ($class = $scriptEngine.invokeFunction('bsBehaviorClassName', $api))
+  #set ($subPackage = $scriptEngine.invokeMethod($rule, 'behaviorSubPackage', $api))
+  #set ($class = $scriptEngine.invokeMethod($rule, 'bsBehaviorClassName', $api))
   #if (!$bsBehaviorMap.containsKey("${schemePackage}.${subPackage}.${class}")) {
       $bsBehaviorMap.put("${schemePackage}.${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'methodList': [] })
   #end
   $bsBehaviorMap.get("${schemePackage}.${subPackage}.${class}").methodList.add({ 'api': $api, 'pathVariables': $pathVariables, 'paramBean': $paramBean, 'returnBean': $returnBean })
   #set ($baseSubPackage = "${schemePackage}.${subPackage}")
   #set ($baseClass = $class)
-  #set ($subPackage = $scriptEngine.invokeFunction('behaviorSubPackage', $api))
-  #set ($class = $scriptEngine.invokeFunction('exBehaviorClassName', $api)))
+  #set ($subPackage = $scriptEngine.invokeMethod($rule, 'behaviorSubPackage', $api))
+  #set ($class = $scriptEngine.invokeMethod($rule, 'exBehaviorClassName', $api)))
   $exBehaviorMap.put("${schemePackage}.${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'baseSubPackage': ${baseSubPackage}, 'baseClass': ${baseClass} })
 #end
 
@@ -240,8 +243,8 @@
 ## Also generate DI xml.
 ## _/_/_/_/_/_/_/_/_/_/
 #macro(processRemoteApiBhv)
-  #if ($scriptEngine.eval('behaviorClassGeneration'))
-    #set ($abstractBehaviorClassName = $scriptEngine.invokeFunction('abstractBehaviorClassName', $scheme))
+  #if ($rule['behaviorClassGeneration'])
+    #set ($abstractBehaviorClassName = $scriptEngine.invokeMethod($rule, 'abstractBehaviorClassName', $scheme))
     #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}/${abstractBehaviorClassName.replaceAll('\.', '/')}.java")
     #mkdir($path)
     #generateEx("./remoteapi/RemoteApiAbstractBehavior.vm", $path)
@@ -268,12 +271,12 @@
     #end
 
     #if ($manager.isTargetContainerLastaDi())
-      #set ($path = $scriptEngine.invokeFunction('diXmlPath', $scheme, $request.resourceFile))
+      #set ($path = $scriptEngine.invokeMethod($rule, 'diXmlPath', $scheme, $request.resourceFile))
       #mkdir($path)
       #generate("./remoteapi/container/lastadi/RemoteApiDiXml.vm", $path)
     #end
     #if ($manager.isTargetContainerSeasar())
-      #set ($path = $scriptEngine.invokeFunction('diconPath', $scheme, $request.resourceFile))
+      #set ($path = $scriptEngine.invokeMethod($rule, 'diconPath', $scheme, $request.resourceFile))
       #mkdir($path)
       #generate("./remoteapi/container/seasar/RemoteApiDicon.vm", $path)
     #end
@@ -293,7 +296,7 @@
 #set ($adjustType = ${adjustType.substring($index)})
 #end
 #set ($adjustType = $adjustType.replaceAll("^.*\$", ''))
-#set ($adjustType = $scriptEngine.invokeFunction('nestClassName', $scheme, $adjustType))
+#set ($adjustType = $scriptEngine.invokeMethod($rule, 'nestClassName', $scheme, $adjustType))
 #end
 
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -310,29 +313,29 @@
   $typeMap.put('string', 'String')
   $typeMap.put('byte', 'byte[]')
   $typeMap.put('boolean', 'Boolean')
-  
+
   ## ------------------------------------------------
   ##    your Date
   ## ------------------------------------------------
   $typeMap.put('date', 'java.time.LocalDate')
-  #set( $yourDate = $scriptEngine.eval('yourDate') )
+  #set($yourDate = $rule['yourDate'])
   #if ($yourDate)
-  	$typeMap.put('date', $yourDate)
+    $typeMap.put('date', $yourDate)
   #end
-  
+
   ## ------------------------------------------------
   ##    your DateTime
   ## ------------------------------------------------
   $typeMap.put('date-time', 'java.time.LocalDateTime')
-  #set( $yourDateTime = $scriptEngine.eval('yourDateTime') )
+  #set($yourDateTime = $rule['yourDateTime'])
   #if ($yourDateTime)
-  	$typeMap.put('date-time', $yourDateTime)
+    $typeMap.put('date-time', $yourDateTime)
   #end
-  
-  
+
+
   $typeMap.put('file', 'org.lastaflute.web.ruts.multipart.MultipartFormFile')
   $typeMap.put('array', 'java.util.List')
-  #set ($yourCollections = $scriptEngine.eval('yourCollections'))
+  #set ($yourCollections = $rule['yourCollections'])
   #if ($yourCollections)
     $typeMap.put('array', $yourCollections)
   #end
