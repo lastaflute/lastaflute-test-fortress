@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 
 import org.dbflute.Entity;
 import org.dbflute.cbean.result.PagingResultBean;
+import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
@@ -57,5 +58,10 @@ public class RemoteHbPagingReturn<BEAN> {
         this.allRecordCount = page.getAllRecordCount();
         this.allPageCount = page.getAllPageCount();
         this.rows = rows;
+    }
+
+    @Override
+    public String toString() {
+        return Lato.string(this);
     }
 }
