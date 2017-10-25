@@ -20,8 +20,6 @@ public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
     // ===================================================================================
     //                                                                     for Application
     //                                                                     ===============
-    // #later jflute Action test
-    // #later jflute asJson(json)? asJsonAll(json)?
     public void test_requestProductList_basic() {
         // ## Arrange ##
         RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
