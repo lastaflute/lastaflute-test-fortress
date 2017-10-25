@@ -3083,18 +3083,6 @@
             "Resource"
           ],
           "nestTypeDocMetaList": []
-        },
-        {
-          "name": "requestManager",
-          "typeName": "org.lastaflute.web.servlet.request.RequestManager",
-          "simpleTypeName": "RequestManager",
-          "value": null,
-          "description": null,
-          "comment": null,
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
         }
       ],
       "methodName": "index",
@@ -3180,11 +3168,11 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 79,
+      "fileLineCount": 76,
       "methodLineCount": 13
     },
     {
-      "url": "/products/{productId}",
+      "url": "/products/",
       "typeName": "org.docksidestage.app.web.products.ProductsAction",
       "simpleTypeName": "ProductsAction",
       "description": "@author jflute",
@@ -3231,20 +3219,9 @@
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "Execute{suppressValidatorCallCheck\u003dtrue}"
+        "Execute"
       ],
-      "parameterTypeDocMetaList": [
-        {
-          "name": "productId",
-          "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.Integer\u003e",
-          "simpleTypeName": "OptionalThing\u003cInteger\u003e",
-          "value": null,
-          "description": null,
-          "comment": null,
-          "annotationList": [],
-          "nestTypeDocMetaList": []
-        }
-      ],
+      "parameterTypeDocMetaList": [],
       "formTypeDocMeta": {
         "name": null,
         "typeName": "org.docksidestage.app.web.products.ProductsSearchForm",
@@ -3302,15 +3279,91 @@
       },
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003c?\u003e",
-        "simpleTypeName": "JsonResponse\u003c?\u003e",
-        "value": "doList(form),doDetail(productId.get()",
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_Product_ProductListHtml),mappingToRowBean(product),asHtml(path_Product_ProductListHtml)",
         "description": null,
         "comment": null,
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 103,
+      "fileLineCount": 107,
+      "methodLineCount": 13
+    },
+    {
+      "url": "/products/detail/{productId}",
+      "typeName": "org.docksidestage.app.web.products.ProductsAction",
+      "simpleTypeName": "ProductsAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productStatusBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductStatusBhv",
+          "simpleTypeName": "ProductStatusBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT_STATUS.",
+          "comment": "The behavior of PRODUCT_STATUS.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$detail",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_Product_ProductDetailHtml)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 107,
       "methodLineCount": 7
     },
     {
@@ -5808,7 +5861,105 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 23,
+      "fileLineCount": 31,
+      "methodLineCount": 5
+    },
+    {
+      "url": "/wx/request/json/body/list",
+      "typeName": "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyAction",
+      "simpleTypeName": "WxRequestJsonBodyAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "list",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody\u003e",
+        "simpleTypeName": "List\u003cWxRequestJsonBodyBody\u003e",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "sea",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piari",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "bonvo",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstore",
+            "typeName": "java.lang.Boolean",
+            "simpleTypeName": "Boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "amba",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.Map\u003cjava.lang.String, java.lang.Object\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cMap\u003cString, Object\u003e\u003e",
+        "value": "asJson(map)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 31,
       "methodLineCount": 5
     },
     {
@@ -5906,7 +6057,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 23,
+      "fileLineCount": 31,
       "methodLineCount": 4
     },
     {
@@ -6004,7 +6155,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 23,
+      "fileLineCount": 31,
       "methodLineCount": 3
     },
     {
@@ -10405,7 +10556,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"index()",
         "description": null,
@@ -10475,7 +10626,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"str()",
         "description": null,
@@ -10545,7 +10696,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"num()",
         "description": null,
@@ -10588,9 +10739,9 @@
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/nearpath/byword1/str2num/{first}",
-      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword1Str2numAction",
-      "simpleTypeName": "WxRoutingNearpathByword1Str2numAction",
+      "url": "/wx/routing/nearpath/byword01/str2num/{first}",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword01Str2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword01Str2numAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
@@ -10615,7 +10766,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"index()",
         "description": null,
@@ -10654,13 +10805,13 @@
           }
         ]
       },
-      "fileLineCount": 24,
+      "fileLineCount": 25,
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/nearpath/byword1/str2num/{first}/named",
-      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword1Str2numAction",
-      "simpleTypeName": "WxRoutingNearpathByword1Str2numAction",
+      "url": "/wx/routing/nearpath/byword01/str2num/{first}/named",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword01Str2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword01Str2numAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
@@ -10685,7 +10836,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"named()",
         "description": null,
@@ -10724,13 +10875,13 @@
           }
         ]
       },
-      "fileLineCount": 24,
+      "fileLineCount": 25,
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/nearpath/byword2/num2str/{first}",
-      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword2Num2strAction",
-      "simpleTypeName": "WxRoutingNearpathByword2Num2strAction",
+      "url": "/wx/routing/nearpath/byword02/num2str/{first}",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword02Num2strAction",
+      "simpleTypeName": "WxRoutingNearpathByword02Num2strAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
@@ -10755,7 +10906,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"index()",
         "description": null,
@@ -10794,13 +10945,13 @@
           }
         ]
       },
-      "fileLineCount": 21,
+      "fileLineCount": 22,
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/nearpath/byword2/num2str/{first}/named",
-      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword2Num2strAction",
-      "simpleTypeName": "WxRoutingNearpathByword2Num2strAction",
+      "url": "/wx/routing/nearpath/byword02/num2str/{first}/named",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword02Num2strAction",
+      "simpleTypeName": "WxRoutingNearpathByword02Num2strAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
@@ -10825,7 +10976,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"named()",
         "description": null,
@@ -10864,13 +11015,153 @@
           }
         ]
       },
-      "fileLineCount": 21,
+      "fileLineCount": 22,
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/nearpath/byword3/optonstr/{first}/{second}",
-      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword3OptonstrAction",
-      "simpleTypeName": "WxRoutingNearpathByword3OptonstrAction",
+      "url": "/wx/routing/nearpath/byword05/optstr2num/{first}",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword05Optstr2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword05Optstr2numAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.String\u003e",
+          "simpleTypeName": "OptionalThing\u003cString\u003e",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"index()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 25,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/nearpath/byword05/optstr2num/{first}/named",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword05Optstr2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword05Optstr2numAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "named",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d{}/@word}"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"named()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 25,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/nearpath/byword10/optstr4str2num/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword10Optstr4str2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword10Optstr4str2numAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
@@ -10905,7 +11196,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"index()",
         "description": null,
@@ -10948,9 +11239,9 @@
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/nearpath/byword3/optonstr/{first}/named",
-      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword3OptonstrAction",
-      "simpleTypeName": "WxRoutingNearpathByword3OptonstrAction",
+      "url": "/wx/routing/nearpath/byword10/optstr4str2num/{first}/named",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword10Optstr4str2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword10Optstr4str2numAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
@@ -10975,7 +11266,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"named()",
         "description": null,
@@ -11018,9 +11309,9 @@
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/nearpath/byword4/optonnum/{first}/{second}",
-      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword4OptonnumAction",
-      "simpleTypeName": "WxRoutingNearpathByword4OptonnumAction",
+      "url": "/wx/routing/nearpath/byword11/optstr4numtostr/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword11Optstr4numtostrAction",
+      "simpleTypeName": "WxRoutingNearpathByword11Optstr4numtostrAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
@@ -11055,7 +11346,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"index()",
         "description": null,
@@ -11094,13 +11385,13 @@
           }
         ]
       },
-      "fileLineCount": 41,
+      "fileLineCount": 28,
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/nearpath/byword4/optonnum/{first}/named",
-      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword4OptonnumAction",
-      "simpleTypeName": "WxRoutingNearpathByword4OptonnumAction",
+      "url": "/wx/routing/nearpath/byword11/optstr4numtostr/{first}/named",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword11Optstr4numtostrAction",
+      "simpleTypeName": "WxRoutingNearpathByword11Optstr4numtostrAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
@@ -11125,7 +11416,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"named()",
         "description": null,
@@ -11164,7 +11455,457 @@
           }
         ]
       },
-      "fileLineCount": 41,
+      "fileLineCount": 28,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/nearpath/byword13/optstr4cls2num/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword13Optstr4cls2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword13Optstr4cls2numAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
+          "simpleTypeName": "CDef.MemberStatus",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.String\u003e",
+          "simpleTypeName": "OptionalThing\u003cString\u003e",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"index()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 27,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/nearpath/byword13/optstr4cls2num/{first}/named",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword13Optstr4cls2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword13Optstr4cls2numAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "named",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d{}/@word}"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"named()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 27,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/nearpath/byword15/optnum4str2num/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword15Optnum4str2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword15Optnum4str2numAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.Integer\u003e",
+          "simpleTypeName": "OptionalThing\u003cInteger\u003e",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"index()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 27,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/nearpath/byword15/optnum4str2num/{first}/named",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword15Optnum4str2numAction",
+      "simpleTypeName": "WxRoutingNearpathByword15Optnum4str2numAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "named",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d{}/@word}"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"named()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 27,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/nearpath/byword16/optnum4num2str/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword16Optnum4num2strAction",
+      "simpleTypeName": "WxRoutingNearpathByword16Optnum4num2strAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.Integer\u003e",
+          "simpleTypeName": "OptionalThing\u003cInteger\u003e",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"index()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 31,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/nearpath/byword16/optnum4num2str/{first}/named",
+      "typeName": "org.docksidestage.app.web.wx.routing.nearpath.WxRoutingNearpathByword16Optnum4num2strAction",
+      "simpleTypeName": "WxRoutingNearpathByword16Optnum4num2strAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "named",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d{}/@word}"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"named()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 31,
       "methodLineCount": 3
     },
     {
@@ -11817,6 +12558,226 @@
       "methodLineCount": 3
     },
     {
+      "url": "/wx/routing/restlike/lmlike/{memberStatus}",
+      "typeName": "org.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeLmlikeAction",
+      "simpleTypeName": "WxRoutingRestlikeLmlikeAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "memberStatus",
+          "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
+          "simpleTypeName": "CDef.MemberStatus",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeLmlikeAction$MaihamaBean\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxRoutingRestlikeLmlikeAction$MaihamaBean\u003e",
+        "value": "asJson(new MaihamaBean(\"index()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 11,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/restlike/lmlike/category/{memberStatus}/{memberId}",
+      "typeName": "org.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeLmlikeAction",
+      "simpleTypeName": "WxRoutingRestlikeLmlikeAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "category",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "memberStatus",
+          "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
+          "simpleTypeName": "CDef.MemberStatus",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "memberId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeLmlikeAction$MaihamaBean\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxRoutingRestlikeLmlikeAction$MaihamaBean\u003e",
+        "value": "asJson(new MaihamaBean(\"category()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 11,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/restlike/lmlike/{productId}/detail",
+      "typeName": "org.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeLmlikeAction",
+      "simpleTypeName": "WxRoutingRestlikeLmlikeAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "detail",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d{}/@word}"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeLmlikeAction$MaihamaBean\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxRoutingRestlikeLmlikeAction$MaihamaBean\u003e",
+        "value": "asJson(new MaihamaBean(\"detail()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 11,
+      "methodLineCount": 3
+    },
+    {
       "url": "/wx/routing/{first}",
       "typeName": "org.docksidestage.app.web.wx.routing.WxRoutingAction",
       "simpleTypeName": "WxRoutingAction",
@@ -11844,7 +12805,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"index()",
         "description": null,
@@ -11903,7 +12864,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"maihama()",
         "description": null,
@@ -11973,7 +12934,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"sea()",
         "description": null,
@@ -12053,7 +13014,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"land()",
         "description": null,
@@ -12123,7 +13084,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"piari()",
         "description": null,
@@ -12203,7 +13164,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"dstore()",
         "description": null,
@@ -12283,7 +13244,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"bonvo()",
         "description": null,
@@ -12373,7 +13334,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"amba()",
         "description": null,
@@ -12473,7 +13434,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"miraco()",
         "description": null,
@@ -12552,7 +13513,7 @@
       ],
       "formTypeDocMeta": {
         "name": null,
-        "typeName": "org.docksidestage.app.web.wx.routing.base.RoutingCheckForm",
+        "typeName": "org.docksidestage.app.web.wx.routing.RoutingCheckForm",
         "simpleTypeName": "RoutingCheckForm",
         "value": null,
         "description": "@author jflute",
@@ -12573,7 +13534,7 @@
       },
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"dohotel()",
         "description": null,
@@ -12653,7 +13614,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"celeb()",
         "description": null,
@@ -12723,7 +13684,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"amphiTheater()",
         "description": null,
@@ -12803,7 +13764,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"index()",
         "description": null,
@@ -12873,7 +13834,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"index()",
         "description": null,
@@ -12943,7 +13904,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"sea()",
         "description": null,
@@ -13023,7 +13984,7 @@
       "formTypeDocMeta": null,
       "returnTypeDocMeta": {
         "name": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.base.RoutingCheckResult\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
         "value": "asJson(new RoutingCheckResult(\"sea()",
         "description": null,

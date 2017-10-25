@@ -26,7 +26,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * </p>
  * @author FreeGen
  */
-public abstract class ${abstractBehaviorClassName} extends $scriptEngine.eval('frameworkBehaviorClass') {
+public abstract class ${abstractBehaviorClassName} extends $rule['frameworkBehaviorClass'] {
 
     // ===================================================================================
     //                                                                         Constructor

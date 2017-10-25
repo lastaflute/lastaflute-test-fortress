@@ -16,7 +16,7 @@
 ${manager.allClassCopyright}package ${request.package}.${schemePackage}#if ($subPackage && $subPackage != '').${subPackage}#end;
 #set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
 #set ($parameterFlg = false)
-#if ($scriptEngine.eval('behaviorMethodGeneration'))
+#if ($rule['behaviorMethodGeneration'])
 #foreach($method in $methodList)
 #if (${method.paramBean.className} && ${method.paramBean.className} != '')
 #set($added = $importSet.add("${method.paramBean.package}.${method.paramBean.className}"))
@@ -27,7 +27,7 @@ ${manager.allClassCopyright}package ${request.package}.${schemePackage}#if ($sub
 #end
 #end
 #end
-#if ($scriptEngine.eval('behaviorMethodGeneration'))
+#if ($rule['behaviorMethodGeneration'])
 
 import java.util.function.Consumer;
 
@@ -57,7 +57,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     public ${class}(RequestManager requestManager) {
         super(requestManager);
     }
-#if ($scriptEngine.eval('behaviorMethodGeneration'))
+#if ($rule['behaviorMethodGeneration'])
 #foreach($method in $methodList)
 
 #if ($foreach.index == 0)
@@ -65,8 +65,8 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     //                                                                             Execute
     //                                                                             =======
 #end
-#set ($behaviorRequestMethodName = $scriptEngine.invokeFunction('behaviorRequestMethodName', $method.api))
-#set ($behaviorRuleMethodName = $scriptEngine.invokeFunction('behaviorRuleMethodName', $method.api))
+#set ($behaviorRequestMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRequestMethodName', $method.api))
+#set ($behaviorRuleMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRuleMethodName', $method.api))
 #foreach($pathVariableEntry in $method.pathVariables.entrySet())
 #set ($behaviorRuleMethodName = "$behaviorRuleMethodName$manager.initCap($pathVariableEntry.key)")
 #end
@@ -77,15 +77,15 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #foreach($pathVariableEntry in $method.pathVariables.entrySet())
 #set ($pathVariable = $pathVariableEntry.value)
 #if ($pathVariable.type == 'array')
-#if ($scriptEngine.invokeFunction('pathVariableManualMappingClass', $api, $pathVariable))
-#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<$scriptEngine.invokeFunction('pathVariableManualMappingClass', $api, $pathVariable))>"))
+#if ($scriptEngine.invokeMethod($rule, 'pathVariableManualMappingClass', $api, $pathVariable))
+#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<$scriptEngine.invokeMethod($rule, 'pathVariableManualMappingClass', $api, $pathVariable))>"))
 #elseif (${typeMap[$pathVariable.items.format]})
 #set ($pathVariableClass = "${typeMap[$pathVariable.type]}<${typeMap[$pathVariable.items.format]}>")
 #elseif (${typeMap[$pathVariable.items.type]})
 #set ($pathVariableClass = "${typeMap[$pathVariable.type]}<${typeMap[$pathVariable.items.type]}>")
 #end
-#elseif ($scriptEngine.invokeFunction('pathVariableManualMappingClass', $api, $pathVariable))
-#set ($pathVariableClass = $scriptEngine.invokeFunction('pathVariableManualMappingClass', $api, $pathVariable))
+#elseif ($scriptEngine.invokeMethod($rule, 'pathVariableManualMappingClass', $api, $pathVariable))
+#set ($pathVariableClass = $scriptEngine.invokeMethod($rule, 'pathVariableManualMappingClass', $api, $pathVariable))
 #elseif (${typeMap[$pathVariable.format]})
 #set ($pathVariableClass = ${typeMap[$pathVariable.format]})
 #elseif (${typeMap[$pathVariable.type]})
@@ -100,8 +100,8 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #elseif ($pathVariable.items.enum)
 #set ($enumValueComment = "(enumValue=$pathVariable.items.enum) ")
 #end
-#if ($scriptEngine.invokeFunction('pathVariableManualMappingDescription', $api, $pathVariable))
-#set ($added = $parameterList.add({ "name": ${pathVariableEntry.key}, "description": "The value of path variable for ${pathVariableEntry.key}. ${enumValueComment}(${scriptEngine.invokeFunction('pathVariableManualMappingDescription', $api, $pathVariable)}) (NotNull)"}))
+#if ($scriptEngine.invokeMethod($rule, 'pathVariableManualMappingDescription', $api, $pathVariable))
+#set ($added = $parameterList.add({ "name": ${pathVariableEntry.key}, "description": "The value of path variable for ${pathVariableEntry.key}. ${enumValueComment}(${scriptEngine.invokeMethod($rule, 'pathVariableManualMappingDescription', $api, $pathVariable)}) (NotNull)"}))
 #elseif ($pathVariable.description)
 #set ($added = $parameterList.add({ "name": ${pathVariableEntry.key}, "description": "The value of path variable for ${pathVariableEntry.key}. ${enumValueComment}(${pathVariable.description}) (NotNull)"}))
 #else
@@ -123,7 +123,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
 #if ($method.returnBean.array)
 #set ($returnBeanClassName = "${typeMap['array']}<${returnBeanClassName}>")
 #end
-#set ($returnBeanClassName = $scriptEngine.invokeFunction('unDefinitionKey', ${returnBeanClassName}))
+#set ($returnBeanClassName = $scriptEngine.invokeMethod($rule, 'unDefinitionKey', ${returnBeanClassName}))
     /**
      * Request remote call to $method.api.url. (auto-generated method)<br>
      * <pre>
@@ -137,7 +137,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
      * @return The bean object as return type, receiving response body. (NotNull)
 #end
      */
-    $scriptEngine.eval('behaviorMethodAccessModifier') $returnBeanClassName $behaviorRequestMethodName($!{parameterDefinition}) {
+    $rule['behaviorMethodAccessModifier'] $returnBeanClassName $behaviorRequestMethodName($!{parameterDefinition}) {
 #set ($ruleParam = 'rule -> {}')
        #if ($returnBeanClassName != 'void') return#end $behaviorRequestMethodName(#foreach($parameter in $parameterList)$parameter.name, #end$ruleParam);
     }
