@@ -22,10 +22,12 @@ import java.util.regex.Pattern;
 
 import javax.validation.Configuration;
 import javax.validation.constraints.Size;
+import javax.validation.valueextraction.ValueExtractor;
 
 import org.dbflute.util.DfTypeUtil;
 import org.dbflute.util.Srl;
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
+import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.HibernateValidatorConfiguration;
@@ -36,6 +38,7 @@ import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
 import org.lastaflute.web.ruts.process.populate.FormYourCollectionResource;
+import org.lastaflute.web.validation.VaConfigSetupper;
 
 /**
  * @author jflute
@@ -48,25 +51,26 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                     REST-like Routing
     //                                     -----------------
-    private static final Pattern PRODUCTS_ENTRY_PATTERN = Pattern.compile("^/products/[0-9]+/?$");
-    private static final Pattern PRODUCTS_INTERNAL_PATTERN = Pattern.compile("^/products/detail/[0-9]+/?$");
-    private static final Pattern LMLIKE_ENTRY_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/[a-zA-Z0-9]+/[0-9]+/?$");
-    private static final Pattern LMLIKE_INTERNAL_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/category/[a-zA-Z0-9]+/[0-9]+/?$");
-    private static final List<RestlikeResource> restlikeResourceList;
+    protected static final Pattern PRODUCTS_ENTRY_PATTERN = Pattern.compile("^/products/[0-9]+/?$");
+    protected static final Pattern PRODUCTS_INTERNAL_PATTERN = Pattern.compile("^/products/detail/[0-9]+/?$");
+    protected static final Pattern LMLIKE_ENTRY_PATTERN = Pattern.compile("^/wx/routing/restlike/lmlike/[a-zA-Z0-9]+/[0-9]+/?$");
+    protected static final Pattern LMLIKE_INTERNAL_PATTERN =
+            Pattern.compile("^/wx/routing/restlike/lmlike/category/[a-zA-Z0-9]+/[0-9]+/?$");
+    protected static final List<RestlikeResource> restlikeResourceList;
     static {
         List<RestlikeResource> workingList = new ArrayList<RestlikeResource>();
         workingList.add(new RestlikeResource(PRODUCTS_ENTRY_PATTERN, PRODUCTS_INTERNAL_PATTERN, "products", "detail"));
         workingList.add(new RestlikeResource(LMLIKE_ENTRY_PATTERN, LMLIKE_INTERNAL_PATTERN, "lmlike", "category"));
         restlikeResourceList = Collections.unmodifiableList(workingList);
     }
-    private static final RestlikeRouter restlikeRouter = new RestlikeRouter();
+    protected static final RestlikeRouter restlikeRouter = new RestlikeRouter();
 
     protected static class RestlikeResource {
 
-        private Pattern entryPattern;
-        private Pattern internalPattern;
-        private String baseWord;
-        private String internalWord;
+        protected Pattern entryPattern;
+        protected Pattern internalPattern;
+        protected String baseWord;
+        protected String internalWord;
 
         public RestlikeResource(Pattern entryPattern, Pattern internalPattern, String baseWord, String internalWord) {
             this.entryPattern = entryPattern;
@@ -108,7 +112,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
             return null;
         }
 
-        private String doMakeRestlike(String requestPath, Pattern entryPattern, Pattern internalPattern, String baseWord,
+        protected String doMakeRestlike(String requestPath, Pattern entryPattern, Pattern internalPattern, String baseWord,
                 String internalWord) {
             if (entryPattern.matcher(requestPath).matches()) {
                 return Srl.replace(requestPath, baseWord + "/", baseWord + "/" + internalWord + "/");
@@ -118,7 +122,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
             return null;
         }
 
-        private void handleInternalRequestPathDirectAccess(String requestPath) {
+        protected void handleInternalRequestPathDirectAccess(String requestPath) {
             throw new Forced404NotFoundException("Cannot access to internal path directly: " + requestPath, UserMessages.empty());
         }
     }
@@ -126,7 +130,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                          Form Mapping
     //                                          ------------
-    private static final FormMappingOption formMappingOption = new FormMappingOption().filterSimpleTextParameter((parameter, meta) -> {
+    protected static final FormMappingOption formMappingOption = new FormMappingOption().filterSimpleTextParameter((parameter, meta) -> {
         return parameter.trim();
     }).yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
         return Lists.immutable.ofAll(mutable);
@@ -135,7 +139,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                       Action Response
     //                                       ---------------
-    private static final ResponseReflectingOption responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
+    protected static final ResponseReflectingOption responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
 
     // ===================================================================================
     //                                                                             Routing
@@ -160,16 +164,24 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // ===================================================================================
     //                                                                          Validation
     //                                                                          ==========
-    // example:
-    //@Override
-    //public VaConfigSetupper adjustValidatorConfig() {
-    //    return conf -> prepareImmutableList(conf);
-    //}
+    @Override
+    public VaConfigSetupper adjustValidatorConfig() {
+        return conf -> prepareImmutableList(conf);
+    }
 
     protected void prepareImmutableList(Configuration<?> conf) {
+        ((HibernateValidatorConfiguration) conf).addMapping(createImmutableListConstraintMapping()); // always can cast
+        conf.addValueExtractor(createImmutableListValueExtractor());
+    }
+
+    protected DefaultConstraintMapping createImmutableListConstraintMapping() {
         DefaultConstraintMapping mapping = new DefaultConstraintMapping();
         mapping.constraintDefinition(Size.class).validatedBy(SizeValidatorForImmutableList.class);
-        ((HibernateValidatorConfiguration) conf).addMapping(mapping); // always can cast
+        return mapping;
+    }
+
+    protected ValueExtractor<?> createImmutableListValueExtractor() {
+        return new ValueExtractorForImmutableList();
     }
 
     // ===================================================================================
