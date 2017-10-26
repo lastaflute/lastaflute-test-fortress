@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 
 import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
-import org.eclipse.collections.impl.list.immutable.ImmutableListFactoryImpl;
+import org.eclipse.collections.impl.factory.Lists;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.web.validation.Required;
 
@@ -40,8 +40,8 @@ public class WxJsonYourCollectionsTest extends UnitFortressWebTestCase {
     public void test_DatePattern_basic() {
         // ## Arrange ##
         MaihamaDateBean bean = new MaihamaDateBean();
-        bean.strList = new ImmutableListFactoryImpl().of("sea", "land", "piari");
-        bean.intList = new ImmutableListFactoryImpl().of(1, 2, 3);
+        bean.strList = Lists.immutable.of("sea", "land", "piari");
+        bean.intList = Lists.immutable.of(1, 2, 3);
 
         // ## Act ##
         String json = jsonManager.toJson(bean);

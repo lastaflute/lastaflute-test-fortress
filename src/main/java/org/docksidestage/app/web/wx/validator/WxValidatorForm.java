@@ -25,6 +25,7 @@ import javax.validation.constraints.NotNull;
 
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.docksidestage.mylasta.action.FortressMessages;
+import org.eclipse.collections.api.list.ImmutableList;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.theme.conversion.ValidateTypeFailure;
@@ -77,10 +78,28 @@ public class WxValidatorForm {
     public List<SeaBean> seaBeanList;
 
     public static class SeaBean {
+
         @Required
         public Integer over;
         @Required
         public Boolean mystic;
+
+        @Valid
+        public List<RestaurantBean> restaurantList;
+        @Valid
+        public List<RestaurantBean> restaurantImmutableInstanceList;
+        @Valid
+        public ImmutableList<RestaurantBean> restaurantImmutableTypeList;
+        @Valid
+        public Iterable<RestaurantBean> restaurantIterableArrayList;
+        @Valid
+        public Iterable<RestaurantBean> restaurantIterableImmutableList;
+
+        public static class RestaurantBean {
+
+            @Required
+            public String restaurantName;
+        }
     }
 
     // -----------------------------------------------------
@@ -90,6 +109,7 @@ public class WxValidatorForm {
     public LandBean<PiariBean> landBean;
 
     public static class LandBean<HAUNTED> {
+
         @Required
         public Integer oneman;
         @Required
@@ -119,6 +139,7 @@ public class WxValidatorForm {
     public DstoreBean<List<GoodsBean>> dstoreBean;
 
     public static class DstoreBean<GOODS> {
+
         @Required
         public GOODS goods;
     }
@@ -135,6 +156,7 @@ public class WxValidatorForm {
     public AmbaBean<RoomBean> ambaBean;
 
     public static class AmbaBean<ROOM> {
+
         @Required
         public Integer ssador;
         @NotNull
@@ -142,6 +164,7 @@ public class WxValidatorForm {
     }
 
     public static class RoomBean {
+
         @Required
         public Integer roomNo;
     }
