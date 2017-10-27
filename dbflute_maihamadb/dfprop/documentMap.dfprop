@@ -212,19 +212,12 @@ map:{
     #   o extendsPropRequest: other request name of exnteds-properties (NotRequired)
     #   o isCheckImplicitOverride: does it check implicit override? (NotRequired)
     #
-    #; propertiesHtmlMap = map:{
-    #    ; MaihamaEnv = map:{
-    #        ; baseDir = ../src
-    #        ; rootFile = $$baseDir$$/main/resources/maihama_env.properties
-    #        ; environmentMap = map:{
-    #            ; integration = $$baseDir$$/integration/resources
-    #            ; production = $$baseDir$$/production/resources
-    #        }
-    #        ; diffIgnoredKeyList = list:{} ; maskedKeyList = list:{} ; isEnvOnlyFloatLeft = false
-    #        ; extendsPropRequest = null
-    #        ; isCheckImplicitOverride = false
-    #    }
-    #}
+    ; propertiesHtmlMap = map:{
+        ; FortressThymeleafConfig = map:{
+            ; baseDir = ../src
+            ; rootFile = $$baseDir$$/main/resources/fortress_thymeleaf_config.properties
+        }
+    }
     # - - - - - - - - - -/
 }
 # ----------------/

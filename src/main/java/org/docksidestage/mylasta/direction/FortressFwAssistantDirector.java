@@ -17,7 +17,7 @@ package org.docksidestage.mylasta.direction;
 
 import javax.annotation.Resource;
 
-import org.dbflute.helper.HandyDate;
+import org.docksidestage.bizfw.thymeleaf.ThymeleafConfigProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressActionAdjustmentProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook;
 import org.docksidestage.mylasta.direction.sponsor.FortressCookieResourceProvider;
@@ -58,7 +58,10 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
     //                                                                              ======
     @Override
     protected void prepareAssistDirection(FwAssistDirection direction) {
-        direction.directConfig(nameList -> nameList.add("fortress_config.properties"), "fortress_env.properties");
+        direction.directConfig(nameList -> {
+            nameList.add("fortress_config.properties");
+            nameList.add("fortress_thymeleaf_config.properties");
+        }, "fortress_env.properties");
     }
 
     // ===================================================================================
@@ -156,10 +159,13 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
 
     protected HtmlRenderingProvider createHtmlRenderingProvider() {
         return new ThymeleafRenderingProvider().asDevelopment(config.isDevelopmentHere()).additionalExpression(resource -> {
-            resource.registerProcessor("sea", new HandyDate(new java.util.Date()));
+            resource.registerProcessor("config", new ThymeleafConfigProvider(config));
         });
     }
 
+    // -----------------------------------------------------
+    //                                             Multipart
+    //                                             ---------
     protected MultipartResourceProvider createMultipartResourceProvider() {
         return () -> new FortressMultipartRequestHandler();
     }

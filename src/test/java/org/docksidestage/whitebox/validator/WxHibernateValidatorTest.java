@@ -21,6 +21,7 @@ import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.docksidestage.whitebox.validator.WxHibernateValidatorTest.MaihamaListParadeBean.StageBean;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
+import org.lastaflute.web.validation.VaValidListBean;
 
 /**
  * @author jflute
@@ -30,7 +31,7 @@ public class WxHibernateValidatorTest extends UnitFortressWebTestCase {
     // ===================================================================================
     //                                                                       Property Path
     //                                                                       =============
-    public void test_propertyPath_indexed() {
+    public void test_propertyPath_indexed_basic() {
         // ## Arrange ##
         Validator validator = buildValidatorFactory(conf -> {
             conf.addValueExtractor(createImmutableListExtractor());
@@ -48,6 +49,7 @@ public class WxHibernateValidatorTest extends UnitFortressWebTestCase {
         Set<ConstraintViolation<MaihamaListParadeBean>> vioSet = validator.validate(maihama, Default.class);
 
         // ## Assert ##
+        assertHasAnyElement(vioSet);
         for (ConstraintViolation<MaihamaListParadeBean> vio : vioSet) {
             log(vio);
             String path = vio.getPropertyPath().toString();
@@ -60,6 +62,27 @@ public class WxHibernateValidatorTest extends UnitFortressWebTestCase {
             } else {
                 fail();
             }
+        }
+    }
+
+    public void test_propertyPath_indexed_root() {
+        // ## Arrange ##
+        Validator validator = buildValidatorFactory(conf -> {
+            conf.addValueExtractor(createImmutableListExtractor());
+        }).getValidator();
+        MaihamaListParadeBean maihama = new MaihamaListParadeBean();
+        maihama.seaStages = newArrayList(new StageBean());
+        VaValidListBean<MaihamaListParadeBean> listBean = new VaValidListBean<>(newArrayList(maihama));
+
+        // ## Act ##
+        Set<ConstraintViolation<VaValidListBean<MaihamaListParadeBean>>> vioSet = validator.validate(listBean, Default.class);
+
+        // ## Assert ##
+        assertHasAnyElement(vioSet);
+        for (ConstraintViolation<VaValidListBean<MaihamaListParadeBean>> vio : vioSet) {
+            log(vio);
+            String path = vio.getPropertyPath().toString();
+            assertEquals("list[0].seaStages[0].stageName", path);
         }
     }
 

@@ -25,7 +25,6 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mapping.FlVacantMappingPolicy;
 import org.dbflute.util.Srl;
-import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
 import org.docksidestage.remote.maihama.hangar.base.RemoteHgPagingReturn;
 import org.docksidestage.remote.maihama.hangar.mypage.RemoteHgMypageReturn;
 import org.docksidestage.remote.maihama.hangar.product.RemoteHgProductRowReturn;
@@ -71,7 +70,7 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
         rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption));
         rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
 
-        rule.handleFailureResponseAs(RemoteHbUnifiedFailureResult.class); // server-managed message way
+        rule.handleFailureResponseAs(FaicliUnifiedFailureResult.class); // server-managed message way
         rule.translateClientError(resource -> {
             RemoteApiHttpClientErrorException clientError = resource.getClientError();
             if (clientError.getHttpStatus() == 400) { // controlled client error
@@ -90,7 +89,7 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
     }
 
     private UserMessage toUserMessage(FaicliFailureErrorPart error) {
-        String plainMessage = messageManager.getMessage(Locale.ENGLISH, "constraints." + error.code + ".messsage");
+        String plainMessage = messageManager.getMessage(Locale.ENGLISH, "constraints." + error.code + ".message");
         Map<String, String> fromToMap = new HashMap<>();
         error.data.forEach((key, value) -> fromToMap.put("{" + key + "}", value.toString()));
         return UserMessage.asDirectMessage(Srl.replaceBy(plainMessage, fromToMap));

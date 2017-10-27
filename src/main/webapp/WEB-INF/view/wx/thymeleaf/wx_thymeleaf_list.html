@@ -40,7 +40,7 @@
 		<form class="member-search-form" action="#" th:action="@{/member/list/}" method="post">
 			<ul class="member-search-condition-list">
 				<li>
-					<span>Member Name</span>
+					<span th:text="${#config.get('sea.hangar')}">Member Name</span>
 					<input type="text" name="memberName" th:value="${memberName}"/>
 					<span la:errors="memberName"/>
 				</li>

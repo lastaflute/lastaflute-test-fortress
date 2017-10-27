@@ -28,11 +28,13 @@ import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.dbflute.exentity.Member;
 import org.lastaflute.core.util.LaStringUtil;
 import org.lastaflute.web.Execute;
+import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
 
 /**
  * @author jflute
  */
+@AllowAnyoneAccess
 public class WxResponseHtmlListAction extends FortressBaseAction {
 
     // ===================================================================================
