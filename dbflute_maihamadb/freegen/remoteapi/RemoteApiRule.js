@@ -15,14 +15,33 @@
 /**
  * PathVariable Type.
  * @typedef {Object} PathVariable
+ * @property {string} pathVariable.name - Name.
+ * @property {string} pathVariable.in - In.
+ * @property {string} pathVariable.required - Required.(optional)
+ * @property {string} pathVariable.description - Description.(optional)
+ * @property {string} pathVariable.type - Type.(optional)
+ * @property {string} pathVariable.format - Format.(optional)
+ * @property {string} pathVariable.default - Default.(optional)
+ * @property {Items} pathVariable.items - Items.(optional)
+ * @property {Schema} pathVariable.schema - Schema.(optional)
+ * @property {string} pathVariable.enum - Enum.(optional)
  */
 
 /**
  * Property Type.
  * @typedef {Object} Property
+ * @property {string} property.name - Name.
+ * @property {string} property.required - Required.(optional)
+ * @property {string} property.description - Description.(optional)
+ * @property {string} property.type - Type.(optional)
+ * @property {string} property.format - Format.(optional)
+ * @property {string} property.default - Default.(optional)
+ * @property {Items} property.items - Items.(optional)
+ * @property {Schema} property.schema - Schema.(optional)
+ * @property {string} property.enum - Enum.(optional)
  */
 
-var baseRemoteApiRule = {
+var baseRule = {
 
     // ===================================================================================
     //                                                                               Base
@@ -271,6 +290,6 @@ var baseRemoteApiRule = {
 };
 
 var remoteApiRule = {};
-for (var i in baseRemoteApiRule) {
-    remoteApiRule[i] = baseRemoteApiRule[i];
+for (var i in baseRule) {
+    remoteApiRule[i] = baseRule[i];
 }

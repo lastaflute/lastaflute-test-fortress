@@ -42,18 +42,18 @@ import org.lastaflute.core.util.Lato;
 import ${import};
 #end
 
-#set ($generatedClassSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
-#set($added = $generatedClassSet.add($class))
 /**
  * The bean class as ${beanPurposeType} for remote API of ${remoteApiExp}.
  * @author FreeGen
  */
 public class ${class}#if ($extendsClass && $extendsClass != '') extends $extendsClass#end#if ($implementsClasses && $implementsClasses != '') implements $implementsClasses#end {
+#set($nestTypeFullNameList = [])
 #foreach($propertyEntry in $properties.entrySet())
 #set($nestList = [])
 #generateProperty($class, $propertyEntry)
 #set($nestList = [])
 #end
+#set($nestTypeFullNameList = [])
 
     @Override
     public String toString() {
@@ -112,18 +112,17 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
     #generateIndent()@javax.validation.Valid
 #end
     #generateIndent()public ${fieldClass} ${scriptEngine.invokeMethod($rule, 'fieldName', $api, $fieldName)};
-#if ($nestType && $nestType != '' && !$generatedClassSet.contains($adjustType))
-#set($added = $generatedClassSet.add($adjustType))
-
 #generateNestType($nestType)
-#end
 #end
 ##################################################
 ## generate nest type.
 ##################################################
 #macro(generateNestType, $type)
+#if ($type && $type != '' && !$nestList.contains($type) && !($nestTypeFullNameList.contains($type) || $nestTypeFullNameList.contains("$type.join('_', $nestList)_$type")))
 #set($added = $nestList.add($type))
+#set($added = $nestTypeFullNameList.add("$type.join('_', $nestList)"))
 #adjustType($type)
+
 #generateIndent()/**
 #generateIndent() * The part class of ${adjustType}.
 #generateIndent() * @author FreeGen
@@ -135,6 +134,7 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #generateIndent()}
 #set($i = $nestList.size() - 1)
 #set($removed = $nestList.remove($i))
+#end
 #end
 ##################################################
 ## generate indent.

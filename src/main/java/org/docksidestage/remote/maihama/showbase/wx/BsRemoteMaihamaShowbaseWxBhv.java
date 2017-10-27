@@ -29,6 +29,7 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genebean.Remote
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genestring.RemoteWxRemogenListGenestringReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.innergene.RemoteWxRemogenListInnergeneReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.sameobj.RemoteWxRemogenTrickySameobjReturn;
 
 /**
  * The base class as generation gap for remote API of wx.
@@ -341,5 +342,40 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfRemogenTrickyNobody(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/sameobj. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/sameobj
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenTrickySameobjReturn requestRemogenTrickySameobj() {
+        return requestRemogenTrickySameobj(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/sameobj. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/sameobj
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenTrickySameobjReturn requestRemogenTrickySameobj(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenTrickySameobjReturn.class, "/wx/remogen/tricky/sameobj", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenTrickySameobj(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/tricky/sameobj.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenTrickySameobj(FlutyRemoteApiRule rule) {
     }
 }

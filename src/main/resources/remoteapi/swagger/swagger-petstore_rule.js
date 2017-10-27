@@ -10,7 +10,7 @@
 //                                          ------------
 // @Override
 remoteApiRule.typeMap = function() {
-    var typeMap = baseRemoteApiRule.typeMap();
+    var typeMap = baseRule.typeMap();
     typeMap['array'] = 'org.eclipse.collections.api.list.ImmutableList';
     return typeMap;
 }

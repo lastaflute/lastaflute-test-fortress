@@ -1141,6 +1141,30 @@
           "application/json"
         ]
       }
+    },
+    "/wx/remogen/tricky/sameobj": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
     }
   },
   "definitions": {
@@ -2103,6 +2127,88 @@
         },
         "value": {
           "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ResortPark": {
+      "type": "object",
+      "required": [
+        "parkName",
+        "stageCount"
+      ],
+      "properties": {
+        "parkName": {
+          "type": "string"
+        },
+        "stageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ExtendedArea": {
+      "type": "object",
+      "required": [
+        "direction"
+      ],
+      "properties": {
+        "direction": {
+          "type": "string"
+        },
+        "nextPark": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ResortPark"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore$OfficialShop": {
+      "type": "object",
+      "required": [
+        "shopName"
+      ],
+      "properties": {
+        "shopName": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore": {
+      "type": "object",
+      "required": [
+        "storeName"
+      ],
+      "properties": {
+        "storeName": {
+          "type": "string"
+        },
+        "shopCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "officialShop": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore$OfficialShop"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult": {
+      "type": "object",
+      "required": [
+        "resortName"
+      ],
+      "properties": {
+        "resortName": {
+          "type": "string"
+        },
+        "firstPark": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ResortPark"
+        },
+        "extendedAreas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ExtendedArea"
+          }
+        },
+        "departmentStore": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore"
         }
       }
     }

@@ -4075,7 +4075,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 30,
+      "fileLineCount": 32,
       "methodLineCount": 5
     },
     {
@@ -4128,8 +4128,8 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 30,
-      "methodLineCount": 4
+      "fileLineCount": 32,
+      "methodLineCount": 6
     },
     {
       "url": "/withdrawal/",
@@ -9207,6 +9207,7 @@
       "methodName": "index",
       "methodComment": null,
       "annotationList": [
+        "AllowAnyoneAccess",
         "Execute"
       ],
       "parameterTypeDocMetaList": [
@@ -9310,7 +9311,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 85,
+      "fileLineCount": 86,
       "methodLineCount": 13
     },
     {
@@ -14550,6 +14551,131 @@
                   "Required"
                 ],
                 "nestTypeDocMetaList": []
+              },
+              {
+                "name": "restaurantList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableInstanceList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableTypeList",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableArrayList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableImmutableList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
               }
             ]
           },
@@ -14587,6 +14713,131 @@
                   "Required"
                 ],
                 "nestTypeDocMetaList": []
+              },
+              {
+                "name": "restaurantList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableInstanceList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableTypeList",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableArrayList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableImmutableList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
               }
             ]
           },
@@ -15195,6 +15446,131 @@
                   "Required"
                 ],
                 "nestTypeDocMetaList": []
+              },
+              {
+                "name": "restaurantList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableInstanceList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableTypeList",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableArrayList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableImmutableList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
               }
             ]
           },
@@ -15232,6 +15608,131 @@
                   "Required"
                 ],
                 "nestTypeDocMetaList": []
+              },
+              {
+                "name": "restaurantList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableInstanceList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableTypeList",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableArrayList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableImmutableList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
               }
             ]
           },
@@ -15957,6 +16458,131 @@
                   "Required"
                 ],
                 "nestTypeDocMetaList": []
+              },
+              {
+                "name": "restaurantList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableInstanceList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableTypeList",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableArrayList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableImmutableList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
               }
             ]
           },
@@ -15994,6 +16620,131 @@
                   "Required"
                 ],
                 "nestTypeDocMetaList": []
+              },
+              {
+                "name": "restaurantList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableInstanceList",
+                "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "List\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantImmutableTypeList",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableArrayList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
+              },
+              {
+                "name": "restaurantIterableImmutableList",
+                "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
+                "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Valid"
+                ],
+                "nestTypeDocMetaList": [
+                  {
+                    "name": "restaurantName",
+                    "typeName": "java.lang.String",
+                    "simpleTypeName": "String",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Required"
+                    ],
+                    "nestTypeDocMetaList": []
+                  }
+                ]
               }
             ]
           },
