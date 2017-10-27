@@ -59,7 +59,9 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     @Execute
     public JsonResponse<Map<String, Object>> json() {
         verifySwaggerAllowed();
-        return asJson(new SwaggerGenerator().generateSwaggerMap());
+        return asJson(new SwaggerGenerator().generateSwaggerMap(op -> {
+            op.addHeaderParameter("hangar", "mystic");
+        }));
     }
 
     private void verifySwaggerAllowed() { // also check in ActionAdjustmentProvider
