@@ -33,7 +33,7 @@
 		<servlet.version>3.1.0</servlet.version>
 		<jsp.version>2.3.1</jsp.version>
 		<jetty.boot.version>0.4.9</jetty.boot.version>
-		<tomcat.boot.version>0.6.0-A-SNAPSHOT</tomcat.boot.version>
+		<tomcat.boot.version>0.6.0-RC1</tomcat.boot.version>
 		<swagger.ui.version>2.2.10-1</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
@@ -43,7 +43,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.8.4-A-SNAPSHOT</utflute.version>
+		<utflute.version>0.8.4-RC1</utflute.version>
 	</properties>
 
 	<licenses>
