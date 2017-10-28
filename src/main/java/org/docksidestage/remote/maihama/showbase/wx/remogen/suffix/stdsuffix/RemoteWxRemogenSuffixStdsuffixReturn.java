@@ -29,33 +29,7 @@ public class RemoteWxRemogenSuffixStdsuffixReturn {
     public String resortName;
 
     /** The property of resortPark. (NullAllowed) */
-    @javax.validation.Valid
-    public ResortParkPart resortPark;
-
-    /**
-     * The part class of ResortParkPart.
-     * @author FreeGen
-     */
-    public static class ResortParkPart {
-
-        /** The property of parkName. */
-        @Required
-        public String parkName;
-
-        /** The property of showStages. (NullAllowed) */
-        @javax.validation.Valid
-        public org.eclipse.collections.api.list.ImmutableList<ShowStagePart> showStages;
-
-        /**
-         * The part class of ShowStagePart.
-         * @author FreeGen
-         */
-        public static class ShowStagePart {
-
-            /** The property of stageName. (NullAllowed) */
-            public String stageName;
-        }
-    }
+    public Object resortPark;
 
     @Override
     public String toString() {

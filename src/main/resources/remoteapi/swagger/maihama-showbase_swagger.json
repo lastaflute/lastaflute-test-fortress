@@ -1130,7 +1130,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixBean"
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixKekka"
             }
           },
           "400": {
@@ -1178,7 +1178,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.StandardSuffixBean"
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.StandardSuffixKekka"
             }
           },
           "400": {
@@ -2239,35 +2239,7 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixBean$ResortPark$ShowStage": {
-      "type": "object",
-      "required": [
-        "stageName"
-      ],
-      "properties": {
-        "stageName": {
-          "type": "string"
-        }
-      }
-    },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixBean$ResortPark": {
-      "type": "object",
-      "required": [
-        "parkName"
-      ],
-      "properties": {
-        "parkName": {
-          "type": "string"
-        },
-        "showStages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixBean$ResortPark$ShowStage"
-          }
-        }
-      }
-    },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixBean": {
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixKekka": {
       "type": "object",
       "required": [
         "resortName"
@@ -2277,7 +2249,7 @@
           "type": "string"
         },
         "resortPark": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixBean$ResortPark"
+          "type": "object"
         }
       }
     },
@@ -2323,35 +2295,7 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.StandardSuffixBean$ResortParkPart$ShowStagePart": {
-      "type": "object",
-      "required": [
-        "stageName"
-      ],
-      "properties": {
-        "stageName": {
-          "type": "string"
-        }
-      }
-    },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.StandardSuffixBean$ResortParkPart": {
-      "type": "object",
-      "required": [
-        "parkName"
-      ],
-      "properties": {
-        "parkName": {
-          "type": "string"
-        },
-        "showStages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.StandardSuffixBean$ResortParkPart$ShowStagePart"
-          }
-        }
-      }
-    },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.StandardSuffixBean": {
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.StandardSuffixKekka": {
       "type": "object",
       "required": [
         "resortName"
@@ -2361,7 +2305,7 @@
           "type": "string"
         },
         "resortPark": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.StandardSuffixBean$ResortParkPart"
+          "type": "object"
         }
       }
     },
