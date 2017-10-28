@@ -2187,7 +2187,7 @@
         "resortName": {
           "type": "string"
         },
-        "firstPark": {
+        "resortPark": {
           "type": "object"
         }
       }

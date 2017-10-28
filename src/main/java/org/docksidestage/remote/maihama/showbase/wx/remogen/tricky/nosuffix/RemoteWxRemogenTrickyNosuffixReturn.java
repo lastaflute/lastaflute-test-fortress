@@ -28,8 +28,8 @@ public class RemoteWxRemogenTrickyNosuffixReturn {
     @Required
     public String resortName;
 
-    /** The property of firstPark. (NullAllowed) */
-    public Object firstPark;
+    /** The property of resortPark. (NullAllowed) */
+    public Object resortPark;
 
     @Override
     public String toString() {
