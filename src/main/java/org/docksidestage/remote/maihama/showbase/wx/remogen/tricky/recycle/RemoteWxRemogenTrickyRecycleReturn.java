@@ -13,16 +13,16 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.sameobj;
+package org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.recycle;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/tricky/sameobj.
+ * The bean class as return for remote API of POST /wx/remogen/tricky/recycle.
  * @author FreeGen
  */
-public class RemoteWxRemogenTrickySameobjReturn {
+public class RemoteWxRemogenTrickyRecycleReturn {
 
     /** The property of resortName. */
     @Required
@@ -42,9 +42,36 @@ public class RemoteWxRemogenTrickySameobjReturn {
         @Required
         public String parkName;
 
-        /** The property of stageCount. */
-        @Required
-        public Integer stageCount;
+        /** The property of showStages. (NullAllowed) */
+        @javax.validation.Valid
+        public org.eclipse.collections.api.list.ImmutableList<ShowStagePart> showStages;
+
+        /**
+         * The part class of ShowStagePart.
+         * @author FreeGen
+         */
+        public static class ShowStagePart {
+
+            /** The property of stageName. (NullAllowed) */
+            public String stageName;
+        }
+
+        /** The property of themeColor. (NullAllowed) */
+        @javax.validation.Valid
+        public ThemeColorPart themeColor;
+
+        /**
+         * The part class of ThemeColorPart.
+         * @author FreeGen
+         */
+        public static class ThemeColorPart {
+
+            /** The property of colorName. (NullAllowed) */
+            public String colorName;
+
+            /** The property of rgb. (NullAllowed) */
+            public String rgb;
+        }
     }
 
     /** The property of extendedAreas. (NullAllowed) */
@@ -96,6 +123,20 @@ public class RemoteWxRemogenTrickySameobjReturn {
             /** The property of shopName. (NullAllowed) */
             public String shopName;
         }
+
+        /** The property of showStage. (NullAllowed) */
+        @javax.validation.Valid
+        public ShowStagePart showStage;
+
+        /**
+         * The part class of ShowStagePart.
+         * @author FreeGen
+         */
+        public static class ShowStagePart {
+
+            /** The property of stageName. (NullAllowed) */
+            public String stageName;
+        }
     }
 
     /** The property of bigHotels. (NullAllowed) */
@@ -128,6 +169,37 @@ public class RemoteWxRemogenTrickySameobjReturn {
 
             /** The property of shopName. (NullAllowed) */
             public String shopName;
+        }
+
+        /** The property of showStage. (NullAllowed) */
+        @javax.validation.Valid
+        public ShowStagePart showStage;
+
+        /**
+         * The part class of ShowStagePart.
+         * @author FreeGen
+         */
+        public static class ShowStagePart {
+
+            /** The property of stageName. (NullAllowed) */
+            public String stageName;
+        }
+
+        /** The property of themeColor. (NullAllowed) */
+        @javax.validation.Valid
+        public ThemeColorPart themeColor;
+
+        /**
+         * The part class of ThemeColorPart.
+         * @author FreeGen
+         */
+        public static class ThemeColorPart {
+
+            /** The property of colorName. (NullAllowed) */
+            public String colorName;
+
+            /** The property of rgb. (NullAllowed) */
+            public String rgb;
         }
     }
 

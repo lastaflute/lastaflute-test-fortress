@@ -1142,7 +1142,7 @@
         ]
       }
     },
-    "/wx/remogen/tricky/sameobj": {
+    "/wx/remogen/tricky/nosuffix": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -1154,7 +1154,55 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult"
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.NoSuffixParade"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/tricky/recycle": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/tricky/selfref": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SelfReferenceResult"
             }
           },
           "400": {
@@ -2130,23 +2178,63 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ResortPark": {
+    "org.docksidestage.app.web.wx.remogen.bean.NoSuffixParade": {
       "type": "object",
       "required": [
-        "parkName",
-        "stageCount"
+        "resortName"
+      ],
+      "properties": {
+        "resortName": {
+          "type": "string"
+        },
+        "firstPark": {
+          "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ShowStagePart": {
+      "type": "object",
+      "required": [
+        "stageName"
+      ],
+      "properties": {
+        "stageName": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.ThemeColorResult": {
+      "type": "object",
+      "properties": {
+        "colorName": {
+          "type": "string"
+        },
+        "rgb": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ResortParkPart": {
+      "type": "object",
+      "required": [
+        "parkName"
       ],
       "properties": {
         "parkName": {
           "type": "string"
         },
-        "stageCount": {
-          "type": "integer",
-          "format": "int32"
+        "showStages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ShowStagePart"
+          }
+        },
+        "themeColor": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.ThemeColorResult"
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ExtendedArea": {
+    "org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ExtendedAreaPart": {
       "type": "object",
       "required": [
         "direction"
@@ -2156,11 +2244,11 @@
           "type": "string"
         },
         "nextPark": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ResortPark"
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ResortParkPart"
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore$OfficialShop": {
+    "org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$DepartmentStorePart$OfficialShopPart": {
       "type": "object",
       "required": [
         "shopName"
@@ -2171,7 +2259,7 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore": {
+    "org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$DepartmentStorePart": {
       "type": "object",
       "required": [
         "storeName"
@@ -2185,11 +2273,14 @@
           "format": "int32"
         },
         "officialShop": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore$OfficialShop"
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$DepartmentStorePart$OfficialShopPart"
+        },
+        "showStage": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ShowStagePart"
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ThemeHotel": {
+    "org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ThemeHotelPart": {
       "type": "object",
       "required": [
         "hotelName"
@@ -2199,14 +2290,20 @@
           "type": "string"
         },
         "correspondingPark": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ResortPark"
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ResortParkPart"
         },
         "officialShop": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore$OfficialShop"
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$DepartmentStorePart$OfficialShopPart"
+        },
+        "showStage": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ShowStagePart"
+        },
+        "themeColor": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.ThemeColorResult"
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult": {
+    "org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult": {
       "type": "object",
       "required": [
         "resortName"
@@ -2216,22 +2313,50 @@
           "type": "string"
         },
         "firstPark": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ResortPark"
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ResortParkPart"
         },
         "extendedAreas": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ExtendedArea"
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ExtendedAreaPart"
           }
         },
         "departmentStore": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore"
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$DepartmentStorePart"
         },
         "bigHotels": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ThemeHotel"
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.RecycleParadeResult$ThemeHotelPart"
           }
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.SelfReferenceResult$ResortPark": {
+      "type": "object",
+      "required": [
+        "parkName"
+      ],
+      "properties": {
+        "parkName": {
+          "type": "string"
+        },
+        "parentPark": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SelfReferenceResult$ResortPark"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.SelfReferenceResult": {
+      "type": "object",
+      "required": [
+        "resortName"
+      ],
+      "properties": {
+        "resortName": {
+          "type": "string"
+        },
+        "resortPark": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SelfReferenceResult$ResortPark"
         }
       }
     }
