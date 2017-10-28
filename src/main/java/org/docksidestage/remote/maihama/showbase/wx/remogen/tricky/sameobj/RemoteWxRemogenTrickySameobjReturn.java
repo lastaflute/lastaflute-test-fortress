@@ -98,6 +98,39 @@ public class RemoteWxRemogenTrickySameobjReturn {
         }
     }
 
+    /** The property of bigHotels. (NullAllowed) */
+    @javax.validation.Valid
+    public org.eclipse.collections.api.list.ImmutableList<ThemeHotelPart> bigHotels;
+
+    /**
+     * The part class of ThemeHotelPart.
+     * @author FreeGen
+     */
+    public static class ThemeHotelPart {
+
+        /** The property of hotelName. */
+        @Required
+        public String hotelName;
+
+        /** The property of correspondingPark. (NullAllowed) */
+        @javax.validation.Valid
+        public ResortParkPart correspondingPark;
+
+        /** The property of officialShop. (NullAllowed) */
+        @javax.validation.Valid
+        public OfficialShopPart officialShop;
+
+        /**
+         * The part class of OfficialShopPart.
+         * @author FreeGen
+         */
+        public static class OfficialShopPart {
+
+            /** The property of shopName. (NullAllowed) */
+            public String shopName;
+        }
+    }
+
     @Override
     public String toString() {
         return Lato.string(this);

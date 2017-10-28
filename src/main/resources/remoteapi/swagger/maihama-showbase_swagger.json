@@ -2189,6 +2189,23 @@
         }
       }
     },
+    "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ThemeHotel": {
+      "type": "object",
+      "required": [
+        "hotelName"
+      ],
+      "properties": {
+        "hotelName": {
+          "type": "string"
+        },
+        "correspondingPark": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ResortPark"
+        },
+        "officialShop": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore$OfficialShop"
+        }
+      }
+    },
     "org.docksidestage.app.web.wx.remogen.bean.SameObjectResult": {
       "type": "object",
       "required": [
@@ -2209,6 +2226,12 @@
         },
         "departmentStore": {
           "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$DepartmentStore"
+        },
+        "bigHotels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.SameObjectResult$ThemeHotel"
+          }
         }
       }
     }
