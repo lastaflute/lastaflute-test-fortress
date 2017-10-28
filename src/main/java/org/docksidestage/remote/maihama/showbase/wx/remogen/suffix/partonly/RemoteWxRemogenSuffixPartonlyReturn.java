@@ -13,49 +13,23 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.nosuffixres;
+package org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.partonly;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/suffix/nosuffixres.
+ * The bean class as return for remote API of POST /wx/remogen/suffix/partonly.
  * @author FreeGen
  */
-public class RemoteWxRemogenSuffixNosuffixresReturn {
+public class RemoteWxRemogenSuffixPartonlyReturn {
 
     /** The property of resortName. */
     @Required
     public String resortName;
 
     /** The property of resortPark. (NullAllowed) */
-    @javax.validation.Valid
-    public ResortParkPart resortPark;
-
-    /**
-     * The part class of ResortParkPart.
-     * @author FreeGen
-     */
-    public static class ResortParkPart {
-
-        /** The property of parkName. */
-        @Required
-        public String parkName;
-
-        /** The property of showStages. (NullAllowed) */
-        @javax.validation.Valid
-        public org.eclipse.collections.api.list.ImmutableList<ShowStagePart> showStages;
-
-        /**
-         * The part class of ShowStagePart.
-         * @author FreeGen
-         */
-        public static class ShowStagePart {
-
-            /** The property of stageName. (NullAllowed) */
-            public String stageName;
-        }
-    }
+    public Object resortPark;
 
     @Override
     public String toString() {

@@ -13,16 +13,16 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.stdsuffixres;
+package org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.allsuffix;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/suffix/stdsuffixres.
+ * The bean class as return for remote API of POST /wx/remogen/suffix/allsuffix.
  * @author FreeGen
  */
-public class RemoteWxRemogenSuffixStdsuffixresReturn {
+public class RemoteWxRemogenSuffixAllsuffixReturn {
 
     /** The property of resortName. */
     @Required
