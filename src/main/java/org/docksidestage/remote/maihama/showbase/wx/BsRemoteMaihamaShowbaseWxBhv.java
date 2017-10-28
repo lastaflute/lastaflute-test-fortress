@@ -28,8 +28,11 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.list.basic.RemoteWxR
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genebean.RemoteWxRemogenListGenebeanReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genestring.RemoteWxRemogenListGenestringReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.innergene.RemoteWxRemogenListInnergeneReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.nosuffix.RemoteWxRemogenSuffixNosuffixReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.nosuffixres.RemoteWxRemogenSuffixNosuffixresReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.stdsuffix.RemoteWxRemogenSuffixStdsuffixReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.stdsuffixres.RemoteWxRemogenSuffixStdsuffixresReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
-import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nosuffix.RemoteWxRemogenTrickyNosuffixReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.recycle.RemoteWxRemogenTrickyRecycleReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.selfref.RemoteWxRemogenTrickySelfrefReturn;
 
@@ -312,6 +315,146 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
     }
 
     /**
+     * Request remote call to /wx/remogen/suffix/nosuffix. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/suffix/nosuffix
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenSuffixNosuffixReturn requestRemogenSuffixNosuffix() {
+        return requestRemogenSuffixNosuffix(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/suffix/nosuffix. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/suffix/nosuffix
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenSuffixNosuffixReturn requestRemogenSuffixNosuffix(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenSuffixNosuffixReturn.class, "/wx/remogen/suffix/nosuffix", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenSuffixNosuffix(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/suffix/nosuffix.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenSuffixNosuffix(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/suffix/nosuffixres. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/suffix/nosuffixres
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenSuffixNosuffixresReturn requestRemogenSuffixNosuffixres() {
+        return requestRemogenSuffixNosuffixres(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/suffix/nosuffixres. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/suffix/nosuffixres
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenSuffixNosuffixresReturn requestRemogenSuffixNosuffixres(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenSuffixNosuffixresReturn.class, "/wx/remogen/suffix/nosuffixres", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenSuffixNosuffixres(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/suffix/nosuffixres.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenSuffixNosuffixres(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/suffix/stdsuffix. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/suffix/stdsuffix
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenSuffixStdsuffixReturn requestRemogenSuffixStdsuffix() {
+        return requestRemogenSuffixStdsuffix(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/suffix/stdsuffix. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/suffix/stdsuffix
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenSuffixStdsuffixReturn requestRemogenSuffixStdsuffix(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenSuffixStdsuffixReturn.class, "/wx/remogen/suffix/stdsuffix", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenSuffixStdsuffix(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/suffix/stdsuffix.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenSuffixStdsuffix(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/suffix/stdsuffixres. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/suffix/stdsuffixres
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenSuffixStdsuffixresReturn requestRemogenSuffixStdsuffixres() {
+        return requestRemogenSuffixStdsuffixres(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/suffix/stdsuffixres. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/suffix/stdsuffixres
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenSuffixStdsuffixresReturn requestRemogenSuffixStdsuffixres(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenSuffixStdsuffixresReturn.class, "/wx/remogen/suffix/stdsuffixres", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenSuffixStdsuffixres(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/suffix/stdsuffixres.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenSuffixStdsuffixres(FlutyRemoteApiRule rule) {
+    }
+
+    /**
      * Request remote call to /wx/remogen/tricky/nobody. (auto-generated method)<br>
      * <pre>
      * url: /wx/remogen/tricky/nobody
@@ -344,41 +487,6 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfRemogenTrickyNobody(FlutyRemoteApiRule rule) {
-    }
-
-    /**
-     * Request remote call to /wx/remogen/tricky/nosuffix. (auto-generated method)<br>
-     * <pre>
-     * url: /wx/remogen/tricky/nosuffix
-     * httpMethod: POST
-     * </pre>
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    public RemoteWxRemogenTrickyNosuffixReturn requestRemogenTrickyNosuffix() {
-        return requestRemogenTrickyNosuffix(rule -> {});
-    }
-
-    /**
-     * Request remote call to /wx/remogen/tricky/nosuffix. (auto-generated method)<br>
-     * <pre>
-     * url: /wx/remogen/tricky/nosuffix
-     * httpMethod: POST
-     * </pre>
-     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    protected RemoteWxRemogenTrickyNosuffixReturn requestRemogenTrickyNosuffix(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenTrickyNosuffixReturn.class, "/wx/remogen/tricky/nosuffix", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenTrickyNosuffix(rule);
-            ruleLambda.accept(rule);
-        });
-    }
-
-    /**
-     * Set up method-level rule of /wx/remogen/tricky/nosuffix.<br>
-     * @param rule The rule that class default rule is already set. (NotNull)
-     */
-    protected void ruleOfRemogenTrickyNosuffix(FlutyRemoteApiRule rule) {
     }
 
     /**
