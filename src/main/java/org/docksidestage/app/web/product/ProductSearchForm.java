@@ -15,8 +15,6 @@
  */
 package org.docksidestage.app.web.product;
 
-import java.util.List;
-
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.util.Lato;
@@ -33,8 +31,6 @@ public class ProductSearchForm {
 
     @Length(max = 5) // #simple_for_example just for validtion example
     public String purchaseMemberName;
-
-    public List<Integer> seaIds;
 
     @Override
     public String toString() {
