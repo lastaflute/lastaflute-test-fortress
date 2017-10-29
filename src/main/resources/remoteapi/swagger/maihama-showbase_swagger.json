@@ -1238,6 +1238,30 @@
         ]
       }
     },
+    "/wx/remogen/tricky/oddprop": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
     "/wx/remogen/tricky/recycle": {
       "post": {
         "summary": "@author jflute",
@@ -2362,6 +2386,52 @@
         }
       }
     },
+    "org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties$ResultBeanEntry": {
+      "type": "object",
+      "required": [
+        "piariFormStyle"
+      ],
+      "properties": {
+        "piariFormStyle": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties$ResultGenericEntry": {
+      "type": "object",
+      "required": [
+        "bonvoName"
+      ],
+      "properties": {
+        "bonvoName": {
+          "type": "string"
+        },
+        "internalBean": {
+          "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties": {
+      "type": "object",
+      "required": [
+        "seaResult"
+      ],
+      "properties": {
+        "seaResult": {
+          "type": "string"
+        },
+        "landBeanCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "beanEntry": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties$ResultBeanEntry"
+        },
+        "genericEntry": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties$ResultGenericEntry"
+        }
+      }
+    },
     "org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult$ShowStagePart": {
       "type": "object",
       "required": [
@@ -2516,6 +2586,34 @@
         }
       }
     },
+    "org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ExtendedArea$ParkingArea": {
+      "type": "object",
+      "required": [
+        "areaName"
+      ],
+      "properties": {
+        "areaName": {
+          "type": "string"
+        },
+        "internalArea": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ExtendedArea"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ExtendedArea": {
+      "type": "object",
+      "required": [
+        "areaName"
+      ],
+      "properties": {
+        "areaName": {
+          "type": "string"
+        },
+        "parkingArea": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ExtendedArea$ParkingArea"
+        }
+      }
+    },
     "org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult": {
       "type": "object",
       "required": [
@@ -2527,6 +2625,9 @@
         },
         "resortPark": {
           "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ResortPark"
+        },
+        "extendedArea": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ExtendedArea"
         }
       }
     }

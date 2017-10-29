@@ -47,6 +47,39 @@ public class RemoteWxRemogenTrickySelfrefReturn {
         public ResortParkPart parentPark;
     }
 
+    /** The property of extendedArea. (NullAllowed) */
+    @javax.validation.Valid
+    public ExtendedAreaPart extendedArea;
+
+    /**
+     * The part class of ExtendedAreaPart.
+     * @author FreeGen
+     */
+    public static class ExtendedAreaPart {
+
+        /** The property of areaName. */
+        @Required
+        public String areaName;
+
+        /** The property of parkingArea. (NullAllowed) */
+        @javax.validation.Valid
+        public ParkingAreaPart parkingArea;
+
+        /**
+         * The part class of ParkingAreaPart.
+         * @author FreeGen
+         */
+        public static class ParkingAreaPart {
+
+            /** The property of areaName. (NullAllowed) */
+            public String areaName;
+
+            /** The property of internalArea. (NullAllowed) */
+            @javax.validation.Valid
+            public ExtendedAreaPart internalArea;
+        }
+    }
+
     @Override
     public String toString() {
         return Lato.string(this);

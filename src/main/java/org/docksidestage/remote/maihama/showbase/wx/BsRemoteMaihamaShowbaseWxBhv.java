@@ -33,6 +33,7 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.nosuffix.Remo
 import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.partonly.RemoteWxRemogenSuffixPartonlyReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.toponly.RemoteWxRemogenSuffixToponlyReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.oddprop.RemoteWxRemogenTrickyOddpropReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.recycle.RemoteWxRemogenTrickyRecycleReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.selfref.RemoteWxRemogenTrickySelfrefReturn;
 
@@ -487,6 +488,41 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfRemogenTrickyNobody(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/oddprop. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/oddprop
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenTrickyOddpropReturn requestRemogenTrickyOddprop() {
+        return requestRemogenTrickyOddprop(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/oddprop. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/oddprop
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenTrickyOddpropReturn requestRemogenTrickyOddprop(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenTrickyOddpropReturn.class, "/wx/remogen/tricky/oddprop", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenTrickyOddprop(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/tricky/oddprop.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenTrickyOddprop(FlutyRemoteApiRule rule) {
     }
 
     /**
