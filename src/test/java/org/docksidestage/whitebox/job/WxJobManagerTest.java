@@ -176,7 +176,7 @@ public class WxJobManagerTest extends UnitFortressWebTestCase {
         process.waitForEnding();
         sleep(3000); // to watch log
         List<LaJobHistory> historyList = jobManager.searchJobHistoryList();
-        assertEquals(2, historyList.size());
+        assertTrue(historyList.size() >= 2); // may have previous histories in batch execution of unit test
         LaJobHistory seaHistory = historyList.stream().filter(hist -> hist.getJobUnique().get().equals(seaUnique)).findFirst().get();
         assertEquals(seaUnique, seaHistory.getJobUnique().get());
         assertEquals(ExecResultType.SUCCESS, seaHistory.getExecResultType());
