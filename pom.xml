@@ -24,7 +24,7 @@
 		<lastaflute.version>1.0.1</lastaflute.version>
 		<lasta.thymeleaf.version>0.3.1</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.2</lasta.job.version>
-		<lasta.remoteapi.version>0.3.9-RC1</lasta.remoteapi.version>
+		<lasta.remoteapi.version>0.3.9</lasta.remoteapi.version>
 		<lasta.doc.version>0.3.0-RC4</lasta.doc.version>
 
 		<!-- Partner Library -->
