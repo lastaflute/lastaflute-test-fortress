@@ -3145,16 +3145,6 @@
               "Length{max\u003d5}"
             ],
             "nestTypeDocMetaList": []
-          },
-          {
-            "name": "seaIds",
-            "typeName": "java.util.List\u003cInteger\u003e",
-            "simpleTypeName": "List\u003cInteger\u003e",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [],
-            "nestTypeDocMetaList": []
           }
         ]
       },

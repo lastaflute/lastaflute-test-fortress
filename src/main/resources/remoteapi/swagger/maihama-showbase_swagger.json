@@ -1250,7 +1250,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties"
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties"
             }
           },
           "400": {
@@ -2386,7 +2386,7 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties$ResultBeanEntry": {
+    "org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties$ResultBeanEntry": {
       "type": "object",
       "required": [
         "piariFormStyle"
@@ -2397,7 +2397,7 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties$ResultGenericEntry": {
+    "org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties$ResultGenericEntry": {
       "type": "object",
       "required": [
         "bonvoName"
@@ -2411,7 +2411,7 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties": {
+    "org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties": {
       "type": "object",
       "required": [
         "seaResult"
@@ -2424,11 +2424,17 @@
           "type": "integer",
           "format": "int32"
         },
+        "normalEntry": {
+          "type": "object"
+        },
         "beanEntry": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties$ResultBeanEntry"
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties$ResultBeanEntry"
+        },
+        "plainGenericEntry": {
+          "type": "object"
         },
         "genericEntry": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.odd.SuperOddProperties$ResultGenericEntry"
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties$ResultGenericEntry"
         }
       }
     },

@@ -31,6 +31,9 @@ public class RemoteWxRemogenTrickyOddpropReturn {
     /** The property of landBeanCount. (NullAllowed) */
     public Integer landBeanCount;
 
+    /** The property of normalEntry. (NullAllowed) */
+    public Object normalEntry;
+
     /** The property of beanEntry. (NullAllowed) */
     @javax.validation.Valid
     public ResultBeanEntryPart beanEntry;
@@ -45,6 +48,9 @@ public class RemoteWxRemogenTrickyOddpropReturn {
         @Required
         public String piariFormStyle;
     }
+
+    /** The property of plainGenericEntry. (NullAllowed) */
+    public Object plainGenericEntry;
 
     /** The property of genericEntry. (NullAllowed) */
     @javax.validation.Valid
