@@ -65,14 +65,14 @@ public class WxValidatorAction extends FortressBaseAction {
     //                                                 HTML
     //                                                ------
     // [success]
-    // http://localhost:8151/fortress/wx/validator/?seaInteger=1&seaFloat=2.3&landDate=2015-12-12&iksMode=true&bonvoStatus=FML
+    // http://localhost:8151/fortress/wx/validator/?seaInteger=1&seaFloat=2.3&landDate=2015-12-12&piariPrimBool=true&bonvoStatus=FML
     //
     // [validation error]
-    // http://localhost:8151/fortress/wx/validator/?seaInteger=a&seaFloat=a.b&landDate=2015-12-1a&iksMode=a&bonvoStatus=ABC
+    // http://localhost:8151/fortress/wx/validator/?seaInteger=a&seaFloat=a.b&landDate=2015-12-1a&piariPrimBool=a&bonvoStatus=ABC
     // http://localhost:8151/fortress/wx/validator/?seaInteger=mystic
     //
     // [not yet]
-    // http://localhost:8151/fortress/wx/validator/?seaIntegerList=1&seaIntegerList=mystic
+    // http://localhost:8151/fortress/wx/validator/?dstoreIntegerList=1&dstoreIntegerList=mystic
     //  => 400 bad request
     @Execute
     public HtmlResponse index(WxValidatorForm form) {

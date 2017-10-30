@@ -2,6 +2,8 @@ package org.docksidestage.app.web.wx.validator;
 
 import java.util.List;
 
+import javax.validation.constraints.Max;
+
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean;
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean.RestaurantBean;
 import org.docksidestage.mylasta.action.FortressMessages;
@@ -17,13 +19,23 @@ import org.lastaflute.web.validation.Required;
 public class WxValidatorActionTest extends UnitFortressWebTestCase {
 
     // ===================================================================================
+    //                                                                               Basic
+    //                                                                               =====
+    // now making...
+
+    // ===================================================================================
     //                                                                       List Elements
     //                                                                       =============
-    public void test_messages_listElements_immutableList() {
+    public void test_validationError_listElements() {
         // ## Arrange ##
         WxValidatorAction action = new WxValidatorAction();
         inject(action);
         WxValidatorForm form = new WxValidatorForm();
+
+        form.dstoreStringList = newArrayList((String) null);
+        form.dstoreImmutableList = prepareImmutableTypeList((String) null);
+        form.dstoreIntegerList = newArrayList(87, 88, 89);
+
         form.seaBean = new SeaBean();
         form.seaBean.restaurantList = newArrayList(new RestaurantBean());
         form.seaBean.restaurantImmutableInstanceList = prepareImmutableInstanceList(new RestaurantBean());
@@ -39,7 +51,15 @@ public class WxValidatorActionTest extends UnitFortressWebTestCase {
         // ## Assert ##
         assertValidationError(() -> action.index(form)).handle(data -> {
             // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-            // basic nested property
+            // flat list property
+            // _/_/_/_/_/_/_/_/_/_/
+            // removed <list element>, <immutablelist element>
+            data.requiredMessageOf("dstoreStringList[0]", Required.class);
+            data.requiredMessageOf("dstoreImmutableList[0]", Required.class);
+            data.requiredMessageOf("dstoreIntegerList[2]", Max.class);
+
+            // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+            // single nested property
             // _/_/_/_/_/_/_/_/_/_/
             data.requiredMessageOf("seaBean.over", Required.class);
             assertException(AssertionError.class, () -> {
@@ -47,8 +67,9 @@ public class WxValidatorActionTest extends UnitFortressWebTestCase {
             });
 
             // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-            // indexed property
+            // list nested property
             // _/_/_/_/_/_/_/_/_/_/
+            data.requiredMessageOf("seaBeanList[0].over", Required.class);
             data.requiredMessageOf("seaBean.restaurantList[0].restaurantName", Required.class);
             data.requiredMessageOf("seaBean.restaurantImmutableInstanceList[0].restaurantName", Required.class);
 
@@ -61,8 +82,6 @@ public class WxValidatorActionTest extends UnitFortressWebTestCase {
 
             // HV000219: ...
             //data.requiredMessageOf("seaBean.restaurantIterableImmutableList[0].restaurantName", Required.class);
-
-            data.requiredMessageOf("seaBeanList[0].over", Required.class);
 
             // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
             // plain UserMessages

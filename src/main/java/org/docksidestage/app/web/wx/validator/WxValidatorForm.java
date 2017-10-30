@@ -17,16 +17,19 @@ package org.docksidestage.app.web.wx.validator;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.hibernate.validator.constraints.Length;
+import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.theme.conversion.ValidateTypeFailure;
 
@@ -39,8 +42,8 @@ public class WxValidatorForm {
     //                                                                           Attribute
     //                                                                           =========
     // -----------------------------------------------------
-    //                                                 Basic
-    //                                                 -----
+    //                                               Example
+    //                                               -------
     @Length(max = 10)
     public String productName;
 
@@ -50,26 +53,50 @@ public class WxValidatorForm {
     public String purchaseMemberName;
 
     // -----------------------------------------------------
-    //                                          Type Failure
-    //                                          ------------
+    //                                            Basic Type
+    //                                            ----------
+    @Length(max = 3)
+    public String seaString;
+
     @ValidateTypeFailure
+    @Max(88)
     public Integer seaInteger;
+
     @ValidateTypeFailure
-    public List<Integer> seaIntegerList;
-    @ValidateTypeFailure
+    @Max(88)
     public Long seaLong;
+
     @ValidateTypeFailure
+    @Max(88)
     public Float seaFloat;
+
     @ValidateTypeFailure
+    @Max(88)
     public Double seaDouble;
+
     @ValidateTypeFailure
+    @Max(88)
     public BigDecimal seaDecimal;
+
     @ValidateTypeFailure
     public LocalDate landDate;
     @ValidateTypeFailure
-    public boolean iksMode;
+    public LocalDateTime landDateTime;
+
+    @ValidateTypeFailure
+    public boolean piariPrimBool;
+    @ValidateTypeFailure
+    public Boolean piariWrapBool;
+
     @ValidateTypeFailure
     public CDef.MemberStatus bonvoStatus;
+
+    @ValidateTypeFailure
+    public List<@Required String> dstoreStringList;
+    @ValidateTypeFailure
+    public List<@Max(88) Integer> dstoreIntegerList;
+    @ValidateTypeFailure
+    public ImmutableList<@Required String> dstoreImmutableList;
 
     // -----------------------------------------------------
     //                                              Sea Bean
@@ -191,8 +218,6 @@ public class WxValidatorForm {
     //                                                                      ==============
     @Override
     public String toString() {
-        return "{" + productName + ", " + productStatus + ", " + purchaseMemberName //
-                + ", sea={" + seaInteger + ", " + seaLong + ", " + seaFloat + ", " + seaDouble + ", " + seaDecimal //
-                + "}, land={" + landDate + "}, iks={" + iksMode + "}, bonvo={" + bonvoStatus + "}}";
+        return Lato.string(this);
     }
 }
