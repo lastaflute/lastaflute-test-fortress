@@ -15,6 +15,8 @@
  */
 package org.docksidestage.app.web.wx.request.form;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
@@ -34,6 +36,23 @@ import org.slf4j.LoggerFactory;
 public class WxRequestFormAction extends FortressBaseAction {
 
     private static final Logger logger = LoggerFactory.getLogger(WxRequestFormAction.class);
+
+    @Execute
+    public JsonResponse<BasicItemForm> index(BasicItemForm form) {
+        validateApi(form, messages -> {});
+        return asJson(form);
+    }
+
+    public static class BasicItemForm {
+
+        public String sea;
+
+        public Integer land;
+
+        public LocalDate piari;
+
+        public LocalDateTime bonvo;
+    }
 
     // [success]
     // http://localhost:8151/fortress/wx/request/form/eccolle?sea=mystic&sea=bigband

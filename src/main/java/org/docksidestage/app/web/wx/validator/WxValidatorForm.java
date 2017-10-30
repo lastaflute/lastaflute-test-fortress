@@ -55,6 +55,8 @@ public class WxValidatorForm {
     @ValidateTypeFailure
     public Integer seaInteger;
     @ValidateTypeFailure
+    public List<Integer> seaIntegerList;
+    @ValidateTypeFailure
     public Long seaLong;
     @ValidateTypeFailure
     public Float seaFloat;
