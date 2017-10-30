@@ -21,6 +21,8 @@ import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.docksidestage.whitebox.validator.WxHibernateValidatorTest.MaihamaListParadeBean.StageBean;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
+import org.hibernate.validator.constraints.Length;
+import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.VaValidListBean;
 
 /**
@@ -31,6 +33,55 @@ public class WxHibernateValidatorTest extends UnitFortressWebTestCase {
     // ===================================================================================
     //                                                                       Property Path
     //                                                                       =============
+    // -----------------------------------------------------
+    //                                               Element
+    //                                               -------
+    public void test_propertyPath_element_basic() {
+        // ## Arrange ##
+        Validator validator = buildValidatorFactory(conf -> {
+            conf.addValueExtractor(createImmutableListExtractor());
+        }).getValidator();
+        MaihamaListElementBean maihama = new MaihamaListElementBean();
+        maihama.seaList = newArrayList(""); // required
+        maihama.landList = Lists.immutable.withAll(newArrayList("")); // required
+        maihama.piariList = newArrayList("plaza"); // over 3
+
+        // ## Act ##
+        Set<ConstraintViolation<MaihamaListElementBean>> vioSet = validator.validate(maihama, Default.class);
+
+        // ## Assert ##
+        assertHasAnyElement(vioSet);
+        for (ConstraintViolation<MaihamaListElementBean> vio : vioSet) {
+            log(vio);
+            String path = vio.getPropertyPath().toString();
+            if (path.contains("seaList")) {
+                assertEquals("seaList[0].<list element>", path); // was <collection list> before 6.0.x
+                markHere("exists_seaList");
+            } else if (path.contains("landList")) {
+                assertEquals("landList[0].<immutablelist element>", path);
+                markHere("exists_landList");
+            } else if (path.contains("piariList")) {
+                assertEquals("piariList[0].<list element>", path);
+                markHere("exists_piariList");
+            } else {
+                fail();
+            }
+        }
+        assertMarked("exists_seaList");
+        assertMarked("exists_landList");
+        assertMarked("exists_piariList");
+    }
+
+    public static class MaihamaListElementBean {
+
+        public List<@Required @Length(max = 3) String> seaList;
+        public ImmutableList<@Required String> landList;
+        public List<@Required @Length(max = 3) String> piariList;
+    }
+
+    // -----------------------------------------------------
+    //                                               Indexed
+    //                                               -------
     public void test_propertyPath_indexed_basic() {
         // ## Arrange ##
         Validator validator = buildValidatorFactory(conf -> {
