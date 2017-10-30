@@ -5627,6 +5627,136 @@
       "methodLineCount": 7
     },
     {
+      "url": "/wx/request/form/",
+      "typeName": "org.docksidestage.app.web.wx.request.form.WxRequestFormAction",
+      "simpleTypeName": "WxRequestFormAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "org.docksidestage.app.web.wx.request.form.WxRequestFormAction$BasicItemForm",
+        "simpleTypeName": "BasicItemForm",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "sea",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piari",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "bonvo",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.request.form.WxRequestFormAction$BasicItemForm\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxRequestFormAction$BasicItemForm\u003e",
+        "value": "asJson(form)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "sea",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piari",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "bonvo",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 9,
+      "methodLineCount": 4
+    },
+    {
       "url": "/wx/request/form/eccolle",
       "typeName": "org.docksidestage.app.web.wx.request.form.WxRequestFormAction",
       "simpleTypeName": "WxRequestFormAction",
@@ -14424,6 +14554,18 @@
             "nestTypeDocMetaList": []
           },
           {
+            "name": "seaIntegerList",
+            "typeName": "java.util.List\u003cInteger\u003e",
+            "simpleTypeName": "List\u003cInteger\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
             "name": "seaLong",
             "typeName": "java.lang.Long",
             "simpleTypeName": "Long",
@@ -14982,7 +15124,7 @@
         "nestTypeDocMetaList": []
       },
       "fileLineCount": 1,
-      "methodLineCount": 16
+      "methodLineCount": 14
     },
     {
       "url": "/wx/validator/genericform",
@@ -15310,6 +15452,18 @@
             "name": "seaInteger",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaIntegerList",
+            "typeName": "java.util.List\u003cInteger\u003e",
+            "simpleTypeName": "List\u003cInteger\u003e",
             "value": null,
             "description": null,
             "comment": null,
@@ -16322,6 +16476,18 @@
             "name": "seaInteger",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaIntegerList",
+            "typeName": "java.util.List\u003cInteger\u003e",
+            "simpleTypeName": "List\u003cInteger\u003e",
             "value": null,
             "description": null,
             "comment": null,

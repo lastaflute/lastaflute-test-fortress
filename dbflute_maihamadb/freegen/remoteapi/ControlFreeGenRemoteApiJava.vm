@@ -34,161 +34,149 @@
   #set ($typeMap = {})
   $typeMap.putAll($scriptEngine.invokeMethod($rule, 'typeMap'))
 
-  #set ($resourceTypeRemoteApi = "RemoteApi")
-  #if ($request.requestName.startsWith($resourceTypeRemoteApi))
-    ## only remote api requests here
-    $manager.info("...Generating remote api: ${request.requestName}")
+  ## only remote api requests here
+  $manager.info("...Generating remote api: ${request.requestName}")
 
-    ## keep definitions in swagger.json for "$ref" handling
-    #foreach($swaggerJsonEntry in $optionMap.jsonMap.entrySet())
-      #if ($swaggerJsonEntry.key == 'definitions')
-        #set ($definitionMap = $swaggerJsonEntry.value)
-      #end
-    #end
+  ## schema name is from part of FreeGen request name e.g. RemoteApiSeaLand => SeaLand
+  #set ($scheme = $scriptEngine.invokeMethod($rule, 'scheme', $request))
+  #set ($schemePackage = $scriptEngine.invokeMethod($rule, 'schemePackage', $scheme))
+  #set ($bsBehaviorMap = {})
+  #set ($exBehaviorMap = {})
 
-    ## schema name is from part of FreeGen request name e.g. RemoteApiSeaLand => SeaLand
-    #set ($scheme = $request.requestName.replace($resourceTypeRemoteApi, ''))
-    #set ($schemePackage = $scriptEngine.invokeMethod($rule, 'schemePackage', $scheme))
-    #set ($bsBehaviorMap = {})
-    #set ($exBehaviorMap = {})
+  ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+  ## swagger.json's key
+  ## _/_/_/_/_/_/_/_/_/_/
+  #set ($pathMap = {})
+  #set ($pathMap = $optionMap.jsonMap['paths'])
+  #set ($definitionMap = {})
+  #set ($definitionMap = $optionMap.jsonMap['definitions'])
 
-    ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    ## loop swagger.json's first-level elements e.g. swagger, info, host, basePath, tags, paths, ...
+  ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+  ## loop paths's elements, per one API URL: e.g. /sea/land
+  ## _/_/_/_/_/_/_/_/_/_/
+  #foreach($pathEntry in $pathMap.entrySet())
+
+    ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    ## loop path's elements, per HTTP method e.g. get, post, ...
     ## _/_/_/_/_/_/_/_/_/_/
-    #foreach($swaggerJsonEntry in $optionMap.jsonMap.entrySet())
-      #if ($swaggerJsonEntry.key == 'paths')
-        #set ($pathMap = $swaggerJsonEntry.value)
+    #foreach($methodEntry in $pathEntry.value.entrySet())
+      #set ($multipleHttpMethod = $pathEntry.value.size() > 1)
+      #set ($api = { 'scheme': $scheme, 'url': $pathEntry.key, 'httpMethod': $methodEntry.key, 'multipleHttpMethod': $multipleHttpMethod, 'consumes': $methodEntry.value.consumes, 'produces': $methodEntry.value.produces })
+      #if ($scriptEngine.invokeMethod($rule, 'target', $api))
+        #set ($api.url = $scriptEngine.invokeMethod($rule, 'url', $api))
 
-        ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-        ## loop paths's elements, per one API URL: e.g. /sea/land
+        ## +------------------------+
+        ## |                        |
+        ## | Generate 'Param' beans |
+        ## |                        |
+        ## +------------------------+
+        #set ($pathVariables = {})
+        #set ($queryProperties = {})
+        #set ($formDataProperties = {})
+        #set ($bodyProperties = {})
+        #set ($paramBean = {})
+
+        ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        ## loop parameters's elements, e.g. in, name, description, required, schema, ...
         ## _/_/_/_/_/_/_/_/_/_/
-        #foreach($pathEntry in $pathMap.entrySet())
-
-          ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-          ## loop path's elements, per HTTP method e.g. get, post, ...
-          ## _/_/_/_/_/_/_/_/_/_/
-          #foreach($methodEntry in $pathEntry.value.entrySet())
-            #set ($multipleHttpMethod = $pathEntry.value.size() > 1)
-            #set ($api = { 'scheme': $scheme, 'url': $pathEntry.key, 'httpMethod': $methodEntry.key, 'multipleHttpMethod': $multipleHttpMethod, 'consumes': $methodEntry.value.consumes, 'produces': $methodEntry.value.produces })
-            #if ($scriptEngine.invokeMethod($rule, 'target', $api))
-              #set ($api.url = $scriptEngine.invokeMethod($rule, 'url', $api))
-
-              ## +------------------------+
-              ## |                        |
-              ## | Generate 'Param' beans |
-              ## |                        |
-              ## +------------------------+
-              #set ($bodyProperties = {})
-              #set ($pathVariables = {})
-              #set ($queryProperties = {})
-              #set ($formDataProperties = {})
-              #set ($paramBean = {})
-              #set ($returnBean = {})
-
-              ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-              ## loop parameters's elements, e.g. in, name, description, required, schema, ...
-              ## _/_/_/_/_/_/_/_/_/_/
-              #foreach($parameter in $methodEntry.value['parameters'])
-                #if ($parameter.in == 'body')
-                  #set ($definitionKey = '')
-                  #if ($parameter.schema && $parameter.schema['$ref'])
-                    #set ($definitionKey = $parameter.schema['$ref'].replace('#/definitions/', '')))
-                    #set ($bodyProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
-                    #foreach($bodyPropertyEntry in $bodyProperties.entrySet())
-                      #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
-                    #end
-                    #processRemoteApiBean('param', $api, $bodyProperties)
-                    #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'body' })
-                  #end
-                #elseif ($parameter.in == 'path')
-                  $pathVariables.put($parameter.name, $parameter)
-                #elseif ($parameter.in == 'query')
-                  $queryProperties.put($parameter.name, $parameter)
-                #elseif ($parameter.in == 'formData')
-                  $formDataProperties.put($parameter.name, $parameter)
-                #end
+        #foreach($parameter in $methodEntry.value['parameters'])
+          #if ($parameter.in == 'path')
+            $pathVariables.put($parameter.name, $parameter)
+          #elseif ($parameter.in == 'query')
+            $queryProperties.put($parameter.name, $parameter)
+          #elseif ($parameter.in == 'formData')
+            $formDataProperties.put($parameter.name, $parameter)
+          #elseif ($parameter.in == 'body')
+            #set ($definitionKey = '')
+            #if ($parameter.schema && $parameter.schema['$ref'])
+              #set ($definitionKey = $parameter.schema['$ref'].replace('#/definitions/', '')))
+              #set ($bodyProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
+              #foreach($bodyPropertyEntry in $bodyProperties.entrySet())
+                #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
               #end
-              #if ($queryProperties.size() != 0)
-                #processRemoteApiBean('param', $api, $queryProperties)
-                #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'query' }) })
-              #end
-              #if ($formDataProperties.size() != 0)
-                #processRemoteApiBean('param', $api, $formDataProperties)
-                #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'formData' }) })
-              #end
-
-              ## +-------------------------+
-              ## |                         |
-              ## | Generate 'Return' beans |
-              ## |                         |
-              ## +-------------------------+
-              #set ($returnProperties = {})
-
-              ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-              ## loop responses's elements, e.g. in, name, description, required, schema, ...
-              ## _/_/_/_/_/_/_/_/_/_/
-              #foreach($responseEntry in $methodEntry.value['responses'].entrySet())
-                #set ($response = $responseEntry.value)
-                #if ($response.schema)
-                  #if ($response.schema.type == 'array')
-                    #if (${typeMap[$response.schema.items.format]})
-                      #set ($returnBean = { 'className': "${typeMap[$response.schema.items.format]}", 'array': true })
-                    #elseif (${typeMap[$response.schema.items.type]})
-                      #set ($returnBean = { 'className': "${typeMap[$response.schema.items.type]}", 'array': true })
-                    #else
-                      ## 'schema' -> 'items' -> '$ref' if array
-                      #set ($definitionKey = $response.schema['items']['$ref'].replace('#/definitions/', '')))
-                      #set ($returnProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
-                      #if (!$returnProperties.empty)
-                        #foreach($returnPropertyEntry in $returnProperties.entrySet())
-                          #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
-                        #end
-                        #processRemoteApiBean('return', $api, $returnProperties)
-                        #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': "${class}", 'array': true})
-                      #end
-                    #end
-                  #elseif (${typeMap[$response.schema.format]})
-                    #set ($returnBean = { 'className': ${typeMap[$response.schema.format]} })
-                  #elseif (${typeMap[$response.schema.type]})
-                    #set ($returnBean = { 'className': ${typeMap[$response.schema.type]} })
-                  #elseif ($response.schema['$ref'])
-                    ## 'schema' -> '$ref' if normally
-                    #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
-                    #set ($returnProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
-                    #if (!$returnProperties.empty)
-                      #foreach($returnPropertyEntry in $returnProperties.entrySet())
-                        #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
-                      #end
-                      #processRemoteApiBean('return', $api, $returnProperties)
-                      #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class} })
-                    #end
-                  #end
-                #end
-              #end
-              #keepRemoteApiBehavior($api, $pathVariables, $paramBean, $returnBean)
+              #processRemoteApiBean('param', $api, $bodyProperties)
+              #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'body' })
             #end
           #end
         #end
+        #if (!$queryProperties.isEmpty())
+          #processRemoteApiBean('param', $api, $queryProperties)
+          #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'query' }) })
+        #end
+        #if (!$formDataProperties.isEmpty())
+          #processRemoteApiBean('param', $api, $formDataProperties)
+          #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'formData' }) })
+        #end
+
+        ## +-------------------------+
+        ## |                         |
+        ## | Generate 'Return' beans |
+        ## |                         |
+        ## +-------------------------+
+        #set ($returnProperties = {})
+        #set ($returnBean = {})
+
+        ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        ## loop responses's elements, e.g. in, name, description, required, schema, ...
+        ## _/_/_/_/_/_/_/_/_/_/
+        #foreach($responseEntry in $methodEntry.value['responses'].entrySet())
+          #set ($response = $responseEntry.value)
+          #if ($response.schema)
+            #if ($response.schema.type == 'array')
+              #if (${typeMap[$response.schema.items.format]})
+                #set ($returnBean = { 'className': "${typeMap[$response.schema.items.format]}", 'array': true })
+              #elseif (${typeMap[$response.schema.items.type]})
+                #set ($returnBean = { 'className': "${typeMap[$response.schema.items.type]}", 'array': true })
+              #else
+                ## 'schema' -> 'items' -> '$ref' if array
+                #set ($definitionKey = $response.schema['items']['$ref'].replace('#/definitions/', '')))
+                #set ($returnProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
+                #if (!$returnProperties.isEmpty())
+                  #foreach($returnPropertyEntry in $returnProperties.entrySet())
+                    #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
+                  #end
+                  #processRemoteApiBean('return', $api, $returnProperties)
+                  #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': "${class}", 'array': true})
+                #end
+              #end
+            #elseif (${typeMap[$response.schema.format]})
+              #set ($returnBean = { 'className': ${typeMap[$response.schema.format]} })
+            #elseif (${typeMap[$response.schema.type]})
+              #set ($returnBean = { 'className': ${typeMap[$response.schema.type]} })
+            #elseif ($response.schema['$ref'])
+              ## 'schema' -> '$ref' if normally
+              #set ($definitionKey = $response.schema['$ref'].replace('#/definitions/', '')))
+              #set ($returnProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
+              #if (!$returnProperties.isEmpty())
+                #foreach($returnPropertyEntry in $returnProperties.entrySet())
+                  #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
+                #end
+                #processRemoteApiBean('return', $api, $returnProperties)
+                #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class} })
+              #end
+            #end
+          #end
+        #end
+        #keepRemoteApiBehavior($api, $pathVariables, $paramBean, $returnBean)
       #end
     #end
-    #processRemoteApiBhv()
   #end
+  #processRemoteApiBhv()
 #end
 #end
 
-#macro(mkdir, $path)
-  $manager.makeDirectory($path)
-#end
-
-#macro(generate, $src, $dest)
-  $generator.parse($src, $dest, "", "")
-  $request.info("generate('${path}')")
-#end
-
-#macro(generateEx, $src, $dest)
-  #if (!$files.file(${generator.outputPath},$dest).exists())
-    $generator.parse($src, $dest, "", "")
-    $request.info("generate('${path}')")
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## generate file.
+## @param src src (NotNull)
+## @param dest dest (NotNull)
+## @param data data (NotNull)
+## @param overwite overwite (NotNull)
+## _/_/_/_/_/_/_/_/_/_/
+#macro(generate, $src, $dest, $data, $overwite)
+  #if (!$files.file(${generator.outputPath},$dest).exists() || $overwite)
+    $manager.makeDirectory($dest)
+    $generator.parse($src, $dest, "data", $data)
+    $request.info("generate('${dest}')")
   #end
 #end
 
@@ -210,8 +198,7 @@
   #set ($properties = $properties_)
   #set ($beanPurposeType = $type)
   #set ($remoteApiExp = "${api.httpMethod.toUpperCase()} ${api.url}")
-  #mkdir($path)
-  #generate("./remoteapi/RemoteApiBean.vm", $path)
+  #generate("./remoteapi/RemoteApiBean.vm", $path, {}, true)
 #end
 
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -246,8 +233,7 @@
   #if ($rule['behaviorClassGeneration'])
     #set ($abstractBehaviorClassName = $scriptEngine.invokeMethod($rule, 'abstractBehaviorClassName', $scheme))
     #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}/${abstractBehaviorClassName.replaceAll('\.', '/')}.java")
-    #mkdir($path)
-    #generateEx("./remoteapi/RemoteApiAbstractBehavior.vm", $path)
+    #generate("./remoteapi/RemoteApiAbstractBehavior.vm", $path, {}, false)
 
     #foreach($bsBehavior in $bsBehaviorMap.values())
       #set ($subPackage = ${bsBehavior['subPackage']})
@@ -255,8 +241,7 @@
       #set ($methodList = $bsBehavior['methodList'])
       #set ($remoteApiExp = $subPackage)
       #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
-      #mkdir($path)
-      #generate("./remoteapi/RemoteApiBsBehavior.vm", $path)
+      #generate("./remoteapi/RemoteApiBsBehavior.vm", $path, {}, true)
     #end
 
     #foreach($exBehavior in $exBehaviorMap.values())
@@ -266,19 +251,16 @@
       #set ($baseClass = $exBehavior['baseClass'])
       #set ($remoteApiExp = $subPackage)
       #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
-      #mkdir($path)
-      #generateEx("./remoteapi/RemoteApiExBehavior.vm", $path)
+      #generate("./remoteapi/RemoteApiExBehavior.vm", $path, {}, false)
     #end
 
     #if ($manager.isTargetContainerLastaDi())
       #set ($path = $scriptEngine.invokeMethod($rule, 'diXmlPath', $scheme, $request.resourceFile))
-      #mkdir($path)
-      #generate("./remoteapi/container/lastadi/RemoteApiDiXml.vm", $path)
+      #generate("./remoteapi/container/lastadi/RemoteApiDiXml.vm", $path, {}, true)
     #end
     #if ($manager.isTargetContainerSeasar())
       #set ($path = $scriptEngine.invokeMethod($rule, 'diconPath', $scheme, $request.resourceFile))
-      #mkdir($path)
-      #generate("./remoteapi/container/seasar/RemoteApiDicon.vm", $path)
+      #generate("./remoteapi/container/seasar/RemoteApiDicon.vm", $path, {}, true)
     #end
   #end
 #end

@@ -3,6 +3,11 @@
 //                                                                          Definition
 //                                                                          ==========
 /**
+ * Request Type.
+ * @typedef {Object} Request
+ */
+
+/**
  * API Type.
  * @typedef {Object} Api
  * @property {string} api.scheme - Scheme.
@@ -47,6 +52,24 @@ var baseRule = {
     //                                                                               Base
     //                                                                              ======
     /**
+     * Return scheme.
+     * @param {Request} request - Request.
+     * @return {string} scheme.
+     */
+    scheme : function(request) {
+        return request.requestName.replace(/^RemoteApi/g, '');
+    },
+
+    /**
+     * Return scheme package.
+     * @param {Api} api - API.
+     * @return {string} scheme package.
+     */
+    schemePackage : function(scheme) {
+        return manager.decamelize(scheme).replace(/_/g, '.').toLowerCase();
+    },
+
+    /**
      * Return true if target.
      * @param {Api} api - API.
      * @return {boolean} true if target.
@@ -64,15 +87,6 @@ var baseRule = {
      * @return {boolean} filtered URL.
      */
     url : function(api) { return api.url; },
-
-    /**
-     * Return scheme package.
-     * @param {Api} api - API.
-     * @return {string} scheme package.
-     */
-    schemePackage : function(scheme) {
-        return manager.decamelize(scheme).replace(/_/g, '.').toLowerCase();
-    },
 
     /**
      * Return sub package.
