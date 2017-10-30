@@ -16,6 +16,7 @@
 package org.docksidestage.app.web.base;
 
 import javax.annotation.Resource;
+import javax.validation.ConstraintViolation;
 
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.logic.context.AccessContextLogic;
@@ -25,6 +26,8 @@ import org.docksidestage.mylasta.action.FortressHtmlPath;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.mylasta.action.FortressUserBean;
 import org.docksidestage.mylasta.direction.FortressConfig;
+import org.lastaflute.core.message.UserMessages;
+import org.lastaflute.core.message.supplier.UserMessagesCreator;
 import org.lastaflute.db.dbflute.accesscontext.AccessContextArranger;
 import org.lastaflute.web.TypicalAction;
 import org.lastaflute.web.login.LoginManager;
@@ -62,6 +65,20 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     private AccessContextLogic accessContextLogic;
     @Resource
     private I18nDateLogic i18nDateLogic;
+
+    // ===================================================================================
+    //                                                                          Validation
+    //                                                                          ==========
+    @Override
+    protected <MESSAGES extends UserMessages> ActionValidator<MESSAGES> newActionValidator(RequestManager requestManager,
+            UserMessagesCreator<MESSAGES> messagesCreator, Class<?>... runtimeGroups) {
+        return new ActionValidator<MESSAGES>(requestManager, messagesCreator, runtimeGroups) {
+            @Override
+            protected String extractPropertyPath(ConstraintViolation<Object> vio) {
+                return derivePropertyPathByNode(vio);
+            }
+        };
+    }
 
     // ===================================================================================
     //                                                                               Hook
