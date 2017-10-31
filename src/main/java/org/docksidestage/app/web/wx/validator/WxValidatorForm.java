@@ -128,6 +128,18 @@ public class WxValidatorForm {
 
             @Required
             public String restaurantName;
+
+            @Valid
+            public List<@Required String> genreList;
+
+            @Valid
+            public List<MenuBean> menuList;
+
+            public static class MenuBean {
+
+                @Required
+                public String menuName;
+            }
         }
     }
 
@@ -154,6 +166,8 @@ public class WxValidatorForm {
     public static class PiariBean {
         @Required
         public Integer iks;
+        @Length(max = 3)
+        public String plaza;
     }
 
     public static class BonvoBean {

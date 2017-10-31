@@ -1,15 +1,20 @@
 package org.docksidestage.app.web.wx.validator;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.constraints.Max;
 
+import org.docksidestage.app.web.wx.validator.WxValidatorForm.LandBean;
+import org.docksidestage.app.web.wx.validator.WxValidatorForm.PiariBean;
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean;
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean.RestaurantBean;
+import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean.RestaurantBean.MenuBean;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
+import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.web.validation.Required;
 
@@ -21,7 +26,26 @@ public class WxValidatorActionTest extends UnitFortressWebTestCase {
     // ===================================================================================
     //                                                                               Basic
     //                                                                               =====
-    // now making...
+    public void test_validationError_basic() {
+        // ## Arrange ##
+        WxValidatorAction action = new WxValidatorAction();
+        inject(action);
+        WxValidatorForm form = new WxValidatorForm();
+        form.seaString = "mystic"; // over
+        form.seaInteger = 100; // over
+        form.seaFloat = 89F; // over (cannot be 88.1F)
+        form.seaDecimal = new BigDecimal(88.1); // over (cannot be 88.1F)
+
+        // ## Act ##
+        // ## Assert ##
+        assertValidationError(() -> action.index(form)).handle(data -> {
+            data.requiredMessageOf("seaString", Length.class);
+            data.requiredMessageOf("seaInteger", Max.class);
+            data.requiredMessageOf("seaFloat", Max.class);
+            data.requiredMessageOf("seaDecimal", Max.class);
+            assertEquals(4, data.requiredMessages().size());
+        });
+    }
 
     // ===================================================================================
     //                                                                       List Elements
@@ -32,9 +56,9 @@ public class WxValidatorActionTest extends UnitFortressWebTestCase {
         inject(action);
         WxValidatorForm form = new WxValidatorForm();
 
-        form.dstoreStringList = newArrayList((String) null);
-        form.dstoreImmutableList = prepareImmutableTypeList((String) null);
-        form.dstoreIntegerList = newArrayList(87, 88, 89);
+        form.dstoreStringList = newArrayList((String) null); // required
+        form.dstoreImmutableList = prepareImmutableTypeList((String) null); // required
+        form.dstoreIntegerList = newArrayList(87, 88, 89); // over
 
         form.seaBean = new SeaBean();
         form.seaBean.restaurantList = newArrayList(new RestaurantBean());
@@ -45,7 +69,14 @@ public class WxValidatorActionTest extends UnitFortressWebTestCase {
         // org.eclipse.collections.impl.list.immutable.ImmutableSingletonList
         // as several most specific value extractors are declared
         //form.seaBean.restaurantIterableImmutableList = prepareImmutableTypeList(new RestaurantBean());
-        form.seaBeanList = newArrayList(new SeaBean());
+        {
+            SeaBean elementSeaBean = new SeaBean();
+            RestaurantBean nestedRestaurantBean = new RestaurantBean();
+            nestedRestaurantBean.genreList = newArrayList("mexico", (String) null); // required
+            nestedRestaurantBean.menuList = newArrayList(new MenuBean()); // required
+            elementSeaBean.restaurantList = newArrayList(nestedRestaurantBean);
+            form.seaBeanList = newArrayList(elementSeaBean);
+        }
 
         // ## Act ##
         // ## Assert ##
@@ -83,6 +114,10 @@ public class WxValidatorActionTest extends UnitFortressWebTestCase {
             // HV000219: ...
             //data.requiredMessageOf("seaBean.restaurantIterableImmutableList[0].restaurantName", Required.class);
 
+            // more nested
+            data.requiredMessageOf("seaBeanList[0].restaurantList[0].genreList[1]", Required.class);
+            data.requiredMessageOf("seaBeanList[0].restaurantList[0].menuList[0].menuName", Required.class);
+
             // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
             // plain UserMessages
             // _/_/_/_/_/_/_/_/_/_/
@@ -90,6 +125,36 @@ public class WxValidatorActionTest extends UnitFortressWebTestCase {
             assertTrue(messages.hasMessageOf("seaBean.over"));
             assertFalse(messages.hasMessageOf("seaBean.over", FortressMessages.CONSTRAINTS_Required_MESSAGE));
             assertTrue(messages.hasMessageOf("seaBeanList[0].over"));
+
+            // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+            // whole count
+            // _/_/_/_/_/_/_/_/_/_/
+            // hard to count...
+            //assertEquals(4, data.requiredMessages().size());
+        });
+    }
+
+    // ===================================================================================
+    //                                                                        Generic Type
+    //                                                                        ============
+    public void test_validationError_generic_basic() {
+        // ## Arrange ##
+        WxValidatorAction action = new WxValidatorAction();
+        inject(action);
+        WxValidatorForm form = new WxValidatorForm();
+        form.landBean = new LandBean<PiariBean>();
+        form.landBean.haunted = new PiariBean(); // required
+        form.landBean.haunted.plaza = "celebration"; // over
+
+        // ## Act ##
+        // ## Assert ##
+        assertValidationError(() -> action.index(form)).handle(data -> {
+            data.requiredMessageOf("landBean.oneman", Required.class);
+            data.requiredMessageOf("landBean.minio", Required.class);
+            data.requiredMessageOf("landBean.haunted.iks", Required.class);
+            data.requiredMessageOf("landBean.haunted.plaza", Length.class);
+            data.requiredMessageOf("landBean.bonvoBean", Required.class);
+            assertEquals(5, data.requiredMessages().size());
         });
     }
 
