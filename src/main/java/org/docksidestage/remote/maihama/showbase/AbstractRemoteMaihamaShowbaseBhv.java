@@ -36,7 +36,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * @author FreeGen
  * @author jflute
  */
-public class AbstractRemoteMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
+public abstract class AbstractRemoteMaihamaShowbaseBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
 
     // ===================================================================================
     //                                                                         Constructor

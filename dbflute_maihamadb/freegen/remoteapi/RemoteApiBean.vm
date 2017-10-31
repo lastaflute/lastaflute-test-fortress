@@ -13,9 +13,9 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-${manager.allClassCopyright}package ${request.package}.${schemePackage}#if (${subPackage}).${subPackage}#end;
+${manager.allClassCopyright}package ${data.package};
 #set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
-#foreach($propertyEntry in $properties.entrySet())
+#foreach($propertyEntry in $data.properties.entrySet())
 #set ($property = $propertyEntry.value)
 #if (${property.required})
 #set($added = $importSet.add('org.lastaflute.web.validation.Required'))
@@ -43,14 +43,14 @@ import ${import};
 #end
 
 /**
- * The bean class as ${beanPurposeType} for remote API of ${remoteApiExp}.
+ * The bean class as ${data.beanPurposeType} for remote API of ${data.remoteApiExp}.
  * @author FreeGen
  */
-public class ${class}#if ($extendsClass && $extendsClass != '') extends $extendsClass#end#if ($implementsClasses && $implementsClasses != '') implements $implementsClasses#end {
+public class ${data.className}#if ($data.extendsClass && $data.extendsClass != '') extends $data.extendsClass#end#if ($data.implementsClasses && $data.implementsClasses != '') implements $data.implementsClasses#end {
 #set($nestTypeFullNameList = [])
-#foreach($propertyEntry in $properties.entrySet())
+#foreach($propertyEntry in $data.properties.entrySet())
 #set($nestList = [])
-#generateProperty($class, $propertyEntry)
+#generateProperty($data.className, $propertyEntry)
 #set($nestList = [])
 #end
 #set($nestTypeFullNameList = [])
@@ -76,8 +76,8 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #set ($enumValueComment = "(enumValue=$property.items.enum) ")
 #end
 
-#if ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingDescription', $api, $class, $property))
-    #generateIndent()/** The property of ${fieldName}. ${enumValueComment}($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingDescription', $api, $class, $property)) #if (!${property.required})(NullAllowed) #end*/
+#if ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingDescription', $data.api, $class, $property))
+    #generateIndent()/** The property of ${fieldName}. ${enumValueComment}($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingDescription', $data.api, $class, $property)) #if (!${property.required})(NullAllowed) #end*/
 #elseif (${property.description})
     #generateIndent()/** The property of ${fieldName}. ${enumValueComment}(${property.description}) #if (!${property.required})(NullAllowed) #end*/
 #else
@@ -87,8 +87,8 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
     #generateIndent()@Required
 #end
 #if ($property.type == 'array')
-#if ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $api, $class, $property))
-#set ($fieldClass = "${typeMap[$property.type]}<$scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $api, $class, $property)>")
+#if ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $class, $property))
+#set ($fieldClass = "${typeMap[$property.type]}<$scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $class, $property)>")
 #elseif (${typeMap[$property.items.format]})
 #set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.format]}>")
 #elseif (${typeMap[$property.items.type]})
@@ -99,8 +99,8 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #set ($fieldClass = "${typeMap[$property.type]}<$adjustType>")
     #generateIndent()@javax.validation.Valid
 #end
-#elseif ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $api, $class, $property))
-#set ($fieldClass = $scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $api, $class, $property))
+#elseif ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $class, $property))
+#set ($fieldClass = $scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $class, $property))
 #elseif (${typeMap[$property.format]})
 #set ($fieldClass = ${typeMap[$property.format]})
 #elseif (${typeMap[$property.type]})
@@ -111,7 +111,7 @@ public class ${class}#if ($extendsClass && $extendsClass != '') extends $extends
 #set ($fieldClass = $adjustType)
     #generateIndent()@javax.validation.Valid
 #end
-    #generateIndent()public ${fieldClass} ${scriptEngine.invokeMethod($rule, 'fieldName', $api, $fieldName)};
+    #generateIndent()public ${fieldClass} ${scriptEngine.invokeMethod($rule, 'fieldName', $data.api, $fieldName)};
 #generateNestType($nestType)
 #end
 ##################################################

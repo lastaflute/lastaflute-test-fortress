@@ -14542,6 +14542,18 @@
             "nestTypeDocMetaList": []
           },
           {
+            "name": "seaString",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Length{max\u003d3}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
             "name": "seaInteger",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
@@ -14549,19 +14561,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "seaIntegerList",
-            "typeName": "java.util.List\u003cInteger\u003e",
-            "simpleTypeName": "List\u003cInteger\u003e",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -14573,7 +14574,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -14585,7 +14587,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -14597,7 +14600,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -14609,7 +14613,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -14626,9 +14631,33 @@
             "nestTypeDocMetaList": []
           },
           {
-            "name": "iksMode",
+            "name": "landDateTime",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piariPrimBool",
             "typeName": "boolean",
             "simpleTypeName": "boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piariWrapBool",
+            "typeName": "java.lang.Boolean",
+            "simpleTypeName": "Boolean",
             "value": null,
             "description": null,
             "comment": null,
@@ -14642,6 +14671,42 @@
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreStringList",
+            "typeName": "java.util.List\u003cString\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreIntegerList",
+            "typeName": "java.util.List\u003cInteger\u003e",
+            "simpleTypeName": "List\u003cInteger\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
+            "value": null,
             "description": null,
             "comment": null,
             "annotationList": [
@@ -14706,6 +14771,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -14731,6 +14833,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -14756,6 +14895,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -14781,6 +14957,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -14806,6 +15019,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               }
@@ -14868,6 +15118,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -14893,6 +15180,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -14918,6 +15242,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -14943,6 +15304,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -14968,6 +15366,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               }
@@ -15449,6 +15884,18 @@
             "nestTypeDocMetaList": []
           },
           {
+            "name": "seaString",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Length{max\u003d3}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
             "name": "seaInteger",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
@@ -15456,19 +15903,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "seaIntegerList",
-            "typeName": "java.util.List\u003cInteger\u003e",
-            "simpleTypeName": "List\u003cInteger\u003e",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -15480,7 +15916,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -15492,7 +15929,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -15504,7 +15942,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -15516,7 +15955,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -15533,9 +15973,33 @@
             "nestTypeDocMetaList": []
           },
           {
-            "name": "iksMode",
+            "name": "landDateTime",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piariPrimBool",
             "typeName": "boolean",
             "simpleTypeName": "boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piariWrapBool",
+            "typeName": "java.lang.Boolean",
+            "simpleTypeName": "Boolean",
             "value": null,
             "description": null,
             "comment": null,
@@ -15549,6 +16013,42 @@
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreStringList",
+            "typeName": "java.util.List\u003cString\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreIntegerList",
+            "typeName": "java.util.List\u003cInteger\u003e",
+            "simpleTypeName": "List\u003cInteger\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
+            "value": null,
             "description": null,
             "comment": null,
             "annotationList": [
@@ -15613,6 +16113,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15638,6 +16175,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15663,6 +16237,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15688,6 +16299,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15713,6 +16361,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               }
@@ -15775,6 +16460,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15800,6 +16522,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15825,6 +16584,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15850,6 +16646,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -15875,6 +16708,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               }
@@ -16473,6 +17343,18 @@
             "nestTypeDocMetaList": []
           },
           {
+            "name": "seaString",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Length{max\u003d3}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
             "name": "seaInteger",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
@@ -16480,19 +17362,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "seaIntegerList",
-            "typeName": "java.util.List\u003cInteger\u003e",
-            "simpleTypeName": "List\u003cInteger\u003e",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -16504,7 +17375,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -16516,7 +17388,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -16528,7 +17401,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -16540,7 +17414,8 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "ValidateTypeFailure"
+              "ValidateTypeFailure",
+              "Max{value\u003d88}"
             ],
             "nestTypeDocMetaList": []
           },
@@ -16557,9 +17432,33 @@
             "nestTypeDocMetaList": []
           },
           {
-            "name": "iksMode",
+            "name": "landDateTime",
+            "typeName": "java.time.LocalDateTime",
+            "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piariPrimBool",
             "typeName": "boolean",
             "simpleTypeName": "boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "piariWrapBool",
+            "typeName": "java.lang.Boolean",
+            "simpleTypeName": "Boolean",
             "value": null,
             "description": null,
             "comment": null,
@@ -16573,6 +17472,42 @@
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreStringList",
+            "typeName": "java.util.List\u003cString\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreIntegerList",
+            "typeName": "java.util.List\u003cInteger\u003e",
+            "simpleTypeName": "List\u003cInteger\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "ValidateTypeFailure"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstoreImmutableList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
+            "value": null,
             "description": null,
             "comment": null,
             "annotationList": [
@@ -16637,6 +17572,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -16662,6 +17634,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -16687,6 +17696,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -16712,6 +17758,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -16737,6 +17820,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               }
@@ -16799,6 +17919,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -16824,6 +17981,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -16849,6 +18043,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -16874,6 +18105,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               },
@@ -16899,6 +18167,43 @@
                       "Required"
                     ],
                     "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "genreList",
+                    "typeName": "java.util.List\u003cString\u003e",
+                    "simpleTypeName": "List\u003cString\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": []
+                  },
+                  {
+                    "name": "menuList",
+                    "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
+                    "simpleTypeName": "List\u003cMenuBean\u003e",
+                    "value": null,
+                    "description": null,
+                    "comment": null,
+                    "annotationList": [
+                      "Valid"
+                    ],
+                    "nestTypeDocMetaList": [
+                      {
+                        "name": "menuName",
+                        "typeName": "java.lang.String",
+                        "simpleTypeName": "String",
+                        "value": null,
+                        "description": null,
+                        "comment": null,
+                        "annotationList": [
+                          "Required"
+                        ],
+                        "nestTypeDocMetaList": []
+                      }
+                    ]
                   }
                 ]
               }

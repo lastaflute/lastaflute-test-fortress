@@ -23,6 +23,6 @@
 
     <!-- Remote API Behavior -->
 #foreach($exBehavior in $exBehaviorMap.values())
-    <component name="$manager.initUncap($exBehavior['class'])" class="${request.package}.${schemePackage}#if ($exBehavior.subPackage && $exBehavior.subPackage != '').${exBehavior.subPackage}#end.${exBehavior['class']}" />
+    <component name="$manager.initUncap($exBehavior.className)" class="${exBehavior.package}.${exBehavior.className}" />
 #end
 </components>

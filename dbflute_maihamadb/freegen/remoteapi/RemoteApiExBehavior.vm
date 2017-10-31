@@ -13,19 +13,23 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-${manager.allClassCopyright}package ${request.package}.${schemePackage}#if ($subPackage && $subPackage != '').${subPackage}#end;
+${manager.allClassCopyright}package ${data.package};
 
 import org.lastaflute.web.servlet.request.RequestManager;
 
+#if (${data.package} != ${data.bsBehavior.package})
+import ${data.bsBehavior.package}.${data.bsBehavior.className};
+
+#end
 /**
- * The behavior for remote API of ${remoteApiExp}.
+ * The behavior for remote API of ${data.remoteApiExp}.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
  */
-public class ${class} extends ${baseClass} {
+public class ${data.className} extends ${data.bsBehavior.className} {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -33,7 +37,7 @@ public class ${class} extends ${baseClass} {
     /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public ${class}(RequestManager requestManager) {
+    public ${data.className}(RequestManager requestManager) {
         super(requestManager);
     }
 }
