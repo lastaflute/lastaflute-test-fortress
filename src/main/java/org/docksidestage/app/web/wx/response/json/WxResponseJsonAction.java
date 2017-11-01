@@ -47,6 +47,18 @@ public class WxResponseJsonAction extends FortressBaseAction {
         return JsonResponse.asEmptyBody();
     }
 
+    // http://localhost:8151/fortress/wx/response/json/strval
+    @Execute
+    public JsonResponse<String> strval() { // contentType=application/json
+        return asJson("sea");
+    }
+
+    // http://localhost:8151/fortress/wx/response/json/intval
+    @Execute
+    public JsonResponse<Integer> intval() { // contentType=application/json
+        return asJson(7);
+    }
+
     public static class MyBasicJsonBean {
 
         @Required
