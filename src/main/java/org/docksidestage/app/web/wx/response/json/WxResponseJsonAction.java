@@ -35,9 +35,16 @@ public class WxResponseJsonAction extends FortressBaseAction {
     @Resource
     private DisplayAssist displayAssist;
 
+    // http://localhost:8151/fortress/wx/response/json
     @Execute
     public JsonResponse<MyBasicJsonBean> index() {
         return asJson(new MyBasicJsonBean(3, "sea", displayAssist.toDate("2001-09-06").get()));
+    }
+
+    // http://localhost:8151/fortress/wx/response/json/emptybody
+    @Execute
+    public JsonResponse<Void> emptybody() {
+        return JsonResponse.asEmptyBody();
     }
 
     public static class MyBasicJsonBean {
