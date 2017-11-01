@@ -20,13 +20,18 @@ package org.docksidestage.app.web.wx;
  */
 public class JFluteMemo {
 
+    // TODO jflute lastaflute: [A] fitting: {}/@word/{} with OptionalThing parameter
+    // TODO jflute lastaflute: [A] fitting: ScalarResponse instead of JsonResponse<String>
+    // TODO jflute lastaflute: [A] fitting: ValidateTypeFailure for JSON
+    // TODO jflute lastaflute: [A] fitting: ValidateTypeFailure for List element
+    // TODO jflute lastaflute: [A] fitting: FormMappingOption provides date pattern
+    // TODO jflute lastaflute: [A] fitting: TypeLocalDate can specify date pattern
+    // TODO jflute lastaflute: [B] fitting: @Execute(camelToUrlElement=true)
     // TODO jflute lastaflute: [B] fitting: Gson, Enum failure, null to exception
     // TODO jflute lastaflute: [B] fitting: type-safe messages property
-    // TODO jflute lastaflute: [B] fitting: {}/@word/{} with OptionalThing parameter
     // TODO jflute lastaflute: [B] fitting: Form, Result, Optional property (related to Gson, Validator)
     // TODO jflute lastaflute: [B] fitting: SlaveDB follow
     // TODO jflute lastaflute: [B] fitting: throw 404 when No routing action by option?
-    // TODO jflute lastaflute: [B] fitting: @Execute(camelToUrlElement=true)
     // TODO jflute lastaflute: [B] fitting: Thymeleaf: render parts manager for Ajax
     // TODO jflute lastaflute: [B] example: example of REST orleans
     // TODO jflute lastaflute: [B] fitting: MailFlute, parameter property comment
