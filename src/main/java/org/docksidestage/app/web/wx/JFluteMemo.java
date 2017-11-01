@@ -22,6 +22,7 @@ public class JFluteMemo {
 
     // TODO jflute lastaflute: [A] fitting: {}/@word/{} with OptionalThing parameter
     // TODO jflute lastaflute: [A] fitting: ScalarResponse instead of JsonResponse<String>
+    // TODO jflute lastaflute: [A] fitting: StreamResponse can be treated as ApiResponse option?
     // TODO jflute lastaflute: [A] fitting: ValidateTypeFailure for JSON
     // TODO jflute lastaflute: [A] fitting: ValidateTypeFailure for List element
     // TODO jflute lastaflute: [A] fitting: FormMappingOption provides date pattern
