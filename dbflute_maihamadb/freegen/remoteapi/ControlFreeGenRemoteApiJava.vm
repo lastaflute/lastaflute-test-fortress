@@ -95,17 +95,17 @@
                 #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
               #end
               #processRemoteApiBean('param', $api, $bodyProperties)
-              #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'body' })
+              #set ($paramBean = { 'package': ${data.package}, 'className': ${data.className}, 'in': 'body' })
             #end
           #end
         #end
         #if (!$queryProperties.isEmpty())
           #processRemoteApiBean('param', $api, $queryProperties)
-          #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'query' }) })
+          #set ($paramBean = { 'package': ${data.package}, 'className': ${data.className}, 'in': 'query' }) })
         #end
         #if (!$formDataProperties.isEmpty())
           #processRemoteApiBean('param', $api, $formDataProperties)
-          #set ($paramBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class}, 'in': 'formData' }) })
+          #set ($paramBean = { 'package': ${data.package}, 'className': ${data.className}, 'in': 'formData' }) })
         #end
 
         ## +-------------------------+
@@ -136,7 +136,7 @@
                     #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
                   #end
                   #processRemoteApiBean('return', $api, $returnProperties)
-                  #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': "${class}", 'array': true})
+                  #set ($returnBean = { 'package': ${data.package}, 'className': "${data.className}", 'array': true})
                 #end
               #end
             #elseif (${typeMap[$response.schema.format]})
@@ -152,7 +152,7 @@
                   #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
                 #end
                 #processRemoteApiBean('return', $api, $returnProperties)
-                #set ($returnBean = { 'package': "${request.package}.${schemePackage}.${subPackage}", 'className': ${class} })
+                #set ($returnBean = { 'package': ${data.package}, 'className': ${data.className} })
               #end
             #end
           #end
@@ -189,16 +189,19 @@
 #macro(processRemoteApiBean, $type, $api, $properties_)
   #set ($subPackage = '')
   #set ($subPackage = $scriptEngine.invokeMethod($rule, 'beanSubPackage', $api))
-  #set ($class = $scriptEngine.invokeMethod($rule, "${type}ClassName", $api))
-  #set ($extendsClass = '')
-  #set ($implementsClasses = '')
-  #set ($extendsClass = $rule["${type}ExtendsClass"])
-  #set ($implementsClasses = $rule["${type}ImplementsClasses"])
-  #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
-  #set ($properties = $properties_)
-  #set ($beanPurposeType = $type)
-  #set ($remoteApiExp = "${api.httpMethod.toUpperCase()} ${api.url}")
-  #generate("./remoteapi/RemoteApiBean.vm", $path, {}, true)
+  #set ($package = "${request.package}.${schemePackage}#if ($subPackage && $subPackage != '').${subPackage}#end")
+
+  #set ($remoteApiBean = {})
+  $remoteApiBean.put('api', $api)
+  $remoteApiBean.put('package', $package)
+  $remoteApiBean.put('className', $scriptEngine.invokeMethod($rule, "${type}ClassName", $api))
+  $remoteApiBean.put('extendsClass', $rule["${type}ExtendsClass"])
+  $remoteApiBean.put('implementsClasses', $rule["${type}ImplementsClasses"])
+  $remoteApiBean.put('properties', $properties_)
+  $remoteApiBean.put('beanPurposeType', $type)
+  $remoteApiBean.put('remoteApiExp', "${api.httpMethod.toUpperCase()} ${api.url}")
+  #set ($path = "${remoteApiBean.package.replaceAll('\.', '/')}/${remoteApiBean.className}.java")
+  #generate("./remoteapi/RemoteApiBean.vm", $path, $remoteApiBean, true)
 #end
 
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -213,16 +216,19 @@
 #macro(keepRemoteApiBehavior, $api, $pathVariables, $paramBean, $returnBean)
   #set ($subPackage = '')
   #set ($subPackage = $scriptEngine.invokeMethod($rule, 'behaviorSubPackage', $api))
-  #set ($class = $scriptEngine.invokeMethod($rule, 'bsBehaviorClassName', $api))
-  #if (!$bsBehaviorMap.containsKey("${schemePackage}.${subPackage}.${class}")) {
-      $bsBehaviorMap.put("${schemePackage}.${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'methodList': [] })
+  #set ($package = "${request.package}.${schemePackage}#if ($subPackage && $subPackage != '').${subPackage}#end")
+  #set ($className = $scriptEngine.invokeMethod($rule, 'bsBehaviorClassName', $api))
+  #set ($bsBehavior = { 'package': $package, 'className': $className, 'remoteApiExp': $subPackage, 'methodList': [] })
+  #if (!$bsBehaviorMap.containsKey("${bsBehavior.package}.${bsBehavior.className}")) {
+      $bsBehaviorMap.put("${bsBehavior.package}.${bsBehavior.className}", $bsBehavior)
+
+      #set ($subPackage = '')
+      #set ($subPackage = $scriptEngine.invokeMethod($rule, 'behaviorSubPackage', $api))
+      #set ($package = "$request.package.$schemePackage#if ($subPackage && $subPackage != '').$subPackage#end")
+      #set ($className = $scriptEngine.invokeMethod($rule, 'exBehaviorClassName', $api)))
+      $exBehaviorMap.put("${package}.${className}", { 'package': $package, 'className': $className, 'remoteApiExp': $subPackage, 'bsBehavior': $bsBehavior })
   #end
-  $bsBehaviorMap.get("${schemePackage}.${subPackage}.${class}").methodList.add({ 'api': $api, 'pathVariables': $pathVariables, 'paramBean': $paramBean, 'returnBean': $returnBean })
-  #set ($baseSubPackage = "${schemePackage}.${subPackage}")
-  #set ($baseClass = $class)
-  #set ($subPackage = $scriptEngine.invokeMethod($rule, 'behaviorSubPackage', $api))
-  #set ($class = $scriptEngine.invokeMethod($rule, 'exBehaviorClassName', $api)))
-  $exBehaviorMap.put("${schemePackage}.${subPackage}.${class}", { 'subPackage': ${subPackage}, 'class': ${class}, 'baseSubPackage': ${baseSubPackage}, 'baseClass': ${baseClass} })
+  $bsBehaviorMap.get("${bsBehavior.package}.${bsBehavior.className}").methodList.add({ 'api': $api, 'pathVariables': $pathVariables, 'paramBean': $paramBean, 'returnBean': $returnBean })
 #end
 
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -231,27 +237,19 @@
 ## _/_/_/_/_/_/_/_/_/_/
 #macro(processRemoteApiBhv)
   #if ($rule['behaviorClassGeneration'])
-    #set ($abstractBehaviorClassName = $scriptEngine.invokeMethod($rule, 'abstractBehaviorClassName', $scheme))
-    #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}/${abstractBehaviorClassName.replaceAll('\.', '/')}.java")
-    #generate("./remoteapi/RemoteApiAbstractBehavior.vm", $path, {}, false)
+    #set ($className = $scriptEngine.invokeMethod($rule, 'abstractBehaviorClassName', $scheme))
+    #set ($abstractBehavior = { 'package': "${request.package}.${schemePackage}", 'className': $className, 'remoteApiExp': $request.requestName, 'frameworkBehaviorClass': $rule['frameworkBehaviorClass'] })
+    #set ($path = "${abstractBehavior.package.replaceAll('\.', '/')}/${abstractBehavior.className}.java")
+    #generate("./remoteapi/RemoteApiAbstractBehavior.vm", $path, $abstractBehavior, false)
 
     #foreach($bsBehavior in $bsBehaviorMap.values())
-      #set ($subPackage = ${bsBehavior['subPackage']})
-      #set ($class = $bsBehavior['class'])
-      #set ($methodList = $bsBehavior['methodList'])
-      #set ($remoteApiExp = $subPackage)
-      #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
-      #generate("./remoteapi/RemoteApiBsBehavior.vm", $path, {}, true)
+      #set ($path = "${bsBehavior.package.replaceAll('\.', '/')}/${bsBehavior.className}.java")
+      #generate("./remoteapi/RemoteApiBsBehavior.vm", $path, $bsBehavior, true)
     #end
 
     #foreach($exBehavior in $exBehaviorMap.values())
-      #set ($subPackage = ${exBehavior['subPackage']})
-      #set ($class = $exBehavior['class'])
-      #set ($baseSubPackage = ${exBehavior['baseSubPackage']})
-      #set ($baseClass = $exBehavior['baseClass'])
-      #set ($remoteApiExp = $subPackage)
-      #set ($path = "${request.generateDirPath}${schemePackage.replaceAll('\.', '/')}#if ($subPackage && $subPackage != '')/${subPackage.replaceAll('\.', '/')}#end/${class.replaceAll('\.', '/')}.java")
-      #generate("./remoteapi/RemoteApiExBehavior.vm", $path, {}, false)
+      #set ($path = "${exBehavior.package.replaceAll('\.', '/')}/${exBehavior.className}.java")
+      #generate("./remoteapi/RemoteApiExBehavior.vm", $path, $exBehavior, false)
     #end
 
     #if ($manager.isTargetContainerLastaDi())
@@ -268,7 +266,7 @@
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 ## Adjust java type of e.g. property. e.g. java.util.List to List
 ## @param type The type of java type. (NotNull)
-## @return adjustType The filtered expression of the type.
+## @return adjustType The filtered expression of the type. (NotNull)
 ## _/_/_/_/_/_/_/_/_/_/
 #macro(adjustType, $type)
 #set ($adjustType = ${type})

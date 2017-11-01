@@ -13,11 +13,11 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-${manager.allClassCopyright}package ${request.package}.${schemePackage}#if ($subPackage && $subPackage != '').${subPackage}#end;
+${manager.allClassCopyright}package ${data.package};
 #set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
 #set ($parameterFlg = false)
 #if ($rule['behaviorMethodGeneration'])
-#foreach($method in $methodList)
+#foreach($method in $data.methodList)
 #if (${method.paramBean.className} && ${method.paramBean.className} != '')
 #set($added = $importSet.add("${method.paramBean.package}.${method.paramBean.className}"))
 #set ($parameterFlg = true)
@@ -35,18 +35,18 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 #end
 import org.lastaflute.web.servlet.request.RequestManager;
 
-#if ("${request.package}.${schemePackage}" != "${request.package}.${schemePackage}#if ($subPackage && $subPackage != '').${subPackage}#end")
-import ${request.package}.${schemePackage}.${abstractBehaviorClassName};
+#if (${abstractBehavior.package} != ${data.package})
+import ${abstractBehavior.package}.${abstractBehavior.className};
 #end
 #foreach($import in $importSet)
 import ${import};
 #end
 
 /**
- * The base class as generation gap for remote API of ${remoteApiExp}.
+ * The base class as generation gap for remote API of ${data.remoteApiExp}.
  * @author FreeGen
  */
-public abstract class ${class} extends ${abstractBehaviorClassName} {
+public abstract class ${data.className} extends ${abstractBehavior.className} {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -54,11 +54,11 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
     /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public ${class}(RequestManager requestManager) {
+    public ${data.className}(RequestManager requestManager) {
         super(requestManager);
     }
 #if ($rule['behaviorMethodGeneration'])
-#foreach($method in $methodList)
+#foreach($method in $data.methodList)
 
 #if ($foreach.index == 0)
     // ===================================================================================
@@ -189,7 +189,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
 #end
-            $behaviorRuleMethodName(rule);
+            ${behaviorRuleMethodName}(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -198,7 +198,7 @@ public abstract class ${class} extends ${abstractBehaviorClassName} {
      * Set up method-level rule of ${method.api.url}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void $behaviorRuleMethodName(FlutyRemoteApiRule rule) {
+    protected void ${behaviorRuleMethodName}(FlutyRemoteApiRule rule) {
     }
 #end
 #end

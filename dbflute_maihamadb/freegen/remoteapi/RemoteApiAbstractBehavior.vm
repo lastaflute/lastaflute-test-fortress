@@ -13,20 +13,20 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-${manager.allClassCopyright}package ${request.package}.${schemePackage};
+${manager.allClassCopyright}package ${data.package};
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * The base class of all remote API behaviors as ${request.requestName}.
+ * The base class of all remote API behaviors as ${data.remoteApiExp}.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
  */
-public abstract class ${abstractBehaviorClassName} extends $rule['frameworkBehaviorClass'] {
+public abstract class ${data.className} extends ${data.frameworkBehaviorClass} {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -34,7 +34,7 @@ public abstract class ${abstractBehaviorClassName} extends $rule['frameworkBehav
     /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public ${abstractBehaviorClassName}(RequestManager requestManager) {
+    public ${data.className}(RequestManager requestManager) {
         super(requestManager);
     }
 
