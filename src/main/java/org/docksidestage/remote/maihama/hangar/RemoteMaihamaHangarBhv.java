@@ -80,7 +80,7 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
                     result.errors.forEach(error -> {
                         messages.add(error.field, toUserMessage(error));
                     });
-                    return resource.asHtmlValidationError(messages);
+                    return resource.asActionValidationError(messages);
                 }
             }
             return null; // no translation

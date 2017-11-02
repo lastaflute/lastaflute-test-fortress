@@ -72,7 +72,7 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
                             messages.add(error.field, UserMessage.asDirectMessage(message));
                         });
                     });
-                    return resource.asHtmlValidationError(messages);
+                    return resource.asActionValidationError(messages);
                 }
             }
             return null; // no translation
