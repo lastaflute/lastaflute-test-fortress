@@ -43,6 +43,7 @@ public class WxRoutingNearpathByword11Optstr4numtostrAction extends FortressBase
 
     // [hit]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword11/optstr4numtostr/mystic/named/
+    // before LastaFlute-1.0.2
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     Cannot convert the parameter to argument type.
     

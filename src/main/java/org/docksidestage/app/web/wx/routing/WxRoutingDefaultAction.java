@@ -30,9 +30,10 @@ public class WxRoutingDefaultAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    // http://localhost:8097/fortress/whitebox/routing/default/sea/
+    // http://localhost:8151/fortress/wx/routing/default/sea
+    // http://localhost:8151/fortress/wx/routing/default/sea/land
     @Execute
     public JsonResponse<RoutingCheckResult> index(String first, OptionalThing<String> second) {
-        return asJson(new RoutingCheckResult("index()", first, second.orElse("*second") + " :: "));
+        return asJson(new RoutingCheckResult("index()", first, second.orElse("*second")));
     }
 }

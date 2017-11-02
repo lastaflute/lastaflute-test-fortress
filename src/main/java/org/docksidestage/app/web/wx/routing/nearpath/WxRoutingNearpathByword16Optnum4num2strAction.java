@@ -47,11 +47,15 @@ public class WxRoutingNearpathByword16Optnum4num2strAction extends FortressBaseA
 
     // [hit]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/sea/named/
+    // before LastaFlute-1.0.2
     //  => routing to index() for now
     // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/1/named/
+    // before LastaFlute-1.0.2
     //  => routing to index() for now
-    // [not]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword16/optnum4num2str/mystic/named/
+    // before LastaFlute-1.0.2
+    //  => not found (index() but parse error) for now
+    // [not]
     @Execute(urlPattern = "{}/@word")
     public JsonResponse<RoutingCheckResult> named(String first) {
         return asJson(new RoutingCheckResult("named()", first, null));

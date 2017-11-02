@@ -45,7 +45,7 @@ public class WxRoutingNearpathByword10Optstr4str2numAction extends FortressBaseA
 
     // [hit]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword10/optstr4str2num/1/named/
-    //  => routing to index() for now
+    //  => routing to index() for now (but hide so cannot handle it?)
     // [not]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword10/optstr4str2num/mystic/named/
     @Execute(urlPattern = "{}/@word")

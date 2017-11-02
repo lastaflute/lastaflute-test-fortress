@@ -45,6 +45,7 @@ public class WxRoutingNearpathByword15Optnum4str2numAction extends FortressBaseA
 
     // [hit]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword15/optnum4str2num/1/named/
+    // before LastaFlute-1.0.2
     //  => routing to index() for now
     // [not]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword15/optnum4str2num/mystic/named/

@@ -41,12 +41,12 @@ public class WxRoutingNearpathBasicAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/nearpath/basic/string/sea
     @Execute
     public JsonResponse<RoutingCheckResult> string(String first) {
-        return asJson(new RoutingCheckResult("str()", first, "*first only"));
+        return asJson(new RoutingCheckResult("string()", first, "*first only"));
     }
 
     // http://localhost:8151/fortress/wx/routing/nearpath/basic/number/1
     @Execute
     public JsonResponse<RoutingCheckResult> number(Integer first) {
-        return asJson(new RoutingCheckResult("num()", first, "*first only"));
+        return asJson(new RoutingCheckResult("number()", first, "*first only"));
     }
 }

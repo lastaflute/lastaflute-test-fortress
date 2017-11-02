@@ -36,9 +36,9 @@ public class WxRoutingNearpathByword13Optstr4cls2numAction extends FortressBaseA
     // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/FML/
     // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/FML/mystic/
     // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/FML/named/
-    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/named/FML/
     // [not]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/
+    // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/named/FML/
     @Execute
     public JsonResponse<RoutingCheckResult> index(CDef.MemberStatus first, OptionalThing<String> second) {
         return asJson(new RoutingCheckResult("index()", first, second.orElse("*none")));
@@ -46,6 +46,7 @@ public class WxRoutingNearpathByword13Optstr4cls2numAction extends FortressBaseA
 
     // [hit]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/1/named/
+    // before LastaFlute-1.0.2
     //  => routing to index() for now
     // [not]
     // http://localhost:8151/fortress/wx/routing/nearpath/byword13/optstr4cls2num/mystic/named/
