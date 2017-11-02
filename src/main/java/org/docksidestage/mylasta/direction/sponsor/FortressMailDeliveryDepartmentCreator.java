@@ -18,12 +18,17 @@ package org.docksidestage.mylasta.direction.sponsor;
 import java.util.List;
 import java.util.Locale;
 
+import javax.mail.MessagingException;
+
 import org.dbflute.mail.CardView;
+import org.dbflute.mail.Postcard;
 import org.dbflute.mail.send.SMailDeliveryDepartment;
 import org.dbflute.mail.send.SMailPostalMotorbike;
 import org.dbflute.mail.send.SMailPostalParkingLot;
 import org.dbflute.mail.send.SMailPostalPersonnel;
 import org.dbflute.mail.send.embedded.personnel.SMailDogmaticPostalPersonnel;
+import org.dbflute.mail.send.embedded.postie.SMailHonestPostie;
+import org.dbflute.mail.send.embedded.postie.SMailPostingMessage;
 import org.dbflute.mail.send.supplement.async.SMailAsyncStrategy;
 import org.dbflute.mail.send.supplement.filter.SMailSubjectFilter;
 import org.dbflute.mail.send.supplement.label.SMailLabelStrategy;
@@ -31,15 +36,23 @@ import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.DfStringUtil;
 import org.dbflute.util.Srl;
 import org.docksidestage.mylasta.direction.FortressConfig;
+import org.docksidestage.remote.harbor.RemoteHarborBhv;
+import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
+import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
+import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.ConcurrentAsyncCall;
 import org.lastaflute.core.message.MessageManager;
 import org.lastaflute.core.util.ContainerUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author jflute
  */
 public class FortressMailDeliveryDepartmentCreator {
+
+    private static final Logger logger = LoggerFactory.getLogger(FortressMailDeliveryDepartmentCreator.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -110,6 +123,37 @@ public class FortressMailDeliveryDepartmentCreator {
             @Override
             protected OptionalThing<SMailLabelStrategy> createLabelStrategy() {
                 return OptionalThing.of((view, locale, label) -> resolveLabelIfNeeds(messageManager, locale, label));
+            }
+
+            @Override
+            protected SMailHonestPostie newMailHonestPostie(SMailPostalMotorbike motorbike) {
+                return myPostie(motorbike);
+            }
+        };
+    }
+
+    protected SMailHonestPostie myPostie(SMailPostalMotorbike motorbike) {
+        return new SMailHonestPostie(motorbike) {
+
+            @Override
+            protected void stagingSend(Postcard postcard, SMailPostingMessage message) throws MessagingException {
+                if (isRemoteApiMail(postcard)) { // test remote api mail
+                    requestProductList();
+                } else { // normally here
+                    super.stagingSend(postcard, message);
+                }
+            }
+
+            protected boolean isRemoteApiMail(Postcard postcard) { // logic is too simple
+                return postcard.getBodyFile().filter(file -> file.endsWith("remote_api.dfmail")).isPresent();
+            }
+
+            protected void requestProductList() { // mock of remote api mail
+                RemoteHarborBhv harborBhv = ContainerUtil.getComponent(RemoteHarborBhv.class);
+                RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+                param.productName = "S";
+                RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = harborBhv.requestProductList(param);
+                logger.debug("RemoteApi Mail: allRecordCount={}", ret.allRecordCount);
             }
         };
     }

@@ -1,8 +1,8 @@
 /*
- [New Member's Registration]
- The member will be formalized after click.
+ [Remote Api Mail]
+ The test of remote api.
 */
-subject: Welcome to your sign up, /*pmb.memberName*/
+subject: Welcome to your sign up
 >>>
 Hello, /*pmb.memberName*/
 
@@ -10,10 +10,8 @@ How are you? Thank you for signing up to Maihama!
 
 You are now temporaly registered to the site. 
 Please click on the link below to become a formal member. 
-http:///*pmb.domain*//signup/register/?account=/*pmb.account*///*pmb.token*/
 
 We hope you will enjoy your time in Maihama.
-/* this is no comment */
 Thank you. 
 
 Regards, 
