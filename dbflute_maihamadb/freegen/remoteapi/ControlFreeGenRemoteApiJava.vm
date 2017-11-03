@@ -87,16 +87,20 @@
           #elseif ($parameter.in == 'formData')
             $formDataProperties.put($parameter.name, $parameter)
           #elseif ($parameter.in == 'body')
+            #set ($array = false)
             #set ($definitionKey = '')
-            #if ($parameter.schema && $parameter.schema['$ref'])
+            #if ($parameter.schema.type && $parameter.schema.type == 'array')
+              #set ($array = true)
+              #set ($definitionKey = $parameter.schema.items['$ref'].replace('#/definitions/', '')))
+            #elseif ($parameter.schema['$ref'])
               #set ($definitionKey = $parameter.schema['$ref'].replace('#/definitions/', '')))
-              #set ($bodyProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
-              #foreach($bodyPropertyEntry in $bodyProperties.entrySet())
-                #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
-              #end
-              #processRemoteApiBean('param', $api, $bodyProperties)
-              #set ($paramBean = { 'package': ${data.package}, 'className': ${data.className}, 'in': 'body' })
             #end
+            #set ($bodyProperties = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].properties)
+            #foreach($bodyPropertyEntry in $bodyProperties.entrySet())
+              #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
+            #end
+            #processRemoteApiBean('param', $api, $bodyProperties)
+            #set ($paramBean = { 'package': ${data.package}, 'className': ${data.className}, 'in': 'body', 'array': $array })
           #end
         #end
         #if (!$queryProperties.isEmpty())

@@ -22,6 +22,8 @@ import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.swagger.petstore.AbstractRemoteSwaggerPetstoreBhv;
 import org.docksidestage.remote.swagger.petstore.user.index.RemoteUserParam;
+import org.docksidestage.remote.swagger.petstore.user.createwitharray.RemoteUserCreatewitharrayParam;
+import org.docksidestage.remote.swagger.petstore.user.createwithlist.RemoteUserCreatewithlistParam;
 import org.docksidestage.remote.swagger.petstore.user.login.RemoteUserLoginParam;
 import org.docksidestage.remote.swagger.petstore.user.index.RemoteUserGetReturn;
 import org.docksidestage.remote.swagger.petstore.user.index.RemoteUserPutParam;
@@ -88,9 +90,10 @@ public abstract class BsRemoteSwaggerPetstoreUserBhv extends AbstractRemoteSwagg
      * url: /user/createWithArray
      * httpMethod: POST
      * </pre>
+     * @param paramLambda The callback for java.util.List<RemoteUserCreatewitharrayParam>. (NotNull)
      */
-    public void requestCreatewitharray() {
-        requestCreatewitharray(rule -> {});
+    public void requestCreatewitharray(Consumer<java.util.List<RemoteUserCreatewitharrayParam>> paramLambda) {
+        requestCreatewitharray(paramLambda, rule -> {});
     }
 
     /**
@@ -99,10 +102,13 @@ public abstract class BsRemoteSwaggerPetstoreUserBhv extends AbstractRemoteSwagg
      * url: /user/createWithArray
      * httpMethod: POST
      * </pre>
+     * @param paramLambda The callback for java.util.List<RemoteUserCreatewitharrayParam>. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void requestCreatewitharray(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/user/createWithArray", noMoreUrl(), noRequestBody(), rule -> {
+    protected void requestCreatewitharray(Consumer<java.util.List<RemoteUserCreatewitharrayParam>> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        java.util.List<RemoteUserCreatewitharrayParam> param = new java.util.ArrayList<RemoteUserCreatewitharrayParam>();
+        paramLambda.accept(param);
+        doRequestPost(void.class, "/user/createWithArray", noMoreUrl(), param, rule -> {
             ruleOfCreatewitharray(rule);
             ruleLambda.accept(rule);
         });
@@ -121,9 +127,10 @@ public abstract class BsRemoteSwaggerPetstoreUserBhv extends AbstractRemoteSwagg
      * url: /user/createWithList
      * httpMethod: POST
      * </pre>
+     * @param paramLambda The callback for java.util.List<RemoteUserCreatewithlistParam>. (NotNull)
      */
-    public void requestCreatewithlist() {
-        requestCreatewithlist(rule -> {});
+    public void requestCreatewithlist(Consumer<java.util.List<RemoteUserCreatewithlistParam>> paramLambda) {
+        requestCreatewithlist(paramLambda, rule -> {});
     }
 
     /**
@@ -132,10 +139,13 @@ public abstract class BsRemoteSwaggerPetstoreUserBhv extends AbstractRemoteSwagg
      * url: /user/createWithList
      * httpMethod: POST
      * </pre>
+     * @param paramLambda The callback for java.util.List<RemoteUserCreatewithlistParam>. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void requestCreatewithlist(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/user/createWithList", noMoreUrl(), noRequestBody(), rule -> {
+    protected void requestCreatewithlist(Consumer<java.util.List<RemoteUserCreatewithlistParam>> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        java.util.List<RemoteUserCreatewithlistParam> param = new java.util.ArrayList<RemoteUserCreatewithlistParam>();
+        paramLambda.accept(param);
+        doRequestPost(void.class, "/user/createWithList", noMoreUrl(), param, rule -> {
             ruleOfCreatewithlist(rule);
             ruleLambda.accept(rule);
         });
