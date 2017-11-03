@@ -151,12 +151,22 @@ public class WxRoutingAction extends FortressBaseAction {
     }
 
     // [hit]
+    // http://localhost:8151/fortress/wx/routing/1/resola
+    // [not]
+    // http://localhost:8151/fortress/wx/routing/resola/1
+    // http://localhost:8151/fortress/wx/routing/sea/resola
+    @Execute(urlPattern = "{}/@word")
+    public JsonResponse<RoutingCheckResult> resola(Integer first) {
+        return asJson(new RoutingCheckResult("resola()", first, null));
+    }
+
+    // [hit]
     // http://localhost:8151/fortress/wx/routing/amphi/1/theater
     // [not]
     // http://localhost:8151/fortress/wx/routing/amphi/1/2
     // http://localhost:8151/fortress/wx/routing/amphi/1/dockside
     @Execute(urlPattern = "@word/{}/@word")
     public JsonResponse<RoutingCheckResult> amphiTheater(Integer first) {
-        return asJson(new RoutingCheckResult("amphiTheater()", String.valueOf(first), null));
+        return asJson(new RoutingCheckResult("amphiTheater()", first, null));
     }
 }

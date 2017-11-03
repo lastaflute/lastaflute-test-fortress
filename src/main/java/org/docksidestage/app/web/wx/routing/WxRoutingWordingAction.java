@@ -30,31 +30,45 @@ public class WxRoutingWordingAction extends FortressBaseAction {
     //                                                                             Execute
     //                                                                             =======
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/wording/3
+    // http://localhost:8151/fortress/wx/routing/wording/1
     // [not]
     // http://localhost:8151/fortress/wx/routing/wording/
     // http://localhost:8151/fortress/wx/routing/wording/dockside
     @Execute
-    public JsonResponse<RoutingCheckResult> index(Integer wordingId) {
-        return asJson(new RoutingCheckResult("index()", wordingId, null));
+    public JsonResponse<RoutingCheckResult> index(Integer first) {
+        return asJson(new RoutingCheckResult("index()", first, null));
     }
 
     // [hit]
     // http://localhost:8151/fortress/wx/routing/wording/mystic/sea
     // [not]
     // http://localhost:8151/fortress/wx/routing/wording/sea
-    // http://localhost:8151/fortress/wx/routing/wording/sea/3
+    // http://localhost:8151/fortress/wx/routing/wording/sea/1
     @Execute(urlPattern = "{}/@word")
-    public JsonResponse<RoutingCheckResult> sea(String wordingId) {
-        return asJson(new RoutingCheckResult("sea()", wordingId, null));
+    public JsonResponse<RoutingCheckResult> sea(String first) {
+        return asJson(new RoutingCheckResult("sea()", first, null));
     }
 
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/wording/land/oneman/3
+    // http://localhost:8151/fortress/wx/routing/wording/land/oneman
     // [not]
-    // http://localhost:8151/fortress/wx/routing/wording/land/oneman/piari
+    // http://localhost:8151/fortress/wx/routing/wording/land/oneman
     @Execute
-    public JsonResponse<RoutingCheckResult> land(String wordingId, Integer piariId) {
-        return asJson(new RoutingCheckResult("land()", wordingId, piariId));
+    public JsonResponse<RoutingCheckResult> land(String first) {
+        return asJson(new RoutingCheckResult("land()", first, null));
     }
+
+    // [hit]
+    // http://localhost:8151/fortress/wx/routing/wording/piari/plaza
+    // [not]
+    // http://localhost:8151/fortress/wx/routing/wording/piari/plaza
+    @Execute(urlPattern = "@word/@word")
+    public JsonResponse<RoutingCheckResult> piariPlaza() {
+        return asJson(new RoutingCheckResult("piariPlaza()", null, null));
+    }
+    // cannot use wording with optional parameter
+    //@Execute(urlPattern = "@word/@word/{}")
+    //public JsonResponse<RoutingCheckResult> piariPlaza(OptionalThing<String> first) {
+    //    return asJson(new RoutingCheckResult("piariPlaza()", first, null));
+    //}
 }
