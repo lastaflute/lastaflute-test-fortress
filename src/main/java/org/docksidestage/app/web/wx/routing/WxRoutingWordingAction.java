@@ -55,6 +55,6 @@ public class WxRoutingWordingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/wording/land/oneman/piari
     @Execute
     public JsonResponse<RoutingCheckResult> land(String wordingId, Integer piariId) {
-        return asJson(new RoutingCheckResult("sea()", wordingId, piariId));
+        return asJson(new RoutingCheckResult("land()", wordingId, piariId));
     }
 }
