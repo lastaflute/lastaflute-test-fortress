@@ -3,6 +3,13 @@
     "http://dbflute.org/meta/lastadi10.dtd">
 <components namespace="remote_api">
     <include path="lastaflute.xml"/>
+
+	<!-- showbase -->
+    <include path="remoteapi/di/remoteapi_maihama-showbase.xml"/>
+
+	<!-- harbor -->
     <component name="remoteHarborBhv" class="org.docksidestage.remote.harbor.RemoteHarborBhv"/>
+
+	<!-- hangar -->
     <component name="remoteMaihamaHangarBhv" class="org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv"/>
 </components>

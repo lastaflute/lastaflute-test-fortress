@@ -3,6 +3,7 @@ package org.docksidestage.remote.maihama.showbase.wx;
 import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.mock.MockHttpClient;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.RemoteWxRemogenRoutingResolaReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
 import org.docksidestage.unit.UnitFortressWebTestCase;
 import org.lastaflute.web.servlet.request.RequestManager;
@@ -35,5 +36,26 @@ public class RemoteMaihamaShowbaseWxBhvTest extends UnitFortressWebTestCase {
         // ## Assert ##
         assertEquals("sea", ret.key);
         assertEquals("mystic", ret.value);
+    }
+
+    public void test_requestRemogenRoutingResola_basic() {
+        // ## Arrange ##
+        String json = "{method=resola}";
+        MockHttpClient client = MockHttpClient.create(response -> {
+            response.peekRequest(request -> {
+                log(request);
+                assertFalse(request.getBody().isPresent());
+            });
+            response.asJsonDirectly(json, request -> true);
+        });
+        registerMock(client);
+        RemoteMaihamaShowbaseWxBhv bhv = new RemoteMaihamaShowbaseWxBhv(requestManager);
+        inject(bhv);
+
+        // ## Act ##
+        RemoteWxRemogenRoutingResolaReturn ret = bhv.requestRemogenRoutingResola(1);
+
+        // ## Assert ##
+        log(ret);
     }
 }
