@@ -13291,7 +13291,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -13350,7 +13350,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -13420,7 +13420,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -13500,7 +13500,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -13570,7 +13570,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -13650,7 +13650,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -13730,7 +13730,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -13820,7 +13820,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -13920,7 +13920,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -14020,7 +14020,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -14100,7 +14100,77 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/{first}/resola",
+      "typeName": "org.docksidestage.app.web.wx.routing.WxRoutingAction",
+      "simpleTypeName": "WxRoutingAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "resola",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d{}/@word}"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"resola()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -14170,7 +14240,7 @@
           }
         ]
       },
-      "fileLineCount": 135,
+      "fileLineCount": 145,
       "methodLineCount": 3
     },
     {
@@ -14254,7 +14324,7 @@
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/wording/{wordingId}",
+      "url": "/wx/routing/wording/{first}",
       "typeName": "org.docksidestage.app.web.wx.routing.WxRoutingWordingAction",
       "simpleTypeName": "WxRoutingWordingAction",
       "description": "@author jflute",
@@ -14268,7 +14338,7 @@
       ],
       "parameterTypeDocMetaList": [
         {
-          "name": "wordingId",
+          "name": "first",
           "typeName": "java.lang.Integer",
           "simpleTypeName": "Integer",
           "value": null,
@@ -14320,11 +14390,11 @@
           }
         ]
       },
-      "fileLineCount": 34,
+      "fileLineCount": 48,
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/wording/{wordingId}/sea",
+      "url": "/wx/routing/wording/{first}/sea",
       "typeName": "org.docksidestage.app.web.wx.routing.WxRoutingWordingAction",
       "simpleTypeName": "WxRoutingWordingAction",
       "description": "@author jflute",
@@ -14338,7 +14408,7 @@
       ],
       "parameterTypeDocMetaList": [
         {
-          "name": "wordingId",
+          "name": "first",
           "typeName": "java.lang.String",
           "simpleTypeName": "String",
           "value": null,
@@ -14390,11 +14460,11 @@
           }
         ]
       },
-      "fileLineCount": 34,
+      "fileLineCount": 48,
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/wording/land/{wordingId}/{piariId}",
+      "url": "/wx/routing/wording/land/{first}",
       "typeName": "org.docksidestage.app.web.wx.routing.WxRoutingWordingAction",
       "simpleTypeName": "WxRoutingWordingAction",
       "description": "@author jflute",
@@ -14408,19 +14478,9 @@
       ],
       "parameterTypeDocMetaList": [
         {
-          "name": "wordingId",
+          "name": "first",
           "typeName": "java.lang.String",
           "simpleTypeName": "String",
-          "value": null,
-          "description": null,
-          "comment": null,
-          "annotationList": [],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "piariId",
-          "typeName": "java.lang.Integer",
-          "simpleTypeName": "Integer",
           "value": null,
           "description": null,
           "comment": null,
@@ -14433,7 +14493,7 @@
         "name": null,
         "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
-        "value": "asJson(new RoutingCheckResult(\"sea()",
+        "value": "asJson(new RoutingCheckResult(\"land()",
         "description": null,
         "comment": null,
         "annotationList": [],
@@ -14470,7 +14530,66 @@
           }
         ]
       },
-      "fileLineCount": 34,
+      "fileLineCount": 48,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/wording/piari/plaza",
+      "typeName": "org.docksidestage.app.web.wx.routing.WxRoutingWordingAction",
+      "simpleTypeName": "WxRoutingWordingAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "piariPlaza",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d@word/@word}"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
+        "value": "asJson(new RoutingCheckResult(\"piariPlaza()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 48,
       "methodLineCount": 3
     },
     {

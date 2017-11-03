@@ -41,7 +41,7 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dohotel.Remo
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dohotel.RemoteWxRemogenRoutingDohotelReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.celeb.RemoteWxRemogenRoutingCelebReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.RemoteWxRemogenRoutingResolaReturn;
-import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amphi.theater.RemoteWxRemogenRoutingAmphiTheaterReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amphi.theater.maihama.RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.allsuffix.RemoteWxRemogenSuffixAllsuffixReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.nosuffix.RemoteWxRemogenSuffixNosuffixReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.partonly.RemoteWxRemogenSuffixPartonlyReturn;
@@ -798,40 +798,42 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
     }
 
     /**
-     * Request remote call to /wx/remogen/routing/amphi/{first}/theater. (auto-generated method)<br>
+     * Request remote call to /wx/remogen/routing/amphi/{first}/theater/{second}/maihama. (auto-generated method)<br>
      * <pre>
-     * url: /wx/remogen/routing/amphi/{first}/theater
+     * url: /wx/remogen/routing/amphi/{first}/theater/{second}/maihama
      * httpMethod: POST
      * </pre>
      * @param first The value of path variable for first. (NotNull)
+     * @param second The value of path variable for second. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteWxRemogenRoutingAmphiTheaterReturn requestRemogenRoutingAmphiTheater(Integer first) {
-        return requestRemogenRoutingAmphiTheater(first, rule -> {});
+    public RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn requestRemogenRoutingAmphiTheaterMaihama(Integer first, String second) {
+        return requestRemogenRoutingAmphiTheaterMaihama(first, second, rule -> {});
     }
 
     /**
-     * Request remote call to /wx/remogen/routing/amphi/{first}/theater. (auto-generated method)<br>
+     * Request remote call to /wx/remogen/routing/amphi/{first}/theater/{second}/maihama. (auto-generated method)<br>
      * <pre>
-     * url: /wx/remogen/routing/amphi/{first}/theater
+     * url: /wx/remogen/routing/amphi/{first}/theater/{second}/maihama
      * httpMethod: POST
      * </pre>
      * @param first The value of path variable for first. (NotNull)
+     * @param second The value of path variable for second. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingAmphiTheaterReturn requestRemogenRoutingAmphiTheater(Integer first, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingAmphiTheaterReturn.class, "/wx/remogen/routing/amphi/{first}/theater", moreUrl(first), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingAmphiTheaterFirst(rule);
+    protected RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn requestRemogenRoutingAmphiTheaterMaihama(Integer first, String second, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn.class, "/wx/remogen/routing/amphi/{first}/theater/{second}/maihama", moreUrl(first, second), noRequestBody(), rule -> {
+            ruleOfRemogenRoutingAmphiTheaterMaihamaFirstSecond(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /wx/remogen/routing/amphi/{first}/theater.<br>
+     * Set up method-level rule of /wx/remogen/routing/amphi/{first}/theater/{second}/maihama.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfRemogenRoutingAmphiTheaterFirst(FlutyRemoteApiRule rule) {
+    protected void ruleOfRemogenRoutingAmphiTheaterMaihamaFirstSecond(FlutyRemoteApiRule rule) {
     }
 
     /**

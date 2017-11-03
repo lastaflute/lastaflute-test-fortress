@@ -1555,7 +1555,7 @@
         ]
       }
     },
-    "/wx/remogen/routing/amphi/{first}/theater": {
+    "/wx/remogen/routing/amphi/{first}/theater/{second}/maihama": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -1564,6 +1564,12 @@
             "name": "first",
             "type": "integer",
             "format": "int32",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
             "in": "path",
             "required": true
           }
