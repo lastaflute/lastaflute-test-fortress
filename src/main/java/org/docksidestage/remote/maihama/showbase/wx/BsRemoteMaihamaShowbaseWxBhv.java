@@ -140,9 +140,9 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * url: /wx/remogen/body/list
      * httpMethod: POST
      * </pre>
-     * @param paramLambda The callback for RemoteWxRemogenBodyListParam. (NotNull)
+     * @param paramLambda The callback for java.util.List<RemoteWxRemogenBodyListParam>. (NotNull)
      */
-    public void requestRemogenBodyList(Consumer<RemoteWxRemogenBodyListParam> paramLambda) {
+    public void requestRemogenBodyList(Consumer<java.util.List<RemoteWxRemogenBodyListParam>> paramLambda) {
         requestRemogenBodyList(paramLambda, rule -> {});
     }
 
@@ -152,11 +152,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * url: /wx/remogen/body/list
      * httpMethod: POST
      * </pre>
-     * @param paramLambda The callback for RemoteWxRemogenBodyListParam. (NotNull)
+     * @param paramLambda The callback for java.util.List<RemoteWxRemogenBodyListParam>. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void requestRemogenBodyList(Consumer<RemoteWxRemogenBodyListParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemoteWxRemogenBodyListParam param = new RemoteWxRemogenBodyListParam();
+    protected void requestRemogenBodyList(Consumer<java.util.List<RemoteWxRemogenBodyListParam>> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        java.util.List<RemoteWxRemogenBodyListParam> param = new java.util.ArrayList<RemoteWxRemogenBodyListParam>();
         paramLambda.accept(param);
         doRequestPost(void.class, "/wx/remogen/body/list", noMoreUrl(), param, rule -> {
             ruleOfRemogenBodyList(rule);

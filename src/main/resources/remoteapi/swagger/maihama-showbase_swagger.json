@@ -993,7 +993,10 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+              }
             }
           }
         ],
