@@ -43,8 +43,18 @@ public class WxMailRemoteapiAction extends FortressBaseAction {
             postcard.setFromSupport(config);
             postcard.addTo("sea@docksidestage.org");
             postcard.setMemberName("remote_api");
+            postcard.pushUlterior("sea", new SeaBean("hangar"));
             postcard.writeAuthor(this);
         });
         return JsonResponse.asJsonDirectly("{\"result\" : \"sent\"}");
+    }
+
+    protected static class SeaBean {
+
+        protected final String stageName;
+
+        public SeaBean(String stageName) {
+            this.stageName = stageName;
+        }
     }
 }

@@ -17,6 +17,7 @@ package org.docksidestage.mylasta.direction.sponsor;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.mail.MessagingException;
 
@@ -138,7 +139,7 @@ public class FortressMailDeliveryDepartmentCreator {
             @Override
             protected void stagingSend(Postcard postcard, SMailPostingMessage message) throws MessagingException {
                 if (isRemoteApiMail(postcard)) { // test remote api mail
-                    requestProductList();
+                    requestProductList(postcard.getPushedUlteriorMap());
                 } else { // normally here
                     super.stagingSend(postcard, message);
                 }
@@ -148,12 +149,12 @@ public class FortressMailDeliveryDepartmentCreator {
                 return postcard.getBodyFile().filter(file -> file.endsWith("remote_api.dfmail")).isPresent();
             }
 
-            protected void requestProductList() { // mock of remote api mail
+            protected void requestProductList(Map<String, Object> ulteriorMap) { // mock of remote api mail
                 RemoteHarborBhv harborBhv = ContainerUtil.getComponent(RemoteHarborBhv.class);
                 RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
                 param.productName = "S";
                 RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = harborBhv.requestProductList(param);
-                logger.debug("RemoteApi Mail: allRecordCount={}", ret.allRecordCount);
+                logger.debug("RemoteApi Mail: allRecordCount={} ulterior={}", ret.allRecordCount, ulteriorMap);
             }
         };
     }
