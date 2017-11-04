@@ -21,6 +21,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mapping.FlVacantMappingPolicy;
@@ -116,8 +117,9 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
         return doRequestGet(RemoteHgMypageReturn.class, "/mypage", noMoreUrl(), noQuery(), rule -> {});
     }
 
-    public RemoteHgPagingReturn<RemoteHgProductRowReturn> requestProductList(RemoteHgProductSearchParam param) {
+    public RemoteHgPagingReturn<RemoteHgProductRowReturn> requestProductList(OptionalThing<Integer> pageNumber,
+            RemoteHgProductSearchParam param) {
         return doRequestPost(new ParameterizedRef<RemoteHgPagingReturn<RemoteHgProductRowReturn>>() {
-        }.getType(), "/product/list/search/{pageNumber}", moreUrl(1), param, rule -> {});
+        }.getType(), "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, rule -> {});
     }
 }

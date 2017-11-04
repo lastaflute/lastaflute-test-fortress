@@ -17,6 +17,7 @@ package org.docksidestage.remote.maihama.hangar;
 
 import javax.annotation.Resource;
 
+import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.maihama.hangar.base.RemoteHgPagingReturn;
 import org.docksidestage.remote.maihama.hangar.product.RemoteHgProductRowReturn;
@@ -39,9 +40,10 @@ public class RemoteMaihamaHangarBhvTest extends UnitFortressWebTestCase {
         // ## Arrange ##
         RemoteHgProductSearchParam param = new RemoteHgProductSearchParam();
         param.productName = "S";
-        String json = "{pageSize=4, currentPageNumber=1, allRecordCount=20, allPageCount=5, rows=[]}";
+        String json = "{pageSize=4, currentPageNumber=3, allRecordCount=20, allPageCount=5, rows=[]}";
         MockHttpClient client = MockHttpClient.create(response -> {
             response.peekRequest(request -> {
+                assertContainsAll(request.getUrl(), "search/3");
                 assertContainsAll(request.getBody().get(), "productName", param.productName);
             });
             response.asJsonDirectly(json, request -> true);
@@ -51,11 +53,40 @@ public class RemoteMaihamaHangarBhvTest extends UnitFortressWebTestCase {
         inject(bhv);
 
         // ## Act ##
-        RemoteHgPagingReturn<RemoteHgProductRowReturn> ret = bhv.requestProductList(param);
+        RemoteHgPagingReturn<RemoteHgProductRowReturn> ret = bhv.requestProductList(OptionalThing.of(3), param);
 
         // ## Assert ##
         assertEquals(4, ret.pageSize);
+        assertEquals(3, ret.currentPageNumber);
+        assertEquals(20, ret.allRecordCount);
         assertEquals(5, ret.allPageCount);
+        assertEquals(0, ret.rows.size());
+    }
+
+    public void test_requestProductList_optionalEmpty() {
+        // ## Arrange ##
+        RemoteHgProductSearchParam param = new RemoteHgProductSearchParam();
+        param.productName = "S";
+        String json = "{pageSize=4, currentPageNumber=1, allRecordCount=20, allPageCount=5, rows=[]}";
+        MockHttpClient client = MockHttpClient.create(response -> {
+            response.peekRequest(request -> {
+                assertContains(request.getUrl(), "search");
+                assertNotContains(request.getUrl(), "search/1");
+                assertNotContains(request.getUrl(), "search/opt");
+                assertContainsAll(request.getBody().get(), "productName", param.productName);
+            });
+            response.asJsonDirectly(json, request -> true);
+        });
+        registerMock(client);
+        RemoteMaihamaHangarBhv bhv = new RemoteMaihamaHangarBhv(requestManager);
+        inject(bhv);
+
+        // ## Act ##
+        RemoteHgPagingReturn<RemoteHgProductRowReturn> ret = bhv.requestProductList(OptionalThing.empty(), param);
+
+        // ## Assert ##
+        assertEquals(4, ret.pageSize);
+        assertEquals(1, ret.currentPageNumber);
         assertEquals(20, ret.allRecordCount);
         assertEquals(5, ret.allPageCount);
         assertEquals(0, ret.rows.size());
@@ -78,7 +109,7 @@ public class RemoteMaihamaHangarBhvTest extends UnitFortressWebTestCase {
         // ## Act ##
         // ## Assert ##
         mockHtmlValidateCall();
-        assertValidationError(() -> bhv.requestProductList(param)).handle(data -> {
+        assertValidationError(() -> bhv.requestProductList(OptionalThing.of(1), param)).handle(data -> {
             assertTrue(data.requiredMessages().hasMessageOf("productName"));
             data.requiredMessageOfDirectly("productName", "is required");
         });

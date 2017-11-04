@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Resource;
 
 import org.dbflute.cbean.result.PagingResultBean;
+import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
 import org.docksidestage.dbflute.exentity.Product;
@@ -82,7 +83,7 @@ public class WxRmhangarAction extends FortressBaseAction {
     private RemoteHgPagingReturn<RemoteHgProductRowReturn> requestProductList(WxRmhangarProductSearchForm form) {
         RemoteHgProductSearchParam param = new RemoteHgProductSearchParam();
         param.productName = form.productName;
-        return hangarBhv.requestProductList(param);
+        return hangarBhv.requestProductList(OptionalThing.of(1), param);
     }
 
     private WxRmhangarProductSearchRowBean mappingToRowBean(RemoteHgProductRowReturn row) {
