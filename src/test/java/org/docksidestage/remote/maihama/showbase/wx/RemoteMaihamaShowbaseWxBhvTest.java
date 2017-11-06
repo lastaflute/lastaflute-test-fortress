@@ -90,7 +90,7 @@ public class RemoteMaihamaShowbaseWxBhvTest extends UnitFortressWebTestCase {
         // ## Act ##
         // ## Assert ##
         assertException(RemoteApiPathVariableNullElementException.class, () -> { // not supported for now
-            bhv.requestRemogenRoutingPiari(null);
+            bhv.requestRemogenRoutingPiari((String) null);
         });
     }
 
