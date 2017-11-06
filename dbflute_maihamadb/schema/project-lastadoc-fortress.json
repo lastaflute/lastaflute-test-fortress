@@ -10726,6 +10726,78 @@
       "methodLineCount": 4
     },
     {
+      "url": "/wx/rmshowbase/remogen/resola",
+      "typeName": "org.docksidestage.app.web.wx.rmshowbase.WxRmshowbaseRemogenAction",
+      "simpleTypeName": "WxRmshowbaseRemogenAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "showbaseWxBhv",
+          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
+          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
+          "value": null,
+          "description": "The behavior for remote API of wx.",
+          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "resola",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.RemoteWxRemogenRoutingResolaReturn\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenRoutingResolaReturn\u003e",
+        "value": "asJson(ret)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "The property of method",
+            "comment": "The property of method. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": "The property of first",
+            "comment": "The property of first. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": "The property of second",
+            "comment": "The property of second. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 18,
+      "methodLineCount": 4
+    },
+    {
       "url": "/wx/routing/httpmet/sea/{param1}",
       "typeName": "org.docksidestage.app.web.wx.routing.httpmet.WxRoutingHttpmetAction",
       "simpleTypeName": "WxRoutingHttpmetAction",
@@ -14174,23 +14246,33 @@
       "methodLineCount": 3
     },
     {
-      "url": "/wx/routing/amphi/{first}/theater",
+      "url": "/wx/routing/amphi/{first}/theater/{second}/maihama",
       "typeName": "org.docksidestage.app.web.wx.routing.WxRoutingAction",
       "simpleTypeName": "WxRoutingAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [],
-      "methodName": "amphiTheater",
+      "methodName": "amphiTheaterMaihama",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "Execute{urlPattern\u003d@word/{}/@word}"
+        "Execute{urlPattern\u003d@word/{}/@word/{}/@word}"
       ],
       "parameterTypeDocMetaList": [
         {
           "name": "first",
           "typeName": "java.lang.Integer",
           "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
           "value": null,
           "description": null,
           "comment": null,
@@ -14203,7 +14285,7 @@
         "name": null,
         "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.RoutingCheckResult\u003e",
         "simpleTypeName": "JsonResponse\u003cRoutingCheckResult\u003e",
-        "value": "asJson(new RoutingCheckResult(\"amphiTheater()",
+        "value": "asJson(new RoutingCheckResult(\"amphiTheaterMaihama()",
         "description": null,
         "comment": null,
         "annotationList": [],

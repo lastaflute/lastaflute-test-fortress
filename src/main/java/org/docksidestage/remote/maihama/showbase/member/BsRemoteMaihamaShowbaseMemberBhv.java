@@ -276,6 +276,45 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
     }
 
     /**
+     * Request remote call to /member/list. (auto-generated method)<br>
+     * <pre>
+     * url: /member/list
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteMemberListParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteMemberListReturn requestList(Consumer<RemoteMemberListParam> paramLambda) {
+        return requestList(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /member/list. (auto-generated method)<br>
+     * <pre>
+     * url: /member/list
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteMemberListParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteMemberListReturn requestList(Consumer<RemoteMemberListParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteMemberListParam param = new RemoteMemberListParam();
+        paramLambda.accept(param);
+        return doRequestPost(RemoteMemberListReturn.class, "/member/list", noMoreUrl(), param, rule -> {
+            ruleOfList(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /member/list.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfList(FlutyRemoteApiRule rule) {
+    }
+
+    /**
      * Request remote call to /member/purchase/list/{memberId}/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}/{pageNumber}
@@ -312,5 +351,42 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfPurchaseListMemberIdPageNumber(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /member/purchase/list/{memberId}. (auto-generated method)<br>
+     * <pre>
+     * url: /member/purchase/list/{memberId}
+     * httpMethod: POST
+     * </pre>
+     * @param memberId The value of path variable for memberId. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId) {
+        return requestPurchaseList(memberId, rule -> {});
+    }
+
+    /**
+     * Request remote call to /member/purchase/list/{memberId}. (auto-generated method)<br>
+     * <pre>
+     * url: /member/purchase/list/{memberId}
+     * httpMethod: POST
+     * </pre>
+     * @param memberId The value of path variable for memberId. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}", moreUrl(memberId), noRequestBody(), rule -> {
+            ruleOfPurchaseListMemberId(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /member/purchase/list/{memberId}.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfPurchaseListMemberId(FlutyRemoteApiRule rule) {
     }
 }

@@ -16,17 +16,60 @@
 package org.docksidestage.remote.swagger.petstore.pet.index;
 
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as param for remote API of POST /pet/{petId}.
+ * The bean class as param for remote API of POST /pet.
  * @author FreeGen
  */
 public class RemotePetPostParam {
 
-    /** The property of name. (Updated name of the pet) (NullAllowed) */
+    /** The property of id. (NullAllowed) */
+    public Long id;
+
+    /** The property of category. (NullAllowed) */
+    @javax.validation.Valid
+    public CategoryPart category;
+
+    /**
+     * The part class of CategoryPart.
+     * @author FreeGen
+     */
+    public static class CategoryPart {
+
+        /** The property of id. (NullAllowed) */
+        public Long id;
+
+        /** The property of name. (NullAllowed) */
+        public String name;
+    }
+
+    /** The property of name. */
+    @Required
     public String name;
 
-    /** The property of status. (Updated status of the pet) (NullAllowed) */
+    /** The property of photoUrls. */
+    @Required
+    public org.eclipse.collections.api.list.ImmutableList<String> photoUrls;
+
+    /** The property of tags. (NullAllowed) */
+    @javax.validation.Valid
+    public org.eclipse.collections.api.list.ImmutableList<TagPart> tags;
+
+    /**
+     * The part class of TagPart.
+     * @author FreeGen
+     */
+    public static class TagPart {
+
+        /** The property of id. (NullAllowed) */
+        public Long id;
+
+        /** The property of name. (NullAllowed) */
+        public String name;
+    }
+
+    /** The property of status. (enumValue=[available, pending, sold]) (pet status in the store) (NullAllowed) */
     public String status;
 
     @Override

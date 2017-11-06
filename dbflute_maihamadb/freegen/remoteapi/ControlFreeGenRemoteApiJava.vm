@@ -40,6 +40,7 @@
   ## schema name is from part of FreeGen request name e.g. RemoteApiSeaLand => SeaLand
   #set ($scheme = $scriptEngine.invokeMethod($rule, 'scheme', $request))
   #set ($schemePackage = $scriptEngine.invokeMethod($rule, 'schemePackage', $scheme))
+  #set ($remoteApiBeanMap = {})
   #set ($bsBehaviorMap = {})
   #set ($exBehaviorMap = {})
 
@@ -99,17 +100,17 @@
             #foreach($bodyPropertyEntry in $bodyProperties.entrySet())
               #set ($bodyPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($bodyPropertyEntry.key))
             #end
-            #processRemoteApiBean('param', $api, $bodyProperties)
-            #set ($paramBean = { 'package': ${data.package}, 'className': ${data.className}, 'in': 'body', 'array': $array })
+            #keepRemoteApiBean('param', $api, $bodyProperties)
+            #set ($paramBean = { 'package': ${remoteApiBean.package}, 'className': ${remoteApiBean.className}, 'in': 'body', 'array': $array })
           #end
         #end
         #if (!$queryProperties.isEmpty())
-          #processRemoteApiBean('param', $api, $queryProperties)
-          #set ($paramBean = { 'package': ${data.package}, 'className': ${data.className}, 'in': 'query' }) })
+          #keepRemoteApiBean('param', $api, $queryProperties)
+          #set ($paramBean = { 'package': ${remoteApiBean.package}, 'className': ${remoteApiBean.className}, 'in': 'query' }) })
         #end
         #if (!$formDataProperties.isEmpty())
-          #processRemoteApiBean('param', $api, $formDataProperties)
-          #set ($paramBean = { 'package': ${data.package}, 'className': ${data.className}, 'in': 'formData' }) })
+          #keepRemoteApiBean('param', $api, $formDataProperties)
+          #set ($paramBean = { 'package': ${remoteApiBean.package}, 'className': ${remoteApiBean.className}, 'in': 'formData' }) })
         #end
 
         ## +-------------------------+
@@ -139,8 +140,8 @@
                   #foreach($returnPropertyEntry in $returnProperties.entrySet())
                     #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
                   #end
-                  #processRemoteApiBean('return', $api, $returnProperties)
-                  #set ($returnBean = { 'package': ${data.package}, 'className': "${data.className}", 'array': true})
+                  #keepRemoteApiBean('return', $api, $returnProperties)
+                  #set ($returnBean = { 'package': ${remoteApiBean.package}, 'className': "${remoteApiBean.className}", 'array': true})
                 #end
               #end
             #elseif (${typeMap[$response.schema.format]})
@@ -155,8 +156,8 @@
                 #foreach($returnPropertyEntry in $returnProperties.entrySet())
                   #set ($returnPropertyEntry.value.required = $definitionMap[$scriptEngine.invokeMethod($rule, 'definitionKey', $definitionKey)].required.contains($returnPropertyEntry.key))
                 #end
-                #processRemoteApiBean('return', $api, $returnProperties)
-                #set ($returnBean = { 'package': ${data.package}, 'className': ${data.className} })
+                #keepRemoteApiBean('return', $api, $returnProperties)
+                #set ($returnBean = { 'package': ${remoteApiBean.package}, 'className': ${remoteApiBean.className} })
               #end
             #end
           #end
@@ -165,6 +166,7 @@
       #end
     #end
   #end
+  #processRemoteApiBean()
   #processRemoteApiBhv()
 #end
 #end
@@ -185,12 +187,12 @@
 #end
 
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-## Process remote api bean. (generating class)
+## Keep information of remote api bean.
 ## @param type The bean role type. e.g. param, return (NotNull)
 ## @param api The information of api. (NotNull)
 ## @param properties_ The information of property for the bean. (NotNull)
 ## _/_/_/_/_/_/_/_/_/_/
-#macro(processRemoteApiBean, $type, $api, $properties_)
+#macro(keepRemoteApiBean, $type, $api, $properties_)
   #set ($subPackage = '')
   #set ($subPackage = $scriptEngine.invokeMethod($rule, 'beanSubPackage', $api))
   #set ($package = "${request.package}.${schemePackage}#if ($subPackage && $subPackage != '').${subPackage}#end")
@@ -204,8 +206,9 @@
   $remoteApiBean.put('properties', $properties_)
   $remoteApiBean.put('beanPurposeType', $type)
   $remoteApiBean.put('remoteApiExp', "${api.httpMethod.toUpperCase()} ${api.url}")
-  #set ($path = "${remoteApiBean.package.replaceAll('\.', '/')}/${remoteApiBean.className}.java")
-  #generate("./remoteapi/RemoteApiBean.vm", $path, $remoteApiBean, true)
+  #if (!$remoteApiBeanMap.containsKey("${remoteApiBean.package}.${remoteApiBean.className}")) {
+    $remoteApiBeanMap.put("${remoteApiBean.package}.${remoteApiBean.className}", $remoteApiBean);
+  #end
 #end
 
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -233,6 +236,16 @@
       $exBehaviorMap.put("${package}.${className}", { 'package': $package, 'className': $className, 'remoteApiExp': $subPackage, 'bsBehavior': $bsBehavior })
   #end
   $bsBehaviorMap.get("${bsBehavior.package}.${bsBehavior.className}").methodList.add({ 'api': $api, 'pathVariables': $pathVariables, 'paramBean': $paramBean, 'returnBean': $returnBean })
+#end
+
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Process remote api bean. (generating class)
+## _/_/_/_/_/_/_/_/_/_/
+#macro(processRemoteApiBean)
+  #foreach($remoteApiBean in $remoteApiBeanMap.values())
+    #set ($path = "${remoteApiBean.package.replaceAll('\.', '/')}/${remoteApiBean.className}.java")
+    #generate("./remoteapi/RemoteApiBean.vm", $path, $remoteApiBean, true)
+  #end
 #end
 
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
