@@ -190,16 +190,28 @@ var baseRule = {
     definitionKey : function(definitionKey) { return definitionKey; },
     unDefinitionKey : function(definitionKey) { return definitionKey; },
 
+    /**
+     * Return beanClassName.
+     * @param {Api} api - API.
+     * @param {boolean} detail - detail.
+     * @return {string} beanClassName.
+     */
+    beanClassName : function(api, detail) {
+        var namePart = detail ? api.url.replace(/(_|^\/|\/$|\{|\})/g, '').replace(/\//g, '_').toLowerCase() : this.subPackage(api);
+        return 'Remote' + manager.initCap(manager.camelize(namePart.replace(/\./g, '_'))) + (api.multipleHttpMethod ? manager.initCap(api.httpMethod) : '');
+    },
+
     paramExtendsClass : null,
     paramImplementsClasses : null,
 
     /**
      * Return paramClassName.
      * @param {Api} api - API.
+     * @param {boolean} detail - detail.
      * @return {string} paramClassName.
      */
-    paramClassName : function(api) {
-        return 'Remote' + manager.initCap(manager.camelize(this.subPackage(api).replace(/\./g, '_'))) + (api.multipleHttpMethod ? manager.initCap(api.httpMethod) : '') + 'Param';
+    paramClassName : function(api, detail) {
+        return this.beanClassName(api, detail) + 'Param';
     },
 
     returnExtendsClass : null,
@@ -208,10 +220,11 @@ var baseRule = {
     /**
      * Return returnClassName.
      * @param {Api} api - API.
+     * @param {boolean} detail - detail.
      * @return {string} returnClassName.
      */
-    returnClassName : function(api) {
-        return 'Remote' + manager.initCap(manager.camelize(this.subPackage(api).replace(/\./g, '_'))) + (api.multipleHttpMethod ? manager.initCap(api.httpMethod) : '') + 'Return';
+    returnClassName : function(api, detail) {
+        return this.beanClassName(api, detail) + 'Return';
     },
 
     /**

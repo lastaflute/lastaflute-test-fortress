@@ -21,13 +21,14 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.swagger.petstore.AbstractRemoteSwaggerPetstoreBhv;
-import org.docksidestage.remote.swagger.petstore.pet.index.RemotePetPostParam;
-import org.docksidestage.remote.swagger.petstore.pet.index.RemotePetPutParam;
 import org.docksidestage.remote.swagger.petstore.pet.findbystatus.RemotePetFindbystatusParam;
 import org.docksidestage.remote.swagger.petstore.pet.findbystatus.RemotePetFindbystatusReturn;
 import org.docksidestage.remote.swagger.petstore.pet.findbytags.RemotePetFindbytagsParam;
 import org.docksidestage.remote.swagger.petstore.pet.findbytags.RemotePetFindbytagsReturn;
 import org.docksidestage.remote.swagger.petstore.pet.index.RemotePetGetReturn;
+import org.docksidestage.remote.swagger.petstore.pet.index.RemotePetPetidPostParam;
+import org.docksidestage.remote.swagger.petstore.pet.index.RemotePetPostParam;
+import org.docksidestage.remote.swagger.petstore.pet.index.RemotePetPutParam;
 import org.docksidestage.remote.swagger.petstore.pet.uploadimage.RemotePetUploadimageParam;
 import org.docksidestage.remote.swagger.petstore.pet.uploadimage.RemotePetUploadimageReturn;
 
@@ -248,9 +249,9 @@ public abstract class BsRemoteSwaggerPetstorePetBhv extends AbstractRemoteSwagge
      * httpMethod: POST
      * </pre>
      * @param petId The value of path variable for petId. (ID of pet that needs to be updated) (NotNull)
-     * @param paramLambda The callback for RemotePetPostParam. (NotNull)
+     * @param paramLambda The callback for RemotePetPetidPostParam. (NotNull)
      */
-    public void requestPost(Long petId, Consumer<RemotePetPostParam> paramLambda) {
+    public void requestPost(Long petId, Consumer<RemotePetPetidPostParam> paramLambda) {
         requestPost(petId, paramLambda, rule -> {});
     }
 
@@ -261,11 +262,11 @@ public abstract class BsRemoteSwaggerPetstorePetBhv extends AbstractRemoteSwagge
      * httpMethod: POST
      * </pre>
      * @param petId The value of path variable for petId. (ID of pet that needs to be updated) (NotNull)
-     * @param paramLambda The callback for RemotePetPostParam. (NotNull)
+     * @param paramLambda The callback for RemotePetPetidPostParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void requestPost(Long petId, Consumer<RemotePetPostParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemotePetPostParam param = new RemotePetPostParam();
+    protected void requestPost(Long petId, Consumer<RemotePetPetidPostParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemotePetPetidPostParam param = new RemotePetPetidPostParam();
         paramLambda.accept(param);
         doRequestPost(void.class, "/pet/{petId}", moreUrl(petId), param, rule -> {
             rule.sendBodyBy(

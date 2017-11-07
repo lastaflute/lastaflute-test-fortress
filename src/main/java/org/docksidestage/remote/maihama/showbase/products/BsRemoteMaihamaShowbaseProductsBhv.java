@@ -21,10 +21,10 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsParam;
-import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsReturn;
 import org.docksidestage.remote.maihama.showbase.products.detail.RemoteProductsDetailParam;
 import org.docksidestage.remote.maihama.showbase.products.detail.RemoteProductsDetailReturn;
+import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsParam;
+import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsReturn;
 
 /**
  * The base class as generation gap for remote API of products.

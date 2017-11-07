@@ -21,12 +21,12 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.swagger.petstore.AbstractRemoteSwaggerPetstoreBhv;
-import org.docksidestage.remote.swagger.petstore.user.index.RemoteUserParam;
 import org.docksidestage.remote.swagger.petstore.user.createwitharray.RemoteUserCreatewitharrayParam;
 import org.docksidestage.remote.swagger.petstore.user.createwithlist.RemoteUserCreatewithlistParam;
-import org.docksidestage.remote.swagger.petstore.user.login.RemoteUserLoginParam;
 import org.docksidestage.remote.swagger.petstore.user.index.RemoteUserGetReturn;
+import org.docksidestage.remote.swagger.petstore.user.index.RemoteUserParam;
 import org.docksidestage.remote.swagger.petstore.user.index.RemoteUserPutParam;
+import org.docksidestage.remote.swagger.petstore.user.login.RemoteUserLoginParam;
 
 /**
  * The base class as generation gap for remote API of user.

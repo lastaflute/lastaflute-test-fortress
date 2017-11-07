@@ -14,7 +14,7 @@
 ## governing permissions and limitations under the License.
 ##
 ${manager.allClassCopyright}package ${data.package};
-#set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
+#set ($importSet = $request.getClass().forName("java.util.TreeSet").newInstance())
 #set ($parameterFlg = false)
 #if ($rule['behaviorMethodGeneration'])
 #foreach($method in $data.methodList)

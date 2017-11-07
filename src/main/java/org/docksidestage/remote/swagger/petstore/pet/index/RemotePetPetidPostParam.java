@@ -13,24 +13,21 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dstore;
+package org.docksidestage.remote.swagger.petstore.pet.index;
 
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/routing/dstore/{second}.
+ * The bean class as param for remote API of POST /pet/{petId}.
  * @author FreeGen
  */
-public class RemoteWxRemogenRoutingDstoreReturn {
+public class RemotePetPetidPostParam {
 
-    /** The property of method. (NullAllowed) */
-    public String method;
+    /** The property of name. (Updated name of the pet) (NullAllowed) */
+    public String name;
 
-    /** The property of first. (NullAllowed) */
-    public Object first;
-
-    /** The property of second. (NullAllowed) */
-    public Object second;
+    /** The property of status. (Updated status of the pet) (NullAllowed) */
+    public String status;
 
     @Override
     public String toString() {

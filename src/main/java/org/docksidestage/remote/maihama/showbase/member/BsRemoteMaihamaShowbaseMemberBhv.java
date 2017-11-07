@@ -21,15 +21,15 @@ import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.member.info.RemoteMemberInfoReturn;
-import org.docksidestage.remote.maihama.showbase.member.status.RemoteMemberStatusReturn;
 import org.docksidestage.remote.maihama.showbase.member.add.register.RemoteMemberAddRegisterParam;
 import org.docksidestage.remote.maihama.showbase.member.add.register.RemoteMemberAddRegisterReturn;
 import org.docksidestage.remote.maihama.showbase.member.edit.RemoteMemberEditReturn;
 import org.docksidestage.remote.maihama.showbase.member.edit.update.RemoteMemberEditUpdateParam;
+import org.docksidestage.remote.maihama.showbase.member.info.RemoteMemberInfoReturn;
 import org.docksidestage.remote.maihama.showbase.member.list.RemoteMemberListParam;
 import org.docksidestage.remote.maihama.showbase.member.list.RemoteMemberListReturn;
 import org.docksidestage.remote.maihama.showbase.member.purchase.list.RemoteMemberPurchaseListReturn;
+import org.docksidestage.remote.maihama.showbase.member.status.RemoteMemberStatusReturn;
 
 /**
  * The base class as generation gap for remote API of member.

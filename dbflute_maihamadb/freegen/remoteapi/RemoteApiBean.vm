@@ -14,7 +14,7 @@
 ## governing permissions and limitations under the License.
 ##
 ${manager.allClassCopyright}package ${data.package};
-#set ($importSet = $request.getClass().forName("java.util.LinkedHashSet").newInstance())
+#set ($importSet = $request.getClass().forName("java.util.TreeSet").newInstance())
 #foreach($propertyEntry in $data.properties.entrySet())
 #set ($property = $propertyEntry.value)
 #if (${property.required})
