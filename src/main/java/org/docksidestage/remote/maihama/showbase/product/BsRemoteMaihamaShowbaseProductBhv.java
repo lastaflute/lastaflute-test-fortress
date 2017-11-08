@@ -18,13 +18,12 @@ package org.docksidestage.remote.maihama.showbase.product;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.web.servlet.request.RequestManager;
-
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.product.detail.RemoteProductDetailReturn;
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchParam;
 import org.docksidestage.remote.maihama.showbase.product.list.search.RemoteProductListSearchReturn;
 import org.docksidestage.remote.maihama.showbase.product.list.status.RemoteProductListStatusReturn;
+import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * The base class as generation gap for remote API of product.

@@ -18,8 +18,6 @@ package org.docksidestage.remote.swagger.petstore.pet;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.web.servlet.request.RequestManager;
-
 import org.docksidestage.remote.swagger.petstore.AbstractRemoteSwaggerPetstoreBhv;
 import org.docksidestage.remote.swagger.petstore.pet.findbystatus.RemotePetFindbystatusParam;
 import org.docksidestage.remote.swagger.petstore.pet.findbystatus.RemotePetFindbystatusReturn;
@@ -31,6 +29,7 @@ import org.docksidestage.remote.swagger.petstore.pet.index.RemotePetPostParam;
 import org.docksidestage.remote.swagger.petstore.pet.index.RemotePetPutParam;
 import org.docksidestage.remote.swagger.petstore.pet.uploadimage.RemotePetUploadimageParam;
 import org.docksidestage.remote.swagger.petstore.pet.uploadimage.RemotePetUploadimageReturn;
+import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * The base class as generation gap for remote API of pet.

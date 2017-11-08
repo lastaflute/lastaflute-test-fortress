@@ -139,7 +139,10 @@
     ## _/_/_/_/_/_/_/_/_/_/
     #foreach($responseEntry in $api.methodBean['responses'].entrySet())
       #set ($response = $responseEntry.value)
-      #if ($response.schema)
+      ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+      ## only one return bean is targeted.
+      ## _/_/_/_/_/_/_/_/_/_/
+      #if (!$returnBean.className && $response.schema)
         #if ($response.schema.type == 'array')
           #set ($array = true)
           #set ($responseSchema = $response.schema.items)
@@ -187,6 +190,29 @@
     $generator.parse($src, $dest, "data", $data)
     $request.info("generate('${dest}')")
   #end
+#end
+
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## generate imports.
+## @param package package (NotNull)
+## @param importList importList (NotNull)
+## _/_/_/_/_/_/_/_/_/_/
+#macro(generateImports, $package, $importList)
+#set ($importOrderList = $scriptEngine.invokeMethod($rule, 'importOrderList'))
+#set ($sortImportMap = $request.getClass().forName('java.util.TreeMap').newInstance())
+#foreach($import in $importList)
+#if ($import.substring(0, $import.lastIndexOf('.')) != $package)
+#set($put = $sortImportMap.put("$importOrderList.indexOf($import.substring(0, $import.indexOf('.')))$import.substring(0, $import.lastIndexOf('.'))     $import.substring($import.lastIndexOf('.'))", $import))
+#end
+#end
+#set ($preImport = '.')
+#foreach($import in $sortImportMap.values())
+#if ($import.substring(0, $import.indexOf('.')) != $preImport.substring(0, $preImport.indexOf('.')))
+#set ($preImport = $import)
+
+#end
+import ${import};
+#end
 #end
 
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -246,7 +272,7 @@
   #set ($sortRemoteApiBeanMap = $request.getClass().forName("java.util.TreeMap").newInstance())
   #foreach($remoteApiBean in $remoteApiBeanList)
     #set ($path = "${remoteApiBean.package.replaceAll('\.', '/')}/${remoteApiBean.className}.java")
-    $sortRemoteApiBeanMap.put("${path}_____${remoteApiBean.api.url}", $remoteApiBean);
+    $sortRemoteApiBeanMap.put("${path}@@@@@${remoteApiBean.api.url}", $remoteApiBean);
   #end
 
   #set ($uniqueRemoteApiBeanMap = {})

@@ -14,11 +14,12 @@
 ## governing permissions and limitations under the License.
 ##
 ${manager.allClassCopyright}package ${data.package};
-#set ($importSet = $request.getClass().forName("java.util.TreeSet").newInstance())
+#set ($importList = [])
+#set($added = $importList.add('org.lastaflute.core.util.Lato'))
 #foreach($propertyEntry in $data.properties.entrySet())
 #set ($property = $propertyEntry.value)
 #if (${property.required})
-#set($added = $importSet.add('org.lastaflute.web.validation.Required'))
+#set($added = $importList.add('org.lastaflute.web.validation.Required'))
 #end
 #if ($property.items && $property.items['$ref'])
 #set ($nestType = $property.items['$ref'].replace('#/definitions/', ''))
@@ -30,17 +31,13 @@ ${manager.allClassCopyright}package ${data.package};
 #set ($nestPropertyEntry.value.required =  $definitionMap[$nestType].required.contains($nestPropertyEntry.key))
 #set ($nestProperty = $nestPropertyEntry.value)
 #if (${nestProperty.required})
-#set($added = $importSet.add('org.lastaflute.web.validation.Required'))
+#set($added = $importList.add('org.lastaflute.web.validation.Required'))
 #end
 #end
 #set ($nestType = '')
 #end
 #end
-
-import org.lastaflute.core.util.Lato;
-#foreach($import in $importSet)
-import ${import};
-#end
+#generateImports($importList)
 
 /**
  * The bean class as ${data.beanPurposeType} for remote API of ${data.remoteApiExp}.

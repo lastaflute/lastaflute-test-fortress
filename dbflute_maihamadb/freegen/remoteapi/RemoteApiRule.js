@@ -251,6 +251,14 @@ var baseRule = {
     //                                                                              Option
     //                                                                              ======
     /**
+     * Return java import order list.
+     * @return java import order list. (NotNull)
+     */
+    importOrderList: function() {
+        return ['java', 'javax', 'junit', 'org', 'com', 'net', 'ognl', 'mockit', 'jp'];
+    },
+
+    /**
      * Return java property type mapping.
      * e.g. java.util.List -> org.eclipse.collections.api.list.ImmutableList, java.time.LocalDate -> String etc.
      * @return typeMap The map of type conversion, swagger type to java type. (NotNull)

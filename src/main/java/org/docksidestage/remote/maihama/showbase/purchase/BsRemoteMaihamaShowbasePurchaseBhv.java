@@ -18,13 +18,12 @@ package org.docksidestage.remote.maihama.showbase.purchase;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.web.servlet.request.RequestManager;
-
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.purchase.contract.RemotePurchaseContractParam;
 import org.docksidestage.remote.maihama.showbase.purchase.contract.RemotePurchaseContractReturn;
 import org.docksidestage.remote.maihama.showbase.purchase.count.RemotePurchaseCountParam;
 import org.docksidestage.remote.maihama.showbase.purchase.count.RemotePurchaseCountReturn;
+import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * The base class as generation gap for remote API of purchase.

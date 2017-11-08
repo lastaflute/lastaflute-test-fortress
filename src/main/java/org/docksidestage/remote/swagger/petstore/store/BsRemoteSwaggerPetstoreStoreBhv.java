@@ -18,12 +18,11 @@ package org.docksidestage.remote.swagger.petstore.store;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.web.servlet.request.RequestManager;
-
 import org.docksidestage.remote.swagger.petstore.AbstractRemoteSwaggerPetstoreBhv;
 import org.docksidestage.remote.swagger.petstore.store.order.RemoteStoreOrderGetReturn;
 import org.docksidestage.remote.swagger.petstore.store.order.RemoteStoreOrderParam;
 import org.docksidestage.remote.swagger.petstore.store.order.RemoteStoreOrderReturn;
+import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * The base class as generation gap for remote API of store.

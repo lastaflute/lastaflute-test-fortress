@@ -14,13 +14,11 @@
 ## governing permissions and limitations under the License.
 ##
 ${manager.allClassCopyright}package ${data.package};
+#set ($importList = [])
+#set($added = $importList.add('org.lastaflute.web.servlet.request.RequestManager'))
+#set($added = $importList.add("${data.bsBehavior.package}.${data.bsBehavior.className}"))
+#generateImports($data.package, $importList)
 
-import org.lastaflute.web.servlet.request.RequestManager;
-
-#if (${data.package} != ${data.bsBehavior.package})
-import ${data.bsBehavior.package}.${data.bsBehavior.className};
-
-#end
 /**
  * The behavior for remote API of ${data.remoteApiExp}.
  * <p>

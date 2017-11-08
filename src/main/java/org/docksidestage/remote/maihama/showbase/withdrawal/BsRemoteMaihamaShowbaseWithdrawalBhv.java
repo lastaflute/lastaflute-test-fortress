@@ -18,11 +18,10 @@ package org.docksidestage.remote.maihama.showbase.withdrawal;
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.lastaflute.web.servlet.request.RequestManager;
-
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.docksidestage.remote.maihama.showbase.withdrawal.done.RemoteWithdrawalDoneParam;
 import org.docksidestage.remote.maihama.showbase.withdrawal.reason.RemoteWithdrawalReasonReturn;
+import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * The base class as generation gap for remote API of withdrawal.
