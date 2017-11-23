@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "showbase",
-    "description": "showbase",
+    "title": "Showbase",
+    "description": "Showbase",
     "version": "1.0.0"
   },
   "schemes": [
@@ -10,6 +10,12 @@
   ],
   "basePath": "/showbase/",
   "tags": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "swagger"
+    },
     {
       "name": "following"
     },
@@ -32,16 +38,10 @@
       "name": "purchase"
     },
     {
-      "name": "root"
-    },
-    {
       "name": "signin"
     },
     {
       "name": "signup"
-    },
-    {
-      "name": "swagger"
     },
     {
       "name": "withdrawal"
@@ -51,6 +51,78 @@
     }
   ],
   "paths": {
+    "/root/": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "root"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "text/html"
+        ]
+      }
+    },
+    "/swagger/": {
+      "post": {
+        "summary": "The action to show swaggar-ui.",
+        "description": "The action to show swaggar-ui.",
+        "parameters": [],
+        "tags": [
+          "swagger"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "text/html"
+        ]
+      }
+    },
+    "/swagger/json": {
+      "post": {
+        "summary": "The action to show swaggar-ui.",
+        "description": "The action to show swaggar-ui.",
+        "parameters": [],
+        "tags": [
+          "swagger"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
     "/following/follow": {
       "post": {
         "summary": "@author iwamatsu0430",
@@ -230,6 +302,42 @@
         }
       }
     },
+    "/member/list": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "MemberSearchBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.member.MemberSearchBody"
+            }
+          }
+        ],
+        "tags": [
+          "member"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.MemberSearchRowResult\u003e"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
     "/member/list/{pageNumber}": {
       "post": {
         "summary": "@author jflute",
@@ -273,56 +381,13 @@
         ]
       }
     },
-    "/member/list": {
-      "post": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "MemberSearchBody",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.member.MemberSearchBody"
-            }
-          }
-        ],
-        "tags": [
-          "member"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult\u003corg.docksidestage.app.web.member.MemberSearchRowResult\u003e"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      }
-    },
-    "/member/purchase/list/{memberId}/{pageNumber}": {
+    "/member/purchase/list/{memberId}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
         "parameters": [
           {
             "name": "memberId",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "pageNumber",
             "type": "integer",
             "format": "int32",
             "in": "path",
@@ -348,13 +413,20 @@
         ]
       }
     },
-    "/member/purchase/list/{memberId}": {
+    "/member/purchase/list/{memberId}/{pageNumber}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
         "parameters": [
           {
             "name": "memberId",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "pageNumber",
             "type": "integer",
             "format": "int32",
             "in": "path",
@@ -462,7 +534,7 @@
         ]
       }
     },
-    "/product/list/search/{pageNumber}": {
+    "/product/list/search": {
       "post": {
         "summary": "@author iwamatsu0430",
         "description": "@author iwamatsu0430",
@@ -470,13 +542,6 @@
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "pageNumber",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true
-          },
           {
             "name": "ProductSearchBody",
             "in": "body",
@@ -505,7 +570,7 @@
         ]
       }
     },
-    "/product/list/search": {
+    "/product/list/search/{pageNumber}": {
       "post": {
         "summary": "@author iwamatsu0430",
         "description": "@author iwamatsu0430",
@@ -513,6 +578,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "name": "pageNumber",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          },
           {
             "name": "ProductSearchBody",
             "in": "body",
@@ -743,30 +815,6 @@
         ]
       }
     },
-    "/root/": {
-      "post": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "parameters": [],
-        "tags": [
-          "root"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "text/html"
-        ]
-      }
-    },
     "/signin/": {
       "post": {
         "summary": "@author jflute",
@@ -864,54 +912,6 @@
         }
       }
     },
-    "/swagger/": {
-      "post": {
-        "summary": "The action to show swaggar-ui.",
-        "description": "The action to show swaggar-ui.",
-        "parameters": [],
-        "tags": [
-          "swagger"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "text/html"
-        ]
-      }
-    },
-    "/swagger/json": {
-      "post": {
-        "summary": "The action to show swaggar-ui.",
-        "description": "The action to show swaggar-ui.",
-        "parameters": [],
-        "tags": [
-          "swagger"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      }
-    },
     "/withdrawal/reason": {
       "post": {
         "summary": "@author black-trooper",
@@ -989,7 +989,8 @@
             "type": "string",
             "minLength": 2,
             "maxLength": 5,
-            "in": "formData"
+            "in": "formData",
+            "required": true
           }
         ],
         "tags": [
@@ -1349,37 +1350,6 @@
         ]
       }
     },
-    "/wx/remogen/routing/piari/{first}": {
-      "post": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "parameters": [
-          {
-            "name": "first",
-            "type": "string",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      }
-    },
     "/wx/remogen/routing/piari": {
       "post": {
         "summary": "@author jflute",
@@ -1404,50 +1374,13 @@
         ]
       }
     },
-    "/wx/remogen/routing/dstore/{first}/{second}": {
+    "/wx/remogen/routing/piari/{first}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
         "parameters": [
           {
             "name": "first",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "second",
-            "type": "string",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      }
-    },
-    "/wx/remogen/routing/dstore/{second}": {
-      "post": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "parameters": [
-          {
-            "name": "second",
             "type": "string",
             "in": "path",
             "required": true
@@ -1496,7 +1429,38 @@
         ]
       }
     },
-    "/wx/remogen/routing/bonvo/{first}/{second}": {
+    "/wx/remogen/routing/dstore/{first}": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/routing/dstore/{first}/{second}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -1564,6 +1528,80 @@
         ]
       }
     },
+    "/wx/remogen/routing/bonvo/{first}/{second}": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/routing/amba/{first}/{second}": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
     "/wx/remogen/routing/amba/{first}/{second}/{third}": {
       "post": {
         "summary": "@author jflute",
@@ -1607,7 +1645,7 @@
         ]
       }
     },
-    "/wx/remogen/routing/amba/{first}/{second}": {
+    "/wx/remogen/routing/miraco/{first}/{second}/{third}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -1620,6 +1658,12 @@
           },
           {
             "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "third",
             "type": "string",
             "in": "path",
             "required": true
@@ -1693,10 +1737,13 @@
         ]
       }
     },
-    "/wx/remogen/routing/miraco/{first}/{second}/{third}": {
+    "/wx/remogen/routing/dohotel/{first}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
         "parameters": [
           {
             "name": "first",
@@ -1705,16 +1752,10 @@
             "required": true
           },
           {
-            "name": "second",
+            "name": "param",
             "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "third",
-            "type": "string",
-            "in": "path",
-            "required": true
+            "in": "formData",
+            "required": false
           }
         ],
         "tags": [
@@ -1759,7 +1800,8 @@
           {
             "name": "param",
             "type": "string",
-            "in": "formData"
+            "in": "formData",
+            "required": false
           }
         ],
         "tags": [
@@ -1781,24 +1823,17 @@
         ]
       }
     },
-    "/wx/remogen/routing/dohotel/{first}": {
+    "/wx/remogen/routing/celeb/{first}": {
       "post": {
         "summary": "@author jflute",
         "description": "@author jflute",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
         "parameters": [
           {
             "name": "first",
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "in": "path",
             "required": true
-          },
-          {
-            "name": "param",
-            "type": "string",
-            "in": "formData"
           }
         ],
         "tags": [
@@ -1836,38 +1871,6 @@
             "name": "second",
             "type": "integer",
             "format": "int64",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      }
-    },
-    "/wx/remogen/routing/celeb/{first}": {
-      "post": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "parameters": [
-          {
-            "name": "first",
-            "type": "integer",
-            "format": "int32",
             "in": "path",
             "required": true
           }

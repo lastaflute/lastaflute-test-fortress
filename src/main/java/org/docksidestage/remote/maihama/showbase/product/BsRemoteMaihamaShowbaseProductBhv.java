@@ -82,6 +82,45 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
     }
 
     /**
+     * Request remote call to /product/list/search. (auto-generated method)<br>
+     * <pre>
+     * url: /product/list/search
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteProductListSearchParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteProductListSearchReturn requestListSearch(Consumer<RemoteProductListSearchParam> paramLambda) {
+        return requestListSearch(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /product/list/search. (auto-generated method)<br>
+     * <pre>
+     * url: /product/list/search
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteProductListSearchParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteProductListSearchReturn requestListSearch(Consumer<RemoteProductListSearchParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteProductListSearchParam param = new RemoteProductListSearchParam();
+        paramLambda.accept(param);
+        return doRequestPost(RemoteProductListSearchReturn.class, "/product/list/search", noMoreUrl(), param, rule -> {
+            ruleOfListSearch(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /product/list/search.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfListSearch(FlutyRemoteApiRule rule) {
+    }
+
+    /**
      * Request remote call to /product/list/search/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /product/list/search/{pageNumber}
@@ -120,45 +159,6 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfListSearchPageNumber(FlutyRemoteApiRule rule) {
-    }
-
-    /**
-     * Request remote call to /product/list/search. (auto-generated method)<br>
-     * <pre>
-     * url: /product/list/search
-     * httpMethod: POST
-     * </pre>
-     * @param paramLambda The callback for RemoteProductListSearchParam. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    public RemoteProductListSearchReturn requestListSearch(Consumer<RemoteProductListSearchParam> paramLambda) {
-        return requestListSearch(paramLambda, rule -> {});
-    }
-
-    /**
-     * Request remote call to /product/list/search. (auto-generated method)<br>
-     * <pre>
-     * url: /product/list/search
-     * httpMethod: POST
-     * </pre>
-     * @param paramLambda The callback for RemoteProductListSearchParam. (NotNull)
-     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    protected RemoteProductListSearchReturn requestListSearch(Consumer<RemoteProductListSearchParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemoteProductListSearchParam param = new RemoteProductListSearchParam();
-        paramLambda.accept(param);
-        return doRequestPost(RemoteProductListSearchReturn.class, "/product/list/search", noMoreUrl(), param, rule -> {
-            ruleOfListSearch(rule);
-            ruleLambda.accept(rule);
-        });
-    }
-
-    /**
-     * Set up method-level rule of /product/list/search.<br>
-     * @param rule The rule that class default rule is already set. (NotNull)
-     */
-    protected void ruleOfListSearch(FlutyRemoteApiRule rule) {
     }
 
     /**

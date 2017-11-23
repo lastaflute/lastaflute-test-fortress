@@ -202,7 +202,13 @@
 #set ($sortImportMap = $request.getClass().forName('java.util.TreeMap').newInstance())
 #foreach($import in $importList)
 #if ($import.substring(0, $import.lastIndexOf('.')) != $package)
-#set($put = $sortImportMap.put("$importOrderList.indexOf($import.substring(0, $import.indexOf('.')))$import.substring(0, $import.lastIndexOf('.'))     $import.substring($import.lastIndexOf('.'))", $import))
+#set ($importOrderIndex = -1)
+#foreach($importOrder in $importOrderList)
+#if ($importOrder != -1 && $importOrder == $import.substring(0, $import.indexOf('.')))
+#set ($importOrderIndex = $foreach.index)
+#end
+#end
+#set($put = $sortImportMap.put("${importOrderIndex}$import.substring(0, $import.lastIndexOf('.'))     $import.substring($import.lastIndexOf('.'))", $import))
 #end
 #end
 #set ($preImport = '.')

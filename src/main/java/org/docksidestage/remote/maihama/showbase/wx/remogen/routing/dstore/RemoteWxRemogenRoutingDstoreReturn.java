@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dstore;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/routing/dstore/{second}.
+ * The bean class as return for remote API of POST /wx/remogen/routing/dstore/{first}/{second}.
  * @author FreeGen
  */
 public class RemoteWxRemogenRoutingDstoreReturn {
