@@ -31,6 +31,7 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amba.RemoteW
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amphi.theater.maihama.RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.bonvo.RemoteWxRemogenRoutingBonvoReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.celeb.RemoteWxRemogenRoutingCelebReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dohotel.RemoteWxRemogenRoutingDohotelFirstSecondParam;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dohotel.RemoteWxRemogenRoutingDohotelParam;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dohotel.RemoteWxRemogenRoutingDohotelReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dstore.RemoteWxRemogenRoutingDstoreReturn;
@@ -950,10 +951,10 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * </pre>
      * @param first The value of path variable for first. (NotNull)
      * @param second The value of path variable for second. (NotNull)
-     * @param paramLambda The callback for RemoteWxRemogenRoutingDohotelParam. (NotNull)
+     * @param paramLambda The callback for RemoteWxRemogenRoutingDohotelFirstSecondParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteWxRemogenRoutingDohotelReturn requestRemogenRoutingDohotel(String first, String second, Consumer<RemoteWxRemogenRoutingDohotelParam> paramLambda) {
+    public RemoteWxRemogenRoutingDohotelReturn requestRemogenRoutingDohotel(String first, String second, Consumer<RemoteWxRemogenRoutingDohotelFirstSecondParam> paramLambda) {
         return requestRemogenRoutingDohotel(first, second, paramLambda, rule -> {});
     }
 
@@ -965,12 +966,12 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * </pre>
      * @param first The value of path variable for first. (NotNull)
      * @param second The value of path variable for second. (NotNull)
-     * @param paramLambda The callback for RemoteWxRemogenRoutingDohotelParam. (NotNull)
+     * @param paramLambda The callback for RemoteWxRemogenRoutingDohotelFirstSecondParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingDohotelReturn requestRemogenRoutingDohotel(String first, String second, Consumer<RemoteWxRemogenRoutingDohotelParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemoteWxRemogenRoutingDohotelParam param = new RemoteWxRemogenRoutingDohotelParam();
+    protected RemoteWxRemogenRoutingDohotelReturn requestRemogenRoutingDohotel(String first, String second, Consumer<RemoteWxRemogenRoutingDohotelFirstSecondParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenRoutingDohotelFirstSecondParam param = new RemoteWxRemogenRoutingDohotelFirstSecondParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteWxRemogenRoutingDohotelReturn.class, "/wx/remogen/routing/dohotel/{first}/{second}", moreUrl(first, second), param, rule -> {
             rule.sendBodyBy(

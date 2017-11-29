@@ -13,6 +13,9 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
+#set ($rule = $scriptEngine.get('remoteApiRule'))
+#set ($typeMap = {})
+#set ($put = $typeMap.putAll($scriptEngine.invokeMethod($rule, 'typeMap')))
 ${manager.allClassCopyright}package ${data.package};
 #set ($importList = [])
 #set($added = $importList.add('org.lastaflute.web.servlet.request.RequestManager'))
@@ -32,14 +35,14 @@ ${manager.allClassCopyright}package ${data.package};
 #set($added = $importList.add('java.util.function.Consumer'))
 #set($added = $importList.add('org.dbflute.remoteapi.FlutyRemoteApiRule'))
 #end
-#set($added = $importList.add("${abstractBehavior.package}.${abstractBehavior.className}"))
-#generateImports($data.package, $importList)
+#set($added = $importList.add("${data.abstractBehavior.package}.${data.abstractBehavior.className}"))
+#generateImports($importList, $data.package, $scriptEngine.invokeMethod($rule, 'importOrderList'))
 
 /**
  * The base class as generation gap for remote API of ${data.remoteApiExp}.
  * @author FreeGen
  */
-public abstract class ${data.className} extends ${abstractBehavior.className} {
+public abstract class ${data.className} extends ${data.abstractBehavior.className} {
 
     // ===================================================================================
     //                                                                         Constructor
