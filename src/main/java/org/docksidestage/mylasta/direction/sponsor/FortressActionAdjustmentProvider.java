@@ -29,6 +29,7 @@ import org.dbflute.util.Srl;
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
 import org.eclipse.collections.api.list.ImmutableList;
+import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.hibernate.validator.internal.cfg.context.DefaultConstraintMapping;
@@ -134,6 +135,8 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
         return parameter.trim();
     }).yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
         return Lists.immutable.ofAll(mutable);
+    })).yourCollection(new FormYourCollectionResource(MutableList.class, mutable -> {
+        return Lists.mutable.ofAll(mutable);
     }));
 
     // -----------------------------------------------------

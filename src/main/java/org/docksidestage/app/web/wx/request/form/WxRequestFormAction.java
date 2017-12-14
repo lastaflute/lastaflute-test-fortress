@@ -23,19 +23,16 @@ import org.docksidestage.app.web.base.FortressBaseAction;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.map.ImmutableMap;
+import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author jflute
  */
 @AllowAnyoneAccess
 public class WxRequestFormAction extends FortressBaseAction {
-
-    private static final Logger logger = LoggerFactory.getLogger(WxRequestFormAction.class);
 
     @Execute
     public JsonResponse<BasicItemForm> index(BasicItemForm form) {
@@ -56,8 +53,31 @@ public class WxRequestFormAction extends FortressBaseAction {
 
     // [success]
     // http://localhost:8151/fortress/wx/request/form/eccolle?sea=mystic&sea=bigband
+    // http://localhost:8151/fortress/wx/request/form/eccolle?sea[0]=mystic&sea[1]=bigband
+    //  => since 1.0.3
+    //  => Cannot call add() on ImmutableEmptyList since 1.0.3-RC1
+    //  => The indexed property was not list or array until 1.0.2
+    //
+    // http://localhost:8151/fortress/wx/request/form/eccolle?land=oneman&land=minnie
+    //  => since 1.0.3
+    //  => Can not set org.eclipse.collections.api.list.MutableList field
+    // http://localhost:8151/fortress/wx/request/form/eccolle?land[0]=oneman&land[1]=minnie
+    //  => since 1.0.3
     // http://localhost:8151/fortress/wx/request/form/eccolle?piari=first&piari=second
     // http://localhost:8151/fortress/wx/request/form/eccolle?piari[0]=first&piari[1]=second
+    //
+    // http://localhost:8151/fortress/wx/request/form/eccolle?dstore[0].walt=first&dstore[1].walt=second
+    //  => since 1.0.3
+    //  => Cannot call add() on ImmutableEmptyList since 1.0.3-RC1
+    //  => The indexed property was not list or array until 1.0.2
+    //
+    // http://localhost:8151/fortress/wx/request/form/eccolle?amba[0].chef=first&amba[1].chef=second
+    //  => since 1.0.3
+    //  => Can not set org.eclipse.collections.api.list.MutableList field until 1.0.2
+    //
+    // [no-error failure]
+    // http://localhost:8151/fortress/wx/request/form/eccolle?dstore.walt=first&dstore.walt=second
+    // http://localhost:8151/fortress/wx/request/form/eccolle?amba.chef=first&amba.chef=second
     //
     // [client error]
     // http://localhost:8151/fortress/wx/request/form/eccolle?sea[]=mystic&sea[]=bigband
@@ -65,17 +85,9 @@ public class WxRequestFormAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/request/form/eccolle?piari[]=first&piari[]=second
     //
     // [system error]
-    // http://localhost:8151/fortress/wx/request/form/eccolle?land=oneman&land=minnie
-    // http://localhost:8151/fortress/wx/request/form/eccolle?sea[0]=mystic&sea[1]=bigband
-    // http://localhost:8151/fortress/wx/request/form/eccolle?land[0]=oneman&land[1]=minnie
     @Execute
     public JsonResponse<MyEcColleForm> eccolle(MyEcColleForm form) {
-        "".charAt(1);
         validateApi(form, messages -> {});
-        logger.debug("sea: {}", form.sea);
-        logger.debug("land: {}", form.land);
-        logger.debug("piari: {}", form.piari);
-        logger.debug("bonvo: {}", form.bonvo);
         return asJson(form); // for visual check
     }
 
@@ -88,5 +100,34 @@ public class WxRequestFormAction extends FortressBaseAction {
         public List<String> piari;
 
         public ImmutableMap<String, String> bonvo;
+
+        public ImmutableList<MyDStorePart> dstore;
+
+        public static class MyDStorePart {
+
+            public String walt;
+
+            @Override
+            public String toString() {
+                return "dstore:{" + walt + "}";
+            }
+        }
+
+        public MutableList<MyAmbaPart> amba;
+
+        public static class MyAmbaPart {
+
+            public String chef;
+
+            @Override
+            public String toString() {
+                return "amba:{" + chef + "}";
+            }
+        }
+
+        @Override
+        public String toString() {
+            return Lato.string(this);
+        }
     }
 }
