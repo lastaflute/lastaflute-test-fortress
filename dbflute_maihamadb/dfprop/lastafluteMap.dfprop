@@ -32,7 +32,7 @@ map:{
     ; appMap = map:{
         ; fortress = map:{
             ; path = ..
-            ; freeGenList = list:{ env ; config ; label ; message ; mail ; template ; html ; doc ; appcls ; namedcls }
+            ; freeGenList = list:{ env ; config ; label ; message ; mail ; template ; html ; doc ; appcls ; webcls ; namedcls }
             ; propertiesHtmlList = list:{ env ; config ; label ; message }
             ; configPluginInterface = org.docksidestage.mylasta.direction.MyFortressProp
             ; mailPluginInterface = org.docksidestage.mylasta.mail.PluggedinFortressPostcard
@@ -44,7 +44,7 @@ map:{
     #    ; dockside.freeGen.mail.targetDir = ./playsql/data/mail
     #}
 
-    # sychronized with reflection meta, it's trial 
+    # sychronized with reflection meta, it's trial
     ; isLastaDocMavenGeared = true
 }
 # ----------------/

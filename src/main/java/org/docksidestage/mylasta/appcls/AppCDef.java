@@ -35,7 +35,7 @@ public interface AppCDef extends Classification {
     /**
      * Sea Cls
      */
-    public enum WebSea implements AppCDef {
+    public enum AppSea implements AppCDef {
         /** Formalized: as formal member, allowed to use all service */
         Formalized("FML", "Formalized", emptyStrings())
         ,
@@ -45,21 +45,21 @@ public interface AppCDef extends Classification {
         /** Provisional: first status after entry, allowed to use only part of service */
         Provisional("PRV", "Provisional", emptyStrings())
         ;
-        private static final Map<String, WebSea> _codeClsMap = new HashMap<String, WebSea>();
-        private static final Map<String, WebSea> _nameClsMap = new HashMap<String, WebSea>();
+        private static final Map<String, AppSea> _codeClsMap = new HashMap<String, AppSea>();
+        private static final Map<String, AppSea> _nameClsMap = new HashMap<String, AppSea>();
         static {
-            for (WebSea value : values()) {
+            for (AppSea value : values()) {
                 _codeClsMap.put(value.code().toLowerCase(), value);
                 for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
             }
         }
         private String _code; private String _alias; private Set<String> _sisterSet;
-        private WebSea(String code, String alias, String[] sisters)
+        private AppSea(String code, String alias, String[] sisters)
         { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
         public String code() { return _code; } public String alias() { return _alias; }
         public Set<String> sisterSet() { return _sisterSet; }
         public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
-        public ClassificationMeta meta() { return AppCDef.DefMeta.WebSea; }
+        public ClassificationMeta meta() { return AppCDef.DefMeta.AppSea; }
 
         /**
          * Is the classification in the group? <br>
@@ -92,9 +92,9 @@ public interface AppCDef extends Classification {
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
          * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<WebSea> of(Object code) {
+        public static OptionalThing<AppSea> of(Object code) {
             if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
-            if (code instanceof WebSea) { return OptionalThing.of((WebSea)code); }
+            if (code instanceof AppSea) { return OptionalThing.of((AppSea)code); }
             if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
             return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
                 throw new ClassificationNotFoundException("Unknown classification code: " + code);
@@ -106,7 +106,7 @@ public interface AppCDef extends Classification {
          * @param name The string of name, which is case-insensitive. (NotNull)
          * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<WebSea> byName(String name) {
+        public static OptionalThing<AppSea> byName(String name) {
             if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
             return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
                 throw new ClassificationNotFoundException("Unknown classification name: " + name);
@@ -120,9 +120,9 @@ public interface AppCDef extends Classification {
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
          * @deprecated use of()
          */
-        public static WebSea codeOf(Object code) {
+        public static AppSea codeOf(Object code) {
             if (code == null) { return null; }
-            if (code instanceof WebSea) { return (WebSea)code; }
+            if (code instanceof AppSea) { return (AppSea)code; }
             return _codeClsMap.get(code.toString().toLowerCase());
         }
 
@@ -132,7 +132,7 @@ public interface AppCDef extends Classification {
          * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          */
-        public static WebSea nameOf(String name) {
+        public static AppSea nameOf(String name) {
             if (name == null) { return null; }
             try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
         }
@@ -141,8 +141,8 @@ public interface AppCDef extends Classification {
          * Get the list of all classification elements. (returns new copied list)
          * @return The snapshot list of all classification elements. (NotNull)
          */
-        public static List<WebSea> listAll() {
-            return new ArrayList<WebSea>(Arrays.asList(values()));
+        public static List<AppSea> listAll() {
+            return new ArrayList<AppSea>(Arrays.asList(values()));
         }
 
         /**
@@ -150,11 +150,11 @@ public interface AppCDef extends Classification {
          * @param groupName The string of group name, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
          */
-        public static List<WebSea> listByGroup(String groupName) {
+        public static List<AppSea> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
             if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
             if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }
-            throw new ClassificationNotFoundException("Unknown classification group: WebSea." + groupName);
+            throw new ClassificationNotFoundException("Unknown classification group: AppSea." + groupName);
         }
 
         /**
@@ -162,9 +162,9 @@ public interface AppCDef extends Classification {
          * @param codeList The list of plain code, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          */
-        public static List<WebSea> listOf(Collection<String> codeList) {
+        public static List<AppSea> listOf(Collection<String> codeList) {
             if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
-            List<WebSea> clsList = new ArrayList<WebSea>(codeList.size());
+            List<AppSea> clsList = new ArrayList<AppSea>(codeList.size());
             for (String code : codeList) { clsList.add(of(code).get()); }
             return clsList;
         }
@@ -175,8 +175,8 @@ public interface AppCDef extends Classification {
          * The group elements:[Formalized, Provisional]
          * @return The snapshot list of classification elements in the group. (NotNull)
          */
-        public static List<WebSea> listOfServiceAvailable() {
-            return new ArrayList<WebSea>(Arrays.asList(Formalized, Provisional));
+        public static List<AppSea> listOfServiceAvailable() {
+            return new ArrayList<AppSea>(Arrays.asList(Formalized, Provisional));
         }
 
         /**
@@ -185,8 +185,8 @@ public interface AppCDef extends Classification {
          * The group elements:[Provisional]
          * @return The snapshot list of classification elements in the group. (NotNull)
          */
-        public static List<WebSea> listOfShortOfFormalized() {
-            return new ArrayList<WebSea>(Arrays.asList(Provisional));
+        public static List<AppSea> listOfShortOfFormalized() {
+            return new ArrayList<AppSea>(Arrays.asList(Provisional));
         }
 
         /**
@@ -194,20 +194,20 @@ public interface AppCDef extends Classification {
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
-        public static List<WebSea> groupOf(String groupName) {
+        public static List<AppSea> groupOf(String groupName) {
             if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
             if ("shortOfFormalized".equals(groupName)) { return listOfShortOfFormalized(); }
-            return new ArrayList<WebSea>(4);
+            return new ArrayList<AppSea>(4);
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty) 
+         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
-        public static OptionalThing<WebSea> fromDBCls(CDef.MemberStatus dbCls) {
+        public static OptionalThing<AppSea> fromDBCls(CDef.MemberStatus dbCls) {
             String dbCode = dbCls != null ? dbCls.code() : null;
             return OptionalThing.ofNullable(codeOf(dbCode), () -> {
-                throw new IllegalStateException("Cannot convert CDef.MemberStatus to WebSea by the DB code: " + dbCode);
+                throw new IllegalStateException("Cannot convert CDef.MemberStatus to AppSea by the DB code: " + dbCode);
             });
         }
 
@@ -217,7 +217,7 @@ public interface AppCDef extends Classification {
         public OptionalThing<CDef.MemberStatus> toDBCls() {
             String appCode = code();
             return OptionalThing.ofNullable(CDef.MemberStatus.codeOf(appCode), () -> {
-                throw new IllegalStateException("Cannot convert WebSea to MemberStatus by the app code: " + appCode);
+                throw new IllegalStateException("Cannot convert AppSea to MemberStatus by the app code: " + appCode);
             });
         }
 
@@ -227,17 +227,17 @@ public interface AppCDef extends Classification {
     /**
      * Land Cls
      */
-    public enum WebLand implements AppCDef {
+    public enum AppLand implements AppCDef {
         /** ShowBase: Formalized */
         OneMan("FML", "ShowBase", emptyStrings())
         ,
         /** Orlean: Withdrawal */
         MiniO("WDL", "Orlean", emptyStrings())
         ;
-        private static final Map<String, WebLand> _codeClsMap = new HashMap<String, WebLand>();
-        private static final Map<String, WebLand> _nameClsMap = new HashMap<String, WebLand>();
+        private static final Map<String, AppLand> _codeClsMap = new HashMap<String, AppLand>();
+        private static final Map<String, AppLand> _nameClsMap = new HashMap<String, AppLand>();
         static {
-            for (WebLand value : values()) {
+            for (AppLand value : values()) {
                 _codeClsMap.put(value.code().toLowerCase(), value);
                 for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
             }
@@ -256,12 +256,12 @@ public interface AppCDef extends Classification {
             }
         }
         private String _code; private String _alias; private Set<String> _sisterSet;
-        private WebLand(String code, String alias, String[] sisters)
+        private AppLand(String code, String alias, String[] sisters)
         { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
         public String code() { return _code; } public String alias() { return _alias; }
         public Set<String> sisterSet() { return _sisterSet; }
         public Map<String, Object> subItemMap() { return _subItemMapMap.get(code()); }
-        public ClassificationMeta meta() { return AppCDef.DefMeta.WebLand; }
+        public ClassificationMeta meta() { return AppCDef.DefMeta.AppLand; }
 
         public String keyword() {
             return (String)subItemMap().get("keyword");
@@ -276,9 +276,9 @@ public interface AppCDef extends Classification {
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
          * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<WebLand> of(Object code) {
+        public static OptionalThing<AppLand> of(Object code) {
             if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
-            if (code instanceof WebLand) { return OptionalThing.of((WebLand)code); }
+            if (code instanceof AppLand) { return OptionalThing.of((AppLand)code); }
             if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
             return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
                 throw new ClassificationNotFoundException("Unknown classification code: " + code);
@@ -290,7 +290,7 @@ public interface AppCDef extends Classification {
          * @param name The string of name, which is case-insensitive. (NotNull)
          * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<WebLand> byName(String name) {
+        public static OptionalThing<AppLand> byName(String name) {
             if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
             return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
                 throw new ClassificationNotFoundException("Unknown classification name: " + name);
@@ -304,9 +304,9 @@ public interface AppCDef extends Classification {
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
          * @deprecated use of()
          */
-        public static WebLand codeOf(Object code) {
+        public static AppLand codeOf(Object code) {
             if (code == null) { return null; }
-            if (code instanceof WebLand) { return (WebLand)code; }
+            if (code instanceof AppLand) { return (AppLand)code; }
             return _codeClsMap.get(code.toString().toLowerCase());
         }
 
@@ -316,7 +316,7 @@ public interface AppCDef extends Classification {
          * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          */
-        public static WebLand nameOf(String name) {
+        public static AppLand nameOf(String name) {
             if (name == null) { return null; }
             try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
         }
@@ -325,8 +325,8 @@ public interface AppCDef extends Classification {
          * Get the list of all classification elements. (returns new copied list)
          * @return The snapshot list of all classification elements. (NotNull)
          */
-        public static List<WebLand> listAll() {
-            return new ArrayList<WebLand>(Arrays.asList(values()));
+        public static List<AppLand> listAll() {
+            return new ArrayList<AppLand>(Arrays.asList(values()));
         }
 
         /**
@@ -334,9 +334,9 @@ public interface AppCDef extends Classification {
          * @param groupName The string of group name, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
          */
-        public static List<WebLand> listByGroup(String groupName) {
+        public static List<AppLand> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
-            throw new ClassificationNotFoundException("Unknown classification group: WebLand." + groupName);
+            throw new ClassificationNotFoundException("Unknown classification group: AppLand." + groupName);
         }
 
         /**
@@ -344,9 +344,9 @@ public interface AppCDef extends Classification {
          * @param codeList The list of plain code, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          */
-        public static List<WebLand> listOf(Collection<String> codeList) {
+        public static List<AppLand> listOf(Collection<String> codeList) {
             if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
-            List<WebLand> clsList = new ArrayList<WebLand>(codeList.size());
+            List<AppLand> clsList = new ArrayList<AppLand>(codeList.size());
             for (String code : codeList) { clsList.add(of(code).get()); }
             return clsList;
         }
@@ -356,18 +356,18 @@ public interface AppCDef extends Classification {
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
-        public static List<WebLand> groupOf(String groupName) {
-            return new ArrayList<WebLand>(4);
+        public static List<AppLand> groupOf(String groupName) {
+            return new ArrayList<AppLand>(4);
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty) 
+         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
-        public static OptionalThing<WebLand> fromDBCls(CDef.MemberStatus dbCls) {
+        public static OptionalThing<AppLand> fromDBCls(CDef.MemberStatus dbCls) {
             String dbCode = dbCls != null ? dbCls.code() : null;
             return OptionalThing.ofNullable(codeOf(dbCode), () -> {
-                throw new IllegalStateException("Cannot convert CDef.MemberStatus to WebLand by the DB code: " + dbCode);
+                throw new IllegalStateException("Cannot convert CDef.MemberStatus to AppLand by the DB code: " + dbCode);
             });
         }
 
@@ -377,7 +377,7 @@ public interface AppCDef extends Classification {
         public OptionalThing<CDef.MemberStatus> toDBCls() {
             String appCode = code();
             return OptionalThing.ofNullable(CDef.MemberStatus.codeOf(appCode), () -> {
-                throw new IllegalStateException("Cannot convert WebLand to MemberStatus by the app code: " + appCode);
+                throw new IllegalStateException("Cannot convert AppLand to MemberStatus by the app code: " + appCode);
             });
         }
 
@@ -387,7 +387,7 @@ public interface AppCDef extends Classification {
     /**
      * Piari Cls
      */
-    public enum WebPiari implements AppCDef {
+    public enum AppPiari implements AppCDef {
         /** ShowBase: Formalized */
         OneMan("FML", "ShowBase", emptyStrings())
         ,
@@ -397,21 +397,21 @@ public interface AppCDef extends Classification {
         /** Orlean: Withdrawal */
         MiniO("WDL", "Orlean", emptyStrings())
         ;
-        private static final Map<String, WebPiari> _codeClsMap = new HashMap<String, WebPiari>();
-        private static final Map<String, WebPiari> _nameClsMap = new HashMap<String, WebPiari>();
+        private static final Map<String, AppPiari> _codeClsMap = new HashMap<String, AppPiari>();
+        private static final Map<String, AppPiari> _nameClsMap = new HashMap<String, AppPiari>();
         static {
-            for (WebPiari value : values()) {
+            for (AppPiari value : values()) {
                 _codeClsMap.put(value.code().toLowerCase(), value);
                 for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
             }
         }
         private String _code; private String _alias; private Set<String> _sisterSet;
-        private WebPiari(String code, String alias, String[] sisters)
+        private AppPiari(String code, String alias, String[] sisters)
         { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
         public String code() { return _code; } public String alias() { return _alias; }
         public Set<String> sisterSet() { return _sisterSet; }
         public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
-        public ClassificationMeta meta() { return AppCDef.DefMeta.WebPiari; }
+        public ClassificationMeta meta() { return AppCDef.DefMeta.AppPiari; }
 
         public boolean inGroup(String groupName) {
             return false;
@@ -422,9 +422,9 @@ public interface AppCDef extends Classification {
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
          * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<WebPiari> of(Object code) {
+        public static OptionalThing<AppPiari> of(Object code) {
             if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
-            if (code instanceof WebPiari) { return OptionalThing.of((WebPiari)code); }
+            if (code instanceof AppPiari) { return OptionalThing.of((AppPiari)code); }
             if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
             return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
                 throw new ClassificationNotFoundException("Unknown classification code: " + code);
@@ -436,7 +436,7 @@ public interface AppCDef extends Classification {
          * @param name The string of name, which is case-insensitive. (NotNull)
          * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<WebPiari> byName(String name) {
+        public static OptionalThing<AppPiari> byName(String name) {
             if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
             return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
                 throw new ClassificationNotFoundException("Unknown classification name: " + name);
@@ -450,9 +450,9 @@ public interface AppCDef extends Classification {
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
          * @deprecated use of()
          */
-        public static WebPiari codeOf(Object code) {
+        public static AppPiari codeOf(Object code) {
             if (code == null) { return null; }
-            if (code instanceof WebPiari) { return (WebPiari)code; }
+            if (code instanceof AppPiari) { return (AppPiari)code; }
             return _codeClsMap.get(code.toString().toLowerCase());
         }
 
@@ -462,7 +462,7 @@ public interface AppCDef extends Classification {
          * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          */
-        public static WebPiari nameOf(String name) {
+        public static AppPiari nameOf(String name) {
             if (name == null) { return null; }
             try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
         }
@@ -471,8 +471,8 @@ public interface AppCDef extends Classification {
          * Get the list of all classification elements. (returns new copied list)
          * @return The snapshot list of all classification elements. (NotNull)
          */
-        public static List<WebPiari> listAll() {
-            return new ArrayList<WebPiari>(Arrays.asList(values()));
+        public static List<AppPiari> listAll() {
+            return new ArrayList<AppPiari>(Arrays.asList(values()));
         }
 
         /**
@@ -480,9 +480,9 @@ public interface AppCDef extends Classification {
          * @param groupName The string of group name, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
          */
-        public static List<WebPiari> listByGroup(String groupName) {
+        public static List<AppPiari> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
-            throw new ClassificationNotFoundException("Unknown classification group: WebPiari." + groupName);
+            throw new ClassificationNotFoundException("Unknown classification group: AppPiari." + groupName);
         }
 
         /**
@@ -490,9 +490,9 @@ public interface AppCDef extends Classification {
          * @param codeList The list of plain code, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          */
-        public static List<WebPiari> listOf(Collection<String> codeList) {
+        public static List<AppPiari> listOf(Collection<String> codeList) {
             if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
-            List<WebPiari> clsList = new ArrayList<WebPiari>(codeList.size());
+            List<AppPiari> clsList = new ArrayList<AppPiari>(codeList.size());
             for (String code : codeList) { clsList.add(of(code).get()); }
             return clsList;
         }
@@ -502,18 +502,18 @@ public interface AppCDef extends Classification {
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
-        public static List<WebPiari> groupOf(String groupName) {
-            return new ArrayList<WebPiari>(4);
+        public static List<AppPiari> groupOf(String groupName) {
+            return new ArrayList<AppPiari>(4);
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty) 
+         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
-        public static OptionalThing<WebPiari> fromDBCls(CDef.MemberStatus dbCls) {
+        public static OptionalThing<AppPiari> fromDBCls(CDef.MemberStatus dbCls) {
             String dbCode = dbCls != null ? dbCls.code() : null;
             return OptionalThing.ofNullable(codeOf(dbCode), () -> {
-                throw new IllegalStateException("Cannot convert CDef.MemberStatus to WebPiari by the DB code: " + dbCode);
+                throw new IllegalStateException("Cannot convert CDef.MemberStatus to AppPiari by the DB code: " + dbCode);
             });
         }
 
@@ -523,7 +523,7 @@ public interface AppCDef extends Classification {
         public OptionalThing<CDef.MemberStatus> toDBCls() {
             String appCode = code();
             return OptionalThing.ofNullable(CDef.MemberStatus.codeOf(appCode), () -> {
-                throw new IllegalStateException("Cannot convert WebPiari to MemberStatus by the app code: " + appCode);
+                throw new IllegalStateException("Cannot convert AppPiari to MemberStatus by the app code: " + appCode);
             });
         }
 
@@ -533,7 +533,7 @@ public interface AppCDef extends Classification {
     /**
      * Piari Cls
      */
-    public enum WebBonvo implements AppCDef {
+    public enum AppBonvo implements AppCDef {
         /** ShowBase: Formalized */
         OneMan("FML", "ShowBase", emptyStrings())
         ,
@@ -543,21 +543,21 @@ public interface AppCDef extends Classification {
         /** Orlean: Withdrawal */
         MiniO("WDL", "Orlean", emptyStrings())
         ;
-        private static final Map<String, WebBonvo> _codeClsMap = new HashMap<String, WebBonvo>();
-        private static final Map<String, WebBonvo> _nameClsMap = new HashMap<String, WebBonvo>();
+        private static final Map<String, AppBonvo> _codeClsMap = new HashMap<String, AppBonvo>();
+        private static final Map<String, AppBonvo> _nameClsMap = new HashMap<String, AppBonvo>();
         static {
-            for (WebBonvo value : values()) {
+            for (AppBonvo value : values()) {
                 _codeClsMap.put(value.code().toLowerCase(), value);
                 for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
             }
         }
         private String _code; private String _alias; private Set<String> _sisterSet;
-        private WebBonvo(String code, String alias, String[] sisters)
+        private AppBonvo(String code, String alias, String[] sisters)
         { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
         public String code() { return _code; } public String alias() { return _alias; }
         public Set<String> sisterSet() { return _sisterSet; }
         public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
-        public ClassificationMeta meta() { return AppCDef.DefMeta.WebBonvo; }
+        public ClassificationMeta meta() { return AppCDef.DefMeta.AppBonvo; }
 
         /**
          * Is the classification in the group? <br>
@@ -579,9 +579,9 @@ public interface AppCDef extends Classification {
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
          * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<WebBonvo> of(Object code) {
+        public static OptionalThing<AppBonvo> of(Object code) {
             if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
-            if (code instanceof WebBonvo) { return OptionalThing.of((WebBonvo)code); }
+            if (code instanceof AppBonvo) { return OptionalThing.of((AppBonvo)code); }
             if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
             return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
                 throw new ClassificationNotFoundException("Unknown classification code: " + code);
@@ -593,7 +593,7 @@ public interface AppCDef extends Classification {
          * @param name The string of name, which is case-insensitive. (NotNull)
          * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<WebBonvo> byName(String name) {
+        public static OptionalThing<AppBonvo> byName(String name) {
             if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
             return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
                 throw new ClassificationNotFoundException("Unknown classification name: " + name);
@@ -607,9 +607,9 @@ public interface AppCDef extends Classification {
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
          * @deprecated use of()
          */
-        public static WebBonvo codeOf(Object code) {
+        public static AppBonvo codeOf(Object code) {
             if (code == null) { return null; }
-            if (code instanceof WebBonvo) { return (WebBonvo)code; }
+            if (code instanceof AppBonvo) { return (AppBonvo)code; }
             return _codeClsMap.get(code.toString().toLowerCase());
         }
 
@@ -619,7 +619,7 @@ public interface AppCDef extends Classification {
          * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          */
-        public static WebBonvo nameOf(String name) {
+        public static AppBonvo nameOf(String name) {
             if (name == null) { return null; }
             try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
         }
@@ -628,8 +628,8 @@ public interface AppCDef extends Classification {
          * Get the list of all classification elements. (returns new copied list)
          * @return The snapshot list of all classification elements. (NotNull)
          */
-        public static List<WebBonvo> listAll() {
-            return new ArrayList<WebBonvo>(Arrays.asList(values()));
+        public static List<AppBonvo> listAll() {
+            return new ArrayList<AppBonvo>(Arrays.asList(values()));
         }
 
         /**
@@ -637,10 +637,10 @@ public interface AppCDef extends Classification {
          * @param groupName The string of group name, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
          */
-        public static List<WebBonvo> listByGroup(String groupName) {
+        public static List<AppBonvo> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
             if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
-            throw new ClassificationNotFoundException("Unknown classification group: WebBonvo." + groupName);
+            throw new ClassificationNotFoundException("Unknown classification group: AppBonvo." + groupName);
         }
 
         /**
@@ -648,9 +648,9 @@ public interface AppCDef extends Classification {
          * @param codeList The list of plain code, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          */
-        public static List<WebBonvo> listOf(Collection<String> codeList) {
+        public static List<AppBonvo> listOf(Collection<String> codeList) {
             if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
-            List<WebBonvo> clsList = new ArrayList<WebBonvo>(codeList.size());
+            List<AppBonvo> clsList = new ArrayList<AppBonvo>(codeList.size());
             for (String code : codeList) { clsList.add(of(code).get()); }
             return clsList;
         }
@@ -661,8 +661,8 @@ public interface AppCDef extends Classification {
          * The group elements:[OneMan, Dstore]
          * @return The snapshot list of classification elements in the group. (NotNull)
          */
-        public static List<WebBonvo> listOfServiceAvailable() {
-            return new ArrayList<WebBonvo>(Arrays.asList(OneMan, Dstore));
+        public static List<AppBonvo> listOfServiceAvailable() {
+            return new ArrayList<AppBonvo>(Arrays.asList(OneMan, Dstore));
         }
 
         /**
@@ -670,9 +670,9 @@ public interface AppCDef extends Classification {
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
-        public static List<WebBonvo> groupOf(String groupName) {
+        public static List<AppBonvo> groupOf(String groupName) {
             if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
-            return new ArrayList<WebBonvo>(4);
+            return new ArrayList<AppBonvo>(4);
         }
 
         @Override public String toString() { return code(); }
@@ -680,82 +680,82 @@ public interface AppCDef extends Classification {
 
     public enum DefMeta implements ClassificationMeta {
         /** Sea Cls */
-        WebSea
+        AppSea
         ,
         /** Land Cls */
-        WebLand
+        AppLand
         ,
         /** Piari Cls */
-        WebPiari
+        AppPiari
         ,
         /** Piari Cls */
-        WebBonvo
+        AppBonvo
         ;
         public String classificationName() {
             return name(); // same as definition name
         }
 
         public OptionalThing<? extends Classification> of(Object code) {
-            if (WebSea.name().equals(name())) { return AppCDef.WebSea.of(code); }
-            if (WebLand.name().equals(name())) { return AppCDef.WebLand.of(code); }
-            if (WebPiari.name().equals(name())) { return AppCDef.WebPiari.of(code); }
-            if (WebBonvo.name().equals(name())) { return AppCDef.WebBonvo.of(code); }
+            if (AppSea.name().equals(name())) { return AppCDef.AppSea.of(code); }
+            if (AppLand.name().equals(name())) { return AppCDef.AppLand.of(code); }
+            if (AppPiari.name().equals(name())) { return AppCDef.AppPiari.of(code); }
+            if (AppBonvo.name().equals(name())) { return AppCDef.AppBonvo.of(code); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
         public OptionalThing<? extends Classification> byName(String name) {
-            if (WebSea.name().equals(name())) { return AppCDef.WebSea.byName(name); }
-            if (WebLand.name().equals(name())) { return AppCDef.WebLand.byName(name); }
-            if (WebPiari.name().equals(name())) { return AppCDef.WebPiari.byName(name); }
-            if (WebBonvo.name().equals(name())) { return AppCDef.WebBonvo.byName(name); }
+            if (AppSea.name().equals(name())) { return AppCDef.AppSea.byName(name); }
+            if (AppLand.name().equals(name())) { return AppCDef.AppLand.byName(name); }
+            if (AppPiari.name().equals(name())) { return AppCDef.AppPiari.byName(name); }
+            if (AppBonvo.name().equals(name())) { return AppCDef.AppBonvo.byName(name); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
         public Classification codeOf(Object code) { // null if not found, old style so use classificationOf(code)
-            if (WebSea.name().equals(name())) { return AppCDef.WebSea.codeOf(code); }
-            if (WebLand.name().equals(name())) { return AppCDef.WebLand.codeOf(code); }
-            if (WebPiari.name().equals(name())) { return AppCDef.WebPiari.codeOf(code); }
-            if (WebBonvo.name().equals(name())) { return AppCDef.WebBonvo.codeOf(code); }
+            if (AppSea.name().equals(name())) { return AppCDef.AppSea.codeOf(code); }
+            if (AppLand.name().equals(name())) { return AppCDef.AppLand.codeOf(code); }
+            if (AppPiari.name().equals(name())) { return AppCDef.AppPiari.codeOf(code); }
+            if (AppBonvo.name().equals(name())) { return AppCDef.AppBonvo.codeOf(code); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
         public Classification nameOf(String name) { // null if not found, old style so use classificationByName(name)
-            if (WebSea.name().equals(name())) { return AppCDef.WebSea.valueOf(name); }
-            if (WebLand.name().equals(name())) { return AppCDef.WebLand.valueOf(name); }
-            if (WebPiari.name().equals(name())) { return AppCDef.WebPiari.valueOf(name); }
-            if (WebBonvo.name().equals(name())) { return AppCDef.WebBonvo.valueOf(name); }
+            if (AppSea.name().equals(name())) { return AppCDef.AppSea.valueOf(name); }
+            if (AppLand.name().equals(name())) { return AppCDef.AppLand.valueOf(name); }
+            if (AppPiari.name().equals(name())) { return AppCDef.AppPiari.valueOf(name); }
+            if (AppBonvo.name().equals(name())) { return AppCDef.AppBonvo.valueOf(name); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
         public List<Classification> listAll() {
-            if (WebSea.name().equals(name())) { return toClsList(AppCDef.WebSea.listAll()); }
-            if (WebLand.name().equals(name())) { return toClsList(AppCDef.WebLand.listAll()); }
-            if (WebPiari.name().equals(name())) { return toClsList(AppCDef.WebPiari.listAll()); }
-            if (WebBonvo.name().equals(name())) { return toClsList(AppCDef.WebBonvo.listAll()); }
+            if (AppSea.name().equals(name())) { return toClsList(AppCDef.AppSea.listAll()); }
+            if (AppLand.name().equals(name())) { return toClsList(AppCDef.AppLand.listAll()); }
+            if (AppPiari.name().equals(name())) { return toClsList(AppCDef.AppPiari.listAll()); }
+            if (AppBonvo.name().equals(name())) { return toClsList(AppCDef.AppBonvo.listAll()); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
         public List<Classification> listByGroup(String groupName) { // exception if not found
-            if (WebSea.name().equals(name())) { return toClsList(AppCDef.WebSea.listByGroup(groupName)); }
-            if (WebLand.name().equals(name())) { return toClsList(AppCDef.WebLand.listByGroup(groupName)); }
-            if (WebPiari.name().equals(name())) { return toClsList(AppCDef.WebPiari.listByGroup(groupName)); }
-            if (WebBonvo.name().equals(name())) { return toClsList(AppCDef.WebBonvo.listByGroup(groupName)); }
+            if (AppSea.name().equals(name())) { return toClsList(AppCDef.AppSea.listByGroup(groupName)); }
+            if (AppLand.name().equals(name())) { return toClsList(AppCDef.AppLand.listByGroup(groupName)); }
+            if (AppPiari.name().equals(name())) { return toClsList(AppCDef.AppPiari.listByGroup(groupName)); }
+            if (AppBonvo.name().equals(name())) { return toClsList(AppCDef.AppBonvo.listByGroup(groupName)); }
             throw new IllegalStateException("Unknown groupName: " + groupName + ", " + this); // basically unreachable
         }
 
         public List<Classification> listOf(Collection<String> codeList) {
-            if (WebSea.name().equals(name())) { return toClsList(AppCDef.WebSea.listOf(codeList)); }
-            if (WebLand.name().equals(name())) { return toClsList(AppCDef.WebLand.listOf(codeList)); }
-            if (WebPiari.name().equals(name())) { return toClsList(AppCDef.WebPiari.listOf(codeList)); }
-            if (WebBonvo.name().equals(name())) { return toClsList(AppCDef.WebBonvo.listOf(codeList)); }
+            if (AppSea.name().equals(name())) { return toClsList(AppCDef.AppSea.listOf(codeList)); }
+            if (AppLand.name().equals(name())) { return toClsList(AppCDef.AppLand.listOf(codeList)); }
+            if (AppPiari.name().equals(name())) { return toClsList(AppCDef.AppPiari.listOf(codeList)); }
+            if (AppBonvo.name().equals(name())) { return toClsList(AppCDef.AppBonvo.listOf(codeList)); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
         public List<Classification> groupOf(String groupName) { // old style
-            if (WebSea.name().equals(name())) { return toClsList(AppCDef.WebSea.groupOf(groupName)); }
-            if (WebLand.name().equals(name())) { return toClsList(AppCDef.WebLand.groupOf(groupName)); }
-            if (WebPiari.name().equals(name())) { return toClsList(AppCDef.WebPiari.groupOf(groupName)); }
-            if (WebBonvo.name().equals(name())) { return toClsList(AppCDef.WebBonvo.groupOf(groupName)); }
+            if (AppSea.name().equals(name())) { return toClsList(AppCDef.AppSea.groupOf(groupName)); }
+            if (AppLand.name().equals(name())) { return toClsList(AppCDef.AppLand.groupOf(groupName)); }
+            if (AppPiari.name().equals(name())) { return toClsList(AppCDef.AppPiari.groupOf(groupName)); }
+            if (AppBonvo.name().equals(name())) { return toClsList(AppCDef.AppBonvo.groupOf(groupName)); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -765,27 +765,27 @@ public interface AppCDef extends Classification {
         }
 
         public ClassificationCodeType codeType() {
-            if (WebSea.name().equals(name())) { return ClassificationCodeType.String; }
-            if (WebLand.name().equals(name())) { return ClassificationCodeType.String; }
-            if (WebPiari.name().equals(name())) { return ClassificationCodeType.String; }
-            if (WebBonvo.name().equals(name())) { return ClassificationCodeType.String; }
+            if (AppSea.name().equals(name())) { return ClassificationCodeType.String; }
+            if (AppLand.name().equals(name())) { return ClassificationCodeType.String; }
+            if (AppPiari.name().equals(name())) { return ClassificationCodeType.String; }
+            if (AppBonvo.name().equals(name())) { return ClassificationCodeType.String; }
             return ClassificationCodeType.String; // as default
         }
 
         public ClassificationUndefinedHandlingType undefinedHandlingType() {
-            if (WebSea.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
-            if (WebLand.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
-            if (WebPiari.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
-            if (WebBonvo.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
+            if (AppSea.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
+            if (AppLand.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
+            if (AppPiari.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
+            if (AppBonvo.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
             return ClassificationUndefinedHandlingType.LOGGING; // as default
         }
 
         public static OptionalThing<AppCDef.DefMeta> find(String classificationName) { // instead of valueOf()
             if (classificationName == null) { throw new IllegalArgumentException("The argument 'classificationName' should not be null."); }
-            if (WebSea.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.WebSea); }
-            if (WebLand.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.WebLand); }
-            if (WebPiari.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.WebPiari); }
-            if (WebBonvo.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.WebBonvo); }
+            if (AppSea.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.AppSea); }
+            if (AppLand.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.AppLand); }
+            if (AppPiari.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.AppPiari); }
+            if (AppBonvo.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(AppCDef.DefMeta.AppBonvo); }
             return OptionalThing.ofNullable(null, () -> {
                 throw new ClassificationNotFoundException("Unknown classification: " + classificationName);
             });
@@ -793,10 +793,10 @@ public interface AppCDef extends Classification {
 
         public static AppCDef.DefMeta meta(String classificationName) { // old style so use find(name)
             if (classificationName == null) { throw new IllegalArgumentException("The argument 'classificationName' should not be null."); }
-            if (WebSea.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.WebSea; }
-            if (WebLand.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.WebLand; }
-            if (WebPiari.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.WebPiari; }
-            if (WebBonvo.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.WebBonvo; }
+            if (AppSea.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.AppSea; }
+            if (AppLand.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.AppLand; }
+            if (AppPiari.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.AppPiari; }
+            if (AppBonvo.name().equalsIgnoreCase(classificationName)) { return AppCDef.DefMeta.AppBonvo; }
             throw new IllegalStateException("Unknown classification: " + classificationName);
         }
 

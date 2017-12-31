@@ -5685,18 +5685,7 @@
       "simpleTypeName": "WxRequestFormAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "logger",
-          "typeName": "org.slf4j.Logger",
-          "simpleTypeName": "Logger",
-          "value": null,
-          "description": null,
-          "comment": null,
-          "annotationList": [],
-          "nestTypeDocMetaList": []
-        }
-      ],
+      "fieldTypeDocMetaList": [],
       "methodName": "index",
       "methodComment": null,
       "annotationList": [
@@ -5806,7 +5795,7 @@
           }
         ]
       },
-      "fileLineCount": 9,
+      "fileLineCount": 8,
       "methodLineCount": 4
     },
     {
@@ -5815,18 +5804,7 @@
       "simpleTypeName": "WxRequestFormAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "logger",
-          "typeName": "org.slf4j.Logger",
-          "simpleTypeName": "Logger",
-          "value": null,
-          "description": null,
-          "comment": null,
-          "annotationList": [],
-          "nestTypeDocMetaList": []
-        }
-      ],
+      "fieldTypeDocMetaList": [],
       "methodName": "eccolle",
       "methodComment": null,
       "annotationList": [
@@ -5882,6 +5860,48 @@
             "comment": null,
             "annotationList": [],
             "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstore",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.request.form.WxRequestFormAction$MyEcColleForm$MyDStorePart\u003e",
+            "simpleTypeName": "ImmutableList\u003cMyDStorePart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": [
+              {
+                "name": "walt",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "amba",
+            "typeName": "org.eclipse.collections.api.list.MutableList\u003corg.docksidestage.app.web.wx.request.form.WxRequestFormAction$MyEcColleForm$MyAmbaPart\u003e",
+            "simpleTypeName": "MutableList\u003cMyAmbaPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": [
+              {
+                "name": "chef",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
           }
         ]
       },
@@ -5933,11 +5953,53 @@
             "comment": null,
             "annotationList": [],
             "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstore",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.request.form.WxRequestFormAction$MyEcColleForm$MyDStorePart\u003e",
+            "simpleTypeName": "ImmutableList\u003cMyDStorePart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": [
+              {
+                "name": "walt",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "amba",
+            "typeName": "org.eclipse.collections.api.list.MutableList\u003corg.docksidestage.app.web.wx.request.form.WxRequestFormAction$MyEcColleForm$MyAmbaPart\u003e",
+            "simpleTypeName": "MutableList\u003cMyAmbaPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": [
+              {
+                "name": "chef",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
           }
         ]
       },
-      "fileLineCount": 9,
-      "methodLineCount": 9
+      "fileLineCount": 8,
+      "methodLineCount": 4
     },
     {
       "url": "/wx/request/json/body/",
@@ -14405,6 +14467,106 @@
         "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeAction$MaihamaBean\u003e",
         "simpleTypeName": "JsonResponse\u003cWxRoutingRestlikeAction$MaihamaBean\u003e",
         "value": "asJson(new MaihamaBean(\"POST\", first, second, form)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "form",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 17,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/restlike/{first}/next/{second}/nextnext/{third}",
+      "typeName": "org.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeAction",
+      "simpleTypeName": "WxRoutingRestlikeAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "get$nextNextnext",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d{}/@word/{}/@word/{}}"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "third",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.restlike.WxRoutingRestlikeAction$MaihamaBean\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxRoutingRestlikeAction$MaihamaBean\u003e",
+        "value": "asJson(new MaihamaBean(\"GET\", first, second + \" :: \" + third)",
         "description": null,
         "comment": null,
         "annotationList": [],

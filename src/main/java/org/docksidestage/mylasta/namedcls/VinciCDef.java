@@ -201,7 +201,7 @@ public interface VinciCDef extends Classification {
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty) 
+         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
         public static OptionalThing<DaSea> fromDBCls(CDef.MemberStatus dbCls) {
@@ -361,7 +361,7 @@ public interface VinciCDef extends Classification {
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty) 
+         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
         public static OptionalThing<DaLand> fromDBCls(CDef.MemberStatus dbCls) {
@@ -507,7 +507,7 @@ public interface VinciCDef extends Classification {
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty) 
+         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
         public static OptionalThing<DaPiari> fromDBCls(CDef.MemberStatus dbCls) {
