@@ -342,9 +342,24 @@ function processRemoteApiBhv(rule, request, exBehaviorMap) {
  */
 function processRemoteApiDoc(rule, request, exBehaviorMap) {
     var doc = new java.util.LinkedHashMap();
+    doc.scheme = scriptEngine.invokeMethod(rule, 'scheme', request);
+    doc.schemePackage = scriptEngine.invokeMethod(rule, 'schemePackage', doc.scheme);
     doc.exBehaviorMap = exBehaviorMap;
     var remoteApiDocHtml = generate('./remoteapi/doc/RemoteApiDocHtml.vm', null, doc, true);
-    var lastaDocHtmlPath = java.nio.file.Paths.get('./output/doc/lastadoc-fortress.html');
-    var lastaDocHtml = Java.type('java.lang.String').join('\n', java.nio.file.Files.readAllLines(lastaDocHtmlPath));
-    java.nio.file.Files.write(lastaDocHtmlPath, lastaDocHtml.replace('<!-- df:endFreeGenDoc -->', remoteApiDocHtml + '\n<!-- df:endFreeGenDoc -->').getBytes());
+    var lastaDocHtmlPathList = manager.getLastaDocHtmlPathList();
+    var markNaviLink = manager.getLastaDocHtmlMarkFreeGenDocNaviLink();
+    var markBody = manager.getLastaDocHtmlMarkFreeGenDocBody();
+    var naviLinkHtml = '    | <a href="#remoteapi">to remoteapi</a>';
+    var naviLinkDestinationHtml = '<span id="remoteapi"></span>';
+    for (var lastaDocHtmlPathIndex in lastaDocHtmlPathList) {
+        var lastaDocHtmlPath = java.nio.file.Paths.get(lastaDocHtmlPathList[lastaDocHtmlPathIndex]);
+        var lastaDocHtml = Java.type('java.lang.String').join('\n', java.nio.file.Files.readAllLines(lastaDocHtmlPath));
+        if (!lastaDocHtml.contains(naviLinkHtml)) {
+            lastaDocHtml = lastaDocHtml.replace(markNaviLink, naviLinkHtml + '\n' + markNaviLink);
+        }
+        if (!lastaDocHtml.contains(naviLinkDestinationHtml)) {
+            remoteApiDocHtml = naviLinkDestinationHtml + remoteApiDocHtml;
+        }
+        java.nio.file.Files.write(lastaDocHtmlPath, lastaDocHtml.replace(markBody, remoteApiDocHtml + '\n' + markBody).getBytes());
+    }
 }

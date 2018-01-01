@@ -15,7 +15,7 @@
 ##
 #if ($data.exBehaviorMap && $data.exBehaviorMap.size() > 0)
 #set ($rule = $scriptEngine.get('remoteApiRule'))
-<h2 id="rempteapi">rempteapi</h2>
+<h2 id="rempteapi">rempteapi ($data.scheme)</h2>
 <table>
     <thead>
     <tr>

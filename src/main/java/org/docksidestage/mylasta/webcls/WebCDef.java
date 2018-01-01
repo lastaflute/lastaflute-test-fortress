@@ -559,7 +559,18 @@ public interface WebCDef extends Classification {
         public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
         public ClassificationMeta meta() { return WebCDef.DefMeta.WebBonvo; }
 
+        /**
+         * Is the classification in the group? <br>
+         * can login <br>
+         * The group elements:[OneMan, Dstore]
+         * @return The determination, true or false.
+         */
+        public boolean isServiceAvailable() {
+            return OneMan.equals(this) || Dstore.equals(this);
+        }
+
         public boolean inGroup(String groupName) {
+            if ("serviceAvailable".equals(groupName)) { return isServiceAvailable(); }
             return false;
         }
 
@@ -628,6 +639,7 @@ public interface WebCDef extends Classification {
          */
         public static List<WebBonvo> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
             throw new ClassificationNotFoundException("Unknown classification group: WebBonvo." + groupName);
         }
 
@@ -644,11 +656,22 @@ public interface WebCDef extends Classification {
         }
 
         /**
+         * Get the list of group classification elements. (returns new copied list) <br>
+         * can login <br>
+         * The group elements:[OneMan, Dstore]
+         * @return The snapshot list of classification elements in the group. (NotNull)
+         */
+        public static List<WebBonvo> listOfServiceAvailable() {
+            return new ArrayList<WebBonvo>(Arrays.asList(OneMan, Dstore));
+        }
+
+        /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<WebBonvo> groupOf(String groupName) {
+            if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
             return new ArrayList<WebBonvo>(4);
         }
 
