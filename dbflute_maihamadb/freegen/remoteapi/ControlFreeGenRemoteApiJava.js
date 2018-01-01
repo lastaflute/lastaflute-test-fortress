@@ -168,6 +168,7 @@ function process(request) {
     }
     processRemoteApiBean(rule, remoteApiBeanList);
     processRemoteApiBhv(rule, request, exBehaviorMap);
+    processRemoteApiDoc(rule, request, exBehaviorMap);
 }
 
 /**
@@ -178,11 +179,15 @@ function process(request) {
  * @param {boolean} overwite - overwite (NotNull)
  */
 function generate(src, dest, data, overwite) {
+    if (dest === null) {
+        return generator.parse(src, dest, 'data', data);
+    }
     if (!java.nio.file.Files.exists(java.nio.file.Paths.get(generator.outputPath, dest)) || overwite) {
         manager.makeDirectory(dest);
-        generator.parse(src, dest, 'data', data);
         print('generate("' + dest + '")');
+        return generator.parse(src, dest, 'data', data);
     }
+    return '';
 }
 
 /**
@@ -204,8 +209,8 @@ function createRemoteApiBean(rule, beanPurposeType, api, properties) {
     remoteApiBean.api = api;
     remoteApiBean.package = package;
     remoteApiBean.className = scriptEngine.invokeMethod(rule, beanPurposeType + 'ClassName', api, false);
-    remoteApiBean.extendsClass = rule[beanPurposeType + 'ExtendsClass'];
-    remoteApiBean.implementsClasses = rule[beanPurposeType + 'ImplementsClasses'];
+    remoteApiBean.extendsClass = scriptEngine.invokeMethod(rule, beanPurposeType + 'ExtendsClass', api, properties);
+    remoteApiBean.implementsClasses = scriptEngine.invokeMethod(rule, beanPurposeType + 'ImplementsClasses', api, properties);
     remoteApiBean.properties = properties;
     remoteApiBean.beanPurposeType = beanPurposeType;
     remoteApiBean.remoteApiExp = api.httpMethod.toUpperCase() + ' ' + api.url;
@@ -327,4 +332,19 @@ function processRemoteApiBhv(rule, request, exBehaviorMap) {
         var path = scriptEngine.invokeMethod(rule, 'diconPath', scheme, request.resourceFile);
         generate('./remoteapi/container/seasar/RemoteApiDicon.vm', path, container, true);
     }
+}
+
+/**
+ * Process remote api doc.
+ * @param {Rule} rule - rule. (NotNull)
+ * @param {Request} request - request (NotNull)
+ * @param {ExBehaviorMap} exBehaviorMap - The map of behavior information. (NotNull)
+ */
+function processRemoteApiDoc(rule, request, exBehaviorMap) {
+    var doc = new java.util.LinkedHashMap();
+    doc.exBehaviorMap = exBehaviorMap;
+    var remoteApiDocHtml = generate('./remoteapi/doc/RemoteApiDocHtml.vm', null, doc, true);
+    var lastaDocHtmlPath = java.nio.file.Paths.get('./output/doc/lastadoc-fortress.html');
+    var lastaDocHtml = Java.type('java.lang.String').join('\n', java.nio.file.Files.readAllLines(lastaDocHtmlPath));
+    java.nio.file.Files.write(lastaDocHtmlPath, lastaDocHtml.replace('<!-- df:endFreeGenDoc -->', remoteApiDocHtml + '\n<!-- df:endFreeGenDoc -->').getBytes());
 }
