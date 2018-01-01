@@ -72,6 +72,7 @@ public class WxRmharborViaActionTest extends UnitFortressWebTestCase {
         // ## Act ##
         // ## Assert ##
         // nested mock headache for now, and this test may fail if harbor is active
+        // (while, if harbor is booting, remote request is success so test fails) 
         assertException(RemoteApiIOException.class, () -> action.mypage());
     }
 }
