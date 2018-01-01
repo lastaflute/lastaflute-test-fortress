@@ -267,6 +267,12 @@ $manager.makeDirectory($request.generateDirPath)
       #generate("./kvs/allcommon/cache/KvsCacheColumnNullObject.vm", $path)
     #end
   #end
+  #set ($scriptEngine = $manager.createJavaScriptEngine())
+  $scriptEngine.put('scriptEngine', $scriptEngine)
+  $scriptEngine.put('generator', $generator)
+  $scriptEngine.put('manager', $manager)
+  $scriptEngine.eval('load("./freegen/kvs/ControlFreeGenKvsJava.js");')
+  $scriptEngine.invokeFunction('process', $request)
 #end
 #end
 
