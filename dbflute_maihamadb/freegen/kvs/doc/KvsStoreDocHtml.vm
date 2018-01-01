@@ -13,29 +13,21 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-#if ($data.exBehaviorMap && $data.exBehaviorMap.size() > 0)
-#set ($rule = $scriptEngine.get('remoteApiRule'))
-<h2 id="rempteapi-$data.scheme">rempteapi ($data.scheme)</h2>
+#if ($request.tableList && $request.tableList.size() > 0)
+<h2 id="kvsstore-${tableMap.schema}">kvsstore (${tableMap.schema})</h2>
 <table>
     <thead>
     <tr>
         <th>No.</th>
-        <th>URL</th>
-        <th>Http Method</th>
-        <th>class#method</th>
+        <th>class</th>
     </tr>
     </thead>
-    <tbody id="rempteapi-$data.scheme-list-body">
-#foreach($exBehavior in $data.exBehaviorMap.values())
-#foreach($method in $exBehavior.bsBehavior.methodList)
+    <tbody id="kvsstore-${tableMap.schema}-list-body">
+#foreach ($table in $request.tableList)
     <tr>
         <td class="rowcellnum">${foreach.count}</td>
-        <td class="rowcell">$method.api.url</td>
-        <td class="rowcell">$method.api.httpMethod</td>
-#set ($behaviorRequestMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRequestMethodName', $method.api))
-        <td class="rowcell">${exBehavior.className}#$behaviorRequestMethodName</td>
+        <td class="rowcell">Kvs$!{tableMap.schemaPrefix}${table.camelizedName}Bhv</td>
     </tr>
-#end
 #end
     </tbody>
 </table>
