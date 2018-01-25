@@ -35,7 +35,7 @@ public class SigninAction extends FortressBaseAction {
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private FortressLoginAssist fortressLoginAssist;
+    private FortressLoginAssist loginAssist;
 
     // ===================================================================================
     //                                                                             Execute
@@ -45,7 +45,7 @@ public class SigninAction extends FortressBaseAction {
         if (getUserBean().isPresent()) {
             return redirect(MypageAction.class);
         }
-        return asHtml(path_Signin_SigninHtml).useForm(SigninForm.class);
+        return asHtml(path_Signin_SigninHtml);
     }
 
     @Execute
@@ -55,14 +55,14 @@ public class SigninAction extends FortressBaseAction {
             return asHtml(path_Signin_SigninHtml);
         });
         UserPasswordCredential credential = createCredential(form);
-        return fortressLoginAssist.loginRedirect(credential, op -> op.rememberMe(form.rememberMe), () -> {
+        return loginAssist.loginRedirect(credential, op -> op.rememberMe(form.rememberMe), () -> {
             return redirect(MypageAction.class);
         });
     }
 
     private void moreValidate(SigninForm form, FortressMessages messages) {
         if (LaStringUtil.isNotEmpty(form.account) && LaStringUtil.isNotEmpty(form.password)) {
-            if (!fortressLoginAssist.checkUserLoginable(createCredential(form))) {
+            if (!loginAssist.checkUserLoginable(createCredential(form))) {
                 messages.addErrorsLoginFailure("account");
             }
         }
