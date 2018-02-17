@@ -3538,7 +3538,7 @@
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
         {
-          "name": "fortressLoginAssist",
+          "name": "loginAssist",
           "typeName": "org.docksidestage.app.web.base.login.FortressLoginAssist",
           "simpleTypeName": "FortressLoginAssist",
           "value": null,
@@ -3578,7 +3578,7 @@
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
         {
-          "name": "fortressLoginAssist",
+          "name": "loginAssist",
           "typeName": "org.docksidestage.app.web.base.login.FortressLoginAssist",
           "simpleTypeName": "FortressLoginAssist",
           "value": null,
@@ -3645,7 +3645,7 @@
         "name": null,
         "typeName": "org.lastaflute.web.response.HtmlResponse",
         "simpleTypeName": "HtmlResponse",
-        "value": "asHtml(path_Signin_SigninHtml),fortressLoginAssist.loginRedirect(credential, op -\u003e op.rememberMe(form.rememberMe),redirect(MypageAction.class)",
+        "value": "asHtml(path_Signin_SigninHtml),loginAssist.loginRedirect(credential, op -\u003e op.rememberMe(form.rememberMe),redirect(MypageAction.class)",
         "description": null,
         "comment": null,
         "annotationList": [],
