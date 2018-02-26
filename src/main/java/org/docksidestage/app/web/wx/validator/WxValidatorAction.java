@@ -76,7 +76,7 @@ public class WxValidatorAction extends FortressBaseAction {
     //  => 400 bad request
     @Execute
     public HtmlResponse index(WxValidatorForm form) {
-        logger.debug("#type_failure Properties: {}", form.toString());
+        logger.debug("#type_failure Properties: {}", form);
         validate(form, messages -> {}, () -> {
             return asHtml(path_WxValidator_WxValidatorListHtml);
         });
