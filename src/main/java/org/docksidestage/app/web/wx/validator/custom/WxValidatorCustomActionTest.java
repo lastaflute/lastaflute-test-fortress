@@ -22,7 +22,7 @@ import org.docksidestage.unit.UnitFortressWebTestCase;
  */
 public class WxValidatorCustomActionTest extends UnitFortressWebTestCase {
 
-    public void test_index_validationError() {
+    public void test_index_validationError_parameterResolved() {
         // ## Arrange ##
         WxValidatorCustomAction action = new WxValidatorCustomAction();
         inject(action);
@@ -33,8 +33,7 @@ public class WxValidatorCustomActionTest extends UnitFortressWebTestCase {
         // ## Act ##
         // ## Assert ##
         assertValidationError(() -> action.index(form)).handle(data -> {
-            // #thinking why {min} and {max}?
-            //data.requiredMessageOfDirectly("sea", "between 4 and 9");
+            data.requiredMessageOfDirectly("sea", "between 4 and 9");
             data.requiredMessageOfDirectly("land", "between 4 and 15");
         });
     }

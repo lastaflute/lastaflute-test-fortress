@@ -46,7 +46,7 @@ public class WxValidatorCustomAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/validator/custom?land=one
     @Execute
     public JsonResponse<Void> index(WxValidatorCustomForm form) {
-        logger.debug("#type_failure Properties: {}", form);
+        logger.debug("form properties: {}", form);
         validateApi(form, messages -> {});
         return JsonResponse.asEmptyBody();
     }
