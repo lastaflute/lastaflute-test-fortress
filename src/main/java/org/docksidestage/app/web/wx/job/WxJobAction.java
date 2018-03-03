@@ -43,11 +43,12 @@ public class WxJobAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    // http://localhost:8151/fortress/wx/job/sea/hangar
+    // http://localhost:8151/fortress/wx/job/sea/hangar/mystic
+    // http://localhost:8151/fortress/wx/job/sea/showbase/oneman
     @Execute
-    public JsonResponse<Void> sea(String first) {
-        jobManager.findJobByUniqueOf(LaJobUnique.of("mystic")).alwaysPresent(sea -> {
-            sea.launchNow(op -> op.param("stage", first));
+    public JsonResponse<Void> sea(String stage, String jobUnique) {
+        jobManager.findJobByUniqueOf(LaJobUnique.of(jobUnique)).alwaysPresent(job -> {
+            job.launchNow(op -> op.param("stage", stage));
         });
         return JsonResponse.asEmptyBody();
     }

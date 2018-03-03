@@ -27,6 +27,23 @@
       <maxHistory>${backup.max.history}</maxHistory>
     </rollingPolicy>
   </appender>
+  <appender name="jobuniquefile" class="ch.qos.logback.classic.sift.SiftingAppender"> <!-- log files per job -->
+    <discriminator class="org.docksidestage.bizfw.logback.LogbackJobUniqueDiscriminator">
+      <defaultValue>unknown</defaultValue> <!-- basically unused because of job unique filter -->
+    </discriminator>
+    <filter class="org.docksidestage.bizfw.logback.LogbackJobUniqueFilter" /> <!-- selects only job thread -->
+    <sift>
+      <appender name="job_${job.unique}_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log.file.basedir}/job_${domain.name}_${job.unique}.log</File>
+        <Append>true</Append>
+        <encoder><charset>${log.file.encoding}</charset><pattern>${log.pattern}</pattern></encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+          <fileNamePattern>${log.file.basedir}/backup/job_${domain.name}_${job.unique}${backup.date.suffix}.log</fileNamePattern>
+          <maxHistory>${backup.max.history}</maxHistory>
+        </rollingPolicy>
+      </appender>
+    </sift>
+  </appender>
   <appender name="errorfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <File>${log.file.basedir}/error_${domain.name}.log</File>
     <Append>true</Append>
@@ -66,16 +83,13 @@
   </appender>
 
   <logger name="org.dbflute" additivity="false" level="${log.level}">
-    <appender-ref ref="console"/><appender-ref ref="appfile"/><appender-ref ref="errorfile"/>
+    <appender-ref ref="console"/><appender-ref ref="appfile"/><appender-ref ref="jobuniquefile"/><appender-ref ref="errorfile"/>
   </logger>
   <logger name="org.lastaflute" additivity="false" level="${log.level}">
-    <appender-ref ref="console"/><appender-ref ref="appfile"/><appender-ref ref="errorfile"/>
+    <appender-ref ref="console"/><appender-ref ref="appfile"/><appender-ref ref="jobuniquefile"/><appender-ref ref="errorfile"/>
   </logger>
   <logger name="org.docksidestage" additivity="false" level="${log.level}">
-    <appender-ref ref="console"/><appender-ref ref="appfile"/><appender-ref ref="errorfile"/>
-  </logger>
-  <logger name="org.seasar.mayaa" additivity="false" level="${log.level}">
-    <appender-ref ref="console"/><appender-ref ref="appfile"/><appender-ref ref="errorfile"/>
+    <appender-ref ref="console"/><appender-ref ref="appfile"/><appender-ref ref="jobuniquefile"/><appender-ref ref="errorfile"/>
   </logger>
   <logger name="mailflute.sending" additivity="false" level="${log.level}">
     <appender-ref ref="mailfile"/>
