@@ -210,6 +210,15 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     //}
 
     // ===================================================================================
+    //                                                                       Error Logging
+    //                                                                       =============
+    @Override
+    public boolean isSuppressServerErrorLogging(Throwable cause) {
+        final String msg = cause.getMessage();
+        return msg != null && msg.contains("Broken pipe"); // also needs IOException determination?
+    }
+
+    // ===================================================================================
     //                                                                      Basic Override
     //                                                                      ==============
     @Override
