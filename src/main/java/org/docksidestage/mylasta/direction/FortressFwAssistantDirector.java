@@ -17,7 +17,6 @@ package org.docksidestage.mylasta.direction;
 
 import javax.annotation.Resource;
 
-import org.docksidestage.bizfw.thymeleaf.ThymeleafConfigProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressActionAdjustmentProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook;
 import org.docksidestage.mylasta.direction.sponsor.FortressCookieResourceProvider;
@@ -159,7 +158,8 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
 
     protected HtmlRenderingProvider createHtmlRenderingProvider() {
         return new ThymeleafRenderingProvider().asDevelopment(config.isDevelopmentHere()).additionalExpression(resource -> {
-            resource.registerProcessor("config", new ThymeleafConfigProvider(config));
+            // TODO jflute #thymeleaf3 resource.registerProcessor("config", new ThymeleafConfigProvider(config)) (2018/03/14)
+            //resource.registerProcessor("config", new ThymeleafConfigProvider(config));
         });
     }
 
