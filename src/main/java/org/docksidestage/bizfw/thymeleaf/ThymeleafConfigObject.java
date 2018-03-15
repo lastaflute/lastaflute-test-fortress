@@ -20,11 +20,11 @@ import org.docksidestage.mylasta.direction.FortressConfig;
 /**
  * @author jflute
  */
-public class ThymeleafConfigProvider {
+public class ThymeleafConfigObject {
 
     protected final FortressConfig config; // not null
 
-    public ThymeleafConfigProvider(FortressConfig config) {
+    public ThymeleafConfigObject(FortressConfig config) {
         this.config = config;
     }
 

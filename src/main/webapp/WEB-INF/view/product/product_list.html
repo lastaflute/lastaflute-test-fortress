@@ -39,6 +39,12 @@
 		<h3 class="content-title-second" th:text="#{labels.search.condition}">labels.search.condition</h3>
 		<form class="product-search-form" th:action="@{/product/list/}" action="#" method="get">
 			<ul class="product-search-condition-list">
+			
+	<!-- #trying -->
+     <select>
+       <option th:each="cdef : ${#cls.listAll('MemberStatus')}" th:value="${cdef.code()}" th:text="${cdef.alias()}"></option>
+     </select>
+
 				<li>
 					<span th:text="#{labels.productName}">labels.productName</span>
 					<input type="text" la:property="productName"/>
