@@ -21,6 +21,7 @@ import javax.validation.ConstraintViolation;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.logic.i18n.I18nDateLogic;
+import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.docksidestage.mylasta.action.FortressHtmlPath;
 import org.docksidestage.mylasta.action.FortressMessages;
@@ -65,6 +66,8 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     private AccessContextLogic accessContextLogic;
     @Resource
     private I18nDateLogic i18nDateLogic;
+    @Resource
+    private CsrfTokenAssist csrfTokenAssist;
 
     // ===================================================================================
     //                                                                          Validation
@@ -103,6 +106,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // #app_customize you can customize the action hook
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
+        csrfTokenAssist.hookBefore(runtime);
         return super.hookBefore(runtime);
     }
 
@@ -113,6 +117,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
                 return new FortressHeaderBean(userBean);
             }).orElse(FortressHeaderBean.empty()));
         }
+        csrfTokenAssist.hookFinally(runtime);
         super.hookFinally(runtime);
     }
 
