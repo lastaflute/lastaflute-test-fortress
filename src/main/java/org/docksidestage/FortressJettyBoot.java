@@ -24,7 +24,7 @@ public class FortressJettyBoot { // #change_it_first
 
     public static final String CONTEXT = "/fortress";
 
-    public static void main(String[] args) { // e.g. java -Dlasta.env=production -jar fortress.war
+    public static void main(String[] args) { // e.g. java -Dlasta.env=production -jar lastaflute-test-fortress.war
         JettyBoot boot = new JettyBoot(8151, CONTEXT);
         boot.asDevelopment(isDevelopment());
         boot.useMetaInfoResourceDetect().useWebFragmentsDetect(jarName -> { // both for swagger
