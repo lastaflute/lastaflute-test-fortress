@@ -62,6 +62,8 @@ public class CsrfTokenAssist {
     //                                                                        Hook Finally
     //                                                                        ============
     public void hookFinally(ActionRuntime runtime) {
+        // LastaThymeleaf does not support automatic CSRF parameter yet
+        // so it needs to register here and needs to define hidden field manually
         if (runtime.isForwardToHtml()) {
             csrfManager.getSavedToken().alwaysPresent(token -> { // for server-side HTML
                 runtime.registerData(csrfManager.getTokenParameterName(), token);
