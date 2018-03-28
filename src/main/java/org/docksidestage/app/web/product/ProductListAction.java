@@ -44,26 +44,6 @@ public class ProductListAction extends FortressBaseAction {
     @Resource
     private PagingAssist pagingAssist;
 
-    public boolean xxxxx() {
-        return isBehaviorCalledFromTest();
-    }
-
-    protected boolean isBehaviorCalledFromTest() {
-        final StackTraceElement[] stackTraces = new Exception().getStackTrace();
-        String previousClassName = null;
-        for (StackTraceElement element : stackTraces) {
-            String currentClassName = element.getClassName();
-            System.out.println("@@@: " + currentClassName);
-            if (previousClassName != null) {
-                if (previousClassName.endsWith("Bhv") && currentClassName.endsWith("Test")) {
-                    return true;
-                }
-            }
-            previousClassName = currentClassName;
-        }
-        return false;
-    }
-
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
