@@ -170,7 +170,7 @@ table.child, table.child td, table.child th {
 <p class="sisterneighborlink"><a href="./schema-maihamadb.html">to SchemaHTML</a></p>
 
 <p class="sisterneighborlink">
-    <a href="#lastadoc_action">to action(155)</a>
+    <a href="#lastadoc_action">to action(156)</a>
     | <a href="#lastadoc_job">to job(6)</a>
     | <a href="#lastadoc_mail">to mail(7)</a>
     | <a href="#lastadoc_template">to template(4)</a>
@@ -893,7 +893,7 @@ table.child, table.child td, table.child th {
     </tr>
     <tr>
         <td class="rowcellnum">49</td>
-        <td class="rowcell"><a href="#.wx.job.sea._b_first_e_::sea">/wx/job/sea/{first}</a></td>
+        <td class="rowcell"><a href="#.wx.job.sea._b_stage_e_._b_jobUnique_e_::sea">/wx/job/sea/{stage}/{jobUnique}</a></td>
         <td class="rowcell">@author&nbsp;jflute</td>
         <td class="rowcell"><span title="org.docksidestage.app.web.wx.job.WxJobAction">WxJobAction</span>#sea()</td>
         <td class="rowcell">
@@ -902,7 +902,7 @@ table.child, table.child td, table.child th {
             <span title="org.lastaflute.web.response.JsonResponse&lt;java.lang.Void&gt;">JsonResponse&lt;Void&gt;</span>
         </td>
         <td class="rowcellnum">3</td>
-        <td class="rowcellnum">31</td>
+        <td class="rowcellnum">32</td>
         <td class="rowcellnum">6</td>
     </tr>
     <tr>
@@ -916,7 +916,7 @@ table.child, table.child td, table.child th {
             <span title="org.lastaflute.web.response.JsonResponse&lt;java.lang.Void&gt;">JsonResponse&lt;Void&gt;</span>
         </td>
         <td class="rowcellnum">3</td>
-        <td class="rowcellnum">31</td>
+        <td class="rowcellnum">32</td>
         <td class="rowcellnum">6</td>
     </tr>
     <tr>
@@ -2418,6 +2418,21 @@ table.child, table.child td, table.child th {
         <td class="rowcellnum">4</td>
         <td class="rowcellnum">1</td>
         <td class="rowcellnum">6</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">156</td>
+        <td class="rowcell"><a href="#.wx.validator.custom.::index">/wx/validator/custom/</a></td>
+        <td class="rowcell">@author&nbsp;jflute</td>
+        <td class="rowcell"><span title="org.docksidestage.app.web.wx.validator.custom.WxValidatorCustomAction">WxValidatorCustomAction</span>#index()</td>
+        <td class="rowcell">
+            <span title="org.docksidestage.app.web.wx.validator.custom.WxValidatorCustomForm">WxValidatorCustomForm</span>
+        </td>
+        <td class="rowcell">
+            <span title="org.lastaflute.web.response.JsonResponse&lt;java.lang.Void&gt;">JsonResponse&lt;Void&gt;</span>
+        </td>
+        <td class="rowcellnum">1</td>
+        <td class="rowcellnum">25</td>
+        <td class="rowcellnum">5</td>
     </tr>
     </tbody>
 </table>
@@ -5176,8 +5191,8 @@ table.child, table.child td, table.child th {
 <span class="doctitle">Return as:</span> <span class="docsubvalue"><span title="org.lastaflute.web.response.JsonResponse&lt;java.lang.Void&gt;">JsonResponse&lt;Void&gt;</span></span>
 <p class="tablecomment" title=""></p>
 
-<h3 id=".wx.job.sea._b_first_e_::sea">
-/wx/job/sea/{first}
+<h3 id=".wx.job.sea._b_stage_e_._b_jobUnique_e_::sea">
+/wx/job/sea/{stage}/{jobUnique}
 </h3>
 <p>
 <span class="doctitle">Execute Method:</span> <span class="docmainvalue">org.docksidestage.app.web.wx.job.WxJobAction#sea()</span>
@@ -5201,7 +5216,18 @@ table.child, table.child td, table.child th {
     </thead>
     <tr>
         <td class="rowcellnum" rowspan="1">1</td>
-        <td>first</td>
+        <td>stage</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">2</td>
+        <td>jobUnique</td>
         <td><p title="java.lang.String">String</p></td>
         <td class="fieldcomment">
             <p title=""></p>
@@ -20775,6 +20801,59 @@ table.child, table.child td, table.child th {
     </tr>
 </table>
 
+<h3 id=".wx.validator.custom.::index">
+/wx/validator/custom/
+</h3>
+<p>
+<span class="doctitle">Execute Method:</span> <span class="docmainvalue">org.docksidestage.app.web.wx.validator.custom.WxValidatorCustomAction#index()</span>
+</p>
+<p class="docsubitem">
+<span class="docsubtitle">annotations:</span>
+<span class="docannotations docsubvalue">&#64;AllowAnyoneAccess</span>
+<span class="docannotations docsubvalue">&#64;Execute</span>
+</p>
+<p class="tablecomment" style="white-space:pre-wrap;">@author&nbsp;jflute</p>
+<span class="doctitle">Form or Body:</span> <span class="docsubvalue"><span title="org.docksidestage.app.web.wx.validator.custom.WxValidatorCustomForm">WxValidatorCustomForm</span></span>
+<p class="tablecomment" title="@author&nbsp;jflute">@author&nbsp;jflute</p>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+        <th>comment</th>
+        <th>annotations</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="1">1</td>
+        <td>sea</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;CustomSize{minKey=seaMin,&nbsp;maxKey=seaMax}
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">2</td>
+        <td>land</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Size{min=4,&nbsp;max=15}
+        </td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue"><span title="org.lastaflute.web.response.JsonResponse&lt;java.lang.Void&gt;">JsonResponse&lt;Void&gt;</span></span>
+<p class="tablecomment" title=""></p>
+
 
 <h2 id="lastadoc_job">job</h2>
 <table>
@@ -22062,6 +22141,49 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
 </table>
 
 <span id="lastadoc_namedcls"></span> <!-- only for id handling -->
+<h2 id="lastadoc_harbor_cls">harbor_cls</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Classification</th>
+        <th>Type</th>
+        <th>Top Comment</th>
+        <th>Definition</th>
+    </tr>
+    </thead>
+    <tbody id="harbor_cls-list-body">
+    <tr>
+        <td>MemberStatus</td>
+        <td class="clstypecell"> implicit</td>
+        <td>Harbor's&nbsp;Member&nbsp;Status</td>
+        <td>
+            <table class="child">
+            <tr>
+                <th id="MemberStatusCls">Code</th>
+                <th>Name</th>
+                <th>Comment</th>
+            </tr>
+            <tr>
+                <td>FML</td>
+                <td>OneMan</td>
+                <td class="commentcell">Formalized</td>
+            </tr>
+            <tr>
+                <td>PRV</td>
+                <td>Dstore</td>
+                <td class="commentcell">Provisional</td>
+            </tr>
+            <tr>
+                <td>WDL</td>
+                <td>MiniO</td>
+                <td class="commentcell">Withdrawal</td>
+            </tr>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 <h2 id="lastadoc_leonardo_cls">leonardo_cls</h2>
 <table>
     <thead>
@@ -22252,49 +22374,6 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
             <table class="child">
             <tr>
                 <th id="DaPiariCls">Code</th>
-                <th>Name</th>
-                <th>Comment</th>
-            </tr>
-            <tr>
-                <td>FML</td>
-                <td>OneMan</td>
-                <td class="commentcell">Formalized</td>
-            </tr>
-            <tr>
-                <td>PRV</td>
-                <td>Dstore</td>
-                <td class="commentcell">Provisional</td>
-            </tr>
-            <tr>
-                <td>WDL</td>
-                <td>MiniO</td>
-                <td class="commentcell">Withdrawal</td>
-            </tr>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-<h2 id="lastadoc_harbor_cls">harbor_cls</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Classification</th>
-        <th>Type</th>
-        <th>Top Comment</th>
-        <th>Definition</th>
-    </tr>
-    </thead>
-    <tbody id="harbor_cls-list-body">
-    <tr>
-        <td>MemberStatus</td>
-        <td class="clstypecell"> implicit</td>
-        <td>Harbor's&nbsp;Member&nbsp;Status</td>
-        <td>
-            <table class="child">
-            <tr>
-                <th id="MemberStatusCls">Code</th>
                 <th>Name</th>
                 <th>Comment</th>
             </tr>

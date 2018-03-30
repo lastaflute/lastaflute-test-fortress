@@ -4810,7 +4810,7 @@
       "methodLineCount": 4
     },
     {
-      "url": "/wx/job/sea/{first}",
+      "url": "/wx/job/sea/{stage}/{jobUnique}",
       "typeName": "org.docksidestage.app.web.wx.job.WxJobAction",
       "simpleTypeName": "WxJobAction",
       "description": "@author jflute",
@@ -4861,7 +4861,17 @@
       ],
       "parameterTypeDocMetaList": [
         {
-          "name": "first",
+          "name": "stage",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "jobUnique",
           "typeName": "java.lang.String",
           "simpleTypeName": "String",
           "value": null,
@@ -4882,7 +4892,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 31,
+      "fileLineCount": 32,
       "methodLineCount": 6
     },
     {
@@ -4958,7 +4968,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 31,
+      "fileLineCount": 32,
       "methodLineCount": 6
     },
     {
@@ -19100,6 +19110,79 @@
       },
       "fileLineCount": 1,
       "methodLineCount": 6
+    },
+    {
+      "url": "/wx/validator/custom/",
+      "typeName": "org.docksidestage.app.web.wx.validator.custom.WxValidatorCustomAction",
+      "simpleTypeName": "WxValidatorCustomAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "typeName": "org.docksidestage.app.web.wx.validator.custom.WxValidatorCustomForm",
+        "simpleTypeName": "WxValidatorCustomForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "sea",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "CustomSize{minKey\u003dseaMin, maxKey\u003dseaMax}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Size{min\u003d4, max\u003d15}"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 25,
+      "methodLineCount": 5
     }
   ],
   "jobDocMetaList": [
