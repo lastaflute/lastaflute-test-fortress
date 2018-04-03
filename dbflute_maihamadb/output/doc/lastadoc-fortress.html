@@ -172,7 +172,7 @@ table.child, table.child td, table.child th {
 <p class="sisterneighborlink">
     <a href="#lastadoc_action">to action(156)</a>
     | <a href="#lastadoc_job">to job(6)</a>
-    | <a href="#lastadoc_mail">to mail(7)</a>
+    | <a href="#lastadoc_mail">to mail(8)</a>
     | <a href="#lastadoc_template">to template(4)</a>
     | <a href="#lastadoc_appcls">to appcls(4)</a>
     | <a href="#lastadoc_webcls">to webcls(4)</a>
@@ -21389,54 +21389,107 @@ ambaJob_6
     <tbody id="mail-list-body">
     <tr>
         <td class="rowcellnum">1</td>
+        <td class="rowcell"><a href="#member/unext_member.dfmail">member/unext_member.dfmail</a></td>
+        <td class="rowcell"><span title="org.docksidestage.mylasta.mail.UnextMemberPostcard">UnextMemberPostcard</span></td>
+        <td class="rowcell">新しい会員の登録時のメール</td>
+        <td class="rowcellnum">4</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">2</td>
         <td class="rowcell"><a href="#member/welcome_member.dfmail">member/welcome_member.dfmail</a></td>
         <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WelcomeMemberPostcard">WelcomeMemberPostcard</span></td>
         <td class="rowcell">New&nbsp;Member's&nbsp;Registration</td>
         <td class="rowcellnum">4</td>
     </tr>
     <tr>
-        <td class="rowcellnum">2</td>
+        <td class="rowcellnum">3</td>
         <td class="rowcell"><a href="#rootest_welcome_member.dfmail">rootest_welcome_member.dfmail</a></td>
         <td class="rowcell"><span title="org.docksidestage.mylasta.mail.RootestWelcomeMemberPostcard">RootestWelcomeMemberPostcard</span></td>
         <td class="rowcell">New&nbsp;Member's&nbsp;Registration</td>
         <td class="rowcellnum">2</td>
     </tr>
     <tr>
-        <td class="rowcellnum">3</td>
+        <td class="rowcellnum">4</td>
         <td class="rowcell"><a href="#whitebox/wx_loop_beans.dfmail">whitebox/wx_loop_beans.dfmail</a></td>
         <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxLoopBeansPostcard">WxLoopBeansPostcard</span></td>
         <td class="rowcell">Loop&nbsp;Beans&nbsp;Mail</td>
         <td class="rowcellnum">2</td>
     </tr>
     <tr>
-        <td class="rowcellnum">4</td>
+        <td class="rowcellnum">5</td>
         <td class="rowcell"><a href="#whitebox/wx_no_variable.dfmail">whitebox/wx_no_variable.dfmail</a></td>
         <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxNoVariablePostcard">WxNoVariablePostcard</span></td>
         <td class="rowcell">No&nbsp;Variable&nbsp;Mail</td>
         <td class="rowcellnum">0</td>
     </tr>
     <tr>
-        <td class="rowcellnum">5</td>
+        <td class="rowcellnum">6</td>
         <td class="rowcell"><a href="#whitebox/wx_orlse_variable.dfmail">whitebox/wx_orlse_variable.dfmail</a></td>
         <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxOrlseVariablePostcard">WxOrlseVariablePostcard</span></td>
         <td class="rowcell">orElse()&nbsp;mail</td>
         <td class="rowcellnum">2</td>
     </tr>
     <tr>
-        <td class="rowcellnum">6</td>
+        <td class="rowcellnum">7</td>
         <td class="rowcell"><a href="#whitebox/wx_remote_api.dfmail">whitebox/wx_remote_api.dfmail</a></td>
         <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxRemoteApiPostcard">WxRemoteApiPostcard</span></td>
         <td class="rowcell">Remote&nbsp;Api&nbsp;Mail</td>
         <td class="rowcellnum">1</td>
     </tr>
     <tr>
-        <td class="rowcellnum">7</td>
+        <td class="rowcellnum">8</td>
         <td class="rowcell"><a href="#whitebox/wx_using_entity_variable.dfmail">whitebox/wx_using_entity_variable.dfmail</a></td>
         <td class="rowcell"><span title="org.docksidestage.mylasta.mail.WxUsingEntityVariablePostcard">WxUsingEntityVariablePostcard</span></td>
         <td class="rowcell">Entity&nbsp;Variable&nbsp;Mail</td>
         <td class="rowcellnum">3</td>
     </tr>
     </tbody>
+</table>
+
+<h3 id="member/unext_member.dfmail">
+member/unext_member.dfmail
+</h3>
+<h4>
+新しい会員の登録時のメール
+</h4>
+<p>
+<span class="doctitle">Class:</span> <span class="docmainvalue">org.docksidestage.mylasta.mail.UnextMemberPostcard</span>
+</p>
+<p class="docsubitem">
+<span class="docsubtitle">hasOptionPlusHtml:</span>
+<span class="docannotations docsubvalue">false</span>
+</p>
+
+<p class="tablecomment" style="white-space:pre-wrap;"><br>&nbsp;[新しい会員の登録時のメール]<br>&nbsp;会員登録したら飛ぶ。正式会員になるためのリンクがある。<br></p>
+
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum">1</td>
+        <td>memberName</td>
+        <td>String</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">2</td>
+        <td>domain</td>
+        <td>String</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">3</td>
+        <td>account</td>
+        <td>String</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">4</td>
+        <td>token</td>
+        <td>String</td>
+    </tr>
 </table>
 
 <h3 id="member/welcome_member.dfmail">

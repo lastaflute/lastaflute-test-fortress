@@ -58,13 +58,13 @@ public class FortressMailDeliveryDepartmentCreator {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    protected final FortressConfig fortressConfig;
+    protected final FortressConfig config;
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public FortressMailDeliveryDepartmentCreator(FortressConfig fortressConfig) {
-        this.fortressConfig = fortressConfig;
+    public FortressMailDeliveryDepartmentCreator(FortressConfig config) {
+        this.config = config;
     }
 
     // ===================================================================================
@@ -80,10 +80,10 @@ public class FortressMailDeliveryDepartmentCreator {
     protected SMailPostalParkingLot createPostalParkingLot() {
         final SMailPostalParkingLot parkingLot = new SMailPostalParkingLot();
         final SMailPostalMotorbike motorbike = new SMailPostalMotorbike();
-        final String hostAndPort = fortressConfig.getMailSmtpServerMainHostAndPort();
+        final String hostAndPort = config.getMailSmtpServerMainHostAndPort();
         final List<String> hostPortList = DfStringUtil.splitListTrimmed(hostAndPort, ":");
         motorbike.registerConnectionInfo(hostPortList.get(0), Integer.parseInt(hostPortList.get(1)));
-        motorbike.registerReturnPath(fortressConfig.getMailReturnPath());
+        motorbike.registerReturnPath(config.getMailReturnPath());
         parkingLot.registerMotorbikeAsMain(motorbike);
         return parkingLot;
     }
@@ -93,11 +93,11 @@ public class FortressMailDeliveryDepartmentCreator {
     //                                      ----------------
     protected SMailPostalPersonnel createPostalPersonnel() {
         final SMailDogmaticPostalPersonnel personnel = newMailDogmaticPostalPersonnel();
-        return fortressConfig.isMailSendMock() ? personnel.asTraining() : personnel;
+        return config.isMailSendMock() ? personnel.asTraining() : personnel;
     }
 
     protected SMailDogmaticPostalPersonnel newMailDogmaticPostalPersonnel() { // #ext_point e.g. from database
-        final String testPrefix = fortressConfig.getMailSubjectTestPrefix();
+        final String testPrefix = config.getMailSubjectTestPrefix();
         final AsyncManager asyncManager = getAsyncManager();
         final MessageManager messageManager = getMessageManager();
         return new SMailDogmaticPostalPersonnel() {
