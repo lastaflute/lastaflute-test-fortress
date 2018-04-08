@@ -17,6 +17,8 @@ package org.docksidestage.whitebox.lastadi.extctx;
 
 import org.dbflute.utflute.core.PlainTestCase;
 import org.lastaflute.core.util.ContainerUtil;
+import org.lastaflute.di.core.ExternalContext;
+import org.lastaflute.di.core.factory.SingletonLaContainerFactory;
 import org.lastaflute.web.util.LaRequestUtil;
 import org.lastaflute.web.util.LaResponseUtil;
 
@@ -24,6 +26,21 @@ import org.lastaflute.web.util.LaResponseUtil;
  * @author jflute
  */
 public class WxExternalContextPlainTest extends PlainTestCase {
+
+    private ExternalContext originalContext; // saved, container may be cached
+
+    @Override
+    protected void setUp() throws Exception {
+        originalContext = SingletonLaContainerFactory.getExternalContext();
+        SingletonLaContainerFactory.setExternalContext(null);
+        super.setUp();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+        SingletonLaContainerFactory.setExternalContext(originalContext);
+    }
 
     public void test_ContainerUtil() throws Exception {
         assertFalse(ContainerUtil.hasExternalContext());
