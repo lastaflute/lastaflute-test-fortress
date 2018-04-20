@@ -1,12 +1,12 @@
 package org.docksidestage.app.web.wx.config;
 
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.response.JsonResponse;
 
 /**
  * @author jflute
  */
-public class WxConfigActionTest extends UnitFortressWebTestCase {
+public class WxConfigActionTest extends UnitFortressBasicTestCase {
 
     public void test_index() {
         // ## Arrange ##

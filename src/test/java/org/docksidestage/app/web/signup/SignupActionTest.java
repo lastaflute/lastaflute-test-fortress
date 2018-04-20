@@ -10,13 +10,13 @@ import org.docksidestage.dbflute.exentity.MemberLogin;
 import org.docksidestage.dbflute.exentity.MemberSecurity;
 import org.docksidestage.mylasta.action.FortressHtmlPath;
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.response.HtmlResponse;
 
 /**
  * @author jflute
  */
-public class SignupActionTest extends UnitFortressWebTestCase {
+public class SignupActionTest extends UnitFortressBasicTestCase {
 
     @Resource
     private MemberBhv memberBhv;

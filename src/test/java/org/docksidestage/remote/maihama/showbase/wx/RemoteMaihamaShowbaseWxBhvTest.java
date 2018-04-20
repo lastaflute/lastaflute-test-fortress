@@ -7,13 +7,13 @@ import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.piari.RemoteWxRemogenRoutingPiariReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.RemoteWxRemogenRoutingResolaReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * @author jflute
  */
-public class RemoteMaihamaShowbaseWxBhvTest extends UnitFortressWebTestCase {
+public class RemoteMaihamaShowbaseWxBhvTest extends UnitFortressBasicTestCase {
 
     @Resource
     private RequestManager requestManager;

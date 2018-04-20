@@ -17,13 +17,13 @@ package org.docksidestage.whitebox.cipher;
 
 import javax.annotation.Resource;
 
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.security.PrimaryCipher;
 
 /**
  * @author jflute
  */
-public class WxPrimaryCipherTest extends UnitFortressWebTestCase {
+public class WxPrimaryCipherTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

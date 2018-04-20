@@ -21,13 +21,13 @@ import javax.annotation.Resource;
 
 import org.dbflute.helper.mapstring.MapListString;
 import org.docksidestage.mylasta.template.bean.WxOrelseVariableTemplateBean;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.template.TemplateManager;
 
 /**
  * @author jflute
  */
-public class WxDfpmBasicTest extends UnitFortressWebTestCase {
+public class WxDfpmBasicTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

@@ -20,7 +20,7 @@ import org.dbflute.utflute.lastaflute.WebContainerTestCase;
 /**
  * Use like this:
  * <pre>
- * YourTest extends {@link UnitFortressWebTestCase} {
+ * YourTest extends {@link UnitFortressBasicTestCase} {
  * 
  *     public void test_yourMethod() {
  *         <span style="color: #3F7E5E">// ## Arrange ##</span>
@@ -37,5 +37,5 @@ import org.dbflute.utflute.lastaflute.WebContainerTestCase;
  * </pre>
  * @author jflute
  */
-public abstract class UnitFortressWebTestCase extends WebContainerTestCase {
+public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
 }

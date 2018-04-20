@@ -11,7 +11,7 @@ import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean;
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean.RestaurantBean;
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean.RestaurantBean.MenuBean;
 import org.docksidestage.mylasta.action.FortressMessages;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.constraints.Length;
@@ -21,7 +21,7 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class WxValidatorActionTest extends UnitFortressWebTestCase {
+public class WxValidatorActionTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                               Basic

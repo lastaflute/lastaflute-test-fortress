@@ -26,8 +26,8 @@ import org.lastaflute.web.util.LaResponseUtil;
 public class WxExternalContextJobTest extends UnitFortressJobTestCase {
 
     public void test_ContainerUtil() throws Exception {
-        assertFalse(ContainerUtil.hasExternalContext());
-        assertException(IllegalStateException.class, () -> ContainerUtil.retrieveExternalContext());
+        assertTrue(ContainerUtil.hasExternalContext());
+        assertNotNull(ContainerUtil.retrieveExternalContext());
     }
 
     public void test_RequestUtil() throws Exception {

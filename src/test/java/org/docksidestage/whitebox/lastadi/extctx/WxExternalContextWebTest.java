@@ -15,7 +15,7 @@
  */
 package org.docksidestage.whitebox.lastadi.extctx;
 
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.web.util.LaRequestUtil;
 import org.lastaflute.web.util.LaResponseUtil;
@@ -23,7 +23,7 @@ import org.lastaflute.web.util.LaResponseUtil;
 /**
  * @author jflute
  */
-public class WxExternalContextWebTest extends UnitFortressWebTestCase {
+public class WxExternalContextWebTest extends UnitFortressBasicTestCase {
 
     public void test_ContainerUtil() throws Exception {
         assertTrue(ContainerUtil.hasExternalContext());

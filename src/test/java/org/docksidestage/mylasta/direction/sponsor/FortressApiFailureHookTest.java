@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook.UnifiedFailureResult;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook.UnifiedFailureType;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.web.api.ApiFailureResource;
 import org.lastaflute.web.login.exception.LoginFailureException;
@@ -15,7 +15,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
 /**
  * @author jflute
  */
-public class FortressApiFailureHookTest extends UnitFortressWebTestCase {
+public class FortressApiFailureHookTest extends UnitFortressBasicTestCase {
 
     @Resource
     private RequestManager requestManager;

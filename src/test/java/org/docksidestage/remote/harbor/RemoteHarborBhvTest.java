@@ -7,14 +7,14 @@ import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
 import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class RemoteHarborBhvTest extends UnitFortressWebTestCase {
+public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
 
     @Resource
     private RequestManager requestManager;

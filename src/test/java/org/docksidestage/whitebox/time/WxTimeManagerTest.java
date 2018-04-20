@@ -23,13 +23,13 @@ import java.util.Date;
 import javax.annotation.Resource;
 
 import org.dbflute.system.DBFluteSystem;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.time.TimeManager;
 
 /**
  * @author jflute
  */
-public class WxTimeManagerTest extends UnitFortressWebTestCase {
+public class WxTimeManagerTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

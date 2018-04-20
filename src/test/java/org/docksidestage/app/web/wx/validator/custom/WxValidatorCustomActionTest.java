@@ -15,12 +15,12 @@
  */
 package org.docksidestage.app.web.wx.validator.custom;
 
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 
 /**
  * @author jflute
  */
-public class WxValidatorCustomActionTest extends UnitFortressWebTestCase {
+public class WxValidatorCustomActionTest extends UnitFortressBasicTestCase {
 
     public void test_index_validationError_parameterResolved() {
         // ## Arrange ##

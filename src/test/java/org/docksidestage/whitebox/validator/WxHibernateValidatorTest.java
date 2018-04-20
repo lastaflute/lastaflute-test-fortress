@@ -17,7 +17,7 @@ import javax.validation.valueextraction.ExtractedValue;
 import javax.validation.valueextraction.ValueExtractor;
 
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.docksidestage.whitebox.validator.WxHibernateValidatorTest.MaihamaListParadeBean.StageBean;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
@@ -28,7 +28,7 @@ import org.lastaflute.web.validation.VaValidListBean;
 /**
  * @author jflute
  */
-public class WxHibernateValidatorTest extends UnitFortressWebTestCase {
+public class WxHibernateValidatorTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                       Property Path
