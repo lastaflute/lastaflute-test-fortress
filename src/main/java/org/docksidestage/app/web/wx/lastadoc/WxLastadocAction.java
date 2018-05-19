@@ -21,6 +21,8 @@ import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 
 /**
+ * This is the first line of class java-doc. <br>
+ * And the second line is here.
  * @author jflute
  */
 @AllowAnyoneAccess

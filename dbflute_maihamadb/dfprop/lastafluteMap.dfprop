@@ -46,5 +46,15 @@ map:{
 
     # sychronized with reflection meta, it's trial
     ; isLastaDocMavenGeared = true
+
+    # you can adjust LastaDoc contents
+    ; lastaDocContentsMap = map:{
+        ; headerMap = map:{
+            #; isSuppressSchemaHtmlLink = true
+        }
+        ; actionMap = map:{
+            #; isSuppressDescriptionInList = true
+        }
+    }
 }
 # ----------------/
