@@ -54,6 +54,7 @@ map:{
         }
         ; actionMap = map:{
             #; isSuppressDescriptionInList = true
+            #; isSuppressAuthorInList = true
         }
     }
 }
