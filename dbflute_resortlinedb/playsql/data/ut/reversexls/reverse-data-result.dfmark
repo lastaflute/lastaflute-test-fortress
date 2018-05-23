@@ -1,0 +1,15 @@
+
+* * * * * * * * * * *
+*                   *
+* Load Data Reverse *
+*                   *
+* * * * * * * * * * *
+...Outputting load data: tables=1
+  isReplaceSchemaDirectUse = true
+  isOverrideExistingDataFile = false
+  isSynchronizeOriginDate = false
+
+[cyclic-data-01-misc.xls]: tables=1
+  station (0)
+
+Output Date: 2014/11/09 11:41:24

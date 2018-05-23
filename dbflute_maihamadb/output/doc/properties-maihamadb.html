@@ -217,7 +217,7 @@ table.child, table.child td, table.child th {
 			<td class="filecell"><strong>../src/main/resources/fortress_env.properties</strong></td>
 			<td class="envtypecell">-</td>
 			<td class="langtypecell">-</td>
-			<td class="sizecell">25</td>
+			<td class="sizecell">30</td>
 			<td>&nbsp;</td>
 			<td class="markcell">-</td>
 			<td class="markcell">-</td>
@@ -231,6 +231,11 @@ table.child, table.child td, table.child th {
 			<td>&nbsp;</td>
 			<td class="keylistcell">
 				<p class="diffprop">mail.address.support</p>
+				<p class="diffprop">resola.jdbc.driver</p>
+				<p class="diffprop">resola.jdbc.url</p>
+				<p class="diffprop">resola.jdbc.user</p>
+				<p class="diffprop">resola.jdbc.password</p>
+				<p class="diffprop">resola.jdbc.connection.pooling.size</p>
 			</td>
 		</tr>
 		<tr>
@@ -242,6 +247,11 @@ table.child, table.child td, table.child th {
 			<td>&nbsp;</td>
 			<td class="keylistcell">
 				<p class="diffprop">mail.address.support</p>
+				<p class="diffprop">resola.jdbc.driver</p>
+				<p class="diffprop">resola.jdbc.url</p>
+				<p class="diffprop">resola.jdbc.user</p>
+				<p class="diffprop">resola.jdbc.password</p>
+				<p class="diffprop">resola.jdbc.connection.pooling.size</p>
 			</td>
 		</tr>
 	</tbody>
@@ -997,6 +1007,116 @@ table.child, table.child td, table.child th {
 	</tr>
 	<tr>
 		<td class="rownumcell">19</td>
+		<td class="keycell">resola.jdbc.driver</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">com.mysql.jdbc.Driver</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;driver&nbsp;FQCN&nbsp;to&nbsp;connect&nbsp;database&nbsp;for&nbsp;JDBC</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">20</td>
+		<td class="keycell">resola.jdbc.url</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">jdbc:mysql://localhost:3306/resortlinedb</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;URL&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">21</td>
+		<td class="keycell">resola.jdbc.user</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">resortlinedb</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;user&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">22</td>
+		<td class="keycell">resola.jdbc.password</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">********</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">@Secure&nbsp;The&nbsp;password&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">23</td>
+		<td class="keycell">resola.jdbc.connection.pooling.size</td>
+		<td>
+			<table class="child">
+				<tr>
+					<th>Env</th>
+					<th>Lang</th>
+					<th>Property</th>
+					<th><span title="Unique No (same value, same No)">uq</span></th>
+					<th>Comment</th>
+				</tr>
+				<tr>
+					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">10</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;(max)&nbsp;pooling&nbsp;size&nbsp;of&nbsp;connection&nbsp;pool</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">24</td>
 		<td class="keycell">server.domain</td>
 		<td>
 			<table class="child">
@@ -1032,7 +1152,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">20</td>
+		<td class="rownumcell">25</td>
 		<td class="keycell">swagger.enabled</td>
 		<td>
 			<table class="child">
@@ -1068,7 +1188,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">21</td>
+		<td class="rownumcell">26</td>
 		<td class="keycell">tomcat.URIEncoding</td>
 		<td>
 			<table class="child">
@@ -1104,7 +1224,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">22</td>
+		<td class="rownumcell">27</td>
 		<td class="keycell">tomcat.useBodyEncodingForURI</td>
 		<td>
 			<table class="child">
@@ -1136,7 +1256,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">23</td>
+		<td class="rownumcell">28</td>
 		<td class="keycell">tomcat.log.home</td>
 		<td>
 			<table class="child">
@@ -1172,7 +1292,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">24</td>
+		<td class="rownumcell">29</td>
 		<td class="keycell">tomcat.accesslog.enabled</td>
 		<td>
 			<table class="child">
@@ -1208,7 +1328,7 @@ table.child, table.child td, table.child th {
 		</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">25</td>
+		<td class="rownumcell">30</td>
 		<td class="keycell">tomcat.accesslog.logDir</td>
 		<td>
 			<table class="child">

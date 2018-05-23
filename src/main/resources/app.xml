@@ -4,6 +4,7 @@
 <components>
 	<include path="convention.xml"/>
 	<include path="dbflute.xml"/>
+	<include path="dbflute-resola.xml"/>
 	<include path="lastaflute.xml"/>
 	<include path="lasta_job.xml"/>
 	<include path="remote_api.xml"/>

@@ -1,0 +1,91 @@
+map:{
+    ; 2018/05/23 15:04:14 = map:{
+        ; diffDate = 2018/05/23 15:04:14
+        ; diffAuthor = jflute
+        ; diffGitBranch = master
+        ; tableDiff = map:{
+            ; station = map:{
+                ; tableName = station
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; FORMALIZED_DATETIME = map:{
+                        ; columnName = FORMALIZED_DATETIME
+                        ; diffType = DELETE
+                    }
+                }
+            }
+        }
+    }
+    ; 2014/11/09 12:32:20 = map:{
+        ; diffDate = 2014/11/09 12:32:20
+        ; tableDiff = map:{
+            ; station = map:{
+                ; tableName = station
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; STATION_ID = map:{
+                        ; columnName = STATION_ID
+                        ; diffType = CHANGE
+                        ; autoIncrementDiff = map:{
+                            ; next = false
+                            ; previous = true
+                        }
+                    }
+                    ; WORKING_KILOMETER = map:{
+                        ; columnName = WORKING_KILOMETER
+                        ; diffType = CHANGE
+                        ; columnSizeDiff = map:{
+                            ; next = 4, 2
+                            ; previous = 10
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ; 2014/11/09 11:49:54 = map:{
+        ; diffDate = 2014/11/09 11:49:54
+        ; tableDiff = map:{
+            ; station = map:{
+                ; tableName = station
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; HOME_COUNT = map:{
+                        ; columnName = HOME_COUNT
+                        ; diffType = ADD
+                    }
+                    ; WORKING_KILOMETER = map:{
+                        ; columnName = WORKING_KILOMETER
+                        ; diffType = ADD
+                    }
+                }
+            }
+        }
+    }
+    ; 2014/11/09 11:32:06 = map:{
+        ; diffDate = 2014/11/09 11:32:06
+        ; tableDiff = map:{
+            ; station = map:{
+                ; tableName = station
+                ; diffType = CHANGE
+                ; unifiedSchemaDiff = map:{
+                    ; next = resortlinedb
+                    ; previous = resordlinedb
+                }
+            }
+        }
+    }
+    ; 2014/11/09 11:20:59 = map:{
+        ; diffDate = 2014/11/09 11:20:59
+        ; tableDiff = map:{
+            ; station = map:{
+                ; tableName = station
+                ; diffType = ADD
+            }
+            ; STATION = map:{
+                ; tableName = STATION
+                ; diffType = DELETE
+            }
+        }
+    }
+}
