@@ -142,7 +142,12 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                       Action Response
     //                                       ---------------
-    protected static final ResponseReflectingOption responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
+    protected static final ResponseReflectingOption responseReflectingOption;
+    static {
+        // use this when you test validation as warning
+        //responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
+        responseReflectingOption = new ResponseReflectingOption();
+    }
 
     // ===================================================================================
     //                                                                             Routing
