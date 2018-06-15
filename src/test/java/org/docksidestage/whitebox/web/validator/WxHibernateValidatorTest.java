@@ -1,4 +1,4 @@
-package org.docksidestage.whitebox.validator;
+package org.docksidestage.whitebox.web.validator;
 
 import java.util.List;
 import java.util.Set;
@@ -18,7 +18,7 @@ import javax.validation.valueextraction.ValueExtractor;
 
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
-import org.docksidestage.whitebox.validator.WxHibernateValidatorTest.MaihamaListParadeBean.StageBean;
+import org.docksidestage.whitebox.web.validator.WxHibernateValidatorTest.MaihamaListParadeBean.StageBean;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.constraints.Length;

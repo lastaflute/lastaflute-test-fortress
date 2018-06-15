@@ -13,20 +13,21 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.whitebox.json;
+package org.docksidestage.whitebox.core.json;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.annotation.Resource;
 
 import org.docksidestage.unit.UnitFortressBasicTestCase;
-import org.eclipse.collections.api.list.ImmutableList;
-import org.eclipse.collections.impl.factory.Lists;
 import org.lastaflute.core.json.JsonManager;
-import org.lastaflute.web.validation.Required;
+import org.lastaflute.core.json.annotation.JsonDatePattern;
 
 /**
  * @author jflute
  */
-public class WxJsonYourCollectionsTest extends UnitFortressBasicTestCase {
+public class WxJsonFieldAnnotationTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -40,8 +41,10 @@ public class WxJsonYourCollectionsTest extends UnitFortressBasicTestCase {
     public void test_DatePattern_basic() {
         // ## Arrange ##
         MaihamaDateBean bean = new MaihamaDateBean();
-        bean.strList = Lists.immutable.of("sea", "land", "piari");
-        bean.intList = Lists.immutable.of(1, 2, 3);
+        bean.seaDate = LocalDate.of(2016, 10, 21);
+        bean.landDate = LocalDate.of(2016, 10, 22);
+        bean.piariDate = LocalDateTime.of(2016, 10, 23, 12, 34, 56);
+        bean.bonvoDate = LocalDateTime.of(2016, 10, 24, 23, 45, 51);
 
         // ## Act ##
         String json = jsonManager.toJson(bean);
@@ -49,17 +52,30 @@ public class WxJsonYourCollectionsTest extends UnitFortressBasicTestCase {
         MaihamaDateBean reversed = jsonManager.fromJson(json, MaihamaDateBean.class);
 
         // ## Assert ##
-        assertEquals(bean.strList, reversed.strList);
-        assertEquals(bean.intList, reversed.intList);
-        assertNull(bean.nullList);
+        assertContains(json, "2016/10/21");
+        assertContains(json, "2016-10-22");
+        assertContains(json, "2016/10/23 12:34:56");
+        assertContains(json, "2016-10-24T23:45:51");
+        assertEquals(bean.seaDate, reversed.seaDate);
+        assertEquals(bean.landDate, reversed.landDate);
+        assertEquals(bean.piariDate, reversed.piariDate);
+        assertEquals(bean.bonvoDate, reversed.bonvoDate);
+        assertNull(reversed.ambaDate);
     }
 
     public static class MaihamaDateBean {
 
-        @Required
-        public ImmutableList<String> strList;
-        @Required
-        public ImmutableList<Integer> intList;
-        public ImmutableList<String> nullList;
+        @JsonDatePattern("yyyy/MM/dd")
+        public LocalDate seaDate;
+
+        public LocalDate landDate;
+
+        @JsonDatePattern("yyyy/MM/dd HH:mm:ss")
+        public LocalDateTime piariDate;
+
+        public LocalDateTime bonvoDate;
+
+        @JsonDatePattern("yyyy/MM/dd")
+        public LocalDate ambaDate;
     }
 }

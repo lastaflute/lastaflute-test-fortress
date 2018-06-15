@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.whitebox.mail;
+package org.docksidestage.whitebox.core.mail;
 
 import java.util.Map;
 
