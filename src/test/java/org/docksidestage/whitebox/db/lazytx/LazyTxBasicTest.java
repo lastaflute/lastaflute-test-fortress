@@ -51,6 +51,11 @@ public class LazyTxBasicTest extends UnitFortressBasicTestCase {
     }
 
     @Override
+    protected boolean isUseOneTimeContainer() {
+        return true;
+    }
+
+    @Override
     protected void xsetupBeforeTestCaseTransaction() {
         super.xsetupBeforeTestCaseTransaction();
         lazyTxArranger.readyLazyTransaction(hook -> {
