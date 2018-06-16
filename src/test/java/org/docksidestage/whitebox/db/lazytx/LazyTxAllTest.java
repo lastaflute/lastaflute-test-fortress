@@ -34,7 +34,7 @@ import org.lastaflute.db.jta.stage.TransactionStage;
 /**
  * @author jflute
  */
-public class LazyTxStageTest extends UnitFortressBasicTestCase {
+public class LazyTxAllTest extends UnitFortressBasicTestCase {
 
     private static final LazyTransactionArranger lazyTxArranger = new LazyTransactionArranger();
 
@@ -202,12 +202,9 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
         assertTransactionStatus_NonTx();
         showBeginStage("...Beginning first root transactionStage.required(): readyLazy, forcedly(begun, suspended, resumed)");
         transactionStage.required(tx -> {
-            tx.rollbackOnly();
             assertTransactionStatus_NonTx();
             showBeginStage("...Beginning nested transactionStage.required(): takeOver, realBegun");
             transactionStage.required(nestedTx -> { // taking over (no filtering process)
-                // inherit outer transaction
-                //nestedTx.rollbackOnly();
                 assertTransactionStatus_NonTx();
                 updateSomething();
                 assertTransactionStatus_Active();
@@ -215,12 +212,13 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
             assertTransactionStatus_Active();
             updateSomething();
             assertTransactionStatus_Active();
+            tx.rollbackOnly();
         });
         assertTransactionStatus_NonTx();
         showBeginStage("...Beginning second root transactionStage.required(): readyLazy, realBegun");
         transactionStage.required(tx -> { // not taking over (because of begun on thread)
-            tx.rollbackOnly();
             updateSomething();
+            tx.rollbackOnly();
         });
     }
 
@@ -229,7 +227,6 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
         assertTransactionStatus_NonTx();
         showBeginStage("...Beginning first root transactionStage.required(): readyLazy, forcedly(begun, suspended, resumed)");
         transactionStage.required(tx -> {
-            tx.rollbackOnly();
             assertTransactionStatus_NonTx();
             showBeginStage("...Beginning nested transactionStage.required(): takeOver, realBegun");
             transactionStage.required(nestedTx -> { // taking over (no filtering process)
@@ -241,12 +238,13 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
             assertTransactionStatus_MarkedRollback();
             updateSomething();
             assertTransactionStatus_MarkedRollback();
+            tx.rollbackOnly();
         });
         assertTransactionStatus_NonTx();
         showBeginStage("...Beginning second root transactionStage.required(): readyLazy, realBegun");
         transactionStage.required(tx -> { // not taking over (because of begun on thread)
-            tx.rollbackOnly();
             updateSomething();
+            tx.rollbackOnly();
         });
     }
 
@@ -312,7 +310,27 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
     // ===================================================================================
     //                                                                       requiresNew()
     //                                                                       =============
-    public void test_lazyTx_requiresNew_firstUpdate_secondUpdate() throws Exception {
+    // -----------------------------------------------------
+    //                                         Plural Update
+    //                                         -------------
+    public void test_lazyTx_requiresNew_pluralUpdate() throws Exception {
+        assertTransactionStatus_NonTx();
+        showBeginStage("...Beginning first transactionStage.requiresNew(): lazyBegun, realBegun");
+        transactionStage.requiresNew(tx -> {
+            tx.rollbackOnly();
+            assertTransactionStatus_NonTx();
+            updateSomething();
+            assertTransactionStatus_Active();
+            updateSomething();
+            assertTransactionStatus_Active();
+        });
+        assertTransactionStatus_NonTx();
+    }
+
+    // -----------------------------------------------------
+    //                                             Flat Call
+    //                                             ---------
+    public void test_lazyTx_requiresNew_flat_firstUpdate_secondUpdate() throws Exception {
         assertTransactionStatus_NonTx();
         showBeginStage("...Beginning first transactionStage.requiresNew(): readyLazy, realBegun");
         transactionStage.requiresNew(tx -> {
@@ -332,7 +350,7 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
         assertTransactionStatus_NonTx();
     }
 
-    public void test_lazyTx_requiresNew_secondUpdate_afterFirstEmpty() throws Exception {
+    public void test_lazyTx_requiresNew_flat_secondUpdate_afterFirstEmpty() throws Exception {
         // ## Arrange ##
         assertTransactionStatus_NonTx();
         showBeginStage("...Beginning first transactionStage.requiresNew(): readyLazy, noTx, skipRollback");
@@ -366,6 +384,9 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
         assertTransactionStatus_NonTx();
     }
 
+    // -----------------------------------------------------
+    //                                          Nested World
+    //                                          ------------
     public void test_lazyTx_requiresNew_nested_rootAlreadyBegun() throws Exception {
         // ## Arrange ##
         assertTransactionStatus_NonTx();
@@ -453,7 +474,7 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
                 assertTransactionStatus_Active();
                 updateSomethingNext(); // avoid lock
                 assertTransactionStatus_Active();
-                showBeginStage("...Beginning nestedNested transactionStage.requiresNew(): normally(begun)");
+                showBeginStage("...Beginning first nestedNested transactionStage.requiresNew(): normally(begun)");
                 transactionStage.requiresNew(nestedNestedTx -> {
                     nestedNestedTx.rollbackOnly();
                     assertTransactionStatus_Active();
@@ -466,16 +487,118 @@ public class LazyTxStageTest extends UnitFortressBasicTestCase {
         });
     }
 
-    public void test_lazyTx_requiresNew_pluralUpdate() throws Exception {
+    public void test_lazyTx_requiresNew_nestedOnParade() throws Exception {
+        // ## Arrange ##
         assertTransactionStatus_NonTx();
-        showBeginStage("...Beginning first transactionStage.requiresNew(): lazyBegun, realBegun");
+        showBeginStage("...Beginning root transactionStage.requiresNew(): readyLazy, realBegun, normally(suspendded, resumed)");
         transactionStage.requiresNew(tx -> {
             tx.rollbackOnly();
             assertTransactionStatus_NonTx();
+            CallbackContext.setSqlLogHandlerOnThread(log -> {
+                assertTransactionStatus_Active();
+                markHere("updated");
+            });
+            try {
+                // ## Act ##
+                updateSomething();
+
+                // ## Assert ##
+                assertMarked("updated");
+            } finally {
+                CallbackContext.clearSqlLogHandlerOnThread();
+            }
+            assertTransactionStatus_Active();
+            showBeginStage("...Beginning nested transactionStage.requiresNew(): normally(begun), normally(suspendded, resumed)");
+            transactionStage.requiresNew(nestedTx -> {
+                nestedTx.rollbackOnly();
+                assertTransactionStatus_Active();
+                updateSomethingNext(); // avoid lock
+                assertTransactionStatus_Active();
+                showBeginStage("...Beginning first nestedNested transactionStage.requiresNew(): normally(begun)");
+                transactionStage.requiresNew(nestedNestedTx -> {
+                    nestedNestedTx.rollbackOnly();
+                    assertTransactionStatus_Active();
+                    updateSomethingNextNext(); // avoid lock
+                    assertTransactionStatus_Active();
+                });
+                assertTransactionStatus_Active();
+                showBeginStage("...Beginning second nestedNested transactionStage.requiresNew(): normally(begun), empty");
+                transactionStage.requiresNew(nestedNestedTx -> {
+                    assertTransactionStatus_Active();
+                });
+                showBeginStage("...Beginning third nestedNested transactionStage.requiresNew(): normally(begun)");
+                transactionStage.requiresNew(nestedNestedTx -> {
+                    nestedNestedTx.rollbackOnly();
+                    assertTransactionStatus_Active();
+                    updateSomethingNextNext(); // avoid lock
+                    assertTransactionStatus_Active();
+                });
+                assertTransactionStatus_Active();
+            });
+            assertTransactionStatus_Active();
+        });
+    }
+
+    // -----------------------------------------------------
+    //                                             Exception
+    //                                             ---------
+    public void test_lazyTx_requiresNew_exception_basic() throws Exception {
+        assertTransactionStatus_NonTx();
+        showBeginStage("...Beginning first transactionStage.requiresNew(): lazyBegun, realBegun, rolled-back");
+        try {
+            transactionStage.requiresNew(tx -> {
+                assertTransactionStatus_NonTx();
+                updateSomething();
+                assertTransactionStatus_Active();
+                updateSomething();
+                assertTransactionStatus_Active();
+                throw new IllegalStateException("first");
+            });
+        } catch (IllegalStateException e) {
+            assertEquals("first", e.getMessage());
+        }
+        assertTransactionStatus_NonTx();
+    }
+
+    public void test_lazyTx_requiresNew_exception_nested_alreadyBegun() throws Exception {
+        assertTransactionStatus_NonTx();
+        showBeginStage("...Beginning first transactionStage.requiresNew(): lazyBegun, realBegun, rolled-back");
+        transactionStage.requiresNew(tx -> {
+            assertTransactionStatus_NonTx();
             updateSomething();
             assertTransactionStatus_Active();
+            try {
+                showBeginStage("...Beginning first transactionStage.requiresNew(): inherited, rolled-back");
+                transactionStage.required(nestedTx -> {
+                    throw new IllegalStateException("nested");
+                });
+            } catch (IllegalStateException e) {
+                assertEquals("nested", e.getMessage());
+            }
+            assertTransactionStatus_MarkedRollback();
+            updateSomething();
+            assertTransactionStatus_MarkedRollback();
+        });
+        assertTransactionStatus_NonTx();
+    }
+
+    public void test_lazyTx_requiresNew_exception_nested_noBegun() throws Exception {
+        assertTransactionStatus_NonTx();
+        showBeginStage("...Beginning first transactionStage.requiresNew(): lazyBegun, realBegun, rolled-back");
+        transactionStage.requiresNew(tx -> {
+            assertTransactionStatus_NonTx();
+            try {
+                showBeginStage("...Beginning first transactionStage.requiresNew(): takeOver, no-rollback");
+                transactionStage.required(nestedTx -> {
+                    throw new IllegalStateException("nested");
+                });
+            } catch (IllegalStateException e) {
+                assertEquals("nested", e.getMessage());
+            }
+            assertTransactionStatus_NonTx();
             updateSomething();
             assertTransactionStatus_Active();
+            tx.rollbackOnly(); // needed or committed
         });
         assertTransactionStatus_NonTx();
     }
