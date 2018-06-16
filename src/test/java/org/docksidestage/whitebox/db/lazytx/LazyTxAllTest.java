@@ -85,8 +85,8 @@ public class LazyTxAllTest extends UnitFortressBasicTestCase {
     @Override
     protected AccessContext createPreparedAccessContext() {
         AccessContextLogic logic = getComponent(AccessContextLogic.class);
-        AccessContextResource resource = new AccessContextResource("lazyModule", getTestMethod());
-        return logic.create(resource, () -> OptionalThing.empty(), () -> OptionalThing.empty(), () -> "LZY");
+        AccessContextResource resource = new AccessContextResource("unit", getTestMethod());
+        return logic.create(resource, () -> OptionalThing.empty(), () -> OptionalThing.empty(), () -> "UT");
     }
 
     // ===================================================================================

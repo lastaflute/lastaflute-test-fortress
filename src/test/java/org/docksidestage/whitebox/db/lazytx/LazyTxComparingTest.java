@@ -20,9 +20,13 @@ import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.TransactionManager;
 
+import org.dbflute.hook.AccessContext;
+import org.dbflute.optional.OptionalThing;
+import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.dbflute.exentity.Member;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+import org.lastaflute.db.dbflute.accesscontext.AccessContextResource;
 import org.lastaflute.db.jta.stage.TransactionStage;
 import org.lastaflute.jta.exception.LjtIllegalStateException;
 
@@ -44,6 +48,13 @@ public class LazyTxComparingTest extends UnitFortressBasicTestCase {
     @Override
     protected boolean isSuppressTestCaseTransaction() {
         return true;
+    }
+
+    @Override
+    protected AccessContext createPreparedAccessContext() {
+        AccessContextLogic logic = getComponent(AccessContextLogic.class);
+        AccessContextResource resource = new AccessContextResource("unit", getTestMethod());
+        return logic.create(resource, () -> OptionalThing.empty(), () -> OptionalThing.empty(), () -> "UT");
     }
 
     // ===================================================================================
