@@ -54,7 +54,7 @@ public class LazyTxComparingTest extends UnitFortressBasicTestCase {
     protected AccessContext createPreparedAccessContext() {
         AccessContextLogic logic = getComponent(AccessContextLogic.class);
         AccessContextResource resource = new AccessContextResource("unit", getTestMethod());
-        return logic.create(resource, () -> OptionalThing.empty(), () -> OptionalThing.empty(), () -> "UT");
+        return logic.create(resource, () -> OptionalThing.empty(), () -> OptionalThing.empty(), () -> "UT", () -> OptionalThing.empty());
     }
 
     // ===================================================================================

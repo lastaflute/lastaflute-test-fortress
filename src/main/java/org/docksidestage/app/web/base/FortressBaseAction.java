@@ -129,7 +129,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
         return resource -> {
             return accessContextLogic.create(resource, () -> myUserType(), () -> getUserBean().map(userBean -> {
                 return userBean.getUserId(); // as user expression
-            }), () -> myAppType());
+            }), () -> myAppType(), () -> requestManager.getHeaderUserAgent());
         };
     }
 
