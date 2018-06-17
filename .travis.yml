@@ -15,6 +15,7 @@ services:
 before_script:
   - java -version
   - mvn dbflute:replace-schema -Ddbflute.forceExecution=y
+  - sh ./dbflute_resortlinedb/travis-schema.sh
 
 script:
   - mvn test
