@@ -5,7 +5,7 @@ cd `dirname $0`
 
 export answer=y
 
-. ./manage.sh replace-schema
+sh ./manage.sh replace-schema
 taskReturnCode=$?
 
 if [ $taskReturnCode -ne 0 ];then
