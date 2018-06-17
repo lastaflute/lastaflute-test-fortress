@@ -20,7 +20,7 @@ import org.docksidestage.dbflute.resola.bsentity.dbmeta.*;
 import org.docksidestage.dbflute.resola.cbean.*;
 
 /**
- * The behavior of station as TABLE. <br>
+ * The behavior of STATION as TABLE. <br>
  * <pre>
  * [primary key]
  *     STATION_ID

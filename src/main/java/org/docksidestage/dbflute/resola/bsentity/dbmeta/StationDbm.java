@@ -55,9 +55,9 @@ public class StationDbm extends AbstractDBMeta {
     //                                                                          Table Info
     //                                                                          ==========
     protected final String _tableDbName = "station";
-    protected final String _tableDispName = "station";
+    protected final String _tableDispName = "STATION";
     protected final String _tablePropertyName = "station";
-    protected final TableSqlName _tableSqlName = new TableSqlName("station", _tableDbName);
+    protected final TableSqlName _tableSqlName = new TableSqlName("STATION", _tableDbName);
     { _tableSqlName.xacceptFilter(RsoDBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }

@@ -10,7 +10,7 @@ import org.docksidestage.dbflute.resola.allcommon.RsoDBMetaInstanceHandler;
 import org.docksidestage.dbflute.resola.exentity.*;
 
 /**
- * The entity of station as TABLE. <br>
+ * The entity of STATION as TABLE. <br>
  * <pre>
  * [primary-key]
  *     STATION_ID

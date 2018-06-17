@@ -7,7 +7,7 @@ import org.docksidestage.dbflute.resola.exbhv.*;
 import org.docksidestage.dbflute.resola.exentity.*;
 
 /**
- * The referrer loader of station as TABLE. <br>
+ * The referrer loader of STATION as TABLE. <br>
  * <pre>
  * [primary key]
  *     STATION_ID
