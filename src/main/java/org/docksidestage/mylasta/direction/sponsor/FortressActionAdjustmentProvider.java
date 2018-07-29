@@ -146,6 +146,8 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     static {
         // use this when you test validation as warning
         //responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
+        // use this when you test empty body treated as empty object
+        //responseReflectingOption = new ResponseReflectingOption().treatJsonEmptyBodyAsEmptyObject();
         responseReflectingOption = new ResponseReflectingOption();
     }
 
