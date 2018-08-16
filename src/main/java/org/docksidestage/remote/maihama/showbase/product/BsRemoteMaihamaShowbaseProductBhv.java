@@ -54,7 +54,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteProductDetailReturn requestDetail(Integer productId) {
-        return requestDetail(productId, rule -> {});
+        return doRequestDetail(productId, rule -> {});
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductDetailReturn requestDetail(Integer productId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductDetailReturn doRequestDetail(Integer productId, Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(RemoteProductDetailReturn.class, "/product/detail/{productId}", moreUrl(productId), noRequestBody(), rule -> {
             ruleOfDetailProductId(rule);
             ruleLambda.accept(rule);
@@ -91,7 +91,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteProductListSearchReturn requestListSearch(Consumer<RemoteProductListSearchParam> paramLambda) {
-        return requestListSearch(paramLambda, rule -> {});
+        return doRequestListSearch(paramLambda, rule -> {});
     }
 
     /**
@@ -104,7 +104,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductListSearchReturn requestListSearch(Consumer<RemoteProductListSearchParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductListSearchReturn doRequestListSearch(Consumer<RemoteProductListSearchParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductListSearchParam param = new RemoteProductListSearchParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteProductListSearchReturn.class, "/product/list/search", noMoreUrl(), param, rule -> {
@@ -131,7 +131,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLambda) {
-        return requestListSearch(pageNumber, paramLambda, rule -> {});
+        return doRequestListSearch(pageNumber, paramLambda, rule -> {});
     }
 
     /**
@@ -145,7 +145,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductListSearchReturn requestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductListSearchReturn doRequestListSearch(Integer pageNumber, Consumer<RemoteProductListSearchParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductListSearchParam param = new RemoteProductListSearchParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteProductListSearchReturn.class, "/product/list/search/{pageNumber}", moreUrl(pageNumber), param, rule -> {
@@ -170,7 +170,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn> requestListStatus() {
-        return requestListStatus(rule -> {});
+        return doRequestListStatus(rule -> {});
     }
 
     /**
@@ -182,7 +182,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn> requestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn> doRequestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn>>() {
         }.getType(), "/product/list/status", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfListStatus(rule);

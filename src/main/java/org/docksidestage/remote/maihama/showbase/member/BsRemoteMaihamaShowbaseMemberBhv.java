@@ -58,7 +58,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteMemberInfoReturn requestInfo() {
-        return requestInfo(rule -> {});
+        return doRequestInfo(rule -> {});
     }
 
     /**
@@ -70,7 +70,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMemberInfoReturn requestInfo(Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteMemberInfoReturn doRequestInfo(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(RemoteMemberInfoReturn.class, "/member/info", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfInfo(rule);
             ruleLambda.accept(rule);
@@ -93,7 +93,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn> requestStatus() {
-        return requestStatus(rule -> {});
+        return doRequestStatus(rule -> {});
     }
 
     /**
@@ -105,7 +105,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn> requestStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn> doRequestStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn>>() {
         }.getType(), "/member/status", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfStatus(rule);
@@ -130,7 +130,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteMemberAddRegisterReturn requestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLambda) {
-        return requestAddRegister(paramLambda, rule -> {});
+        return doRequestAddRegister(paramLambda, rule -> {});
     }
 
     /**
@@ -143,7 +143,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMemberAddRegisterReturn requestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteMemberAddRegisterReturn doRequestAddRegister(Consumer<RemoteMemberAddRegisterParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteMemberAddRegisterParam param = new RemoteMemberAddRegisterParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteMemberAddRegisterReturn.class, "/member/add/register", noMoreUrl(), param, rule -> {
@@ -169,7 +169,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteMemberEditReturn requestEdit(Integer memberId) {
-        return requestEdit(memberId, rule -> {});
+        return doRequestEdit(memberId, rule -> {});
     }
 
     /**
@@ -182,7 +182,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMemberEditReturn requestEdit(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteMemberEditReturn doRequestEdit(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(RemoteMemberEditReturn.class, "/member/edit/{memberId}", moreUrl(memberId), noRequestBody(), rule -> {
             ruleOfEditMemberId(rule);
             ruleLambda.accept(rule);
@@ -205,7 +205,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param paramLambda The callback for RemoteMemberEditUpdateParam. (NotNull)
      */
     public void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLambda) {
-        requestEditUpdate(paramLambda, rule -> {});
+        doRequestEditUpdate(paramLambda, rule -> {});
     }
 
     /**
@@ -217,7 +217,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param paramLambda The callback for RemoteMemberEditUpdateParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void requestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected void doRequestEditUpdate(Consumer<RemoteMemberEditUpdateParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteMemberEditUpdateParam param = new RemoteMemberEditUpdateParam();
         paramLambda.accept(param);
         doRequestPost(void.class, "/member/edit/update", noMoreUrl(), param, rule -> {
@@ -243,7 +243,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteMemberListReturn requestList(Consumer<RemoteMemberListParam> paramLambda) {
-        return requestList(paramLambda, rule -> {});
+        return doRequestList(paramLambda, rule -> {});
     }
 
     /**
@@ -256,7 +256,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMemberListReturn requestList(Consumer<RemoteMemberListParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteMemberListReturn doRequestList(Consumer<RemoteMemberListParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteMemberListParam param = new RemoteMemberListParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteMemberListReturn.class, "/member/list", noMoreUrl(), param, rule -> {
@@ -283,7 +283,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteMemberListReturn requestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLambda) {
-        return requestList(pageNumber, paramLambda, rule -> {});
+        return doRequestList(pageNumber, paramLambda, rule -> {});
     }
 
     /**
@@ -297,7 +297,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMemberListReturn requestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteMemberListReturn doRequestList(Integer pageNumber, Consumer<RemoteMemberListParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteMemberListParam param = new RemoteMemberListParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteMemberListReturn.class, "/member/list/{pageNumber}", moreUrl(pageNumber), param, rule -> {
@@ -323,7 +323,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId) {
-        return requestPurchaseList(memberId, rule -> {});
+        return doRequestPurchaseList(memberId, rule -> {});
     }
 
     /**
@@ -336,7 +336,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteMemberPurchaseListReturn doRequestPurchaseList(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}", moreUrl(memberId), noRequestBody(), rule -> {
             ruleOfPurchaseListMemberId(rule);
             ruleLambda.accept(rule);
@@ -361,7 +361,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber) {
-        return requestPurchaseList(memberId, pageNumber, rule -> {});
+        return doRequestPurchaseList(memberId, pageNumber, rule -> {});
     }
 
     /**
@@ -375,7 +375,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteMemberPurchaseListReturn requestPurchaseList(Integer memberId, Integer pageNumber, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteMemberPurchaseListReturn doRequestPurchaseList(Integer memberId, Integer pageNumber, Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), noRequestBody(), rule -> {
             ruleOfPurchaseListMemberIdPageNumber(rule);
             ruleLambda.accept(rule);

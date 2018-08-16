@@ -52,7 +52,7 @@ public abstract class BsRemoteMaihamaShowbaseSigninBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteSigninReturn request(Consumer<RemoteSigninParam> paramLambda) {
-        return request(paramLambda, rule -> {});
+        return doRequest(paramLambda, rule -> {});
     }
 
     /**
@@ -65,7 +65,7 @@ public abstract class BsRemoteMaihamaShowbaseSigninBhv extends AbstractRemoteMai
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteSigninReturn request(Consumer<RemoteSigninParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteSigninReturn doRequest(Consumer<RemoteSigninParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteSigninParam param = new RemoteSigninParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteSigninReturn.class, "/signin/", noMoreUrl(), param, rule -> {
