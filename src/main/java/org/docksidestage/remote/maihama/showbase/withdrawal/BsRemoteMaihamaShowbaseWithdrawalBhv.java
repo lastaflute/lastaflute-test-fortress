@@ -51,7 +51,7 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn> requestReason() {
-        return requestReason(rule -> {});
+        return doRequestReason(rule -> {});
     }
 
     /**
@@ -63,7 +63,7 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn> requestReason(Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn> doRequestReason(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn>>() {
         }.getType(), "/withdrawal/reason", noMoreUrl(), noRequestBody(), rule -> {
             ruleOfReason(rule);
@@ -88,7 +88,7 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda) {
-        return requestDone(paramLambda, rule -> {});
+        return doRequestDone(paramLambda, rule -> {});
     }
 
     /**
@@ -101,7 +101,7 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected Integer requestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected Integer doRequestDone(Consumer<RemoteWithdrawalDoneParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWithdrawalDoneParam param = new RemoteWithdrawalDoneParam();
         paramLambda.accept(param);
         return doRequestPost(Integer.class, "/withdrawal/done", noMoreUrl(), param, rule -> {

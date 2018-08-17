@@ -54,7 +54,7 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteProductsReturn request(Consumer<RemoteProductsParam> paramLambda) {
-        return request(paramLambda, rule -> {});
+        return doRequest(paramLambda, rule -> {});
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductsReturn request(Consumer<RemoteProductsParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductsReturn doRequest(Consumer<RemoteProductsParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductsParam param = new RemoteProductsParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteProductsReturn.class, "/products/", noMoreUrl(), param, rule -> {
@@ -94,7 +94,7 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteProductsDetailReturn requestDetail(Integer productId, Consumer<RemoteProductsDetailParam> paramLambda) {
-        return requestDetail(productId, paramLambda, rule -> {});
+        return doRequestDetail(productId, paramLambda, rule -> {});
     }
 
     /**
@@ -108,7 +108,7 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductsDetailReturn requestDetail(Integer productId, Consumer<RemoteProductsDetailParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductsDetailReturn doRequestDetail(Integer productId, Consumer<RemoteProductsDetailParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductsDetailParam param = new RemoteProductsDetailParam();
         paramLambda.accept(param);
         return doRequestPost(RemoteProductsDetailReturn.class, "/products/detail/{productId}", moreUrl(productId), param, rule -> {
