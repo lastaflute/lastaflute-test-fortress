@@ -152,6 +152,8 @@
 					</executions>
 					<configuration>
 						<mainClass>org.docksidestage.FortressTomcatBoot</mainClass>
+						<!-- you can switch:
+						 <mainClass>org.docksidestage.FortressJettyBoot</mainClass> -->
 					</configuration>
 				</plugin>
 				<plugin>
