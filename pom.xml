@@ -32,7 +32,7 @@
 		<logback.version>1.2.3</logback.version>
 		<servlet.version>4.0.1</servlet.version>
 		<jetty.boot.version>0.4.9</jetty.boot.version>
-		<tomcat.boot.version>0.7.0-RC1</tomcat.boot.version>
+		<tomcat.boot.version>0.7.0</tomcat.boot.version>
 		<swagger.ui.version>2.2.10-1</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
