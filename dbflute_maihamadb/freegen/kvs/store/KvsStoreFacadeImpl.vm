@@ -13,12 +13,10 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-${manager.allClassCopyright}package ${request.package}.${tableMap.schema}.facade;
-
-import org.dbflute.kvs.store.facade.AbstractKvsStoreFacade;
+${manager.allClassCopyright}package ${data.package};
 
 /**
  * @author FreeGen
  */
-public class ${manager.initCap($tableMap.schema)}KvsStoreFacade extends AbstractKvsStoreFacade {
+public class ${data.className} extends ${data.extendsClass} {
 }

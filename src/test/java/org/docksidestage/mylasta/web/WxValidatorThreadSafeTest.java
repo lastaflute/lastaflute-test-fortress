@@ -23,7 +23,7 @@ import org.dbflute.utflute.core.cannonball.CannonballCar;
 import org.dbflute.utflute.core.cannonball.CannonballOption;
 import org.dbflute.utflute.core.cannonball.CannonballRun;
 import org.docksidestage.mylasta.action.FortressMessages;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.message.MessageManager;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.validation.ActionValidator;
@@ -33,7 +33,7 @@ import org.lastaflute.web.validation.VaConfigSetupper;
 /**
  * @author jflute
  */
-public class WxValidatorThreadSafeTest extends UnitFortressWebTestCase {
+public class WxValidatorThreadSafeTest extends UnitFortressBasicTestCase {
 
     @Resource
     private MessageManager messageManager;
@@ -45,7 +45,7 @@ public class WxValidatorThreadSafeTest extends UnitFortressWebTestCase {
         Locale locale = requestManager.getUserLocale();
         cannonball(new CannonballRun() {
             public void drive(CannonballCar car) {
-                xdoPrepareWebMockContext(); // for web environment
+                xdoPrepareRequestMockContext(); // for web environment
                 ActionValidator<FortressMessages> validator = createValidator(locale, conf -> {});
                 MockMaihama maihama = new MockMaihama(null);
 

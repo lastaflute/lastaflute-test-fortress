@@ -23,8 +23,6 @@ import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.StreamResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author jflute
@@ -32,17 +30,13 @@ import org.slf4j.LoggerFactory;
 @AllowAnyoneAccess
 public class WxResponseStreamAction extends FortressBaseAction {
 
-    private static final Logger logger = LoggerFactory.getLogger(WxResponseStreamAction.class);
-
     // http://localhost:8151/fortress/wx/response/stream/small/
     @Execute
     public StreamResponse small() {
         return asStream("sea.txt").stream(out -> {
             byte[] buf = "download".getBytes("UTF-8");
             try (InputStream ins = new ByteArrayInputStream(buf)) {
-                logger.debug("#download begin writing");
                 out.write(ins);
-                logger.debug("#download end writing");
             }
         });
     }
@@ -57,9 +51,7 @@ public class WxResponseStreamAction extends FortressBaseAction {
             }
             byte[] buf = sb.toString().getBytes("UTF-8");
             try (InputStream ins = new ByteArrayInputStream(buf)) {
-                logger.debug("#download begin writing");
                 out.write(ins);
-                logger.debug("#download end writing");
             }
         });
     }
@@ -70,6 +62,17 @@ public class WxResponseStreamAction extends FortressBaseAction {
         return asStream("sea.txt").stream(out -> {
             OutputStream ous = out.stream();
             ous.write(904);
+        });
+    }
+
+    // http://localhost:8151/fortress/wx/response/stream/japanese/
+    @Execute
+    public StreamResponse japanese() {
+        return asStream("\u6d77 + \u9678 in \u821e\u6d5c.txt").encodeFileName().stream(out -> {
+            byte[] buf = "download".getBytes("UTF-8");
+            try (InputStream ins = new ByteArrayInputStream(buf)) {
+                out.write(ins);
+            }
         });
     }
 }

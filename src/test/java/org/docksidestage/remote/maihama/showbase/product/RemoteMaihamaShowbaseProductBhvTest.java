@@ -4,14 +4,14 @@ import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.maihama.showbase.product.list.status.RemoteProductListStatusReturn;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * @author jflute
  */
-public class RemoteMaihamaShowbaseProductBhvTest extends UnitFortressWebTestCase {
+public class RemoteMaihamaShowbaseProductBhvTest extends UnitFortressBasicTestCase {
 
     @Resource
     private RequestManager requestManager;

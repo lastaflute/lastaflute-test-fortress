@@ -15,13 +15,13 @@
  */
 package org.docksidestage.app.web.wx.mail;
 
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.response.JsonResponse;
 
 /**
  * @author jflute
  */
-public class WxMailRemoteapiActionTest extends UnitFortressWebTestCase {
+public class WxMailRemoteapiActionTest extends UnitFortressBasicTestCase {
 
     public void test_index_basic() {
         // ## Arrange ##

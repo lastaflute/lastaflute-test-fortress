@@ -92,7 +92,7 @@ public class SignupAction extends FortressBaseAction {
 
     private void sendSignupMail(SignupForm form, String token) {
         WelcomeMemberPostcard.droppedInto(postbox, postcard -> {
-            postcard.setFrom(config.getMailAddressSupport(), "Fortress Support"); // #simple_for_example
+            postcard.setFrom(config.getMailAddressSupport(), FortressMessages.LABELS_MAIL_SUPPORT_PERSONAL);
             postcard.addTo(form.memberAccount + "@docksidestage.org"); // #simple_for_example
             postcard.setDomain(config.getServerDomain());
             postcard.setMemberName(form.memberName);

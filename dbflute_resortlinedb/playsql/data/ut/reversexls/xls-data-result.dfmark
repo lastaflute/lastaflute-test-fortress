@@ -1,0 +1,10 @@
+
+* * * * * * * * * *
+*                 *
+* Xls Data Result *
+*                 *
+* * * * * * * * * *
+data-directory: playsql/data/ut/reversexls
+
+[cyclic-data-01-misc.xls]
+  STATION (4)

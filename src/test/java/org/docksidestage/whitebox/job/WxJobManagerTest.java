@@ -19,7 +19,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.job.JobManager;
 import org.lastaflute.job.LaJobHistory;
 import org.lastaflute.job.LaScheduledJob;
@@ -39,7 +39,7 @@ import it.sauronsoftware.cron4j.TaskExecutor;
 /**
  * @author jflute
  */
-public class WxJobManagerTest extends UnitFortressWebTestCase {
+public class WxJobManagerTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                           Attribute

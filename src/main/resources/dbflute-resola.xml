@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//DBFLUTE//DTD LastaDi 1.0//EN"
+	"http://dbflute.org/meta/lastadi10.dtd">
+<components namespace="dbflute">
+	<include condition="#exists('#path')" path="my_included_dbflute.xml"/>
+	<include path="rdb-resola.xml"/>
+
+	<!-- The components of DBFlute Runtime. -->
+	<component name="rsoIntroduction" class="org.docksidestage.dbflute.resola.allcommon.RsoDBFluteInitializer"/>
+	<component name="rsoInvokerAssistant" class="org.docksidestage.dbflute.resola.allcommon.RsoImplementedInvokerAssistant"/>
+	<component name="rsoBehaviorCommandInvoker" class="org.dbflute.bhv.core.BehaviorCommandInvoker"/>
+	<component name="rsoBehaviorSelector" class="org.docksidestage.dbflute.resola.allcommon.RsoImplementedBehaviorSelector"/>
+	<component name="rsoCommonColumnAutoSetupper" class="org.docksidestage.dbflute.resola.allcommon.RsoImplementedCommonColumnAutoSetupper"/>
+
+	<!-- The components of Behavior. -->
+	<component name="stationBhv" class="org.docksidestage.dbflute.resola.exbhv.StationBhv"/>
+</components>

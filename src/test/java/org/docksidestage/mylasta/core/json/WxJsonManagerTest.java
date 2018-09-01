@@ -18,7 +18,7 @@ package org.docksidestage.mylasta.core.json;
 import javax.annotation.Resource;
 
 import org.docksidestage.dbflute.allcommon.CDef;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.exception.JsonPropertyClassificationCodeUnknownException;
 import org.lastaflute.web.validation.Required;
@@ -26,7 +26,7 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class WxJsonManagerTest extends UnitFortressWebTestCase {
+public class WxJsonManagerTest extends UnitFortressBasicTestCase {
 
     @Resource
     private JsonManager jsonManager;

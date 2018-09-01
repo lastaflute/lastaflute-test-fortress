@@ -77,6 +77,21 @@ public interface FortressEnv {
     /** The key of the configuration. e.g. 10 */
     String JDBC_CONNECTION_POOLING_SIZE = "jdbc.connection.pooling.size";
 
+    /** The key of the configuration. e.g. com.mysql.jdbc.Driver */
+    String RESOLA_JDBC_DRIVER = "resola.jdbc.driver";
+
+    /** The key of the configuration. e.g. jdbc:mysql://localhost:3306/resortlinedb */
+    String RESOLA_JDBC_URL = "resola.jdbc.url";
+
+    /** The key of the configuration. e.g. resortlinedb */
+    String RESOLA_JDBC_USER = "resola.jdbc.user";
+
+    /** The key of the configuration. e.g. resortlinedb */
+    String RESOLA_JDBC_PASSWORD = "resola.jdbc.password";
+
+    /** The key of the configuration. e.g. 10 */
+    String RESOLA_JDBC_CONNECTION_POOLING_SIZE = "resola.jdbc.connection.pooling.size";
+
     /** The key of the configuration. e.g. localhost:8097 */
     String SERVER_DOMAIN = "server.domain";
 
@@ -301,6 +316,55 @@ public interface FortressEnv {
     Integer getJdbcConnectionPoolingSizeAsInteger();
 
     /**
+     * Get the value for the key 'resola.jdbc.driver'. <br>
+     * The value is, e.g. com.mysql.jdbc.Driver <br>
+     * comment: The driver FQCN to connect database for JDBC
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getResolaJdbcDriver();
+
+    /**
+     * Get the value for the key 'resola.jdbc.url'. <br>
+     * The value is, e.g. jdbc:mysql://localhost:3306/resortlinedb <br>
+     * comment: The URL of database connection for JDBC
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getResolaJdbcUrl();
+
+    /**
+     * Get the value for the key 'resola.jdbc.user'. <br>
+     * The value is, e.g. resortlinedb <br>
+     * comment: The user of database connection for JDBC
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getResolaJdbcUser();
+
+    /**
+     * Get the value for the key 'resola.jdbc.password'. <br>
+     * The value is, e.g. resortlinedb <br>
+     * comment: @Secure The password of database connection for JDBC
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getResolaJdbcPassword();
+
+    /**
+     * Get the value for the key 'resola.jdbc.connection.pooling.size'. <br>
+     * The value is, e.g. 10 <br>
+     * comment: The (max) pooling size of connection pool
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getResolaJdbcConnectionPoolingSize();
+
+    /**
+     * Get the value for the key 'resola.jdbc.connection.pooling.size' as {@link Integer}. <br>
+     * The value is, e.g. 10 <br>
+     * comment: The (max) pooling size of connection pool
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     * @throws NumberFormatException When the property is not integer.
+     */
+    Integer getResolaJdbcConnectionPoolingSizeAsInteger();
+
+    /**
      * Get the value for the key 'server.domain'. <br>
      * The value is, e.g. localhost:8097 <br>
      * comment: domain to access this application from internet, e.g. for registration mail
@@ -477,6 +541,30 @@ public interface FortressEnv {
 
         public Integer getJdbcConnectionPoolingSizeAsInteger() {
             return getAsInteger(FortressEnv.JDBC_CONNECTION_POOLING_SIZE);
+        }
+
+        public String getResolaJdbcDriver() {
+            return get(FortressEnv.RESOLA_JDBC_DRIVER);
+        }
+
+        public String getResolaJdbcUrl() {
+            return get(FortressEnv.RESOLA_JDBC_URL);
+        }
+
+        public String getResolaJdbcUser() {
+            return get(FortressEnv.RESOLA_JDBC_USER);
+        }
+
+        public String getResolaJdbcPassword() {
+            return get(FortressEnv.RESOLA_JDBC_PASSWORD);
+        }
+
+        public String getResolaJdbcConnectionPoolingSize() {
+            return get(FortressEnv.RESOLA_JDBC_CONNECTION_POOLING_SIZE);
+        }
+
+        public Integer getResolaJdbcConnectionPoolingSizeAsInteger() {
+            return getAsInteger(FortressEnv.RESOLA_JDBC_CONNECTION_POOLING_SIZE);
         }
 
         public String getServerDomain() {

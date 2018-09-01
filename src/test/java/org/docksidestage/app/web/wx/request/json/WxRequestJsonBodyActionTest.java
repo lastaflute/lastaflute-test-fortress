@@ -9,12 +9,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.HTTP;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 
 /**
  * @author jflute
  */
-public class WxRequestJsonBodyActionTest extends UnitFortressWebTestCase {
+public class WxRequestJsonBodyActionTest extends UnitFortressBasicTestCase {
 
     public void test_request_index() {
         String url = "http://localhost:8151/fortress/wx/request/json/body/";

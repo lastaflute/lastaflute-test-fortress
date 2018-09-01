@@ -24,14 +24,14 @@ import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.dbflute.utflute.lastaflute.mock.TestingJsonData;
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
 import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
  * @author jflute
  */
-public class WxRmharborViaActionTest extends UnitFortressWebTestCase {
+public class WxRmharborViaActionTest extends UnitFortressBasicTestCase {
 
     @Resource
     private RequestManager requestManager;

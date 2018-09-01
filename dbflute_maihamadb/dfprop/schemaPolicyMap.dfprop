@@ -46,22 +46,47 @@ map:{
     ; isMainSchemaOnly = false
 
     ; wholeMap = map:{
-        ; themeList = list:{ uniqueTableAlias ; sameColumnAliasIfSameColumnName }
+        ; themeList = list:{
+            ; uniqueTableAlias
+            ; sameColumnAliasIfSameColumnName
+            ; sameColumnDbTypeIfSameColumnName
+            ; sameColumnSizeIfSameColumnName
+            ; sameColumnNameIfSameColumnAlias
+        }
     }
     ; tableMap = map:{
-        ; themeList = list:{ hasPK ; upperCaseBasis ; identityIfPureIDPK }
+        ; themeList = list:{
+            ; hasPK
+            ; hasAlias
+            ; hasComment
+            ; upperCaseBasis
+            ; identityIfPureIDPK
+        }
         ; statementList = list:{
+            # constraint
             ; if tableName is $$ALL$$ then fkName is prefix:FK_$$table$$
+            ; if tableName is $$ALL$$ then indexName is prefix:IX_$$table$$ or prefix:FK_$$table$$
         }
     }
     ; columnMap = map:{
-        ; themeList = list:{ upperCaseBasis }
+        ; themeList = list:{
+            ; hasAlias
+            ; upperCaseBasis
+        }
         ; statementList = list:{
+            # FLG column
             ; if columnName is suffix:_FLAG then bad => should be _FLG
             ; if columnName is suffix:_FLG then notNull
-            # *needs to adjust this setting for your DBMS
-            #; if columnName is suffix:_FLG then dbType is INTEGER
+            ; if columnName is suffix:_FLG then dbType is INT
             ; if columnName is suffix:_FLG then classification
+
+            # system column
+            ; if columnName is REGISTER_USER then notNull
+            ; if columnName is REGISTER_USER then dbType_with_size is VARCHAR(200)
+            ; if columnName is UPDATE_USER then notNull
+            ; if columnName is UPDATE_USER then dbType_with_size is VARCHAR(200)
+            ; if columnName is VERSION_NO then notNull
+            ; if columnName is VERSION_NO then dbType is BIGINT
         }
     }
 }

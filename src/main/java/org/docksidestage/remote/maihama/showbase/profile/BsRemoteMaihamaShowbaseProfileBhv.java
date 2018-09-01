@@ -50,7 +50,7 @@ public abstract class BsRemoteMaihamaShowbaseProfileBhv extends AbstractRemoteMa
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     public RemoteProfileReturn request() {
-        return request(rule -> {});
+        return doRequest(rule -> {});
     }
 
     /**
@@ -62,7 +62,7 @@ public abstract class BsRemoteMaihamaShowbaseProfileBhv extends AbstractRemoteMa
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProfileReturn request(Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProfileReturn doRequest(Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestPost(RemoteProfileReturn.class, "/profile/", noMoreUrl(), noRequestBody(), rule -> {
             ruleOf(rule);
             ruleLambda.accept(rule);

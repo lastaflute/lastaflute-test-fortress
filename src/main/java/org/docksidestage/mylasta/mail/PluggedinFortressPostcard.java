@@ -25,7 +25,7 @@ public interface PluggedinFortressPostcard {
 
     void setFrom(String from, String personnel);
 
-    default void setFromSupport(FortressConfig fortressConfig) {
-        setFrom(fortressConfig.getMailAddressSupport(), FortressMessages.LABELS_MAIL_SUPPORT_PERSONAL);
+    default void setFromSupport(FortressConfig config) {
+        setFrom(config.getMailAddressSupport(), FortressMessages.LABELS_MAIL_SUPPORT_PERSONAL);
     }
 }

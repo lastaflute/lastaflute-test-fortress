@@ -15,7 +15,7 @@
  */
 package org.docksidestage.unit;
 
-import org.dbflute.utflute.lastadi.ContainerTestCase;
+import org.dbflute.utflute.lastaflute.WebContainerTestCase;
 import org.lastaflute.job.LaJob;
 import org.lastaflute.job.mock.MockJobRuntime;
 
@@ -40,7 +40,12 @@ import org.lastaflute.job.mock.MockJobRuntime;
  * </pre>
  * @author jflute
  */
-public abstract class UnitFortressJobTestCase extends ContainerTestCase {
+public abstract class UnitFortressJobTestCase extends WebContainerTestCase {
+
+    @Override
+    protected boolean isSuppressRequestMock() {
+        return true;
+    }
 
     /**
      * Prepare mock of job runtime.

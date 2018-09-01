@@ -50,7 +50,7 @@ public abstract class BsRemoteMaihamaShowbaseFollowingBhv extends AbstractRemote
      * @param paramLambda The callback for RemoteFollowingFollowParam. (NotNull)
      */
     public void requestFollow(Consumer<RemoteFollowingFollowParam> paramLambda) {
-        requestFollow(paramLambda, rule -> {});
+        doRequestFollow(paramLambda, rule -> {});
     }
 
     /**
@@ -62,7 +62,7 @@ public abstract class BsRemoteMaihamaShowbaseFollowingBhv extends AbstractRemote
      * @param paramLambda The callback for RemoteFollowingFollowParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void requestFollow(Consumer<RemoteFollowingFollowParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected void doRequestFollow(Consumer<RemoteFollowingFollowParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteFollowingFollowParam param = new RemoteFollowingFollowParam();
         paramLambda.accept(param);
         doRequestPost(void.class, "/following/follow", noMoreUrl(), param, rule -> {

@@ -17,12 +17,12 @@ package org.docksidestage.mylasta;
 
 import org.docksidestage.FortressTomcatBoot;
 import org.docksidestage.app.web.SwaggerAction;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 
 /**
  * @author jflute
  */
-public class FortressLastaDocTest extends UnitFortressWebTestCase {
+public class FortressLastaDocTest extends UnitFortressBasicTestCase {
 
     @Override
     protected String prepareMockContextPath() {

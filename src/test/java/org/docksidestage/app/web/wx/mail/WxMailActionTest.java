@@ -20,13 +20,13 @@ import java.util.List;
 import org.dbflute.utflute.lastaflute.mail.TestingPreparedMessage;
 import org.docksidestage.mylasta.mail.whitebox.WxLoopBeansPostcard;
 import org.docksidestage.mylasta.mail.whitebox.WxNoVariablePostcard;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.response.JsonResponse;
 
 /**
  * @author jflute
  */
-public class WxMailActionTest extends UnitFortressWebTestCase {
+public class WxMailActionTest extends UnitFortressBasicTestCase {
 
     public void test_index() {
         // ## Arrange ##

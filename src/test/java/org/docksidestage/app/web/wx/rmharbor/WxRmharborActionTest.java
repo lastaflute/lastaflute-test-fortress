@@ -20,14 +20,14 @@ import java.util.List;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.dbflute.utflute.lastaflute.mock.TestingJsonData;
 import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
-import org.docksidestage.unit.UnitFortressWebTestCase;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.login.exception.LoginFailureException;
 import org.lastaflute.web.response.JsonResponse;
 
 /**
  * @author jflute
  */
-public class WxRmharborActionTest extends UnitFortressWebTestCase {
+public class WxRmharborActionTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                              Simple
