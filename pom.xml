@@ -65,7 +65,7 @@
 	</developers>
 
 	<build>
-		<defaultGoal>validate</defaultGoal>
+		<defaultGoal>war</defaultGoal>
 		<finalName>${project.artifactId}</finalName>
 		<pluginManagement>
 			<plugins>
