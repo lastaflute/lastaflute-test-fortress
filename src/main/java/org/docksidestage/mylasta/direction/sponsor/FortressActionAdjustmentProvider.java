@@ -38,6 +38,10 @@ import org.lastaflute.web.exception.Forced404NotFoundException;
 import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
+import org.lastaflute.web.path.UrlMappingOption;
+import org.lastaflute.web.path.UrlMappingResource;
+import org.lastaflute.web.path.UrlReverseOption;
+import org.lastaflute.web.path.UrlReverseResource;
 import org.lastaflute.web.ruts.process.populate.FormYourCollectionResource;
 import org.lastaflute.web.validation.VaConfigSetupper;
 
@@ -161,6 +165,30 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
             return restlike;
         }
         return ActionAdjustmentProvider.super.customizeActionMappingRequestPath(requestPath);
+    }
+
+    @Override
+    public UrlMappingOption customizeActionUrlMapping(UrlMappingResource resource) {
+        // for mapping '/sp/product/list/' to ProductListSpAction.class
+        // (should also override reverse customization)
+        if (resource.getRequestPath().startsWith("/sp/")) { // e.g. /sp/product/list/
+            return new UrlMappingOption().filterRequestPath(requestPath -> { // e.g. /sp/product/list/
+                return Srl.substringFirstRear(requestPath, "/sp"); // e.g. /product/list/
+            }).useActionNameSuffix("Sp"); // e.g. productListSpAction
+        }
+        return ActionAdjustmentProvider.super.customizeActionUrlMapping(resource);
+    }
+
+    @Override
+    public UrlReverseOption customizeActionUrlReverse(UrlReverseResource resource) {
+        // for reverse ProductListSpAction.class to '/sp/product/list/'
+        // (should also override mapping customization)
+        if (resource.getActionType().getSimpleName().endsWith("SpAction")) { // e.g. productListSpAction
+            return new UrlReverseOption().filterActionName(actionName -> { // e.g. productListSp
+                return "sp" + Srl.initCap(Srl.substringLastFront(actionName, "Sp")); // e.g. spProductList
+            });
+        }
+        return ActionAdjustmentProvider.super.customizeActionUrlReverse(resource);
     }
 
     // ===================================================================================

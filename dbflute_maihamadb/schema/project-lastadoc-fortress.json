@@ -12243,6 +12243,326 @@
       "methodLineCount": 3
     },
     {
+      "url": "/wx/routing/custom/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.custom.WxRoutingCustomAction",
+      "simpleTypeName": "WxRoutingCustomAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.String\u003e",
+          "simpleTypeName": "OptionalThing\u003cString\u003e",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.custom.CustomCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cCustomCheckResult\u003e",
+        "value": "asJson(new CustomCheckResult(\"index()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 18,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/routing/custom/maihama/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.custom.WxRoutingCustomAction",
+      "simpleTypeName": "WxRoutingCustomAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "maihama",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.custom.CustomCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cCustomCheckResult\u003e",
+        "value": "asJson(new CustomCheckResult(\"maihama()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 18,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/sp/wx/routing/custom/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.custom.WxRoutingCustomSpAction",
+      "simpleTypeName": "WxRoutingCustomSpAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.String\u003e",
+          "simpleTypeName": "OptionalThing\u003cString\u003e",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.custom.CustomCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cCustomCheckResult\u003e",
+        "value": "asJson(new CustomCheckResult(\"index()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 21,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/sp/wx/routing/custom/maihama/{first}/{second}",
+      "typeName": "org.docksidestage.app.web.wx.routing.custom.WxRoutingCustomSpAction",
+      "simpleTypeName": "WxRoutingCustomSpAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "maihama",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "second",
+          "typeName": "java.lang.String",
+          "simpleTypeName": "String",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.routing.custom.CustomCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cCustomCheckResult\u003e",
+        "value": "asJson(new CustomCheckResult(\"maihama()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 21,
+      "methodLineCount": 3
+    },
+    {
       "url": "/wx/routing/httpmet/sea/{param1}",
       "typeName": "org.docksidestage.app.web.wx.routing.httpmet.WxRoutingHttpmetAction",
       "simpleTypeName": "WxRoutingHttpmetAction",
