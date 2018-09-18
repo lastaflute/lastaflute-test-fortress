@@ -15,6 +15,7 @@
  */
 package org.docksidestage.remote.swagger.petstore.pet.findbystatus;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 
 import org.lastaflute.core.util.Lato;
@@ -57,7 +58,7 @@ public class RemotePetFindbystatusReturn {
 
     /** The property of photoUrls. */
     @XmlElement(name = "photoUrls")
-    @Required
+    @NotNull
     public org.eclipse.collections.api.list.ImmutableList<String> photoUrls;
 
     /** The property of tags. (NullAllowed) */

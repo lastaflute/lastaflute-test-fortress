@@ -15,6 +15,8 @@
  */
 package org.docksidestage.remote.maihama.showbase.profile.index;
 
+import javax.validation.constraints.NotNull;
+
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
@@ -45,7 +47,7 @@ public class RemoteProfileReturn {
     public String serviceRankName;
 
     /** The property of purchaseList. */
-    @Required
+    @NotNull
     @javax.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<PurchasedProductPart> purchaseList;
 
