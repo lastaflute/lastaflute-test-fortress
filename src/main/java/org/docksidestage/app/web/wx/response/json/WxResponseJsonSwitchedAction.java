@@ -16,11 +16,9 @@
 package org.docksidestage.app.web.wx.response.json;
 
 import java.time.LocalDate;
-
-import javax.annotation.Resource;
+import java.time.format.DateTimeFormatter;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.app.web.base.view.DisplayAssist;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -31,47 +29,42 @@ import org.lastaflute.web.validation.Required;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxResponseJsonAction extends FortressBaseAction {
+public class WxResponseJsonSwitchedAction extends FortressBaseAction {
 
-    @Resource
-    private DisplayAssist displayAssist;
-
-    // http://localhost:8151/fortress/wx/response/json
+    // http://localhost:8151/fortress/wx/response/json/switched/basic
     @Execute
-    public JsonResponse<MyBasicJsonResult> index() {
-        return asJson(new MyBasicJsonResult(3, "sea", displayAssist.toDate("2001-09-06").get()));
+    public JsonResponse<MyBasicJsonResult> basic() {
+        return asJson(createResult()).switchMappingOption(op -> {
+            op.asNullToEmptyWriting()
+                    .formatLocalDateBy(DateTimeFormatter.ofPattern("yyyy@MM@dd"))
+                    .serializeBooleanBy(boo -> boo ? "1" : "0");
+        });
     }
 
-    // http://localhost:8151/fortress/wx/response/json/emptybody
+    // http://localhost:8151/fortress/wx/response/json/switched/none
     @Execute
-    public JsonResponse<Void> emptybody() {
-        return JsonResponse.asEmptyBody();
+    public JsonResponse<MyBasicJsonResult> none() {
+        return asJson(createResult());
     }
 
-    // http://localhost:8151/fortress/wx/response/json/strval
-    @Execute
-    public JsonResponse<String> strval() { // contentType=application/json
-        return asJson("sea");
-    }
-
-    // http://localhost:8151/fortress/wx/response/json/intval
-    @Execute
-    public JsonResponse<Integer> intval() { // contentType=application/json
-        return asJson(7);
+    private MyBasicJsonResult createResult() {
+        return new MyBasicJsonResult(1, null, LocalDate.of(2018, 10, 6), true);
     }
 
     protected static class MyBasicJsonResult {
 
         @Required
         public final Integer memberId;
-        @Required
         public final String memberName;
         public final LocalDate birthdate;
+        @Required
+        public Boolean showbaseNow;
 
-        public MyBasicJsonResult(Integer memberId, String memberName, LocalDate birthdate) {
+        public MyBasicJsonResult(Integer memberId, String memberName, LocalDate birthdate, Boolean showbaseNow) {
             this.memberId = memberId;
             this.memberName = memberName;
             this.birthdate = birthdate;
+            this.showbaseNow = showbaseNow;
         }
 
         @Override

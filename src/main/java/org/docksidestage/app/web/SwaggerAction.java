@@ -61,7 +61,7 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
         verifySwaggerAllowed();
         return asJson(new SwaggerGenerator().generateSwaggerMap(op -> {
             op.addHeaderParameter("hangar", "mystic");
-        }));
+        })).switchMappingOption(op -> {}); // not to depend on application settings
     }
 
     private void verifySwaggerAllowed() { // also check in ActionAdjustmentProvider
