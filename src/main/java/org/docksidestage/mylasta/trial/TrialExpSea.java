@@ -18,6 +18,9 @@ public class TrialExpSea {
 
     private String simpleString;
     private Integer simpleInteger;
+    private Long simpleLong;
+    private Integer nearlyMaxInteger;
+    private Long overMaxInteger; // is long
 
     // ===================================================================================
     //                                                                          Add Method
@@ -77,5 +80,32 @@ public class TrialExpSea {
     public void setSimpleInteger(Integer simpleInteger) {
         logger.debug("...Setting simple integer: {}", simpleInteger);
         this.simpleInteger = simpleInteger;
+    }
+
+    public Long getSimpleLong() {
+        return simpleLong;
+    }
+
+    public void setSimpleLong(Long simpleLong) {
+        logger.debug("...Setting simple long: {}", simpleLong);
+        this.simpleLong = simpleLong;
+    }
+
+    public Integer getNearlyMaxInteger() {
+        return nearlyMaxInteger;
+    }
+
+    public void setNearlyMaxInteger(Integer nearlyMaxInteger) {
+        logger.debug("...Setting nearly-max integer: {}", nearlyMaxInteger);
+        this.nearlyMaxInteger = nearlyMaxInteger;
+    }
+
+    public Long getOverMaxInteger() {
+        return overMaxInteger;
+    }
+
+    public void setOverMaxInteger(Long overMaxInteger) {
+        logger.debug("...Setting nearly-max integer: {}", overMaxInteger);
+        this.overMaxInteger = overMaxInteger;
     }
 }
