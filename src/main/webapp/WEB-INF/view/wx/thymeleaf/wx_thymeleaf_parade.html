@@ -94,15 +94,16 @@
 			<div th:replace="/common/layout.html :: paging-navi (pagingNavi=${pagingNavi})"></div>
 		</section>
 	</section>
-
-	<!-- test of thymeleaf3 json serialization
-	 IStandardJavaScriptSerializer works by script tag (cannot by pre)
-	-->
-	<script th:inline="javascript">
-	product : [[${productAsJson}]]
-	</script>
 </div>
 </main>
+
+<!-- test of thymeleaf3 json serialization
+ IStandardJavaScriptSerializer works by script tag (cannot by pre)
+-->
+<script th:inline="javascript">
+product : [[${productAsJson}]]
+</script>
+
 <footer th:replace="/common/layout.html :: footer">
 	<div class="wrap">
 		<ul class="footer-link">
