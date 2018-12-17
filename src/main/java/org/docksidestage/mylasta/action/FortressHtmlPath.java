@@ -68,14 +68,17 @@ public interface FortressHtmlPath {
     /** The path of the HTML: /wx/multipart/wx_multipart.html */
     HtmlNext path_WxMultipart_WxMultipartHtml = new HtmlNext("/wx/multipart/wx_multipart.html");
 
-    /** The path of the HTML: /wx/thymeleaf/wx_thymeleaf_add.html */
-    HtmlNext path_WxThymeleaf_WxThymeleafAddHtml = new HtmlNext("/wx/thymeleaf/wx_thymeleaf_add.html");
+    /** The path of the HTML: /wx/response/html/wx_thymeleaf_add.html */
+    HtmlNext path_WxResponseHtml_WxThymeleafAddHtml = new HtmlNext("/wx/response/html/wx_thymeleaf_add.html");
 
-    /** The path of the HTML: /wx/thymeleaf/wx_thymeleaf_edit.html */
-    HtmlNext path_WxThymeleaf_WxThymeleafEditHtml = new HtmlNext("/wx/thymeleaf/wx_thymeleaf_edit.html");
+    /** The path of the HTML: /wx/response/html/wx_thymeleaf_edit.html */
+    HtmlNext path_WxResponseHtml_WxThymeleafEditHtml = new HtmlNext("/wx/response/html/wx_thymeleaf_edit.html");
 
-    /** The path of the HTML: /wx/thymeleaf/wx_thymeleaf_list.html */
-    HtmlNext path_WxThymeleaf_WxThymeleafListHtml = new HtmlNext("/wx/thymeleaf/wx_thymeleaf_list.html");
+    /** The path of the HTML: /wx/response/html/wx_thymeleaf_list.html */
+    HtmlNext path_WxResponseHtml_WxThymeleafListHtml = new HtmlNext("/wx/response/html/wx_thymeleaf_list.html");
+
+    /** The path of the HTML: /wx/thymeleaf/wx_thymeleaf_parade.html */
+    HtmlNext path_WxThymeleaf_WxThymeleafParadeHtml = new HtmlNext("/wx/thymeleaf/wx_thymeleaf_parade.html");
 
     /** The path of the HTML: /wx/validator/wx_validator_list.html */
     HtmlNext path_WxValidator_WxValidatorListHtml = new HtmlNext("/wx/validator/wx_validator_list.html");

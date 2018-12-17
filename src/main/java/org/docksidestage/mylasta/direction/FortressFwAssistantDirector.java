@@ -21,6 +21,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.docksidestage.bizfw.thymeleaf.ThymeleafConfigObject;
+import org.docksidestage.bizfw.thymeleaf.ThymeleafJavaScriptSerializer;
 import org.docksidestage.mylasta.direction.sponsor.FortressActionAdjustmentProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook;
 import org.docksidestage.mylasta.direction.sponsor.FortressCookieResourceProvider;
@@ -36,8 +37,10 @@ import org.docksidestage.mylasta.direction.sponsor.FortressUserTimeZoneProcessPr
 import org.lastaflute.core.direction.CachedFwAssistantDirector;
 import org.lastaflute.core.direction.FwAssistDirection;
 import org.lastaflute.core.direction.FwCoreDirection;
+import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.security.InvertibleCryptographer;
 import org.lastaflute.core.security.OneWayCryptographer;
+import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.db.dbflute.classification.ListedClassificationProvider;
 import org.lastaflute.db.direction.FwDbDirection;
 import org.lastaflute.thymeleaf.ThymeleafRenderingProvider;
@@ -48,6 +51,8 @@ import org.lastaflute.web.servlet.request.ResponseDownloadPerformer;
 import org.lastaflute.web.servlet.request.ResponseDownloadResource;
 import org.lastaflute.web.servlet.request.ResponseHandlingProvider;
 import org.lastaflute.web.servlet.request.ResponseWritePerformer;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.standard.StandardDialect;
 
 /**
  * @author jflute
@@ -180,9 +185,27 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
     }
 
     protected HtmlRenderingProvider createHtmlRenderingProvider() {
-        return new ThymeleafRenderingProvider().asDevelopment(config.isDevelopmentHere()).additionalExpression(resource -> {
+        return createThymeleafRenderingProvider().asDevelopment(config.isDevelopmentHere()).additionalExpression(resource -> {
             resource.registerExpressionObject("config", new ThymeleafConfigObject(config));
         });
+    }
+
+    protected ThymeleafRenderingProvider createThymeleafRenderingProvider() {
+        return new ThymeleafRenderingProvider() {
+            @Override
+            protected void setupTemplateEngine(TemplateEngine engine) {
+                StandardDialect dialect = findStandardDialect(engine);
+                JsonManager jsonManager = ContainerUtil.getComponent(JsonManager.class);
+                dialect.setJavaScriptSerializer(new ThymeleafJavaScriptSerializer(jsonManager));
+                super.setupTemplateEngine(engine);
+            }
+
+            protected StandardDialect findStandardDialect(TemplateEngine engine) {
+                return (StandardDialect) engine.getDialects().stream().filter(di -> {
+                    return di instanceof StandardDialect;
+                }).findFirst().get(); // always present
+            }
+        };
     }
 
     // -----------------------------------------------------
