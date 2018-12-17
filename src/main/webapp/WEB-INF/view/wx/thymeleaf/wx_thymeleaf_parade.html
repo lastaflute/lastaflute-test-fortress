@@ -95,10 +95,12 @@
 		</section>
 	</section>
 
-	<!-- test of thymeleaf3 json serialization -->
-	<pre>
+	<!-- test of thymeleaf3 json serialization
+	 IStandardJavaScriptSerializer works by script tag (cannot by pre)
+	-->
+	<script th:inline="javascript">
 	product : [[${productAsJson}]]
-	</pre>
+	</script>
 </div>
 </main>
 <footer th:replace="/common/layout.html :: footer">
