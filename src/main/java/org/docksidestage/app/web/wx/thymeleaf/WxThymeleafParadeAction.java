@@ -63,7 +63,7 @@ public class WxThymeleafParadeAction extends FortressBaseAction {
 
             if (!beans.isEmpty()) { // test of thymeleaf3 json serialization
                 WxThymeleafSearchRowBean firstBean = beans.get(0);
-                firstBean.productName = "<html>\n'quote'";
+                firstBean.productName = "<html>\n 'single quote' and \"double quote\"";
                 data.register("productAsJson", firstBean);
             }
         });
