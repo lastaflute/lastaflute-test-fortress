@@ -30,8 +30,10 @@ public class OnparadeSearchForm {
     public CDef.ProductStatus productStatus;
     public String purchaseMemberName;
 
+    // ?nested.nestedStr=sea
     public NestedForm nested;
 
+    // ?nestedList[0].nestedStr=sea&nestedList[1].nestedStr=land
     public List<NestedForm> nestedList;
 
     public static class NestedForm {
@@ -44,9 +46,6 @@ public class OnparadeSearchForm {
         }
     }
 
-    public Map<String, String[]> fields = new HashMap<>();
-
-    {
-        fields.put("label", new String[] { "ONS" });
-    }
+    // ?keyValues.sea=mystic&keyValues.sea=over
+    public Map<String, String[]> keyValues = new HashMap<>();
 }

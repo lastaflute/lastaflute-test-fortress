@@ -20,6 +20,7 @@ import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
+import org.lastaflute.web.util.LaActionExecuteUtil;
 
 /**
  * @author jflute
@@ -36,7 +37,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/
     @Execute
     public JsonResponse<RoutingCheckResult> index(Integer first) {
-        return asJson(new RoutingCheckResult("index()", "specified: " + first, null));
+        return asJson(new RoutingCheckResult(getExecuteName(), "specified: " + first, null));
     }
 
     // [hit]
@@ -46,7 +47,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/maihama/dockside
     @Execute
     public JsonResponse<RoutingCheckResult> maihama() {
-        return asJson(new RoutingCheckResult("maihama()", null, null));
+        return asJson(new RoutingCheckResult(getExecuteName(), null, null));
     }
 
     // [hit]
@@ -55,13 +56,13 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/sea/dockside/hangar
     @Execute
     public JsonResponse<RoutingCheckResult> sea(String first) {
-        return asJson(new RoutingCheckResult("sea()", first, null));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, null));
     }
 
     // Cannot define overload method of action execute
     //@Execute
     //public JsonResponse<RoutingCheckResult> sea(String first, String second) {
-    //    return asJson(new RoutingCheckResult("sea()", first, second));
+    //    return asJson(new RoutingCheckResult(getExecuteName(), first, second));
     //}
 
     // [hit]
@@ -71,7 +72,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/land/dockside/hangar/magiclamp
     @Execute
     public JsonResponse<RoutingCheckResult> land(String first, String second) {
-        return asJson(new RoutingCheckResult("land()", first, second));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, second));
     }
 
     // [hit]
@@ -81,7 +82,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/piari/dockside/hangar
     @Execute
     public JsonResponse<RoutingCheckResult> piari(OptionalThing<String> first) {
-        return asJson(new RoutingCheckResult("piari()", first.orElse("*first"), null));
+        return asJson(new RoutingCheckResult(getExecuteName(), first.orElse("*first"), null));
     }
 
     // [hit]
@@ -92,7 +93,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/dstore/dockside/hangar/magiclamp
     @Execute
     public JsonResponse<RoutingCheckResult> dstore(OptionalThing<String> first, OptionalThing<String> second) {
-        return asJson(new RoutingCheckResult("dstore()", first.orElse("*first"), second.orElse("*second")));
+        return asJson(new RoutingCheckResult(getExecuteName(), first.orElse("*first"), second.orElse("*second")));
     }
 
     // [hit]
@@ -103,7 +104,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/bonvo/dockside/hangar/magiclamp
     @Execute
     public JsonResponse<RoutingCheckResult> bonvo(String first, OptionalThing<String> second) {
-        return asJson(new RoutingCheckResult("bonvo()", first, second.orElse("*second")));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, second.orElse("*second")));
     }
 
     // [hit]
@@ -114,7 +115,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/amba/dockside/hangar/magiclamp/orleans
     @Execute
     public JsonResponse<RoutingCheckResult> amba(String first, String second, OptionalThing<String> third) {
-        return asJson(new RoutingCheckResult("amba()", first, second + " :: " + third.orElse("*third")));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, second + " :: " + third.orElse("*third")));
     }
 
     // [hit]
@@ -125,7 +126,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/miraco/dockside/hangar
     @Execute
     public JsonResponse<RoutingCheckResult> miraco(String first, String second, String third, OptionalThing<String> fourth) {
-        return asJson(new RoutingCheckResult("miraco()", first, second + " :: " + third + " :: " + fourth.orElse("*fourth")));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, second + " :: " + third + " :: " + fourth.orElse("*fourth")));
     }
 
     // [hit]
@@ -136,7 +137,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/dohotel/dockside/hangar/magiclamp
     @Execute
     public JsonResponse<RoutingCheckResult> dohotel(String first, OptionalThing<String> second, RoutingCheckForm form) {
-        return asJson(new RoutingCheckResult("dohotel()", first, second.orElse("*second") + " :: " + form));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, second.orElse("*second") + " :: " + form));
     }
 
     // [hit]
@@ -147,7 +148,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/celeb/1/2/3
     @Execute
     public JsonResponse<RoutingCheckResult> celeb(Integer first, OptionalThing<Long> second) {
-        return asJson(new RoutingCheckResult("celeb()", first, second.orElse(-99999L)));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, second.orElse(-99999L)));
     }
 
     // [hit]
@@ -157,7 +158,7 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/sea/resola
     @Execute(urlPattern = "{}/@word")
     public JsonResponse<RoutingCheckResult> resola(Integer first) {
-        return asJson(new RoutingCheckResult("resola()", first, null));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, null));
     }
 
     // [hit]
@@ -167,6 +168,10 @@ public class WxRoutingAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/routing/amphi/1/theater/zed
     @Execute(urlPattern = "@word/{}/@word/{}/@word")
     public JsonResponse<RoutingCheckResult> amphiTheaterMaihama(Integer first, String second) {
-        return asJson(new RoutingCheckResult("amphiTheaterMaihama()", first, second));
+        return asJson(new RoutingCheckResult(getExecuteName(), first, second));
+    }
+
+    private String getExecuteName() {
+        return LaActionExecuteUtil.getActionExecute().toSimpleMethodExp();
     }
 }

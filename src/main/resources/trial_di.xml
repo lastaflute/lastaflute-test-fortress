@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//DBFLUTE//DTD LastaDi 1.0//EN"
+	"http://dbflute.org/meta/lastadi10.dtd">
+<components>
+	<include path="lastaflute.xml"/>
+	<include condition="#exists('#path')" path="trial_option.xml"/>
+	<include condition="#SMART == 'alwaysNotMatch'" path="rdb.xml"/>
+
+	<component name="sea" class="org.docksidestage.mylasta.trial.TrialDiSea"/>
+	<component name="land" class="org.docksidestage.mylasta.trial.TrialDiLand"/>
+	<component name="parks">[sea, land]</component>
+	<component name="maihama" class="org.docksidestage.mylasta.trial.TrialDiMaihama">
+		<property name="parkList">parks</property>
+	</component>
+
+	<component name="expSea" class="org.docksidestage.mylasta.trial.TrialExpSea">
+		<property name="simpleString">"dockside"</property>
+		<property name="simpleInteger">3</property>
+		<property name="simpleLong">123456789012</property>
+		<property name="nearlyMaxInteger">2100000000</property>
+		<property name="overMaxInteger">2200000000</property>
+
+		<postConstruct name="addStringList">
+			<arg>["a","b"]</arg>
+		</postConstruct>
+		<postConstruct name="addStringMap">
+			<arg>{"sea.over": "land.oneman"}</arg>
+		</postConstruct>
+		<postConstruct name="addIntArray">
+			<arg>(int[])[1,2]</arg>
+		</postConstruct>
+		<postConstruct name="addStringArray">
+			<arg>(String[])["sea" ,  "land" ]</arg>
+		</postConstruct>
+
+		<postConstruct name="addType"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.class</arg></postConstruct>
+		<postConstruct name="addStaticFinal"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.STATIC_DEF</arg></postConstruct>
+		<postConstruct name="addStaticMethod"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.callStatic()</arg></postConstruct>
+		<postConstruct name="addType"><arg>@jp.sea.SeaPark@class</arg></postConstruct>
+		<postConstruct name="addStaticFinal"><arg>@jp.sea.SeaPark@STATIC_DEF</arg></postConstruct>
+		<postConstruct name="addStaticMethod"><arg>@jp.sea.SeaPark@callStatic()</arg></postConstruct>
+
+		<postConstruct name="addConfigProp">
+			<arg>provider.config().getJdbcUrl()</arg>
+		</postConstruct>
+		<postConstruct name="addCipher">
+			<arg>lastaflute_core.primaryCipher</arg>
+		</postConstruct>
+	</component>
+
+	<component name="switchedPark">
+		provider.config().isDevelopmentHere()
+			? "new org.docksidestage.mylasta.trial.TrialSwitchableSea()"
+			: "new org.docksidestage.mylasta.trial.TrialSwitchableLand()"
+	</component>
+	<component name="switchingMaihama" class="org.docksidestage.mylasta.trial.TrialSwitchingMaihama"/>
+
+	<!-- non standard domain cases are following: -->
+
+	<component name="iks" class="jp.iks.IksPark">
+		<postConstruct name="addIntArray"><arg>(int[])[1,2]</arg></postConstruct>
+		<postConstruct name="addStringArray"><arg>(String[])["sea" ,  "land" ]</arg></postConstruct>
+		<postConstruct name="addList"><arg>["a","b"]</arg></postConstruct>
+		<postConstruct name="addMap"><arg>{"sea.over": "land.oneman"}</arg></postConstruct>
+		<postConstruct name="addString"><arg>org.lastaflute.di.core.expression.dwarf.ExpressionPlainHook.METHOD_MARK</arg></postConstruct>
+		<postConstruct name="addConfigProp"><arg>lastaflute_assist.provider.config().getJdbcUrl()</arg></postConstruct>
+		<postConstruct name="addCipher"><arg>lastaflute_core.primaryCipher</arg></postConstruct>
+	</component>
+
+	<component name="resort">provider.config().isDevelopmentHere()
+								? "new jp.sea.SeaPark()"
+								: "new jp.land.LandPark()"
+	</component>
+</components>

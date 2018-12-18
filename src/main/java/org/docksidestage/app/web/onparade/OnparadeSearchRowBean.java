@@ -15,6 +15,8 @@
  */
 package org.docksidestage.app.web.onparade;
 
+import java.time.LocalDate;
+
 /**
  * @author jflute
  */
@@ -22,6 +24,8 @@ public class OnparadeSearchRowBean {
 
     public Integer productId;
     public String productName;
-    public String productStatusName;
+    public String productStatus;
     public Integer regularPrice;
+    public String productCategory;
+    public LocalDate latestPurchaseDate = LocalDate.now(); // for now
 }

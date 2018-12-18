@@ -68,18 +68,15 @@ public class OnparadeAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    // /product/list/3?sea=land&aaa=bbb
     @Execute
     public HtmlResponse index(OptionalThing<Integer> pageNumber, OnparadeSearchForm form) {
+        // test for now by jflute
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
         logger.debug("#form");
         logger.debug(" form.nested: {}", form.nested);
         logger.debug(" form.nestedList: {}", form.nestedList);
-        logger.debug(" form.fields: {}", Arrays.asList(form.fields.get("label")));
-        // test for now by jflute
-        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-        // requiresNew(tx -> {
-        // tx.returns(memberList);
-        // });
+        logger.debug(" form.keyValues: sea={}", Arrays.asList(form.keyValues.get("sea")));
+
         productBhv.selectList(cb -> {
             cb.query().setProductName_LikeSearch("S", op -> op.likePrefix());
             cb.query().addOrderBy_ProductCategoryCode_Desc();
@@ -88,6 +85,9 @@ public class OnparadeAction extends FortressBaseAction {
             postcard.setFrom("sea@example.com", FortressMessages.LABELS_ADD);
             postcard.addTo("land@example.com");
             postcard.setMemberName("sea");
+            postcard.setDomain("example.com");
+            postcard.setAccount("mystic");
+            postcard.setToken("bbb");
             postcard.pushLogging("aaa", "bbb");
             postcard.addReplyTo("rep@example.com");
         });
@@ -105,6 +105,7 @@ public class OnparadeAction extends FortressBaseAction {
         System.out.println("nested: " + nested);
         // _/_/_/_/_/_/_/_/_/_/
 
+        // main process from here
         validate(form, messages -> {}, () -> {
             return asHtml(path_Onparade_OnparadeHtml);
         });
@@ -116,10 +117,6 @@ public class OnparadeAction extends FortressBaseAction {
             data.register("beans", beans);
             pagingAssist.registerPagingNavi(data, page, form);
         });
-        // return asHtml(path_Product_ProductListJsp).renderWith(data -> {
-        // data.register("beans", beans);
-        // registerPagingNavi(data, page, form);
-        // });
     }
 
     // ===================================================================================
@@ -156,9 +153,10 @@ public class OnparadeAction extends FortressBaseAction {
         bean.productId = product.getProductId();
         bean.productName = product.getProductName();
         product.getProductStatus().alwaysPresent(status -> {
-            bean.productStatusName = status.getProductStatusName();
+            bean.productStatus = status.getProductStatusName();
         });
         bean.regularPrice = product.getRegularPrice();
+        bean.productCategory = product.getProductCategory().get().getProductCategoryName();
         return bean;
     }
 }

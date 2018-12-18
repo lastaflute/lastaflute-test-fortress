@@ -15,6 +15,8 @@
  */
 package org.docksidestage.remote.maihama.showbase.member.list;
 
+import javax.validation.constraints.NotNull;
+
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
@@ -41,7 +43,7 @@ public class RemoteMemberListReturn {
     public Integer allPageCount;
 
     /** The property of rows. (paging data for current page) */
-    @Required
+    @NotNull
     @javax.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<MemberSearchRowPart> rows;
 

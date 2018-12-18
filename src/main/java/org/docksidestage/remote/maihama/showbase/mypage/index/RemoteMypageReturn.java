@@ -15,6 +15,8 @@
  */
 package org.docksidestage.remote.maihama.showbase.mypage.index;
 
+import javax.validation.constraints.NotNull;
+
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
@@ -25,7 +27,7 @@ import org.lastaflute.web.validation.Required;
 public class RemoteMypageReturn {
 
     /** The property of recentProducts. */
-    @Required
+    @NotNull
     @javax.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<ProductPart> recentProducts;
 
@@ -45,7 +47,7 @@ public class RemoteMypageReturn {
     }
 
     /** The property of highPriceProducts. */
-    @Required
+    @NotNull
     @javax.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<ProductPart> highPriceProducts;
 

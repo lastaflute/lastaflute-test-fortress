@@ -62,7 +62,7 @@ public class ThymeleafJavaScriptSerializer implements IStandardJavaScriptSeriali
         });
         JsonEngineResource resource = new JsonEngineResource();
         resource.acceptMappingOption(mappingOption);
-        resource.overrideYourEngineCreator((builderSetupper, optionSetupper) -> {
+        resource.useYourEngineCreator((builderSetupper, optionSetupper) -> {
             return createMyEngine(builderSetupper, optionSetupper);
         });
         return jsonManager.newRuledEngine(resource);

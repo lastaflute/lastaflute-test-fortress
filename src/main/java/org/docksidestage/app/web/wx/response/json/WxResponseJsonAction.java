@@ -21,6 +21,7 @@ import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.view.DisplayAssist;
+import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -37,8 +38,8 @@ public class WxResponseJsonAction extends FortressBaseAction {
 
     // http://localhost:8151/fortress/wx/response/json
     @Execute
-    public JsonResponse<MyBasicJsonBean> index() {
-        return asJson(new MyBasicJsonBean(3, "sea", displayAssist.toDate("2001-09-06").get()));
+    public JsonResponse<MyBasicJsonResult> index() {
+        return asJson(new MyBasicJsonResult(3, "sea", displayAssist.toDate("2001-09-06").get()));
     }
 
     // http://localhost:8151/fortress/wx/response/json/emptybody
@@ -59,7 +60,7 @@ public class WxResponseJsonAction extends FortressBaseAction {
         return asJson(7);
     }
 
-    public static class MyBasicJsonBean {
+    protected static class MyBasicJsonResult {
 
         @Required
         public final Integer memberId;
@@ -67,10 +68,15 @@ public class WxResponseJsonAction extends FortressBaseAction {
         public final String memberName;
         public final LocalDate birthdate;
 
-        public MyBasicJsonBean(Integer memberId, String memberName, LocalDate birthdate) {
+        public MyBasicJsonResult(Integer memberId, String memberName, LocalDate birthdate) {
             this.memberId = memberId;
             this.memberName = memberName;
             this.birthdate = birthdate;
+        }
+
+        @Override
+        public String toString() {
+            return Lato.string(this);
         }
     }
 }
