@@ -15,10 +15,7 @@
  */
 package org.docksidestage.mylasta.direction;
 
-import java.util.function.Supplier;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 
 import org.docksidestage.bizfw.thymeleaf.ThymeleafConfigProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressActionAdjustmentProvider;
@@ -44,10 +41,6 @@ import org.lastaflute.thymeleaf.ThymeleafRenderingProvider;
 import org.lastaflute.web.direction.FwWebDirection;
 import org.lastaflute.web.ruts.multipart.MultipartResourceProvider;
 import org.lastaflute.web.ruts.renderer.HtmlRenderingProvider;
-import org.lastaflute.web.servlet.request.ResponseDownloadPerformer;
-import org.lastaflute.web.servlet.request.ResponseDownloadResource;
-import org.lastaflute.web.servlet.request.ResponseHandlingProvider;
-import org.lastaflute.web.servlet.request.ResponseWritePerformer;
 
 /**
  * @author jflute
@@ -141,21 +134,6 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
         direction.directApiCall(createApiFailureHook());
         direction.directHtmlRendering(createHtmlRenderingProvider());
         direction.directMultipart(createMultipartResourceProvider());
-        direction.directResponse(new ResponseHandlingProvider() {
-            @Override
-            public Supplier<ResponseWritePerformer> provideResponseWritePerformerCreator() {
-                return () -> null;
-            }
-
-            public java.util.function.Supplier<org.lastaflute.web.servlet.request.ResponseDownloadPerformer> provideResponseDownloadPerformerCreator() {
-                return () -> new ResponseDownloadPerformer() {
-                    public void downloadStreamCall(ResponseDownloadResource resource, HttpServletResponse response) {
-                        System.out.println("@@@@@");
-                        super.downloadStreamCall(resource, response);
-                    }
-                };
-            };
-        });
     }
 
     protected FortressUserLocaleProcessProvider createUserLocaleProcessProvider() {
