@@ -17,11 +17,13 @@ package org.docksidestage.bizfw.thymeleaf;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.time.format.DateTimeFormatter;
 import java.util.function.Consumer;
 
 import org.lastaflute.core.json.JsonEngineResource;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.JsonMappingOption;
+import org.lastaflute.core.json.adapter.StringGsonAdaptable.TypeAdapterString;
 import org.lastaflute.core.json.engine.GsonJsonEngine;
 import org.lastaflute.core.json.engine.RealJsonEngine;
 import org.lastaflute.web.ruts.wrapper.BeanWrapper;
@@ -56,32 +58,41 @@ public class ThymeleafJavaScriptSerializer implements IStandardJavaScriptSeriali
     }
 
     private RealJsonEngine prepareJsonEngine(JsonManager jsonManager) {
-        JsonMappingOption mappingOption = new JsonMappingOption();
-        jsonManager.pulloutControlMeta().getMappingControlMeta().ifPresent(meta -> {
-            mappingOption.acceptAnother(meta);
-        });
         JsonEngineResource resource = new JsonEngineResource();
-        resource.acceptMappingOption(mappingOption);
+        resource.acceptMappingOption(prepraeMappingOption(jsonManager));
         resource.useYourEngineCreator((builderSetupper, optionSetupper) -> {
             return createMyEngine(builderSetupper, optionSetupper);
         });
         return jsonManager.newRuledEngine(resource);
     }
 
+    private JsonMappingOption prepraeMappingOption(JsonManager jsonManager) {
+        JsonMappingOption mappingOption = new JsonMappingOption();
+        jsonManager.pulloutControlMeta().getMappingControlMeta().ifPresent(existingMeta -> {
+            mappingOption.acceptAnother(existingMeta); // inheriting example
+        });
+        mappingOption.formatLocalDateBy(DateTimeFormatter.ofPattern("yyyy/MM/dd")); // customization example
+        return mappingOption;
+    }
+
     private GsonJsonEngine createMyEngine(Consumer<GsonBuilder> builderSetupper, Consumer<JsonMappingOption> optionSetupper) {
         return new GsonJsonEngine(builderSetupper, optionSetupper) {
             @Override
             public TypeAdapterString createTypeAdapterString() {
-                return new TypeAdapterString(getGsonOption()) {
-                    @Override
-                    public void write(JsonWriter out, String value) throws IOException {
-                        if (value == null) {
-                            out.value("");
-                        } else {
-                            super.write(out, value);
-                        }
-                    }
-                };
+                return createMyTypeAdapterString(getGsonOption());
+            }
+        };
+    }
+
+    private TypeAdapterString createMyTypeAdapterString(JsonMappingOption gsonOption) {
+        return new TypeAdapterString(gsonOption) {
+            @Override
+            public void write(JsonWriter out, String value) throws IOException {
+                if (value == null) {
+                    out.value("(nullnull)"); // customization example
+                } else {
+                    super.write(out, value);
+                }
             }
         };
     }
