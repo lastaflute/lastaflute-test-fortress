@@ -17,48 +17,83 @@ package org.docksidestage.bizfw.thymeleaf;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.reflect.Field;
+import java.util.function.Consumer;
 
-import org.dbflute.optional.OptionalThing;
-import org.dbflute.util.DfReflectionUtil;
+import org.lastaflute.core.json.JsonEngineResource;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.JsonMappingOption;
+import org.lastaflute.core.json.engine.GsonJsonEngine;
 import org.lastaflute.core.json.engine.RealJsonEngine;
 import org.lastaflute.web.ruts.wrapper.BeanWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.thymeleaf.standard.serializer.IStandardJavaScriptSerializer;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonWriter;
+
 /**
  * @author jflute
  */
 public class ThymeleafJavaScriptSerializer implements IStandardJavaScriptSerializer {
 
+    // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
     private static final Logger logger = LoggerFactory.getLogger(ThymeleafJavaScriptSerializer.class);
 
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
     protected final RealJsonEngine engine;
 
+    // ===================================================================================
+    //                                                                         Constructor
+    //                                                                         ===========
     public ThymeleafJavaScriptSerializer(JsonManager jsonManager) {
         logger.debug("#fw_thymeleaf ...Initializing JavaScript serializer of Thymeleaf");
         engine = prepareJsonEngine(jsonManager);
     }
 
     private RealJsonEngine prepareJsonEngine(JsonManager jsonManager) {
-        JsonMappingOption option = createJsonMappingOption();
-        return jsonManager.newAnotherEngine(OptionalThing.of(option));
+        JsonMappingOption mappingOption = new JsonMappingOption();
+        jsonManager.pulloutControlMeta().getMappingControlMeta().ifPresent(meta -> {
+            mappingOption.acceptAnother(meta);
+        });
+        JsonEngineResource resource = new JsonEngineResource();
+        resource.acceptMappingOption(mappingOption);
+        resource.overrideYourEngineCreator((builderSetupper, optionSetupper) -> {
+            return createMyEngine(builderSetupper, optionSetupper);
+        });
+        return jsonManager.newRuledEngine(resource);
     }
 
-    private JsonMappingOption createJsonMappingOption() {
-        JsonMappingOption option = new JsonMappingOption();
-        option.asNullToEmptyWriting(); // trial as example
-        return option;
+    private GsonJsonEngine createMyEngine(Consumer<GsonBuilder> builderSetupper, Consumer<JsonMappingOption> optionSetupper) {
+        return new GsonJsonEngine(builderSetupper, optionSetupper) {
+            @Override
+            public TypeAdapterString createTypeAdapterString() {
+                return new TypeAdapterString(getGsonOption()) {
+                    @Override
+                    public void write(JsonWriter out, String value) throws IOException {
+                        if (value == null) {
+                            out.value("");
+                        } else {
+                            super.write(out, value);
+                        }
+                    }
+                };
+            }
+        };
     }
 
+    // ===================================================================================
+    //                                                                           Serialize
+    //                                                                           =========
     @Override
     public void serializeValue(Object object, Writer writer) {
         final Object realBean = resolveRealBean(object);
         String json = engine.toJson(realBean);
-        logger.debug("#fw_thymeleaf ...Serializing as JSON: type={}, obj={}\n{}", object.getClass(), object, json);
+        logger.debug("#fw_thymeleaf ...Serializing as JSON: type={}, obj={}\n{}", realBean.getClass(), realBean, json);
         try {
             writer.write(json);
         } catch (IOException e) {
@@ -69,9 +104,7 @@ public class ThymeleafJavaScriptSerializer implements IStandardJavaScriptSeriali
     private Object resolveRealBean(Object object) {
         final Object realBean;
         if (object instanceof BeanWrapper) { // basically here
-            // no getter so forcedly for now
-            Field beanField = DfReflectionUtil.getWholeField(BeanWrapper.class, "bean");
-            realBean = DfReflectionUtil.getValueForcedly(beanField, object);
+            realBean = ((BeanWrapper) object).getBean();
         } else {
             realBean = object;
         }

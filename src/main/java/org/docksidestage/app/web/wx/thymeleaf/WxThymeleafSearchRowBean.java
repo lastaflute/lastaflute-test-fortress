@@ -17,6 +17,7 @@ package org.docksidestage.app.web.wx.thymeleaf;
 
 import java.time.LocalDate;
 
+import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
@@ -41,6 +42,7 @@ public class WxThymeleafSearchRowBean {
     // test of thymeleaf3 json serializer
     public String nullableString;
     public Integer nullableInteger;
+    public CDef.MemberStatus nullableCDef;
 
     @Override
     public String toString() {

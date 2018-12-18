@@ -51,8 +51,6 @@ import org.lastaflute.web.servlet.request.ResponseDownloadPerformer;
 import org.lastaflute.web.servlet.request.ResponseDownloadResource;
 import org.lastaflute.web.servlet.request.ResponseHandlingProvider;
 import org.lastaflute.web.servlet.request.ResponseWritePerformer;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.standard.StandardDialect;
 
 /**
  * @author jflute
@@ -185,27 +183,12 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
     }
 
     protected HtmlRenderingProvider createHtmlRenderingProvider() {
-        return createThymeleafRenderingProvider().asDevelopment(config.isDevelopmentHere()).additionalExpression(resource -> {
+        return new ThymeleafRenderingProvider().asDevelopment(config.isDevelopmentHere()).additionalExpression(resource -> {
             resource.registerExpressionObject("config", new ThymeleafConfigObject(config));
+        }).customizeStandardDialect(dialect -> {
+            JsonManager jsonManager = ContainerUtil.getComponent(JsonManager.class);
+            dialect.setJavaScriptSerializer(new ThymeleafJavaScriptSerializer(jsonManager));
         });
-    }
-
-    protected ThymeleafRenderingProvider createThymeleafRenderingProvider() {
-        return new ThymeleafRenderingProvider() {
-            @Override
-            protected void setupTemplateEngine(TemplateEngine engine) {
-                StandardDialect dialect = findStandardDialect(engine);
-                JsonManager jsonManager = ContainerUtil.getComponent(JsonManager.class);
-                dialect.setJavaScriptSerializer(new ThymeleafJavaScriptSerializer(jsonManager));
-                super.setupTemplateEngine(engine);
-            }
-
-            protected StandardDialect findStandardDialect(TemplateEngine engine) {
-                return (StandardDialect) engine.getDialects().stream().filter(di -> {
-                    return di instanceof StandardDialect;
-                }).findFirst().get(); // always present
-            }
-        };
     }
 
     // -----------------------------------------------------

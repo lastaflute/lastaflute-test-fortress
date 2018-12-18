@@ -62,7 +62,9 @@ public class WxThymeleafParadeAction extends FortressBaseAction {
             pagingAssist.registerPagingNavi(data, page, form);
 
             if (!beans.isEmpty()) { // test of thymeleaf3 json serialization
-                data.register("productAsJson", beans.get(0));
+                WxThymeleafSearchRowBean firstBean = beans.get(0);
+                firstBean.productName = "<html>\n'quote'";
+                data.register("productAsJson", firstBean);
             }
         });
     }
