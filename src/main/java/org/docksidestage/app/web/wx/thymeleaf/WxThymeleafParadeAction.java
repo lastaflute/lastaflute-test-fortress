@@ -29,6 +29,7 @@ import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
@@ -65,8 +66,19 @@ public class WxThymeleafParadeAction extends FortressBaseAction {
                 WxThymeleafSearchRowBean firstBean = beans.get(0);
                 firstBean.productName = "<html>\n 'single quote' and \"double quote\"";
                 data.register("productAsJson", firstBean);
+                data.register("box", new SimpleBeanProductBox(firstBean));
             }
         });
+    }
+
+    public static class SimpleBeanProductBox {
+
+        @Required
+        public WxThymeleafSearchRowBean product;
+
+        public SimpleBeanProductBox(WxThymeleafSearchRowBean product) {
+            this.product = product;
+        }
     }
 
     // #hope showDerived() as JsonResponse by jflute (2016/08/08)
