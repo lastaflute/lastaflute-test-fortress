@@ -17,6 +17,8 @@ package org.docksidestage.app.web.wx.thymeleaf;
 
 import java.time.LocalDate;
 
+import javax.validation.Valid;
+
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -43,6 +45,15 @@ public class WxThymeleafSearchRowBean {
     public String nullableString;
     public Integer nullableInteger;
     public CDef.MemberStatus nullableCDef;
+
+    @Valid
+    public WxThymeleafSearchRowNestedBean nestedBean;
+
+    public static class WxThymeleafSearchRowNestedBean {
+
+        public String nestedNullableString;
+        public Integer nestedNullableInteger;
+    }
 
     @Override
     public String toString() {

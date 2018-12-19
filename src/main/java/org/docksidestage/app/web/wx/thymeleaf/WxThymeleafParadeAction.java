@@ -24,6 +24,7 @@ import org.dbflute.cbean.result.PagingResultBean;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
+import org.docksidestage.app.web.wx.thymeleaf.WxThymeleafSearchRowBean.WxThymeleafSearchRowNestedBean;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
@@ -65,6 +66,7 @@ public class WxThymeleafParadeAction extends FortressBaseAction {
             if (!beans.isEmpty()) { // test of thymeleaf3 json serialization
                 WxThymeleafSearchRowBean firstBean = beans.get(0);
                 firstBean.productName = "<html>\n 'single quote' and \"double quote\"";
+                firstBean.nestedBean = new WxThymeleafSearchRowNestedBean();
                 data.register("productAsJson", firstBean);
                 data.register("box", new SimpleBeanProductBox(firstBean));
             }

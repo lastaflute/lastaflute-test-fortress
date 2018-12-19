@@ -63,6 +63,7 @@ public class WxJsonNewRuledEngineTest extends UnitFortressBasicTestCase {
         bean.seaList = Lists.immutable.of("over", "mystic", "bbb");
         bean.landList = Lists.immutable.of(1, 2, 3);
         bean.bonvoDate = LocalDate.of(2018, 12, 19);
+        bean.nestedBean = new JsonRuledTestNestedBean();
         String json = ruledEngine.toJson(bean);
         log(ln() + json);
         assertNotContains(json, "over"); // cannot use your collection
@@ -142,7 +143,10 @@ public class WxJsonNewRuledEngineTest extends UnitFortressBasicTestCase {
                             public void write(JsonWriter out, String value) throws IOException {
                                 if (value != null && value.contains("mys")) {
                                     value = "han{" + value + "}gar";
-                                    markHere("called");
+                                    markHere("mystic called");
+                                } else if (value != null && value.contains("wave")) {
+                                    value = "dock{" + value + "}side";
+                                    markHere("overthewaves called");
                                 }
                                 super.write(out, value);
                             }
@@ -160,12 +164,16 @@ public class WxJsonNewRuledEngineTest extends UnitFortressBasicTestCase {
         bean.seaList = Lists.immutable.of("over", "mystic", "bbb");
         bean.landList = Lists.immutable.of(1, 2, 3);
         bean.bonvoDate = LocalDate.of(2018, 12, 19);
+        bean.nestedBean = new JsonRuledTestNestedBean();
+        bean.nestedBean.dockside = "overthewaves";
         String json = ruledEngine.toJson(bean);
         log(ln() + json);
         assertContains(json, "over");
         assertContains(json, "han{mystic}gar");
         assertContains(json, "2018@12$19");
-        assertMarked("called");
+        assertContains(json, "dock{overthewaves}side");
+        assertMarked("mystic called");
+        assertMarked("overthewaves called");
     }
 
     // ===================================================================================
@@ -182,5 +190,16 @@ public class WxJsonNewRuledEngineTest extends UnitFortressBasicTestCase {
 
         @SuppressWarnings("unused")
         public LocalDate bonvoDate;
+
+        @SuppressWarnings("unused")
+        public JsonRuledTestNestedBean nestedBean;
+    }
+
+    private static class JsonRuledTestNestedBean {
+
+        @SuppressWarnings("unused")
+        public String dockside;
+        @SuppressWarnings("unused")
+        public Integer hangar;
     }
 }
