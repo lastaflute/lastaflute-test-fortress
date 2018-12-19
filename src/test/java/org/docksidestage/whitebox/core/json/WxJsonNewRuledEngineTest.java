@@ -191,7 +191,6 @@ public class WxJsonNewRuledEngineTest extends UnitFortressBasicTestCase {
         @SuppressWarnings("unused")
         public LocalDate bonvoDate;
 
-        @SuppressWarnings("unused")
         public JsonRuledTestNestedBean nestedBean;
     }
 
