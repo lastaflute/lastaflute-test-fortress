@@ -78,8 +78,8 @@ public class ThymeleafJavaScriptSerializer implements IStandardJavaScriptSeriali
     private GsonJsonEngine createMyEngine(Consumer<GsonBuilder> builderSetupper, Consumer<JsonMappingOption> optionSetupper) {
         return new GsonJsonEngine(builderSetupper, optionSetupper) {
             @Override
-            public TypeAdapterString createTypeAdapterString() {
-                return createMyTypeAdapterString(getGsonOption());
+            public TypeAdapterString newTypeAdapterString(JsonMappingOption gsonOption) {
+                return createMyTypeAdapterString(gsonOption);
             }
         };
     }

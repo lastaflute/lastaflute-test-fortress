@@ -15,6 +15,11 @@
  */
 package org.docksidestage.whitebox.core.json;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.function.Consumer;
+
 import javax.annotation.Resource;
 
 import org.docksidestage.unit.UnitFortressBasicTestCase;
@@ -24,8 +29,13 @@ import org.lastaflute.core.json.JsonEngineResource;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.json.control.JsonControlMeta;
+import org.lastaflute.core.json.engine.GsonJsonEngine;
 import org.lastaflute.core.json.engine.RealJsonEngine;
+import org.lastaflute.core.json.engine.YourJsonEngineCreator;
 import org.lastaflute.web.validation.Required;
+
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonWriter;
 
 /**
  * @author jflute
@@ -39,8 +49,8 @@ public class WxJsonNewRuledEngineTest extends UnitFortressBasicTestCase {
     private JsonManager jsonManager;
 
     // ===================================================================================
-    //                                                                         DatePattern
-    //                                                                         ===========
+    //                                                                      Mapping Option
+    //                                                                      ==============
     public void test_newRuledEngine_default() {
         // ## Arrange ##
         JsonEngineResource resource = new JsonEngineResource();
@@ -50,14 +60,17 @@ public class WxJsonNewRuledEngineTest extends UnitFortressBasicTestCase {
 
         // ## Assert ##
         JsonRuledTestBean bean = new JsonRuledTestBean();
-        bean.strList = Lists.immutable.of("sea", "land", "piari");
-        bean.intList = Lists.immutable.of(1, 2, 3);
+        bean.seaList = Lists.immutable.of("over", "mystic", "bbb");
+        bean.landList = Lists.immutable.of(1, 2, 3);
+        bean.bonvoDate = LocalDate.of(2018, 12, 19);
         String json = ruledEngine.toJson(bean);
         log(ln() + json);
-        assertNotContains(json, "sea"); // cannot use your collection
+        assertNotContains(json, "over"); // cannot use your collection
+        assertContains(json, "\"seaList\": {}");
+        assertContains(json, "2018-12-19"); // as ISO
     }
 
-    public void test_newRuledEngine_inherit() {
+    public void test_newRuledEngine_inherit_basic() {
         // ## Arrange ##
         JsonMappingOption mappingOption = new JsonMappingOption();
         JsonControlMeta controlMeta = jsonManager.pulloutControlMeta();
@@ -72,19 +85,102 @@ public class WxJsonNewRuledEngineTest extends UnitFortressBasicTestCase {
 
         // ## Assert ##
         JsonRuledTestBean bean = new JsonRuledTestBean();
-        bean.strList = Lists.immutable.of("sea", "land", "piari");
-        bean.intList = Lists.immutable.of(1, 2, 3);
+        bean.seaList = Lists.immutable.of("over", "mystic", "bbb");
+        bean.landList = Lists.immutable.of(1, 2, 3);
+        bean.bonvoDate = LocalDate.of(2018, 12, 19);
         String json = ruledEngine.toJson(bean);
         log(ln() + json);
-        assertContains(json, "sea"); // can use your collection
+        assertContains(json, "over"); // can use your collection
+        assertContains(json, "2018-12-19"); // as ISO
     }
 
-    public static class JsonRuledTestBean {
+    public void test_newRuledEngine_inherit_extension() {
+        // ## Arrange ##
+        JsonMappingOption mappingOption = new JsonMappingOption();
+        JsonControlMeta controlMeta = jsonManager.pulloutControlMeta();
+        controlMeta.getMappingControlMeta().ifPresent(mappingControlMeta -> {
+            mappingOption.acceptAnother(mappingControlMeta);
+        });
+        mappingOption.formatLocalDateBy(DateTimeFormatter.ofPattern("yyyy@MM$dd"));
+        JsonEngineResource resource = new JsonEngineResource();
+        resource.acceptMappingOption(mappingOption);
+
+        // ## Act ##
+        RealJsonEngine ruledEngine = jsonManager.newRuledEngine(resource);
+
+        // ## Assert ##
+        JsonRuledTestBean bean = new JsonRuledTestBean();
+        bean.seaList = Lists.immutable.of("over", "mystic", "bbb");
+        bean.landList = Lists.immutable.of(1, 2, 3);
+        bean.bonvoDate = LocalDate.of(2018, 12, 19);
+        String json = ruledEngine.toJson(bean);
+        log(ln() + json);
+        assertContains(json, "over"); // can use your collection
+        assertContains(json, "2018@12$19");
+    }
+
+    // ===================================================================================
+    //                                                                         Your Engine
+    //                                                                         ===========
+    public void test_newRuledEngine_yourEngine_basic() {
+        // ## Arrange ##
+        JsonMappingOption mappingOption = new JsonMappingOption();
+        JsonControlMeta controlMeta = jsonManager.pulloutControlMeta();
+        controlMeta.getMappingControlMeta().ifPresent(mappingControlMeta -> {
+            mappingOption.acceptAnother(mappingControlMeta);
+        });
+        mappingOption.formatLocalDateBy(DateTimeFormatter.ofPattern("yyyy@MM$dd"));
+        JsonEngineResource resource = new JsonEngineResource();
+        resource.acceptMappingOption(mappingOption);
+        resource.useYourEngineCreator(new YourJsonEngineCreator() {
+            public GsonJsonEngine create(Consumer<GsonBuilder> builderSetupper, Consumer<JsonMappingOption> optionSetupper) {
+                return new GsonJsonEngine(builderSetupper, optionSetupper) {
+                    @Override
+                    public TypeAdapterString newTypeAdapterString(JsonMappingOption option) {
+                        return new TypeAdapterString(option) {
+                            @Override
+                            public void write(JsonWriter out, String value) throws IOException {
+                                if (value != null && value.contains("mys")) {
+                                    value = "han{" + value + "}gar";
+                                    markHere("called");
+                                }
+                                super.write(out, value);
+                            }
+                        };
+                    }
+                };
+            }
+        });
+
+        // ## Act ##
+        RealJsonEngine ruledEngine = jsonManager.newRuledEngine(resource);
+
+        // ## Assert ##
+        JsonRuledTestBean bean = new JsonRuledTestBean();
+        bean.seaList = Lists.immutable.of("over", "mystic", "bbb");
+        bean.landList = Lists.immutable.of(1, 2, 3);
+        bean.bonvoDate = LocalDate.of(2018, 12, 19);
+        String json = ruledEngine.toJson(bean);
+        log(ln() + json);
+        assertContains(json, "over");
+        assertContains(json, "han{mystic}gar");
+        assertContains(json, "2018@12$19");
+        assertMarked("called");
+    }
+
+    // ===================================================================================
+    //                                                                        Small Helper
+    //                                                                        ============
+    private static class JsonRuledTestBean {
 
         @Required
-        public ImmutableList<String> strList;
+        public ImmutableList<String> seaList;
         @Required
-        public ImmutableList<Integer> intList;
-        public ImmutableList<String> nullList;
+        public ImmutableList<Integer> landList;
+        @SuppressWarnings("unused")
+        public ImmutableList<String> piariNullList;
+
+        @SuppressWarnings("unused")
+        public LocalDate bonvoDate;
     }
 }
