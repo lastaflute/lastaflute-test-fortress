@@ -8,5 +8,8 @@
 	<include path="lastaflute.xml"/>
 	<include path="lasta_job.xml"/>
 	<include path="remote_api.xml"/>
-	<include path="trial_di.xml"/>
+
+	<!-- test at WxDiXmlExpressionTest for boot speed
+	 <include path="trial_di.xml"/>
+	 -->
 </components>
