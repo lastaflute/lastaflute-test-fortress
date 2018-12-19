@@ -116,7 +116,7 @@ public class ThymeleafJavaScriptSerializer implements IStandardJavaScriptSeriali
         final Object realBean;
         if (object instanceof BeanWrapper) { // basically here
             realBean = ((BeanWrapper) object).getBean();
-        } else {
+        } else { // e.g. direct String, Integer
             realBean = object;
         }
         return realBean;
