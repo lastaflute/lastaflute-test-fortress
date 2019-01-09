@@ -18,14 +18,19 @@ package org.docksidestage.app.web.wx.request.json;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import javax.validation.Valid;
+
 import org.docksidestage.dbflute.allcommon.CDef;
+import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class WxRequestJsonBodyBody {
+public class WxRequestJsonBodyValidatedBody {
 
+    @Length(min = 3)
     public String sea;
 
     public Integer land;
@@ -38,10 +43,12 @@ public class WxRequestJsonBodyBody {
 
     public CDef.MemberStatus amba;
 
+    @Valid
     public MiracoPart miraco;
 
     public static class MiracoPart {
 
+        @Required
         public String sta;
     }
 

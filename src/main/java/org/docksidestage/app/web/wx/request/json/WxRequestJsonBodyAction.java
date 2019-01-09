@@ -15,10 +15,10 @@
  */
 package org.docksidestage.app.web.wx.request.json;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -33,17 +33,13 @@ public class WxRequestJsonBodyAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/request/json/body/
     @Execute
     public JsonResponse<Map<String, Object>> index(WxRequestJsonBodyBody body) {
-        final Map<String, Object> map = new HashMap<String, Object>();
-        map.put("body", body);
-        return asJson(map);
+        return asJson(DfCollectionUtil.newHashMap("body", body));
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/list
     @Execute
     public JsonResponse<Map<String, Object>> list(List<WxRequestJsonBodyBody> body) {
-        final Map<String, Object> map = new HashMap<String, Object>();
-        map.put("body", body);
-        return asJson(map);
+        return asJson(DfCollectionUtil.newHashMap("body", body));
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/clienterror
@@ -57,5 +53,26 @@ public class WxRequestJsonBodyAction extends FortressBaseAction {
     @Execute
     public JsonResponse<Map<String, Object>> systemerror(WxRequestJsonBodyBody body) {
         throw new IllegalStateException("body: " + body);
+    }
+
+    // http://localhost:8151/fortress/wx/request/json/body/validated
+    @Execute
+    public JsonResponse<Map<String, Object>> validated(WxRequestJsonBodyValidatedBody body) {
+        validateApi(body, messages -> {});
+        return asJson(DfCollectionUtil.newHashMap("body", body));
+    }
+
+    // http://localhost:8151/fortress/wx/request/json/body/validatedlonely
+    //  => Lonely validator annotations, so call validateApi().
+    @Execute
+    public JsonResponse<Map<String, Object>> validatedlonely(WxRequestJsonBodyValidatedBody body) {
+        return asJson(DfCollectionUtil.newHashMap("body", body));
+    }
+
+    // http://localhost:8151/fortress/wx/request/json/body/validatedlonelylist
+    //  => #hope jflute Lonely validator annotations, so call validateApi().
+    @Execute
+    public JsonResponse<Map<String, Object>> validatedlonelylist(List<WxRequestJsonBodyValidatedBody> bodyList) {
+        return asJson(DfCollectionUtil.newHashMap("bodyList", bodyList));
     }
 }
