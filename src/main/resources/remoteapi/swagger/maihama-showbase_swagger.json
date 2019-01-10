@@ -1118,156 +1118,6 @@
         }
       }
     },
-    "/wx/remogen/httpmethod/": {
-      "get": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "parameters": [
-          {
-            "name": "sea",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "land",
-            "type": "integer",
-            "format": "int32",
-            "in": "query",
-            "required": false
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      },
-      "post": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "SuperSimpleBody",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
-            }
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      },
-      "delete": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "parameters": [
-          {
-            "name": "sea",
-            "type": "string",
-            "in": "formData",
-            "required": false
-          },
-          {
-            "name": "land",
-            "type": "integer",
-            "format": "int32",
-            "in": "formData",
-            "required": false
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      }
-    },
-    "/wx/remogen/httpmethod/enclosing": {
-      "delete": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "SuperSimpleBody",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
-            }
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      }
-    },
     "/wx/remogen/list/basic": {
       "post": {
         "summary": "@author jflute",
@@ -1365,6 +1215,192 @@
               "items": {
                 "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap.java.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
               }
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/method/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "land",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "iamForm",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SuperSimpleBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "in": "formData",
+            "required": false
+          },
+          {
+            "name": "land",
+            "type": "integer",
+            "format": "int32",
+            "in": "formData",
+            "required": false
+          },
+          {
+            "name": "iamForm",
+            "type": "string",
+            "in": "formData",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/method/enclosing": {
+      "delete": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SuperSimpleBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/wx/remogen/method/noquery": {
+      "delete": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
           "400": {
@@ -3224,18 +3260,9 @@
         "land": {
           "type": "integer",
           "format": "int32"
-        }
-      }
-    },
-    "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult": {
-      "type": "object",
-      "properties": {
-        "sea": {
-          "type": "string"
         },
-        "land": {
-          "type": "integer",
-          "format": "int32"
+        "iamBody": {
+          "type": "string"
         }
       }
     },
@@ -3269,6 +3296,21 @@
         },
         "value": {
           "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult": {
+      "type": "object",
+      "properties": {
+        "sea": {
+          "type": "string"
+        },
+        "land": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "iamResult": {
+          "type": "string"
         }
       }
     },

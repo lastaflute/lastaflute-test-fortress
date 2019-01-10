@@ -13,15 +13,15 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.body.basic;
+package org.docksidestage.remote.maihama.showbase.wx.remogen.method;
 
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as param for remote API of POST /wx/remogen/body/basic.
+ * The bean class as return for remote API of POST /wx/remogen/method/.
  * @author FreeGen
  */
-public class RemoteWxRemogenBodyBasicParam {
+public class RemoteWxRemogenMethodPostReturn {
 
     /** The property of sea. (NullAllowed) */
     public String sea;
@@ -29,8 +29,8 @@ public class RemoteWxRemogenBodyBasicParam {
     /** The property of land. (NullAllowed) */
     public Integer land;
 
-    /** The property of iamBody. (NullAllowed) */
-    public String iamBody;
+    /** The property of iamResult. (NullAllowed) */
+    public String iamResult;
 
     @Override
     public String toString() {

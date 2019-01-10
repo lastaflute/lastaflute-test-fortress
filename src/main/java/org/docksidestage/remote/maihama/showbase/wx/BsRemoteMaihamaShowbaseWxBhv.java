@@ -26,6 +26,15 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.list.basic.RemoteWxR
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genebean.RemoteWxRemogenListGenebeanReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genestring.RemoteWxRemogenListGenestringReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.innergene.RemoteWxRemogenListInnergeneReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodDeleteParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodDeleteReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodPostParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodPostReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.enclosing.RemoteWxRemogenMethodEnclosingParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.enclosing.RemoteWxRemogenMethodEnclosingReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.noquery.RemoteWxRemogenMethodNoqueryReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.RemoteWxRemogenRoutingReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amba.RemoteWxRemogenRoutingAmbaReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amphi.theater.maihama.RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn;
@@ -169,7 +178,8 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param paramLambda The callback for java.util.List<RemoteWxRemogenBodyListParam>. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void doRequestRemogenBodyList(Consumer<java.util.List<RemoteWxRemogenBodyListParam>> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected void doRequestRemogenBodyList(Consumer<java.util.List<RemoteWxRemogenBodyListParam>> paramLambda,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
         java.util.List<RemoteWxRemogenBodyListParam> param = new java.util.ArrayList<RemoteWxRemogenBodyListParam>();
         paramLambda.accept(param);
         doRequestPost(void.class, "/wx/remogen/body/list", noMoreUrl(), param, rule -> {
@@ -206,12 +216,14 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListBasicReturn> doRequestRemogenListBasic(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListBasicReturn>>() {
-        }.getType(), "/wx/remogen/list/basic", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenListBasic(rule);
-            ruleLambda.accept(rule);
-        });
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListBasicReturn> doRequestRemogenListBasic(
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(
+                new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListBasicReturn>>() {
+                }.getType(), "/wx/remogen/list/basic", noMoreUrl(), noRequestBody(), rule -> {
+                    ruleOfRemogenListBasic(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -242,12 +254,14 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenebeanReturn> doRequestRemogenListGenebean(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenebeanReturn>>() {
-        }.getType(), "/wx/remogen/list/genebean", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenListGenebean(rule);
-            ruleLambda.accept(rule);
-        });
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenebeanReturn> doRequestRemogenListGenebean(
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(
+                new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenebeanReturn>>() {
+                }.getType(), "/wx/remogen/list/genebean", noMoreUrl(), noRequestBody(), rule -> {
+                    ruleOfRemogenListGenebean(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -278,12 +292,14 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenestringReturn> doRequestRemogenListGenestring(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenestringReturn>>() {
-        }.getType(), "/wx/remogen/list/genestring", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenListGenestring(rule);
-            ruleLambda.accept(rule);
-        });
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenestringReturn> doRequestRemogenListGenestring(
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(
+                new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListGenestringReturn>>() {
+                }.getType(), "/wx/remogen/list/genestring", noMoreUrl(), noRequestBody(), rule -> {
+                    ruleOfRemogenListGenestring(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -314,12 +330,14 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListInnergeneReturn> doRequestRemogenListInnergene(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListInnergeneReturn>>() {
-        }.getType(), "/wx/remogen/list/innergene", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenListInnergene(rule);
-            ruleLambda.accept(rule);
-        });
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListInnergeneReturn> doRequestRemogenListInnergene(
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(
+                new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWxRemogenListInnergeneReturn>>() {
+                }.getType(), "/wx/remogen/list/innergene", noMoreUrl(), noRequestBody(), rule -> {
+                    ruleOfRemogenListInnergene(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -327,6 +345,205 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfRemogenListInnergene(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: GET
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodGetParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodGetReturn requestRemogenMethodGet(Consumer<RemoteWxRemogenMethodGetParam> paramLambda) {
+        return doRequestRemogenMethodGet(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: GET
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodGetParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodGetReturn doRequestRemogenMethodGet(Consumer<RemoteWxRemogenMethodGetParam> paramLambda,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodGetParam param = new RemoteWxRemogenMethodGetParam();
+        paramLambda.accept(param);
+        return doRequestGet(RemoteWxRemogenMethodGetReturn.class, "/wx/remogen/method/", noMoreUrl(), query(param), rule -> {
+            ruleOfRemogenMethodGet(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodGet(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodPostParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodPostReturn requestRemogenMethodPost(Consumer<RemoteWxRemogenMethodPostParam> paramLambda) {
+        return doRequestRemogenMethodPost(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodPostParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodPostReturn doRequestRemogenMethodPost(Consumer<RemoteWxRemogenMethodPostParam> paramLambda,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodPostParam param = new RemoteWxRemogenMethodPostParam();
+        paramLambda.accept(param);
+        return doRequestPost(RemoteWxRemogenMethodPostReturn.class, "/wx/remogen/method/", noMoreUrl(), param, rule -> {
+            ruleOfRemogenMethodPost(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodPost(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodDeleteParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodDeleteReturn requestRemogenMethodDelete(Consumer<RemoteWxRemogenMethodDeleteParam> paramLambda) {
+        return doRequestRemogenMethodDelete(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodDeleteParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodDeleteReturn doRequestRemogenMethodDelete(Consumer<RemoteWxRemogenMethodDeleteParam> paramLambda,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodDeleteParam param = new RemoteWxRemogenMethodDeleteParam();
+        paramLambda.accept(param);
+        // // emergency
+        return doRequestPut(RemoteWxRemogenMethodDeleteReturn.class, "/wx/remogen/method/", noMoreUrl(), param, rule -> {
+            rule.sendBodyBy(
+                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
+            ruleOfRemogenMethodDelete(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodDelete(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/enclosing. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/enclosing
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodEnclosingParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodEnclosingReturn requestRemogenMethodEnclosing(Consumer<RemoteWxRemogenMethodEnclosingParam> paramLambda) {
+        return doRequestRemogenMethodEnclosing(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/enclosing. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/enclosing
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodEnclosingParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodEnclosingReturn doRequestRemogenMethodEnclosing(
+            Consumer<RemoteWxRemogenMethodEnclosingParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodEnclosingParam param = new RemoteWxRemogenMethodEnclosingParam();
+        paramLambda.accept(param);
+        // emergency
+        return doRequestPut(RemoteWxRemogenMethodEnclosingReturn.class, "/wx/remogen/method/enclosing", noMoreUrl(), param, rule -> {
+            ruleOfRemogenMethodEnclosing(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/enclosing.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodEnclosing(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/noquery. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/noquery
+     * httpMethod: DELETE
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodNoqueryReturn requestRemogenMethodNoquery() {
+        return doRequestRemogenMethodNoquery(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/noquery. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/noquery
+     * httpMethod: DELETE
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodNoqueryReturn doRequestRemogenMethodNoquery(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestDelete(RemoteWxRemogenMethodNoqueryReturn.class, "/wx/remogen/method/noquery", noMoreUrl(), noQuery(), rule -> {
+            ruleOfRemogenMethodNoquery(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/noquery.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodNoquery(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -388,10 +605,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenRoutingMaihamaReturn doRequestRemogenRoutingMaihama(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingMaihamaReturn.class, "/wx/remogen/routing/maihama", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingMaihama(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingMaihamaReturn.class, "/wx/remogen/routing/maihama", noMoreUrl(), noRequestBody(),
+                rule -> {
+                    ruleOfRemogenRoutingMaihama(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -425,10 +643,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenRoutingSeaReturn doRequestRemogenRoutingSea(String first, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingSeaReturn.class, "/wx/remogen/routing/sea/{first}", moreUrl(first), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingSeaFirst(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingSeaReturn.class, "/wx/remogen/routing/sea/{first}", moreUrl(first), noRequestBody(),
+                rule -> {
+                    ruleOfRemogenRoutingSeaFirst(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -463,11 +682,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingLandReturn doRequestRemogenRoutingLand(String first, String second, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingLandReturn.class, "/wx/remogen/routing/land/{first}/{second}", moreUrl(first, second), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingLandFirstSecond(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingLandReturn doRequestRemogenRoutingLand(String first, String second,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingLandReturn.class, "/wx/remogen/routing/land/{first}/{second}", moreUrl(first, second),
+                noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingLandFirstSecond(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -536,10 +757,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenRoutingPiariReturn doRequestRemogenRoutingPiari(String first, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingPiariReturn.class, "/wx/remogen/routing/piari/{first}", moreUrl(first), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingPiariFirst(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingPiariReturn.class, "/wx/remogen/routing/piari/{first}", moreUrl(first), noRequestBody(),
+                rule -> {
+                    ruleOfRemogenRoutingPiariFirst(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -608,10 +830,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenRoutingDstoreReturn doRequestRemogenRoutingDstore(String first, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingDstoreReturn.class, "/wx/remogen/routing/dstore/{first}", moreUrl(first), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingDstoreFirst(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingDstoreReturn.class, "/wx/remogen/routing/dstore/{first}", moreUrl(first),
+                noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingDstoreFirst(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -646,11 +869,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingDstoreReturn doRequestRemogenRoutingDstore(String first, String second, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingDstoreReturn.class, "/wx/remogen/routing/dstore/{first}/{second}", moreUrl(first, second), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingDstoreFirstSecond(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingDstoreReturn doRequestRemogenRoutingDstore(String first, String second,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingDstoreReturn.class, "/wx/remogen/routing/dstore/{first}/{second}",
+                moreUrl(first, second), noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingDstoreFirstSecond(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -684,10 +909,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenRoutingBonvoReturn doRequestRemogenRoutingBonvo(String first, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingBonvoReturn.class, "/wx/remogen/routing/bonvo/{first}", moreUrl(first), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingBonvoFirst(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingBonvoReturn.class, "/wx/remogen/routing/bonvo/{first}", moreUrl(first), noRequestBody(),
+                rule -> {
+                    ruleOfRemogenRoutingBonvoFirst(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -722,11 +948,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingBonvoReturn doRequestRemogenRoutingBonvo(String first, String second, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingBonvoReturn.class, "/wx/remogen/routing/bonvo/{first}/{second}", moreUrl(first, second), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingBonvoFirstSecond(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingBonvoReturn doRequestRemogenRoutingBonvo(String first, String second,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingBonvoReturn.class, "/wx/remogen/routing/bonvo/{first}/{second}", moreUrl(first, second),
+                noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingBonvoFirstSecond(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -761,11 +989,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingAmbaReturn doRequestRemogenRoutingAmba(String first, String second, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingAmbaReturn.class, "/wx/remogen/routing/amba/{first}/{second}", moreUrl(first, second), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingAmbaFirstSecond(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingAmbaReturn doRequestRemogenRoutingAmba(String first, String second,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingAmbaReturn.class, "/wx/remogen/routing/amba/{first}/{second}", moreUrl(first, second),
+                noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingAmbaFirstSecond(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -802,11 +1032,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingAmbaReturn doRequestRemogenRoutingAmba(String first, String second, String third, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingAmbaReturn.class, "/wx/remogen/routing/amba/{first}/{second}/{third}", moreUrl(first, second, third), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingAmbaFirstSecondThird(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingAmbaReturn doRequestRemogenRoutingAmba(String first, String second, String third,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingAmbaReturn.class, "/wx/remogen/routing/amba/{first}/{second}/{third}",
+                moreUrl(first, second, third), noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingAmbaFirstSecondThird(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -843,11 +1075,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingMiracoReturn doRequestRemogenRoutingMiraco(String first, String second, String third, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingMiracoReturn.class, "/wx/remogen/routing/miraco/{first}/{second}/{third}", moreUrl(first, second, third), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingMiracoFirstSecondThird(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingMiracoReturn doRequestRemogenRoutingMiraco(String first, String second, String third,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingMiracoReturn.class, "/wx/remogen/routing/miraco/{first}/{second}/{third}",
+                moreUrl(first, second, third), noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingMiracoFirstSecondThird(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -886,11 +1120,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingMiracoReturn doRequestRemogenRoutingMiraco(String first, String second, String third, String fourth, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingMiracoReturn.class, "/wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth}", moreUrl(first, second, third, fourth), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingMiracoFirstSecondThirdFourth(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingMiracoReturn doRequestRemogenRoutingMiraco(String first, String second, String third, String fourth,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingMiracoReturn.class, "/wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth}",
+                moreUrl(first, second, third, fourth), noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingMiracoFirstSecondThirdFourth(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -910,7 +1146,8 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param paramLambda The callback for RemoteWxRemogenRoutingDohotelParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteWxRemogenRoutingDohotelReturn requestRemogenRoutingDohotel(String first, Consumer<RemoteWxRemogenRoutingDohotelParam> paramLambda) {
+    public RemoteWxRemogenRoutingDohotelReturn requestRemogenRoutingDohotel(String first,
+            Consumer<RemoteWxRemogenRoutingDohotelParam> paramLambda) {
         return doRequestRemogenRoutingDohotel(first, paramLambda, rule -> {});
     }
 
@@ -925,15 +1162,17 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingDohotelReturn doRequestRemogenRoutingDohotel(String first, Consumer<RemoteWxRemogenRoutingDohotelParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteWxRemogenRoutingDohotelReturn doRequestRemogenRoutingDohotel(String first,
+            Consumer<RemoteWxRemogenRoutingDohotelParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWxRemogenRoutingDohotelParam param = new RemoteWxRemogenRoutingDohotelParam();
         paramLambda.accept(param);
-        return doRequestPost(RemoteWxRemogenRoutingDohotelReturn.class, "/wx/remogen/routing/dohotel/{first}", moreUrl(first), param, rule -> {
-            rule.sendBodyBy(
-                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
-            ruleOfRemogenRoutingDohotelFirst(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingDohotelReturn.class, "/wx/remogen/routing/dohotel/{first}", moreUrl(first), param,
+                rule -> {
+                    rule.sendBodyBy(new org.lastaflute.remoteapi.sender.body.LaFormSender(
+                            new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
+                    ruleOfRemogenRoutingDohotelFirst(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -954,7 +1193,8 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param paramLambda The callback for RemoteWxRemogenRoutingDohotelFirstSecondParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteWxRemogenRoutingDohotelReturn requestRemogenRoutingDohotel(String first, String second, Consumer<RemoteWxRemogenRoutingDohotelFirstSecondParam> paramLambda) {
+    public RemoteWxRemogenRoutingDohotelReturn requestRemogenRoutingDohotel(String first, String second,
+            Consumer<RemoteWxRemogenRoutingDohotelFirstSecondParam> paramLambda) {
         return doRequestRemogenRoutingDohotel(first, second, paramLambda, rule -> {});
     }
 
@@ -970,15 +1210,17 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingDohotelReturn doRequestRemogenRoutingDohotel(String first, String second, Consumer<RemoteWxRemogenRoutingDohotelFirstSecondParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteWxRemogenRoutingDohotelReturn doRequestRemogenRoutingDohotel(String first, String second,
+            Consumer<RemoteWxRemogenRoutingDohotelFirstSecondParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWxRemogenRoutingDohotelFirstSecondParam param = new RemoteWxRemogenRoutingDohotelFirstSecondParam();
         paramLambda.accept(param);
-        return doRequestPost(RemoteWxRemogenRoutingDohotelReturn.class, "/wx/remogen/routing/dohotel/{first}/{second}", moreUrl(first, second), param, rule -> {
-            rule.sendBodyBy(
-                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
-            ruleOfRemogenRoutingDohotelFirstSecond(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingDohotelReturn.class, "/wx/remogen/routing/dohotel/{first}/{second}",
+                moreUrl(first, second), param, rule -> {
+                    rule.sendBodyBy(new org.lastaflute.remoteapi.sender.body.LaFormSender(
+                            new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
+                    ruleOfRemogenRoutingDohotelFirstSecond(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -1012,10 +1254,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenRoutingCelebReturn doRequestRemogenRoutingCeleb(Integer first, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingCelebReturn.class, "/wx/remogen/routing/celeb/{first}", moreUrl(first), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingCelebFirst(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingCelebReturn.class, "/wx/remogen/routing/celeb/{first}", moreUrl(first), noRequestBody(),
+                rule -> {
+                    ruleOfRemogenRoutingCelebFirst(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -1050,11 +1293,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingCelebReturn doRequestRemogenRoutingCeleb(Integer first, Long second, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingCelebReturn.class, "/wx/remogen/routing/celeb/{first}/{second}", moreUrl(first, second), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingCelebFirstSecond(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingCelebReturn doRequestRemogenRoutingCeleb(Integer first, Long second,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingCelebReturn.class, "/wx/remogen/routing/celeb/{first}/{second}", moreUrl(first, second),
+                noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingCelebFirstSecond(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -1088,10 +1333,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenRoutingResolaReturn doRequestRemogenRoutingResola(Integer first, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingResolaReturn.class, "/wx/remogen/routing/{first}/resola", moreUrl(first), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingResolaFirst(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenRoutingResolaReturn.class, "/wx/remogen/routing/{first}/resola", moreUrl(first),
+                noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingResolaFirst(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -1126,11 +1372,13 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn doRequestRemogenRoutingAmphiTheaterMaihama(Integer first, String second, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn.class, "/wx/remogen/routing/amphi/{first}/theater/{second}/maihama", moreUrl(first, second), noRequestBody(), rule -> {
-            ruleOfRemogenRoutingAmphiTheaterMaihamaFirstSecond(rule);
-            ruleLambda.accept(rule);
-        });
+    protected RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn doRequestRemogenRoutingAmphiTheaterMaihama(Integer first, String second,
+            Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn.class,
+                "/wx/remogen/routing/amphi/{first}/theater/{second}/maihama", moreUrl(first, second), noRequestBody(), rule -> {
+                    ruleOfRemogenRoutingAmphiTheaterMaihamaFirstSecond(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -1162,10 +1410,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenSuffixAllsuffixReturn doRequestRemogenSuffixAllsuffix(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenSuffixAllsuffixReturn.class, "/wx/remogen/suffix/allsuffix", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenSuffixAllsuffix(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenSuffixAllsuffixReturn.class, "/wx/remogen/suffix/allsuffix", noMoreUrl(), noRequestBody(),
+                rule -> {
+                    ruleOfRemogenSuffixAllsuffix(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -1197,10 +1446,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenSuffixNosuffixReturn doRequestRemogenSuffixNosuffix(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenSuffixNosuffixReturn.class, "/wx/remogen/suffix/nosuffix", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenSuffixNosuffix(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenSuffixNosuffixReturn.class, "/wx/remogen/suffix/nosuffix", noMoreUrl(), noRequestBody(),
+                rule -> {
+                    ruleOfRemogenSuffixNosuffix(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
@@ -1232,10 +1482,11 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteWxRemogenSuffixPartonlyReturn doRequestRemogenSuffixPartonly(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteWxRemogenSuffixPartonlyReturn.class, "/wx/remogen/suffix/partonly", noMoreUrl(), noRequestBody(), rule -> {
-            ruleOfRemogenSuffixPartonly(rule);
-            ruleLambda.accept(rule);
-        });
+        return doRequestPost(RemoteWxRemogenSuffixPartonlyReturn.class, "/wx/remogen/suffix/partonly", noMoreUrl(), noRequestBody(),
+                rule -> {
+                    ruleOfRemogenSuffixPartonly(rule);
+                    ruleLambda.accept(rule);
+                });
     }
 
     /**
