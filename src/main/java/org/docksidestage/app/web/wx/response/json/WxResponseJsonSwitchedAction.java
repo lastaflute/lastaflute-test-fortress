@@ -18,7 +18,10 @@ package org.docksidestage.app.web.wx.response.json;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.annotation.Resource;
+
 import org.docksidestage.app.web.base.FortressBaseAction;
+import org.docksidestage.bizfw.json.RuledJsonEngineKeeper;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -31,9 +34,20 @@ import org.lastaflute.web.validation.Required;
 @AllowAnyoneAccess
 public class WxResponseJsonSwitchedAction extends FortressBaseAction {
 
-    // http://localhost:8151/fortress/wx/response/json/switched/basic
+    @Resource
+    private RuledJsonEngineKeeper ruledJsonEngineKeeper;
+
+    // http://localhost:8151/fortress/wx/response/json/switched/engine
     @Execute
-    public JsonResponse<MyBasicJsonResult> basic() {
+    public JsonResponse<MyBasicJsonResult> engine() {
+        return asJson(createResult()).switchJsonEngine(() -> {
+            return ruledJsonEngineKeeper.provideTrialJsonEngine();
+        });
+    }
+
+    // http://localhost:8151/fortress/wx/response/json/switched/mapping
+    @Execute
+    public JsonResponse<MyBasicJsonResult> mapping() {
         return asJson(createResult()).switchMappingOption(op -> {
             op.asNullToEmptyWriting()
                     .formatLocalDateBy(DateTimeFormatter.ofPattern("yyyy@MM@dd"))
