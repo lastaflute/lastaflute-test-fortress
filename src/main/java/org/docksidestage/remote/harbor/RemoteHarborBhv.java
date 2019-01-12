@@ -27,7 +27,6 @@ import org.dbflute.remoteapi.FlutyRemoteApi;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.http.SupportedHttpMethod;
-import org.docksidestage.app.web.product.ProductSearchForm;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult.RemoteUnifiedFailureType;
@@ -141,10 +140,8 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     }
 
     public List<RemoteHbMypageProductReturn> requestMypage() {
-        ProductSearchForm form = new ProductSearchForm();
-        form.productName = "sea";
         return doRequestDelete(new ParameterizedRef<List<RemoteHbMypageProductReturn>>() {
-        }.getType(), "/lido/mypage", noMoreUrl(), OptionalThing.of(form), rule -> {});
+        }.getType(), "/lido/mypage", noMoreUrl(), noQuery(), rule -> {});
     }
 
     public RemoteHbPagingReturn<RemoteHbProductRowReturn> requestProductList(RemoteHbProductSearchParam param) {
