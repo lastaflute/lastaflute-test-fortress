@@ -23,8 +23,10 @@ import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.json.bind.JsonYourCollectionResource;
+import org.lastaflute.remoteapi.mapping.LaVacantMappingPolicy;
 import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
 import org.lastaflute.remoteapi.sender.body.LaJsonSender;
+import org.lastaflute.remoteapi.sender.query.LaQuerySender;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -54,6 +56,7 @@ public abstract class AbstractRemoteMaihamaShowbaseBhv extends org.lastaflute.re
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
         JsonMappingOption mappingOption = new JsonMappingOption().yourCollections(prepareYourCollections());
+        rule.sendQueryBy(new LaQuerySender(new LaVacantMappingPolicy()));
         rule.sendBodyBy(new LaJsonSender(requestManager, mappingOption));
         rule.receiveBodyBy(new LaJsonReceiver(requestManager, mappingOption));
     }
