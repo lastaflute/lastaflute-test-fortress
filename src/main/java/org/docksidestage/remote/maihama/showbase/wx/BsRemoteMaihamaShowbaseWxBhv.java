@@ -446,7 +446,7 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
     protected RemoteWxRemogenMethodDeleteReturn doRequestRemogenMethodDelete(Consumer<RemoteWxRemogenMethodDeleteParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWxRemogenMethodDeleteParam param = new RemoteWxRemogenMethodDeleteParam();
         paramLambda.accept(param);
-        return doRequestDelete(RemoteWxRemogenMethodDeleteReturn.class, "/wx/remogen/method/", noMoreUrl(), param, rule -> {
+        return doRequestDelete(RemoteWxRemogenMethodDeleteReturn.class, "/wx/remogen/method/", noMoreUrl(), query(param), rule -> {
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
             ruleOfRemogenMethodDelete(rule);
@@ -565,7 +565,7 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
     protected RemoteWxRemogenMethodEnclosingReturn doRequestRemogenMethodEnclosing(Consumer<RemoteWxRemogenMethodEnclosingParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWxRemogenMethodEnclosingParam param = new RemoteWxRemogenMethodEnclosingParam();
         paramLambda.accept(param);
-        return doRequestDelete(RemoteWxRemogenMethodEnclosingReturn.class, "/wx/remogen/method/enclosing", noMoreUrl(), param, rule -> {
+        return doRequestDeleteEnclosing(RemoteWxRemogenMethodEnclosingReturn.class, "/wx/remogen/method/enclosing", noMoreUrl(), param, rule -> {
             ruleOfRemogenMethodEnclosing(rule);
             ruleLambda.accept(rule);
         });
