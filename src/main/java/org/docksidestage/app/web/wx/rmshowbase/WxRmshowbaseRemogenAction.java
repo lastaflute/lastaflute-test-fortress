@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.RemoteWxRemogenRoutingResolaReturn;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -43,6 +44,19 @@ public class WxRmshowbaseRemogenAction extends FortressBaseAction {
     @Execute
     public JsonResponse<RemoteWxRemogenRoutingResolaReturn> resola() {
         RemoteWxRemogenRoutingResolaReturn ret = showbaseWxBhv.requestRemogenRoutingResola(1);
+        return asJson(ret);
+    }
+
+    // -----------------------------------------------------
+    //                                             Rare Case
+    //                                             ---------
+    // http://localhost:8151/fortress/wx/rmshowbase/remogen/showbaseWxBhv
+    @Execute
+    public JsonResponse<RemoteWxRemogenMethodGetReturn> getonbody() {
+        RemoteWxRemogenMethodGetReturn ret = showbaseWxBhv.requestRemogenMethodGetOnBody(param -> {
+            param.sea = "mystic";
+            param.land = 83;
+        }, rule -> {});
         return asJson(ret);
     }
 }
