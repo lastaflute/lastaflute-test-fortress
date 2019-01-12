@@ -49,11 +49,7 @@ public class ProductListAction extends FortressBaseAction {
     //                                                                             =======
     @Execute
     public HtmlResponse index(OptionalThing<Integer> pageNumber, ProductSearchForm form) {
-        validate(form, messages -> {
-            // test of la:errors for now
-            messages.addConstraintsRequiredMessage("productName");
-            messages.addConstraintsAssertTrueMessage("productName");
-        }, () -> {
+        validate(form, messages -> {}, () -> {
             return asHtml(path_Product_ProductListHtml);
         });
         PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
