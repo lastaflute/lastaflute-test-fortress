@@ -447,8 +447,6 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
         RemoteWxRemogenMethodDeleteParam param = new RemoteWxRemogenMethodDeleteParam();
         paramLambda.accept(param);
         return doRequestDelete(RemoteWxRemogenMethodDeleteReturn.class, "/wx/remogen/method/", noMoreUrl(), query(param), rule -> {
-            rule.sendBodyBy(
-                    new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
             ruleOfRemogenMethodDelete(rule);
             ruleLambda.accept(rule);
         });
