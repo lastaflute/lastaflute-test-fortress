@@ -50,10 +50,10 @@ public class WxRmshowbaseRemogenAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                             Rare Case
     //                                             ---------
-    // http://localhost:8151/fortress/wx/rmshowbase/remogen/showbaseWxBhv
+    // http://localhost:8151/fortress/wx/rmshowbase/remogen/getenclosing
     @Execute
-    public JsonResponse<RemoteWxRemogenMethodGetReturn> getonbody() {
-        RemoteWxRemogenMethodGetReturn ret = showbaseWxBhv.requestRemogenMethodGetOnBody(param -> {
+    public JsonResponse<RemoteWxRemogenMethodGetReturn> getenclosing() {
+        RemoteWxRemogenMethodGetReturn ret = showbaseWxBhv.requestRemogenMethodEnclosingGet(param -> {
             param.sea = "mystic";
             param.land = 83;
         }, rule -> {});

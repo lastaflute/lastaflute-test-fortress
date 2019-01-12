@@ -55,19 +55,23 @@ public class RemoteMaihamaShowbaseWxBhv extends BsRemoteMaihamaShowbaseWxBhv {
     // -----------------------------------------------------
     //                                               Remogen
     //                                               -------
-    public RemoteWxRemogenMethodGetReturn requestRemogenMethodGetOnBody(Consumer<RemoteWxRemogenMethodGetParam> paramLambda,
+    public RemoteWxRemogenMethodGetReturn requestRemogenMethodEnclosingGet(Consumer<RemoteWxRemogenMethodGetParam> paramLambda,
             Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteWxRemogenMethodGetParam param = new RemoteWxRemogenMethodGetParam();
         paramLambda.accept(param);
-        MaihamaShowbaseRemoteApi api = (MaihamaShowbaseRemoteApi) remoteApi;
+        MaihamaShowbaseRemoteApi api = prepareMyRemoteApi();
         Class<RemoteWxRemogenMethodGetReturn> returnType = RemoteWxRemogenMethodGetReturn.class;
         String urlBase = getUrlBase();
-        return api.requestGetEnclosing(returnType, urlBase, "/wx/remogen/method/", noMoreUrl(), param, rule -> {});
+        return api.requestGetEnclosing(returnType, urlBase, "/wx/remogen/method/enclosing", noMoreUrl(), param, rule -> {});
     }
 
     // ===================================================================================
     //                                                                Remote API Extension
     //                                                                ====================
+    private MaihamaShowbaseRemoteApi prepareMyRemoteApi() {
+        return (MaihamaShowbaseRemoteApi) remoteApi;
+    }
+
     @Override
     protected FlutyRemoteApi newRemoteApi(Consumer<FlutyRemoteApiRule> ruleSetupper, Object callerExp) {
         return new MaihamaShowbaseRemoteApi(ruleSetupper, callerExp);
