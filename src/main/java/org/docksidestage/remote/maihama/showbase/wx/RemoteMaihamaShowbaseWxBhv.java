@@ -35,6 +35,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
+ * @author jflute
  */
 public class RemoteMaihamaShowbaseWxBhv extends BsRemoteMaihamaShowbaseWxBhv {
 
