@@ -59,4 +59,15 @@ public class WxRmshowbaseRemogenAction extends FortressBaseAction {
         }, rule -> {});
         return asJson(ret);
     }
+
+    // preparing #for_now
+    //// http://localhost:8151/fortress/wx/rmshowbase/remogen/deleteenclosing
+    //@Execute
+    //public JsonResponse<RemoteWxRemogenMethodDeleteReturn> deleteenclosing() {
+    //    RemoteWxRemogenMethodDeleteReturn ret = showbaseWxBhv.requestRemogenMethodEnclosingDelete(param -> {
+    //        param.sea = "mystic";
+    //        param.land = 83;
+    //    }, rule -> {});
+    //    return asJson(ret);
+    //}
 }
