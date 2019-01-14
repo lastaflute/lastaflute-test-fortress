@@ -20,7 +20,8 @@ import javax.annotation.Resource;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodDeleteReturn;
-import org.docksidestage.remote.maihama.showbase.wx.remogen.method.enclosing.RemoteWxRemogenMethodEnclosingReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyjson.RemoteWxRemogenMethodOnbodyjsonReturn;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -38,6 +39,19 @@ public class WxRmshowbaseRemogenMethodAction extends FortressBaseAction {
     //                                                                             Execute
     //                                                                             =======
     // -----------------------------------------------------
+    //                                                  GET
+    //                                                 -----
+    // http://localhost:8151/fortress/wx/rmshowbase/remogen/method/get/onbodyjson
+    @Execute(urlPattern = "@word/@word")
+    public JsonResponse<RemoteWxRemogenMethodGetReturn> getOnbodyjson() {
+        RemoteWxRemogenMethodGetReturn onbodyjsonReturn = showbaseWxBhv.requestRemogenMethodOnbodyjsonGet(param -> {
+            param.sea = "mystic";
+            param.land = 7;
+        });
+        return asJson(onbodyjsonReturn);
+    }
+
+    // -----------------------------------------------------
     //                                                DELETE
     //                                                ------
     // http://localhost:8151/fortress/wx/rmshowbase/remogen/method/delete
@@ -50,13 +64,13 @@ public class WxRmshowbaseRemogenMethodAction extends FortressBaseAction {
         return asJson(deleteReturn);
     }
 
-    // http://localhost:8151/fortress/wx/rmshowbase/remogen/method/delete/enclosing
+    // http://localhost:8151/fortress/wx/rmshowbase/remogen/method/delete/onbodyjson
     @Execute(urlPattern = "@word/@word")
-    public JsonResponse<RemoteWxRemogenMethodEnclosingReturn> deleteEnclosing() {
-        RemoteWxRemogenMethodEnclosingReturn enclosingReturn = showbaseWxBhv.requestRemogenMethodEnclosing(param -> {
+    public JsonResponse<RemoteWxRemogenMethodOnbodyjsonReturn> deleteOnbodyjson() {
+        RemoteWxRemogenMethodOnbodyjsonReturn onbodyjsonReturn = showbaseWxBhv.requestRemogenMethodOnbodyjson(param -> {
             param.sea = "mystic";
             param.land = 7;
         });
-        return asJson(enclosingReturn);
+        return asJson(onbodyjsonReturn);
     }
 }

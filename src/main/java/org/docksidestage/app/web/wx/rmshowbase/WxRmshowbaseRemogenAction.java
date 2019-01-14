@@ -19,7 +19,6 @@ import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv;
-import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.RemoteWxRemogenRoutingResolaReturn;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -46,28 +45,4 @@ public class WxRmshowbaseRemogenAction extends FortressBaseAction {
         RemoteWxRemogenRoutingResolaReturn ret = showbaseWxBhv.requestRemogenRoutingResola(1);
         return asJson(ret);
     }
-
-    // -----------------------------------------------------
-    //                                             Rare Case
-    //                                             ---------
-    // http://localhost:8151/fortress/wx/rmshowbase/remogen/getenclosing
-    @Execute
-    public JsonResponse<RemoteWxRemogenMethodGetReturn> getenclosing() {
-        RemoteWxRemogenMethodGetReturn ret = showbaseWxBhv.requestRemogenMethodEnclosingGet(param -> {
-            param.sea = "mystic";
-            param.land = 83;
-        }, rule -> {});
-        return asJson(ret);
-    }
-
-    // preparing #for_now
-    //// http://localhost:8151/fortress/wx/rmshowbase/remogen/deleteenclosing
-    //@Execute
-    //public JsonResponse<RemoteWxRemogenMethodDeleteReturn> deleteenclosing() {
-    //    RemoteWxRemogenMethodDeleteReturn ret = showbaseWxBhv.requestRemogenMethodEnclosingDelete(param -> {
-    //        param.sea = "mystic";
-    //        param.land = 83;
-    //    }, rule -> {});
-    //    return asJson(ret);
-    //}
 }

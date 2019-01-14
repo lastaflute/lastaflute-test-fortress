@@ -9,6 +9,19 @@
 //                                          Type Mapping
 //                                          ------------
 // @Override
+remoteApiRule.target = function(api) { // you can select generated API 
+    if (baseRule.target(api)) { // don't forget calling super's
+        // and define your original selecting
+        if (api.httpMethod === 'get' && api.url.indexOf('/method/onbodyjson') !== -1) { // get$onbodyjson()
+            return false; // unsupported at RemoteApiGen for now (you can request by your manual method)
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// @Override
 remoteApiRule.typeMap = function() {
     var typeMap = baseRule.typeMap();
     typeMap['array'] = 'org.eclipse.collections.api.list.ImmutableList';

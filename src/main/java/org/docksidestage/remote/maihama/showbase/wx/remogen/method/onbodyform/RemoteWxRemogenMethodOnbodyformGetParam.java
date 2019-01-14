@@ -13,15 +13,15 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.method.enclosing;
+package org.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyform;
 
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of DELETE /wx/remogen/method/enclosing.
+ * The bean class as param for remote API of GET /wx/remogen/method/onbodyform.
  * @author FreeGen
  */
-public class RemoteWxRemogenMethodEnclosingReturn {
+public class RemoteWxRemogenMethodOnbodyformGetParam {
 
     /** The property of sea. (NullAllowed) */
     public String sea;
@@ -29,8 +29,8 @@ public class RemoteWxRemogenMethodEnclosingReturn {
     /** The property of land. (NullAllowed) */
     public Integer land;
 
-    /** The property of iamResult. (NullAllowed) */
-    public String iamResult;
+    /** The property of iamForm. (NullAllowed) */
+    public String iamForm;
 
     @Override
     public String toString() {

@@ -55,8 +55,7 @@ public class RemoteMaihamaShowbaseWxBhv extends BsRemoteMaihamaShowbaseWxBhv {
     // -----------------------------------------------------
     //                                               Remogen
     //                                               -------
-    public RemoteWxRemogenMethodGetReturn requestRemogenMethodEnclosingGet(Consumer<RemoteWxRemogenMethodGetParam> paramLambda,
-            Consumer<FlutyRemoteApiRule> ruleLambda) {
+    public RemoteWxRemogenMethodGetReturn requestRemogenMethodOnbodyjsonGet(Consumer<RemoteWxRemogenMethodGetParam> paramLambda) {
         RemoteWxRemogenMethodGetParam param = new RemoteWxRemogenMethodGetParam();
         paramLambda.accept(param);
         MaihamaShowbaseRemoteApi api = prepareMyRemoteApi();
