@@ -26,7 +26,7 @@
 		<lasta.thymeleaf.version>0.4.0-RC3</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.3</lasta.job.version>
 		<lasta.remoteapi.version>0.4.2-A-SNAPSHOT</lasta.remoteapi.version>
-		<lasta.doc.version>0.3.5-RC1</lasta.doc.version>
+		<lasta.doc.version>0.3.5-RC2</lasta.doc.version>
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.12</slf4j.version>

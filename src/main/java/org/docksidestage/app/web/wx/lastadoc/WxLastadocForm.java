@@ -24,7 +24,7 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class WxLastadocForm {
+public class WxLastadocForm extends WxLastadocExtendsForm {
 
     @Length(max = 94)
     @Pattern(regexp = "mystic><@\"'bigband")
@@ -60,5 +60,19 @@ public class WxLastadocForm {
         /** room count of venezia side */
         @Required
         public Integer veneziaRoomCount;
+
+        @Valid
+        public AmbaPart amba;
+
+        public static class AmbaPart {
+
+            /** official full name of miraco#amba */
+            @Required
+            public String fullName;
+
+            /** room count of amba */
+            @Required
+            public Integer roomCount;
+        }
     }
 }
