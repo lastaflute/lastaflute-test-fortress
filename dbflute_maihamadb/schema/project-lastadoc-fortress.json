@@ -5361,9 +5361,103 @@
             "description": null,
             "comment": null,
             "annotationList": [
+              "Length{max\u003d94}",
               "Pattern{regexp\u003dmystic\u003e\u003c@\"\u0027bigband}"
             ],
             "nestTypeDocMetaList": []
+          },
+          {
+            "name": "amba",
+            "publicName": "amba",
+            "typeName": "org.docksidestage.app.web.wx.lastadoc.WxLastadocForm$AmbaPart",
+            "simpleTypeName": "AmbaPart",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "fullName",
+                "publicName": "fullName",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": "official full name of miraco",
+                "comment": "official full name of miraco",
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "roomCount",
+                "publicName": "roomCount",
+                "typeName": "java.lang.Integer",
+                "simpleTypeName": "Integer",
+                "value": null,
+                "description": "room count of amba",
+                "comment": "room count of amba",
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "miraco",
+            "publicName": "miraco",
+            "typeName": "org.docksidestage.app.web.wx.lastadoc.WxLastadocForm$MiracoPart",
+            "simpleTypeName": "MiracoPart",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "fullName",
+                "publicName": "fullName",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": "official full name of miraco",
+                "comment": "official full name of miraco",
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "harborRoomCount",
+                "publicName": "harborRoomCount",
+                "typeName": "java.lang.Integer",
+                "simpleTypeName": "Integer",
+                "value": null,
+                "description": "room count of habor side",
+                "comment": "room count of habor side",
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "veneziaRoomCount",
+                "publicName": "veneziaRoomCount",
+                "typeName": "java.lang.Integer",
+                "simpleTypeName": "Integer",
+                "value": null,
+                "description": "room count of venezia side",
+                "comment": "room count of venezia side",
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              }
+            ]
           }
         ]
       },
@@ -12494,13 +12588,13 @@
           }
         ]
       },
-      "fileLineCount": 42,
+      "fileLineCount": 18,
       "methodLineCount": 4
     },
     {
-      "url": "/wx/rmshowbase/remogen/getenclosing",
-      "typeName": "org.docksidestage.app.web.wx.rmshowbase.WxRmshowbaseRemogenAction",
-      "simpleTypeName": "WxRmshowbaseRemogenAction",
+      "url": "/wx/rmshowbase/remogen/method/get/onbodyjson",
+      "typeName": "org.docksidestage.app.web.wx.rmshowbase.WxRmshowbaseRemogenMethodAction",
+      "simpleTypeName": "WxRmshowbaseRemogenMethodAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
@@ -12518,11 +12612,11 @@
           "nestTypeDocMetaList": []
         }
       ],
-      "methodName": "getenclosing",
+      "methodName": "getOnbodyjson",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "Execute"
+        "Execute{urlPattern\u003d@word/@word}"
       ],
       "parameterTypeDocMetaList": [],
       "formTypeDocMeta": null,
@@ -12531,7 +12625,7 @@
         "publicName": null,
         "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetReturn\u003e",
         "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodGetReturn\u003e",
-        "value": "asJson(ret)",
+        "value": "asJson(onbodyjsonReturn)",
         "description": null,
         "comment": null,
         "annotationList": [],
@@ -12571,7 +12665,7 @@
           }
         ]
       },
-      "fileLineCount": 42,
+      "fileLineCount": 44,
       "methodLineCount": 7
     },
     {
@@ -12648,11 +12742,11 @@
           }
         ]
       },
-      "fileLineCount": 31,
+      "fileLineCount": 44,
       "methodLineCount": 7
     },
     {
-      "url": "/wx/rmshowbase/remogen/method/delete/enclosing",
+      "url": "/wx/rmshowbase/remogen/method/delete/onbodyjson",
       "typeName": "org.docksidestage.app.web.wx.rmshowbase.WxRmshowbaseRemogenMethodAction",
       "simpleTypeName": "WxRmshowbaseRemogenMethodAction",
       "description": "@author jflute",
@@ -12672,7 +12766,7 @@
           "nestTypeDocMetaList": []
         }
       ],
-      "methodName": "deleteEnclosing",
+      "methodName": "deleteOnbodyjson",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
@@ -12683,9 +12777,9 @@
       "returnTypeDocMeta": {
         "name": null,
         "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.enclosing.RemoteWxRemogenMethodEnclosingReturn\u003e",
-        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodEnclosingReturn\u003e",
-        "value": "asJson(enclosingReturn)",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyjson.RemoteWxRemogenMethodOnbodyjsonReturn\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodOnbodyjsonReturn\u003e",
+        "value": "asJson(onbodyjsonReturn)",
         "description": null,
         "comment": null,
         "annotationList": [],
@@ -12725,7 +12819,7 @@
           }
         ]
       },
-      "fileLineCount": 31,
+      "fileLineCount": 44,
       "methodLineCount": 7
     },
     {
@@ -22133,7 +22227,7 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "CustomSize{maxKey\u003dseaMax, minKey\u003dseaMin}"
+              "CustomSize{minKey\u003dseaMin, maxKey\u003dseaMax}"
             ],
             "nestTypeDocMetaList": []
           },

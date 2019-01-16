@@ -15,13 +15,50 @@
  */
 package org.docksidestage.app.web.wx.lastadoc;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
 public class WxLastadocForm {
 
+    @Length(max = 94)
     @Pattern(regexp = "mystic><@\"'bigband")
     public String sea;
+
+    @Valid
+    public AmbaPart amba;
+
+    public static class AmbaPart {
+
+        /** official full name of amba */
+        @Required
+        public String fullName;
+
+        /** room count of amba */
+        @Required
+        public Integer roomCount;
+    }
+
+    @Valid
+    public MiracoPart miraco;
+
+    public static class MiracoPart {
+
+        /** official full name of miraco */
+        @Required
+        public String fullName;
+
+        /** room count of habor side */
+        @Required
+        public Integer harborRoomCount;
+
+        /** room count of venezia side */
+        @Required
+        public Integer veneziaRoomCount;
+    }
 }
