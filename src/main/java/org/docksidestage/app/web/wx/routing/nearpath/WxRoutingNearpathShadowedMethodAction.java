@@ -33,7 +33,7 @@ public class WxRoutingNearpathShadowedMethodAction extends FortressBaseAction {
     //                                                                             =======
     // 
     // http://localhost:8151/fortress/wx/routing/nearpath/shadowed/method/sea
-    //  => Shadowed the execute method by the other execute method.
+    //  => Shadowed the execute method by the other execute method. (if land() is enable)
     @Execute
     public JsonResponse<RoutingCheckResult> index(String first) {
         return asJson(new RoutingCheckResult(getExecuteName(), first, "*first only"));
@@ -41,10 +41,11 @@ public class WxRoutingNearpathShadowedMethodAction extends FortressBaseAction {
 
     // http://localhost:8151/fortress/wx/routing/nearpath/shadowed/method/land/
     //  => Shadowed the execute method by the other execute method.
-    @Execute
-    public JsonResponse<RoutingCheckResult> land() {
-        return asJson(new RoutingCheckResult(getExecuteName(), "*none", "*none"));
-    }
+    // comment out to avoid failure for e.g. batch initialization
+    //@Execute
+    //public JsonResponse<RoutingCheckResult> land() {
+    //    return asJson(new RoutingCheckResult(getExecuteName(), "*none", "*none"));
+    //}
 
     private String getExecuteName() {
         return LaActionExecuteUtil.getActionExecute().toSimpleMethodExp();
