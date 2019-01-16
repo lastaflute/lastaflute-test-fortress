@@ -689,7 +689,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "memberName",
-            "publicName": "memberName",
+            "publicName": "member_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -702,7 +702,7 @@
           },
           {
             "name": "memberAccount",
-            "publicName": "memberAccount",
+            "publicName": "member_account",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -728,7 +728,7 @@
           },
           {
             "name": "reminderQuestion",
-            "publicName": "reminderQuestion",
+            "publicName": "reminder_question",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -741,7 +741,7 @@
           },
           {
             "name": "reminderAnswer",
-            "publicName": "reminderAnswer",
+            "publicName": "reminder_answer",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -989,7 +989,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "productName",
-            "publicName": "productName",
+            "publicName": "product_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -1002,7 +1002,7 @@
           },
           {
             "name": "regularPrice",
-            "publicName": "regularPrice",
+            "publicName": "regular_price",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -1071,7 +1071,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "productId",
-            "publicName": "productId",
+            "publicName": "product_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -1084,7 +1084,7 @@
           },
           {
             "name": "productName",
-            "publicName": "productName",
+            "publicName": "product_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -1097,7 +1097,7 @@
           },
           {
             "name": "categoryName",
-            "publicName": "categoryName",
+            "publicName": "category_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -1110,7 +1110,7 @@
           },
           {
             "name": "regularPrice",
-            "publicName": "regularPrice",
+            "publicName": "regular_price",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -1123,7 +1123,7 @@
           },
           {
             "name": "productHandleCode",
-            "publicName": "productHandleCode",
+            "publicName": "product_handle_code",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -1217,7 +1217,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "productName",
-            "publicName": "productName",
+            "publicName": "product_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -1230,7 +1230,7 @@
           },
           {
             "name": "productStatus",
-            "publicName": "productStatus",
+            "publicName": "product_status",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
             "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
@@ -1241,7 +1241,7 @@
           },
           {
             "name": "purchaseMemberName",
-            "publicName": "purchaseMemberName",
+            "publicName": "purchase_member_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -1266,7 +1266,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "pageSize",
-            "publicName": "pageSize",
+            "publicName": "page_size",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -1279,7 +1279,7 @@
           },
           {
             "name": "currentPageNumber",
-            "publicName": "currentPageNumber",
+            "publicName": "current_page_number",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -1292,7 +1292,7 @@
           },
           {
             "name": "allRecordCount",
-            "publicName": "allRecordCount",
+            "publicName": "all_record_count",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -1305,7 +1305,7 @@
           },
           {
             "name": "allPageCount",
-            "publicName": "allPageCount",
+            "publicName": "all_page_count",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -1331,7 +1331,7 @@
             "nestTypeDocMetaList": [
               {
                 "name": "productId",
-                "publicName": "productId",
+                "publicName": "product_id",
                 "typeName": "java.lang.Integer",
                 "simpleTypeName": "Integer",
                 "value": null,
@@ -1344,7 +1344,7 @@
               },
               {
                 "name": "productName",
-                "publicName": "productName",
+                "publicName": "product_name",
                 "typeName": "java.lang.String",
                 "simpleTypeName": "String",
                 "value": null,
@@ -1357,7 +1357,7 @@
               },
               {
                 "name": "productStatusName",
-                "publicName": "productStatusName",
+                "publicName": "product_status_name",
                 "typeName": "java.lang.String",
                 "simpleTypeName": "String",
                 "value": null,
@@ -1370,7 +1370,7 @@
               },
               {
                 "name": "regularPrice",
-                "publicName": "regularPrice",
+                "publicName": "regular_price",
                 "typeName": "java.lang.Integer",
                 "simpleTypeName": "Integer",
                 "value": null,
@@ -5380,7 +5380,7 @@
             "nestTypeDocMetaList": [
               {
                 "name": "fullName",
-                "publicName": "fullName",
+                "publicName": "full_name",
                 "typeName": "java.lang.String",
                 "simpleTypeName": "String",
                 "value": null,
@@ -5393,7 +5393,7 @@
               },
               {
                 "name": "roomCount",
-                "publicName": "roomCount",
+                "publicName": "room_count",
                 "typeName": "java.lang.Integer",
                 "simpleTypeName": "Integer",
                 "value": null,
@@ -5420,7 +5420,7 @@
             "nestTypeDocMetaList": [
               {
                 "name": "fullName",
-                "publicName": "fullName",
+                "publicName": "full_name",
                 "typeName": "java.lang.String",
                 "simpleTypeName": "String",
                 "value": null,
@@ -5433,7 +5433,7 @@
               },
               {
                 "name": "harborRoomCount",
-                "publicName": "harborRoomCount",
+                "publicName": "harbor_room_count",
                 "typeName": "java.lang.Integer",
                 "simpleTypeName": "Integer",
                 "value": null,
@@ -5446,7 +5446,7 @@
               },
               {
                 "name": "veneziaRoomCount",
-                "publicName": "veneziaRoomCount",
+                "publicName": "venezia_room_count",
                 "typeName": "java.lang.Integer",
                 "simpleTypeName": "Integer",
                 "value": null,
@@ -11078,7 +11078,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "memberId",
-            "publicName": "memberId",
+            "publicName": "member_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -11091,7 +11091,7 @@
           },
           {
             "name": "memberName",
-            "publicName": "memberName",
+            "publicName": "member_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -11303,7 +11303,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "productId",
-            "publicName": "productId",
+            "publicName": "product_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -11314,7 +11314,7 @@
           },
           {
             "name": "productName",
-            "publicName": "productName",
+            "publicName": "product_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -11325,7 +11325,7 @@
           },
           {
             "name": "productStatus",
-            "publicName": "productStatus",
+            "publicName": "product_status",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -11336,7 +11336,7 @@
           },
           {
             "name": "productCategory",
-            "publicName": "productCategory",
+            "publicName": "product_category",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -11347,7 +11347,7 @@
           },
           {
             "name": "regularPrice",
-            "publicName": "regularPrice",
+            "publicName": "regular_price",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -11358,7 +11358,7 @@
           },
           {
             "name": "latestPurchaseDate",
-            "publicName": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
             "typeName": "java.time.LocalDate",
             "simpleTypeName": "LocalDate",
             "value": null,
@@ -11578,7 +11578,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "memberId",
-            "publicName": "memberId",
+            "publicName": "member_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -11591,7 +11591,7 @@
           },
           {
             "name": "memberName",
-            "publicName": "memberName",
+            "publicName": "member_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -11613,7 +11613,7 @@
           },
           {
             "name": "showbaseNow",
-            "publicName": "showbaseNow",
+            "publicName": "showbase_now",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
@@ -11670,7 +11670,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "memberId",
-            "publicName": "memberId",
+            "publicName": "member_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -11683,7 +11683,7 @@
           },
           {
             "name": "memberName",
-            "publicName": "memberName",
+            "publicName": "member_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -11705,7 +11705,7 @@
           },
           {
             "name": "showbaseNow",
-            "publicName": "showbaseNow",
+            "publicName": "showbase_now",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
@@ -11762,7 +11762,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "memberId",
-            "publicName": "memberId",
+            "publicName": "member_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -11775,7 +11775,7 @@
           },
           {
             "name": "memberName",
-            "publicName": "memberName",
+            "publicName": "member_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -11797,7 +11797,7 @@
           },
           {
             "name": "showbaseNow",
-            "publicName": "showbaseNow",
+            "publicName": "showbase_now",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
@@ -11983,7 +11983,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "recentProducts",
-            "publicName": "recentProducts",
+            "publicName": "recent_products",
             "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
             "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
             "value": null,
@@ -11997,7 +11997,7 @@
           },
           {
             "name": "highPriceProducts",
-            "publicName": "highPriceProducts",
+            "publicName": "high_price_products",
             "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
             "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
             "value": null,
@@ -12183,7 +12183,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "productName",
-            "publicName": "productName",
+            "publicName": "product_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -12196,7 +12196,7 @@
           },
           {
             "name": "regularPrice",
-            "publicName": "regularPrice",
+            "publicName": "regular_price",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -12485,7 +12485,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "productName",
-            "publicName": "productName",
+            "publicName": "product_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -12498,7 +12498,7 @@
           },
           {
             "name": "regularPrice",
-            "publicName": "regularPrice",
+            "publicName": "regular_price",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -12654,7 +12654,7 @@
           },
           {
             "name": "iamResult",
-            "publicName": "iamResult",
+            "publicName": "iam_result",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -12731,7 +12731,7 @@
           },
           {
             "name": "iamResult",
-            "publicName": "iamResult",
+            "publicName": "iam_result",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -12808,7 +12808,7 @@
           },
           {
             "name": "iamResult",
-            "publicName": "iamResult",
+            "publicName": "iam_result",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -18204,7 +18204,7 @@
               },
               {
                 "name": "restaurantList",
-                "publicName": "restaurantList",
+                "publicName": "restaurant_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18216,7 +18216,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18229,7 +18229,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18242,7 +18242,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18254,7 +18254,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18271,7 +18271,7 @@
               },
               {
                 "name": "restaurantImmutableInstanceList",
-                "publicName": "restaurantImmutableInstanceList",
+                "publicName": "restaurant_immutable_instance_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18283,7 +18283,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18296,7 +18296,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18309,7 +18309,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18321,7 +18321,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18338,7 +18338,7 @@
               },
               {
                 "name": "restaurantImmutableTypeList",
-                "publicName": "restaurantImmutableTypeList",
+                "publicName": "restaurant_immutable_type_list",
                 "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18350,7 +18350,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18363,7 +18363,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18376,7 +18376,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18388,7 +18388,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18405,7 +18405,7 @@
               },
               {
                 "name": "restaurantIterableArrayList",
-                "publicName": "restaurantIterableArrayList",
+                "publicName": "restaurant_iterable_array_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18417,7 +18417,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18430,7 +18430,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18443,7 +18443,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18455,7 +18455,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18472,7 +18472,7 @@
               },
               {
                 "name": "restaurantIterableImmutableList",
-                "publicName": "restaurantIterableImmutableList",
+                "publicName": "restaurant_iterable_immutable_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18484,7 +18484,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18497,7 +18497,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18510,7 +18510,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18522,7 +18522,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18579,7 +18579,7 @@
               },
               {
                 "name": "restaurantList",
-                "publicName": "restaurantList",
+                "publicName": "restaurant_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18591,7 +18591,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18604,7 +18604,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18617,7 +18617,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18629,7 +18629,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18646,7 +18646,7 @@
               },
               {
                 "name": "restaurantImmutableInstanceList",
-                "publicName": "restaurantImmutableInstanceList",
+                "publicName": "restaurant_immutable_instance_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18658,7 +18658,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18671,7 +18671,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18684,7 +18684,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18696,7 +18696,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18713,7 +18713,7 @@
               },
               {
                 "name": "restaurantImmutableTypeList",
-                "publicName": "restaurantImmutableTypeList",
+                "publicName": "restaurant_immutable_type_list",
                 "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18725,7 +18725,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18738,7 +18738,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18751,7 +18751,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18763,7 +18763,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18780,7 +18780,7 @@
               },
               {
                 "name": "restaurantIterableArrayList",
-                "publicName": "restaurantIterableArrayList",
+                "publicName": "restaurant_iterable_array_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18792,7 +18792,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18805,7 +18805,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18818,7 +18818,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18830,7 +18830,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18847,7 +18847,7 @@
               },
               {
                 "name": "restaurantIterableImmutableList",
-                "publicName": "restaurantIterableImmutableList",
+                "publicName": "restaurant_iterable_immutable_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -18859,7 +18859,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -18872,7 +18872,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -18885,7 +18885,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -18897,7 +18897,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -18968,7 +18968,7 @@
               },
               {
                 "name": "bonvoBean",
-                "publicName": "bonvoBean",
+                "publicName": "bonvo_bean",
                 "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$BonvoBean",
                 "simpleTypeName": "BonvoBean",
                 "value": null,
@@ -19050,7 +19050,7 @@
               },
               {
                 "name": "roomList",
-                "publicName": "roomList",
+                "publicName": "room_list",
                 "typeName": "java.util.List\u003cROOM\u003e",
                 "simpleTypeName": "List\u003cROOM\u003e",
                 "value": null,
@@ -19308,7 +19308,7 @@
           },
           {
             "name": "seaId",
-            "publicName": "seaId",
+            "publicName": "sea_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -19321,7 +19321,7 @@
           },
           {
             "name": "landName",
-            "publicName": "landName",
+            "publicName": "land_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -19414,7 +19414,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "productName",
-            "publicName": "productName",
+            "publicName": "product_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -19427,7 +19427,7 @@
           },
           {
             "name": "productStatus",
-            "publicName": "productStatus",
+            "publicName": "product_status",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
             "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
@@ -19438,7 +19438,7 @@
           },
           {
             "name": "purchaseMemberName",
-            "publicName": "purchaseMemberName",
+            "publicName": "purchase_member_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -19451,7 +19451,7 @@
           },
           {
             "name": "seaString",
-            "publicName": "seaString",
+            "publicName": "sea_string",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -19464,7 +19464,7 @@
           },
           {
             "name": "seaInteger",
-            "publicName": "seaInteger",
+            "publicName": "sea_integer",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -19478,7 +19478,7 @@
           },
           {
             "name": "seaLong",
-            "publicName": "seaLong",
+            "publicName": "sea_long",
             "typeName": "java.lang.Long",
             "simpleTypeName": "Long",
             "value": null,
@@ -19492,7 +19492,7 @@
           },
           {
             "name": "seaFloat",
-            "publicName": "seaFloat",
+            "publicName": "sea_float",
             "typeName": "java.lang.Float",
             "simpleTypeName": "Float",
             "value": null,
@@ -19506,7 +19506,7 @@
           },
           {
             "name": "seaDouble",
-            "publicName": "seaDouble",
+            "publicName": "sea_double",
             "typeName": "java.lang.Double",
             "simpleTypeName": "Double",
             "value": null,
@@ -19520,7 +19520,7 @@
           },
           {
             "name": "seaDecimal",
-            "publicName": "seaDecimal",
+            "publicName": "sea_decimal",
             "typeName": "java.math.BigDecimal",
             "simpleTypeName": "BigDecimal",
             "value": null,
@@ -19534,7 +19534,7 @@
           },
           {
             "name": "landDate",
-            "publicName": "landDate",
+            "publicName": "land_date",
             "typeName": "java.time.LocalDate",
             "simpleTypeName": "LocalDate",
             "value": null,
@@ -19547,7 +19547,7 @@
           },
           {
             "name": "landDateTime",
-            "publicName": "landDateTime",
+            "publicName": "land_date_time",
             "typeName": "java.time.LocalDateTime",
             "simpleTypeName": "LocalDateTime",
             "value": null,
@@ -19560,7 +19560,7 @@
           },
           {
             "name": "piariPrimBool",
-            "publicName": "piariPrimBool",
+            "publicName": "piari_prim_bool",
             "typeName": "boolean",
             "simpleTypeName": "boolean",
             "value": null,
@@ -19573,7 +19573,7 @@
           },
           {
             "name": "piariWrapBool",
-            "publicName": "piariWrapBool",
+            "publicName": "piari_wrap_bool",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
@@ -19586,7 +19586,7 @@
           },
           {
             "name": "bonvoStatus",
-            "publicName": "bonvoStatus",
+            "publicName": "bonvo_status",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
@@ -19599,7 +19599,7 @@
           },
           {
             "name": "dstoreStringList",
-            "publicName": "dstoreStringList",
+            "publicName": "dstore_string_list",
             "typeName": "java.util.List\u003cString\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
@@ -19612,7 +19612,7 @@
           },
           {
             "name": "dstoreIntegerList",
-            "publicName": "dstoreIntegerList",
+            "publicName": "dstore_integer_list",
             "typeName": "java.util.List\u003cInteger\u003e",
             "simpleTypeName": "List\u003cInteger\u003e",
             "value": null,
@@ -19625,7 +19625,7 @@
           },
           {
             "name": "dstoreImmutableList",
-            "publicName": "dstoreImmutableList",
+            "publicName": "dstore_immutable_list",
             "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
@@ -19638,7 +19638,7 @@
           },
           {
             "name": "seaBean",
-            "publicName": "seaBean",
+            "publicName": "sea_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean",
             "simpleTypeName": "SeaBean",
             "value": null,
@@ -19676,7 +19676,7 @@
               },
               {
                 "name": "restaurantList",
-                "publicName": "restaurantList",
+                "publicName": "restaurant_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -19688,7 +19688,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -19701,7 +19701,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -19714,7 +19714,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -19726,7 +19726,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -19743,7 +19743,7 @@
               },
               {
                 "name": "restaurantImmutableInstanceList",
-                "publicName": "restaurantImmutableInstanceList",
+                "publicName": "restaurant_immutable_instance_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -19755,7 +19755,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -19768,7 +19768,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -19781,7 +19781,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -19793,7 +19793,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -19810,7 +19810,7 @@
               },
               {
                 "name": "restaurantImmutableTypeList",
-                "publicName": "restaurantImmutableTypeList",
+                "publicName": "restaurant_immutable_type_list",
                 "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
                 "value": null,
@@ -19822,7 +19822,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -19835,7 +19835,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -19848,7 +19848,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -19860,7 +19860,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -19877,7 +19877,7 @@
               },
               {
                 "name": "restaurantIterableArrayList",
-                "publicName": "restaurantIterableArrayList",
+                "publicName": "restaurant_iterable_array_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -19889,7 +19889,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -19902,7 +19902,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -19915,7 +19915,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -19927,7 +19927,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -19944,7 +19944,7 @@
               },
               {
                 "name": "restaurantIterableImmutableList",
-                "publicName": "restaurantIterableImmutableList",
+                "publicName": "restaurant_iterable_immutable_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -19956,7 +19956,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -19969,7 +19969,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -19982,7 +19982,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -19994,7 +19994,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -20013,7 +20013,7 @@
           },
           {
             "name": "seaBeanList",
-            "publicName": "seaBeanList",
+            "publicName": "sea_bean_list",
             "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean\u003e",
             "simpleTypeName": "List\u003cSeaBean\u003e",
             "value": null,
@@ -20051,7 +20051,7 @@
               },
               {
                 "name": "restaurantList",
-                "publicName": "restaurantList",
+                "publicName": "restaurant_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -20063,7 +20063,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -20076,7 +20076,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -20089,7 +20089,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -20101,7 +20101,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -20118,7 +20118,7 @@
               },
               {
                 "name": "restaurantImmutableInstanceList",
-                "publicName": "restaurantImmutableInstanceList",
+                "publicName": "restaurant_immutable_instance_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -20130,7 +20130,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -20143,7 +20143,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -20156,7 +20156,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -20168,7 +20168,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -20185,7 +20185,7 @@
               },
               {
                 "name": "restaurantImmutableTypeList",
-                "publicName": "restaurantImmutableTypeList",
+                "publicName": "restaurant_immutable_type_list",
                 "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
                 "value": null,
@@ -20197,7 +20197,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -20210,7 +20210,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -20223,7 +20223,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -20235,7 +20235,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -20252,7 +20252,7 @@
               },
               {
                 "name": "restaurantIterableArrayList",
-                "publicName": "restaurantIterableArrayList",
+                "publicName": "restaurant_iterable_array_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -20264,7 +20264,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -20277,7 +20277,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -20290,7 +20290,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -20302,7 +20302,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -20319,7 +20319,7 @@
               },
               {
                 "name": "restaurantIterableImmutableList",
-                "publicName": "restaurantIterableImmutableList",
+                "publicName": "restaurant_iterable_immutable_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -20331,7 +20331,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -20344,7 +20344,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -20357,7 +20357,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -20369,7 +20369,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -20388,7 +20388,7 @@
           },
           {
             "name": "landBean",
-            "publicName": "landBean",
+            "publicName": "land_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$LandBean",
             "simpleTypeName": "LandBean",
             "value": null,
@@ -20440,7 +20440,7 @@
               },
               {
                 "name": "bonvoBean",
-                "publicName": "bonvoBean",
+                "publicName": "bonvo_bean",
                 "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$BonvoBean",
                 "simpleTypeName": "BonvoBean",
                 "value": null,
@@ -20470,7 +20470,7 @@
           },
           {
             "name": "dstoreBean",
-            "publicName": "dstoreBean",
+            "publicName": "dstore_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$DstoreBean",
             "simpleTypeName": "DstoreBean",
             "value": null,
@@ -20497,7 +20497,7 @@
           },
           {
             "name": "ambaBean",
-            "publicName": "ambaBean",
+            "publicName": "amba_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$AmbaBean",
             "simpleTypeName": "AmbaBean",
             "value": null,
@@ -20522,7 +20522,7 @@
               },
               {
                 "name": "roomList",
-                "publicName": "roomList",
+                "publicName": "room_list",
                 "typeName": "java.util.List\u003cROOM\u003e",
                 "simpleTypeName": "List\u003cROOM\u003e",
                 "value": null,
@@ -20549,7 +20549,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "seaId",
-            "publicName": "seaId",
+            "publicName": "sea_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -20562,7 +20562,7 @@
           },
           {
             "name": "landName",
-            "publicName": "landName",
+            "publicName": "land_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -20575,7 +20575,7 @@
           },
           {
             "name": "nestedBean",
-            "publicName": "nestedBean",
+            "publicName": "nested_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean$WhiteboxValidatorNestedBean",
             "simpleTypeName": "WhiteboxValidatorNestedBean",
             "value": null,
@@ -20587,7 +20587,7 @@
             "nestTypeDocMetaList": [
               {
                 "name": "piariId",
-                "publicName": "piariId",
+                "publicName": "piari_id",
                 "typeName": "java.lang.Integer",
                 "simpleTypeName": "Integer",
                 "value": null,
@@ -20615,7 +20615,7 @@
           },
           {
             "name": "recursiveBean",
-            "publicName": "recursiveBean",
+            "publicName": "recursive_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean",
             "simpleTypeName": "WxValidatorListElementBean",
             "value": null,
@@ -20625,7 +20625,7 @@
             "nestTypeDocMetaList": [
               {
                 "name": "seaId",
-                "publicName": "seaId",
+                "publicName": "sea_id",
                 "typeName": "java.lang.Integer",
                 "simpleTypeName": "Integer",
                 "value": null,
@@ -20638,7 +20638,7 @@
               },
               {
                 "name": "landName",
-                "publicName": "landName",
+                "publicName": "land_name",
                 "typeName": "java.lang.String",
                 "simpleTypeName": "String",
                 "value": null,
@@ -20651,7 +20651,7 @@
               },
               {
                 "name": "nestedBean",
-                "publicName": "nestedBean",
+                "publicName": "nested_bean",
                 "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean$WhiteboxValidatorNestedBean",
                 "simpleTypeName": "WhiteboxValidatorNestedBean",
                 "value": null,
@@ -20663,7 +20663,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "piariId",
-                    "publicName": "piariId",
+                    "publicName": "piari_id",
                     "typeName": "java.lang.Integer",
                     "simpleTypeName": "Integer",
                     "value": null,
@@ -20691,7 +20691,7 @@
               },
               {
                 "name": "recursiveBean",
-                "publicName": "recursiveBean",
+                "publicName": "recursive_bean",
                 "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean",
                 "simpleTypeName": "WxValidatorListElementBean",
                 "value": null,
@@ -20701,7 +20701,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "seaId",
-                    "publicName": "seaId",
+                    "publicName": "sea_id",
                     "typeName": "java.lang.Integer",
                     "simpleTypeName": "Integer",
                     "value": null,
@@ -20714,7 +20714,7 @@
                   },
                   {
                     "name": "landName",
-                    "publicName": "landName",
+                    "publicName": "land_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -20727,7 +20727,7 @@
                   },
                   {
                     "name": "nestedBean",
-                    "publicName": "nestedBean",
+                    "publicName": "nested_bean",
                     "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean$WhiteboxValidatorNestedBean",
                     "simpleTypeName": "WhiteboxValidatorNestedBean",
                     "value": null,
@@ -20739,7 +20739,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "piariId",
-                        "publicName": "piariId",
+                        "publicName": "piari_id",
                         "typeName": "java.lang.Integer",
                         "simpleTypeName": "Integer",
                         "value": null,
@@ -20767,7 +20767,7 @@
                   },
                   {
                     "name": "recursiveBean",
-                    "publicName": "recursiveBean",
+                    "publicName": "recursive_bean",
                     "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean",
                     "simpleTypeName": "WxValidatorListElementBean",
                     "value": null,
@@ -20777,7 +20777,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "seaId",
-                        "publicName": "seaId",
+                        "publicName": "sea_id",
                         "typeName": "java.lang.Integer",
                         "simpleTypeName": "Integer",
                         "value": null,
@@ -20790,7 +20790,7 @@
                       },
                       {
                         "name": "landName",
-                        "publicName": "landName",
+                        "publicName": "land_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -20803,7 +20803,7 @@
                       },
                       {
                         "name": "nestedBean",
-                        "publicName": "nestedBean",
+                        "publicName": "nested_bean",
                         "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean$WhiteboxValidatorNestedBean",
                         "simpleTypeName": "WhiteboxValidatorNestedBean",
                         "value": null,
@@ -20815,7 +20815,7 @@
                         "nestTypeDocMetaList": [
                           {
                             "name": "piariId",
-                            "publicName": "piariId",
+                            "publicName": "piari_id",
                             "typeName": "java.lang.Integer",
                             "simpleTypeName": "Integer",
                             "value": null,
@@ -20843,7 +20843,7 @@
                       },
                       {
                         "name": "recursiveBean",
-                        "publicName": "recursiveBean",
+                        "publicName": "recursive_bean",
                         "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean",
                         "simpleTypeName": "WxValidatorListElementBean",
                         "value": null,
@@ -20853,7 +20853,7 @@
                         "nestTypeDocMetaList": [
                           {
                             "name": "seaId",
-                            "publicName": "seaId",
+                            "publicName": "sea_id",
                             "typeName": "java.lang.Integer",
                             "simpleTypeName": "Integer",
                             "value": null,
@@ -20866,7 +20866,7 @@
                           },
                           {
                             "name": "landName",
-                            "publicName": "landName",
+                            "publicName": "land_name",
                             "typeName": "java.lang.String",
                             "simpleTypeName": "String",
                             "value": null,
@@ -20879,7 +20879,7 @@
                           },
                           {
                             "name": "nestedBean",
-                            "publicName": "nestedBean",
+                            "publicName": "nested_bean",
                             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean$WhiteboxValidatorNestedBean",
                             "simpleTypeName": "WhiteboxValidatorNestedBean",
                             "value": null,
@@ -20892,7 +20892,7 @@
                           },
                           {
                             "name": "recursiveBean",
-                            "publicName": "recursiveBean",
+                            "publicName": "recursive_bean",
                             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorListElementBean",
                             "simpleTypeName": "WxValidatorListElementBean",
                             "value": null,
@@ -20991,7 +20991,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "productName",
-            "publicName": "productName",
+            "publicName": "product_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -21004,7 +21004,7 @@
           },
           {
             "name": "productStatus",
-            "publicName": "productStatus",
+            "publicName": "product_status",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
             "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
@@ -21015,7 +21015,7 @@
           },
           {
             "name": "purchaseMemberName",
-            "publicName": "purchaseMemberName",
+            "publicName": "purchase_member_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -21028,7 +21028,7 @@
           },
           {
             "name": "seaString",
-            "publicName": "seaString",
+            "publicName": "sea_string",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -21041,7 +21041,7 @@
           },
           {
             "name": "seaInteger",
-            "publicName": "seaInteger",
+            "publicName": "sea_integer",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -21055,7 +21055,7 @@
           },
           {
             "name": "seaLong",
-            "publicName": "seaLong",
+            "publicName": "sea_long",
             "typeName": "java.lang.Long",
             "simpleTypeName": "Long",
             "value": null,
@@ -21069,7 +21069,7 @@
           },
           {
             "name": "seaFloat",
-            "publicName": "seaFloat",
+            "publicName": "sea_float",
             "typeName": "java.lang.Float",
             "simpleTypeName": "Float",
             "value": null,
@@ -21083,7 +21083,7 @@
           },
           {
             "name": "seaDouble",
-            "publicName": "seaDouble",
+            "publicName": "sea_double",
             "typeName": "java.lang.Double",
             "simpleTypeName": "Double",
             "value": null,
@@ -21097,7 +21097,7 @@
           },
           {
             "name": "seaDecimal",
-            "publicName": "seaDecimal",
+            "publicName": "sea_decimal",
             "typeName": "java.math.BigDecimal",
             "simpleTypeName": "BigDecimal",
             "value": null,
@@ -21111,7 +21111,7 @@
           },
           {
             "name": "landDate",
-            "publicName": "landDate",
+            "publicName": "land_date",
             "typeName": "java.time.LocalDate",
             "simpleTypeName": "LocalDate",
             "value": null,
@@ -21124,7 +21124,7 @@
           },
           {
             "name": "landDateTime",
-            "publicName": "landDateTime",
+            "publicName": "land_date_time",
             "typeName": "java.time.LocalDateTime",
             "simpleTypeName": "LocalDateTime",
             "value": null,
@@ -21137,7 +21137,7 @@
           },
           {
             "name": "piariPrimBool",
-            "publicName": "piariPrimBool",
+            "publicName": "piari_prim_bool",
             "typeName": "boolean",
             "simpleTypeName": "boolean",
             "value": null,
@@ -21150,7 +21150,7 @@
           },
           {
             "name": "piariWrapBool",
-            "publicName": "piariWrapBool",
+            "publicName": "piari_wrap_bool",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
@@ -21163,7 +21163,7 @@
           },
           {
             "name": "bonvoStatus",
-            "publicName": "bonvoStatus",
+            "publicName": "bonvo_status",
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
             "simpleTypeName": "CDef.MemberStatus",
             "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
@@ -21176,7 +21176,7 @@
           },
           {
             "name": "dstoreStringList",
-            "publicName": "dstoreStringList",
+            "publicName": "dstore_string_list",
             "typeName": "java.util.List\u003cString\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
@@ -21189,7 +21189,7 @@
           },
           {
             "name": "dstoreIntegerList",
-            "publicName": "dstoreIntegerList",
+            "publicName": "dstore_integer_list",
             "typeName": "java.util.List\u003cInteger\u003e",
             "simpleTypeName": "List\u003cInteger\u003e",
             "value": null,
@@ -21202,7 +21202,7 @@
           },
           {
             "name": "dstoreImmutableList",
-            "publicName": "dstoreImmutableList",
+            "publicName": "dstore_immutable_list",
             "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
@@ -21215,7 +21215,7 @@
           },
           {
             "name": "seaBean",
-            "publicName": "seaBean",
+            "publicName": "sea_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean",
             "simpleTypeName": "SeaBean",
             "value": null,
@@ -21253,7 +21253,7 @@
               },
               {
                 "name": "restaurantList",
-                "publicName": "restaurantList",
+                "publicName": "restaurant_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21265,7 +21265,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21278,7 +21278,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21291,7 +21291,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21303,7 +21303,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21320,7 +21320,7 @@
               },
               {
                 "name": "restaurantImmutableInstanceList",
-                "publicName": "restaurantImmutableInstanceList",
+                "publicName": "restaurant_immutable_instance_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21332,7 +21332,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21345,7 +21345,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21358,7 +21358,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21370,7 +21370,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21387,7 +21387,7 @@
               },
               {
                 "name": "restaurantImmutableTypeList",
-                "publicName": "restaurantImmutableTypeList",
+                "publicName": "restaurant_immutable_type_list",
                 "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21399,7 +21399,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21412,7 +21412,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21425,7 +21425,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21437,7 +21437,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21454,7 +21454,7 @@
               },
               {
                 "name": "restaurantIterableArrayList",
-                "publicName": "restaurantIterableArrayList",
+                "publicName": "restaurant_iterable_array_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21466,7 +21466,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21479,7 +21479,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21492,7 +21492,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21504,7 +21504,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21521,7 +21521,7 @@
               },
               {
                 "name": "restaurantIterableImmutableList",
-                "publicName": "restaurantIterableImmutableList",
+                "publicName": "restaurant_iterable_immutable_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21533,7 +21533,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21546,7 +21546,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21559,7 +21559,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21571,7 +21571,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21590,7 +21590,7 @@
           },
           {
             "name": "seaBeanList",
-            "publicName": "seaBeanList",
+            "publicName": "sea_bean_list",
             "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean\u003e",
             "simpleTypeName": "List\u003cSeaBean\u003e",
             "value": null,
@@ -21628,7 +21628,7 @@
               },
               {
                 "name": "restaurantList",
-                "publicName": "restaurantList",
+                "publicName": "restaurant_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21640,7 +21640,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21653,7 +21653,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21666,7 +21666,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21678,7 +21678,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21695,7 +21695,7 @@
               },
               {
                 "name": "restaurantImmutableInstanceList",
-                "publicName": "restaurantImmutableInstanceList",
+                "publicName": "restaurant_immutable_instance_list",
                 "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "List\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21707,7 +21707,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21720,7 +21720,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21733,7 +21733,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21745,7 +21745,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21762,7 +21762,7 @@
               },
               {
                 "name": "restaurantImmutableTypeList",
-                "publicName": "restaurantImmutableTypeList",
+                "publicName": "restaurant_immutable_type_list",
                 "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "ImmutableList\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21774,7 +21774,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21787,7 +21787,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21800,7 +21800,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21812,7 +21812,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21829,7 +21829,7 @@
               },
               {
                 "name": "restaurantIterableArrayList",
-                "publicName": "restaurantIterableArrayList",
+                "publicName": "restaurant_iterable_array_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21841,7 +21841,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21854,7 +21854,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21867,7 +21867,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21879,7 +21879,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21896,7 +21896,7 @@
               },
               {
                 "name": "restaurantIterableImmutableList",
-                "publicName": "restaurantIterableImmutableList",
+                "publicName": "restaurant_iterable_immutable_list",
                 "typeName": "java.lang.Iterable\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean\u003e",
                 "simpleTypeName": "Iterable\u003cRestaurantBean\u003e",
                 "value": null,
@@ -21908,7 +21908,7 @@
                 "nestTypeDocMetaList": [
                   {
                     "name": "restaurantName",
-                    "publicName": "restaurantName",
+                    "publicName": "restaurant_name",
                     "typeName": "java.lang.String",
                     "simpleTypeName": "String",
                     "value": null,
@@ -21921,7 +21921,7 @@
                   },
                   {
                     "name": "genreList",
-                    "publicName": "genreList",
+                    "publicName": "genre_list",
                     "typeName": "java.util.List\u003cString\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
@@ -21934,7 +21934,7 @@
                   },
                   {
                     "name": "menuList",
-                    "publicName": "menuList",
+                    "publicName": "menu_list",
                     "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.validator.WxValidatorForm$SeaBean$RestaurantBean$MenuBean\u003e",
                     "simpleTypeName": "List\u003cMenuBean\u003e",
                     "value": null,
@@ -21946,7 +21946,7 @@
                     "nestTypeDocMetaList": [
                       {
                         "name": "menuName",
-                        "publicName": "menuName",
+                        "publicName": "menu_name",
                         "typeName": "java.lang.String",
                         "simpleTypeName": "String",
                         "value": null,
@@ -21965,7 +21965,7 @@
           },
           {
             "name": "landBean",
-            "publicName": "landBean",
+            "publicName": "land_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$LandBean",
             "simpleTypeName": "LandBean",
             "value": null,
@@ -22017,7 +22017,7 @@
               },
               {
                 "name": "bonvoBean",
-                "publicName": "bonvoBean",
+                "publicName": "bonvo_bean",
                 "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$BonvoBean",
                 "simpleTypeName": "BonvoBean",
                 "value": null,
@@ -22047,7 +22047,7 @@
           },
           {
             "name": "dstoreBean",
-            "publicName": "dstoreBean",
+            "publicName": "dstore_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$DstoreBean",
             "simpleTypeName": "DstoreBean",
             "value": null,
@@ -22074,7 +22074,7 @@
           },
           {
             "name": "ambaBean",
-            "publicName": "ambaBean",
+            "publicName": "amba_bean",
             "typeName": "org.docksidestage.app.web.wx.validator.WxValidatorForm$AmbaBean",
             "simpleTypeName": "AmbaBean",
             "value": null,
@@ -22099,7 +22099,7 @@
               },
               {
                 "name": "roomList",
-                "publicName": "roomList",
+                "publicName": "room_list",
                 "typeName": "java.util.List\u003cROOM\u003e",
                 "simpleTypeName": "List\u003cROOM\u003e",
                 "value": null,
@@ -22126,7 +22126,7 @@
         "nestTypeDocMetaList": [
           {
             "name": "seaId",
-            "publicName": "seaId",
+            "publicName": "sea_id",
             "typeName": "java.lang.Integer",
             "simpleTypeName": "Integer",
             "value": null,
@@ -22139,7 +22139,7 @@
           },
           {
             "name": "landName",
-            "publicName": "landName",
+            "publicName": "land_name",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -22164,7 +22164,7 @@
             "nestTypeDocMetaList": [
               {
                 "name": "piariId",
-                "publicName": "piariId",
+                "publicName": "piari_id",
                 "typeName": "java.lang.Integer",
                 "simpleTypeName": "Integer",
                 "value": null,

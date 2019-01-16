@@ -18,14 +18,21 @@
     #set($typeDocMetaList = $typeDocMeta.parameterTypeDocMetaList)
 #end
 #if (!$typeDocMetaList.isEmpty())
+#set($showPublicName = false)
+#foreach ($nestTypeDocMeta in $typeDocMetaList)
+#if (!$showPublicName && $nestTypeDocMeta.name != $nestTypeDocMeta.publicName)
+#set($showPublicName = true)
+#end
+#end
 <table>
     <thead>
     <tr>
         <th class="rownumhead">No.</th>
-        <th>name</th>
-        <th>type</th>
+        <th>public name</th>
+        <th>Java type</th>
         <th>comment</th>
         <th>annotations</th>
+        <th>property name</th>
     </tr>
     </thead>
 #foreach ($nestTypeDocMeta in $typeDocMetaList)
@@ -35,7 +42,7 @@
 #end
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">${foreach.count}</td>
-        <td>${nestTypeDocMeta.name}</td>
+        <td>${nestTypeDocMeta.publicName}</td>
         <td><p title="$manager.htmlEscape($nestTypeDocMeta.typeName)">$manager.htmlEscape($nestTypeDocMeta.simpleTypeName)</p></td>
         <td class="fieldcomment">
             <p title="$!manager.htmlEscape($nestTypeDocMeta.comment)">$!manager.htmlEscape($nestTypeDocMeta.description)</p>
@@ -49,6 +56,7 @@
 #end
 #end
         </td>
+        <td class="fieldsubname">${nestTypeDocMeta.name}</td>
     </tr>
 #if (!$nestTypeDocMeta.nestTypeDocMetaList.isEmpty())
     <tr>

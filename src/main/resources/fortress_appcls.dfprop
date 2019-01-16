@@ -15,6 +15,9 @@
 # *The line that starts with '#' means comment-out.
 #
 map:{
+    # ====================================================================================
+    #                                                                                Basic
+    #                                                                                =====
     ; AppSea = list:{
         ; map:{ topComment=Sea Cls ; codeType=String }
         ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
@@ -49,6 +52,15 @@ map:{
         ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
         ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
         ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    }
+
+    # ====================================================================================
+    #                                                                             Whitebox
+    #                                                                             ========
+    ; AppWxNameOf = list:{
+        ; map:{ topComment=NameOf Cls ; codeType=String }
+        ; map:{ code=ONE ; name=OneMan ; alias=ShowBase ; comment=Formalized ; sisterCode=oneman}
+        ; map:{ code=MIN ; name=MiniO ; alias=Orlean ; comment=Withdrawal ; sisterCode=minio}
     }
 }
 # ----------------/

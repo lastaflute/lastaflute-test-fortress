@@ -21,6 +21,7 @@ import java.util.List;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.lastaflute.core.json.JsonMappingOption;
+import org.lastaflute.core.json.JsonMappingOption.JsonFieldNaming;
 import org.lastaflute.core.json.JsonResourceProvider;
 import org.lastaflute.core.json.bind.JsonYourCollectionResource;
 
@@ -31,7 +32,9 @@ public class FortressJsonResourceProvider implements JsonResourceProvider {
 
     @Override
     public JsonMappingOption provideMappingOption() {
-        return new JsonMappingOption().yourCollections(prepareYourCollections());
+        return new JsonMappingOption() // customizing
+                .yourCollections(prepareYourCollections()) // Eclipse Collections
+                .asFieldNaming(JsonFieldNaming.CAMEL_TO_LOWER_SNAKE); // SNAKE_CASE
     }
 
     private List<JsonYourCollectionResource> prepareYourCollections() {

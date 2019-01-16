@@ -26,29 +26,15 @@ import org.lastaflute.web.util.LaActionExecuteUtil;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRoutingNearpathBasicAction extends FortressBaseAction {
+public class WxRoutingNearpathShadowedClassLandAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/sea/
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/string/
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/number/
+    // no mapping by shadowing
     @Execute
-    public JsonResponse<RoutingCheckResult> index(String first) {
-        return asJson(new RoutingCheckResult(getExecuteName(), first, "*first only"));
-    }
-
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/string/sea
-    @Execute
-    public JsonResponse<RoutingCheckResult> string(String first) {
-        return asJson(new RoutingCheckResult(getExecuteName(), first, "*first only"));
-    }
-
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/number/1
-    @Execute
-    public JsonResponse<RoutingCheckResult> number(Integer first) {
-        return asJson(new RoutingCheckResult(getExecuteName(), first, "*first only"));
+    public JsonResponse<RoutingCheckResult> index() {
+        return asJson(new RoutingCheckResult(getExecuteName(), "*none", "*none"));
     }
 
     private String getExecuteName() {

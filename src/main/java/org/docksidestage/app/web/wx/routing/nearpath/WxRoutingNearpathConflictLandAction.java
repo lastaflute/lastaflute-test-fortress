@@ -20,38 +20,22 @@ import org.docksidestage.app.web.wx.routing.RoutingCheckResult;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
-import org.lastaflute.web.util.LaActionExecuteUtil;
 
 /**
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRoutingNearpathBasicAction extends FortressBaseAction {
+public class WxRoutingNearpathConflictLandAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/sea/
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/string/
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/number/
+    // http://localhost:8151/fortress/wx/routing/nearpath/conflict/sea/
+    //  => Shadowed the execute method by the other execute method.
+    // http://localhost:8151/fortress/wx/routing/nearpath/conflict/land/
+    //  => Shadowed the execute method by the other execute method.
     @Execute
-    public JsonResponse<RoutingCheckResult> index(String first) {
-        return asJson(new RoutingCheckResult(getExecuteName(), first, "*first only"));
-    }
-
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/string/sea
-    @Execute
-    public JsonResponse<RoutingCheckResult> string(String first) {
-        return asJson(new RoutingCheckResult(getExecuteName(), first, "*first only"));
-    }
-
-    // http://localhost:8151/fortress/wx/routing/nearpath/basic/number/1
-    @Execute
-    public JsonResponse<RoutingCheckResult> number(Integer first) {
-        return asJson(new RoutingCheckResult(getExecuteName(), first, "*first only"));
-    }
-
-    private String getExecuteName() {
-        return LaActionExecuteUtil.getActionExecute().toSimpleMethodExp();
+    public JsonResponse<RoutingCheckResult> index() {
+        return asJson(new RoutingCheckResult("index()", "none", "none"));
     }
 }
