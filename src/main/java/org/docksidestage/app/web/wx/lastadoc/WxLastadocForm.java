@@ -75,4 +75,18 @@ public class WxLastadocForm extends WxLastadocExtendsForm {
             public Integer roomCount;
         }
     }
+
+    @Valid
+    public DohotelPart dohotel;
+
+    public static class DohotelPart {
+
+        /** official full name of dohotel */
+        @Required
+        public String fullName;
+
+        /** room count of dohotel */
+        @Required
+        public Integer roomCount;
+    }
 }

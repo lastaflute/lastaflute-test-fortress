@@ -18,7 +18,7 @@ package org.docksidestage.app.web.wx.lastadoc;
 import org.lastaflute.web.validation.Required;
 
 /**
- * @author jflute
+ * @author awaawa
  */
 public class WxLastadocExtendsForm {
 
