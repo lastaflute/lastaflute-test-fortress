@@ -35,6 +35,7 @@ public class WxLastadocForm extends WxLastadocExtendsForm {
 
     public static class AmbaPart {
 
+        // #hope jflute overridden by miraco#amba for now (2019/01/17)
         /** official full name of amba */
         @Required
         public String fullName;
