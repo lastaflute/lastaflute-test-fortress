@@ -15,6 +15,9 @@
  */
 package org.docksidestage;
 
+import org.apache.catalina.Host;
+import org.apache.catalina.core.StandardHost;
+import org.apache.catalina.valves.ErrorReportValve;
 import org.dbflute.tomcat.TomcatBoot;
 
 /**
@@ -34,10 +37,25 @@ public class FortressTomcatBoot { // #change_it_first
         boot.logging("tomcat_logging.properties", op -> {
             op.replace("tomcat.log.name", "catalina_out");
         }); // uses jdk14logger
+        boot.asYouLikeIt(resource -> {
+            Host host = resource.getHost();
+            if (host instanceof StandardHost) {
+                String fqcn = SilentErrorReportValve.class.getName();
+                ((StandardHost) host).setErrorReportValveClass(fqcn); // suppress server info
+            }
+        });
         boot.bootAwait();
     }
 
     private static boolean isDevelopment() {
         return System.getProperty("lasta.env") == null;
+    }
+
+    public static class SilentErrorReportValve extends ErrorReportValve {
+
+        public SilentErrorReportValve() {
+            setShowReport(false);
+            setShowServerInfo(false);
+        }
     }
 }
