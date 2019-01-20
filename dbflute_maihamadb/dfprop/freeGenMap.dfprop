@@ -30,4 +30,18 @@ map:{
             ; ruleJsPath = ../src/main/resources/remoteapi/swagger/swagger-petstore_rule.js
         }
     }
+    ; RemoteApiSwaggerTricky = map:{
+        ; resourceMap = map:{
+            ; baseDir = ../src/main
+            ; resourceType = SWAGGER
+            ; resourceFile = $$baseDir$$/resources/remoteapi/swagger/swagger-tricky_swagger.json
+        }
+        ; outputMap = map:{
+            ; outputDirectory = $$baseDir$$/java
+            ; package = org.docksidestage.remote
+        }
+        ; optionMap = map:{
+            ; ruleJsPath = ../src/main/resources/remoteapi/swagger/swagger-Tricky_rule.js
+        }
+    }
 }

@@ -5565,7 +5565,46 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 7,
+      "fileLineCount": 12,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/lastadoc/apiEmptyBody",
+      "typeName": "org.docksidestage.app.web.wx.lastadoc.WxLastadocAction",
+      "simpleTypeName": "WxLastadocAction",
+      "description": "This is the first line of class java-doc. \u003cbr\u003e",
+      "typeComment": "This is the first line of class java-doc. \u003cbr\u003e\nAnd the second line is here.\n\n@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "apiEmptyBody",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.wx.lastadoc.WxLastadocEmptyBody",
+        "simpleTypeName": "WxLastadocEmptyBody",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 12,
       "methodLineCount": 3
     },
     {
@@ -22821,7 +22860,7 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "CustomSize{minKey\u003dseaMin, maxKey\u003dseaMax}"
+              "CustomSize{maxKey\u003dseaMax, minKey\u003dseaMin}"
             ],
             "nestTypeDocMetaList": []
           },
