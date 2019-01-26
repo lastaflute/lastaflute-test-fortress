@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.dbflute.cbean.coption.LikeSearchOption;
 import org.lastaflute.core.security.PrimaryCipher;
 import org.lastaflute.di.util.LdiArrayUtil;
 import org.slf4j.Logger;
@@ -39,6 +40,10 @@ public class TrialExpSea {
 
     public void addStringArray(String[] StrAry) {
         logger.debug("...Adding String[]: {}", Arrays.asList(StrAry));
+    }
+
+    public void addNewInstance(LikeSearchOption option) {
+        logger.debug("...Adding new-instance: {}", option);
     }
 
     public void addType(Class<?> type) {
