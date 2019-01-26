@@ -14,12 +14,14 @@
 	</component>
 
 	<component name="expSea" class="org.docksidestage.mylasta.trial.TrialExpSea">
+		<!-- by plain hook -->
 		<property name="simpleString">"dockside"</property>
 		<property name="simpleInteger">3</property>
 		<property name="simpleLong">123456789012</property>
 		<property name="nearlyMaxInteger">2100000000</property>
 		<property name="overMaxInteger">2200000000</property>
 
+		<!-- by nashorn -->
 		<postConstruct name="addStringList">
 			<arg>["a","b"]</arg>
 		</postConstruct>
@@ -37,6 +39,8 @@
 		<postConstruct name="addType"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.class</arg></postConstruct>
 		<postConstruct name="addStaticFinal"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.STATIC_DEF</arg></postConstruct>
 		<postConstruct name="addStaticMethod"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.callStatic()</arg></postConstruct>
+
+		<!-- by plain hook -->
 		<postConstruct name="addType"><arg>@jp.sea.SeaPark@class</arg></postConstruct>
 		<postConstruct name="addStaticFinal"><arg>@jp.sea.SeaPark@STATIC_DEF</arg></postConstruct>
 		<postConstruct name="addStaticMethod"><arg>@jp.sea.SeaPark@callStatic()</arg></postConstruct>
@@ -44,6 +48,8 @@
 		<postConstruct name="addConfigProp">
 			<arg>provider.config().getJdbcUrl()</arg>
 		</postConstruct>
+
+		<!-- by nashorn -->
 		<postConstruct name="addCipher">
 			<arg>lastaflute_core.primaryCipher</arg>
 		</postConstruct>
