@@ -21,19 +21,19 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.1.9</dbflute.version>
 		<mysql.jdbc.version>8.0.12</mysql.jdbc.version>
-		<lasta.di.version>0.7.9-RC2</lasta.di.version>
-		<lastaflute.version>1.1.1-RC3</lastaflute.version>
-		<lasta.thymeleaf.version>0.4.0-RC5</lasta.thymeleaf.version>
+		<lasta.di.version>0.7.9</lasta.di.version>
+		<lastaflute.version>1.1.1</lastaflute.version>
+		<lasta.thymeleaf.version>0.4.0</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.3</lasta.job.version>
-		<lasta.remoteapi.version>0.4.2-RC1</lasta.remoteapi.version>
-		<lasta.doc.version>0.3.5-RC4</lasta.doc.version>
+		<lasta.remoteapi.version>0.4.2</lasta.remoteapi.version>
+		<lasta.doc.version>0.3.5</lasta.doc.version>
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.12</slf4j.version>
 		<logback.version>1.2.3</logback.version>
 		<servlet.version>4.0.1</servlet.version>
 		<jetty.boot.version>0.4.9</jetty.boot.version>
-		<tomcat.boot.version>0.7.1-RC1</tomcat.boot.version>
+		<tomcat.boot.version>0.7.1</tomcat.boot.version>
 		<swagger.ui.version>3.20.5</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
@@ -43,7 +43,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.8.9</utflute.version>
+		<utflute.version>0.9.0</utflute.version>
 	</properties>
 
 	<licenses>
