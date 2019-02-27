@@ -1,0 +1,47 @@
+version: '2'
+services:
+  fortress:
+    build: ./
+    ports:
+      - "8152:8152"
+    volumes:
+      - .:/code
+    links:
+      - db
+    networks:
+      - fortress-net
+  intro:
+    image: dbflute/dbflute-intro
+    ports:
+      - "8926:8926"
+    volumes:
+        - ./dbflute_maihamadb:/app/dbflute_maihamadb/:rw
+        - ./dbflute_resortlinedb:/app/dbflute_resortlinedb/:rw
+        - ./mydbflute:/app/mydbflute/:rw
+        - ./src:/app/src/:ro # for documents
+    environment:
+      DBFLUTE_ENVIRONMENT_TYPE: "docker"
+    links:
+      - db
+    networks:
+      - fortress-net
+  db:
+    container_name: fortress-mysql
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: "maihamadb"
+      MYSQL_USER: "root"
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    networks:
+      - fortress-net
+
+networks:
+  fortress-net:
+    driver: bridge
+
