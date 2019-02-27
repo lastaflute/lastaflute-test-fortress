@@ -118,7 +118,6 @@ public interface AppCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static AppSea codeOf(Object code) {
             if (code == null) { return null; }
@@ -302,7 +301,6 @@ public interface AppCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static AppLand codeOf(Object code) {
             if (code == null) { return null; }
@@ -448,7 +446,6 @@ public interface AppCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static AppPiari codeOf(Object code) {
             if (code == null) { return null; }
@@ -605,7 +602,6 @@ public interface AppCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static AppBonvo codeOf(Object code) {
             if (code == null) { return null; }
@@ -739,7 +735,6 @@ public interface AppCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static AppWxNameOf codeOf(Object code) {
             if (code == null) { return null; }
@@ -838,7 +833,7 @@ public interface AppCDef extends Classification {
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
-        public Classification codeOf(Object code) { // null if not found, old style so use classificationOf(code)
+        public Classification codeOf(Object code) { // null if not found, old style so use of(code)
             if (AppSea.name().equals(name())) { return AppCDef.AppSea.codeOf(code); }
             if (AppLand.name().equals(name())) { return AppCDef.AppLand.codeOf(code); }
             if (AppPiari.name().equals(name())) { return AppCDef.AppPiari.codeOf(code); }
@@ -847,7 +842,7 @@ public interface AppCDef extends Classification {
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
-        public Classification nameOf(String name) { // null if not found, old style so use classificationByName(name)
+        public Classification nameOf(String name) { // null if not found, old style so use byName(name)
             if (AppSea.name().equals(name())) { return AppCDef.AppSea.valueOf(name); }
             if (AppLand.name().equals(name())) { return AppCDef.AppLand.valueOf(name); }
             if (AppPiari.name().equals(name())) { return AppCDef.AppPiari.valueOf(name); }

@@ -40,9 +40,12 @@ map:{
     }
 
     # you can override (several) default settings like this:
-    #; overrideMap = map:{
-    #    ; dockside.freeGen.mail.targetDir = ./playsql/data/mail
-    #}
+    ; overrideMap = map:{
+        # the test of zoned cls
+        ; fortress.freeGen.zoned_cls.outputDirectory = $$baseDir$$/../test/java
+        ; fortress.freeGen.zoned_cls.package = org.docksidestage.mylasta.namedcls.zoned
+        ; fortress.freeGen.zoned_cls.isSuppressDBClsCollaboration = true
+    }
 
     # sychronized with reflection meta, it's trial
     ; isLastaDocMavenGeared = true
