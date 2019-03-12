@@ -27,6 +27,7 @@ import org.docksidestage.mylasta.direction.sponsor.FortressJsonResourceProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressListedClassificationProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressMailDeliveryDepartmentCreator;
 import org.docksidestage.mylasta.direction.sponsor.FortressMultipartRequestHandler;
+import org.docksidestage.mylasta.direction.sponsor.FortressPropertyFilter;
 import org.docksidestage.mylasta.direction.sponsor.FortressSecurityResourceProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressTimeResourceProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressUserLocaleProcessProvider;
@@ -65,6 +66,11 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
             nameList.add("fortress_config.properties");
             nameList.add("fortress_thymeleaf_config.properties");
         }, "fortress_env.properties");
+        direction.directPropertyFilter(createPropertyFilter());
+    }
+
+    protected FortressPropertyFilter createPropertyFilter() {
+        return new FortressPropertyFilter();
     }
 
     // ===================================================================================
