@@ -35,6 +35,6 @@ public class FortressPropertyFilter implements PropertyFilter {
             }
             return envValue;
         }
-        return null;
+        return propertyValue;
     }
 }
