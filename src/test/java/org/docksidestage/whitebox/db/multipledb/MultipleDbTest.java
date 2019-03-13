@@ -31,7 +31,7 @@ public class MultipleDbTest extends UnitFortressBasicTestCase {
     @Resource
     private StationBhv stationBhv;
 
-    public void test_multipledb_basci() throws Exception {
+    public void test_multipledb_basic() throws Exception {
         memberBhv.selectList(cb -> {});
         stationBhv.selectList(cb -> {});
     }

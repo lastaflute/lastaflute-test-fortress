@@ -140,7 +140,7 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     }
 
     public List<RemoteHbMypageProductReturn> requestMypage() {
-        return doRequestDelete(new ParameterizedRef<List<RemoteHbMypageProductReturn>>() {
+        return doRequestGet(new ParameterizedRef<List<RemoteHbMypageProductReturn>>() {
         }.getType(), "/lido/mypage", noMoreUrl(), noQuery(), rule -> {});
     }
 
