@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.request.multipart;
+package org.docksidestage.remote.fortress.wx.multipart;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.ruts.multipart.MultipartFormFile;
@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class WxRequestMultipartForm {
+public class RemoteFrMultipartParam {
 
     public String sea;
 

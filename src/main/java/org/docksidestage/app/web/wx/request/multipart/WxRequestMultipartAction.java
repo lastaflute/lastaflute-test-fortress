@@ -15,10 +15,13 @@
  */
 package org.docksidestage.app.web.wx.request.multipart;
 
+import java.io.IOException;
+
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
+import org.lastaflute.web.ruts.multipart.MultipartFormFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +33,7 @@ public class WxRequestMultipartAction extends FortressBaseAction {
 
     private static final Logger logger = LoggerFactory.getLogger(WxRequestMultipartAction.class);
 
-    // http://localhost:8155/fortress/wx/multipart/
+    // http://localhost:8151/fortress/wx/multipart/
     @Execute
     public HtmlResponse index() {
         return asHtml(path_WxMultipart_WxMultipartHtml);
@@ -41,9 +44,20 @@ public class WxRequestMultipartAction extends FortressBaseAction {
         validate(form, messages -> {}, () -> {
             return asHtml(path_WxMultipart_WxMultipartHtml);
         });
-        logger.debug("/- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
-        logger.debug("#upload: {}, {}", form.birthdate, form.file);
-        logger.debug("- - - - - - - - - -/");
+        showUploadedFile(form);
         return asHtml(path_WxMultipart_WxMultipartHtml);
+    }
+
+    private void showUploadedFile(WxRequestMultipartForm form) {
+        MultipartFormFile uploadedFile = form.uploadedFile;
+        logger.debug("/- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+        try {
+            String fileName = uploadedFile.getFileName();
+            String fileData = new String(uploadedFile.getFileData(), "UTF-8");
+            logger.debug("#upload: {}, {}, {}={}", form.sea, form.land, fileName, fileData);
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to show file data: " + uploadedFile, e);
+        }
+        logger.debug("- - - - - - - - - -/");
     }
 }

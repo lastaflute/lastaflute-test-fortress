@@ -368,6 +368,11 @@
 			<artifactId>lasta-remoteapi</artifactId>
 			<version>${lasta.remoteapi.version}</version>
 		</dependency>
+		<dependency> <!-- for e.g. multipart -->
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.3</version>
+		</dependency>
 		<dependency> <!-- compile scope for swagger -->
 			<groupId>org.lastaflute.doc</groupId>
 			<artifactId>lasta-doc</artifactId>

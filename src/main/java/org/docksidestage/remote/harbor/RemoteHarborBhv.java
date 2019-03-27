@@ -15,18 +15,10 @@
  */
 package org.docksidestage.remote.harbor;
 
-import java.lang.reflect.Type;
-import java.net.URI;
 import java.util.List;
-import java.util.function.Consumer;
 
-import org.apache.http.annotation.NotThreadSafe;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.dbflute.optional.OptionalThing;
-import org.dbflute.remoteapi.FlutyRemoteApi;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
-import org.dbflute.remoteapi.http.SupportedHttpMethod;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult.RemoteUnifiedFailureType;
@@ -38,7 +30,6 @@ import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.message.UserMessage;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
-import org.lastaflute.remoteapi.LastaRemoteApi;
 import org.lastaflute.remoteapi.LastaRemoteBehavior;
 import org.lastaflute.remoteapi.mapping.LaVacantMappingPolicy;
 import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
@@ -91,45 +82,6 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     @Override
     protected String getUrlBase() {
         return "http://localhost:8090/harbor";
-    }
-
-    @Override
-    protected FlutyRemoteApi newRemoteApi(Consumer<FlutyRemoteApiRule> ruleSetupper, Object callerExp) {
-        return new LastaRemoteApi(ruleSetupper, callerExp) {
-            @Override
-            public <RETURN> RETURN requestDelete(Type returnType, String urlBase, String actionPath, Object[] pathVariables,
-                    OptionalThing<? extends Object> param, Consumer<FlutyRemoteApiRule> ruleLambda) {
-                return doRequestEnclosing(returnType, urlBase, actionPath, pathVariables, param.get(), ruleLambda,
-                        SupportedHttpMethod.DELETE, url -> {
-                            return new HttpEnclosingDelete(url);
-                        });
-            }
-        };
-    }
-
-    @NotThreadSafe
-    public static class HttpEnclosingDelete extends HttpEntityEnclosingRequestBase {
-
-        public final static String METHOD_NAME = "DELETE";
-
-        public HttpEnclosingDelete() {
-            super();
-        }
-
-        public HttpEnclosingDelete(final URI uri) {
-            super();
-            setURI(uri);
-        }
-
-        public HttpEnclosingDelete(final String uri) {
-            super();
-            setURI(URI.create(uri));
-        }
-
-        @Override
-        public String getMethod() {
-            return METHOD_NAME;
-        }
     }
 
     // ===================================================================================

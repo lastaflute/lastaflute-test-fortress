@@ -4,12 +4,15 @@
 <components namespace="remote_api">
     <include path="lastaflute.xml"/>
 
-	<!-- showbase -->
+	<!-- showbase of maihama (multi project) -->
     <include path="remoteapi/di/remoteapi_maihama-showbase.xml"/>
 
-	<!-- harbor -->
+	<!-- harbor (single project) -->
     <component name="remoteHarborBhv" class="org.docksidestage.remote.harbor.RemoteHarborBhv"/>
 
-	<!-- hangar -->
+	<!-- hangar of maihama (multi project) -->
     <component name="remoteMaihamaHangarBhv" class="org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv"/>
+
+	<!-- fortress (single project) -->
+    <component name="remoteFortressBhv" class="org.docksidestage.remote.fortress.RemoteFortressBhv"/>
 </components>

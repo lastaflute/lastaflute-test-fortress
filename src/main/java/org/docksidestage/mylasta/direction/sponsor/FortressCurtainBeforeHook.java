@@ -15,24 +15,16 @@
  */
 package org.docksidestage.mylasta.direction.sponsor;
 
-import java.math.BigDecimal;
 import java.util.TimeZone;
 
-import org.dbflute.hook.AccessContext;
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.system.DBFluteSystem;
 import org.dbflute.system.provider.DfFinalTimeZoneProvider;
 import org.dbflute.util.DfTypeUtil;
-import org.docksidestage.dbflute.exbhv.PurchasePaymentBhv;
-import org.docksidestage.dbflute.exentity.PurchasePayment;
 import org.docksidestage.mylasta.action.FortressUserBean;
 import org.lastaflute.core.direction.CurtainBeforeHook;
 import org.lastaflute.core.direction.FwAssistantDirector;
-import org.lastaflute.core.magic.async.AsyncManager;
-import org.lastaflute.core.time.TimeManager;
 import org.lastaflute.core.util.ContainerUtil;
-import org.lastaflute.db.dbflute.accesscontext.PreparedAccessContext;
-import org.lastaflute.db.jta.stage.TransactionStage;
 import org.lastaflute.web.login.LoginManager;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.slf4j.Logger;
@@ -87,27 +79,28 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     }
 
     protected void whiteboxtest_prepareAccessContextForInsert() {
-        AsyncManager asyncManager = ContainerUtil.getComponent(AsyncManager.class);
-        TransactionStage stage = ContainerUtil.getComponent(TransactionStage.class);
-        PurchasePaymentBhv purchasePaymentBhv = ContainerUtil.getComponent(PurchasePaymentBhv.class);
-        TimeManager timeManager = ContainerUtil.getComponent(TimeManager.class);
-        AccessContext accessContext = new AccessContext();
-        accessContext.setAccessLocalDateTimeProvider(() -> timeManager.currentDateTime());
-        accessContext.setAccessUser("whiteboxtest");
-        PreparedAccessContext.setAccessContextOnThread(accessContext);
-        try {
-            asyncManager.async(() -> {
-                stage.requiresNew(tx -> {
-                    PurchasePayment payment = new PurchasePayment();
-                    payment.setPurchaseId(1L);
-                    payment.setPaymentMethodCode_BankTransfer();
-                    payment.setPaymentDatetime(timeManager.currentDateTime());
-                    payment.setPaymentAmount(new BigDecimal(88));
-                    purchasePaymentBhv.insert(payment);
-                });
-            });
-        } finally {
-            PreparedAccessContext.clearAccessContextOnThread();
-        }
+        // enable this only when test
+        //AsyncManager asyncManager = ContainerUtil.getComponent(AsyncManager.class);
+        //TransactionStage stage = ContainerUtil.getComponent(TransactionStage.class);
+        //PurchasePaymentBhv purchasePaymentBhv = ContainerUtil.getComponent(PurchasePaymentBhv.class);
+        //TimeManager timeManager = ContainerUtil.getComponent(TimeManager.class);
+        //AccessContext accessContext = new AccessContext();
+        //accessContext.setAccessLocalDateTimeProvider(() -> timeManager.currentDateTime());
+        //accessContext.setAccessUser("whiteboxtest");
+        //PreparedAccessContext.setAccessContextOnThread(accessContext);
+        //try {
+        //    asyncManager.async(() -> {
+        //        stage.requiresNew(tx -> {
+        //            PurchasePayment payment = new PurchasePayment();
+        //            payment.setPurchaseId(1L);
+        //            payment.setPaymentMethodCode_BankTransfer();
+        //            payment.setPaymentDatetime(timeManager.currentDateTime());
+        //            payment.setPaymentAmount(new BigDecimal(88));
+        //            purchasePaymentBhv.insert(payment);
+        //        });
+        //    });
+        //} finally {
+        //    PreparedAccessContext.clearAccessContextOnThread();
+        //}
     }
 }
