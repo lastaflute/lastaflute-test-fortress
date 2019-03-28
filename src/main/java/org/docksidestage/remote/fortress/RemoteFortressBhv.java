@@ -19,20 +19,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.NameValuePair;
 import org.apache.http.annotation.NotThreadSafe;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.dbflute.helper.beans.DfBeanDesc;
 import org.dbflute.helper.beans.DfPropertyDesc;
-import org.dbflute.helper.beans.factory.DfBeanDescFactory;
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.FlutyRemoteApi;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
@@ -154,10 +150,6 @@ public class RemoteFortressBhv extends LastaRemoteBehavior {
     // _/_/_/_/_/_/_/_/_/_/
     public void requestWxMultipart(RemoteFrMultipartParam param) {
         doRequestPost(void.class, "/wx/request/multipart/upload", noMoreUrl(), param, rule -> {
-            // when normal form sender
-            // {sea=mystic, land=1, uploadedFile={inputStream=null, fileName=null, fileData={}, fileSize=0, contentType=null}}
-            //rule.sendBodyBy(new LaFormSender(new LaVacantMappingPolicy()));
-
             rule.sendBodyBy(new MyMultipartFormSender(new FlVacantMappingPolicy()));
         });
     }
@@ -169,64 +161,44 @@ public class RemoteFortressBhv extends LastaRemoteBehavior {
         }
 
         @Override
-        public void prepareEnclosingRequest(HttpEntityEnclosingRequest enclosingRequest, Object param, FlutyRemoteApiRule rule) {
-            // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-            // almost copy from LaFormSender, should be unified after refactoring
-            final DfBeanDesc beanDesc = DfBeanDescFactory.getBeanDesc(param.getClass());
-            final List<NameValuePair> parameters = new ArrayList<>();
-            beanDesc.getProppertyNameList().stream().forEach(proppertyName -> {
-                final DfPropertyDesc propertyDesc = beanDesc.getPropertyDesc(proppertyName);
-
-                // *for multi-part, is needed because file properties are handled later
-                if (MultipartFormFile.class.isAssignableFrom(propertyDesc.getPropertyType())) {
-                    return;
-                }
-
-                final String serializedParameterName = asSerializedParameterName(propertyDesc);
-                final Object plainValue = beanDesc.getPropertyDesc(proppertyName).getValue(param);
-                if (plainValue != null && Iterable.class.isAssignableFrom(plainValue.getClass())) {
-                    final Iterable<?> plainValueIterable = (Iterable<?>) plainValue;
-                    plainValueIterable.forEach(value -> {
-                        parameters.add(createBasicNameValuePair(serializedParameterName, asSerializedParameterValue(value)));
-                    });
-                } else {
-                    parameters.add(createBasicNameValuePair(serializedParameterName, asSerializedParameterValue(plainValue)));
-                }
-            });
-            // _/_/_/_/_/_/_/_/_/_/
-
-            // *for multi-part, use multi-part entity
-            enclosingRequest.setEntity(createMultipartEntity(param, parameters));
-
-            // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-            // completely copy from LaFormSender, should be unified after refactoring
-            readySendReceiveLogIfNeeds(rule, param, parameters);
-            // _/_/_/_/_/_/_/_/_/_/
+        protected boolean isExceptParameter(Object param, DfPropertyDesc propertyDesc, FlutyRemoteApiRule rule) {
+            return MultipartFormFile.class.isAssignableFrom(propertyDesc.getPropertyType());
         }
 
-        private HttpEntity createMultipartEntity(Object objParam, List<NameValuePair> textParameters) {
+        @Override
+        protected HttpEntity prepareEnclosedHttpEntity(Object param, List<NameValuePair> parameterList, FlutyRemoteApiRule rule) {
+            return createMultipartEntity(param, parameterList);
+        }
+
+        private HttpEntity createMultipartEntity(Object param, List<NameValuePair> textParameterList) {
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-            for (NameValuePair pair : textParameters) {
-                String value = pair.getValue();
-                builder.addTextBody(pair.getName(), value != null ? value : ""); // #thinking empty string OK?
+            for (NameValuePair pair : textParameterList) {
+                builder.addTextBody(pair.getName(), filterTextBodyValue(pair.getValue()));
             }
-            setupMultipartFormFile(objParam, builder);
+            setupMultipartFormFile(param, builder);
             return builder.build();
         }
 
+        private String filterTextBodyValue(String value) { // vaue is null allowed
+            return value != null ? value : ""; // #thinking cannot set null so... empty string? by jflute (2019/03/28)
+        }
+
         private void setupMultipartFormFile(Object objParam, MultipartEntityBuilder builder) {
-            // depends on one API here for now
+            // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+            // *depends on one API method here for now
+            // _/_/_/_/_/_/_/_/_/_/
             RemoteFrMultipartParam param = (RemoteFrMultipartParam) objParam;
-            MultipartFormFile uploadedFile = param.uploadedFile;
-            InputStream fileStream;
-            try {
-                fileStream = uploadedFile.getInputStream();
+            registerFormFile(builder, "uploadedFile", param.uploadedFile);
+        }
+
+        private void registerFormFile(MultipartEntityBuilder builder, String partName, MultipartFormFile formFile) {
+            try (InputStream fileStream = formFile.getInputStream()) {
+                ContentType contentType = ContentType.create(formFile.getContentType());
+                String fileName = formFile.getFileName();
+                builder.addBinaryBody(partName, fileStream, contentType, fileName);
             } catch (IOException e) {
-                throw new IllegalStateException("Failed to get input stream: " + uploadedFile, e);
+                throw new IllegalStateException("Failed to get input stream: formFile" + formFile, e);
             }
-            ContentType contentType = ContentType.create(uploadedFile.getContentType());
-            String fileName = uploadedFile.getFileName();
-            builder.addBinaryBody("uploadedFile", fileStream, contentType, fileName);
         }
     }
 }

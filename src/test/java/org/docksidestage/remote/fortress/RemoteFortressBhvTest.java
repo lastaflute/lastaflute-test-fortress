@@ -3,6 +3,7 @@ package org.docksidestage.remote.fortress;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 
 import javax.annotation.Resource;
 
@@ -23,16 +24,20 @@ public class RemoteFortressBhvTest extends UnitFortressBasicTestCase {
         RemoteFrMultipartParam param = new RemoteFrMultipartParam();
         param.sea = "mystic";
         param.land = 1;
-        byte[] fileData = "resort".getBytes("UTF-8");
-        String fileName = "maihama.txt";
-        param.uploadedFile = new ByteArrayMultipartFormFile(fileData, fileName);
+        param.uploadedFile = prepareSimpleTextFormFile();
 
         // ## Act ##
         // ## Assert ##
         fortressBhv.requestWxMultipart(param); // see receiver log for now
     }
 
-    protected static class ByteArrayMultipartFormFile implements MultipartFormFile {
+    private MultipartFormFile prepareSimpleTextFormFile() throws UnsupportedEncodingException {
+        byte[] fileData = "resort".getBytes("UTF-8");
+        String fileName = "maihama.txt";
+        return new ByteArrayMultipartFormFile(fileData, fileName);
+    }
+
+    private static class ByteArrayMultipartFormFile implements MultipartFormFile {
 
         protected final byte[] fileData;
         protected final String fileName;
@@ -58,7 +63,7 @@ public class RemoteFortressBhvTest extends UnitFortressBasicTestCase {
         }
 
         @Override
-        public int getFileSize() {
+        public int getFileSize() { // unused on MultipartEntityBuilder@addBinaryBody()
             return fileData.length; // #thinking OK? or needed?
         }
 
@@ -69,6 +74,7 @@ public class RemoteFortressBhvTest extends UnitFortressBasicTestCase {
 
         @Override
         public void destroy() {
+            // do nothing, unsupported
         }
     }
 }
