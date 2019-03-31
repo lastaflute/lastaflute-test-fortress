@@ -38,7 +38,7 @@
 <!--/* main contents */-->
 <div class="contents">
 	<h2 class="sg-content-title">Whitebox Upload</h2>
-	<form th:action="@{/wx/multipart/upload}" action="#" enctype="multipart/form-data" method="post">
+	<form th:action="@{/wx/request/multipart/upload}" action="#" enctype="multipart/form-data" method="post">
 		<ul th:unless="${errors.empty}" style="display: none" th:style="'color : red;'">
 			<li th:each="er : ${errors.all}" th:text="${er.message}"></li>
 		</ul>

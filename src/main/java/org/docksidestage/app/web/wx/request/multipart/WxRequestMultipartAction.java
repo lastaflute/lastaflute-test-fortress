@@ -33,7 +33,7 @@ public class WxRequestMultipartAction extends FortressBaseAction {
 
     private static final Logger logger = LoggerFactory.getLogger(WxRequestMultipartAction.class);
 
-    // http://localhost:8151/fortress/wx/multipart/
+    // http://localhost:8151/fortress/wx/request/multipart/
     @Execute
     public HtmlResponse index() {
         return asHtml(path_WxMultipart_WxMultipartHtml);
