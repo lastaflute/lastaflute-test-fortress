@@ -36,9 +36,9 @@ import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.http.SupportedHttpMethod;
 import org.dbflute.remoteapi.mapping.FlRemoteMappingPolicy;
 import org.dbflute.remoteapi.mapping.FlVacantMappingPolicy;
+import org.docksidestage.remote.fortress.base.RemoteFrUnifiedFailureResult;
+import org.docksidestage.remote.fortress.base.RemoteFrUnifiedFailureResult.RemoteUnifiedFailureType;
 import org.docksidestage.remote.fortress.wx.multipart.RemoteFrMultipartParam;
-import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
-import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult.RemoteUnifiedFailureType;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.message.UserMessage;
 import org.lastaflute.core.message.UserMessages;
@@ -75,11 +75,11 @@ public class RemoteFortressBhv extends LastaRemoteBehavior {
         rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption));
         rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
 
-        rule.handleFailureResponseAs(RemoteHbUnifiedFailureResult.class); // server-managed message way
+        rule.handleFailureResponseAs(RemoteFrUnifiedFailureResult.class); // server-managed message way
         rule.translateClientError(resource -> {
             RemoteApiHttpClientErrorException clientError = resource.getClientError();
             if (clientError.getHttpStatus() == 400) { // controlled client error
-                RemoteHbUnifiedFailureResult result = (RemoteHbUnifiedFailureResult) clientError.getFailureResponse().get();
+                RemoteFrUnifiedFailureResult result = (RemoteFrUnifiedFailureResult) clientError.getFailureResponse().get();
                 if (RemoteUnifiedFailureType.VALIDATION_ERROR.equals(result.cause)) {
                     UserMessages messages = new UserMessages();
                     result.errors.forEach(error -> {

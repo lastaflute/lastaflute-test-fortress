@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 
 import javax.annotation.Resource;
 
+import org.dbflute.remoteapi.exception.RemoteApiHttpServerErrorException;
 import org.docksidestage.remote.fortress.wx.multipart.RemoteFrMultipartParam;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.ruts.multipart.MultipartFormFile;
@@ -28,7 +29,16 @@ public class RemoteFortressBhvTest extends UnitFortressBasicTestCase {
 
         // ## Act ##
         // ## Assert ##
-        fortressBhv.requestWxMultipart(param); // see receiver log for now
+        try {
+            fortressBhv.requestWxMultipart(param); // see receiver log for now
+        } catch (RemoteApiHttpServerErrorException e) {
+            final String msg = e.getMessage();
+            if (msg != null && msg.contains("Error 503 Service Unavailable")) { // not boot now
+                log("Failed to request myself: param=" + param, e); // continue because of visual check only
+            } else {
+                throw e;
+            }
+        }
     }
 
     private MultipartFormFile prepareSimpleTextFormFile() throws UnsupportedEncodingException {
