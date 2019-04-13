@@ -34,6 +34,7 @@ import org.lastaflute.web.response.JsonResponse;
 @AllowAnyoneAccess
 public class WxRequestFormAction extends FortressBaseAction {
 
+    // http://localhost:8151/fortress/wx/request/form?sea=mystic&land=83&&piari=2019/04/07&dstore=true
     @Execute
     public JsonResponse<BasicItemForm> index(BasicItemForm form) {
         validateApi(form, messages -> {});
@@ -49,6 +50,8 @@ public class WxRequestFormAction extends FortressBaseAction {
         public LocalDate piari;
 
         public LocalDateTime bonvo;
+
+        public Boolean dstore;
     }
 
     // [success]

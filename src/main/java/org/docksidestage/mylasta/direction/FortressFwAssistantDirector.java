@@ -15,12 +15,10 @@
  */
 package org.docksidestage.mylasta.direction;
 
-import java.util.function.Supplier;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 
-import org.docksidestage.bizfw.thymeleaf.ThymeleafConfigProvider;
+import org.docksidestage.bizfw.thymeleaf.ThymeleafConfigObject;
+import org.docksidestage.bizfw.thymeleaf.ThymeleafJavaScriptSerializer;
 import org.docksidestage.mylasta.direction.sponsor.FortressActionAdjustmentProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook;
 import org.docksidestage.mylasta.direction.sponsor.FortressCookieResourceProvider;
@@ -29,6 +27,7 @@ import org.docksidestage.mylasta.direction.sponsor.FortressJsonResourceProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressListedClassificationProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressMailDeliveryDepartmentCreator;
 import org.docksidestage.mylasta.direction.sponsor.FortressMultipartRequestHandler;
+import org.docksidestage.mylasta.direction.sponsor.FortressPropertyFilter;
 import org.docksidestage.mylasta.direction.sponsor.FortressSecurityResourceProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressTimeResourceProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressUserLocaleProcessProvider;
@@ -36,18 +35,16 @@ import org.docksidestage.mylasta.direction.sponsor.FortressUserTimeZoneProcessPr
 import org.lastaflute.core.direction.CachedFwAssistantDirector;
 import org.lastaflute.core.direction.FwAssistDirection;
 import org.lastaflute.core.direction.FwCoreDirection;
+import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.security.InvertibleCryptographer;
 import org.lastaflute.core.security.OneWayCryptographer;
+import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.db.dbflute.classification.ListedClassificationProvider;
 import org.lastaflute.db.direction.FwDbDirection;
 import org.lastaflute.thymeleaf.ThymeleafRenderingProvider;
 import org.lastaflute.web.direction.FwWebDirection;
 import org.lastaflute.web.ruts.multipart.MultipartResourceProvider;
 import org.lastaflute.web.ruts.renderer.HtmlRenderingProvider;
-import org.lastaflute.web.servlet.request.ResponseDownloadPerformer;
-import org.lastaflute.web.servlet.request.ResponseDownloadResource;
-import org.lastaflute.web.servlet.request.ResponseHandlingProvider;
-import org.lastaflute.web.servlet.request.ResponseWritePerformer;
 
 /**
  * @author jflute
@@ -69,6 +66,11 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
             nameList.add("fortress_config.properties");
             nameList.add("fortress_thymeleaf_config.properties");
         }, "fortress_env.properties");
+        direction.directPropertyFilter(createPropertyFilter());
+    }
+
+    protected FortressPropertyFilter createPropertyFilter() {
+        return new FortressPropertyFilter();
     }
 
     // ===================================================================================
@@ -141,21 +143,6 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
         direction.directApiCall(createApiFailureHook());
         direction.directHtmlRendering(createHtmlRenderingProvider());
         direction.directMultipart(createMultipartResourceProvider());
-        direction.directResponse(new ResponseHandlingProvider() {
-            @Override
-            public Supplier<ResponseWritePerformer> provideResponseWritePerformerCreator() {
-                return () -> null;
-            }
-
-            public java.util.function.Supplier<org.lastaflute.web.servlet.request.ResponseDownloadPerformer> provideResponseDownloadPerformerCreator() {
-                return () -> new ResponseDownloadPerformer() {
-                    public void downloadStreamCall(ResponseDownloadResource resource, HttpServletResponse response) {
-                        System.out.println("@@@@@");
-                        super.downloadStreamCall(resource, response);
-                    }
-                };
-            };
-        });
     }
 
     protected FortressUserLocaleProcessProvider createUserLocaleProcessProvider() {
@@ -181,7 +168,10 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
 
     protected HtmlRenderingProvider createHtmlRenderingProvider() {
         return new ThymeleafRenderingProvider().asDevelopment(config.isDevelopmentHere()).additionalExpression(resource -> {
-            resource.registerProcessor("config", new ThymeleafConfigProvider(config));
+            resource.registerExpressionObject("config", new ThymeleafConfigObject(config));
+        }).customizeStandardDialect(dialect -> {
+            JsonManager jsonManager = ContainerUtil.getComponent(JsonManager.class);
+            dialect.setJavaScriptSerializer(new ThymeleafJavaScriptSerializer(jsonManager));
         });
     }
 

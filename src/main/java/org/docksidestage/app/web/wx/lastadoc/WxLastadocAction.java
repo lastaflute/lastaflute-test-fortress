@@ -32,4 +32,9 @@ public class WxLastadocAction extends FortressBaseAction {
     public JsonResponse<String> index(WxLastadocForm form) {
         return JsonResponse.asJsonDirectly("{result: sent}");
     }
+
+    @Execute
+    public JsonResponse<Void> apiEmptyBody(WxLastadocEmptyBody body) {
+        return JsonResponse.asEmptyBody();
+    }
 }

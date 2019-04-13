@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.dbflute.cbean.coption.LikeSearchOption;
 import org.lastaflute.core.security.PrimaryCipher;
 import org.lastaflute.di.util.LdiArrayUtil;
 import org.slf4j.Logger;
@@ -18,6 +19,9 @@ public class TrialExpSea {
 
     private String simpleString;
     private Integer simpleInteger;
+    private Long simpleLong;
+    private Integer nearlyMaxInteger;
+    private Long overMaxInteger; // is long
 
     // ===================================================================================
     //                                                                          Add Method
@@ -36,6 +40,10 @@ public class TrialExpSea {
 
     public void addStringArray(String[] StrAry) {
         logger.debug("...Adding String[]: {}", Arrays.asList(StrAry));
+    }
+
+    public void addNewInstance(LikeSearchOption option) {
+        logger.debug("...Adding new-instance: {}", option);
     }
 
     public void addType(Class<?> type) {
@@ -77,5 +85,32 @@ public class TrialExpSea {
     public void setSimpleInteger(Integer simpleInteger) {
         logger.debug("...Setting simple integer: {}", simpleInteger);
         this.simpleInteger = simpleInteger;
+    }
+
+    public Long getSimpleLong() {
+        return simpleLong;
+    }
+
+    public void setSimpleLong(Long simpleLong) {
+        logger.debug("...Setting simple long: {}", simpleLong);
+        this.simpleLong = simpleLong;
+    }
+
+    public Integer getNearlyMaxInteger() {
+        return nearlyMaxInteger;
+    }
+
+    public void setNearlyMaxInteger(Integer nearlyMaxInteger) {
+        logger.debug("...Setting nearly-max integer: {}", nearlyMaxInteger);
+        this.nearlyMaxInteger = nearlyMaxInteger;
+    }
+
+    public Long getOverMaxInteger() {
+        return overMaxInteger;
+    }
+
+    public void setOverMaxInteger(Long overMaxInteger) {
+        logger.debug("...Setting nearly-max integer: {}", overMaxInteger);
+        this.overMaxInteger = overMaxInteger;
     }
 }

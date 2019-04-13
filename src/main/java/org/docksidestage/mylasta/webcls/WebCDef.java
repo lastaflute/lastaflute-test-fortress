@@ -118,7 +118,6 @@ public interface WebCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static WebSea codeOf(Object code) {
             if (code == null) { return null; }
@@ -302,7 +301,6 @@ public interface WebCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static WebLand codeOf(Object code) {
             if (code == null) { return null; }
@@ -448,7 +446,6 @@ public interface WebCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static WebPiari codeOf(Object code) {
             if (code == null) { return null; }
@@ -605,7 +602,6 @@ public interface WebCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static WebBonvo codeOf(Object code) {
             if (code == null) { return null; }
@@ -711,7 +707,7 @@ public interface WebCDef extends Classification {
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
-        public Classification codeOf(Object code) { // null if not found, old style so use classificationOf(code)
+        public Classification codeOf(Object code) { // null if not found, old style so use of(code)
             if (WebSea.name().equals(name())) { return WebCDef.WebSea.codeOf(code); }
             if (WebLand.name().equals(name())) { return WebCDef.WebLand.codeOf(code); }
             if (WebPiari.name().equals(name())) { return WebCDef.WebPiari.codeOf(code); }
@@ -719,7 +715,7 @@ public interface WebCDef extends Classification {
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
-        public Classification nameOf(String name) { // null if not found, old style so use classificationByName(name)
+        public Classification nameOf(String name) { // null if not found, old style so use byName(name)
             if (WebSea.name().equals(name())) { return WebCDef.WebSea.valueOf(name); }
             if (WebLand.name().equals(name())) { return WebCDef.WebLand.valueOf(name); }
             if (WebPiari.name().equals(name())) { return WebCDef.WebPiari.valueOf(name); }

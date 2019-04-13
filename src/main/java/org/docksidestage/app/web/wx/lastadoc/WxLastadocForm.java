@@ -15,13 +15,79 @@
  */
 package org.docksidestage.app.web.wx.lastadoc;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class WxLastadocForm {
+public class WxLastadocForm extends WxLastadocExtendsForm {
 
+    @Length(max = 94)
     @Pattern(regexp = "mystic><@\"'bigband")
     public String sea;
+
+    @Valid
+    public AmbaPart amba;
+
+    public static class AmbaPart {
+
+        // #hope jflute overridden by miraco#amba for now (2019/01/17)
+        /** official full name of amba */
+        @Required
+        public String fullName;
+
+        /** room count of amba */
+        @Required
+        public Integer roomCount;
+    }
+
+    @Valid
+    public MiracoPart miraco;
+
+    public static class MiracoPart {
+
+        /** official full name of miraco */
+        @Required
+        public String fullName;
+
+        /** room count of habor side */
+        @Required
+        public Integer harborRoomCount;
+
+        /** room count of venezia side */
+        @Required
+        public Integer veneziaRoomCount;
+
+        @Valid
+        public AmbaPart amba;
+
+        public static class AmbaPart {
+
+            /** official full name of miraco#amba */
+            @Required
+            public String fullName;
+
+            /** room count of amba */
+            @Required
+            public Integer roomCount;
+        }
+    }
+
+    @Valid
+    public DohotelPart dohotel;
+
+    public static class DohotelPart {
+
+        /** official full name of dohotel */
+        @Required
+        public String fullName;
+
+        /** room count of dohotel */
+        @Required
+        public Integer roomCount;
+    }
 }

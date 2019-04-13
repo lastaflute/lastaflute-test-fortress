@@ -38,6 +38,13 @@ public class WxRequestJsonBodyBody {
 
     public CDef.MemberStatus amba;
 
+    public MiracoPart miraco;
+
+    public static class MiracoPart {
+
+        public String sta;
+    }
+
     @Override
     public String toString() {
         return Lato.string(this);

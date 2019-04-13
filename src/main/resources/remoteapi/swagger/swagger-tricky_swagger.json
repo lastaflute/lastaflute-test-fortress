@@ -1,0 +1,29 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Tricky",
+    "description": "Tricky.",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/tricky/",
+  "paths": {
+    "/hyphen-hyphen/hyphen-hyphen/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  }
+}

@@ -9,11 +9,17 @@ var genKvsCacheColumnNullObject = false;
  */
 function process(request) {
     if (!(request.isResourceTypeJsonSchema() && request.requestName.startsWith("Kvs"))) {
-		return;
+        return;
     }
     try {
         request.enableOutputDirectory();
         manager.makeDirectory(request.generateDirPath);
+        var optionMap = request.optionMap;
+        scriptEngine.eval('load("./freegen/kvs/KvsRule.js");');
+        if (optionMap.ruleJsPath && optionMap.ruleJsPath != '') {
+            // load application rule settings if exists
+            scriptEngine.eval('load("' + optionMap.ruleJsPath + '");');
+        }
         processKvsCore(request)
         processKvs(request);
     } catch (e) {
@@ -37,13 +43,13 @@ function process(request) {
  */
 function processKvsCore(request) {
     if (!genKvsCore) {
-	    genKvsCore = true;
-	    generate('./kvs/allcommon/core/delegator/AbstractKvsRedisDelegator.vm', 'org/dbflute/kvs/core/delegator/AbstractKvsRedisDelegator.java', null, true);
-	    generate('./kvs/allcommon/core/delegator/KvsDelegator.vm', 'org/dbflute/kvs/core/delegator/KvsDelegator.java', null, true);
-	    generate('./kvs/allcommon/core/delegator/KvsLocalMapDelegator.vm', 'org/dbflute/kvs/core/delegator/KvsLocalMapDelegator.java', null, true);
-	    generate('./kvs/allcommon/core/delegator/KvsRedisPool.vm', 'org/dbflute/kvs/core/delegator/KvsRedisPool.java', null, true);
-	    generate('./kvs/allcommon/core/exception/KvsException.vm', 'org/dbflute/kvs/core/exception/KvsException.java', null, true);
-	    generate('./kvs/allcommon/core/assertion/KvsAssertion.vm', 'org/dbflute/kvs/core/assertion/KvsAssertion.java', null, true);
+        genKvsCore = true;
+        generate('./kvs/allcommon/core/delegator/AbstractKvsRedisDelegator.vm', 'org/dbflute/kvs/core/delegator/AbstractKvsRedisDelegator.java', null, true);
+        generate('./kvs/allcommon/core/delegator/KvsDelegator.vm', 'org/dbflute/kvs/core/delegator/KvsDelegator.java', null, true);
+        generate('./kvs/allcommon/core/delegator/KvsLocalMapDelegator.vm', 'org/dbflute/kvs/core/delegator/KvsLocalMapDelegator.java', null, true);
+        generate('./kvs/allcommon/core/delegator/KvsRedisPool.vm', 'org/dbflute/kvs/core/delegator/KvsRedisPool.java', null, true);
+        generate('./kvs/allcommon/core/exception/KvsException.vm', 'org/dbflute/kvs/core/exception/KvsException.java', null, true);
+        generate('./kvs/allcommon/core/assertion/KvsAssertion.vm', 'org/dbflute/kvs/core/assertion/KvsAssertion.java', null, true);
     }
 
     if (request.requestName.startsWith("KvsCache") && !genKvsCache) {
@@ -80,12 +86,6 @@ function processKvsCore(request) {
  * @param {Request} request - request (NotNull)
  */
 function processKvs(request) {
-    var optionMap = request.optionMap;
-    scriptEngine.eval('load("./freegen/kvs/KvsRule.js");');
-    if (optionMap.ruleJsPath && optionMap.ruleJsPath != '') {
-        // load application rule settings if exists
-        scriptEngine.eval('load("' + optionMap.ruleJsPath + '");');
-    }
     var rule = scriptEngine.get('kvsRule');
     processKvsPool(rule, request);
     processKvsCache(rule, request);
@@ -152,14 +152,14 @@ function processKvsCache(rule, request) {
             base.bs.comment = table.comment;
             base.bs.kvs = kvs;
             base.bs.dbflute = new java.util.LinkedHashMap();
-            base.bs.dbflute.dbMeta = new java.util.LinkedHashMap(); 
+            base.bs.dbflute.dbMeta = new java.util.LinkedHashMap();
             base.bs.dbflute.dbMeta.package = tableMap.dbflutePackage + '.bsentity.dbmeta';
             base.bs.dbflute.dbMeta.className = kvs.schemaShort + table.camelizedName + 'Dbm';
             base.bs.dbflute.exConditionBean = new java.util.LinkedHashMap();
             base.bs.dbflute.exConditionBean.package = tableMap.dbflutePackage + '.cbean';
             base.bs.dbflute.exConditionBean.className = kvs.schemaShort + table.camelizedName + 'CB';
             base.bs.dbflute.exEntity = new java.util.LinkedHashMap();
-            base.bs.dbflute.exEntity.package = tableMap.dbflutePackage + '.exentity'; 
+            base.bs.dbflute.exEntity.package = tableMap.dbflutePackage + '.exentity';
             base.bs.dbflute.exEntity.className = kvs.schemaShort + table.camelizedName;
             base.bs.dbflute.instance = tableMap.databaseMap[kvs.schema].instance;
 
@@ -205,8 +205,8 @@ function processKvsCache(rule, request) {
             exBehavior.bs.suppressBehaviorBasicMethodGen = tableMap.suppressBehaviorBasicMethodGen === 'true';
             exBehavior.bs.columnList = table.columnList;
             exBehaviorList.push(exBehavior);
-		}
-	}
+        }
+    }
     processVm(rule, exConditionQueryList, './kvs/cache/KvsCacheBsCQ.vm', './kvs/cache/KvsCacheExCQ.vm');
     processVm(rule, exConditionBeanList, './kvs/cache/KvsCacheBsCB.vm', './kvs/cache/KvsCacheExCB.vm');
     processVm(rule, exBehaviorList, './kvs/cache/KvsCacheBsBehavior.vm', './kvs/cache/KvsCacheExBehavior.vm');
@@ -214,23 +214,23 @@ function processKvsCache(rule, request) {
     var di = new java.util.LinkedHashMap(base);
     di.kvs = kvs;
     di.kvsPoolDiFile = tableMap.kvsPoolDiFile;
-    di.dbfluteDiFile = tableMap.dbfluteDiFile; 
+    di.dbfluteDiFile = tableMap.dbfluteDiFile;
     di.exBehaviorList = exBehaviorList;
-	if (manager.isTargetContainerSeasar()) {
-		generate('./kvs/allcommon/container/seasar/KvsCacheDicon.vm', '../resources/kvs/di/kvs-cache-' + tableMap.schema + '.dicon', di, true);
-	}
-	if (manager.isTargetContainerLastaDi()) {
-  		generate('./kvs/allcommon/container/lastadi/KvsCacheDiXml.vm', '../resources/kvs/di/kvs-cache-' + tableMap.schema + '.xml', di, true);
-	}
+    if (manager.isTargetContainerSeasar()) {
+        generate('./kvs/allcommon/container/seasar/KvsCacheDicon.vm', '../resources/kvs/di/kvs-cache-' + tableMap.schema + '.dicon', di, true);
+    }
+    if (manager.isTargetContainerLastaDi()) {
+          generate('./kvs/allcommon/container/lastadi/KvsCacheDiXml.vm', '../resources/kvs/di/kvs-cache-' + tableMap.schema + '.xml', di, true);
+    }
 
     if (!genKvsCacheColumnNullObject) {
-    	genKvsCacheColumnNullObject = true;
+        genKvsCacheColumnNullObject = true;
         generate('./kvs/allcommon/cache/KvsCacheColumnNullObject.vm', 'org/dbflute/kvs/cache/KvsCacheColumnNullObject.java', null, true);
-	}
+    }
 
-	var doc = new java.util.LinkedHashMap();
-	doc.kvs = kvs;
-	doc.exBehaviorList = exBehaviorList;
+    var doc = new java.util.LinkedHashMap();
+    doc.kvs = kvs;
+    doc.exBehaviorList = exBehaviorList;
     processKvsCacheDoc(rule, doc);
 }
 
@@ -248,7 +248,7 @@ function processKvsStore(rule, request) {
     kvsStoreFacadeImpl.package = request.package + '.' + tableMap.schema + '.facade';
     kvsStoreFacadeImpl.className = manager.initCap(tableMap.schema) + 'KvsStoreFacade';
     kvsStoreFacadeImpl.extendsClass = tableMap.type === 'hash' ? 'org.dbflute.kvs.store.facade.AbstractKvsStoreHashFacade' : 'org.dbflute.kvs.store.facade.AbstractKvsStoreFacade';
-	generate('./kvs/store/KvsStoreFacadeImpl.vm', request.generateDirPath + tableMap.schema + '/facade/' + kvsStoreFacadeImpl.className + '.java', kvsStoreFacadeImpl, true);
+    generate('./kvs/store/KvsStoreFacadeImpl.vm', request.generateDirPath + tableMap.schema + '/facade/' + kvsStoreFacadeImpl.className + '.java', kvsStoreFacadeImpl, true);
 
     var kvs = new java.util.LinkedHashMap();
     kvs.schema = scriptEngine.invokeMethod(rule, 'schema', request);
@@ -262,7 +262,7 @@ function processKvsStore(rule, request) {
     var exConditionQueryList = [];
     var exConditionBeanList = [];
     var exBehaviorList = [];
-	for each (table in request.tableList) {
+    for each (table in request.tableList) {
         var base = new java.util.LinkedHashMap();
         base.tableName = table.capCamelName;
         base.comment = table.comment;
@@ -304,7 +304,11 @@ function processKvsStore(rule, request) {
         exConditionQuery.bs.extendsClass = '';
         exConditionQuery.bs.implementsClasses = '';
         exConditionQuery.bs.columnList = table.columnList;
+        exConditionQuery.bs.compoundKey = new java.util.LinkedHashMap();
+        exConditionQuery.bs.compoundKey.className = 'Kvs' + kvs.schemaShort + table.camelizedName + 'CompoundKey';
         exConditionQueryList.push(exConditionQuery);
+
+        dbMeta.exConditionQuery = exConditionQuery;
 
         var exConditionBean = new java.util.LinkedHashMap(base);
         subPackage = 'cbean';
@@ -343,32 +347,32 @@ function processKvsStore(rule, request) {
         exBehavior.bs.many = table.many;
         exBehavior.bs.ttl = table.ttl;
         exBehaviorList.push(exBehavior);
-        
+
         dbMeta.exEntity = exEntity;
         dbMeta.exConditionBean = exConditionBean;
-	}
+    }
     processVm(rule, dbMetaList, null, './kvs/store/KvsStoreDBMeta.vm');
     processVm(rule, exEntityList, './kvs/store/KvsStoreBsEntity.vm', './kvs/store/KvsStoreExEntity.vm');
     if (!kvs.suppressBehaviorGen) {
-		processVm(rule, exConditionQueryList, './kvs/store/KvsStoreBsCQ.vm', './kvs/store/KvsStoreExCQ.vm');
-		processVm(rule, exConditionBeanList, './kvs/store/KvsStoreBsCB.vm', './kvs/store/KvsStoreExCB.vm');
-		processVm(rule, exBehaviorList, './kvs/store/KvsStoreBsBehavior.vm', './kvs/store/KvsStoreExBehavior.vm');
-		var doc = new java.util.LinkedHashMap();
-		doc.kvs = kvs;
-		doc.exBehaviorList = exBehaviorList;
-	    processKvsStoreDoc(rule, doc);
-	}
-	
+        processVm(rule, exConditionQueryList, './kvs/store/KvsStoreBsCQ.vm', './kvs/store/KvsStoreExCQ.vm');
+        processVm(rule, exConditionBeanList, './kvs/store/KvsStoreBsCB.vm', './kvs/store/KvsStoreExCB.vm');
+        processVm(rule, exBehaviorList, './kvs/store/KvsStoreBsBehavior.vm', './kvs/store/KvsStoreExBehavior.vm');
+        var doc = new java.util.LinkedHashMap();
+        doc.kvs = kvs;
+        doc.exBehaviorList = exBehaviorList;
+        processKvsStoreDoc(rule, doc);
+    }
+
     var di = new java.util.LinkedHashMap(base);
     di.kvs = kvs;
     di.kvsPoolDiFile = tableMap.kvsPoolDiFile;
     di.exBehaviorList = exBehaviorList;
-	if (manager.isTargetContainerSeasar()) {
-		generate('./kvs/allcommon/container/seasar/KvsStoreDicon.vm', '../resources/kvs/di/kvs-store-' + kvs.schema + '.dicon', di, true);
-	}
-	if (manager.isTargetContainerLastaDi()) {
-		generate('./kvs/allcommon/container/lastadi/KvsStoreDiXml.vm', '../resources/kvs/di/kvs-store-' + kvs.schema + '.xml', di, true);
-	}
+    if (manager.isTargetContainerSeasar()) {
+        generate('./kvs/allcommon/container/seasar/KvsStoreDicon.vm', '../resources/kvs/di/kvs-store-' + kvs.schema + '.dicon', di, true);
+    }
+    if (manager.isTargetContainerLastaDi()) {
+        generate('./kvs/allcommon/container/lastadi/KvsStoreDiXml.vm', '../resources/kvs/di/kvs-store-' + kvs.schema + '.xml', di, true);
+    }
 }
 
 /**
@@ -453,12 +457,12 @@ function processVm(rule, exList, bsVm, exVm) {
     for each (var ex in exList) {
         var bs = ex.bs;
         if (bsVm != null) {
-	        var path = bs.package.replace(/\./g, '/') + '/' + bs.className + '.java';
-	        generate(bsVm, path, bs, true);
-	    }
-	    if (exVm != null) {
-	        var path = ex.package.replace(/\./g, '/') + '/' + ex.className + '.java';
-	        generate(exVm, path, ex, bsVm == null);
-	    }
+            var path = bs.package.replace(/\./g, '/') + '/' + bs.className + '.java';
+            generate(bsVm, path, bs, true);
+        }
+        if (exVm != null) {
+            var path = ex.package.replace(/\./g, '/') + '/' + ex.className + '.java';
+            generate(exVm, path, ex, bsVm == null);
+        }
     }
 }

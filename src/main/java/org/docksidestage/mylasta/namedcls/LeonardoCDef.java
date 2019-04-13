@@ -118,7 +118,6 @@ public interface LeonardoCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static DaSea codeOf(Object code) {
             if (code == null) { return null; }
@@ -302,7 +301,6 @@ public interface LeonardoCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static DaLand codeOf(Object code) {
             if (code == null) { return null; }
@@ -448,7 +446,6 @@ public interface LeonardoCDef extends Classification {
          * Get the classification by the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
-         * @deprecated use of()
          */
         public static DaPiari codeOf(Object code) {
             if (code == null) { return null; }
@@ -558,14 +555,14 @@ public interface LeonardoCDef extends Classification {
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
-        public Classification codeOf(Object code) { // null if not found, old style so use classificationOf(code)
+        public Classification codeOf(Object code) { // null if not found, old style so use of(code)
             if (DaSea.name().equals(name())) { return LeonardoCDef.DaSea.codeOf(code); }
             if (DaLand.name().equals(name())) { return LeonardoCDef.DaLand.codeOf(code); }
             if (DaPiari.name().equals(name())) { return LeonardoCDef.DaPiari.codeOf(code); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
-        public Classification nameOf(String name) { // null if not found, old style so use classificationByName(name)
+        public Classification nameOf(String name) { // null if not found, old style so use byName(name)
             if (DaSea.name().equals(name())) { return LeonardoCDef.DaSea.valueOf(name); }
             if (DaLand.name().equals(name())) { return LeonardoCDef.DaLand.valueOf(name); }
             if (DaPiari.name().equals(name())) { return LeonardoCDef.DaPiari.valueOf(name); }

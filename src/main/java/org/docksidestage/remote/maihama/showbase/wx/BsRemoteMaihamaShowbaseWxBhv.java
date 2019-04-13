@@ -26,6 +26,23 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.list.basic.RemoteWxR
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genebean.RemoteWxRemogenListGenebeanReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.genestring.RemoteWxRemogenListGenestringReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.list.innergene.RemoteWxRemogenListInnergeneReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodDeleteParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodDeleteReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodPostParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodPostReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.noquery.RemoteWxRemogenMethodNoqueryReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyform.RemoteWxRemogenMethodOnbodyformDeleteParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyform.RemoteWxRemogenMethodOnbodyformDeleteReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyform.RemoteWxRemogenMethodOnbodyformGetParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyform.RemoteWxRemogenMethodOnbodyformGetReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyjson.RemoteWxRemogenMethodOnbodyjsonParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyjson.RemoteWxRemogenMethodOnbodyjsonReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.samename.RemoteWxRemogenMethodSamenameGetParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.samename.RemoteWxRemogenMethodSamenameGetReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.samename.RemoteWxRemogenMethodSamenamePostParam;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.method.samename.RemoteWxRemogenMethodSamenamePostReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.RemoteWxRemogenRoutingReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amba.RemoteWxRemogenRoutingAmbaReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amphi.theater.maihama.RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn;
@@ -327,6 +344,353 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfRemogenListInnergene(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: GET
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodGetParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodGetReturn requestRemogenMethodGet(Consumer<RemoteWxRemogenMethodGetParam> paramLambda) {
+        return doRequestRemogenMethodGet(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: GET
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodGetParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodGetReturn doRequestRemogenMethodGet(Consumer<RemoteWxRemogenMethodGetParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodGetParam param = new RemoteWxRemogenMethodGetParam();
+        paramLambda.accept(param);
+        return doRequestGet(RemoteWxRemogenMethodGetReturn.class, "/wx/remogen/method/", noMoreUrl(), query(param), rule -> {
+            ruleOfRemogenMethodGet(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodGet(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodPostParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodPostReturn requestRemogenMethodPost(Consumer<RemoteWxRemogenMethodPostParam> paramLambda) {
+        return doRequestRemogenMethodPost(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodPostParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodPostReturn doRequestRemogenMethodPost(Consumer<RemoteWxRemogenMethodPostParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodPostParam param = new RemoteWxRemogenMethodPostParam();
+        paramLambda.accept(param);
+        return doRequestPost(RemoteWxRemogenMethodPostReturn.class, "/wx/remogen/method/", noMoreUrl(), param, rule -> {
+            ruleOfRemogenMethodPost(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodPost(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodDeleteParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodDeleteReturn requestRemogenMethodDelete(Consumer<RemoteWxRemogenMethodDeleteParam> paramLambda) {
+        return doRequestRemogenMethodDelete(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodDeleteParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodDeleteReturn doRequestRemogenMethodDelete(Consumer<RemoteWxRemogenMethodDeleteParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodDeleteParam param = new RemoteWxRemogenMethodDeleteParam();
+        paramLambda.accept(param);
+        return doRequestDelete(RemoteWxRemogenMethodDeleteReturn.class, "/wx/remogen/method/", noMoreUrl(), query(param), rule -> {
+            ruleOfRemogenMethodDelete(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodDelete(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/onbodyform. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/onbodyform
+     * httpMethod: GET
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodOnbodyformGetParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodOnbodyformGetReturn requestRemogenMethodOnbodyformGet(Consumer<RemoteWxRemogenMethodOnbodyformGetParam> paramLambda) {
+        return doRequestRemogenMethodOnbodyformGet(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/onbodyform. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/onbodyform
+     * httpMethod: GET
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodOnbodyformGetParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodOnbodyformGetReturn doRequestRemogenMethodOnbodyformGet(Consumer<RemoteWxRemogenMethodOnbodyformGetParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodOnbodyformGetParam param = new RemoteWxRemogenMethodOnbodyformGetParam();
+        paramLambda.accept(param);
+        return doRequestGet(RemoteWxRemogenMethodOnbodyformGetReturn.class, "/wx/remogen/method/onbodyform", noMoreUrl(), query(param), rule -> {
+            ruleOfRemogenMethodOnbodyformGet(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/onbodyform.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodOnbodyformGet(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/onbodyform. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/onbodyform
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodOnbodyformDeleteParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodOnbodyformDeleteReturn requestRemogenMethodOnbodyformDelete(Consumer<RemoteWxRemogenMethodOnbodyformDeleteParam> paramLambda) {
+        return doRequestRemogenMethodOnbodyformDelete(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/onbodyform. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/onbodyform
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodOnbodyformDeleteParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodOnbodyformDeleteReturn doRequestRemogenMethodOnbodyformDelete(Consumer<RemoteWxRemogenMethodOnbodyformDeleteParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodOnbodyformDeleteParam param = new RemoteWxRemogenMethodOnbodyformDeleteParam();
+        paramLambda.accept(param);
+        return doRequestDelete(RemoteWxRemogenMethodOnbodyformDeleteReturn.class, "/wx/remogen/method/onbodyform", noMoreUrl(), query(param), rule -> {
+            ruleOfRemogenMethodOnbodyformDelete(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/onbodyform.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodOnbodyformDelete(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/onbodyjson. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/onbodyjson
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodOnbodyjsonParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodOnbodyjsonReturn requestRemogenMethodOnbodyjson(Consumer<RemoteWxRemogenMethodOnbodyjsonParam> paramLambda) {
+        return doRequestRemogenMethodOnbodyjson(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/onbodyjson. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/onbodyjson
+     * httpMethod: DELETE
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodOnbodyjsonParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodOnbodyjsonReturn doRequestRemogenMethodOnbodyjson(Consumer<RemoteWxRemogenMethodOnbodyjsonParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodOnbodyjsonParam param = new RemoteWxRemogenMethodOnbodyjsonParam();
+        paramLambda.accept(param);
+        return doRequestDeleteEnclosing(RemoteWxRemogenMethodOnbodyjsonReturn.class, "/wx/remogen/method/onbodyjson", noMoreUrl(), param, rule -> {
+            ruleOfRemogenMethodOnbodyjson(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/onbodyjson.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodOnbodyjson(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/samename. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/samename
+     * httpMethod: GET
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodSamenameGetParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodSamenameGetReturn requestRemogenMethodSamenameGet(Consumer<RemoteWxRemogenMethodSamenameGetParam> paramLambda) {
+        return doRequestRemogenMethodSamenameGet(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/samename. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/samename
+     * httpMethod: GET
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodSamenameGetParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodSamenameGetReturn doRequestRemogenMethodSamenameGet(Consumer<RemoteWxRemogenMethodSamenameGetParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodSamenameGetParam param = new RemoteWxRemogenMethodSamenameGetParam();
+        paramLambda.accept(param);
+        return doRequestGet(RemoteWxRemogenMethodSamenameGetReturn.class, "/wx/remogen/method/samename", noMoreUrl(), query(param), rule -> {
+            ruleOfRemogenMethodSamenameGet(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/samename.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodSamenameGet(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/samename. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/samename
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodSamenamePostParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodSamenamePostReturn requestRemogenMethodSamenamePost(Consumer<RemoteWxRemogenMethodSamenamePostParam> paramLambda) {
+        return doRequestRemogenMethodSamenamePost(paramLambda, rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/samename. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/samename
+     * httpMethod: POST
+     * </pre>
+     * @param paramLambda The callback for RemoteWxRemogenMethodSamenamePostParam. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodSamenamePostReturn doRequestRemogenMethodSamenamePost(Consumer<RemoteWxRemogenMethodSamenamePostParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteWxRemogenMethodSamenamePostParam param = new RemoteWxRemogenMethodSamenamePostParam();
+        paramLambda.accept(param);
+        return doRequestPost(RemoteWxRemogenMethodSamenamePostReturn.class, "/wx/remogen/method/samename", noMoreUrl(), param, rule -> {
+            ruleOfRemogenMethodSamenamePost(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/samename.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodSamenamePost(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/noquery. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/noquery
+     * httpMethod: DELETE
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenMethodNoqueryReturn requestRemogenMethodNoquery() {
+        return doRequestRemogenMethodNoquery(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/method/noquery. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/method/noquery
+     * httpMethod: DELETE
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenMethodNoqueryReturn doRequestRemogenMethodNoquery(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestDelete(RemoteWxRemogenMethodNoqueryReturn.class, "/wx/remogen/method/noquery", noMoreUrl(), noQuery(), rule -> {
+            ruleOfRemogenMethodNoquery(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/method/noquery.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenMethodNoquery(FlutyRemoteApiRule rule) {
     }
 
     /**

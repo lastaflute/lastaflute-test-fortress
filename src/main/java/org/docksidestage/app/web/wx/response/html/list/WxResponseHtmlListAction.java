@@ -53,13 +53,13 @@ public class WxResponseHtmlListAction extends FortressBaseAction {
     @Execute
     public HtmlResponse index(OptionalThing<Integer> pageNumber, WxResponseHtmlSearchForm form) {
         validate(form, messages -> {}, () -> {
-            return asHtml(path_WxThymeleaf_WxThymeleafListHtml);
+            return asHtml(path_WxResponseHtml_WxThymeleafListHtml);
         });
         PagingResultBean<Member> page = selectMemberPage(pageNumber.orElse(1), form);
         PagingResultBean<WxResponseHtmlSearchRowBean> beans = page.mappingList(member -> {
             return mappingToBean(member);
         });
-        return asHtml(path_WxThymeleaf_WxThymeleafListHtml).renderWith(data -> {
+        return asHtml(path_WxResponseHtml_WxThymeleafListHtml).renderWith(data -> {
             data.register("beans", beans);
             pagingAssist.registerPagingNavi(data, page, form);
         });

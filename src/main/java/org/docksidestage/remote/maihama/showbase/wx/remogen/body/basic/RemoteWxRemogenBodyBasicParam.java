@@ -23,11 +23,14 @@ import org.lastaflute.core.util.Lato;
  */
 public class RemoteWxRemogenBodyBasicParam {
 
-    /** The property of key. (NullAllowed) */
-    public String key;
+    /** The property of sea. (NullAllowed) */
+    public String sea;
 
-    /** The property of value. (NullAllowed) */
-    public Object value;
+    /** The property of land. (NullAllowed) */
+    public Integer land;
+
+    /** The property of iamBody. (NullAllowed) */
+    public String iamBody;
 
     @Override
     public String toString() {

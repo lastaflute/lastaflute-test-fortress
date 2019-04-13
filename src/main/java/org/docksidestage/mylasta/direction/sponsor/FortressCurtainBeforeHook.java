@@ -43,6 +43,7 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     public void hook(FwAssistantDirector assistantDirector) {
         processDBFluteSystem();
         whiteboxtest_findLoginManager();
+        whiteboxtest_prepareAccessContextForInsert();
     }
 
     // ===================================================================================
@@ -75,5 +76,31 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     protected void whiteboxtest_findLoginManager() {
         OptionalThing<LoginManager> thing = ContainerUtil.getComponent(RequestManager.class).findLoginManager(FortressUserBean.class);
         logger.debug("findLoginManager() when booting: {}", thing);
+    }
+
+    protected void whiteboxtest_prepareAccessContextForInsert() {
+        // enable this only when test
+        //AsyncManager asyncManager = ContainerUtil.getComponent(AsyncManager.class);
+        //TransactionStage stage = ContainerUtil.getComponent(TransactionStage.class);
+        //PurchasePaymentBhv purchasePaymentBhv = ContainerUtil.getComponent(PurchasePaymentBhv.class);
+        //TimeManager timeManager = ContainerUtil.getComponent(TimeManager.class);
+        //AccessContext accessContext = new AccessContext();
+        //accessContext.setAccessLocalDateTimeProvider(() -> timeManager.currentDateTime());
+        //accessContext.setAccessUser("whiteboxtest");
+        //PreparedAccessContext.setAccessContextOnThread(accessContext);
+        //try {
+        //    asyncManager.async(() -> {
+        //        stage.requiresNew(tx -> {
+        //            PurchasePayment payment = new PurchasePayment();
+        //            payment.setPurchaseId(1L);
+        //            payment.setPaymentMethodCode_BankTransfer();
+        //            payment.setPaymentDatetime(timeManager.currentDateTime());
+        //            payment.setPaymentAmount(new BigDecimal(88));
+        //            purchasePaymentBhv.insert(payment);
+        //        });
+        //    });
+        //} finally {
+        //    PreparedAccessContext.clearAccessContextOnThread();
+        //}
     }
 }

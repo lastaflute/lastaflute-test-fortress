@@ -9,26 +9,22 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.thymeleaf;
+package org.docksidestage.whitebox.lastadi.dixml;
 
-import org.docksidestage.mylasta.direction.FortressConfig;
+import org.dbflute.utflute.core.PlainTestCase;
+import org.lastaflute.di.core.factory.SingletonLaContainerFactory;
 
 /**
  * @author jflute
  */
-public class ThymeleafConfigProvider {
+public class WxDiXmlExpressionTest extends PlainTestCase {
 
-    protected final FortressConfig config; // not null
-
-    public ThymeleafConfigProvider(FortressConfig config) {
-        this.config = config;
-    }
-
-    public String get(String propertyKey) { // not null or exception
-        return config.get("thymeleaf." + propertyKey);
+    public void test_read_trialDi() throws Exception {
+        SingletonLaContainerFactory.setConfigPath("trial_di.xml");
+        SingletonLaContainerFactory.init(); // expects no exception
     }
 }

@@ -15,6 +15,7 @@
  */
 package org.docksidestage.app.web.wx.request.multipart;
 
+import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.ruts.multipart.MultipartFormFile;
 import org.lastaflute.web.validation.Required;
 
@@ -23,13 +24,15 @@ import org.lastaflute.web.validation.Required;
  */
 public class WxRequestMultipartForm {
 
-    public String birthdate;
+    public String sea;
+
+    public Integer land;
 
     @Required
-    public MultipartFormFile file;
+    public MultipartFormFile uploadedFile;
 
     @Override
     public String toString() {
-        return "{" + birthdate + ", " + file + "}";
+        return Lato.string(this);
     }
 }

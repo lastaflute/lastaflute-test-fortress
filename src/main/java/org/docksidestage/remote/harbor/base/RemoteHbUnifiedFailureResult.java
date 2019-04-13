@@ -20,6 +20,7 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
@@ -60,5 +61,10 @@ public class RemoteHbUnifiedFailureResult {
     public RemoteHbUnifiedFailureResult(RemoteUnifiedFailureType cause, List<RemoteFailureErrorPart> errors) {
         this.cause = cause;
         this.errors = errors;
+    }
+
+    @Override
+    public String toString() {
+        return Lato.string(this);
     }
 }
