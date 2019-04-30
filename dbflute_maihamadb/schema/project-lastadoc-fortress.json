@@ -6387,6 +6387,17 @@
             "comment": null,
             "annotationList": [],
             "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstore",
+            "publicName": "dstore",
+            "typeName": "java.lang.Boolean",
+            "simpleTypeName": "Boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
           }
         ]
       },
@@ -6438,6 +6449,17 @@
             "publicName": "bonvo",
             "typeName": "java.time.LocalDateTime",
             "simpleTypeName": "LocalDateTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "dstore",
+            "publicName": "dstore",
+            "typeName": "java.lang.Boolean",
+            "simpleTypeName": "Boolean",
             "value": null,
             "description": null,
             "comment": null,
@@ -10128,7 +10150,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 21,
+      "fileLineCount": 32,
       "methodLineCount": 3
     },
     {
@@ -10168,8 +10190,8 @@
         "annotationList": [],
         "nestTypeDocMetaList": [
           {
-            "name": "birthdate",
-            "publicName": "birthdate",
+            "name": "sea",
+            "publicName": "sea",
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
@@ -10179,8 +10201,19 @@
             "nestTypeDocMetaList": []
           },
           {
-            "name": "file",
-            "publicName": "file",
+            "name": "land",
+            "publicName": "land",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "uploadedFile",
+            "publicName": "uploadedFile",
             "typeName": "org.lastaflute.web.ruts.multipart.MultipartFormFile",
             "simpleTypeName": "MultipartFormFile",
             "value": null,
@@ -10204,8 +10237,8 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 21,
-      "methodLineCount": 9
+      "fileLineCount": 32,
+      "methodLineCount": 7
     },
     {
       "url": "/wx/request/pathvar/string/{first}",
