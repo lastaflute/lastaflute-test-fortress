@@ -64,7 +64,7 @@
 
 	<!-- non standard domain cases are following: -->
 
-	<component name="iks" class="jp.iks.IksPark">
+	<component name="piari" class="jp.piari.PiariPark">
 		<postConstruct name="addIntArray"><arg>(int[])[1,2]</arg></postConstruct>
 		<postConstruct name="addStringArray"><arg>(String[])["sea" ,  "land" ]</arg></postConstruct>
 		<postConstruct name="addList"><arg>["a","b"]</arg></postConstruct>

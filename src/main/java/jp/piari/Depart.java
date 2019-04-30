@@ -1,4 +1,4 @@
-package jp.iks;
+package jp.piari;
 
 public interface Depart {
 }

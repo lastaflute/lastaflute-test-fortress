@@ -1,4 +1,4 @@
-package jp.iks;
+package jp.piari;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 import org.lastaflute.core.security.PrimaryCipher;
 import org.lastaflute.di.util.LdiArrayUtil;
 
-public class IksPark implements Depart {
+public class PiariPark implements Depart {
 
     public void addIntArray(int[] intAry) {
         System.out.println("intAry: " + LdiArrayUtil.toList(intAry));
