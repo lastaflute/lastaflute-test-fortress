@@ -15,6 +15,8 @@
  */
 package org.docksidestage.app.web.lido.product;
 
+import java.time.LocalDate;
+
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
@@ -32,6 +34,10 @@ public class ProductRowResult {
     public String productStatusName;
     @Required
     public Integer regularPrice;
+    @Required
+    public Boolean popular;
+
+    public LocalDate purchaseDate;
 
     @Override
     public String toString() {

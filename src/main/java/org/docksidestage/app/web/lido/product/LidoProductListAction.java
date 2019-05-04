@@ -79,6 +79,9 @@ public class LidoProductListAction extends FortressBaseAction {
             cb.specify().derivedPurchase().count(purchaseCB -> {
                 purchaseCB.specify().columnPurchaseId();
             }, Product.ALIAS_purchaseCount);
+            cb.specify().derivedPurchase().max(purchaseCB -> {
+                purchaseCB.specify().columnPurchaseDatetime();
+            }, Product.ALIAS_latestPurchaseDate);
             if (LaStringUtil.isNotEmpty(body.productName)) {
                 cb.query().setProductName_LikeSearch(body.productName, op -> op.likeContain());
             }
@@ -102,11 +105,13 @@ public class LidoProductListAction extends FortressBaseAction {
     private ProductRowResult mappingToBean(Product product) {
         ProductRowResult bean = new ProductRowResult();
         bean.productId = product.getProductId();
-        bean.productName = product.getProductName();
+        bean.productName = "prosea";
         product.getProductStatus().alwaysPresent(status -> {
             bean.productStatusName = status.getProductStatusName();
         });
+        bean.popular = product.getPurchaseCount() >= 3;
         bean.regularPrice = product.getRegularPrice();
+        bean.purchaseDate = product.getLatestPurchaseDate();
         return bean;
     }
 }
