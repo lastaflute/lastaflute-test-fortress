@@ -135,25 +135,55 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                          Form Mapping
     //                                          ------------
-    protected static final FormMappingOption formMappingOption = new FormMappingOption().filterSimpleTextParameter((parameter, meta) -> {
-        return parameter.trim();
-    }).yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
-        return Lists.immutable.ofAll(mutable);
-    })).yourCollection(new FormYourCollectionResource(MutableList.class, mutable -> {
-        return Lists.mutable.ofAll(mutable);
-    }));
+    protected static final FormMappingOption formMappingOption;
+    static {
+        FormMappingOption option = new FormMappingOption();
+        option.filterSimpleTextParameter((parameter, meta) -> {
+            return parameter.trim();
+        });
+        option.yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
+            return Lists.immutable.ofAll(mutable);
+        }));
+        option.yourCollection(new FormYourCollectionResource(MutableList.class, mutable -> {
+            return Lists.mutable.ofAll(mutable);
+        }));
+        // comment out if you test it
+        //RuledJsonEngineKeeper jsonEngineKeeper = ContainerUtil.getComponent(RuledJsonEngineKeeper.class);
+        //option.parseJsonBy(runtime -> {
+        //    return jsonEngineKeeper.provideTrialJsonEngine();
+        //});
+        formMappingOption = option;
+    }
 
     // -----------------------------------------------------
     //                                       Action Response
     //                                       ---------------
     protected static final ResponseReflectingOption responseReflectingOption;
     static {
-        // use this when you test validation as warning
-        //responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
-        // use this when you test empty body treated as empty object
-        //responseReflectingOption = new ResponseReflectingOption().treatJsonEmptyBodyAsEmptyObject();
-        responseReflectingOption = new ResponseReflectingOption();
+        ResponseReflectingOption option = new ResponseReflectingOption();
+        // comment out if you test validation as warning
+        //option.warnJsonBeanValidationError();
+        // comment out if you test empty body treated as empty object
+        //option.treatJsonEmptyBodyAsEmptyObject();
+        // comment out if you test it
+        //RuledJsonEngineKeeper jsonEngineKeeper = ContainerUtil.getComponent(RuledJsonEngineKeeper.class);
+        //option.writeJsonBy(runtime -> {
+        //    return jsonEngineKeeper.provideTrialJsonEngine();
+        //});
+        responseReflectingOption = option;
     }
+
+    // -----------------------------------------------------
+    //                                         InOut Logging
+    //                                         -------------
+    // example:
+    //protected static final InOutLogOption inOutLogOption;
+    //static {
+    //    final InOutLogOption option = new InOutLogOption();
+    //    option.showRequestHeader(Arrays.asList("Accept-Encoding", "Accept-Language"));
+    //    option.showResponseHeader(Arrays.asList("DaTe", "detarame", "Cache-Control"));
+    //    inOutLogOption = option;
+    //}
 
     // ===================================================================================
     //                                                                             Routing
@@ -241,7 +271,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // example:
     //@Override
     //public InOutLogOption adjustInOutLogging() {
-    //    return new InOutLogOption().async();
+    //    return inOutLogOption;
     //}
 
     // ===================================================================================

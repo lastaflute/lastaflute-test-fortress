@@ -16,10 +16,16 @@
 package org.docksidestage.bizfw.json;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
 
+import org.eclipse.collections.api.list.ImmutableList;
+import org.eclipse.collections.impl.factory.Lists;
 import org.lastaflute.core.json.JsonEngineResource;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.JsonMappingOption;
+import org.lastaflute.core.json.JsonMappingOption.JsonFieldNaming;
+import org.lastaflute.core.json.bind.JsonYourCollectionResource;
 import org.lastaflute.core.json.engine.RealJsonEngine;
 
 /**
@@ -46,10 +52,19 @@ public class RuledJsonEngineKeeper {
         JsonEngineResource resource = new JsonEngineResource();
         JsonMappingOption option = new JsonMappingOption();
         option.asNullToEmptyWriting()
+                .yourCollections(prepareYourCollections()) // Eclipse Collections
+                .asFieldNaming(JsonFieldNaming.CAMEL_TO_LOWER_SNAKE) // SNAKE_CASE
                 .formatLocalDateBy(DateTimeFormatter.ofPattern("yyyy%MM%dd"))
-                .serializeBooleanBy(boo -> boo ? "Y" : "N");
+                .serializeBooleanBy(boo -> boo ? "Y" : "N")
+                .filterSimpleTextReading(text -> text.replace("sea", "mystic"));
         resource.acceptMappingOption(option);
         return jsonManager.newRuledEngine(resource);
+    }
+
+    private List<JsonYourCollectionResource> prepareYourCollections() {
+        return Arrays.asList(new JsonYourCollectionResource(ImmutableList.class, mutableList -> {
+            return Lists.immutable.withAll(mutableList);
+        }));
     }
 
     // ===================================================================================
