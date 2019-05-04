@@ -32,8 +32,8 @@ public class RemoteFortressBhvTest extends UnitFortressBasicTestCase {
         try {
             fortressBhv.requestWxMultipart(param); // see receiver log for now
         } catch (RemoteApiIOException e) {
-            final String msg = e.getMessage();
-            if (msg != null && isNotBoot(msg)) { // not boot now
+            final Throwable cause = e.getCause();
+            if (cause != null && cause.getMessage() != null && isNotBoot(cause.getMessage())) {
                 log("Failed to request myself: param=" + param, e); // continue because of visual check only
             } else {
                 throw e;
@@ -42,7 +42,7 @@ public class RemoteFortressBhvTest extends UnitFortressBasicTestCase {
     }
 
     private boolean isNotBoot(final String msg) {
-        return msg.contains("Error 503 Service Unavailable") || msg.contains("Read timed out");
+        return msg.contains("Error 503 Service Unavailable") || msg.contains("Read timed out") || msg.contains("Connection refused");
     }
 
     private MultipartFormFile prepareSimpleTextFormFile() throws UnsupportedEncodingException {
