@@ -1380,12 +1380,36 @@
                   "Required"
                 ],
                 "nestTypeDocMetaList": []
+              },
+              {
+                "name": "popular",
+                "publicName": "popular",
+                "typeName": "java.lang.Boolean",
+                "simpleTypeName": "Boolean",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "purchaseDate",
+                "publicName": "purchase_date",
+                "typeName": "java.time.LocalDate",
+                "simpleTypeName": "LocalDate",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
               }
             ]
           }
         ]
       },
-      "fileLineCount": 70,
+      "fileLineCount": 75,
       "methodLineCount": 11
     },
     {
