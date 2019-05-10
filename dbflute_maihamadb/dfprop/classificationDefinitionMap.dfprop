@@ -37,6 +37,10 @@
 # *The line that starts with '#' means comment-out.
 #
 map:{
+    ; $$split$$ = map:{
+        ; white = dummy
+    }
+
     # ====================================================================================
     #                                                                               Common
     #                                                                               ======

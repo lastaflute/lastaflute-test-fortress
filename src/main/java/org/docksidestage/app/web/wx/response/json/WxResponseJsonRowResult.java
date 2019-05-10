@@ -17,6 +17,10 @@ package org.docksidestage.app.web.wx.response.json;
 
 import java.time.LocalDate;
 
+import javax.validation.Valid;
+
+import org.docksidestage.dbflute.allcommon.CDef;
+
 /**
  * @author jflute
  */
@@ -28,4 +32,12 @@ public class WxResponseJsonRowResult {
     public String productCategory;
     public Integer regularPrice;
     public LocalDate latestPurchaseDate;
+
+    @Valid
+    public WhitePart white;
+
+    public static class WhitePart {
+
+        public CDef.WhiteConfusingFormatBodying formatBodying;
+    }
 }
