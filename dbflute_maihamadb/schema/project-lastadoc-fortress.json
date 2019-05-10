@@ -5584,63 +5584,7 @@
                 "description": null,
                 "comment": null,
                 "annotationList": [],
-                "nestTypeDocMetaList": [
-                  {
-                    "name": "_code",
-                    "publicName": "_code",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_alias",
-                    "publicName": "_alias",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_sisterSet",
-                    "publicName": "_sister_set",
-                    "typeName": "java.util.Set\u003cString\u003e",
-                    "simpleTypeName": "Set\u003cString\u003e",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "name",
-                    "publicName": "name",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "ordinal",
-                    "publicName": "ordinal",
-                    "typeName": "int",
-                    "simpleTypeName": "int",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  }
-                ]
+                "nestTypeDocMetaList": []
               }
             ]
           },
@@ -6931,63 +6875,7 @@
                 "description": null,
                 "comment": null,
                 "annotationList": [],
-                "nestTypeDocMetaList": [
-                  {
-                    "name": "_code",
-                    "publicName": "_code",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_alias",
-                    "publicName": "_alias",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_sisterSet",
-                    "publicName": "_sister_set",
-                    "typeName": "java.util.Set\u003cString\u003e",
-                    "simpleTypeName": "Set\u003cString\u003e",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "name",
-                    "publicName": "name",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "ordinal",
-                    "publicName": "ordinal",
-                    "typeName": "int",
-                    "simpleTypeName": "int",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  }
-                ]
+                "nestTypeDocMetaList": []
               }
             ]
           }
@@ -7141,63 +7029,7 @@
                 "description": null,
                 "comment": null,
                 "annotationList": [],
-                "nestTypeDocMetaList": [
-                  {
-                    "name": "_code",
-                    "publicName": "_code",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_alias",
-                    "publicName": "_alias",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_sisterSet",
-                    "publicName": "_sister_set",
-                    "typeName": "java.util.Set\u003cString\u003e",
-                    "simpleTypeName": "Set\u003cString\u003e",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "name",
-                    "publicName": "name",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "ordinal",
-                    "publicName": "ordinal",
-                    "typeName": "int",
-                    "simpleTypeName": "int",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  }
-                ]
+                "nestTypeDocMetaList": []
               }
             ]
           }
@@ -7351,63 +7183,7 @@
                 "description": null,
                 "comment": null,
                 "annotationList": [],
-                "nestTypeDocMetaList": [
-                  {
-                    "name": "_code",
-                    "publicName": "_code",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_alias",
-                    "publicName": "_alias",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_sisterSet",
-                    "publicName": "_sister_set",
-                    "typeName": "java.util.Set\u003cString\u003e",
-                    "simpleTypeName": "Set\u003cString\u003e",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "name",
-                    "publicName": "name",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "ordinal",
-                    "publicName": "ordinal",
-                    "typeName": "int",
-                    "simpleTypeName": "int",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  }
-                ]
+                "nestTypeDocMetaList": []
               }
             ]
           }
@@ -7561,63 +7337,7 @@
                 "description": null,
                 "comment": null,
                 "annotationList": [],
-                "nestTypeDocMetaList": [
-                  {
-                    "name": "_code",
-                    "publicName": "_code",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_alias",
-                    "publicName": "_alias",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_sisterSet",
-                    "publicName": "_sister_set",
-                    "typeName": "java.util.Set\u003cString\u003e",
-                    "simpleTypeName": "Set\u003cString\u003e",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "name",
-                    "publicName": "name",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "ordinal",
-                    "publicName": "ordinal",
-                    "typeName": "int",
-                    "simpleTypeName": "int",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  }
-                ]
+                "nestTypeDocMetaList": []
               }
             ]
           }
@@ -12207,63 +11927,7 @@
                 "description": null,
                 "comment": null,
                 "annotationList": [],
-                "nestTypeDocMetaList": [
-                  {
-                    "name": "_code",
-                    "publicName": "_code",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_alias",
-                    "publicName": "_alias",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "_sisterSet",
-                    "publicName": "_sister_set",
-                    "typeName": "java.util.Set\u003cString\u003e",
-                    "simpleTypeName": "Set\u003cString\u003e",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "name",
-                    "publicName": "name",
-                    "typeName": "java.lang.String",
-                    "simpleTypeName": "String",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  },
-                  {
-                    "name": "ordinal",
-                    "publicName": "ordinal",
-                    "typeName": "int",
-                    "simpleTypeName": "int",
-                    "value": null,
-                    "description": null,
-                    "comment": null,
-                    "annotationList": [],
-                    "nestTypeDocMetaList": []
-                  }
-                ]
+                "nestTypeDocMetaList": []
               }
             ]
           }
