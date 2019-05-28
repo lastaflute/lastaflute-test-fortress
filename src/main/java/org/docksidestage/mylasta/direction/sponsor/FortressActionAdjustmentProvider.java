@@ -26,6 +26,7 @@ import javax.validation.valueextraction.ValueExtractor;
 
 import org.dbflute.util.DfTypeUtil;
 import org.dbflute.util.Srl;
+import org.docksidestage.bizfw.json.RuledJsonEngineKeeper;
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
 import org.eclipse.collections.api.list.ImmutableList;
@@ -34,6 +35,7 @@ import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.hibernate.validator.internal.cfg.context.DefaultConstraintMapping;
 import org.lastaflute.core.message.UserMessages;
+import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.web.exception.Forced404NotFoundException;
 import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
@@ -138,20 +140,20 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     protected static final FormMappingOption formMappingOption;
     static {
         FormMappingOption option = new FormMappingOption();
+
         option.filterSimpleTextParameter((parameter, meta) -> {
             return parameter.trim();
         });
+
         option.yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
             return Lists.immutable.ofAll(mutable);
         }));
         option.yourCollection(new FormYourCollectionResource(MutableList.class, mutable -> {
             return Lists.mutable.ofAll(mutable);
         }));
-        // comment out if you test it
-        //RuledJsonEngineKeeper jsonEngineKeeper = ContainerUtil.getComponent(RuledJsonEngineKeeper.class);
-        //option.parseJsonBy(runtime -> {
-        //    return jsonEngineKeeper.provideTrialJsonEngine();
-        //});
+
+        RuledJsonEngineKeeper jsonEngineKeeper = ContainerUtil.getComponent(RuledJsonEngineKeeper.class);
+        option.parseJsonBy(jsonEngineKeeper.prepareActionJsonEngine());
         formMappingOption = option;
     }
 
@@ -161,15 +163,14 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     protected static final ResponseReflectingOption responseReflectingOption;
     static {
         ResponseReflectingOption option = new ResponseReflectingOption();
+
         // comment out if you test validation as warning
         //option.warnJsonBeanValidationError();
         // comment out if you test empty body treated as empty object
         //option.treatJsonEmptyBodyAsEmptyObject();
-        // comment out if you test it
-        //RuledJsonEngineKeeper jsonEngineKeeper = ContainerUtil.getComponent(RuledJsonEngineKeeper.class);
-        //option.writeJsonBy(runtime -> {
-        //    return jsonEngineKeeper.provideTrialJsonEngine();
-        //});
+
+        RuledJsonEngineKeeper jsonEngineKeeper = ContainerUtil.getComponent(RuledJsonEngineKeeper.class);
+        option.writeJsonBy(jsonEngineKeeper.prepareActionJsonEngine());
         responseReflectingOption = option;
     }
 

@@ -16,12 +16,9 @@
 package org.docksidestage.app.web.wx.response.json;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.bizfw.json.RuledJsonEngineKeeper;
+import org.docksidestage.bizfw.json.JsonJustified;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -32,34 +29,23 @@ import org.lastaflute.web.validation.Required;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxResponseJsonSwitchedAction extends FortressBaseAction {
+@JsonJustified
+public class WxResponseJsonJustifiedAction extends FortressBaseAction {
 
-    @Resource
-    private RuledJsonEngineKeeper ruledJsonEngineKeeper;
-
-    // http://localhost:8151/fortress/wx/response/json/switched/engine
+    // http://localhost:8151/fortress/wx/response/json/justified
     @Execute
-    public JsonResponse<MyBasicJsonResult> engine() {
-        return asJson(createResult()).switchJsonEngine(() -> {
-            return ruledJsonEngineKeeper.provideSeaJsonEngine();
-        });
-    }
-
-    // http://localhost:8151/fortress/wx/response/json/switched/mapping
-    @Execute
-    public JsonResponse<MyBasicJsonResult> mapping() {
-        return asJson(createResult()).switchMappingOption(op -> {
-            op.asNullToEmptyWriting()
-                    .formatLocalDateBy(DateTimeFormatter.ofPattern("yyyy@MM@dd"))
-                    .serializeBooleanBy(boo -> boo ? "1" : "0");
-        });
-    }
-
-    // http://localhost:8151/fortress/wx/response/json/switched/none
-    @Execute
-    public JsonResponse<MyBasicJsonResult> none() {
+    public JsonResponse<MyBasicJsonResult> index() {
         return asJson(createResult());
     }
+
+    // http://localhost:8151/fortress/wx/response/json/justified/named
+    @Execute
+    public JsonResponse<MyBasicJsonResult> named() {
+        return asJson(createResult());
+    }
+
+    // test as default by switched/none
+    // http://localhost:8151/fortress/wx/response/json/switched/none
 
     private MyBasicJsonResult createResult() {
         return new MyBasicJsonResult(1, null, LocalDate.of(2018, 10, 6), true);
