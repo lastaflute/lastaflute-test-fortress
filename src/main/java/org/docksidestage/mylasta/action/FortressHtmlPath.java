@@ -62,6 +62,9 @@ public interface FortressHtmlPath {
     /** The path of the HTML: /withdrawal/withdrawal_entry.html */
     HtmlNext path_Withdrawal_WithdrawalEntryHtml = new HtmlNext("/withdrawal/withdrawal_entry.html");
 
+    /** The path of the HTML: /wx/login/login_surprised.html */
+    HtmlNext path_WxLogin_LoginSurprisedHtml = new HtmlNext("/wx/login/login_surprised.html");
+
     /** The path of the HTML: /wx/message/wx_message_list.html */
     HtmlNext path_WxMessage_WxMessageListHtml = new HtmlNext("/wx/message/wx_message_list.html");
 
