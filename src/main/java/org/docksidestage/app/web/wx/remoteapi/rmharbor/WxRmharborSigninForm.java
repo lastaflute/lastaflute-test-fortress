@@ -13,24 +13,24 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmharbor;
+package org.docksidestage.app.web.wx.remoteapi.rmharbor;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.docksidestage.remote.harbor.RemoteHarborBhv;
-import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class WxRmharborViaAssist {
+public class WxRmharborSigninForm {
 
-    @Resource
-    private RemoteHarborBhv harborBhv;
+    @Required
+    public String account;
 
-    public List<RemoteHbMypageProductReturn> requestMypage() {
-        return harborBhv.requestMypage();
+    @Required
+    public String password;
+
+    public boolean rememberMe;
+
+    public void clearSecurityInfo() {
+        password = null;
     }
 }

@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmharbor;
+package org.docksidestage.app.web.wx.remoteapi.rmharbor;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,7 +44,7 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRmharborAction extends FortressBaseAction {
+public class WxRemoteapiRmharborAction extends FortressBaseAction {
 
     @Resource
     private RemoteHarborBhv harborBhv;
@@ -59,7 +59,7 @@ public class WxRmharborAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                                Simple
     //                                                ------
-    // http://localhost:8151/fortress/wx/rmharbor/mypage/
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/mypage/
     @Execute
     public JsonResponse<List<RemoteHbMypageProductReturn>> mypage() {
         List<RemoteHbMypageProductReturn> retList = harborBhv.requestMypage();
@@ -69,8 +69,8 @@ public class WxRmharborAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                                Signin
     //                                                ------
-    // http://localhost:8151/fortress/wx/rmharbor/signin/?account=Pixy&password=sea
-    // http://localhost:8151/fortress/wx/rmharbor/signin/?account=Pixy&password=land
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/signin/?account=Pixy&password=sea
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/signin/?account=Pixy&password=land
     @Execute
     public JsonResponse<Void> signin(WxRmharborSigninForm form) {
         validateApi(form, messages -> {});
@@ -93,8 +93,8 @@ public class WxRmharborAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                              Products
     //                                              --------
-    // http://localhost:8151/fortress/wx/rmharbor/products/?productName=S
-    // http://localhost:8151/fortress/wx/rmharbor/products/?productName=SeaLandPiariBonvo
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/products/?productName=S
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/products/?productName=SeaLandPiariBonvo
     @Execute
     public HtmlResponse products(WxRmharborProductSearchForm form) { // can translate validation error automatically
         validate(form, messages -> {}, () -> {

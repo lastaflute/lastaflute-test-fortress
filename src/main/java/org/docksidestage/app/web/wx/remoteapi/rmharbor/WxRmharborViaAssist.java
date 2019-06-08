@@ -13,33 +13,24 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmhangar;
+package org.docksidestage.app.web.wx.remoteapi.rmharbor;
 
-import java.time.LocalDate;
+import java.util.List;
 
-import org.lastaflute.core.util.Lato;
-import org.lastaflute.web.validation.Required;
+import javax.annotation.Resource;
+
+import org.docksidestage.remote.harbor.RemoteHarborBhv;
+import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
 
 /**
  * @author jflute
  */
-public class WxRmhangarProductSearchRowBean {
+public class WxRmharborViaAssist {
 
-    @Required
-    public Integer productId;
-    @Required
-    public String productName;
-    @Required
-    public String productStatus;
-    @Required
-    public String productCategory;
-    @Required
-    public Integer regularPrice;
-    /** null if no purchase */
-    public LocalDate latestPurchaseDate;
+    @Resource
+    private RemoteHarborBhv harborBhv;
 
-    @Override
-    public String toString() {
-        return Lato.string(this);
+    public List<RemoteHbMypageProductReturn> requestMypage() {
+        return harborBhv.requestMypage();
     }
 }

@@ -19,6 +19,8 @@ import java.util.List;
 
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.dbflute.utflute.lastaflute.mock.TestingJsonData;
+import org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction;
+import org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRmharborSigninForm;
 import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.login.exception.LoginFailureException;
@@ -39,7 +41,7 @@ public class WxRmharborActionTest extends UnitFortressBasicTestCase {
             resopnse.asJsonDirectly(json, request -> request.getUrl().contains("mypage"));
         });
         registerMock(client);
-        WxRmharborAction action = new WxRmharborAction();
+        WxRemoteapiRmharborAction action = new WxRemoteapiRmharborAction();
         inject(action);
 
         // ## Act ##
@@ -63,7 +65,7 @@ public class WxRmharborActionTest extends UnitFortressBasicTestCase {
             resopnse.asJsonDirectly("(*want to no content)", request -> request.getUrl().contains("signin"));
         });
         registerMock(client);
-        WxRmharborAction action = new WxRmharborAction();
+        WxRemoteapiRmharborAction action = new WxRemoteapiRmharborAction();
         inject(action);
         WxRmharborSigninForm form = new WxRmharborSigninForm();
         form.account = "Pixy";
@@ -81,7 +83,7 @@ public class WxRmharborActionTest extends UnitFortressBasicTestCase {
             resopnse.asJsonDirectly(json, request -> request.getUrl().contains("signin")).httpStatus(400);
         });
         registerMock(client);
-        WxRmharborAction action = new WxRmharborAction();
+        WxRemoteapiRmharborAction action = new WxRemoteapiRmharborAction();
         inject(action);
         WxRmharborSigninForm form = new WxRmharborSigninForm();
         form.account = "Pixy";

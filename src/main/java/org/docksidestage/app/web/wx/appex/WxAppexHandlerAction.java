@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.hook;
+package org.docksidestage.app.web.wx.appex;
 
 import javax.annotation.Resource;
 
@@ -31,7 +31,7 @@ import org.lastaflute.web.ruts.process.ActionRuntime;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxHookAppexHandlerAction extends FortressBaseAction {
+public class WxAppexHandlerAction extends FortressBaseAction {
 
     @Resource
     private MemberBhv memberBhv;
@@ -54,14 +54,14 @@ public class WxHookAppexHandlerAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    // http://localhost:8151/fortress/wx/hook/appex/handler/alreadydeleted/
+    // http://localhost:8151/fortress/wx/appex/handler/alreadydeleted/
     @Execute
     public HtmlResponse alreadydeleted() {
         memberBhv.selectByPK(99999).get();
         throw new IllegalStateException("no way");
     }
 
-    // http://localhost:8151/fortress/wx/hook/appex/handler/json/
+    // http://localhost:8151/fortress/wx/appex/handler/json/
     @Execute
     public JsonResponse<Void> json() {
         memberBhv.selectByPK(99999).get();

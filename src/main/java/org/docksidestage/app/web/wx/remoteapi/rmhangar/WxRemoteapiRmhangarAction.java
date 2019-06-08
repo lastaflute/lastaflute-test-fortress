@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmhangar;
+package org.docksidestage.app.web.wx.remoteapi.rmhangar;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,7 +39,7 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRmhangarAction extends FortressBaseAction {
+public class WxRemoteapiRmhangarAction extends FortressBaseAction {
 
     @Resource
     private RemoteMaihamaHangarBhv hangarBhv;
@@ -52,7 +52,7 @@ public class WxRmhangarAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                                Simple
     //                                                ------
-    // http://localhost:8151/fortress/wx/rmhangar/mypage/
+    // http://localhost:8151/fortress/wx/remoteapi/rmhangar/mypage/
     @Execute
     public JsonResponse<RemoteHgMypageReturn> mypage() {
         RemoteHgMypageReturn ret = hangarBhv.requestMypage();
@@ -62,8 +62,8 @@ public class WxRmhangarAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                             Translate
     //                                             ---------
-    // http://localhost:8151/fortress/wx/rmhangar/translate/?productName=S
-    // http://localhost:8151/fortress/wx/rmhangar/translate/?productName=SeaLandPiariBonvo
+    // http://localhost:8151/fortress/wx/remoteapi/rmhangar/translate/?productName=S
+    // http://localhost:8151/fortress/wx/remoteapi/rmhangar/translate/?productName=SeaLandPiariBonvo
     @Execute
     public HtmlResponse translate(WxRmhangarProductSearchForm form) { // can translate validation error automatically
         validate(form, messages -> {}, () -> {

@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.hook;
+package org.docksidestage.app.web.wx.appex;
 
 import javax.annotation.Resource;
 
@@ -29,18 +29,18 @@ import org.lastaflute.web.response.HtmlResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxHookAppexAction extends FortressBaseAction {
+public class WxAppexBasicAction extends FortressBaseAction {
 
     @Resource
     private MemberBhv memberBhv;
 
-    // http://localhost:8151/fortress/wx/hook/appex/
+    // http://localhost:8151/fortress/wx/appex/basic/
     @Execute
     public HtmlResponse index() {
         throw newApplicationException();
     }
 
-    // http://localhost:8151/fortress/wx/hook/appex/withoutinfo/
+    // http://localhost:8151/fortress/wx/appex/basic/withoutinfo/
     @Execute
     public HtmlResponse withoutinfo() {
         throw newApplicationException().withoutInfo();
@@ -50,13 +50,13 @@ public class WxHookAppexAction extends FortressBaseAction {
         return new MessagingApplicationException("sea", createMessages().addErrorsAppIllegalTransition(GLOBAL));
     }
 
-    // http://localhost:8151/fortress/wx/hook/appex/loginfailure/
+    // http://localhost:8151/fortress/wx/appex/basic/loginfailure/
     @Execute
     public HtmlResponse loginfailure() {
         throw new LoginFailureException("sea");
     }
 
-    // http://localhost:8151/fortress/wx/hook/appex/alreadydeleted/
+    // http://localhost:8151/fortress/wx/appex/basic/alreadydeleted/
     @Execute
     public HtmlResponse alreadydeleted() {
         memberBhv.selectByPK(99999).get();

@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmshowbase;
+package org.docksidestage.app.web.wx.remoteapi.rmshowbase;
 
 import javax.annotation.Resource;
 
@@ -28,7 +28,7 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRmshowbaseRemogenAction extends FortressBaseAction {
+public class WxRemoteapiRmshowbaseRemogenAction extends FortressBaseAction {
 
     @Resource
     private RemoteMaihamaShowbaseWxBhv showbaseWxBhv;
@@ -39,7 +39,7 @@ public class WxRmshowbaseRemogenAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                               Routing
     //                                               -------
-    // http://localhost:8151/fortress/wx/rmshowbase/remogen/resola
+    // http://localhost:8151/fortress/wx/remoteapi/rmshowbase/remogen/resola
     @Execute
     public JsonResponse<RemoteWxRemogenRoutingResolaReturn> resola() {
         RemoteWxRemogenRoutingResolaReturn ret = showbaseWxBhv.requestRemogenRoutingResola(1);

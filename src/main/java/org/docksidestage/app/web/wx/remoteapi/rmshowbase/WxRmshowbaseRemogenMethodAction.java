@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmshowbase;
+package org.docksidestage.app.web.wx.remoteapi.rmshowbase;
 
 import javax.annotation.Resource;
 
@@ -41,7 +41,7 @@ public class WxRmshowbaseRemogenMethodAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                                  GET
     //                                                 -----
-    // http://localhost:8151/fortress/wx/rmshowbase/remogen/method/get/onbodyjson
+    // http://localhost:8151/fortress/wx/remoteapi/rmshowbase/remogen/method/get/onbodyjson
     @Execute(urlPattern = "@word/@word")
     public JsonResponse<RemoteWxRemogenMethodGetReturn> getOnbodyjson() {
         RemoteWxRemogenMethodGetReturn onbodyjsonReturn = showbaseWxBhv.requestRemogenMethodOnbodyjsonGet(param -> {
@@ -54,7 +54,7 @@ public class WxRmshowbaseRemogenMethodAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                                DELETE
     //                                                ------
-    // http://localhost:8151/fortress/wx/rmshowbase/remogen/method/delete
+    // http://localhost:8151/fortress/wx/remoteapi/rmshowbase/remogen/method/delete
     @Execute
     public JsonResponse<RemoteWxRemogenMethodDeleteReturn> delete() {
         RemoteWxRemogenMethodDeleteReturn deleteReturn = showbaseWxBhv.requestRemogenMethodDelete(param -> {
@@ -64,7 +64,7 @@ public class WxRmshowbaseRemogenMethodAction extends FortressBaseAction {
         return asJson(deleteReturn);
     }
 
-    // http://localhost:8151/fortress/wx/rmshowbase/remogen/method/delete/onbodyjson
+    // http://localhost:8151/fortress/wx/remoteapi/rmshowbase/remogen/method/delete/onbodyjson
     @Execute(urlPattern = "@word/@word")
     public JsonResponse<RemoteWxRemogenMethodOnbodyjsonReturn> deleteOnbodyjson() {
         RemoteWxRemogenMethodOnbodyjsonReturn onbodyjsonReturn = showbaseWxBhv.requestRemogenMethodOnbodyjson(param -> {

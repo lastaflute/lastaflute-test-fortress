@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmharbor;
+package org.docksidestage.app.web.wx.remoteapi.rmharbor;
 
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.web.validation.Required;

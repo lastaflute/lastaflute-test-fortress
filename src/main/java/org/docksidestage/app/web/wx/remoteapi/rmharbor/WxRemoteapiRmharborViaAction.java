@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.rmharbor;
+package org.docksidestage.app.web.wx.remoteapi.rmharbor;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRmharborViaAction extends FortressBaseAction {
+public class WxRemoteapiRmharborViaAction extends FortressBaseAction {
 
     @Resource
     private WxRmharborViaAssist rmharborViaAssist;
@@ -40,7 +40,7 @@ public class WxRmharborViaAction extends FortressBaseAction {
     // -----------------------------------------------------
     //                                                Simple
     //                                                ------
-    // http://localhost:8151/fortress/wx/rmnested/mypage/
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/via/mypage/
     @Execute
     public JsonResponse<List<RemoteHbMypageProductReturn>> mypage() {
         List<RemoteHbMypageProductReturn> retList = rmharborViaAssist.requestMypage();
