@@ -52,7 +52,8 @@ public class RemoteWxRemogenTrickyRecycleReturn {
          */
         public static class ShowStagePart {
 
-            /** The property of stageName. (NullAllowed) */
+            /** The property of stageName. */
+            @Required
             public String stageName;
         }
 
@@ -120,7 +121,8 @@ public class RemoteWxRemogenTrickyRecycleReturn {
          */
         public static class OfficialShopPart {
 
-            /** The property of shopName. (NullAllowed) */
+            /** The property of shopName. */
+            @Required
             public String shopName;
         }
 
@@ -134,7 +136,8 @@ public class RemoteWxRemogenTrickyRecycleReturn {
          */
         public static class ShowStagePart {
 
-            /** The property of stageName. (NullAllowed) */
+            /** The property of stageName. */
+            @Required
             public String stageName;
         }
     }
@@ -167,7 +170,8 @@ public class RemoteWxRemogenTrickyRecycleReturn {
          */
         public static class OfficialShopPart {
 
-            /** The property of shopName. (NullAllowed) */
+            /** The property of shopName. */
+            @Required
             public String shopName;
         }
 
@@ -181,7 +185,8 @@ public class RemoteWxRemogenTrickyRecycleReturn {
          */
         public static class ShowStagePart {
 
-            /** The property of stageName. (NullAllowed) */
+            /** The property of stageName. */
+            @Required
             public String stageName;
         }
 

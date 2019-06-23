@@ -4726,6 +4726,264 @@
       "methodLineCount": 9
     },
     {
+      "url": "/wx/appex/basic/",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexBasicAction",
+      "simpleTypeName": "WxAppexBasicAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 34,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/appex/basic/withoutinfo",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexBasicAction",
+      "simpleTypeName": "WxAppexBasicAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "withoutinfo",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 34,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/appex/basic/loginfailure",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexBasicAction",
+      "simpleTypeName": "WxAppexBasicAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "loginfailure",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 34,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/appex/basic/alreadydeleted",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexBasicAction",
+      "simpleTypeName": "WxAppexBasicAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "alreadydeleted",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 34,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/appex/handler/alreadydeleted",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexHandlerAction",
+      "simpleTypeName": "WxAppexHandlerAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "alreadydeleted",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 37,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/appex/handler/json",
+      "typeName": "org.docksidestage.app.web.wx.appex.WxAppexHandlerAction",
+      "simpleTypeName": "WxAppexHandlerAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "json",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": null,
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 37,
+      "methodLineCount": 4
+    },
+    {
       "url": "/wx/appex/message/json/",
       "typeName": "org.docksidestage.app.web.wx.appex.WxAppexMessageJsonAction",
       "simpleTypeName": "WxAppexMessageJsonAction",
@@ -4920,264 +5178,6 @@
       },
       "fileLineCount": 18,
       "methodLineCount": 6
-    },
-    {
-      "url": "/wx/hook/appex/",
-      "typeName": "org.docksidestage.app.web.wx.hook.WxHookAppexAction",
-      "simpleTypeName": "WxHookAppexAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "index",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.HtmlResponse",
-        "simpleTypeName": "HtmlResponse",
-        "value": null,
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 34,
-      "methodLineCount": 3
-    },
-    {
-      "url": "/wx/hook/appex/withoutinfo",
-      "typeName": "org.docksidestage.app.web.wx.hook.WxHookAppexAction",
-      "simpleTypeName": "WxHookAppexAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "withoutinfo",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.HtmlResponse",
-        "simpleTypeName": "HtmlResponse",
-        "value": null,
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 34,
-      "methodLineCount": 3
-    },
-    {
-      "url": "/wx/hook/appex/loginfailure",
-      "typeName": "org.docksidestage.app.web.wx.hook.WxHookAppexAction",
-      "simpleTypeName": "WxHookAppexAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "loginfailure",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.HtmlResponse",
-        "simpleTypeName": "HtmlResponse",
-        "value": null,
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 34,
-      "methodLineCount": 3
-    },
-    {
-      "url": "/wx/hook/appex/alreadydeleted",
-      "typeName": "org.docksidestage.app.web.wx.hook.WxHookAppexAction",
-      "simpleTypeName": "WxHookAppexAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "alreadydeleted",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.HtmlResponse",
-        "simpleTypeName": "HtmlResponse",
-        "value": null,
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 34,
-      "methodLineCount": 4
-    },
-    {
-      "url": "/wx/hook/appex/handler/alreadydeleted",
-      "typeName": "org.docksidestage.app.web.wx.hook.WxHookAppexHandlerAction",
-      "simpleTypeName": "WxHookAppexHandlerAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "alreadydeleted",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.HtmlResponse",
-        "simpleTypeName": "HtmlResponse",
-        "value": null,
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 37,
-      "methodLineCount": 4
-    },
-    {
-      "url": "/wx/hook/appex/handler/json",
-      "typeName": "org.docksidestage.app.web.wx.hook.WxHookAppexHandlerAction",
-      "simpleTypeName": "WxHookAppexHandlerAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "json",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
-        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
-        "value": null,
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 37,
-      "methodLineCount": 4
     },
     {
       "url": "/wx/job/sea/{stage}/{jobUnique}",
@@ -5654,6 +5654,182 @@
         "nestTypeDocMetaList": []
       },
       "fileLineCount": 12,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/login/surprised/",
+      "typeName": "org.docksidestage.app.web.wx.login.WxLoginSurprisedAction",
+      "simpleTypeName": "WxLoginSurprisedAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "loginAssist",
+          "publicName": "loginAssist",
+          "typeName": "org.docksidestage.app.web.base.login.FortressSurprisedLoginAssist",
+          "simpleTypeName": "FortressSurprisedLoginAssist",
+          "value": null,
+          "description": "Example of the secondary login assist.",
+          "comment": "Example of the secondary login assist.\n\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "redirect(MypageAction.class),asHtml(path_WxLogin_LoginSurprisedHtml)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 48,
+      "methodLineCount": 6
+    },
+    {
+      "url": "/wx/login/surprised/signin",
+      "typeName": "org.docksidestage.app.web.wx.login.WxLoginSurprisedAction",
+      "simpleTypeName": "WxLoginSurprisedAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "loginAssist",
+          "publicName": "loginAssist",
+          "typeName": "org.docksidestage.app.web.base.login.FortressSurprisedLoginAssist",
+          "simpleTypeName": "FortressSurprisedLoginAssist",
+          "value": null,
+          "description": "Example of the secondary login assist.",
+          "comment": "Example of the secondary login assist.\n\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "signin",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.signin.SigninForm",
+        "simpleTypeName": "SigninForm",
+        "value": null,
+        "description": "The form of member\u0027s Login.",
+        "comment": "The form of member\u0027s Login.\n\n@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "account",
+            "publicName": "account",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "password",
+            "publicName": "password",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "rememberMe",
+            "publicName": "rememberMe",
+            "typeName": "boolean",
+            "simpleTypeName": "boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_WxLogin_LoginSurprisedHtml),loginAssist.loginRedirect(createCredential(form),redirect(MypageAction.class)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 48,
+      "methodLineCount": 9
+    },
+    {
+      "url": "/wx/login/surprised/required/",
+      "typeName": "org.docksidestage.app.web.wx.login.WxLoginSurprisedRequiredAction",
+      "simpleTypeName": "WxLoginSurprisedRequiredAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "loginAssist",
+          "publicName": "loginAssist",
+          "typeName": "org.docksidestage.app.web.base.login.FortressSurprisedLoginAssist",
+          "simpleTypeName": "FortressSurprisedLoginAssist",
+          "value": null,
+          "description": "Example of the secondary login assist.",
+          "comment": "Example of the secondary login assist.\n\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_Product_ProductListHtml)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 21,
       "methodLineCount": 3
     },
     {
@@ -6367,6 +6543,899 @@
         ]
       },
       "fileLineCount": 13,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/wx/remoteapi/rmhangar/mypage",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmhangar.WxRemoteapiRmhangarAction",
+      "simpleTypeName": "WxRemoteapiRmhangarAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "hangarBhv",
+          "publicName": "hangarBhv",
+          "typeName": "org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv",
+          "simpleTypeName": "RemoteMaihamaHangarBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "publicName": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "mypage",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.hangar.mypage.RemoteHgMypageReturn\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteHgMypageReturn\u003e",
+        "value": "asJson(ret)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "recentProducts",
+            "publicName": "recent_products",
+            "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required",
+              "Valid"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "highPriceProducts",
+            "publicName": "high_price_products",
+            "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required",
+              "Valid"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 66,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/remoteapi/rmhangar/translate",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmhangar.WxRemoteapiRmhangarAction",
+      "simpleTypeName": "WxRemoteapiRmhangarAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "hangarBhv",
+          "publicName": "hangarBhv",
+          "typeName": "org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv",
+          "simpleTypeName": "RemoteMaihamaHangarBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "publicName": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "translate",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.wx.remoteapi.rmhangar.WxRmhangarProductSearchForm",
+        "simpleTypeName": "WxRmhangarProductSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "publicName": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_Product_ProductListHtml),mappingToRowBean(row),asHtml(path_Product_ProductListHtml)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 66,
+      "methodLineCount": 14
+    },
+    {
+      "url": "/wx/remoteapi/rmharbor/mypage",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction",
+      "simpleTypeName": "WxRemoteapiRmharborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "publicName": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "publicName": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "mypage",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbMypageProductReturn\u003e\u003e",
+        "value": "asJson(retList)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 92,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/remoteapi/rmharbor/signin",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction",
+      "simpleTypeName": "WxRemoteapiRmharborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "publicName": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "publicName": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "signin",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRmharborSigninForm",
+        "simpleTypeName": "WxRmharborSigninForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "account",
+            "publicName": "account",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "password",
+            "publicName": "password",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "rememberMe",
+            "publicName": "rememberMe",
+            "typeName": "boolean",
+            "simpleTypeName": "boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 92,
+      "methodLineCount": 17
+    },
+    {
+      "url": "/wx/remoteapi/rmharbor/products",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction",
+      "simpleTypeName": "WxRemoteapiRmharborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "publicName": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "publicName": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "products",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRmharborProductSearchForm",
+        "simpleTypeName": "WxRmharborProductSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "publicName": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "asHtml(path_Product_ProductListHtml),mappingToRowBean(row),asHtml(path_Product_ProductListHtml)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 92,
+      "methodLineCount": 14
+    },
+    {
+      "url": "/wx/remoteapi/rmharbor/via/mypage",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborViaAction",
+      "simpleTypeName": "WxRemoteapiRmharborViaAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "rmharborViaAssist",
+          "publicName": "rmharborViaAssist",
+          "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRmharborViaAssist",
+          "simpleTypeName": "WxRmharborViaAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "mypage",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbMypageProductReturn\u003e\u003e",
+        "value": "asJson(retList)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 18,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/remoteapi/rmshowbase/remogen/resola",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmshowbase.WxRemoteapiRmshowbaseRemogenAction",
+      "simpleTypeName": "WxRemoteapiRmshowbaseRemogenAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "showbaseWxBhv",
+          "publicName": "showbaseWxBhv",
+          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
+          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
+          "value": null,
+          "description": "The behavior for remote API of wx.",
+          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "resola",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.RemoteWxRemogenRoutingResolaReturn\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenRoutingResolaReturn\u003e",
+        "value": "asJson(ret)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "publicName": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "The property of method",
+            "comment": "The property of method. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "publicName": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": "The property of first",
+            "comment": "The property of first. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "publicName": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": "The property of second",
+            "comment": "The property of second. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 18,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/rmshowbase/remogen/method/get/onbodyjson",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmshowbase.WxRmshowbaseRemogenMethodAction",
+      "simpleTypeName": "WxRmshowbaseRemogenMethodAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "showbaseWxBhv",
+          "publicName": "showbaseWxBhv",
+          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
+          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
+          "value": null,
+          "description": "The behavior for remote API of wx.",
+          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "getOnbodyjson",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d@word/@word}"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetReturn\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodGetReturn\u003e",
+        "value": "asJson(onbodyjsonReturn)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "sea",
+            "publicName": "sea",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "The property of sea",
+            "comment": "The property of sea. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "publicName": "land",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": "The property of land",
+            "comment": "The property of land. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "iamResult",
+            "publicName": "iam_result",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "The property of iamResult",
+            "comment": "The property of iamResult. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 44,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/wx/rmshowbase/remogen/method/delete",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmshowbase.WxRmshowbaseRemogenMethodAction",
+      "simpleTypeName": "WxRmshowbaseRemogenMethodAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "showbaseWxBhv",
+          "publicName": "showbaseWxBhv",
+          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
+          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
+          "value": null,
+          "description": "The behavior for remote API of wx.",
+          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "delete",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodDeleteReturn\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodDeleteReturn\u003e",
+        "value": "asJson(deleteReturn)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "sea",
+            "publicName": "sea",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "The property of sea",
+            "comment": "The property of sea. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "publicName": "land",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": "The property of land",
+            "comment": "The property of land. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "iamResult",
+            "publicName": "iam_result",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "The property of iamResult",
+            "comment": "The property of iamResult. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 44,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/wx/rmshowbase/remogen/method/delete/onbodyjson",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmshowbase.WxRmshowbaseRemogenMethodAction",
+      "simpleTypeName": "WxRmshowbaseRemogenMethodAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "showbaseWxBhv",
+          "publicName": "showbaseWxBhv",
+          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
+          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
+          "value": null,
+          "description": "The behavior for remote API of wx.",
+          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "deleteOnbodyjson",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d@word/@word}"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyjson.RemoteWxRemogenMethodOnbodyjsonReturn\u003e",
+        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodOnbodyjsonReturn\u003e",
+        "value": "asJson(onbodyjsonReturn)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "sea",
+            "publicName": "sea",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "The property of sea",
+            "comment": "The property of sea. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "land",
+            "publicName": "land",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": "The property of land",
+            "comment": "The property of land. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "iamResult",
+            "publicName": "iam_result",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "The property of iamResult",
+            "comment": "The property of iamResult. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 44,
       "methodLineCount": 7
     },
     {
@@ -12102,6 +13171,164 @@
       "methodLineCount": 4
     },
     {
+      "url": "/wx/response/json/justified/",
+      "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonJustifiedAction",
+      "simpleTypeName": "WxResponseJsonJustifiedAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "JsonJustified",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonJustifiedAction$MyBasicJsonResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxResponseJsonJustifiedAction$MyBasicJsonResult\u003e",
+        "value": "asJson(createResult()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "memberId",
+            "publicName": "member_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "memberName",
+            "publicName": "member_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "birthdate",
+            "publicName": "birthdate",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "showbaseNow",
+            "publicName": "showbase_now",
+            "typeName": "java.lang.Boolean",
+            "simpleTypeName": "Boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 20,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/wx/response/json/justified/named",
+      "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonJustifiedAction",
+      "simpleTypeName": "WxResponseJsonJustifiedAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "named",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "JsonJustified",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonJustifiedAction$MyBasicJsonResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxResponseJsonJustifiedAction$MyBasicJsonResult\u003e",
+        "value": "asJson(createResult()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "memberId",
+            "publicName": "member_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "memberName",
+            "publicName": "member_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "birthdate",
+            "publicName": "birthdate",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "showbaseNow",
+            "publicName": "showbase_now",
+            "typeName": "java.lang.Boolean",
+            "simpleTypeName": "Boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 20,
+      "methodLineCount": 3
+    },
+    {
       "url": "/wx/response/json/switched/engine",
       "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonSwitchedAction",
       "simpleTypeName": "WxResponseJsonSwitchedAction",
@@ -12135,7 +13362,7 @@
         "publicName": null,
         "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonSwitchedAction$MyBasicJsonResult\u003e",
         "simpleTypeName": "JsonResponse\u003cWxResponseJsonSwitchedAction$MyBasicJsonResult\u003e",
-        "value": "asJson(createResult(),ruledJsonEngineKeeper.provideTrialJsonEngine()",
+        "value": "asJson(createResult(),ruledJsonEngineKeeper.provideSeaJsonEngine()",
         "description": null,
         "comment": null,
         "annotationList": [],
@@ -12492,899 +13719,6 @@
       },
       "fileLineCount": 48,
       "methodLineCount": 8
-    },
-    {
-      "url": "/wx/rmhangar/mypage",
-      "typeName": "org.docksidestage.app.web.wx.rmhangar.WxRmhangarAction",
-      "simpleTypeName": "WxRmhangarAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "hangarBhv",
-          "publicName": "hangarBhv",
-          "typeName": "org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv",
-          "simpleTypeName": "RemoteMaihamaHangarBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "pagingAssist",
-          "publicName": "pagingAssist",
-          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
-          "simpleTypeName": "PagingAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "mypage",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.hangar.mypage.RemoteHgMypageReturn\u003e",
-        "simpleTypeName": "JsonResponse\u003cRemoteHgMypageReturn\u003e",
-        "value": "asJson(ret)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "recentProducts",
-            "publicName": "recent_products",
-            "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
-            "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required",
-              "Valid"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "highPriceProducts",
-            "publicName": "high_price_products",
-            "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
-            "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required",
-              "Valid"
-            ],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 66,
-      "methodLineCount": 4
-    },
-    {
-      "url": "/wx/rmhangar/translate",
-      "typeName": "org.docksidestage.app.web.wx.rmhangar.WxRmhangarAction",
-      "simpleTypeName": "WxRmhangarAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "hangarBhv",
-          "publicName": "hangarBhv",
-          "typeName": "org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv",
-          "simpleTypeName": "RemoteMaihamaHangarBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "pagingAssist",
-          "publicName": "pagingAssist",
-          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
-          "simpleTypeName": "PagingAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "translate",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.docksidestage.app.web.wx.rmhangar.WxRmhangarProductSearchForm",
-        "simpleTypeName": "WxRmhangarProductSearchForm",
-        "value": null,
-        "description": "@author jflute",
-        "comment": "@author jflute",
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "productName",
-            "publicName": "productName",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "productStatus",
-            "publicName": "productStatus",
-            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "CDef.ProductStatus",
-            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
-            "description": null,
-            "comment": null,
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "purchaseMemberName",
-            "publicName": "purchaseMemberName",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.HtmlResponse",
-        "simpleTypeName": "HtmlResponse",
-        "value": "asHtml(path_Product_ProductListHtml),mappingToRowBean(row),asHtml(path_Product_ProductListHtml)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 66,
-      "methodLineCount": 14
-    },
-    {
-      "url": "/wx/rmharbor/mypage",
-      "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborAction",
-      "simpleTypeName": "WxRmharborAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "harborBhv",
-          "publicName": "harborBhv",
-          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
-          "simpleTypeName": "RemoteHarborBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "pagingAssist",
-          "publicName": "pagingAssist",
-          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
-          "simpleTypeName": "PagingAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "mypage",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn\u003e\u003e",
-        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbMypageProductReturn\u003e\u003e",
-        "value": "asJson(retList)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "productName",
-            "publicName": "product_name",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "regularPrice",
-            "publicName": "regular_price",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 92,
-      "methodLineCount": 4
-    },
-    {
-      "url": "/wx/rmharbor/signin",
-      "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborAction",
-      "simpleTypeName": "WxRmharborAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "harborBhv",
-          "publicName": "harborBhv",
-          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
-          "simpleTypeName": "RemoteHarborBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "pagingAssist",
-          "publicName": "pagingAssist",
-          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
-          "simpleTypeName": "PagingAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "signin",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborSigninForm",
-        "simpleTypeName": "WxRmharborSigninForm",
-        "value": null,
-        "description": "@author jflute",
-        "comment": "@author jflute",
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "account",
-            "publicName": "account",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "password",
-            "publicName": "password",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "rememberMe",
-            "publicName": "rememberMe",
-            "typeName": "boolean",
-            "simpleTypeName": "boolean",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
-        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
-        "value": "JsonResponse.asEmptyBody()",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 92,
-      "methodLineCount": 17
-    },
-    {
-      "url": "/wx/rmharbor/products",
-      "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborAction",
-      "simpleTypeName": "WxRmharborAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "harborBhv",
-          "publicName": "harborBhv",
-          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
-          "simpleTypeName": "RemoteHarborBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "pagingAssist",
-          "publicName": "pagingAssist",
-          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
-          "simpleTypeName": "PagingAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "products",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborProductSearchForm",
-        "simpleTypeName": "WxRmharborProductSearchForm",
-        "value": null,
-        "description": "@author jflute",
-        "comment": "@author jflute",
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "productName",
-            "publicName": "productName",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "productStatus",
-            "publicName": "productStatus",
-            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
-            "simpleTypeName": "CDef.ProductStatus",
-            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
-            "description": null,
-            "comment": null,
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "purchaseMemberName",
-            "publicName": "purchaseMemberName",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.HtmlResponse",
-        "simpleTypeName": "HtmlResponse",
-        "value": "asHtml(path_Product_ProductListHtml),mappingToRowBean(row),asHtml(path_Product_ProductListHtml)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 92,
-      "methodLineCount": 14
-    },
-    {
-      "url": "/wx/rmharbor/via/mypage",
-      "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborViaAction",
-      "simpleTypeName": "WxRmharborViaAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "rmharborViaAssist",
-          "publicName": "rmharborViaAssist",
-          "typeName": "org.docksidestage.app.web.wx.rmharbor.WxRmharborViaAssist",
-          "simpleTypeName": "WxRmharborViaAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "mypage",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn\u003e\u003e",
-        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbMypageProductReturn\u003e\u003e",
-        "value": "asJson(retList)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "productName",
-            "publicName": "product_name",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "regularPrice",
-            "publicName": "regular_price",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 18,
-      "methodLineCount": 4
-    },
-    {
-      "url": "/wx/rmshowbase/remogen/resola",
-      "typeName": "org.docksidestage.app.web.wx.rmshowbase.WxRmshowbaseRemogenAction",
-      "simpleTypeName": "WxRmshowbaseRemogenAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "showbaseWxBhv",
-          "publicName": "showbaseWxBhv",
-          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
-          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
-          "value": null,
-          "description": "The behavior for remote API of wx.",
-          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen\n@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "resola",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.RemoteWxRemogenRoutingResolaReturn\u003e",
-        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenRoutingResolaReturn\u003e",
-        "value": "asJson(ret)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "method",
-            "publicName": "method",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": "The property of method",
-            "comment": "The property of method. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "first",
-            "publicName": "first",
-            "typeName": "java.lang.Object",
-            "simpleTypeName": "Object",
-            "value": null,
-            "description": "The property of first",
-            "comment": "The property of first. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "second",
-            "publicName": "second",
-            "typeName": "java.lang.Object",
-            "simpleTypeName": "Object",
-            "value": null,
-            "description": "The property of second",
-            "comment": "The property of second. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 18,
-      "methodLineCount": 4
-    },
-    {
-      "url": "/wx/rmshowbase/remogen/method/get/onbodyjson",
-      "typeName": "org.docksidestage.app.web.wx.rmshowbase.WxRmshowbaseRemogenMethodAction",
-      "simpleTypeName": "WxRmshowbaseRemogenMethodAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "showbaseWxBhv",
-          "publicName": "showbaseWxBhv",
-          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
-          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
-          "value": null,
-          "description": "The behavior for remote API of wx.",
-          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen\n@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "getOnbodyjson",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute{urlPattern\u003d@word/@word}"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodGetReturn\u003e",
-        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodGetReturn\u003e",
-        "value": "asJson(onbodyjsonReturn)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "sea",
-            "publicName": "sea",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": "The property of sea",
-            "comment": "The property of sea. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "land",
-            "publicName": "land",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": "The property of land",
-            "comment": "The property of land. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "iamResult",
-            "publicName": "iam_result",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": "The property of iamResult",
-            "comment": "The property of iamResult. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 44,
-      "methodLineCount": 7
-    },
-    {
-      "url": "/wx/rmshowbase/remogen/method/delete",
-      "typeName": "org.docksidestage.app.web.wx.rmshowbase.WxRmshowbaseRemogenMethodAction",
-      "simpleTypeName": "WxRmshowbaseRemogenMethodAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "showbaseWxBhv",
-          "publicName": "showbaseWxBhv",
-          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
-          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
-          "value": null,
-          "description": "The behavior for remote API of wx.",
-          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen\n@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "delete",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.RemoteWxRemogenMethodDeleteReturn\u003e",
-        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodDeleteReturn\u003e",
-        "value": "asJson(deleteReturn)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "sea",
-            "publicName": "sea",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": "The property of sea",
-            "comment": "The property of sea. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "land",
-            "publicName": "land",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": "The property of land",
-            "comment": "The property of land. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "iamResult",
-            "publicName": "iam_result",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": "The property of iamResult",
-            "comment": "The property of iamResult. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 44,
-      "methodLineCount": 7
-    },
-    {
-      "url": "/wx/rmshowbase/remogen/method/delete/onbodyjson",
-      "typeName": "org.docksidestage.app.web.wx.rmshowbase.WxRmshowbaseRemogenMethodAction",
-      "simpleTypeName": "WxRmshowbaseRemogenMethodAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "showbaseWxBhv",
-          "publicName": "showbaseWxBhv",
-          "typeName": "org.docksidestage.remote.maihama.showbase.wx.RemoteMaihamaShowbaseWxBhv",
-          "simpleTypeName": "RemoteMaihamaShowbaseWxBhv",
-          "value": null,
-          "description": "The behavior for remote API of wx.",
-          "comment": "The behavior for remote API of wx.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author FreeGen\n@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "deleteOnbodyjson",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute{urlPattern\u003d@word/@word}"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.remote.maihama.showbase.wx.remogen.method.onbodyjson.RemoteWxRemogenMethodOnbodyjsonReturn\u003e",
-        "simpleTypeName": "JsonResponse\u003cRemoteWxRemogenMethodOnbodyjsonReturn\u003e",
-        "value": "asJson(onbodyjsonReturn)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "sea",
-            "publicName": "sea",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": "The property of sea",
-            "comment": "The property of sea. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "land",
-            "publicName": "land",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": "The property of land",
-            "comment": "The property of land. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "iamResult",
-            "publicName": "iam_result",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": "The property of iamResult",
-            "comment": "The property of iamResult. (NullAllowed)",
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 44,
-      "methodLineCount": 7
     },
     {
       "url": "/wx/routing/{first}",
