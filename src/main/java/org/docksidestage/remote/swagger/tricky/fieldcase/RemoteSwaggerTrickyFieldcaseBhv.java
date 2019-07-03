@@ -13,19 +13,19 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.swagger.tricky.hyphenhyphen;
+package org.docksidestage.remote.swagger.tricky.fieldcase;
 
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * The behavior for remote API of hyphenhyphen.
+ * The behavior for remote API of fieldcase.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
  */
-public class RemoteSwaggerTrickyHyphenhyphenBhv extends BsRemoteSwaggerTrickyHyphenhyphenBhv {
+public class RemoteSwaggerTrickyFieldcaseBhv extends BsRemoteSwaggerTrickyFieldcaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -33,7 +33,7 @@ public class RemoteSwaggerTrickyHyphenhyphenBhv extends BsRemoteSwaggerTrickyHyp
     /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteSwaggerTrickyHyphenhyphenBhv(RequestManager requestManager) {
+    public RemoteSwaggerTrickyFieldcaseBhv(RequestManager requestManager) {
         super(requestManager);
     }
 }

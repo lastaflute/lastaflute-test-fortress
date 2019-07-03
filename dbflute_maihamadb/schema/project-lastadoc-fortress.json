@@ -3372,7 +3372,7 @@
           {
             "name": "keyValues",
             "publicName": "keyValues",
-            "typeName": "java.util.Map\u003cString, String[]\u003e",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String[]\u003e",
             "simpleTypeName": "Map\u003cString, String[]\u003e",
             "value": null,
             "description": null,
@@ -6600,7 +6600,7 @@
           {
             "name": "recentProducts",
             "publicName": "recent_products",
-            "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "typeName": "java.util.List\u003corg.docksidestage.remote.maihama.hangar.mypage.RemoteHgMypageReturn$ProductPart\u003e",
             "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
             "value": null,
             "description": null,
@@ -6614,7 +6614,7 @@
           {
             "name": "highPriceProducts",
             "publicName": "high_price_products",
-            "typeName": "java.util.List\u003cRemoteHgMypageReturn$ProductPart\u003e",
+            "typeName": "java.util.List\u003corg.docksidestage.remote.maihama.hangar.mypage.RemoteHgMypageReturn$ProductPart\u003e",
             "simpleTypeName": "List\u003cRemoteHgMypageReturn$ProductPart\u003e",
             "value": null,
             "description": null,
@@ -7616,7 +7616,7 @@
           {
             "name": "sea",
             "publicName": "sea",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -7627,7 +7627,7 @@
           {
             "name": "land",
             "publicName": "land",
-            "typeName": "org.eclipse.collections.api.list.MutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.MutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "MutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -7638,7 +7638,7 @@
           {
             "name": "piari",
             "publicName": "piari",
-            "typeName": "java.util.List\u003cString\u003e",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
             "description": null,
@@ -7649,7 +7649,7 @@
           {
             "name": "bonvo",
             "publicName": "bonvo",
-            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cString, String\u003e",
+            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cjava.lang.String, java.lang.String\u003e",
             "simpleTypeName": "ImmutableMap\u003cString, String\u003e",
             "value": null,
             "description": null,
@@ -7718,7 +7718,7 @@
           {
             "name": "sea",
             "publicName": "sea",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -7729,7 +7729,7 @@
           {
             "name": "land",
             "publicName": "land",
-            "typeName": "org.eclipse.collections.api.list.MutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.MutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "MutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -7740,7 +7740,7 @@
           {
             "name": "piari",
             "publicName": "piari",
-            "typeName": "java.util.List\u003cString\u003e",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
             "description": null,
@@ -7751,7 +7751,7 @@
           {
             "name": "bonvo",
             "publicName": "bonvo",
-            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cString, String\u003e",
+            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cjava.lang.String, java.lang.String\u003e",
             "simpleTypeName": "ImmutableMap\u003cString, String\u003e",
             "value": null,
             "description": null,
@@ -11288,7 +11288,7 @@
           {
             "name": "strList",
             "publicName": "strList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -11314,7 +11314,7 @@
           {
             "name": "strList",
             "publicName": "strList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -13045,7 +13045,7 @@
           {
             "name": "list",
             "publicName": "list",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -13100,7 +13100,7 @@
           {
             "name": "list",
             "publicName": "list",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -13155,7 +13155,7 @@
           {
             "name": "map",
             "publicName": "map",
-            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cString, String\u003e",
+            "typeName": "org.eclipse.collections.api.map.ImmutableMap\u003cjava.lang.String, java.lang.String\u003e",
             "simpleTypeName": "ImmutableMap\u003cString, String\u003e",
             "value": null,
             "description": null,
@@ -19239,7 +19239,7 @@
           {
             "name": "dstoreStringList",
             "publicName": "dstoreStringList",
-            "typeName": "java.util.List\u003cString\u003e",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
             "description": null,
@@ -19252,7 +19252,7 @@
           {
             "name": "dstoreIntegerList",
             "publicName": "dstoreIntegerList",
-            "typeName": "java.util.List\u003cInteger\u003e",
+            "typeName": "java.util.List\u003cjava.lang.Integer\u003e",
             "simpleTypeName": "List\u003cInteger\u003e",
             "value": null,
             "description": null,
@@ -19265,7 +19265,7 @@
           {
             "name": "dstoreImmutableList",
             "publicName": "dstoreImmutableList",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -19341,7 +19341,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19408,7 +19408,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19475,7 +19475,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19542,7 +19542,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19609,7 +19609,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19716,7 +19716,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19783,7 +19783,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19850,7 +19850,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19917,7 +19917,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -19984,7 +19984,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -20711,7 +20711,7 @@
           {
             "name": "dstoreStringList",
             "publicName": "dstore_string_list",
-            "typeName": "java.util.List\u003cString\u003e",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
             "description": null,
@@ -20724,7 +20724,7 @@
           {
             "name": "dstoreIntegerList",
             "publicName": "dstore_integer_list",
-            "typeName": "java.util.List\u003cInteger\u003e",
+            "typeName": "java.util.List\u003cjava.lang.Integer\u003e",
             "simpleTypeName": "List\u003cInteger\u003e",
             "value": null,
             "description": null,
@@ -20737,7 +20737,7 @@
           {
             "name": "dstoreImmutableList",
             "publicName": "dstore_immutable_list",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -20813,7 +20813,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -20880,7 +20880,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -20947,7 +20947,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -21014,7 +21014,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -21081,7 +21081,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -21188,7 +21188,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -21255,7 +21255,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -21322,7 +21322,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -21389,7 +21389,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -21456,7 +21456,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22288,7 +22288,7 @@
           {
             "name": "dstoreStringList",
             "publicName": "dstore_string_list",
-            "typeName": "java.util.List\u003cString\u003e",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
             "description": null,
@@ -22301,7 +22301,7 @@
           {
             "name": "dstoreIntegerList",
             "publicName": "dstore_integer_list",
-            "typeName": "java.util.List\u003cInteger\u003e",
+            "typeName": "java.util.List\u003cjava.lang.Integer\u003e",
             "simpleTypeName": "List\u003cInteger\u003e",
             "value": null,
             "description": null,
@@ -22314,7 +22314,7 @@
           {
             "name": "dstoreImmutableList",
             "publicName": "dstore_immutable_list",
-            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cString\u003e",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
             "description": null,
@@ -22390,7 +22390,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22457,7 +22457,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22524,7 +22524,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22591,7 +22591,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22658,7 +22658,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22765,7 +22765,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22832,7 +22832,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22899,7 +22899,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -22966,7 +22966,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,
@@ -23033,7 +23033,7 @@
                   {
                     "name": "genreList",
                     "publicName": "genreList",
-                    "typeName": "java.util.List\u003cString\u003e",
+                    "typeName": "java.util.List\u003cjava.lang.String\u003e",
                     "simpleTypeName": "List\u003cString\u003e",
                     "value": null,
                     "description": null,

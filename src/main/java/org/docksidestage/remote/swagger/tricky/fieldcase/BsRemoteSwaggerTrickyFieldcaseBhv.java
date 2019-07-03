@@ -13,19 +13,21 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.swagger.tricky.hyphenhyphen;
+package org.docksidestage.remote.swagger.tricky.fieldcase;
 
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.docksidestage.remote.swagger.tricky.AbstractRemoteSwaggerTrickyBhv;
+import org.docksidestage.remote.swagger.tricky.fieldcase.noconv.RemoteFieldcaseNoconvParam;
+import org.docksidestage.remote.swagger.tricky.fieldcase.noconv.RemoteFieldcaseNoconvReturn;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * The base class as generation gap for remote API of hyphenhyphen.
+ * The base class as generation gap for remote API of fieldcase.
  * @author FreeGen
  */
-public abstract class BsRemoteSwaggerTrickyHyphenhyphenBhv extends AbstractRemoteSwaggerTrickyBhv {
+public abstract class BsRemoteSwaggerTrickyFieldcaseBhv extends AbstractRemoteSwaggerTrickyBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -33,7 +35,7 @@ public abstract class BsRemoteSwaggerTrickyHyphenhyphenBhv extends AbstractRemot
     /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public BsRemoteSwaggerTrickyHyphenhyphenBhv(RequestManager requestManager) {
+    public BsRemoteSwaggerTrickyFieldcaseBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
@@ -41,35 +43,41 @@ public abstract class BsRemoteSwaggerTrickyHyphenhyphenBhv extends AbstractRemot
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to /hyphen-hyphen/hyphen-hyphen/. (auto-generated method)<br>
+     * Request remote call to /fieldcase/noconv/. (auto-generated method)<br>
      * <pre>
-     * url: /hyphen-hyphen/hyphen-hyphen/
+     * url: /fieldcase/noconv/
      * httpMethod: GET
      * </pre>
+     * @param paramLambda The callback for RemoteFieldcaseNoconvParam. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public void requestHyphenhyphen() {
-        doRequestHyphenhyphen(rule -> {});
+    public RemoteFieldcaseNoconvReturn requestNoconv(Consumer<RemoteFieldcaseNoconvParam> paramLambda) {
+        return doRequestNoconv(paramLambda, rule -> {});
     }
 
     /**
-     * Request remote call to /hyphen-hyphen/hyphen-hyphen/. (auto-generated method)<br>
+     * Request remote call to /fieldcase/noconv/. (auto-generated method)<br>
      * <pre>
-     * url: /hyphen-hyphen/hyphen-hyphen/
+     * url: /fieldcase/noconv/
      * httpMethod: GET
      * </pre>
+     * @param paramLambda The callback for RemoteFieldcaseNoconvParam. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected void doRequestHyphenhyphen(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestGet(void.class, "/hyphen-hyphen/hyphen-hyphen/", noMoreUrl(), noQuery(), rule -> {
-            ruleOfHyphenhyphen(rule);
+    protected RemoteFieldcaseNoconvReturn doRequestNoconv(Consumer<RemoteFieldcaseNoconvParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteFieldcaseNoconvParam param = new RemoteFieldcaseNoconvParam();
+        paramLambda.accept(param);
+        return doRequestGet(RemoteFieldcaseNoconvReturn.class, "/fieldcase/noconv/", noMoreUrl(), query(param), rule -> {
+            ruleOfNoconv(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /hyphen-hyphen/hyphen-hyphen/.<br>
+     * Set up method-level rule of /fieldcase/noconv/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfHyphenhyphen(FlutyRemoteApiRule rule) {
+    protected void ruleOfNoconv(FlutyRemoteApiRule rule) {
     }
 }

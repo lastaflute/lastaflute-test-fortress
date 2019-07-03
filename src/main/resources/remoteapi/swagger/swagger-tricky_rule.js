@@ -6,11 +6,12 @@
 //                                                                                  ======
 //
 // -----------------------------------------------------
-//                                          Type Mapping
+//                                          Field Naming
 //                                          ------------
+// test of no case conversion
+// #hope only specify at /fieldcase/noconv/ by jflute
 // @Override
-remoteApiRule.typeMap = function() {
-    var typeMap = baseRule.typeMap();
-    typeMap['array'] = 'org.eclipse.collections.api.list.ImmutableList';
-    return typeMap;
+remoteApiRule.fieldNamingMapping = function() {
+  return { // empty means no conversion at all parts
+  };
 }
