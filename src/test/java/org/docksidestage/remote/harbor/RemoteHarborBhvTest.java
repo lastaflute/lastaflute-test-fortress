@@ -2,6 +2,7 @@ package org.docksidestage.remote.harbor;
 
 import javax.annotation.Resource;
 
+import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.exception.RemoteApiResponseValidationErrorException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
@@ -22,7 +23,10 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
     // ===================================================================================
     //                                                                     for Application
     //                                                                     ===============
-    public void test_requestProductList_empty() {
+    // -----------------------------------------------------
+    //                                           Lido (JSON)
+    //                                           -----------
+    public void test_requestLidoProductList_basic() {
         // ## Arrange ##
         RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
         param.productName = "S";
@@ -41,7 +45,7 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
         inject(bhv);
 
         // ## Act ##
-        RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = bhv.requestProductList(param);
+        RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = bhv.requestLidoProductList(param);
 
         // ## Assert ##
         assertEquals(4, ret.pageSize);
@@ -51,7 +55,7 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
         assertEquals(1, ret.rows.size());
     }
 
-    public void test_requestProductList_return_validtionError() {
+    public void test_requestLidoProductList_return_validtionError() {
         // ## Arrange ##
         RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
         param.productName = "S";
@@ -70,12 +74,37 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
         inject(bhv);
 
         // ## Act ##
-        assertException(RemoteApiResponseValidationErrorException.class, () -> bhv.requestProductList(param)).handle(cause -> {
+        assertException(RemoteApiResponseValidationErrorException.class, () -> bhv.requestLidoProductList(param)).handle(cause -> {
             // ## Assert ##
             String errorMsg = cause.getCause().getMessage();
             assertContainsAll(errorMsg, "productStatusName", "regularPrice");
             assertContains(errorMsg, Required.class.getSimpleName());
         });
+    }
+
+    // -----------------------------------------------------
+    //                                           Server HTML
+    //                                           -----------
+    public void test_requestServerHtmlProductList_basic() {
+        // ## Arrange ##
+        RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+        param.productName = "S";
+        String mockHtml = "<html><body>sea</body></html>";
+        MockHttpClient client = MockHttpClient.create(response -> {
+            response.asJsonDirectly(mockHtml, request -> true); // asHtmlDirectly() is not prepared
+        });
+        registerMock(client);
+        RemoteHarborBhv bhv = new RemoteHarborBhv(requestManager);
+        inject(bhv);
+
+        // ## Act ##
+        OptionalThing<String> optHtml = bhv.requestServerHtmlProductList(param);
+
+        // ## Assert ##
+        assertTrue(optHtml.isPresent());
+        String actualHtml = optHtml.get();
+        log(actualHtml);
+        assertEquals(mockHtml, actualHtml);
     }
 
     // ===================================================================================
@@ -95,7 +124,7 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
         // ## Act ##
         // ## Assert ##
         mockHtmlValidateCall();
-        assertValidationError(() -> bhv.requestProductList(param)).handle(data -> {
+        assertValidationError(() -> bhv.requestLidoProductList(param)).handle(data -> {
             assertTrue(data.requiredMessages().hasMessageOf("productName"));
             data.requiredMessageOfDirectly("productName", "land");
         });

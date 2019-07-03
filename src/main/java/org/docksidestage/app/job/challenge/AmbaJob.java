@@ -37,7 +37,7 @@ public class AmbaJob implements LaJob {
     //                                                                             =======
     @Override
     public void run(LaJobRuntime runtime) { // long job!
-        List<RemoteHbMypageProductReturn> retList = harborBhv.requestMypage();
+        List<RemoteHbMypageProductReturn> retList = harborBhv.requestLidoMypage();
         runtime.showEndTitleRoll(data -> {
             data.register("retList", retList);
         });

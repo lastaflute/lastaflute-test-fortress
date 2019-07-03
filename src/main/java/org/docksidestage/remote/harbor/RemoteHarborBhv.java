@@ -15,10 +15,13 @@
  */
 package org.docksidestage.remote.harbor;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
+import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
+import org.dbflute.remoteapi.receiver.FlBaseReceiver;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult.RemoteUnifiedFailureType;
@@ -87,17 +90,49 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    public void requestSignin(RemoteHbSigninParam param) {
+    // -----------------------------------------------------
+    //                                             Lido JSON
+    //                                             ---------
+    // test of request body and void return as POST
+    public void requestListAuthSignin(RemoteHbSigninParam param) {
         doRequestPost(void.class, "/lido/auth/signin", noMoreUrl(), param, rule -> {});
     }
 
-    public List<RemoteHbMypageProductReturn> requestMypage() {
+    // test of direct List return and no query parameter as GET
+    public List<RemoteHbMypageProductReturn> requestLidoMypage() {
         return doRequestGet(new ParameterizedRef<List<RemoteHbMypageProductReturn>>() {
         }.getType(), "/lido/mypage", noMoreUrl(), noQuery(), rule -> {});
     }
 
-    public RemoteHbPagingReturn<RemoteHbProductRowReturn> requestProductList(RemoteHbProductSearchParam param) {
+    // test of moreUrl() and generics return and as POST
+    public RemoteHbPagingReturn<RemoteHbProductRowReturn> requestLidoProductList(RemoteHbProductSearchParam param) {
         return doRequestPost(new ParameterizedRef<RemoteHbPagingReturn<RemoteHbProductRowReturn>>() {
         }.getType(), "/lido/product/list", moreUrl(1), param, rule -> {});
+    }
+
+    // -----------------------------------------------------
+    //                                           Server HTML
+    //                                           -----------
+    // test of query parameter and overriding rule as GET
+    public OptionalThing<String> requestServerHtmlProductList(RemoteHbProductSearchParam param) { // null allowed
+        return doRequestGet(new ParameterizedRef<OptionalThing<String>>() {
+        }.getType(), "/product/list", moreUrl(1), query(param), rule -> {
+            rule.receiveBodyBy(new MyHtmlDirectlyReceiver());
+        });
+    }
+
+    // HTML is not prepared in framework so needs to make it
+    private static class MyHtmlDirectlyReceiver extends FlBaseReceiver {
+
+        public <RETURN> RETURN toResponseReturn(OptionalThing<String> body, Type beanType, FlutyRemoteApiRule rule) {
+            @SuppressWarnings("unchecked")
+            RETURN ret = (RETURN) body; // body is just HTML strings
+            return ret;
+        }
+
+        @Override
+        protected String getSendReceiveLogResponseBodyType() {
+            return "html";
+        }
     }
 }
