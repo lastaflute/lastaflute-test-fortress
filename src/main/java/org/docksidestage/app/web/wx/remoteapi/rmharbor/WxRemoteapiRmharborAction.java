@@ -62,7 +62,7 @@ public class WxRemoteapiRmharborAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/remoteapi/rmharbor/mypage/
     @Execute
     public JsonResponse<List<RemoteHbMypageProductReturn>> mypage() {
-        List<RemoteHbMypageProductReturn> retList = harborBhv.requestMypage();
+        List<RemoteHbMypageProductReturn> retList = harborBhv.requestLidoMypage();
         return asJson(retList);
     }
 
@@ -78,7 +78,7 @@ public class WxRemoteapiRmharborAction extends FortressBaseAction {
         param.account = form.account;
         param.password = form.password;
         try {
-            harborBhv.requestSignin(param); // actually, embed this to login assist
+            harborBhv.requestListAuthSignin(param); // actually, embed this to login assist
         } catch (RemoteApiHttpClientErrorException e) {
             if (e.getHttpStatus() == 400) {
                 RemoteHbUnifiedFailureResult result = (RemoteHbUnifiedFailureResult) e.getFailureResponse().get();
@@ -114,7 +114,7 @@ public class WxRemoteapiRmharborAction extends FortressBaseAction {
     private RemoteHbPagingReturn<RemoteHbProductRowReturn> requestProductList(WxRmharborProductSearchForm form) {
         RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
         param.productName = form.productName;
-        return harborBhv.requestProductList(param);
+        return harborBhv.requestLidoProductList(param);
     }
 
     private WxRmharborProductSearchRowBean mappingToRowBean(RemoteHbProductRowReturn row) {

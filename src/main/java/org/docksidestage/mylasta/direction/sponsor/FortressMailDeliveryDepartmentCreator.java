@@ -153,7 +153,7 @@ public class FortressMailDeliveryDepartmentCreator {
                 RemoteHarborBhv harborBhv = ContainerUtil.getComponent(RemoteHarborBhv.class);
                 RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
                 param.productName = "S";
-                RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = harborBhv.requestProductList(param);
+                RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = harborBhv.requestLidoProductList(param);
                 logger.debug("RemoteApi Mail: allRecordCount={} ulterior={}", ret.allRecordCount, ulteriorMap);
             }
         };

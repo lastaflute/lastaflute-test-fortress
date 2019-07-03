@@ -31,6 +31,6 @@ public class WxRmharborViaAssist {
     private RemoteHarborBhv harborBhv;
 
     public List<RemoteHbMypageProductReturn> requestMypage() {
-        return harborBhv.requestMypage();
+        return harborBhv.requestLidoMypage();
     }
 }
