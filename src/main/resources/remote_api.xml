@@ -2,17 +2,17 @@
 <!DOCTYPE components PUBLIC "-//DBFLUTE//DTD LastaDi 1.0//EN"
     "http://dbflute.org/meta/lastadi10.dtd">
 <components namespace="remote_api">
-    <include path="lastaflute.xml"/>
+	<include path="lastaflute.xml"/>
 
 	<!-- showbase of maihama (multi project) -->
-    <include path="remoteapi/di/remoteapi_maihama-showbase.xml"/>
+	<include path="remoteapi/di/remoteapi_maihama-showbase.xml"/>
 
 	<!-- harbor (single project) -->
-    <component name="remoteHarborBhv" class="org.docksidestage.remote.harbor.RemoteHarborBhv"/>
+	<component name="remoteHarborBhv" class="org.docksidestage.remote.harbor.RemoteHarborBhv"/>
 
 	<!-- hangar of maihama (multi project) -->
-    <component name="remoteMaihamaHangarBhv" class="org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv"/>
+	<component name="remoteMaihamaHangarBhv" class="org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv"/>
 
 	<!-- fortress (single project) -->
-    <component name="remoteFortressBhv" class="org.docksidestage.remote.fortress.RemoteFortressBhv"/>
+	<component name="remoteFortressBhv" class="org.docksidestage.remote.fortress.RemoteFortressBhv"/>
 </components>
