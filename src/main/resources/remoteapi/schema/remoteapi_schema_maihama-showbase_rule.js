@@ -17,7 +17,7 @@ remoteApiRule.target = function(api) { // you can select generated API
         }
         return true;
     } else {
-        return false;
+        return ((api.consumes === null || api.consumes.length === 0) && (api.consumes === null || api.consumes.length === 0));
     }
 }
 
