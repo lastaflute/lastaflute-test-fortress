@@ -191,7 +191,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap.java.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
+                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
               }
             }
           },
@@ -627,7 +627,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap.java.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
+                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
               }
             }
           },
@@ -926,7 +926,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap.java.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
+                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
               }
             }
           },
@@ -1213,7 +1213,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap.java.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
+                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
               }
             }
           },
@@ -2438,6 +2438,24 @@
         ]
       }
     },
+    "/wx/remogen/tricky/allnone": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      }
+    },
     "/wx/remogen/tricky/nobody": {
       "post": {
         "summary": "@author jflute",
@@ -2566,7 +2584,7 @@
         }
       }
     },
-    "java.util.List\u003cjava.util.AbstractMap.java.util.AbstractMap$SimpleEntry\u003cjava.lang.String,java.lang.String\u003e\u003e": {
+    "java.util.List\u003cjava.util.AbstractMap$SimpleEntry\u003cjava.lang.String,java.lang.String\u003e\u003e": {
       "type": "object",
       "properties": {
         "key": {
