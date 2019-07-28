@@ -13610,7 +13610,34 @@
       "simpleTypeName": "WxResponseStreamAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [],
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productBhv",
+          "publicName": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "transactionStage",
+          "publicName": "transactionStage",
+          "typeName": "org.lastaflute.db.jta.stage.TransactionStage",
+          "simpleTypeName": "TransactionStage",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
       "methodName": "small",
       "methodComment": null,
       "annotationList": [
@@ -13630,7 +13657,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 48,
+      "fileLineCount": 75,
       "methodLineCount": 8
     },
     {
@@ -13639,7 +13666,34 @@
       "simpleTypeName": "WxResponseStreamAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [],
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productBhv",
+          "publicName": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "transactionStage",
+          "publicName": "transactionStage",
+          "typeName": "org.lastaflute.db.jta.stage.TransactionStage",
+          "simpleTypeName": "TransactionStage",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
       "methodName": "large",
       "methodComment": null,
       "annotationList": [
@@ -13659,7 +13713,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 48,
+      "fileLineCount": 75,
       "methodLineCount": 12
     },
     {
@@ -13668,7 +13722,34 @@
       "simpleTypeName": "WxResponseStreamAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [],
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productBhv",
+          "publicName": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "transactionStage",
+          "publicName": "transactionStage",
+          "typeName": "org.lastaflute.db.jta.stage.TransactionStage",
+          "simpleTypeName": "TransactionStage",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
       "methodName": "output",
       "methodComment": null,
       "annotationList": [
@@ -13688,7 +13769,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 48,
+      "fileLineCount": 75,
       "methodLineCount": 6
     },
     {
@@ -13697,7 +13778,34 @@
       "simpleTypeName": "WxResponseStreamAction",
       "description": "@author jflute",
       "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [],
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productBhv",
+          "publicName": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "transactionStage",
+          "publicName": "transactionStage",
+          "typeName": "org.lastaflute.db.jta.stage.TransactionStage",
+          "simpleTypeName": "TransactionStage",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
       "methodName": "japanese",
       "methodComment": null,
       "annotationList": [
@@ -13717,8 +13825,64 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 48,
+      "fileLineCount": 75,
       "methodLineCount": 8
+    },
+    {
+      "url": "/wx/response/stream/withupdate",
+      "typeName": "org.docksidestage.app.web.wx.response.stream.WxResponseStreamAction",
+      "simpleTypeName": "WxResponseStreamAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productBhv",
+          "publicName": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "transactionStage",
+          "publicName": "transactionStage",
+          "typeName": "org.lastaflute.db.jta.stage.TransactionStage",
+          "simpleTypeName": "TransactionStage",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "withupdate",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.StreamResponse",
+        "simpleTypeName": "StreamResponse",
+        "value": "asStream(\"sea.txt\")",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 75,
+      "methodLineCount": 19
     },
     {
       "url": "/wx/routing/{first}",

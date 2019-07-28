@@ -1,0 +1,15 @@
+/*
+ [OutsideSql Variable Mail]
+ The test of outside-sql variable.
+*/
+subject: Welcome to your sign up
+>>>
+Hello, outside-sql variable
+
+// no error but unsupported options, all property types are String
+// (classification code is not needed in mail body)
+Basic Classification: /*pmb.basicCls:cls(MemberStatus)*/
+Fixed Classification: /*pmb.fixedCls:cls(MemberStatus.Formalized)*/
+Basic Classification List: /*pmb.basicClsList:cls(MemberStatus)*/
+Fixed Classification one List: /*pmb.fixedClsOneList:cls(MemberStatus.Formalized)*/
+Fixed Classification plural List: /*pmb.fixedClsOneList:cls(MemberStatus.Formalized, Withdrawal)*/
