@@ -19,7 +19,10 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javax.annotation.Resource;
+
 import org.docksidestage.app.web.base.FortressBaseAction;
+import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.StreamResponse;
@@ -29,6 +32,9 @@ import org.lastaflute.web.response.StreamResponse;
  */
 @AllowAnyoneAccess
 public class WxResponseStreamAction extends FortressBaseAction {
+
+    @Resource
+    private ProductBhv productBhv;
 
     // http://localhost:8151/fortress/wx/response/stream/small/
     @Execute
@@ -69,6 +75,37 @@ public class WxResponseStreamAction extends FortressBaseAction {
     @Execute
     public StreamResponse japanese() {
         return asStream("\u6d77 + \u9678 in \u821e\u6d5c.txt").encodeFileName().stream(out -> {
+            byte[] buf = "download".getBytes("UTF-8");
+            try (InputStream ins = new ByteArrayInputStream(buf)) {
+                out.write(ins);
+            }
+        });
+    }
+
+    // http://localhost:8151/fortress/wx/response/stream/updateplain/
+    //  => exception (AccessContextNotFoundException, ResponseDownloadStreamCallUpdateException)
+    @Execute
+    public StreamResponse updateplain() {
+        return asStream("sea.txt").stream(out -> {
+            productBhv.selectByPK(1).alwaysPresent(product -> {
+                product.setProductStatusCode_SaleStop();
+                productBhv.updateNonstrict(product);
+            });
+            byte[] buf = "download".getBytes("UTF-8");
+            try (InputStream ins = new ByteArrayInputStream(buf)) {
+                out.write(ins);
+            }
+        });
+    }
+
+    // http://localhost:8151/fortress/wx/response/stream/updatetx/
+    @Execute
+    public StreamResponse updatetx() {
+        return asStream("sea.txt").inActionTransaction().stream(out -> {
+            productBhv.selectByPK(1).alwaysPresent(product -> {
+                product.setProductStatusCode_SaleStop();
+                productBhv.updateNonstrict(product);
+            });
             byte[] buf = "download".getBytes("UTF-8");
             try (InputStream ins = new ByteArrayInputStream(buf)) {
                 out.write(ins);
