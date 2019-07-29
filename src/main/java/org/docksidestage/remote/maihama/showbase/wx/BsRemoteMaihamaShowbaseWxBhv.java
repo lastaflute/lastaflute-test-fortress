@@ -1645,6 +1645,39 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
     }
 
     /**
+     * Request remote call to /wx/remogen/tricky/allnone. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/allnone
+     * httpMethod: POST
+     * </pre>
+     */
+    public void requestRemogenTrickyAllnone() {
+        doRequestRemogenTrickyAllnone(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/allnone. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/allnone
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void doRequestRemogenTrickyAllnone(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestPost(void.class, "/wx/remogen/tricky/allnone", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenTrickyAllnone(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/tricky/allnone.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenTrickyAllnone(FlutyRemoteApiRule rule) {
+    }
+
+    /**
      * Request remote call to /wx/remogen/tricky/nobody. (auto-generated method)<br>
      * <pre>
      * url: /wx/remogen/tricky/nobody

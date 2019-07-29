@@ -11,13 +11,17 @@
 // @Override
 remoteApiRule.target = function(api) { // you can select generated API 
     if (baseRule.target(api)) { // don't forget calling super's
-        // and define your original selecting
-        if (api.httpMethod === 'get' && api.url.indexOf('/method/onbodyjson') !== -1) { // get$onbodyjson()
+        // and define your original selecting (except)
+        if (api.url.indexOf('/method/onbodyjson') !== -1 && api.httpMethod === 'get') { // get$onbodyjson()
             return false; // unsupported at RemoteApiGen for now (you can request by your manual method)
         }
         return true;
     } else {
-        return ((api.consumes === null || api.consumes.length === 0) && (api.produces === null || api.produces.length === 0));
+        // no param/return is not generated as default, so specify it
+        // HTTP METHOD determination is for excepting "parameters"
+        return api.url.indexOf('/wx/remogen/tricky/allnone') !== -1 && api.httpMethod === 'post';
+        // general way however also needs undefined determination? (api.consumes is undefined in other project)
+        //return (api.consumes === null || api.consumes.length === 0) && (api.produces === null || api.produces.length === 0);
     }
 }
 
