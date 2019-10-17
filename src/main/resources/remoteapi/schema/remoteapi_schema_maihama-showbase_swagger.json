@@ -2551,6 +2551,30 @@
           "application/json"
         ]
       }
+    },
+    "/wx/remogen/tricky/suffixhell": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
     }
   },
   "definitions": {
@@ -3909,6 +3933,79 @@
         },
         "extendedArea": {
           "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult%24ExtendedArea"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellSeaResultPart$HellSeaPartPart": {
+      "type": "object",
+      "required": [
+        "stageName"
+      ],
+      "properties": {
+        "stageName": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellSeaResultPart": {
+      "type": "object",
+      "required": [
+        "parkName"
+      ],
+      "properties": {
+        "parkName": {
+          "type": "string"
+        },
+        "hellSeaPart": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellSeaResultPart%24HellSeaPartPart"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellLandPart$HellLandResultPart": {
+      "type": "object",
+      "required": [
+        "stageName"
+      ],
+      "properties": {
+        "stageName": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellLandPart": {
+      "type": "object",
+      "required": [
+        "parkName"
+      ],
+      "properties": {
+        "parkName": {
+          "type": "string"
+        },
+        "hellLandResult": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellLandPart%24HellLandResultPart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult": {
+      "type": "object",
+      "required": [
+        "resortName"
+      ],
+      "properties": {
+        "resortName": {
+          "type": "string"
+        },
+        "hellSeaResult": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellSeaResultPart"
+        },
+        "hellLand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellLandPart"
+          }
         }
       }
     }
