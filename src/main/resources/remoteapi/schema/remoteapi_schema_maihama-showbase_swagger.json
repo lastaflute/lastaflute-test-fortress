@@ -3936,7 +3936,7 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellSeaResultPart$HellSeaPartPart": {
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellSeaPart$HellSeaResultPart": {
       "type": "object",
       "required": [
         "stageName"
@@ -3947,7 +3947,7 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellSeaResultPart": {
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellSeaPart": {
       "type": "object",
       "required": [
         "parkName"
@@ -3956,15 +3956,15 @@
         "parkName": {
           "type": "string"
         },
-        "hellSeaPart": {
+        "hellSeaResult": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellSeaResultPart%24HellSeaPartPart"
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellSeaPart%24HellSeaResultPart"
           }
         }
       }
     },
-    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellLandPart$HellLandResultPart": {
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellLandPart$HellLandPartPart": {
       "type": "object",
       "required": [
         "stageName"
@@ -3984,8 +3984,8 @@
         "parkName": {
           "type": "string"
         },
-        "hellLandResult": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellLandPart%24HellLandResultPart"
+        "hellLandPart": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellLandPart%24HellLandPartPart"
         }
       }
     },
@@ -3998,14 +3998,11 @@
         "resortName": {
           "type": "string"
         },
-        "hellSeaResult": {
-          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellSeaResultPart"
+        "hellSea": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellSeaPart"
         },
         "hellLand": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellLandPart"
-          }
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellLandPart"
         }
       }
     }

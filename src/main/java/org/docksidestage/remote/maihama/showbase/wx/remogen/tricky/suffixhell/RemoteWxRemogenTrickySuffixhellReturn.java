@@ -28,29 +28,29 @@ public class RemoteWxRemogenTrickySuffixhellReturn {
     @Required
     public String resortName;
 
-    /** The property of hellSeaResult. (NullAllowed) */
+    /** The property of hellSea. (NullAllowed) */
     @javax.validation.Valid
-    public HellSeaResultPart hellSeaResult;
+    public HellSeaPart hellSea;
 
     /**
-     * The part class of HellSeaResultPart.
+     * The part class of HellSeaPart.
      * @author FreeGen
      */
-    public static class HellSeaResultPart {
+    public static class HellSeaPart {
 
         /** The property of parkName. */
         @Required
         public String parkName;
 
-        /** The property of hellSeaPart. (NullAllowed) */
+        /** The property of hellSeaResult. (NullAllowed) */
         @javax.validation.Valid
-        public org.eclipse.collections.api.list.ImmutableList<HellSeaPartPart> hellSeaPart;
+        public org.eclipse.collections.api.list.ImmutableList<HellSeaResultPart> hellSeaResult;
 
         /**
-         * The part class of HellSeaPartPart.
+         * The part class of HellSeaResultPart.
          * @author FreeGen
          */
-        public static class HellSeaPartPart {
+        public static class HellSeaResultPart {
 
             /** The property of stageName. */
             @Required
@@ -60,7 +60,7 @@ public class RemoteWxRemogenTrickySuffixhellReturn {
 
     /** The property of hellLand. (NullAllowed) */
     @javax.validation.Valid
-    public org.eclipse.collections.api.list.ImmutableList<HellLandPart> hellLand;
+    public HellLandPart hellLand;
 
     /**
      * The part class of HellLandPart.
@@ -72,15 +72,15 @@ public class RemoteWxRemogenTrickySuffixhellReturn {
         @Required
         public String parkName;
 
-        /** The property of hellLandResult. (NullAllowed) */
+        /** The property of hellLandPart. (NullAllowed) */
         @javax.validation.Valid
-        public HellLandResultPart hellLandResult;
+        public HellLandPartPart hellLandPart;
 
         /**
-         * The part class of HellLandResultPart.
+         * The part class of HellLandPartPart.
          * @author FreeGen
          */
-        public static class HellLandResultPart {
+        public static class HellLandPartPart {
 
             /** The property of stageName. */
             @Required
