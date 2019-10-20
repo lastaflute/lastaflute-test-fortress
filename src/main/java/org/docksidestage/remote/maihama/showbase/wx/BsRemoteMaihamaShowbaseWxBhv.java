@@ -66,6 +66,7 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.Remote
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.oddprop.RemoteWxRemogenTrickyOddpropReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.recycle.RemoteWxRemogenTrickyRecycleReturn;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.selfref.RemoteWxRemogenTrickySelfrefReturn;
+import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.suffixhell.RemoteWxRemogenTrickySuffixhellReturn;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -1815,5 +1816,40 @@ public abstract class BsRemoteMaihamaShowbaseWxBhv extends AbstractRemoteMaihama
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfRemogenTrickySelfref(FlutyRemoteApiRule rule) {
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/suffixhell. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/suffixhell
+     * httpMethod: POST
+     * </pre>
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    public RemoteWxRemogenTrickySuffixhellReturn requestRemogenTrickySuffixhell() {
+        return doRequestRemogenTrickySuffixhell(rule -> {});
+    }
+
+    /**
+     * Request remote call to /wx/remogen/tricky/suffixhell. (auto-generated method)<br>
+     * <pre>
+     * url: /wx/remogen/tricky/suffixhell
+     * httpMethod: POST
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     * @return The bean object as return type, receiving response body. (NotNull)
+     */
+    protected RemoteWxRemogenTrickySuffixhellReturn doRequestRemogenTrickySuffixhell(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestPost(RemoteWxRemogenTrickySuffixhellReturn.class, "/wx/remogen/tricky/suffixhell", noMoreUrl(), noRequestBody(), rule -> {
+            ruleOfRemogenTrickySuffixhell(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /wx/remogen/tricky/suffixhell.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfRemogenTrickySuffixhell(FlutyRemoteApiRule rule) {
     }
 }

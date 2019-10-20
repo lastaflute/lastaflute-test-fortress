@@ -10,6 +10,27 @@
   ],
   "basePath": "/tricky/",
   "paths": {
+    "/hellsuffix/reservedsuffixjust/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "e.g. _result property",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
     "/fieldcase/noconv/": {
       "get": {
         "summary": "@author jflute",
@@ -74,6 +95,48 @@
     }
   },
   "definitions": {
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult$ReservedSuffixJustPart$ReservedSuffixJustResult": {
+      "type": "object",
+      "required": [
+        "stageName"
+      ],
+      "properties": {
+        "stageName": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult$ReservedSuffixJustPart": {
+      "type": "object",
+      "required": [
+        "parkName"
+      ],
+      "properties": {
+        "parkName": {
+          "type": "string"
+        },
+        "reservedSuffixJustResult": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult%24ReservedSuffixJustPart%24ReservedSuffixJustResult"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult": {
+      "type": "object",
+      "required": [
+        "resortName"
+      ],
+      "properties": {
+        "resortName": {
+          "type": "string"
+        },
+        "hellSuffixes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult%24ReservedSuffixJustPart"
+          }
+        }
+      }
+    },
     "org.docksidestage.remote.swagger.tricky.FieldCaseMixedResult": {
       "type": "object",
       "properties": {

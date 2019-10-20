@@ -7,6 +7,7 @@
     <include condition="#exists('#path')" path="remoteapi/di/remoteapi_swagger-tricky_included.xml"/>
 
     <!-- Remote API Behavior -->
+    <component name="remoteSwaggerTrickyHellsuffixBhv" class="org.docksidestage.remote.swagger.tricky.hellsuffix.RemoteSwaggerTrickyHellsuffixBhv" />
     <component name="remoteSwaggerTrickyFieldcaseBhv" class="org.docksidestage.remote.swagger.tricky.fieldcase.RemoteSwaggerTrickyFieldcaseBhv" />
     <component name="remoteSwaggerTrickyUrlcharacterBhv" class="org.docksidestage.remote.swagger.tricky.urlcharacter.RemoteSwaggerTrickyUrlcharacterBhv" />
 </components>
