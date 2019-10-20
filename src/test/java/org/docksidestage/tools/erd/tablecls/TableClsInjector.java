@@ -26,9 +26,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.dbflute.helper.dfmap.DfMapFile;
 import org.dbflute.helper.filesystem.FileTextIO;
 import org.dbflute.helper.filesystem.FileTextLineFilter;
-import org.dbflute.helper.mapstring.MapListFile;
 import org.dbflute.infra.manage.refresh.DfRefreshResourceRequest;
 import org.dbflute.util.DfCollectionUtil;
 import org.dbflute.util.Srl;
@@ -68,7 +68,7 @@ public class TableClsInjector {
         try {
             logger.debug("...Reading tableCls request file: {}", requestFilePath);
             ins = prepareRequestResourceStream();
-            final Map<String, Object> map = new MapListFile().readMap(ins);
+            final Map<String, Object> map = new DfMapFile().readMap(ins);
             for (Entry<String, Object> entry : map.entrySet()) {
                 final String keywordName = entry.getKey();
                 logger.debug("...Building tableCls XML part: {}", keywordName);
