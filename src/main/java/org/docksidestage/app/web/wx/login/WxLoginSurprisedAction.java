@@ -21,7 +21,6 @@ import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.login.FortressSurprisedLoginAssist;
 import org.docksidestage.app.web.mypage.MypageAction;
-import org.docksidestage.app.web.signin.SigninForm;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.lastaflute.core.util.LaStringUtil;
 import org.lastaflute.web.Execute;
@@ -60,7 +59,7 @@ public class WxLoginSurprisedAction extends FortressBaseAction {
     }
 
     @Execute
-    public HtmlResponse signin(SigninForm form) {
+    public HtmlResponse signin(WxLoginSurprisedForm form) {
         validate(form, messages -> moreValidate(form, messages), () -> {
             form.clearSecurityInfo();
             return asHtml(path_WxLogin_LoginSurprisedHtml);
@@ -70,7 +69,7 @@ public class WxLoginSurprisedAction extends FortressBaseAction {
         });
     }
 
-    private void moreValidate(SigninForm form, FortressMessages messages) {
+    private void moreValidate(WxLoginSurprisedForm form, FortressMessages messages) {
         if (LaStringUtil.isNotEmpty(form.account) && LaStringUtil.isNotEmpty(form.password)) {
             if (!loginAssist.checkUserLoginable(createCredential(form))) {
                 messages.addErrorsLoginFailure("account");
@@ -78,7 +77,7 @@ public class WxLoginSurprisedAction extends FortressBaseAction {
         }
     }
 
-    private UserPasswordCredential createCredential(SigninForm form) {
+    private UserPasswordCredential createCredential(WxLoginSurprisedForm form) {
         return new UserPasswordCredential(form.account, form.password);
     }
 }
