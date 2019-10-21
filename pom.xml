@@ -21,12 +21,12 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.2.0</dbflute.version>
 		<mysql.jdbc.version>8.0.12</mysql.jdbc.version>
-		<lasta.di.version>0.8.0</lasta.di.version>
-		<lastaflute.version>1.1.4-A-SNAPSHOT</lastaflute.version>
+		<lasta.di.version>0.8.1</lasta.di.version>
+		<lastaflute.version>1.1.4</lastaflute.version>
 		<lasta.thymeleaf.version>0.4.1</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.3</lasta.job.version>
 		<lasta.remoteapi.version>0.4.4</lasta.remoteapi.version>
-		<lasta.doc.version>0.3.7-RC1</lasta.doc.version>
+		<lasta.doc.version>0.3.7</lasta.doc.version>
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.12</slf4j.version>
