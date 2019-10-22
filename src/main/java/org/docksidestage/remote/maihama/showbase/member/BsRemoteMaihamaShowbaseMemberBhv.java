@@ -388,4 +388,39 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      */
     protected void ruleOfPurchaseListMemberIdPageNumber(FlutyRemoteApiRule rule) {
     }
+
+    /**
+     * Request remote call to /member/purchase/list/delete/{purchaseId}. (auto-generated method)<br>
+     * <pre>
+     * url: /member/purchase/list/delete/{purchaseId}
+     * httpMethod: POST
+     * </pre>
+     * @param purchaseId The value of path variable for purchaseId. (NotNull)
+     */
+    public void requestPurchaseListDelete(Long purchaseId) {
+        doRequestPurchaseListDelete(purchaseId, rule -> {});
+    }
+
+    /**
+     * Request remote call to /member/purchase/list/delete/{purchaseId}. (auto-generated method)<br>
+     * <pre>
+     * url: /member/purchase/list/delete/{purchaseId}
+     * httpMethod: POST
+     * </pre>
+     * @param purchaseId The value of path variable for purchaseId. (NotNull)
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void doRequestPurchaseListDelete(Long purchaseId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestPost(void.class, "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), noRequestBody(), rule -> {
+            ruleOfPurchaseListDeletePurchaseId(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /member/purchase/list/delete/{purchaseId}.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfPurchaseListDeletePurchaseId(FlutyRemoteApiRule rule) {
+    }
 }

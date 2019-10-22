@@ -27,10 +27,10 @@ public class RemoteWxRemogenRoutingLandReturn {
     public String method;
 
     /** The property of first. (NullAllowed) */
-    public Object first;
+    public java.util.Map<String, Object> first;
 
     /** The property of second. (NullAllowed) */
-    public Object second;
+    public java.util.Map<String, Object> second;
 
     @Override
     public String toString() {

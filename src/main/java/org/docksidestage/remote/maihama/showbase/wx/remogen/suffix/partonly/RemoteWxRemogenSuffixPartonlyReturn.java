@@ -29,7 +29,7 @@ public class RemoteWxRemogenSuffixPartonlyReturn {
     public String resortName;
 
     /** The property of resortPark. (NullAllowed) */
-    public Object resortPark;
+    public java.util.Map<String, Object> resortPark;
 
     @Override
     public String toString() {
