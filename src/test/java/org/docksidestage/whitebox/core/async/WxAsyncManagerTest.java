@@ -16,6 +16,7 @@
 package org.docksidestage.whitebox.core.async;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -27,6 +28,7 @@ import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.exception.ConcurrentParallelRunnerException;
 import org.lastaflute.core.magic.async.future.YourFuture;
+import org.lastaflute.core.magic.destructive.BowgunDestructiveAdjuster;
 
 /**
  * @author jflute
@@ -44,14 +46,19 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
     // ===================================================================================
     //                                                                        Asynchronous
     //                                                                        ============
+    // -----------------------------------------------------
+    //                                                 Basic
+    //                                                 -----
     public void test_async_basic() {
         // ## Arrange ##
+        String currentName = Thread.currentThread().getName();
 
         // ## Act ##
         YourFuture future = asyncManager.async(() -> {
             sleep(300);
             log("...Marking here");
             markHere("called");
+            assertNotSame(currentName, Thread.currentThread().getName());
         });
 
         // ## Assert ##
@@ -60,6 +67,9 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
         assertMarked("called");
     }
 
+    // -----------------------------------------------------
+    //                                             Exception
+    //                                             ---------
     public void test_async_exception() {
         // ## Arrange ##
 
@@ -77,6 +87,34 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
         assertMarked("called");
     }
 
+    // -----------------------------------------------------
+    //                                           Destructive
+    //                                           -----------
+    public void test_async_destructive() {
+        // ## Arrange ##
+        BowgunDestructiveAdjuster.unlock();
+        BowgunDestructiveAdjuster.shootBowgunAsyncToNormalSync();
+        String currentName = Thread.currentThread().getName();
+
+        try {
+            // ## Act ##
+            YourFuture future = asyncManager.async(() -> {
+                sleep(300);
+                log("...Marking here");
+                markHere("called");
+                assertEquals(currentName, Thread.currentThread().getName());
+            });
+
+            // ## Assert ##
+            log("...Waiting for done");
+            future.waitForDone();
+            assertMarked("called");
+        } finally {
+            BowgunDestructiveAdjuster.unlock();
+            BowgunDestructiveAdjuster.restoreBowgunAsyncToNormalSync();
+        }
+    }
+
     // ===================================================================================
     //                                                                            Parallel
     //                                                                            ========
@@ -85,6 +123,7 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
     //                                                 -----
     public void test_parallel_params() {
         // ## Arrange ##
+        String currentName = Thread.currentThread().getName();
         List<String> parameterList = Arrays.asList("sea", "land", "piari");
 
         // ## Act ##
@@ -93,6 +132,8 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
             String parameter = (String) runner.getParameter().get();
             log(parameter);
             actualList.add(parameter);
+            markHere("called");
+            assertNotSame(currentName, Thread.currentThread().getName());
         }, op -> {
             op.params(parameterList);
         });
@@ -100,10 +141,12 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
         // ## Assert ##
         log(actualList);
         assertEquals(parameterList.size(), actualList.size());
+        assertMarked("called");
     }
 
     public void test_parallel_withoutParams() {
         // ## Arrange ##
+        String currentName = Thread.currentThread().getName();
 
         // ## Act ##
         asyncManager.parallel(runner -> {
@@ -118,6 +161,7 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
                 }
             }
             log(runner.getThreadId(), runner.getEntryNumber());
+            assertNotSame(currentName, Thread.currentThread().getName());
         }, op -> {});
 
         // ## Assert ##
@@ -202,5 +246,68 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
             assertNotContains(msg, "piari");
             assertNotContains(msg, "bonvo");
         });
+    }
+
+    // -----------------------------------------------------
+    //                                           Destructive
+    //                                           -----------
+    public void test_parallel_destructive_params() {
+        // ## Arrange ##
+        List<String> parameterList = Arrays.asList("sea", "land", "piari");
+        BowgunDestructiveAdjuster.unlock();
+        BowgunDestructiveAdjuster.shootBowgunAsyncToNormalSync();
+        String currentName = Thread.currentThread().getName();
+
+        try {
+            // ## Act ##
+            List<String> actualList = new CopyOnWriteArrayList<>();
+            asyncManager.parallel(runner -> {
+                String parameter = (String) runner.getParameter().get();
+                actualList.add(parameter);
+                log("entryNumber={}, parameter={}", runner.getEntryNumber(), parameter);
+
+                markHere("called");
+                assertEquals(currentName, Thread.currentThread().getName());
+            }, op -> {
+                op.params(parameterList);
+            });
+
+            // ## Assert ##
+            log(actualList);
+            assertEquals(parameterList.size(), actualList.size());
+            assertMarked("called");
+        } finally {
+            BowgunDestructiveAdjuster.unlock();
+            BowgunDestructiveAdjuster.restoreBowgunAsyncToNormalSync();
+        }
+    }
+
+    public void test_parallel_destructive_threadCount() {
+        // ## Arrange ##
+        BowgunDestructiveAdjuster.unlock();
+        BowgunDestructiveAdjuster.shootBowgunAsyncToNormalSync();
+        String currentName = Thread.currentThread().getName();
+
+        try {
+            // ## Act ##
+            List<Integer> actualList = new CopyOnWriteArrayList<>();
+            asyncManager.parallel(runner -> {
+                int entryNumber = runner.getEntryNumber();
+                actualList.add(entryNumber);
+                log("entryNumber={}", entryNumber);
+
+                markHere("called");
+                assertEquals(currentName, Thread.currentThread().getName());
+            }, op -> {});
+
+            // ## Assert ##
+            log(actualList);
+            assertEquals(5, actualList.size()); // as default
+            assertEquals(new HashSet<>(Arrays.asList(1, 2, 3, 4, 5)), new HashSet<>(actualList));
+            assertMarked("called");
+        } finally {
+            BowgunDestructiveAdjuster.unlock();
+            BowgunDestructiveAdjuster.restoreBowgunAsyncToNormalSync();
+        }
     }
 }
