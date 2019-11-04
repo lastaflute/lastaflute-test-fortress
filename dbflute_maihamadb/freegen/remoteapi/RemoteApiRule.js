@@ -83,22 +83,9 @@ var baseRule = {
      * @return {boolean} true if target. (NotNull)
      */
     target: function(api) {
-        if (this.targetHttpMethodList().indexOf(api.httpMethod) === -1) {
-            return false;
-        }
-        var contentTypes = [];
-        Array.prototype.push.apply(contentTypes, api.consumes ? api.consumes: []);
-        Array.prototype.push.apply(contentTypes, api.produces ? api.produces: []);
-        return (contentTypes.indexOf('application/json') !== -1 || (contentTypes.indexOf('application/xml') !== -1))
-                && api.url.indexOf('/swagger/json') !== 0;
-    },
-
-    /**
-     * Return target http method list.
-     * @return string[] target http method list. (NotNull)
-     */
-    targetHttpMethodList: function() {
-        return ['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace'];
+    	// p1us2er0 fixedly all target (2019/08/31)
+		// previously, it was TARGET when the request body or response body was json or xml content.
+        return true;
     },
 
     /**
@@ -380,7 +367,7 @@ var baseRule = {
      */
     typeMap: function() {
         return {
-            'object': 'Object',
+            'object': 'java.util.Map<String, Object>',
             'int32': 'Integer',
             'int64': 'Long',
             'float': 'Float',
@@ -392,7 +379,8 @@ var baseRule = {
             'boolean': 'Boolean',
             'date': 'java.time.LocalDate',
             'date-time': 'java.time.LocalDateTime',
-            'array': 'java.util.List'
+            'array': 'java.util.List',
+            '': 'String'
         };
     },
 

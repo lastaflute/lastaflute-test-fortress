@@ -27,7 +27,7 @@ public class RemoteWxRemogenListGenebeanReturn {
     public String key;
 
     /** The property of value. (NullAllowed) */
-    public Object value;
+    public java.util.Map<String, Object> value;
 
     @Override
     public String toString() {

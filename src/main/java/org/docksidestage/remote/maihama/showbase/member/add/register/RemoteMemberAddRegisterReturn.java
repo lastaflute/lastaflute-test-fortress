@@ -66,46 +66,46 @@ public class RemoteMemberAddRegisterReturn {
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
     /** The property of memberAddressAsValid. ((会員住所情報)MEMBER_ADDRESS by my MEMBER_ID, named 'memberAddressAsValid') (NullAllowed) */
-    public Object memberAddressAsValid;
+    public java.util.Map<String, Object> memberAddressAsValid;
 
     /** The property of memberLoginAsLatest. ((会員ログイン)MEMBER_LOGIN by my MEMBER_ID, named 'memberLoginAsLatest') (NullAllowed) */
-    public Object memberLoginAsLatest;
+    public java.util.Map<String, Object> memberLoginAsLatest;
 
     /** The property of memberSecurityAsOne. ((会員セキュリティ)member_security by MEMBER_ID, named 'memberSecurityAsOne') (NullAllowed) */
-    public Object memberSecurityAsOne;
+    public java.util.Map<String, Object> memberSecurityAsOne;
 
     /** The property of memberServiceAsOne. ((会員サービス)member_service by MEMBER_ID, named 'memberServiceAsOne') (NullAllowed) */
-    public Object memberServiceAsOne;
+    public java.util.Map<String, Object> memberServiceAsOne;
 
     /** The property of memberWithdrawalAsOne. ((会員退会情報)member_withdrawal by MEMBER_ID, named 'memberWithdrawalAsOne') (NullAllowed) */
-    public Object memberWithdrawalAsOne;
+    public java.util.Map<String, Object> memberWithdrawalAsOne;
 
     /** The property of memberAddressList. ((会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressList') (NullAllowed) */
-    public org.eclipse.collections.api.list.ImmutableList<Object> memberAddressList;
+    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberAddressList;
 
     /** The property of memberFollowingByMyMemberIdList. ((会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdList') (NullAllowed) */
-    public org.eclipse.collections.api.list.ImmutableList<Object> memberFollowingByMyMemberIdList;
+    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberFollowingByMyMemberIdList;
 
     /** The property of memberFollowingByYourMemberIdList. ((会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdList') (NullAllowed) */
-    public org.eclipse.collections.api.list.ImmutableList<Object> memberFollowingByYourMemberIdList;
+    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberFollowingByYourMemberIdList;
 
     /** The property of memberLoginList. ((会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginList') (NullAllowed) */
-    public org.eclipse.collections.api.list.ImmutableList<Object> memberLoginList;
+    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberLoginList;
 
     /** The property of purchaseList. ((購入)PURCHASE by MEMBER_ID, named 'purchaseList') (NullAllowed) */
-    public org.eclipse.collections.api.list.ImmutableList<Object> purchaseList;
+    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> purchaseList;
 
     /** The property of uniqueDrivenProperties. (NullAllowed) */
-    public Object uniqueDrivenProperties;
+    public java.util.Map<String, Object> uniqueDrivenProperties;
 
     /** The property of modifiedProperties. (NullAllowed) */
-    public Object modifiedProperties;
+    public java.util.Map<String, Object> modifiedProperties;
 
     /** The property of specifiedProperties. (NullAllowed) */
-    public Object specifiedProperties;
+    public java.util.Map<String, Object> specifiedProperties;
 
     /** The property of derivedMap. (NullAllowed) */
-    public Object derivedMap;
+    public java.util.Map<String, Object> derivedMap;
 
     /** The property of undefinedClassificationSelectAllowed. (NullAllowed) */
     public Boolean undefinedClassificationSelectAllowed;

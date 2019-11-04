@@ -15,3 +15,9 @@ remoteApiRule.fieldNamingMapping = function() {
   return { // empty means no conversion at all parts
   };
 }
+
+// test of suffix hell e.g. result result headache
+remoteApiRule.nestClassName = function(api, className) {
+  // For example, remote side uses Spring Framework
+  return className.replace(/(Part|Model|Bean)$/, '') + 'Part';
+}

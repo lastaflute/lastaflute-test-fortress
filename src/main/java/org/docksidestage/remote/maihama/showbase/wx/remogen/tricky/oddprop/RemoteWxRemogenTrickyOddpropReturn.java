@@ -32,7 +32,7 @@ public class RemoteWxRemogenTrickyOddpropReturn {
     public Integer landBeanCount;
 
     /** The property of normalEntry. (NullAllowed) */
-    public Object normalEntry;
+    public java.util.Map<String, Object> normalEntry;
 
     /** The property of beanEntry. (NullAllowed) */
     @javax.validation.Valid
@@ -50,7 +50,7 @@ public class RemoteWxRemogenTrickyOddpropReturn {
     }
 
     /** The property of plainGenericEntry. (NullAllowed) */
-    public Object plainGenericEntry;
+    public java.util.Map<String, Object> plainGenericEntry;
 
     /** The property of genericEntry. (NullAllowed) */
     @javax.validation.Valid
@@ -67,7 +67,7 @@ public class RemoteWxRemogenTrickyOddpropReturn {
         public String bonvoName;
 
         /** The property of internalBean. (NullAllowed) */
-        public Object internalBean;
+        public java.util.Map<String, Object> internalBean;
     }
 
     @Override

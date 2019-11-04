@@ -13,24 +13,25 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.list.genestring;
+package org.docksidestage.app.web.wx.login;
 
-import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/list/genestring.
- * @author FreeGen
+ * The form of member's Login.
+ * @author jflute
  */
-public class RemoteWxRemogenListGenestringReturn {
+public class WxLoginSurprisedForm {
 
-    /** The property of key. (NullAllowed) */
-    public String key;
+    @Required
+    public String account;
 
-    /** The property of value. (NullAllowed) */
-    public java.util.Map<String, Object> value;
+    @Required
+    public String password;
 
-    @Override
-    public String toString() {
-        return Lato.string(this);
+    public boolean rememberMe;
+
+    public void clearSecurityInfo() {
+        password = null;
     }
 }
