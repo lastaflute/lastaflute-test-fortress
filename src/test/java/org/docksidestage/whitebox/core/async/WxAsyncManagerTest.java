@@ -28,6 +28,8 @@ import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.exception.ConcurrentParallelRunnerException;
 import org.lastaflute.core.magic.async.future.YourFuture;
+import org.lastaflute.core.magic.async.waiting.WaitingAsyncException;
+import org.lastaflute.core.magic.async.waiting.WaitingAsyncResult;
 import org.lastaflute.core.magic.destructive.BowgunDestructiveAdjuster;
 
 /**
@@ -75,16 +77,26 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
 
         // ## Act ##
         YourFuture future = asyncManager.async(() -> {
-            sleep(300);
             log("...Marking here");
             markHere("called");
-            throw new IllegalStateException("sea");
+            try {
+                memberBhv.selectByPK(99999).get();
+            } catch (RuntimeException e) {
+                throw new IllegalStateException("sea", e);
+            }
         });
 
         // ## Assert ##
         log("...Waiting for done");
-        future.waitForDone();
+        WaitingAsyncResult result = future.waitForDone();
         assertMarked("called");
+        WaitingAsyncException asyncExp = result.getWaitingAsyncException().get(); // is already logged as error in asynchronous process
+        assertFalse(asyncExp.getEntryNumber().isPresent());
+        assertFalse(asyncExp.getParameter().isPresent());
+        log(asyncExp.getMessage());
+        assertContains(asyncExp.getMessage(), EntityAlreadyDeletedException.class.getSimpleName());
+        assertEquals(IllegalStateException.class, asyncExp.getCause().getClass());
+        assertEquals(EntityAlreadyDeletedException.class, asyncExp.getCause().getCause().getClass());
     }
 
     // -----------------------------------------------------
@@ -121,7 +133,7 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
     // -----------------------------------------------------
     //                                                 Basic
     //                                                 -----
-    public void test_parallel_params() {
+    public void test_parallel_params_basic() {
         // ## Arrange ##
         String currentName = Thread.currentThread().getName();
         List<String> parameterList = Arrays.asList("sea", "land", "piari");
@@ -136,6 +148,32 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
             assertNotSame(currentName, Thread.currentThread().getName());
         }, op -> {
             op.params(parameterList);
+        });
+
+        // ## Assert ##
+        log(actualList);
+        assertEquals(parameterList.size(), actualList.size());
+        assertMarked("called");
+    }
+
+    public void test_parallel_params_waitDonePerMillis() {
+        // ## Arrange ##
+        String currentName = Thread.currentThread().getName();
+        List<String> parameterList = Arrays.asList("sea", "land", "piari");
+
+        // ## Act ##
+        List<String> actualList = new CopyOnWriteArrayList<>();
+        asyncManager.parallel(runner -> {
+            String parameter = (String) runner.getParameter().get();
+            log(parameter);
+            actualList.add(parameter);
+            markHere("called");
+            assertNotSame(currentName, Thread.currentThread().getName());
+            if (runner.getEntryNumber() == 1) {
+                sleep(300);
+            }
+        }, op -> {
+            op.params(parameterList).waitingIntervalMillis(1000L);
         });
 
         // ## Assert ##
@@ -183,7 +221,10 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
                 String parameter = (String) runner.getParameter().get();
                 log(parameter);
                 int entryNumber = runner.getEntryNumber();
-                if (entryNumber == 1) {
+                if (entryNumber != 1) {
+                    sleep(200);
+                }
+                if (entryNumber == 1) { // so first done
                     throw new IllegalStateException("parameter=" + parameter);
                 } else if (entryNumber == 2) {
                     try {
@@ -198,53 +239,41 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
                 op.params(parameterList);
             });
         }).handle(cause -> {
+            log("...Asserting exception now");
             String msg = cause.getMessage() + ln() + "..." + ln() + cause.getCause().getMessage();
             log(msg);
             assertContains(msg, EntityAlreadyDeletedException.class.getSimpleName());
             assertContainsAll(msg, "sea", "land", "bonvo");
-            assertNull(cause.getCause().getCause());
+            assertContains("parameter=sea", cause.getCause().getCause().getMessage());
+            log("[Stack Trace]", cause);
         });
     }
 
-    public void test_parallel_exception_firstCause() {
+    public void test_parallel_exception_subsumeErrorLogging() {
         // ## Arrange ##
         List<String> parameterList = Arrays.asList("sea", "land", "piari", "bonvo");
 
         // ## Act ##
         // ## Assert ##
-        assertException(ConcurrentParallelRunnerException.class, () -> {
-            asyncManager.parallel(runner -> {
-                String parameter = (String) runner.getParameter().get();
-                log(parameter);
-                int entryNumber = runner.getEntryNumber();
-                if (entryNumber == 1) {
-                    throw new IllegalStateException("parameter=" + parameter);
-                } else if (entryNumber == 2) {
-                    sleep(1000);
-                    try {
-                        memberBhv.selectByPK(99999).get();
-                    } catch (RuntimeException e) {
-                        throw new IllegalStateException("parameter=" + parameter, e);
-                    }
-                } else if (entryNumber == 4) {
-                    sleep(1000);
-                    throw new Error("parameter=" + parameter);
+        asyncManager.parallel(runner -> { // expects no exception, visual check here
+            String parameter = (String) runner.getParameter().get();
+            log(parameter);
+            int entryNumber = runner.getEntryNumber();
+            if (entryNumber == 1) {
+                throw new IllegalStateException("parameter=" + parameter);
+            } else if (entryNumber == 2) {
+                sleep(1000);
+                try {
+                    memberBhv.selectByPK(99999).get();
+                } catch (RuntimeException e) {
+                    throw new IllegalStateException("parameter=" + parameter, e);
                 }
-            }, op -> {
-                op.params(parameterList).throwImmediatelyByFirstCause();
-            });
-        }).handle(cause -> {
-            StringBuilder sb = new StringBuilder();
-            sb.append(cause.getMessage());
-            sb.append(ln()).append("...").append(ln()).append(cause.getCause().getMessage());
-            sb.append(ln()).append("...").append(ln()).append(cause.getCause().getCause().getMessage());
-            String msg = sb.toString();
-            log(msg);
-            assertNotContains(msg, EntityAlreadyDeletedException.class.getSimpleName());
-            assertContains(msg, "sea");
-            assertNotContains(msg, "land");
-            assertNotContains(msg, "piari");
-            assertNotContains(msg, "bonvo");
+            } else if (entryNumber == 4) {
+                sleep(1000);
+                throw new Error("parameter=" + parameter);
+            }
+        }, op -> {
+            op.params(parameterList).subsumeErrorHandling();
         });
     }
 
