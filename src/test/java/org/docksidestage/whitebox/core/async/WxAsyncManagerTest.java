@@ -156,7 +156,7 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
         assertMarked("called");
     }
 
-    public void test_parallel_params_waitDonePerMillis() {
+    public void test_parallel_params_waitingIntervalMillis() {
         // ## Arrange ##
         String currentName = Thread.currentThread().getName();
         List<String> parameterList = Arrays.asList("sea", "land", "piari");
@@ -179,6 +179,33 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
         // ## Assert ##
         log(actualList);
         assertEquals(parameterList.size(), actualList.size());
+        assertMarked("called");
+    }
+
+    public void test_parallel_params_limitConcurrencyCount() {
+        // ## Arrange ##
+        String currentName = Thread.currentThread().getName();
+        List<String> parameterList = Arrays.asList("sea", "land", "piari", "bonvo", "dstore", "amba", "miraco", "dohotel", "broadway",
+                "dockside", "hangar", "magiclamp", "orleans", "showbase");
+
+        // ## Act ##
+        List<String> currentList = new CopyOnWriteArrayList<>();
+        asyncManager.parallel(runner -> {
+            String parameter = (String) runner.getParameter().get();
+            currentList.add(parameter);
+            log(parameter);
+            markHere("called");
+            assertNotSame(currentName, Thread.currentThread().getName());
+            if (runner.getEntryNumber() % 2 == 0) {
+                sleep(300);
+            }
+            assertTrue(currentList.size() <= 2); // also visual check
+            currentList.remove(parameter);
+        }, op -> {
+            op.params(parameterList).limitConcurrencyCount(2);
+        });
+
+        // ## Assert ##
         assertMarked("called");
     }
 
