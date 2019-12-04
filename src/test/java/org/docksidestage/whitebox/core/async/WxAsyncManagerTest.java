@@ -15,6 +15,7 @@
  */
 package org.docksidestage.whitebox.core.async;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.annotation.Resource;
 
 import org.dbflute.exception.EntityAlreadyDeletedException;
+import org.dbflute.util.DfTraceViewUtil;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.magic.async.AsyncManager;
@@ -182,7 +184,10 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
         assertMarked("called");
     }
 
-    public void test_parallel_params_limitConcurrencyCount() {
+    // -----------------------------------------------------
+    //                                     Concurrency Count
+    //                                     -----------------
+    public void test_parallel_params_limitConcurrencyCount_basic() {
         // ## Arrange ##
         String currentName = Thread.currentThread().getName();
         List<String> parameterList = Arrays.asList("sea", "land", "piari", "bonvo", "dstore", "amba", "miraco", "dohotel", "broadway",
@@ -209,6 +214,42 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
         assertMarked("called");
     }
 
+    public void test_parallel_params_limitConcurrencyCount_large() {
+        // ## Arrange ##
+        String currentName = Thread.currentThread().getName();
+        List<String> parameterList = new ArrayList<String>();
+        for (int i = 0; i < 2000; i++) {
+            parameterList.add("param" + i);
+        }
+
+        // ## Act ##
+        List<String> currentList = new CopyOnWriteArrayList<>();
+        long before = System.currentTimeMillis();
+        asyncManager.parallel(runner -> {
+            String parameter = (String) runner.getParameter().get();
+            currentList.add(parameter);
+            log(parameter);
+            markHere("called");
+            assertNotSame(currentName, Thread.currentThread().getName());
+            assertTrue(currentList.size() <= 5);
+            currentList.remove(parameter);
+        }, op -> {
+            op.params(parameterList).limitConcurrencyCount(5);
+        });
+
+        // ## Assert ##
+        assertMarked("called");
+        long after = System.currentTimeMillis();
+        log("performance: {}", DfTraceViewUtil.convertToPerformanceView(after - before));
+        // when 100L: 00m31s037ms
+        // when 1L: 00m00s925ms, 00m01s133ms
+        // when 10L: 00m03s502ms, 00m02s447ms
+        // when 20L: 00m05s249ms, 00m05s193ms
+    }
+
+    // -----------------------------------------------------
+    //                                        without Params 
+    //                                        --------------
     public void test_parallel_withoutParams() {
         // ## Arrange ##
         String currentName = Thread.currentThread().getName();
