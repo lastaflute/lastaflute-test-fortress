@@ -241,10 +241,13 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
         assertMarked("called");
         long after = System.currentTimeMillis();
         log("performance: {}", DfTraceViewUtil.convertToPerformanceView(after - before));
-        // when 100L: 00m31s037ms
-        // when 1L: 00m00s925ms, 00m01s133ms
-        // when 10L: 00m03s502ms, 00m02s447ms
-        // when 20L: 00m05s249ms, 00m05s193ms
+        // [waiting-interval milliseconds performance]
+        // when 2000 parameters and light processes
+        //   1L  : 00m00s925ms, 00m01s133ms
+        //   10L : 00m03s502ms, 00m02s447ms
+        //   20L : 00m05s249ms, 00m05s193ms
+        //   100L: 00m31s037ms
+        // (avoid too late and too short-span) 
     }
 
     // -----------------------------------------------------
