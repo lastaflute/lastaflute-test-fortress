@@ -7,6 +7,9 @@
 	<!-- showbase of maihama (multi project) -->
 	<include path="remoteapi/di/remoteapi_maihama-showbase.xml"/>
 
+	<!-- test of tricky -->
+	<include path="remoteapi/di/remoteapi_swagger-tricky.xml"/>
+
 	<!-- harbor (single project) -->
 	<component name="remoteHarborBhv" class="org.docksidestage.remote.harbor.RemoteHarborBhv"/>
 

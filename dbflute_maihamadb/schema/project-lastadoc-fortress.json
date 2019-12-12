@@ -7183,8 +7183,8 @@
           {
             "name": "first",
             "publicName": "first",
-            "typeName": "java.lang.Object",
-            "simpleTypeName": "Object",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.Object\u003e",
+            "simpleTypeName": "Map\u003cString, Object\u003e",
             "value": null,
             "description": "The property of first",
             "comment": "The property of first. (NullAllowed)",
@@ -7194,8 +7194,8 @@
           {
             "name": "second",
             "publicName": "second",
-            "typeName": "java.lang.Object",
-            "simpleTypeName": "Object",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.Object\u003e",
+            "simpleTypeName": "Map\u003cString, Object\u003e",
             "value": null,
             "description": "The property of second",
             "comment": "The property of second. (NullAllowed)",

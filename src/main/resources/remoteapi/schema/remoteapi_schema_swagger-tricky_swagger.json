@@ -92,6 +92,21 @@
           "application/json"
         ]
       }
+    },
+    "/urlcharacter/dot.dot/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "URL contains dot",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
     }
   },
   "definitions": {

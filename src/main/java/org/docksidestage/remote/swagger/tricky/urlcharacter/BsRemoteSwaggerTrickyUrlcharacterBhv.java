@@ -72,4 +72,37 @@ public abstract class BsRemoteSwaggerTrickyUrlcharacterBhv extends AbstractRemot
      */
     protected void ruleOfHyphenhyphen(FlutyRemoteApiRule rule) {
     }
+
+    /**
+     * Request remote call to /urlcharacter/dot.dot/. (auto-generated method)<br>
+     * <pre>
+     * url: /urlcharacter/dot.dot/
+     * httpMethod: GET
+     * </pre>
+     */
+    public void requestDot() {
+        doRequestDot(rule -> {});
+    }
+
+    /**
+     * Request remote call to /urlcharacter/dot.dot/. (auto-generated method)<br>
+     * <pre>
+     * url: /urlcharacter/dot.dot/
+     * httpMethod: GET
+     * </pre>
+     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
+     */
+    protected void doRequestDot(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestGet(void.class, "/urlcharacter/dot.dot/", noMoreUrl(), noQuery(), rule -> {
+            ruleOfDot(rule);
+            ruleLambda.accept(rule);
+        });
+    }
+
+    /**
+     * Set up method-level rule of /urlcharacter/dot.dot/.<br>
+     * @param rule The rule that class default rule is already set. (NotNull)
+     */
+    protected void ruleOfDot(FlutyRemoteApiRule rule) {
+    }
 }

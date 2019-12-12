@@ -16,6 +16,11 @@
 package org.docksidestage.remote.swagger.tricky;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
+import org.lastaflute.core.json.JsonMappingOption;
+import org.lastaflute.remoteapi.mapping.LaSelectedMappingPolicy;
+import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
+import org.lastaflute.remoteapi.sender.body.LaJsonSender;
+import org.lastaflute.remoteapi.sender.query.LaQuerySender;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -25,6 +30,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
+ * @author jflute
  */
 public abstract class AbstractRemoteSwaggerTrickyBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
 
@@ -43,19 +49,14 @@ public abstract class AbstractRemoteSwaggerTrickyBhv extends org.lastaflute.remo
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO you #change_it set your common default rule here
-        // e.g. When you want to convert the field naming from CAMEL to LOWER_SNAKE.
-        // FlSelectedMappingPolicy selectedMappingPolicy = new LaSelectedMappingPolicy().fieldNaming(FormFieldNaming.CAMEL_TO_LOWER_SNAKE);
-        // JsonMappingOption jsonMappingOption = new JsonMappingOption().asFieldNaming(JsonFieldNaming.CAMEL_TO_LOWER_SNAKE);
-        // rule.sendQueryBy(new LaQuerySender(selectedMappingPolicy));
-        // rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption)); or rule.sendBodyBy(new LaFormSender(selectedMappingPolicy));
-        // rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
-        throw new IllegalStateException("set your common default rule here.");
+        JsonMappingOption jsonMappingOption = new JsonMappingOption();
+        rule.sendQueryBy(new LaQuerySender(new LaSelectedMappingPolicy()));
+        rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption));
+        rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
     }
 
     @Override
     protected String getUrlBase() {
-        // TODO you #change_it set base URL for the remote api here
-        throw new IllegalStateException("set url base here.");
+        return "http://localhost:8090/harbor"; // dummy
     }
 }
