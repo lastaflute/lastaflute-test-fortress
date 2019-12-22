@@ -20,19 +20,24 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CountDownLatch;
 
 import javax.annotation.Resource;
 
+import org.dbflute.exception.AccessContextNotFoundException;
 import org.dbflute.exception.EntityAlreadyDeletedException;
 import org.dbflute.util.DfTraceViewUtil;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
+import org.docksidestage.dbflute.exentity.Member;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.magic.async.AsyncManager;
+import org.lastaflute.core.magic.async.bridge.AsyncStateBridge;
 import org.lastaflute.core.magic.async.exception.ConcurrentParallelRunnerException;
 import org.lastaflute.core.magic.async.future.YourFuture;
 import org.lastaflute.core.magic.async.waiting.WaitingAsyncException;
 import org.lastaflute.core.magic.async.waiting.WaitingAsyncResult;
 import org.lastaflute.core.magic.destructive.BowgunDestructiveAdjuster;
+import org.lastaflute.db.jta.stage.TransactionStage;
 
 /**
  * @author jflute
@@ -44,6 +49,8 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
     //                                                                           =========
     @Resource
     private AsyncManager asyncManager;
+    @Resource
+    private TransactionStage transactionStage;
     @Resource
     private MemberBhv memberBhv;
 
@@ -127,6 +134,35 @@ public class WxAsyncManagerTest extends UnitFortressBasicTestCase {
             BowgunDestructiveAdjuster.unlock();
             BowgunDestructiveAdjuster.restoreBowgunAsyncToNormalSync();
         }
+    }
+
+    // ===================================================================================
+    //                                                                        Bridge State
+    //                                                                        ============
+    public void test_bridgeState_basic() throws InterruptedException {
+        // ## Arrange ##
+        Member member = memberBhv.selectByPK(1).get();
+        member.setMemberStatusCode_Provisional();
+        CountDownLatch latch = new CountDownLatch(1);
+
+        // ## Act ##
+        AsyncStateBridge bridge = asyncManager.bridgeState(op -> {});
+        new Thread(() -> {
+            transactionStage.requiresNew(tx -> {
+                assertException(AccessContextNotFoundException.class, () -> memberBhv.updateNonstrict(member));
+            });
+            bridge.cross(() -> {
+                transactionStage.requiresNew(tx -> {
+                    memberBhv.updateNonstrict(member);
+                    markHere("called");
+                });
+            });
+            latch.countDown();
+        }).start();
+
+        // ## Assert ##
+        latch.await();
+        assertMarked("called");
     }
 
     // ===================================================================================
