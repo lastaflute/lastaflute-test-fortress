@@ -16,22 +16,30 @@
 package org.docksidestage.app.web.wx.response.stream;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.dbflute.helper.token.file.FileToken;
+import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.StreamResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author jflute
  */
 @AllowAnyoneAccess
 public class WxResponseStreamAction extends FortressBaseAction {
+
+    private static final Logger logger = LoggerFactory.getLogger(WxResponseStreamAction.class);
 
     @Resource
     private ProductBhv productBhv;
@@ -71,14 +79,24 @@ public class WxResponseStreamAction extends FortressBaseAction {
         });
     }
 
-    // http://localhost:8151/fortress/wx/response/stream/japanese/
+    // http://localhost:8151/fortress/wx/response/stream/cursortsv/
     @Execute
-    public StreamResponse japanese() {
-        return asStream("\u6d77 + \u9678 in \u821e\u6d5c.txt").encodeFileName().stream(out -> {
-            byte[] buf = "download".getBytes("UTF-8");
-            try (InputStream ins = new ByteArrayInputStream(buf)) {
-                out.write(ins);
-            }
+    public StreamResponse cursortsv() {
+        return asStream("sea.csv").stream(out -> {
+            FileToken fileToken = new FileToken();
+            fileToken.make(out.stream(), writer -> {
+                productBhv.selectCursor(cb -> {
+                    cb.query().setProductStatusCode_Equal_OnSaleProduction();
+                }, product -> {
+                    List<String> valueList = DfCollectionUtil.newArrayList(product.getProductId().toString(), product.getProductName());
+                    logger.debug("values:{}", valueList);
+                    try {
+                        writer.writeRow(valueList);
+                    } catch (IOException e) {
+                        throw new IllegalStateException("Failed to write row: " + valueList, e);
+                    }
+                });
+            }, op -> op.delimitateByTab().encodeAsUTF8());
         });
     }
 
@@ -106,6 +124,17 @@ public class WxResponseStreamAction extends FortressBaseAction {
                 product.setProductStatusCode_SaleStop();
                 productBhv.updateNonstrict(product);
             });
+            byte[] buf = "download".getBytes("UTF-8");
+            try (InputStream ins = new ByteArrayInputStream(buf)) {
+                out.write(ins);
+            }
+        });
+    }
+
+    // http://localhost:8151/fortress/wx/response/stream/japanese/
+    @Execute
+    public StreamResponse japanese() {
+        return asStream("\u6d77 + \u9678 in \u821e\u6d5c.txt").encodeFileName().stream(out -> {
             byte[] buf = "download".getBytes("UTF-8");
             try (InputStream ins = new ByteArrayInputStream(buf)) {
                 out.write(ins);
