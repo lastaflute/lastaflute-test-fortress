@@ -13612,6 +13612,17 @@
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
         {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
           "name": "productBhv",
           "publicName": "productBhv",
           "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
@@ -13644,7 +13655,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 82,
+      "fileLineCount": 105,
       "methodLineCount": 8
     },
     {
@@ -13654,6 +13665,17 @@
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
         {
           "name": "productBhv",
           "publicName": "productBhv",
@@ -13687,8 +13709,62 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 82,
+      "fileLineCount": 105,
       "methodLineCount": 12
+    },
+    {
+      "url": "/wx/response/stream/csv",
+      "typeName": "org.docksidestage.app.web.wx.response.stream.WxResponseStreamAction",
+      "simpleTypeName": "WxResponseStreamAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productBhv",
+          "publicName": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "csv",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.StreamResponse",
+        "simpleTypeName": "StreamResponse",
+        "value": "asStream(\"sea.csv\")",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 105,
+      "methodLineCount": 18
     },
     {
       "url": "/wx/response/stream/output",
@@ -13697,6 +13773,17 @@
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
         {
           "name": "productBhv",
           "publicName": "productBhv",
@@ -13730,7 +13817,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 82,
+      "fileLineCount": 105,
       "methodLineCount": 6
     },
     {
@@ -13740,6 +13827,17 @@
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
         {
           "name": "productBhv",
           "publicName": "productBhv",
@@ -13773,7 +13871,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 82,
+      "fileLineCount": 105,
       "methodLineCount": 8
     },
     {
@@ -13783,6 +13881,17 @@
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
         {
           "name": "productBhv",
           "publicName": "productBhv",
@@ -13816,7 +13925,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 82,
+      "fileLineCount": 105,
       "methodLineCount": 12
     },
     {
@@ -13826,6 +13935,17 @@
       "description": "@author jflute",
       "typeComment": "@author jflute",
       "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
         {
           "name": "productBhv",
           "publicName": "productBhv",
@@ -13859,7 +13979,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 82,
+      "fileLineCount": 105,
       "methodLineCount": 12
     },
     {
@@ -23480,7 +23600,7 @@
             "description": null,
             "comment": null,
             "annotationList": [
-              "CustomSize{maxKey\u003dseaMax, minKey\u003dseaMin}"
+              "CustomSize{minKey\u003dseaMin, maxKey\u003dseaMax}"
             ],
             "nestTypeDocMetaList": []
           },
