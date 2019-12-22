@@ -64,6 +64,14 @@ public class AllJobScheduler implements LaJobScheduler {
         });
     }
 
+    // you can hook and launchNow() at booting
+    //@Override
+    //public void hookJustAfterBooting(LaSchedulingNow schedulingNow) {
+    //    schedulingNow.findJobByUniqueOf(LaJobUnique.of("mystic")).alwaysPresent(job -> {
+    //        job.launchNow();
+    //    });
+    //}
+
     private <EMPTY> OptionalThing<EMPTY> optEmpty() {
         return OptionalThing.empty();
     }
