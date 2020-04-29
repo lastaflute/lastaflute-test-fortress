@@ -141,16 +141,16 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     protected void initializeMeta_maihamadb(long before) {
         ImplementedBehaviorSelector selector = ContainerUtil.getComponent(ImplementedBehaviorSelector.class);
         selector.initializeConditionBeanMetaData(); // including behavior's warmUpCommand() of all tables
-        logger.debug("Loaded DBMeta and warming up Behavior (DBFlute resources): {}", preparePerformanceView(before));
+        logger.debug("Loaded DBMeta and warming up Behavior (maihamadb): {}", preparePerformanceView(before));
 
         // under DBFlute-1.2.3, ConditionQuery(CQ) classes are not loaded in warmUpCommand()
-        // so explicitly load them here if you need
+        // so explicitly load them here if you use the version
         Collection<DBMeta> dbmetaList = DBMetaInstanceHandler.getUnmodifiableDBMetaMap().values();
         for (DBMeta dbmeta : dbmetaList) {
             BehaviorReadable readable = selector.byName(dbmeta.getTableDbName());
             readable.newConditionBean().localCQ(); // same as query(), creating CQ instance
         }
-        logger.debug("Loaded ConditionQuery classes (it needs under DBFlute-1.2.3): {}", preparePerformanceView(before));
+        logger.debug("Loaded ConditionQuery classes (maihamadb): {}", preparePerformanceView(before));
     }
 
     protected void initializeMeta_hibernateValidator(long before) {
