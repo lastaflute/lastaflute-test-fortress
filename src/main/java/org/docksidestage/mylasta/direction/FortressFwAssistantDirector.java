@@ -98,7 +98,7 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
     }
 
     protected FortressCurtainBeforeHook createCurtainBeforeListener() {
-        return new FortressCurtainBeforeHook();
+        return new FortressCurtainBeforeHook(config);
     }
 
     protected FortressSecurityResourceProvider createSecurityResourceProvider() { // #change_it

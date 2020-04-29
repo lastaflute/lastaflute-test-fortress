@@ -28,6 +28,7 @@ import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.dbflute.allcommon.DBMetaInstanceHandler;
 import org.docksidestage.dbflute.allcommon.ImplementedBehaviorSelector;
 import org.docksidestage.mylasta.action.FortressUserBean;
+import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.core.direction.CurtainBeforeHook;
 import org.lastaflute.core.direction.FwAssistantDirector;
 import org.lastaflute.core.message.UserMessages;
@@ -43,7 +44,22 @@ import org.slf4j.LoggerFactory;
  */
 public class FortressCurtainBeforeHook implements CurtainBeforeHook {
 
+    // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
     private static final Logger logger = LoggerFactory.getLogger(FortressCurtainBeforeHook.class);
+
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    protected final FortressConfig config;
+
+    // ===================================================================================
+    //                                                                         Constructor
+    //                                                                         ===========
+    public FortressCurtainBeforeHook(FortressConfig config) {
+        this.config = config;
+    }
 
     // ===================================================================================
     //                                                                               Hook
@@ -52,7 +68,7 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
         processDBFluteSystem();
         whiteboxtest_findLoginManager();
         whiteboxtest_prepareAccessContextForInsert();
-        whiteboxtest_initializeMeta();
+        whiteboxtest_initializeMetaIfNeeds();
     }
 
     // ===================================================================================
@@ -113,7 +129,10 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
         //}
     }
 
-    protected void whiteboxtest_initializeMeta() { // for first access performance
+    protected void whiteboxtest_initializeMetaIfNeeds() { // for first access performance
+        if (config.isDevelopmentHere()) {
+            return; // because this process is needed in production only
+        }
         long before = System.currentTimeMillis();
 
         ImplementedBehaviorSelector selector = ContainerUtil.getComponent(ImplementedBehaviorSelector.class);
