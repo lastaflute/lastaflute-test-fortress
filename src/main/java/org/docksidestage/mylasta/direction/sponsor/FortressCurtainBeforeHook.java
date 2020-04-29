@@ -15,18 +15,26 @@
  */
 package org.docksidestage.mylasta.direction.sponsor;
 
+import java.util.Collection;
 import java.util.TimeZone;
 
+import org.dbflute.bhv.BehaviorReadable;
+import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.system.DBFluteSystem;
 import org.dbflute.system.provider.DfFinalTimeZoneProvider;
+import org.dbflute.util.DfTraceViewUtil;
 import org.dbflute.util.DfTypeUtil;
+import org.docksidestage.dbflute.allcommon.DBMetaInstanceHandler;
+import org.docksidestage.dbflute.allcommon.ImplementedBehaviorSelector;
 import org.docksidestage.mylasta.action.FortressUserBean;
 import org.lastaflute.core.direction.CurtainBeforeHook;
 import org.lastaflute.core.direction.FwAssistantDirector;
+import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.web.login.LoginManager;
 import org.lastaflute.web.servlet.request.RequestManager;
+import org.lastaflute.web.validation.ActionValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,6 +52,7 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
         processDBFluteSystem();
         whiteboxtest_findLoginManager();
         whiteboxtest_prepareAccessContextForInsert();
+        whiteboxtest_initializeMeta();
     }
 
     // ===================================================================================
@@ -102,5 +111,33 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
         //} finally {
         //    PreparedAccessContext.clearAccessContextOnThread();
         //}
+    }
+
+    protected void whiteboxtest_initializeMeta() { // for first access performance
+        long before = System.currentTimeMillis();
+
+        ImplementedBehaviorSelector selector = ContainerUtil.getComponent(ImplementedBehaviorSelector.class);
+        selector.initializeConditionBeanMetaData(); // including behavior's warmUpCommand() of all tables
+        logger.debug("Loaded DBMeta and warming up Behavior (DBFlute resources): {}", preparePerformanceView(before));
+
+        // under DBFlute-1.2.3, ConditionQuery(CQ) classes are not loaded in warmUpCommand()
+        // so explicitly load them here if you need
+        Collection<DBMeta> dbmetaList = DBMetaInstanceHandler.getUnmodifiableDBMetaMap().values();
+        for (DBMeta dbmeta : dbmetaList) {
+            BehaviorReadable readable = selector.byName(dbmeta.getTableDbName());
+            readable.newConditionBean().localCQ(); // same as query(), creating CQ instance
+        }
+        logger.debug("Loaded ConditionQuery classes (it needs under DBFlute-1.2.3): {}", preparePerformanceView(before));
+
+        RequestManager requestManager = ContainerUtil.getComponent(RequestManager.class);
+        new ActionValidator<UserMessages>(requestManager, () -> new UserMessages(), ActionValidator.DEFAULT_GROUPS);
+        logger.debug("Loaded Hibernate Validator classes: {}", preparePerformanceView(before));
+    }
+
+    // ===================================================================================
+    //                                                                        Small Helper
+    //                                                                        ============
+    protected String preparePerformanceView(long before) {
+        return DfTraceViewUtil.convertToPerformanceView(System.currentTimeMillis() - before);
     }
 }
