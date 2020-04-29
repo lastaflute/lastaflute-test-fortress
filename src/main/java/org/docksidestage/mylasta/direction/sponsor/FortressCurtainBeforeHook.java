@@ -134,7 +134,11 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
             return; // because this process is needed in production only
         }
         long before = System.currentTimeMillis();
+        initializeMeta_maihamadb(before);
+        initializeMeta_hibernateValidator(before);
+    }
 
+    protected void initializeMeta_maihamadb(long before) {
         ImplementedBehaviorSelector selector = ContainerUtil.getComponent(ImplementedBehaviorSelector.class);
         selector.initializeConditionBeanMetaData(); // including behavior's warmUpCommand() of all tables
         logger.debug("Loaded DBMeta and warming up Behavior (DBFlute resources): {}", preparePerformanceView(before));
@@ -147,7 +151,9 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
             readable.newConditionBean().localCQ(); // same as query(), creating CQ instance
         }
         logger.debug("Loaded ConditionQuery classes (it needs under DBFlute-1.2.3): {}", preparePerformanceView(before));
+    }
 
+    protected void initializeMeta_hibernateValidator(long before) {
         RequestManager requestManager = ContainerUtil.getComponent(RequestManager.class);
         new ActionValidator<UserMessages>(requestManager, () -> new UserMessages(), ActionValidator.DEFAULT_GROUPS);
         logger.debug("Loaded Hibernate Validator classes: {}", preparePerformanceView(before));
