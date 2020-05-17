@@ -37,14 +37,8 @@
 	<h2 class="content-title" th:text="#{labels.product.list.title}">labels.product.list.title</h2>
 	<section class="product-search-box">
 		<h3 class="content-title-second" th:text="#{labels.search.condition}">labels.search.condition</h3>
-		<form class="product-search-form" th:action="@{/product/list/}" action="#" method="get">
+		<form class="product-search-form" th:action="@{/wx/thymeleaf/parade/}" action="#" method="get">
 			<ul class="product-search-condition-list">
-			
-	<!-- #trying -->
-     <select>
-       <option th:each="cdef : ${#cls.listAll('MemberStatus')}" th:value="${cdef.code()}" th:text="${cdef.alias()}"></option>
-     </select>
-
 				<li>
 					<span th:text="#{labels.productName}">labels.productName</span>
 					<input type="text" la:property="productName"/>
@@ -61,6 +55,20 @@
 					<span th:text="#{labels.purchase} + ' ' + #{labels.member}">labels.purchase labels.member</span>
 					<input type="text" la:property="purchaseMemberName"/>
 					<span la:errors="purchaseMemberName"/>
+				</li>
+				<li>
+					<span th:text="#{labels.mutableStatusList}">labels.mutableStatusList</span>
+					<select la:property="mutableStatusList" multiple="multiple">
+						<option value="" th:text="#{labels.listbox.caption.tell}"></option>
+						<option la:optionCls="ProductStatus"></option>
+					</select>
+				</li>
+				<li>
+					<span th:text="#{labels.immutableStatusList}">labels.immutableStatusList</span>
+					<select la:property="immutableStatusList" multiple="multiple">
+						<option value="" th:text="#{labels.listbox.caption.tell}"></option>
+						<option la:optionCls="ProductStatus"></option>
+					</select>
 				</li>
 			</ul>
 			<input type="submit" th:value="#{labels.search}" value="search"/>
