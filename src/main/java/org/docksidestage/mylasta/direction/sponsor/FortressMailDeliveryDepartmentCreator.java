@@ -39,8 +39,8 @@ import org.dbflute.util.Srl;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
+import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductRowReturn;
+import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductSearchParam;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.ConcurrentAsyncCall;
 import org.lastaflute.core.message.MessageManager;
@@ -151,9 +151,9 @@ public class FortressMailDeliveryDepartmentCreator {
 
             protected void requestProductList(Map<String, Object> ulteriorMap) { // mock of remote api mail
                 RemoteHarborBhv harborBhv = ContainerUtil.getComponent(RemoteHarborBhv.class);
-                RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+                RemoteHbLidoProductSearchParam param = new RemoteHbLidoProductSearchParam();
                 param.productName = "S";
-                RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = harborBhv.requestLidoProductList(param);
+                RemoteHbPagingReturn<RemoteHbLidoProductRowReturn> ret = harborBhv.requestLidoProductList(param);
                 logger.debug("RemoteApi Mail: allRecordCount={} ulterior={}", ret.allRecordCount, ulteriorMap);
             }
         };

@@ -1,4 +1,4 @@
-package org.docksidestage.remote.harbor.signin;
+package org.docksidestage.remote.harbor.lido.signin;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -6,7 +6,7 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class RemoteHbSigninParam {
+public class RemoteHbLidoSigninParam {
 
     @Required
     public String account;

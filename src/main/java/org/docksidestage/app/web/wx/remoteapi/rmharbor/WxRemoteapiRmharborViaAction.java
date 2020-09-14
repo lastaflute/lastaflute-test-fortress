@@ -20,7 +20,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
+import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -42,8 +42,8 @@ public class WxRemoteapiRmharborViaAction extends FortressBaseAction {
     //                                                ------
     // http://localhost:8151/fortress/wx/remoteapi/rmharbor/via/mypage/
     @Execute
-    public JsonResponse<List<RemoteHbMypageProductReturn>> mypage() {
-        List<RemoteHbMypageProductReturn> retList = rmharborViaAssist.requestMypage();
+    public JsonResponse<List<RemoteHbLidoMypageProductReturn>> mypage() {
+        List<RemoteHbLidoMypageProductReturn> retList = rmharborViaAssist.requestMypage();
         return asJson(retList);
     }
 }

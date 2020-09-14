@@ -6,8 +6,9 @@ import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.exception.RemoteApiResponseValidationErrorException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
+import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductRowReturn;
+import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductSearchParam;
+import org.docksidestage.remote.harbor.serh.product.RemoteHbSerhProductSearchParam;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.validation.Required;
@@ -24,11 +25,11 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
     //                                                                     for Application
     //                                                                     ===============
     // -----------------------------------------------------
-    //                                           Lido (JSON)
-    //                                           -----------
+    //                                            Lido Style
+    //                                            ----------
     public void test_requestLidoProductList_basic() {
         // ## Arrange ##
-        RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+        RemoteHbLidoProductSearchParam param = new RemoteHbLidoProductSearchParam();
         param.productName = "S";
         StringBuilder sb = new StringBuilder();
         sb.append("{pageSize=4, currentPageNumber=1, allRecordCount=20, allPageCount=5, rows=");
@@ -45,7 +46,7 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
         inject(bhv);
 
         // ## Act ##
-        RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = bhv.requestLidoProductList(param);
+        RemoteHbPagingReturn<RemoteHbLidoProductRowReturn> ret = bhv.requestLidoProductList(param);
 
         // ## Assert ##
         assertEquals(4, ret.pageSize);
@@ -57,7 +58,7 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
 
     public void test_requestLidoProductList_return_validtionError() {
         // ## Arrange ##
-        RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+        RemoteHbLidoProductSearchParam param = new RemoteHbLidoProductSearchParam();
         param.productName = "S";
         StringBuilder sb = new StringBuilder();
         sb.append("{pageSize=4, currentPageNumber=1, allRecordCount=20, allPageCount=5, rows=");
@@ -83,11 +84,11 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
     }
 
     // -----------------------------------------------------
-    //                                           Server HTML
-    //                                           -----------
-    public void test_requestServerHtmlProductList_basic() {
+    //                                      ServerHTML Style
+    //                                      ----------------
+    public void test_requestSerhProductList_basic() {
         // ## Arrange ##
-        RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+        RemoteHbSerhProductSearchParam param = new RemoteHbSerhProductSearchParam();
         param.productName = "S";
         String mockHtml = "<html><body>sea</body></html>";
         MockHttpClient client = MockHttpClient.create(response -> {
@@ -98,7 +99,7 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
         inject(bhv);
 
         // ## Act ##
-        OptionalThing<String> optHtml = bhv.requestServerHtmlProductList(param);
+        OptionalThing<String> optHtml = bhv.requestSerhProductList(param);
 
         // ## Assert ##
         assertTrue(optHtml.isPresent());
@@ -112,7 +113,7 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
     //                                                                       =============
     public void test_framework_validationError_basic() {
         // ## Arrange ##
-        RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+        RemoteHbLidoProductSearchParam param = new RemoteHbLidoProductSearchParam();
         String json = "{cause=VALIDATION_ERROR, errors : [{field=productName, messages=[\"sea land piari\"]}]}";
         MockHttpClient client = MockHttpClient.create(resopnse -> {
             resopnse.asJsonDirectly(json, request -> true).httpStatus(400);

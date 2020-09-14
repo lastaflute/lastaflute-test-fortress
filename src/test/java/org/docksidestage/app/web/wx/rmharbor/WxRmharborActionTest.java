@@ -21,7 +21,7 @@ import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.dbflute.utflute.lastaflute.mock.TestingJsonData;
 import org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction;
 import org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRmharborSigninForm;
-import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
+import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.login.exception.LoginFailureException;
 import org.lastaflute.web.response.JsonResponse;
@@ -45,13 +45,13 @@ public class WxRmharborActionTest extends UnitFortressBasicTestCase {
         inject(action);
 
         // ## Act ##
-        JsonResponse<List<RemoteHbMypageProductReturn>> response = action.mypage();
+        JsonResponse<List<RemoteHbLidoMypageProductReturn>> response = action.lidoMypage();
 
         // ## Assert ##
-        TestingJsonData<List<RemoteHbMypageProductReturn>> jsonData = validateJsonData(response);
-        List<RemoteHbMypageProductReturn> productList = jsonData.getJsonResult();
+        TestingJsonData<List<RemoteHbLidoMypageProductReturn>> jsonData = validateJsonData(response);
+        List<RemoteHbLidoMypageProductReturn> productList = jsonData.getJsonResult();
         assertHasOnlyOneElement(productList);
-        RemoteHbMypageProductReturn product = productList.get(0);
+        RemoteHbLidoMypageProductReturn product = productList.get(0);
         assertEquals("sea", product.productName);
         assertEquals(100, product.regularPrice);
     }
@@ -73,7 +73,7 @@ public class WxRmharborActionTest extends UnitFortressBasicTestCase {
 
         // ## Act ##
         // ## Assert ##
-        action.signin(form); // expects no exception
+        action.lidoSignin(form); // expects no exception
     }
 
     public void test_signin_loginFailure() {
@@ -91,6 +91,6 @@ public class WxRmharborActionTest extends UnitFortressBasicTestCase {
 
         // ## Act ##
         // ## Assert ##
-        assertException(LoginFailureException.class, () -> action.signin(form));
+        assertException(LoginFailureException.class, () -> action.lidoSignin(form));
     }
 }

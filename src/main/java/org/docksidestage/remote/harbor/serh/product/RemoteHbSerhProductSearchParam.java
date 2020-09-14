@@ -13,14 +13,14 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.harbor.product;
+package org.docksidestage.remote.harbor.serh.product;
 
 import org.docksidestage.dbflute.allcommon.CDef;
 
 /**
  * @author jflute
  */
-public class RemoteHbProductSearchParam {
+public class RemoteHbSerhProductSearchParam {
 
     // for remote server validation
     //@Length(max = 10)

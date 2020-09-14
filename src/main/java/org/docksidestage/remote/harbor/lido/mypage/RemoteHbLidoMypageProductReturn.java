@@ -1,4 +1,4 @@
-package org.docksidestage.remote.harbor.mypage;
+package org.docksidestage.remote.harbor.lido.mypage;
 
 import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.validation.Required;
@@ -6,14 +6,14 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class RemoteHbMypageProductReturn {
+public class RemoteHbLidoMypageProductReturn {
 
     @Required
     public final String productName;
     @Required
     public final Integer regularPrice;
 
-    public RemoteHbMypageProductReturn(Product product) {
+    public RemoteHbLidoMypageProductReturn(Product product) {
         this.productName = product.getProductName();
         this.regularPrice = product.getRegularPrice();
     }

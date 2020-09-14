@@ -25,10 +25,12 @@ import org.dbflute.remoteapi.receiver.FlBaseReceiver;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult.RemoteUnifiedFailureType;
-import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
-import org.docksidestage.remote.harbor.signin.RemoteHbSigninParam;
+import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
+import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductRowReturn;
+import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductSearchParam;
+import org.docksidestage.remote.harbor.lido.signin.RemoteHbLidoSigninParam;
+import org.docksidestage.remote.harbor.serh.product.RemoteHbSerhProductSearchParam;
+import org.docksidestage.remote.harbor.serh.signin.RemoteHbSerhSigninParam;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.message.UserMessage;
 import org.lastaflute.core.message.UserMessages;
@@ -36,6 +38,7 @@ import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.remoteapi.LastaRemoteBehavior;
 import org.lastaflute.remoteapi.mapping.LaVacantMappingPolicy;
 import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
+import org.lastaflute.remoteapi.sender.body.LaFormSender;
 import org.lastaflute.remoteapi.sender.body.LaJsonSender;
 import org.lastaflute.remoteapi.sender.query.LaQuerySender;
 import org.lastaflute.web.servlet.request.RequestManager;
@@ -91,30 +94,30 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     //                                                                             Execute
     //                                                                             =======
     // -----------------------------------------------------
-    //                                             Lido JSON
-    //                                             ---------
+    //                                            Lido Style
+    //                                            ----------
     // test of request body and void return as POST
-    public void requestListAuthSignin(RemoteHbSigninParam param) {
+    public void requestLidoAuthSignin(RemoteHbLidoSigninParam param) {
         doRequestPost(void.class, "/lido/auth/signin", noMoreUrl(), param, rule -> {});
     }
 
     // test of direct List return and no query parameter as GET
-    public List<RemoteHbMypageProductReturn> requestLidoMypage() {
-        return doRequestGet(new ParameterizedRef<List<RemoteHbMypageProductReturn>>() {
+    public List<RemoteHbLidoMypageProductReturn> requestLidoMypage() {
+        return doRequestGet(new ParameterizedRef<List<RemoteHbLidoMypageProductReturn>>() {
         }.getType(), "/lido/mypage", noMoreUrl(), noQuery(), rule -> {});
     }
 
     // test of moreUrl() and generics return and as POST
-    public RemoteHbPagingReturn<RemoteHbProductRowReturn> requestLidoProductList(RemoteHbProductSearchParam param) {
-        return doRequestPost(new ParameterizedRef<RemoteHbPagingReturn<RemoteHbProductRowReturn>>() {
+    public RemoteHbPagingReturn<RemoteHbLidoProductRowReturn> requestLidoProductList(RemoteHbLidoProductSearchParam param) {
+        return doRequestPost(new ParameterizedRef<RemoteHbPagingReturn<RemoteHbLidoProductRowReturn>>() {
         }.getType(), "/lido/product/list", moreUrl(1), param, rule -> {});
     }
 
     // -----------------------------------------------------
-    //                                           Server HTML
-    //                                           -----------
+    //                                      ServerHTML Style
+    //                                      ----------------
     // test of query parameter and overriding rule as GET
-    public OptionalThing<String> requestServerHtmlProductList(RemoteHbProductSearchParam param) { // null allowed
+    public OptionalThing<String> requestSerhProductList(RemoteHbSerhProductSearchParam param) {
         return doRequestGet(new ParameterizedRef<OptionalThing<String>>() {
         }.getType(), "/product/list", moreUrl(1), query(param), rule -> {
             rule.receiveBodyBy(new MyHtmlDirectlyReceiver());
@@ -134,5 +137,12 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
         protected String getSendReceiveLogResponseBodyType() {
             return "html";
         }
+    }
+
+    // test of form parameter, which has bean type property in form
+    public void requestSerhSignin(RemoteHbSerhSigninParam param) {
+        doRequestPost(void.class, "/signin", noMoreUrl(), param, rule -> {
+            rule.sendBodyBy(new LaFormSender(new LaVacantMappingPolicy()));
+        });
     }
 }

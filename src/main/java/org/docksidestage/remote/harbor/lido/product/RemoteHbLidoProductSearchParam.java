@@ -13,24 +13,22 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.remoteapi.rmharbor;
+package org.docksidestage.remote.harbor.lido.product;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.docksidestage.remote.harbor.RemoteHarborBhv;
-import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
+import org.docksidestage.dbflute.allcommon.CDef;
 
 /**
  * @author jflute
  */
-public class WxRmharborViaAssist {
+public class RemoteHbLidoProductSearchParam {
 
-    @Resource
-    private RemoteHarborBhv harborBhv;
+    // for remote server validation
+    //@Length(max = 10)
+    public String productName;
 
-    public List<RemoteHbLidoMypageProductReturn> requestMypage() {
-        return harborBhv.requestLidoMypage();
-    }
+    public CDef.ProductStatus productStatus;
+
+    // me, too
+    //@Length(max = 5)
+    public String purchaseMemberName;
 }

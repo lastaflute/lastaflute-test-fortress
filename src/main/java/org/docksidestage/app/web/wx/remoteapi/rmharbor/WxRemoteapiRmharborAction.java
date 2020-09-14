@@ -30,10 +30,13 @@ import org.docksidestage.remote.harbor.RemoteHarborBhv;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult.RemoteUnifiedFailureType;
-import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductRowReturn;
-import org.docksidestage.remote.harbor.product.RemoteHbProductSearchParam;
-import org.docksidestage.remote.harbor.signin.RemoteHbSigninParam;
+import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
+import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductRowReturn;
+import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductSearchParam;
+import org.docksidestage.remote.harbor.lido.signin.RemoteHbLidoSigninParam;
+import org.docksidestage.remote.harbor.serh.signin.RemoteHbSerhSigninParam;
+import org.docksidestage.remote.harbor.serh.signin.RemoteHbSerhSigninParam.TestingFormPropHasToPart;
+import org.docksidestage.remote.harbor.serh.signin.RemoteHbSerhSigninParam.TestingFormPropNoToPart;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.login.exception.LoginFailureException;
@@ -54,31 +57,21 @@ public class WxRemoteapiRmharborAction extends FortressBaseAction {
     private PagingAssist pagingAssist;
 
     // ===================================================================================
-    //                                                                             Execute
-    //                                                                             =======
+    //                                                                        Lido Execute
+    //                                                                        ============
     // -----------------------------------------------------
-    //                                                Simple
-    //                                                ------
-    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/mypage/
-    @Execute
-    public JsonResponse<List<RemoteHbMypageProductReturn>> mypage() {
-        List<RemoteHbMypageProductReturn> retList = harborBhv.requestLidoMypage();
-        return asJson(retList);
-    }
-
-    // -----------------------------------------------------
-    //                                                Signin
-    //                                                ------
-    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/signin/?account=Pixy&password=sea
-    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/signin/?account=Pixy&password=land
-    @Execute
-    public JsonResponse<Void> signin(WxRmharborSigninForm form) {
+    //                                           Lido Signin
+    //                                           -----------
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/lido/signin/?account=Pixy&password=sea
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/lido/signin/?account=Pixy&password=land
+    @Execute(urlPattern = "@word/@word")
+    public JsonResponse<Void> lidoSignin(WxRmharborSigninForm form) {
         validateApi(form, messages -> {});
-        RemoteHbSigninParam param = new RemoteHbSigninParam();
+        RemoteHbLidoSigninParam param = new RemoteHbLidoSigninParam();
         param.account = form.account;
         param.password = form.password;
         try {
-            harborBhv.requestListAuthSignin(param); // actually, embed this to login assist
+            harborBhv.requestLidoAuthSignin(param); // actually, embed this to login assist
         } catch (RemoteApiHttpClientErrorException e) {
             if (e.getHttpStatus() == 400) {
                 RemoteHbUnifiedFailureResult result = (RemoteHbUnifiedFailureResult) e.getFailureResponse().get();
@@ -91,16 +84,29 @@ public class WxRemoteapiRmharborAction extends FortressBaseAction {
     }
 
     // -----------------------------------------------------
-    //                                              Products
-    //                                              --------
-    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/products/?productName=S
-    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/products/?productName=SeaLandPiariBonvo
-    @Execute
-    public HtmlResponse products(WxRmharborProductSearchForm form) { // can translate validation error automatically
+    //                                           Lido MyPage
+    //                                           -----------
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/lido/mypage/
+    @Execute(urlPattern = "@word/@word")
+    public JsonResponse<List<RemoteHbLidoMypageProductReturn>> lidoMypage() {
+        List<RemoteHbLidoMypageProductReturn> retList = harborBhv.requestLidoMypage();
+        return asJson(retList);
+    }
+
+    // ===================================================================================
+    //                                                                  ServerHTML Execute
+    //                                                                  ==================
+    // -----------------------------------------------------
+    //                                    ServerHTML Product
+    //                                    ------------------
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/serh/product/?productName=S
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/serh/product/?productName=SeaLandPiariBonvo
+    @Execute(urlPattern = "@word/@word")
+    public HtmlResponse serhProduct(WxRmharborProductSearchForm form) { // can translate validation error automatically
         validate(form, messages -> {}, () -> {
             return asHtml(path_Product_ProductListHtml);
         });
-        RemoteHbPagingReturn<RemoteHbProductRowReturn> ret = requestProductList(form);
+        RemoteHbPagingReturn<RemoteHbLidoProductRowReturn> ret = requestProductList(form);
         PagingResultBean<Product> page = mappingToPage(ret);
         List<WxRmharborProductSearchRowBean> beans = ret.rows.stream().map(row -> {
             return mappingToRowBean(row);
@@ -111,13 +117,13 @@ public class WxRemoteapiRmharborAction extends FortressBaseAction {
         });
     }
 
-    private RemoteHbPagingReturn<RemoteHbProductRowReturn> requestProductList(WxRmharborProductSearchForm form) {
-        RemoteHbProductSearchParam param = new RemoteHbProductSearchParam();
+    private RemoteHbPagingReturn<RemoteHbLidoProductRowReturn> requestProductList(WxRmharborProductSearchForm form) {
+        RemoteHbLidoProductSearchParam param = new RemoteHbLidoProductSearchParam();
         param.productName = form.productName;
         return harborBhv.requestLidoProductList(param);
     }
 
-    private WxRmharborProductSearchRowBean mappingToRowBean(RemoteHbProductRowReturn row) {
+    private WxRmharborProductSearchRowBean mappingToRowBean(RemoteHbLidoProductRowReturn row) {
         WxRmharborProductSearchRowBean bean = new WxRmharborProductSearchRowBean();
         bean.productId = row.productId;
         bean.productName = row.productName;
@@ -127,12 +133,36 @@ public class WxRemoteapiRmharborAction extends FortressBaseAction {
         return bean;
     }
 
-    private PagingResultBean<Product> mappingToPage(RemoteHbPagingReturn<RemoteHbProductRowReturn> ret) {
+    private PagingResultBean<Product> mappingToPage(RemoteHbPagingReturn<RemoteHbLidoProductRowReturn> ret) {
         PagingResultBean<Product> page = new PagingResultBean<Product>(); // dummy generics
         page.setAllRecordCount(ret.allRecordCount);
         page.setCurrentPageNumber(ret.currentPageNumber);
         page.setPageSize(ret.pageSize);
         page.add(new Product()); // dummy data
         return page;
+    }
+
+    // -----------------------------------------------------
+    //                                     ServerHTML Signin
+    //                                     -----------------
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/serh/signin/?account=Pixy&password=sea
+    // http://localhost:8151/fortress/wx/remoteapi/rmharbor/serh/signin/?account=Pixy&password=land
+    @Execute(urlPattern = "@word/@word")
+    public JsonResponse<Void> serhSignin(WxRmharborSigninForm form) {
+        validateApi(form, messages -> {});
+        RemoteHbSerhSigninParam param = new RemoteHbSerhSigninParam();
+        param.account = form.account;
+        param.password = form.password;
+
+        TestingFormPropHasToPart hasToPart = new TestingFormPropHasToPart();
+        hasToPart.hangar = "mystic";
+        param.testingFormPropHasTo = hasToPart;
+
+        TestingFormPropNoToPart noToPart = new TestingFormPropNoToPart();
+        noToPart.showbase = "oneman";
+        param.testingFormPropNoTo = noToPart;
+
+        harborBhv.requestSerhSignin(param); // actually, embed this to login assist
+        return JsonResponse.asEmptyBody();
     }
 }

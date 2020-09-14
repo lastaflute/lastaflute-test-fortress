@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.harbor.product;
+package org.docksidestage.remote.harbor.lido.product;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * @author s.tadokoro
  * @author jflute
  */
-public class RemoteHbProductRowReturn {
+public class RemoteHbLidoProductRowReturn {
 
     @Required
     public Integer productId;
