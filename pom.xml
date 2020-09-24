@@ -471,6 +471,12 @@
 			<artifactId>utflute-lastaflute</artifactId>
 			<version>${utflute.version}</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.lastaflute.doc</groupId>
+					<artifactId>lasta-doc</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 </project>

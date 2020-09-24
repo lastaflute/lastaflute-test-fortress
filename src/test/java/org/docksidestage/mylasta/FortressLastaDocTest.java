@@ -18,6 +18,9 @@ package org.docksidestage.mylasta;
 import org.docksidestage.FortressTomcatBoot;
 import org.docksidestage.app.web.SwaggerAction;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+import org.lastaflute.doc.DocumentGenerator;
+import org.lastaflute.doc.SwaggerGenerator;
+import org.lastaflute.doc.web.LaActionSwaggerable;
 
 /**
  * @author jflute
@@ -33,7 +36,19 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         saveLastaDocMeta();
     }
 
+    @Override
+    protected void saveLastaDocMeta() {
+        new DocumentGenerator().saveLastaDocMeta();
+    }
+
     public void test_swaggerJson() throws Exception {
         saveSwaggerMeta(new SwaggerAction());
+    }
+
+    @Override
+    protected void saveSwaggerMeta(LaActionSwaggerable swaggerable) {
+        assertNotNull(swaggerable);
+        inject(swaggerable);
+        new SwaggerGenerator().saveSwaggerMeta(swaggerable);
     }
 }
