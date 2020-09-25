@@ -46,7 +46,17 @@ public class FortressActionDefTest extends UnitFortressBasicTestCase {
     }
 
     public void test_webPackageNinjaReference() throws Exception {
-        policeStoryOfJavaClassChase(new WebPackageNinjaReferencePolice());
+        policeStoryOfJavaClassChase(new WebPackageNinjaReferencePolice() {
+            // test of ninja logic customization
+            @Override
+            protected boolean existsNinjaReference(Class<?> clazz, String myRearName, String myPackage, String myRelativePackage,
+                    String rearImported) {
+                if (rearImported.startsWith(myPackage + ".") && rearImported.contains(".vip")) { // non-perfect simple logic
+                    return false;
+                }
+                return super.existsNinjaReference(clazz, myRearName, myPackage, myRelativePackage, rearImported);
+            }
+        });
     }
 
     public void test_injectedResourceDefinition() throws Exception {
