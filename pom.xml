@@ -348,11 +348,21 @@
 			<artifactId>lasta-di</artifactId>
 			<version>${lasta.di.version}</version>
 		</dependency>
-		<!-- test of using sai
+		<!-- test of sai
 		<dependency>
 			<groupId>org.codelibs</groupId>
 			<artifactId>sai</artifactId>
 			<version>0.2.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.ow2.asm</groupId>
+					<artifactId>asm-commons</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.ow2.asm</groupId>
+					<artifactId>asm-util</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		 -->
 		<dependency>
