@@ -71,7 +71,8 @@ public class RemoteWxRemogenTrickySelfrefReturn {
          */
         public static class ParkingAreaPart {
 
-            /** The property of areaName. (NullAllowed) */
+            /** The property of areaName. */
+            @Required
             public String areaName;
 
             /** The property of internalArea. (NullAllowed) */

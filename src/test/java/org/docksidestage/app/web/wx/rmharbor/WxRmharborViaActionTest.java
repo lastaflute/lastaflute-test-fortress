@@ -22,8 +22,9 @@ import javax.annotation.Resource;
 import org.dbflute.remoteapi.exception.RemoteApiIOException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.dbflute.utflute.lastaflute.mock.TestingJsonData;
+import org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborViaAction;
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
-import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
+import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.servlet.request.RequestManager;
@@ -44,17 +45,17 @@ public class WxRmharborViaActionTest extends UnitFortressBasicTestCase {
         });
         registerMock(client);
         registerMock(inject(new RemoteHarborBhv(requestManager))); // avoid no reach
-        WxRmharborViaAction action = new WxRmharborViaAction();
+        WxRemoteapiRmharborViaAction action = new WxRemoteapiRmharborViaAction();
         inject(action);
 
         // ## Act ##
-        JsonResponse<List<RemoteHbMypageProductReturn>> response = action.mypage();
+        JsonResponse<List<RemoteHbLidoMypageProductReturn>> response = action.mypage();
 
         // ## Assert ##
-        TestingJsonData<List<RemoteHbMypageProductReturn>> jsonData = validateJsonData(response);
-        List<RemoteHbMypageProductReturn> productList = jsonData.getJsonResult();
+        TestingJsonData<List<RemoteHbLidoMypageProductReturn>> jsonData = validateJsonData(response);
+        List<RemoteHbLidoMypageProductReturn> productList = jsonData.getJsonResult();
         assertHasOnlyOneElement(productList);
-        RemoteHbMypageProductReturn product = productList.get(0);
+        RemoteHbLidoMypageProductReturn product = productList.get(0);
         assertEquals("sea", product.productName);
         assertEquals(100, product.regularPrice);
     }
@@ -66,7 +67,7 @@ public class WxRmharborViaActionTest extends UnitFortressBasicTestCase {
             resopnse.asJsonDirectly(json, request -> request.getUrl().contains("mypage"));
         });
         registerMock(client);
-        WxRmharborViaAction action = new WxRmharborViaAction();
+        WxRemoteapiRmharborViaAction action = new WxRemoteapiRmharborViaAction();
         inject(action);
 
         // ## Act ##

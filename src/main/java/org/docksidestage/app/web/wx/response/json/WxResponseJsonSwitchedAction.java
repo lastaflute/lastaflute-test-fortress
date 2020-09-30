@@ -41,7 +41,7 @@ public class WxResponseJsonSwitchedAction extends FortressBaseAction {
     @Execute
     public JsonResponse<MyBasicJsonResult> engine() {
         return asJson(createResult()).switchJsonEngine(() -> {
-            return ruledJsonEngineKeeper.provideTrialJsonEngine();
+            return ruledJsonEngineKeeper.provideSeaJsonEngine();
         });
     }
 

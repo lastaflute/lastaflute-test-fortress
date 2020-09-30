@@ -1115,6 +1115,128 @@ public interface CDef extends Classification {
         @Override public String toString() { return code(); }
     }
 
+    /**
+     * test of confusing name for doc engine
+     */
+    public enum WhiteConfusingFormatBodying implements CDef {
+        /** sea */
+        Sea("SEA", "sea", emptyStrings())
+        ,
+        /** land */
+        Land("LAN", "land", emptyStrings())
+        ;
+        private static final Map<String, WhiteConfusingFormatBodying> _codeClsMap = new HashMap<String, WhiteConfusingFormatBodying>();
+        private static final Map<String, WhiteConfusingFormatBodying> _nameClsMap = new HashMap<String, WhiteConfusingFormatBodying>();
+        static {
+            for (WhiteConfusingFormatBodying value : values()) {
+                _codeClsMap.put(value.code().toLowerCase(), value);
+                for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
+                _nameClsMap.put(value.name().toLowerCase(), value);
+            }
+        }
+        private String _code; private String _alias; private Set<String> _sisterSet;
+        private WhiteConfusingFormatBodying(String code, String alias, String[] sisters)
+        { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
+        public String code() { return _code; } public String alias() { return _alias; }
+        public Set<String> sisterSet() { return _sisterSet; }
+        public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
+        public ClassificationMeta meta() { return CDef.DefMeta.WhiteConfusingFormatBodying; }
+
+        public boolean inGroup(String groupName) {
+            return false;
+        }
+
+        /**
+         * Get the classification of the code. (CaseInsensitive)
+         * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
+         * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
+         */
+        public static OptionalThing<WhiteConfusingFormatBodying> of(Object code) {
+            if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
+            if (code instanceof WhiteConfusingFormatBodying) { return OptionalThing.of((WhiteConfusingFormatBodying)code); }
+            if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
+            return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
+                throw new ClassificationNotFoundException("Unknown classification code: " + code);
+            });
+        }
+
+        /**
+         * Find the classification by the name. (CaseInsensitive)
+         * @param name The string of name, which is case-insensitive. (NotNull)
+         * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
+         */
+        public static OptionalThing<WhiteConfusingFormatBodying> byName(String name) {
+            if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
+            return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
+                throw new ClassificationNotFoundException("Unknown classification name: " + name);
+            });
+        }
+
+        /**
+         * <span style="color: #AD4747; font-size: 120%">Old style so use of(code).</span> <br>
+         * Get the classification by the code. (CaseInsensitive)
+         * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
+         * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
+         */
+        public static WhiteConfusingFormatBodying codeOf(Object code) {
+            if (code == null) { return null; }
+            if (code instanceof WhiteConfusingFormatBodying) { return (WhiteConfusingFormatBodying)code; }
+            return _codeClsMap.get(code.toString().toLowerCase());
+        }
+
+        /**
+         * <span style="color: #AD4747; font-size: 120%">Old style so use byName(name).</span> <br>
+         * Get the classification by the name (also called 'value' in ENUM world).
+         * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
+         * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
+         */
+        public static WhiteConfusingFormatBodying nameOf(String name) {
+            if (name == null) { return null; }
+            try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
+        }
+
+        /**
+         * Get the list of all classification elements. (returns new copied list)
+         * @return The snapshot list of all classification elements. (NotNull)
+         */
+        public static List<WhiteConfusingFormatBodying> listAll() {
+            return new ArrayList<WhiteConfusingFormatBodying>(Arrays.asList(values()));
+        }
+
+        /**
+         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * @param groupName The string of group name, which is case-insensitive. (NotNull)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
+         */
+        public static List<WhiteConfusingFormatBodying> listByGroup(String groupName) {
+            if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
+            throw new ClassificationNotFoundException("Unknown classification group: WhiteConfusingFormatBodying." + groupName);
+        }
+
+        /**
+         * Get the list of classification elements corresponding to the specified codes. (returns new copied list) <br>
+         * @param codeList The list of plain code, which is case-insensitive. (NotNull)
+         * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
+         */
+        public static List<WhiteConfusingFormatBodying> listOf(Collection<String> codeList) {
+            if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
+            List<WhiteConfusingFormatBodying> clsList = new ArrayList<WhiteConfusingFormatBodying>(codeList.size());
+            for (String code : codeList) { clsList.add(of(code).get()); }
+            return clsList;
+        }
+
+        /**
+         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
+         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
+         */
+        public static List<WhiteConfusingFormatBodying> groupOf(String groupName) {
+            return new ArrayList<WhiteConfusingFormatBodying>(4);
+        }
+
+        @Override public String toString() { return code(); }
+    }
+
     public enum DefMeta implements ClassificationMeta {
         /** general boolean classification for every flg-column */
         Flg
@@ -1139,6 +1261,9 @@ public interface CDef extends Classification {
         ,
         /** method of payment for purchase */
         PaymentMethod
+        ,
+        /** test of confusing name for doc engine */
+        WhiteConfusingFormatBodying
         ;
         public String classificationName() {
             return name(); // same as definition name
@@ -1153,6 +1278,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return CDef.ProductCategory.of(code); }
             if (ProductStatus.name().equals(name())) { return CDef.ProductStatus.of(code); }
             if (PaymentMethod.name().equals(name())) { return CDef.PaymentMethod.of(code); }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return CDef.WhiteConfusingFormatBodying.of(code); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -1165,10 +1291,11 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return CDef.ProductCategory.byName(name); }
             if (ProductStatus.name().equals(name())) { return CDef.ProductStatus.byName(name); }
             if (PaymentMethod.name().equals(name())) { return CDef.PaymentMethod.byName(name); }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return CDef.WhiteConfusingFormatBodying.byName(name); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
-        public Classification codeOf(Object code) { // null if not found, old style so use classificationOf(code)
+        public Classification codeOf(Object code) { // null if not found, old style so use of(code)
             if (Flg.name().equals(name())) { return CDef.Flg.codeOf(code); }
             if (MemberStatus.name().equals(name())) { return CDef.MemberStatus.codeOf(code); }
             if (ServiceRank.name().equals(name())) { return CDef.ServiceRank.codeOf(code); }
@@ -1177,10 +1304,11 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return CDef.ProductCategory.codeOf(code); }
             if (ProductStatus.name().equals(name())) { return CDef.ProductStatus.codeOf(code); }
             if (PaymentMethod.name().equals(name())) { return CDef.PaymentMethod.codeOf(code); }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return CDef.WhiteConfusingFormatBodying.codeOf(code); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
-        public Classification nameOf(String name) { // null if not found, old style so use classificationByName(name)
+        public Classification nameOf(String name) { // null if not found, old style so use byName(name)
             if (Flg.name().equals(name())) { return CDef.Flg.valueOf(name); }
             if (MemberStatus.name().equals(name())) { return CDef.MemberStatus.valueOf(name); }
             if (ServiceRank.name().equals(name())) { return CDef.ServiceRank.valueOf(name); }
@@ -1189,6 +1317,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return CDef.ProductCategory.valueOf(name); }
             if (ProductStatus.name().equals(name())) { return CDef.ProductStatus.valueOf(name); }
             if (PaymentMethod.name().equals(name())) { return CDef.PaymentMethod.valueOf(name); }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return CDef.WhiteConfusingFormatBodying.valueOf(name); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -1201,6 +1330,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return toClsList(CDef.ProductCategory.listAll()); }
             if (ProductStatus.name().equals(name())) { return toClsList(CDef.ProductStatus.listAll()); }
             if (PaymentMethod.name().equals(name())) { return toClsList(CDef.PaymentMethod.listAll()); }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return toClsList(CDef.WhiteConfusingFormatBodying.listAll()); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -1213,6 +1343,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return toClsList(CDef.ProductCategory.listByGroup(groupName)); }
             if (ProductStatus.name().equals(name())) { return toClsList(CDef.ProductStatus.listByGroup(groupName)); }
             if (PaymentMethod.name().equals(name())) { return toClsList(CDef.PaymentMethod.listByGroup(groupName)); }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return toClsList(CDef.WhiteConfusingFormatBodying.listByGroup(groupName)); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -1225,6 +1356,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return toClsList(CDef.ProductCategory.listOf(codeList)); }
             if (ProductStatus.name().equals(name())) { return toClsList(CDef.ProductStatus.listOf(codeList)); }
             if (PaymentMethod.name().equals(name())) { return toClsList(CDef.PaymentMethod.listOf(codeList)); }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return toClsList(CDef.WhiteConfusingFormatBodying.listOf(codeList)); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -1237,6 +1369,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return toClsList(CDef.ProductCategory.groupOf(groupName)); }
             if (ProductStatus.name().equals(name())) { return toClsList(CDef.ProductStatus.groupOf(groupName)); }
             if (PaymentMethod.name().equals(name())) { return toClsList(CDef.PaymentMethod.groupOf(groupName)); }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return toClsList(CDef.WhiteConfusingFormatBodying.groupOf(groupName)); }
             throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
         }
 
@@ -1254,6 +1387,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return ClassificationCodeType.String; }
             if (ProductStatus.name().equals(name())) { return ClassificationCodeType.String; }
             if (PaymentMethod.name().equals(name())) { return ClassificationCodeType.String; }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return ClassificationCodeType.String; }
             return ClassificationCodeType.String; // as default
         }
 
@@ -1266,6 +1400,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equals(name())) { return ClassificationUndefinedHandlingType.EXCEPTION; }
             if (ProductStatus.name().equals(name())) { return ClassificationUndefinedHandlingType.EXCEPTION; }
             if (PaymentMethod.name().equals(name())) { return ClassificationUndefinedHandlingType.EXCEPTION; }
+            if (WhiteConfusingFormatBodying.name().equals(name())) { return ClassificationUndefinedHandlingType.EXCEPTION; }
             return ClassificationUndefinedHandlingType.LOGGING; // as default
         }
 
@@ -1279,6 +1414,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(CDef.DefMeta.ProductCategory); }
             if (ProductStatus.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(CDef.DefMeta.ProductStatus); }
             if (PaymentMethod.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(CDef.DefMeta.PaymentMethod); }
+            if (WhiteConfusingFormatBodying.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(CDef.DefMeta.WhiteConfusingFormatBodying); }
             return OptionalThing.ofNullable(null, () -> {
                 throw new ClassificationNotFoundException("Unknown classification: " + classificationName);
             });
@@ -1294,6 +1430,7 @@ public interface CDef extends Classification {
             if (ProductCategory.name().equalsIgnoreCase(classificationName)) { return CDef.DefMeta.ProductCategory; }
             if (ProductStatus.name().equalsIgnoreCase(classificationName)) { return CDef.DefMeta.ProductStatus; }
             if (PaymentMethod.name().equalsIgnoreCase(classificationName)) { return CDef.DefMeta.PaymentMethod; }
+            if (WhiteConfusingFormatBodying.name().equalsIgnoreCase(classificationName)) { return CDef.DefMeta.WhiteConfusingFormatBodying; }
             throw new IllegalStateException("Unknown classification: " + classificationName);
         }
 

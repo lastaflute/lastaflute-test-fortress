@@ -52,7 +52,8 @@ public class RemoteWxRemogenSuffixAllsuffixReturn {
          */
         public static class ShowStagePart {
 
-            /** The property of stageName. (NullAllowed) */
+            /** The property of stageName. */
+            @Required
             public String stageName;
         }
     }

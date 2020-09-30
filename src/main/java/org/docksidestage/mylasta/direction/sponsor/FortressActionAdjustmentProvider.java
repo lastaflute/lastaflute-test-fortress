@@ -26,6 +26,7 @@ import javax.validation.valueextraction.ValueExtractor;
 
 import org.dbflute.util.DfTypeUtil;
 import org.dbflute.util.Srl;
+import org.docksidestage.bizfw.json.RuledJsonEngineKeeper;
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
 import org.eclipse.collections.api.list.ImmutableList;
@@ -34,6 +35,7 @@ import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.hibernate.validator.internal.cfg.context.DefaultConstraintMapping;
 import org.lastaflute.core.message.UserMessages;
+import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.web.exception.Forced404NotFoundException;
 import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
@@ -135,25 +137,54 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                          Form Mapping
     //                                          ------------
-    protected static final FormMappingOption formMappingOption = new FormMappingOption().filterSimpleTextParameter((parameter, meta) -> {
-        return parameter.trim();
-    }).yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
-        return Lists.immutable.ofAll(mutable);
-    })).yourCollection(new FormYourCollectionResource(MutableList.class, mutable -> {
-        return Lists.mutable.ofAll(mutable);
-    }));
+    protected static final FormMappingOption formMappingOption;
+    static {
+        FormMappingOption option = new FormMappingOption();
+
+        option.filterSimpleTextParameter((parameter, meta) -> {
+            return parameter.trim();
+        });
+
+        option.yourCollection(new FormYourCollectionResource(ImmutableList.class, mutable -> {
+            return Lists.immutable.ofAll(mutable);
+        }));
+        option.yourCollection(new FormYourCollectionResource(MutableList.class, mutable -> {
+            return Lists.mutable.ofAll(mutable);
+        }));
+
+        RuledJsonEngineKeeper jsonEngineKeeper = ContainerUtil.getComponent(RuledJsonEngineKeeper.class);
+        option.parseJsonBy(jsonEngineKeeper.prepareActionJsonEngine());
+        formMappingOption = option;
+    }
 
     // -----------------------------------------------------
     //                                       Action Response
     //                                       ---------------
     protected static final ResponseReflectingOption responseReflectingOption;
     static {
-        // use this when you test validation as warning
-        //responseReflectingOption = new ResponseReflectingOption().warnJsonBeanValidationError();
-        // use this when you test empty body treated as empty object
-        //responseReflectingOption = new ResponseReflectingOption().treatJsonEmptyBodyAsEmptyObject();
-        responseReflectingOption = new ResponseReflectingOption();
+        ResponseReflectingOption option = new ResponseReflectingOption();
+
+        // comment out if you test validation as warning
+        //option.warnJsonBeanValidationError();
+        // comment out if you test empty body treated as empty object
+        //option.treatJsonEmptyBodyAsEmptyObject();
+
+        RuledJsonEngineKeeper jsonEngineKeeper = ContainerUtil.getComponent(RuledJsonEngineKeeper.class);
+        option.writeJsonBy(jsonEngineKeeper.prepareActionJsonEngine());
+        responseReflectingOption = option;
     }
+
+    // -----------------------------------------------------
+    //                                         InOut Logging
+    //                                         -------------
+    // example:
+    //protected static final InOutLogOption inOutLogOption;
+    //static {
+    //    final InOutLogOption option = new InOutLogOption();
+    //    option.showRequestHeader(Arrays.asList("Accept-Encoding", "Accept-Language"));
+    //    option.showResponseHeader(Arrays.asList("DaTe", "detarame", "Cache-Control"));
+    //    inOutLogOption = option;
+    //}
 
     // ===================================================================================
     //                                                                             Routing
@@ -241,7 +272,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // example:
     //@Override
     //public InOutLogOption adjustInOutLogging() {
-    //    return new InOutLogOption().async();
+    //    return inOutLogOption;
     //}
 
     // ===================================================================================

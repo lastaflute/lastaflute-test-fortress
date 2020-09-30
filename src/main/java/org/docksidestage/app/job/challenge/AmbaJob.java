@@ -20,7 +20,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
-import org.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn;
+import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
 import org.lastaflute.job.LaJob;
 import org.lastaflute.job.LaJobRuntime;
 
@@ -37,7 +37,7 @@ public class AmbaJob implements LaJob {
     //                                                                             =======
     @Override
     public void run(LaJobRuntime runtime) { // long job!
-        List<RemoteHbMypageProductReturn> retList = harborBhv.requestMypage();
+        List<RemoteHbLidoMypageProductReturn> retList = harborBhv.requestLidoMypage();
         runtime.showEndTitleRoll(data -> {
             data.register("retList", retList);
         });

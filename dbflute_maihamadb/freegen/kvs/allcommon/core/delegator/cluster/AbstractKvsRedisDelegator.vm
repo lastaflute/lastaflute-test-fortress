@@ -1,0 +1,331 @@
+##
+## Copyright 2014-2018 the original author or authors.
+##
+## Licensed under the Apache License, Version 2.0 (the "License");
+## you may not use this file except in compliance with the License.
+## You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing, software
+## distributed under the License is distributed on an "AS IS" BASIS,
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+## either express or implied. See the License for the specific language
+## governing permissions and limitations under the License.
+##
+${manager.allClassCopyright}package org.dbflute.kvs.core.delegator;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+
+import org.dbflute.helper.HandyDate;
+import org.dbflute.util.DfCollectionUtil;
+
+import redis.clients.jedis.JedisCluster;
+
+/**
+ * @author FreeGen
+ */
+public abstract class AbstractKvsRedisDelegator implements KvsDelegator {
+
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    private KvsRedisPool kvsRedisPool;
+
+    // ===================================================================================
+    //                                                                                Set
+    //                                                                               =====
+    public void setKvsRedisPool(KvsRedisPool kvsRedisPool) {
+        this.kvsRedisPool = kvsRedisPool;
+    }
+
+    // ===================================================================================
+    //                                                                                Get
+    //                                                                               =====
+    // -----------------------------------------------------
+    //                                                String
+    //                                                ------
+    @Override
+    public String findString(String key) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        return jedis.get(key);
+    }
+
+    @Override
+    public List<String> findMultiString(List<String> keyList) {
+        if (null == keyList || keyList.isEmpty()) {
+            return new ArrayList<String>();
+        }
+        JedisCluster jedis = kvsRedisPool.getResource();
+        List<String> list = jedis.mget(keyList.toArray(new String[] {}));
+        return list;
+    }
+
+    // -----------------------------------------------------
+    //                                                  List
+    //                                                  ----
+    @Override
+    public List<String> findList(String key) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        List<String> list = jedis.lrange(key, 0, -1);
+        return list.stream().distinct().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<List<String>> findMultiList(List<String> keyList) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        return keyList.stream().map(key -> jedis.lrange(key, 0, -1)).collect(Collectors.toList());
+    }
+
+    // -----------------------------------------------------
+    //                                                  Hash
+    //                                                  ----
+    @Override
+    public Map<String, String> findHash(String key) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        return jedis.hgetAll(key);
+    }
+
+    @Override
+    public List<String> findHash(String key, Set<String> fieldList) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        List<String> list = jedis.hmget(key, fieldList.toArray(new String[] {}));
+        return list.stream().map(value -> "".equals(value) ? null : value).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<List<String>> findMultiHash(List<String> keyList, Set<String> fieldList) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        return keyList.stream().map(key -> {
+            return jedis.hmget(key, fieldList.toArray(new String[] {}))
+                    .stream()
+                    .map(value -> "".equals(value) ? null : value)
+                    .collect(Collectors.toList());
+        }).collect(Collectors.toList());
+    }
+
+    // ===================================================================================
+    //                                                                            Register
+    //                                                                            ========
+    // -----------------------------------------------------
+    //                                                String
+    //                                                ------
+    @Override
+    public void registerString(String key, String value) {
+        registerString(key, value, null);
+    }
+
+    @Override
+    public void registerString(String key, String value, LocalDateTime expireDateTime) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        jedis.set(key, value);
+        if (expireDateTime != null) {
+            expireAt(jedis, key, expireDateTime);
+        }
+    }
+
+    @Override
+    public void registerMultiString(Map<String, String> keyValueMap) {
+        registerMultiString(keyValueMap, null);
+    }
+
+    @Override
+    public void registerMultiString(Map<String, String> keyValueMap, LocalDateTime expireDateTime) {
+        if (keyValueMap.isEmpty()) {
+            return;
+        }
+
+        String[] keysValues = keyValueMap.entrySet().stream().flatMap(keyValue -> {
+            List<String> list = DfCollectionUtil.newArrayList();
+            list.add(keyValue.getKey());
+            list.add(keyValue.getValue());
+            return list.stream();
+        }).toArray(size -> new String[size]);
+
+        JedisCluster jedis = kvsRedisPool.getResource();
+        jedis.mset(keysValues);
+        if (expireDateTime != null) {
+            keyValueMap.keySet().stream().forEach(key -> {
+                expireAt(jedis, key, expireDateTime);
+            });
+        }
+    }
+
+    // -----------------------------------------------------
+    //                                                  List
+    //                                                  ----
+    @Override
+    public void registerList(String key, List<String> list) {
+        registerList(key, list, null);
+    }
+
+    @Override
+    public void registerList(String key, List<String> list, LocalDateTime expireDateTime) {
+        if (list.isEmpty()) {
+            delete(key);
+            return;
+        }
+        JedisCluster jedis = kvsRedisPool.getResource();
+        jedis.del(key);
+        jedis.rpush(key, list.stream().distinct().toArray(size -> new String[size]));
+        if (expireDateTime != null) {
+            expireAt(jedis, key, expireDateTime);
+        }
+    }
+
+    @Override
+    public void registerMultiList(Map<String, List<String>> keyListMap) {
+        registerMultiList(keyListMap, null);
+    }
+
+    @Override
+    public void registerMultiList(Map<String, List<String>> keyListMap, LocalDateTime expireDateTime) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        keyListMap.forEach((key, list) -> {
+            jedis.del(key);
+            if (list.isEmpty()) {
+                return;
+            }
+            jedis.rpush(key, list.stream().distinct().toArray(size -> new String[size]));
+            if (expireDateTime != null) {
+                expireAt(jedis, key, expireDateTime);
+            }
+        });
+    }
+
+    // -----------------------------------------------------
+    //                                                  Hash
+    //                                                  ----
+    @Override
+    public void registerHash(String key, Map<String, String> hash) {
+        registerHash(key, hash, null);
+
+    }
+
+    @Override
+    public void registerHash(String key, Map<String, String> hash, LocalDateTime expireDateTime) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        jedis.hmset(key, hash.entrySet().stream().collect(Collectors.toMap(fieldValue -> {
+            return fieldValue.getKey();
+        }, fieldValue -> {
+            return Objects.toString(fieldValue.getValue(), "");
+        })));
+        if (expireDateTime != null) {
+            expireAt(jedis, key, expireDateTime);
+        }
+    }
+
+    @Override
+    public boolean registerHashNx(String key, String field, String value) {
+        return registerHashNx(key, field, value, null);
+    }
+
+    @Override
+    public boolean registerHashNx(String key, String field, String value, LocalDateTime expireDateTime) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        final Long result = jedis.hsetnx(key, field, value);
+        final boolean register = result == 1L;
+        if (register) {
+            if (expireDateTime != null) {
+                jedis.expireAt(key, TimeUnit.MILLISECONDS.toSeconds(new HandyDate(expireDateTime).getDate().getTime()));
+            }
+        }
+        return register;
+    }
+
+    @Override
+    public void registerMultiHash(Map<String, Map<String, String>> keyHashMap) {
+        registerMultiHash(keyHashMap, null);
+
+    }
+
+    @Override
+    public void registerMultiHash(Map<String, Map<String, String>> keyHashMap, LocalDateTime expireDateTime) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        keyHashMap.forEach((key, hash) -> {
+            jedis.hmset(key, hash.entrySet().stream().collect(Collectors.toMap(fieldValue -> {
+                return fieldValue.getKey();
+            }, fieldValue -> {
+                return Objects.toString(fieldValue.getValue(), "");
+            })));
+            if (expireDateTime != null) {
+                expireAt(jedis, key, expireDateTime);
+            }
+        });
+    }
+
+    // ===================================================================================
+    //                                                                              Delete
+    //                                                                              ======
+    @Override
+    public void delete(String key) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        jedis.del(key);
+    }
+
+    @Override
+    public void delete(String... keys) {
+        if (keys.length == 0) {
+            return;
+        }
+        JedisCluster jedis = kvsRedisPool.getResource();
+        jedis.del(keys);
+    }
+
+    @Override
+    public void deleteHash(String key, Set<String> fieldList) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        jedis.hdel(key, fieldList.toArray(new String[fieldList.size()]));
+    }
+
+    // ===================================================================================
+    //                                                                              Exists
+    //                                                                              ======
+    @Override
+    public boolean exists(String key) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        return jedis.exists(key);
+    }
+
+    // ===================================================================================
+    //                                                                                 TTL
+    //                                                                                 ===
+    @Override
+    public Long ttl(String key) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        return jedis.ttl(key);
+    }
+
+    @Override
+    public void expireAt(String key, LocalDateTime expireDateTime) {
+        JedisCluster jedis = kvsRedisPool.getResource();
+        expireAt(jedis, key, expireDateTime);
+    }
+
+    /**
+     * Set Time To Live to a value in KVS that is specified by the assigned key.
+     * @param jedis Pipeline (NotNull)
+     * @param key Key for a value in KVS (NotNull)
+     * @param expireDateTime Time To Live (NullAllowed: do not set ttl if null)
+     */
+    protected void expireAt(JedisCluster jedis, String key, LocalDateTime expireDateTime) {
+        if (expireDateTime != null) {
+            jedis.expireAt(key, TimeUnit.MILLISECONDS.toSeconds(new HandyDate(expireDateTime).getDate().getTime()));
+        }
+    }
+
+    // ===================================================================================
+    //                                                                               Other
+    //                                                                               =====
+    @Override
+    public int getNumActive() {
+        return kvsRedisPool.getNumActive();
+    }
+}

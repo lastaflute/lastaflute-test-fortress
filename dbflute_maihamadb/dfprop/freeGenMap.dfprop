@@ -6,42 +6,42 @@ map:{
         ; resourceMap = map:{
             ; baseDir = ../src/main
             ; resourceType = SWAGGER
-            ; resourceFile = $$baseDir$$/resources/remoteapi/swagger/maihama-showbase_swagger.json
+            ; resourceFile = $$baseDir$$/resources/remoteapi/schema/remoteapi_schema_maihama-showbase_swagger.json
         }
         ; outputMap = map:{
             ; outputDirectory = $$baseDir$$/java
             ; package = org.docksidestage.remote
         }
         ; optionMap = map:{
-            ; ruleJsPath = ../src/main/resources/remoteapi/swagger/maihama-showbase_rule.js
+            ; ruleJsPath = ../src/main/resources/remoteapi/schema/remoteapi_schema_maihama-showbase_rule.js
         }
     }
     ; RemoteApiSwaggerPetstore = map:{
         ; resourceMap = map:{
             ; baseDir = ../src/main
             ; resourceType = SWAGGER
-            ; resourceFile = $$baseDir$$/resources/remoteapi/swagger/swagger-petstore_swagger.json
+            ; resourceFile = $$baseDir$$/resources/remoteapi/schema/remoteapi_schema_swagger-petstore_swagger.json
         }
         ; outputMap = map:{
             ; outputDirectory = $$baseDir$$/java
             ; package = org.docksidestage.remote
         }
         ; optionMap = map:{
-            ; ruleJsPath = ../src/main/resources/remoteapi/swagger/swagger-petstore_rule.js
+            ; ruleJsPath = ../src/main/resources/remoteapi/schema/remoteapi_schema_swagger-petstore_rule.js
         }
     }
     ; RemoteApiSwaggerTricky = map:{
         ; resourceMap = map:{
             ; baseDir = ../src/main
             ; resourceType = SWAGGER
-            ; resourceFile = $$baseDir$$/resources/remoteapi/swagger/swagger-tricky_swagger.json
+            ; resourceFile = $$baseDir$$/resources/remoteapi/schema/remoteapi_schema_swagger-tricky_swagger.json
         }
         ; outputMap = map:{
             ; outputDirectory = $$baseDir$$/java
             ; package = org.docksidestage.remote
         }
         ; optionMap = map:{
-            ; ruleJsPath = ../src/main/resources/remoteapi/swagger/swagger-Tricky_rule.js
+            ; ruleJsPath = ../src/main/resources/remoteapi/schema/remoteapi_schema_swagger-tricky_rule.js
         }
     }
 }

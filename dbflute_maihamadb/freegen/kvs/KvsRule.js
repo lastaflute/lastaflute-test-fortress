@@ -34,6 +34,11 @@ var baseRule = {
     //                                                                               =====
 
     // ===================================================================================
+    //                                                                                 Doc
+    //                                                                                 ===
+    docGeneration : true,
+
+    // ===================================================================================
     //                                                                              Option
     //                                                                              ======
     /**
@@ -56,10 +61,26 @@ var baseRule = {
         };
     },
 
-    // ===================================================================================
-    //                                                                                 Doc
-    //                                                                                 ===
-    docGeneration : true
+    /** true for cluster. */
+    cluster : false,
+
+    /**
+     * Return kvs cache async reflection enabled.
+     * @return kvs cache async reflection enabled (NotNull)
+     */
+    kvsCacheAsyncReflectionEnabled: function () {
+        return true;
+    },
+
+    /**
+     * Return delete target.
+     * @param {Request} request - rquest. (NullAllowed)
+     * @return {File} file. (NotNull)
+     * @return {boolean} delete target. (NotNull)
+     */
+    deleteTarget: function(request, file) {
+        return true;
+    }
 };
 
 var kvsRule = {};

@@ -15,7 +15,10 @@
  */
 package org.docksidestage.app.web.wx.thymeleaf;
 
+import java.util.List;
+
 import org.docksidestage.dbflute.allcommon.CDef;
+import org.eclipse.collections.api.list.ImmutableList;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.util.Lato;
 
@@ -28,6 +31,10 @@ public class WxThymeleafSearchForm {
     public String productName;
 
     public CDef.ProductStatus productStatus;
+
+    public List<CDef.ProductStatus> mutableStatusList;
+
+    public ImmutableList<CDef.ProductStatus> immutableStatusList;
 
     @Length(max = 5) // #simple_for_example just for validtion example
     public String purchaseMemberName;

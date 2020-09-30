@@ -226,32 +226,20 @@ table.child, table.child td, table.child th {
 			<td class="filecell">../src/main/resources/fortress_env_production.properties</td>
 			<td class="envtypecell">production</td>
 			<td class="langtypecell">-</td>
-			<td class="sizecell">24</td>
+			<td class="sizecell">30</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
-			<td class="keylistcell">
-				<p class="diffprop">mail.address.support</p>
-				<p class="diffprop">resola.jdbc.driver</p>
-				<p class="diffprop">resola.jdbc.url</p>
-				<p class="diffprop">resola.jdbc.user</p>
-				<p class="diffprop">resola.jdbc.password</p>
-				<p class="diffprop">resola.jdbc.connection.pooling.size</p>
-			</td>
+			<td>&nbsp;</td>
 		</tr>
 		<tr>
 			<td class="filecell">../src/main/resources/fortress_env_integration.properties</td>
 			<td class="envtypecell">integration</td>
 			<td class="langtypecell">-</td>
-			<td class="sizecell">24</td>
+			<td class="sizecell">29</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td class="keylistcell">
-				<p class="diffprop">mail.address.support</p>
 				<p class="diffprop">resola.jdbc.driver</p>
-				<p class="diffprop">resola.jdbc.url</p>
-				<p class="diffprop">resola.jdbc.user</p>
-				<p class="diffprop">resola.jdbc.password</p>
-				<p class="diffprop">resola.jdbc.connection.pooling.size</p>
 			</td>
 		</tr>
 	</tbody>
@@ -822,6 +810,20 @@ table.child, table.child td, table.child th {
 					<td class="uniquenocell">1</td>
 					<td class="commentcell">Mail&nbsp;Address&nbsp;for&nbsp;Fortress&nbsp;Support</td>
 				</tr>
+				<tr>
+					<td class="envtypecell">production</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">fortress-support@annie.example.com</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">Mail&nbsp;Address&nbsp;for&nbsp;Fortress&nbsp;Support</td>
+				</tr>
+				<tr>
+					<td class="envtypecell">integration</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">fortress-support@annie.example.com</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">Mail&nbsp;Address&nbsp;for&nbsp;Fortress&nbsp;Support</td>
+				</tr>
 			</table>
 		</td>
 	</tr>
@@ -840,21 +842,21 @@ table.child, table.child td, table.child th {
 				<tr>
 					<td class="envtypecell">-</td>
 					<td class="langtypecell">-</td>
-					<td class="valuecell">com.mysql.jdbc.Driver</td>
+					<td class="valuecell">com.mysql.cj.jdbc.Driver</td>
 					<td class="uniquenocell">1</td>
 					<td class="commentcell">The&nbsp;driver&nbsp;FQCN&nbsp;to&nbsp;connect&nbsp;database&nbsp;for&nbsp;JDBC</td>
 				</tr>
 				<tr>
 					<td class="envtypecell">production</td>
 					<td class="langtypecell">-</td>
-					<td class="valuecell">com.mysql.jdbc.Driver</td>
+					<td class="valuecell">com.mysql.cj.jdbc.Driver</td>
 					<td class="uniquenocell">1</td>
 					<td class="commentcell">The&nbsp;driver&nbsp;FQCN&nbsp;to&nbsp;connect&nbsp;database&nbsp;for&nbsp;JDBC</td>
 				</tr>
 				<tr>
 					<td class="envtypecell">integration</td>
 					<td class="langtypecell">-</td>
-					<td class="valuecell">com.mysql.jdbc.Driver</td>
+					<td class="valuecell">com.mysql.cj.jdbc.Driver</td>
 					<td class="uniquenocell">1</td>
 					<td class="commentcell">The&nbsp;driver&nbsp;FQCN&nbsp;to&nbsp;connect&nbsp;database&nbsp;for&nbsp;JDBC</td>
 				</tr>
@@ -1020,7 +1022,14 @@ table.child, table.child td, table.child th {
 				<tr>
 					<td class="envtypecell">-</td>
 					<td class="langtypecell">-</td>
-					<td class="valuecell">com.mysql.jdbc.Driver</td>
+					<td class="valuecell">com.mysql.cj.jdbc.Driver</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;driver&nbsp;FQCN&nbsp;to&nbsp;connect&nbsp;database&nbsp;for&nbsp;JDBC</td>
+				</tr>
+				<tr>
+					<td class="envtypecell">production</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">com.mysql.cj.jdbc.Driver</td>
 					<td class="uniquenocell">1</td>
 					<td class="commentcell">The&nbsp;driver&nbsp;FQCN&nbsp;to&nbsp;connect&nbsp;database&nbsp;for&nbsp;JDBC</td>
 				</tr>
@@ -1041,6 +1050,20 @@ table.child, table.child td, table.child th {
 				</tr>
 				<tr>
 					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">jdbc:mysql://localhost:3306/resortlinedb</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;URL&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
+				<tr>
+					<td class="envtypecell">production</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">jdbc:mysql://localhost:3306/resortlinedb</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;URL&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
+				<tr>
+					<td class="envtypecell">integration</td>
 					<td class="langtypecell">-</td>
 					<td class="valuecell">jdbc:mysql://localhost:3306/resortlinedb</td>
 					<td class="uniquenocell">1</td>
@@ -1068,6 +1091,20 @@ table.child, table.child td, table.child th {
 					<td class="uniquenocell">1</td>
 					<td class="commentcell">The&nbsp;user&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
 				</tr>
+				<tr>
+					<td class="envtypecell">production</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">resortlinedb</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;user&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
+				<tr>
+					<td class="envtypecell">integration</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">resortlinedb</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;user&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
 			</table>
 		</td>
 	</tr>
@@ -1090,6 +1127,20 @@ table.child, table.child td, table.child th {
 					<td class="uniquenocell">1</td>
 					<td class="commentcell">@Secure&nbsp;The&nbsp;password&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
 				</tr>
+				<tr>
+					<td class="envtypecell">production</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">********</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">@Secure&nbsp;The&nbsp;password&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
+				<tr>
+					<td class="envtypecell">integration</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">********</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">@Secure&nbsp;The&nbsp;password&nbsp;of&nbsp;database&nbsp;connection&nbsp;for&nbsp;JDBC</td>
+				</tr>
 			</table>
 		</td>
 	</tr>
@@ -1107,6 +1158,20 @@ table.child, table.child td, table.child th {
 				</tr>
 				<tr>
 					<td class="envtypecell">-</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">10</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;(max)&nbsp;pooling&nbsp;size&nbsp;of&nbsp;connection&nbsp;pool</td>
+				</tr>
+				<tr>
+					<td class="envtypecell">production</td>
+					<td class="langtypecell">-</td>
+					<td class="valuecell">10</td>
+					<td class="uniquenocell">1</td>
+					<td class="commentcell">The&nbsp;(max)&nbsp;pooling&nbsp;size&nbsp;of&nbsp;connection&nbsp;pool</td>
+				</tr>
+				<tr>
+					<td class="envtypecell">integration</td>
 					<td class="langtypecell">-</td>
 					<td class="valuecell">10</td>
 					<td class="uniquenocell">1</td>

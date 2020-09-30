@@ -16,11 +16,19 @@
 package org.docksidestage.bizfw.json;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
 
+import org.eclipse.collections.api.list.ImmutableList;
+import org.eclipse.collections.impl.factory.Lists;
 import org.lastaflute.core.json.JsonEngineResource;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.JsonMappingOption;
+import org.lastaflute.core.json.JsonMappingOption.JsonFieldNaming;
+import org.lastaflute.core.json.bind.JsonYourCollectionResource;
 import org.lastaflute.core.json.engine.RealJsonEngine;
+import org.lastaflute.web.ruts.process.ActionRuntime;
 
 /**
  * @author jflute
@@ -30,32 +38,56 @@ public class RuledJsonEngineKeeper {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    protected final RealJsonEngine trialJsonEngine;
+    protected final RealJsonEngine seaJsonEngine;
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
     public RuledJsonEngineKeeper(JsonManager jsonManager) {
-        this.trialJsonEngine = createTrialRuledEngine(jsonManager);
+        this.seaJsonEngine = createSeaRuledEngine(jsonManager);
     }
 
     // ===================================================================================
     //                                                                     Create Instance
     //                                                                     ===============
-    protected RealJsonEngine createTrialRuledEngine(JsonManager jsonManager) {
+    protected RealJsonEngine createSeaRuledEngine(JsonManager jsonManager) {
         JsonEngineResource resource = new JsonEngineResource();
-        JsonMappingOption option = new JsonMappingOption();
+        JsonMappingOption option = new JsonMappingOption(); // it's detarame
         option.asNullToEmptyWriting()
+                .yourCollections(prepareYourCollections()) // Eclipse Collections
+                .asFieldNaming(JsonFieldNaming.CAMEL_TO_LOWER_SNAKE) // SNAKE_CASE
                 .formatLocalDateBy(DateTimeFormatter.ofPattern("yyyy%MM%dd"))
-                .serializeBooleanBy(boo -> boo ? "Y" : "N");
+                .serializeBooleanBy(boo -> boo ? "Y" : "N")
+                .filterSimpleTextReading(text -> text.replace("sea", "mystic"));
         resource.acceptMappingOption(option);
         return jsonManager.newRuledEngine(resource);
+    }
+
+    private List<JsonYourCollectionResource> prepareYourCollections() {
+        return Arrays.asList(new JsonYourCollectionResource(ImmutableList.class, mutableList -> {
+            return Lists.immutable.withAll(mutableList);
+        }));
     }
 
     // ===================================================================================
     //                                                                            Provider
     //                                                                            ========
-    public RealJsonEngine provideTrialJsonEngine() {
-        return trialJsonEngine;
+    public Function<ActionRuntime, RealJsonEngine> prepareActionJsonEngine() {
+        return runtime -> { // for e.g. FormMappingOption, ResponseReflectingOption
+            if (runtime.getActionType().getAnnotation(JsonJustified.class) != null) {
+                // e.g.
+                //  @JsonJustified
+                //  public class SeaAction extends ... {
+                //      ...
+                //  }
+                return provideSeaJsonEngine();
+            } else {
+                return null; // uses JsonManager
+            }
+        };
+    }
+
+    public RealJsonEngine provideSeaJsonEngine() {
+        return seaJsonEngine;
     }
 }

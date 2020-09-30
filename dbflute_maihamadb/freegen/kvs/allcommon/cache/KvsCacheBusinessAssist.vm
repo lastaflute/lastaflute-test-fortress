@@ -33,12 +33,16 @@ import org.dbflute.Entity;
 import org.dbflute.bhv.BehaviorReadable;
 import org.dbflute.bhv.BehaviorSelector;
 import org.dbflute.bhv.BehaviorWritable;
+import org.dbflute.bhv.writable.InsertOption;
+import org.dbflute.bhv.writable.UpdateOption;
 import org.dbflute.cbean.ConditionBean;
 import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.accessory.ColumnNullObjectable;
 import org.dbflute.dbmeta.info.ColumnInfo;
 import org.dbflute.exception.EntityAlreadyDeletedException;
 import org.dbflute.exception.EntityDuplicatedException;
+import org.dbflute.kvs.cache.bhv.writable.DeleteOption;
+import org.dbflute.kvs.cache.bhv.writable.InsertOrUpdateOption;
 import org.dbflute.optional.OptionalEntity;
 #if ($manager.isTargetContainerSeasar())
 import org.dbflute.saflute.core.magic.ThreadCacheContext;
@@ -66,6 +70,8 @@ public class KvsCacheBusinessAssist {
     protected static final String KEY_DELIMITER = "|";
 
     protected static final String KEY_COLUMN_NULL_OBJECT = "COLUMN_NULL_OBJECT";
+
+    protected static final boolean KVS_CACHE_ASYNC_REFLECTION_ENABLED = ${data.kvsCacheAsyncReflectionEnabled};
 
     private static final Logger logger = LoggerFactory.getLogger(KvsCacheBusinessAssist.class);
 
@@ -97,11 +103,12 @@ public class KvsCacheBusinessAssist {
      * @param cb CB that specifies search condition (NotNull)
      * @param expireDateTimeLambda The callback for Time To Live (NotNull, MayReturnNull: then use server-config)
      * @param <ENTITY> Entity of DBFlute
+     * @param kvsCacheAsyncReflectionEnabled config of async or sync (NotNull)
      * @return Entity as the result of the retrieval (NotNull)
      * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      */
     public <ENTITY extends Entity> OptionalEntity<ENTITY> findEntity(BehaviorSelector selector, String dbName, List<Object> searchKeyList,
-            ConditionBean cb, Function<ENTITY, LocalDateTime> expireDateTimeLambda) {
+            ConditionBean cb, Function<ENTITY, LocalDateTime> expireDateTimeLambda, boolean kvsCacheAsyncReflectionEnabled) {
         final String kvsKey = generateKey(dbName, cb.asTableDbName(), searchKeyList);
         final ENTITY threadCachedEntity = findEntityFromThreadCache(kvsKey);
         if (threadCachedEntity != null) {
@@ -125,10 +132,9 @@ public class KvsCacheBusinessAssist {
 
         optEntity.ifPresent(entity -> {
             registerThreadCache(kvsKey, entity);
-            // Insert/Update an entity into(in) KVS asynchronously
-            asyncManager.async(() -> {
+            reflectKvsCache(() -> {
                 kvsCacheManager.registerString(kvsKey, kvsCacheConverterHandler.toMapString(entity), expireDateTimeLambda.apply(entity));
-            });
+            }, kvsCacheAsyncReflectionEnabled);
         });
 
         return optEntity;
@@ -145,10 +151,11 @@ public class KvsCacheBusinessAssist {
      * @param cb CB that specifies query condition (NotNull)
      * @param expireDateTimeLambda The callback for Time To Live (NotNull, MayReturnNull: then use server-config)
      * @param <ENTITY> Entity of DBFlute
+     * @param kvsCacheAsyncReflectionEnabled config of async or sync (NotNull)
      * @return List of entities as the result of retrieval (NotNull)
      */
     public <ENTITY extends Entity> List<ENTITY> findList(BehaviorSelector selector, String dbName, List<Object> searchKeyList,
-            ConditionBean cb, Function<List<ENTITY>, LocalDateTime> expireDateTimeLambda) {
+            ConditionBean cb, Function<List<ENTITY>, LocalDateTime> expireDateTimeLambda, boolean kvsCacheAsyncReflectionEnabled) {
         final String kvsKey = generateKey(dbName, cb.asTableDbName(), searchKeyList);
 
         final List<ENTITY> threadCachedList = findListFromThreadCache(kvsKey);
@@ -171,11 +178,10 @@ public class KvsCacheBusinessAssist {
         final List<ENTITY> entityList = selectList(selector, cb);
 
         registerThreadCache(kvsKey, entityList);
-        // Insert/Update an entity into(in) KVS asynchronously
-        asyncManager.async(() -> {
+        reflectKvsCache(() -> {
             kvsCacheManager.registerList(kvsKey, kvsCacheConverterHandler.toMapStringList(entityList),
                     expireDateTimeLambda.apply(entityList));
-        });
+        }, kvsCacheAsyncReflectionEnabled);
 
         return entityList;
     }
@@ -190,11 +196,12 @@ public class KvsCacheBusinessAssist {
      * @param searchKeyList Key info. specified in KVS (equal to the search condition spedified by CB) (NotNull)
      * @param entity Entity to be inserted or updated (NotNull)
      * @param <ENTITY> Entity of DBFlute
+     * @param op Option (NotNull)
      */
-    public <ENTITY extends Entity> void insertOrUpdate(BehaviorSelector selector, String dbName, List<Object> searchKeyList,
-            ENTITY entity) {
-        insertOrUpdate(selector, entity); // Insert/Update to RDB
-        removeCache(dbName, entity.asTableDbName(), searchKeyList);
+    public <ENTITY extends Entity> void insertOrUpdate(BehaviorSelector selector, String dbName, List<Object> searchKeyList, ENTITY entity,
+            InsertOrUpdateOption op) {
+        insertOrUpdate(selector, entity, op); // Insert/Update to RDB
+        removeCache(dbName, entity.asTableDbName(), searchKeyList, op.isKvsCacheAsyncReflectionEnabled());
     }
 
     // ===================================================================================
@@ -207,17 +214,19 @@ public class KvsCacheBusinessAssist {
      * @param searchKeyList Key info. specified in KVS (equal to the search condition spedified by CB) (NotNull)
      * @param entity Entity to be deleted (NotNull)
      * @param <ENTITY> Entity of DBFlute
+     * @param op Option (NotNull)
      * @return The number of deleted rows
      */
-    public <ENTITY extends Entity> int delete(BehaviorSelector selector, String dbName, List<Object> searchKeyList, ENTITY entity) {
+    public <ENTITY extends Entity> int delete(BehaviorSelector selector, String dbName, List<Object> searchKeyList, ENTITY entity,
+            DeleteOption op) {
         final int deleteCount = queryDelete(selector, entity);
-        removeCache(dbName, entity.asTableDbName(), searchKeyList);
+        removeCache(dbName, entity.asTableDbName(), searchKeyList, op.isKvsCacheAsyncReflectionEnabled());
         return deleteCount;
     }
 
     public int queryDelete(BehaviorSelector selector, String dbName, List<Object> searchKeyList, ConditionBean cb) {
         final int deleteCount = queryDelete(selector, cb);
-        removeCache(dbName, cb.asTableDbName(), searchKeyList);
+        removeCache(dbName, cb.asTableDbName(), searchKeyList, KVS_CACHE_ASYNC_REFLECTION_ENABLED);
         return deleteCount;
     }
 
@@ -231,7 +240,7 @@ public class KvsCacheBusinessAssist {
      * @param <ENTITY> Entity of DBFlute
      */
     public <ENTITY extends Entity> void clearCache(BehaviorSelector selector, String dbName, List<Object> searchKeyList, ENTITY entity) {
-        removeCache(dbName, entity.asTableDbName(), searchKeyList);
+        removeCache(dbName, entity.asTableDbName(), searchKeyList, KVS_CACHE_ASYNC_REFLECTION_ENABLED);
     }
 
     // ===================================================================================
@@ -272,11 +281,13 @@ public class KvsCacheBusinessAssist {
      * @param expireDateTimeLambda The callback for Time To Live (NotNull, MayReturnNull: then use server-config)
      * @param specifiedColumnInfoSet A set of column information for column(s) to be selected (NotNull)
      * @param <ENTITY> Entity of DBFlute
+     * @param kvsCacheAsyncReflectionEnabled config of async or sync (NotNull)
      * @return Entity as the result of the retrieval (NotNull)
      * @throws EntityAlreadyDeletedException When the entity has already been deleted. (not found)
      */
     public <ENTITY extends Entity> OptionalEntity<ENTITY> findEntity(BehaviorSelector selector, String dbName, List<Object> searchKeyList,
-            ConditionBean cb, Function<ENTITY, LocalDateTime> expireDateTimeLambda, Set<ColumnInfo> specifiedColumnInfoSet) {
+            ConditionBean cb, Function<ENTITY, LocalDateTime> expireDateTimeLambda, Set<ColumnInfo> specifiedColumnInfoSet,
+            boolean kvsCacheAsyncReflectionEnabled) {
         logger.debug("tableName={}, specifiedColumnInfoSet={}", cb.asTableDbName(), specifiedColumnInfoSet);
         final String kvsKey = generateKeyForColumnNullObject(dbName, cb.asTableDbName(), searchKeyList);
         Set<String> specifiedPropertyNameSet =
@@ -337,16 +348,14 @@ public class KvsCacheBusinessAssist {
         optEntity.ifPresent(entity -> {
             reflectEntity(entity, halfwayCachedEntity);
             registerThreadCache(kvsKey, entity);
-            // Insert/Update an entity into(in) KVS asynchronously
-            asyncManager.async(() -> {
-                Map<String, String> fieldValueMap = dbmeta.extractAllColumnMap(entity)
-                        .entrySet()
-                        .stream()
-                        .filter(entry -> columnInfoList.contains(dbmeta.findColumnInfo(entry.getKey())))
-                        .collect(HashMap::new, (map, column) -> map.put(column.getKey(), DfTypeUtil.toString(column.getValue())),
-                                Map::putAll);
+            Map<String, String> fieldValueMap = dbmeta.extractAllColumnMap(entity)
+                    .entrySet()
+                    .stream()
+                    .filter(entry -> columnInfoList.contains(dbmeta.findColumnInfo(entry.getKey())))
+                    .collect(HashMap::new, (map, column) -> map.put(column.getKey(), DfTypeUtil.toString(column.getValue())), Map::putAll);
+            reflectKvsCache(() -> {
                 kvsCacheManager.registerHash(kvsKey, fieldValueMap, expireDateTimeLambda.apply(entity));
-            });
+            }, kvsCacheAsyncReflectionEnabled);
         });
 
         return optEntity;
@@ -509,10 +518,17 @@ public class KvsCacheBusinessAssist {
      * @param selector Selector corresponding to the DB to connect to (NotNull）
      * @param entity An entity to be inserted or updated (NotNull)
      * @param <ENTITY> Entity of DBFlute
+     * @param op Option (NotNull)
      */
-    protected <ENTITY extends Entity> void insertOrUpdate(BehaviorSelector selector, ENTITY entity) {
+    protected <ENTITY extends Entity> void insertOrUpdate(BehaviorSelector selector, ENTITY entity, InsertOrUpdateOption op) {
         final BehaviorWritable writable = (BehaviorWritable) selector.byName(entity.asTableDbName()); // Fetch abstract Behavior
-        writable.createOrModify(entity, null, null);
+        InsertOption<? extends ConditionBean> insertOption = new InsertOption<ConditionBean>();
+        UpdateOption<? extends ConditionBean> updateOption = new UpdateOption<ConditionBean>();
+        if (op.isCommonColumnAutoSetupDisabled()) {
+            insertOption.disableCommonColumnAutoSetup();
+            updateOption.disableCommonColumnAutoSetup();
+        }
+        writable.createOrModify(entity, insertOption, updateOption);
     }
 
     // ===================================================================================
@@ -555,13 +571,13 @@ public class KvsCacheBusinessAssist {
         return deleteCount;
     }
 
-    protected <ENTITY extends Entity> void removeCache(String dbName, String tableDbName, List<Object> searchKeyList) {
+    protected <ENTITY extends Entity> void removeCache(String dbName, String tableDbName, List<Object> searchKeyList,
+            boolean kvsCacheAsyncReflectionEnabled) {
         final String kvsKey = generateKey(dbName, tableDbName, searchKeyList);
         removeThreadCache(kvsKey);
-        // Insert/Update an entity into(in) KVS asynchronously
-        asyncManager.async(() -> {
+        reflectKvsCache(() -> {
             kvsCacheManager.delete(kvsKey); // Delete value from KVS
-        });
+        }, kvsCacheAsyncReflectionEnabled);
     }
 
     // ===================================================================================
@@ -649,5 +665,13 @@ public class KvsCacheBusinessAssist {
             properties.addAll(entity.mymodifiedProperties());
         }
         return properties;
+    }
+
+    protected void reflectKvsCache(Runnable run, boolean kvsCacheAsyncReflectionEnabled) {
+        if (kvsCacheAsyncReflectionEnabled) {
+            asyncManager.async(() -> run.run());
+        } else {
+            run.run();
+        }
     }
 }

@@ -1,4 +1,19 @@
 map:{
+    ; 2019/05/01 00:25:07 = map:{
+        ; diffDate = 2019/05/01 00:25:07
+        ; tableCount = map:{
+            ; next = 1
+            ; previous = 0
+        }
+        ; diffAuthor = jflute
+        ; diffGitBranch = master
+        ; tableDiff = map:{
+            ; station = map:{
+                ; tableName = station
+                ; diffType = ADD
+            }
+        }
+    }
     ; 2018/05/23 15:04:14 = map:{
         ; diffDate = 2018/05/23 15:04:14
         ; diffAuthor = jflute

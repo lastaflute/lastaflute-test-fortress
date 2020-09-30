@@ -24,10 +24,10 @@ import org.lastaflute.core.util.Lato;
 public class RemoteWxRemogenListInnergeneReturn {
 
     /** The property of key. (NullAllowed) */
-    public Object key;
+    public java.util.Map<String, Object> key;
 
     /** The property of value. (NullAllowed) */
-    public Object value;
+    public java.util.Map<String, Object> value;
 
     @Override
     public String toString() {

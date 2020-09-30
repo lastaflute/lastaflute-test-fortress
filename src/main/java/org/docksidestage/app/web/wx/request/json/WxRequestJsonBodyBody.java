@@ -18,6 +18,8 @@ package org.docksidestage.app.web.wx.request.json;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import javax.validation.Valid;
+
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.core.util.Lato;
 
@@ -43,6 +45,14 @@ public class WxRequestJsonBodyBody {
     public static class MiracoPart {
 
         public String sta;
+    }
+
+    @Valid
+    public WhitePart white;
+
+    public static class WhitePart {
+
+        public CDef.WhiteConfusingFormatBodying formatBodying;
     }
 
     @Override
