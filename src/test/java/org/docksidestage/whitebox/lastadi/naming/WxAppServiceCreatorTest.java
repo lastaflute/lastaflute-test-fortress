@@ -20,6 +20,7 @@ import org.docksidestage.app.application.jazz.JazzStepService;
 import org.docksidestage.app.service.ballet.BalletChangementService;
 import org.docksidestage.app.service.jazz.JazzWalkService;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+import org.lastaflute.di.core.exception.ComponentNotFoundException;
 
 /**
  * @author jflute
@@ -32,7 +33,11 @@ public class WxAppServiceCreatorTest extends UnitFortressBasicTestCase {
     }
 
     public void test_default_service_canbe_component() throws Exception {
-        getComponent(BalletChangementService.class).letsChangement();
-        getComponent(JazzWalkService.class).letsWalk();
+        assertException(ComponentNotFoundException.class, () -> {
+            getComponent(BalletChangementService.class).letsChangement();
+        });
+        assertException(ComponentNotFoundException.class, () -> {
+            getComponent(JazzWalkService.class).letsWalk();
+        });
     }
 }
