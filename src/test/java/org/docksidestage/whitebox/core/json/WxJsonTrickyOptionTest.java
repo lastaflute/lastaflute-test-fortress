@@ -37,6 +37,39 @@ public class WxJsonTrickyOptionTest extends UnitFortressBasicTestCase {
     private JsonManager jsonManager;
 
     // ===================================================================================
+    //                                                              asEmptyToNullReading()
+    //                                                              ======================
+    public void test_asEmptyToNullReading_typeable() {
+        // ## Arrange ##
+        JsonEngineResource resource = new JsonEngineResource();
+        resource.acceptMappingOption(new JsonMappingOption().asEmptyToNullReading(tp -> {
+            return String.class.isAssignableFrom(tp);
+        }));
+        RealJsonEngine ruledEngine = jsonManager.newRuledEngine(resource);
+
+        {
+            // ## Act ##
+            String json = "{ \"productId\": null, \"productName\": \"\" }";
+            ProductSearchRowBean bean = ruledEngine.fromJson(json, ProductSearchRowBean.class);
+
+            // ## Assert ##
+            log(bean);
+            assertNull(bean.productId);
+            assertNull(bean.productName);
+        }
+        {
+            // ## Act ##
+            String json = "{ \"productName\": null, \"productStatus\": \"\" }";
+            ProductSearchForm form = ruledEngine.fromJson(json, ProductSearchForm.class);
+
+            // ## Assert ##
+            log(form);
+            assertNull(form.productName);
+            assertNull(form.productStatus);
+        }
+    }
+
+    // ===================================================================================
     //                                                              asNullToEmptyWriting()
     //                                                              ======================
     public void test_asNullToEmptyWriting_typeable() {
