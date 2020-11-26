@@ -13,12 +13,13 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.mylasta.web;
+package org.docksidestage.whitebox.web.validator;
 
 import java.util.Locale;
 
 import javax.annotation.Resource;
 
+import org.dbflute.utflute.core.cannonball.CannonballOption;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.message.MessageManager;
@@ -30,7 +31,7 @@ import org.lastaflute.web.validation.VaConfigSetupper;
 /**
  * @author jflute
  */
-public class WxValidatorSuccessAttributeTest extends UnitFortressBasicTestCase {
+public class WxValidatorThreadSafeTest extends UnitFortressBasicTestCase {
 
     @Resource
     private MessageManager messageManager;
@@ -40,18 +41,21 @@ public class WxValidatorSuccessAttributeTest extends UnitFortressBasicTestCase {
     public void test_basic() {
         // ## Arrange ##
         Locale locale = requestManager.getUserLocale();
-        ActionValidator<FortressMessages> validator = createValidator(locale, conf -> {});
-        MockMaihama maihama = new MockMaihama(null);
+        cannonball(car -> {
+            xdoPrepareRequestMockContext(); // for web environment
+            ActionValidator<FortressMessages> validator = createValidator(locale, conf -> {});
+            MockMaihama maihama = new MockMaihama(null);
 
-        // ## Act ##
-        assertValidationError(() -> validator.validateApi(maihama, messages -> {
-            messages.saveSuccessAttribute("mystic", "hangar");
-        })).handle(data -> {
-            // ## Assert ##
-            log(ln() + data.getCause().getMessages().toDisp());
-            assertEquals("hangar", data.requiredSuccessAttribute("mystic", String.class));
-            assertException(AssertionError.class, () -> data.requiredSuccessAttribute("bbb", String.class));
-        });
+            // ## Act ##
+            assertValidationError(() -> validator.validateApi(maihama, messages -> {
+                messages.saveSuccessAttribute("mystic", "hangar");
+            })).handle(data -> {
+                // ## Assert ##
+                log(ln() + data.getCause().getMessages().toDisp());
+                assertEquals("hangar", data.requiredSuccessAttribute("mystic", String.class));
+                assertException(AssertionError.class, () -> data.requiredSuccessAttribute("bbb", String.class));
+            });
+        }, new CannonballOption());
     }
 
     // ===================================================================================
