@@ -160,10 +160,10 @@
           "format": "int32"
         },
         "onemanName": {
-          "type": "string",
+          "type": "string"
         },
         "piari": {
-          "type": "string",
+          "type": "string"
         },
         "BONVO": {
           "type": "string"
