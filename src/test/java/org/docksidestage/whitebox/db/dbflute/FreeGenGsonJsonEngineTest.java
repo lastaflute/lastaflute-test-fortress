@@ -22,13 +22,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.dbflute.helper.filesystem.FileTextIO;
+import org.dbflute.helper.message.ExceptionMessageBuilder;
 import org.dbflute.utflute.core.PlainTestCase;
 import org.dbflute.util.DfReflectionUtil;
 import org.dbflute.util.Srl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.gson.JsonSyntaxException;
 
 /**
  * @author jflute
@@ -40,9 +39,7 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
     //                                                                               Basic
     //                                                                               =====
     public void test_fromJson_basic() {
-        // ## Arrange ##
-        DfFrgGsonJsonEngine engine = new DfFrgGsonJsonEngine();
-        assertTrue(engine.determineFromJsonAvailable());
+        DfFrgGsonJsonEngine engine = createEngine();
 
         // ## Act ##
         Object result = engine.fromJson("test request", "test file", "{ \"sea\" = \"mystic\" }");
@@ -55,9 +52,7 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
     }
 
     public void test_fromJson_nested() {
-        // ## Arrange ##
-        DfFrgGsonJsonEngine engine = new DfFrgGsonJsonEngine();
-        assertTrue(engine.determineFromJsonAvailable());
+        DfFrgGsonJsonEngine engine = createEngine();
 
         // ## Act ##
         Object result = engine.fromJson("test request", "test file", "{ \"sea\" = [\"mystic\", \"over\"] }");
@@ -71,12 +66,11 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
 
     public void test_fromJson_noBrace() {
         // ## Arrange ##
-        DfFrgGsonJsonEngine engine = new DfFrgGsonJsonEngine();
-        assertTrue(engine.determineFromJsonAvailable());
+        DfFrgGsonJsonEngine engine = createEngine();
 
         // ## Act ##
         // ## Assert ##
-        assertException(JsonSyntaxException.class, () -> {
+        assertException(IllegalStateException.class, () -> {
             engine.fromJson("test request", "test file", "\"sea\" = \"mystic\"");
         });
     }
@@ -85,15 +79,12 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
     //                                                                           Real File
     //                                                                           =========
     public void test_fromJson_realFile_lastadocJson() throws IOException {
-        // ## Arrange ##
-        DfFrgGsonJsonEngine engine = new DfFrgGsonJsonEngine();
-        assertTrue(engine.determineFromJsonAvailable());
-        String canonicalPath = getTestCaseBuildDir().getCanonicalPath();
-        String lastadocPath = canonicalPath + "/lastadoc/unittest-analyzed-lastadoc.json";
-        String json = new FileTextIO().encodeAsUTF8().read(lastadocPath);
+        DfFrgGsonJsonEngine engine = createEngine();
+        String relativeFilePath = "lastadoc/ut-analyzed-lastadoc.json";
+        String json = readTestJson(relativeFilePath);
 
         // ## Act ##
-        Object result = engine.fromJson("test request", "test file", json);
+        Object result = engine.fromJson("test request", relativeFilePath, json);
 
         // ## Assert ##
         assertTrue(result instanceof Map<?, ?>);
@@ -108,15 +99,12 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
     }
 
     public void test_fromJson_realFile_swaggerJson() throws IOException {
-        // ## Arrange ##
-        DfFrgGsonJsonEngine engine = new DfFrgGsonJsonEngine();
-        assertTrue(engine.determineFromJsonAvailable());
-        String canonicalPath = getTestCaseBuildDir().getCanonicalPath();
-        String lastadocPath = canonicalPath + "/lastadoc/unittest-swagger.json";
-        String json = new FileTextIO().encodeAsUTF8().read(lastadocPath);
+        DfFrgGsonJsonEngine engine = createEngine();
+        String relativeFilePath = "lastadoc/ut-swagger.json";
+        String json = readTestJson(relativeFilePath);
 
         // ## Act ##
-        Object result = engine.fromJson("test request", "test file", json);
+        Object result = engine.fromJson("test request", relativeFilePath, json);
 
         // ## Assert ##
         assertTrue(result instanceof Map<?, ?>);
@@ -128,6 +116,61 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
         Map<String, Object> firstMap = actionDocMetaList.get(0);
         String name = (String) firstMap.get("name");
         assertEquals("logout", name);
+    }
+
+    public void test_fromJson_realFile_remoteapiJson_maihama_showbase() throws IOException {
+        DfFrgGsonJsonEngine engine = createEngine();
+        String relativeFilePath = "remoteapi/ut-remoteapi_schema_maihama-showbase_swagger.json";
+        String json = readTestJson(relativeFilePath);
+
+        // ## Act ##
+        Object result = engine.fromJson("test request", relativeFilePath, json);
+
+        // ## Assert ##
+        assertTrue(result instanceof Map<?, ?>);
+        log(Srl.cut(result.toString(), 300, "..."));
+        @SuppressWarnings("unchecked")
+        Map<String, ?> remoteapiMap = (Map<String, ?>) result;
+        @SuppressWarnings("unchecked")
+        Map<String, Object> pathsMap = (Map<String, Object>) remoteapiMap.get("paths");
+        @SuppressWarnings("unchecked")
+        Map<String, Object> firstMap = (Map<String, Object>) pathsMap.get("/product/list/search");
+        assertFalse(firstMap.isEmpty()); // enough for now
+    }
+
+    public void test_fromJson_realFile_remoteapiJson_tricky() throws IOException {
+        DfFrgGsonJsonEngine engine = createEngine();
+        String relativeFilePath = "remoteapi/ut-remoteapi_schema_swagger-tricky_swagger.json";
+        String json = readTestJson(relativeFilePath);
+
+        // ## Act ##
+        Object result = engine.fromJson("test request", relativeFilePath, json);
+
+        // ## Assert ##
+        assertTrue(result instanceof Map<?, ?>);
+        log(Srl.cut(result.toString(), 300, "..."));
+        @SuppressWarnings("unchecked")
+        Map<String, ?> remoteapiMap = (Map<String, ?>) result;
+        @SuppressWarnings("unchecked")
+        Map<String, Object> pathsMap = (Map<String, Object>) remoteapiMap.get("paths");
+        @SuppressWarnings("unchecked")
+        Map<String, Object> firstMap = (Map<String, Object>) pathsMap.get("/hellsuffix/reservedsuffixjust/");
+        assertFalse(firstMap.isEmpty()); // enough for now
+    }
+
+    // ===================================================================================
+    //                                                                        Assist Logic
+    //                                                                        ============
+    private DfFrgGsonJsonEngine createEngine() {
+        DfFrgGsonJsonEngine engine = new DfFrgGsonJsonEngine();
+        assertTrue(engine.determineFromJsonAvailable());
+        return engine;
+    }
+
+    private String readTestJson(String relativeFilePath) throws IOException {
+        String canonicalPath = getTestCaseBuildDir().getCanonicalPath();
+        String targetPath = canonicalPath + "/json/" + relativeFilePath;
+        return new FileTextIO().encodeAsUTF8().read(targetPath);
     }
 
     // ===================================================================================
@@ -142,6 +185,7 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
         private static final Logger _log = LoggerFactory.getLogger(DfFrgGsonJsonEngine.class);
 
         protected static Class<?> _gsonType;
+        protected static Object _gsonObj;
         protected static boolean _typeInitialized;
 
         protected static Method _fromJsonMethod;
@@ -191,6 +235,12 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
                 } catch (ClassNotFoundException ignored) { // e.g. no jar file in 'extlib'
                     _log.info(" -> not found the Gson type: {}", gsonFqcn);
                 }
+                try {
+                    _gsonObj = DfReflectionUtil.newInstance(_gsonType);
+                } catch (RuntimeException continued) { // basically no way
+                    _log.warn(" -> *cannot instantiate the Gson type: {}", _gsonType, continued);
+                    _gsonType = null; // treated as not found
+                }
                 _typeInitialized = true;
             }
         }
@@ -207,10 +257,30 @@ public class FreeGenGsonJsonEngineTest extends PlainTestCase {
             if (_fromJsonMethod == null) { // basically no way
                 throw new IllegalStateException("Not found the fromJsonMethod, call isFromJsonAvailable() before.");
             }
-            Object gsonObj = DfReflectionUtil.newInstance(_gsonType);
-            @SuppressWarnings("unchecked")
-            final RESULT result = (RESULT) DfReflectionUtil.invoke(_fromJsonMethod, gsonObj, new Object[] { json, Map.class });
-            return result;
+            final Object[] args = new Object[] { json, Map.class };
+            try {
+                @SuppressWarnings("unchecked")
+                final RESULT result = (RESULT) DfReflectionUtil.invoke(_fromJsonMethod, _gsonObj, args);
+                return result;
+            } catch (RuntimeException e) {
+                throwJsonParseFailureException(requestName, resourceFile, json, e);
+                return null; // unreachable
+            }
+        }
+
+        protected void throwJsonParseFailureException(String requestName, String resourceFile, String json, Exception cause) {
+            final ExceptionMessageBuilder br = new ExceptionMessageBuilder();
+            br.addNotice("Failed to parse the JSON file by Gson for FreeGen.");
+            br.addItem("FreeGen Request");
+            br.addElement(requestName);
+            br.addItem("JSON File");
+            br.addElement(resourceFile);
+            br.addItem("Gson Method");
+            br.addElement(_fromJsonMethod);
+            br.addItem("Parsed JSON");
+            br.addElement(json);
+            final String msg = br.buildExceptionMessage();
+            throw new IllegalStateException(msg, cause);
         }
     }
 }

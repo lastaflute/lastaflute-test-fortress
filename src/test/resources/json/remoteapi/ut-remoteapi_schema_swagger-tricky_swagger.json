@@ -1,0 +1,174 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Tricky",
+    "description": "test of tricky patterns",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/tricky/",
+  "paths": {
+    "/hellsuffix/reservedsuffixjust/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "e.g. _result property",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/fieldcase/noconv/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "no conversion with mixed parameters (has both camel and snake)",
+        "parameters": [
+          {
+            "name": "sea_id",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "landName",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "piari",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "BONVO",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.remote.swagger.tricky.FieldCaseMixedResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/urlcharacter/hyphen-hyphen/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "URL contains hyphen",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/urlcharacter/dot.dot/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "URL contains dot",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult$ReservedSuffixJustPart$ReservedSuffixJustResult": {
+      "type": "object",
+      "required": [
+        "stageName"
+      ],
+      "properties": {
+        "stageName": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult$ReservedSuffixJustPart": {
+      "type": "object",
+      "required": [
+        "parkName"
+      ],
+      "properties": {
+        "parkName": {
+          "type": "string"
+        },
+        "reservedSuffixJustResult": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult%24ReservedSuffixJustPart%24ReservedSuffixJustResult"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult": {
+      "type": "object",
+      "required": [
+        "resortName"
+      ],
+      "properties": {
+        "resortName": {
+          "type": "string"
+        },
+        "hellSuffixes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSuffixResult%24ReservedSuffixJustPart"
+          }
+        }
+      }
+    },
+    "org.docksidestage.remote.swagger.tricky.FieldCaseMixedResult": {
+      "type": "object",
+      "properties": {
+        "hangar_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "onemanName": {
+          "type": "string"
+        },
+        "piari": {
+          "type": "string"
+        },
+        "BONVO": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

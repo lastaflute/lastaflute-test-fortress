@@ -5180,6 +5180,59 @@
       "methodLineCount": 6
     },
     {
+      "url": "/wx/deftest/ninja/sea/",
+      "typeName": "org.docksidestage.app.web.wx.deftest.ninja.sea.WxDeftestNinjaSeaAction",
+      "simpleTypeName": "WxDeftestNinjaSeaAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "ninjaVipAssist",
+          "publicName": "ninjaVipAssist",
+          "typeName": "org.docksidestage.app.web.wx.deftest.ninja.vip.WxDeftestNinjaVipAssist",
+          "simpleTypeName": "WxDeftestNinjaVipAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.wx.deftest.ninja.sea.WxDeftestNinjaSeaForm",
+        "simpleTypeName": "WxDeftestNinjaSeaForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 18,
+      "methodLineCount": 4
+    },
+    {
       "url": "/wx/job/sea/{stage}/{jobUnique}",
       "typeName": "org.docksidestage.app.web.wx.job.WxJobAction",
       "simpleTypeName": "WxJobAction",
@@ -6733,7 +6786,7 @@
       "methodLineCount": 14
     },
     {
-      "url": "/wx/remoteapi/rmharbor/mypage",
+      "url": "/wx/remoteapi/rmharbor/lido/signin",
       "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction",
       "simpleTypeName": "WxRemoteapiRmharborAction",
       "description": "@author jflute",
@@ -6779,107 +6832,11 @@
           "nestTypeDocMetaList": []
         }
       ],
-      "methodName": "mypage",
+      "methodName": "lidoSignin",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn\u003e\u003e",
-        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbMypageProductReturn\u003e\u003e",
-        "value": "asJson(retList)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "productName",
-            "publicName": "product_name",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          },
-          {
-            "name": "regularPrice",
-            "publicName": "regular_price",
-            "typeName": "java.lang.Integer",
-            "simpleTypeName": "Integer",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Required"
-            ],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "fileLineCount": 92,
-      "methodLineCount": 4
-    },
-    {
-      "url": "/wx/remoteapi/rmharbor/signin",
-      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction",
-      "simpleTypeName": "WxRemoteapiRmharborAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "harborBhv",
-          "publicName": "harborBhv",
-          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
-          "simpleTypeName": "RemoteHarborBhv",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "memberBhv",
-          "publicName": "memberBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
-          "simpleTypeName": "MemberBhv",
-          "value": null,
-          "description": "The behavior of MEMBER.",
-          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "pagingAssist",
-          "publicName": "pagingAssist",
-          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
-          "simpleTypeName": "PagingAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "signin",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
+        "Execute{urlPattern\u003d@word/@word}"
       ],
       "parameterTypeDocMetaList": [],
       "formTypeDocMeta": {
@@ -6942,11 +6899,11 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 92,
+      "fileLineCount": 119,
       "methodLineCount": 17
     },
     {
-      "url": "/wx/remoteapi/rmharbor/products",
+      "url": "/wx/remoteapi/rmharbor/lido/mypage",
       "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction",
       "simpleTypeName": "WxRemoteapiRmharborAction",
       "description": "@author jflute",
@@ -6992,11 +6949,107 @@
           "nestTypeDocMetaList": []
         }
       ],
-      "methodName": "products",
+      "methodName": "lidoMypage",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "Execute"
+        "Execute{urlPattern\u003d@word/@word}"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbLidoMypageProductReturn\u003e\u003e",
+        "value": "asJson(retList)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 119,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/wx/remoteapi/rmharbor/serh/product",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction",
+      "simpleTypeName": "WxRemoteapiRmharborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "publicName": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "publicName": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "serhProduct",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d@word/@word}"
       ],
       "parameterTypeDocMetaList": [],
       "formTypeDocMeta": {
@@ -7057,8 +7110,125 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 92,
+      "fileLineCount": 119,
       "methodLineCount": 14
+    },
+    {
+      "url": "/wx/remoteapi/rmharbor/serh/signin",
+      "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRemoteapiRmharborAction",
+      "simpleTypeName": "WxRemoteapiRmharborAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "harborBhv",
+          "publicName": "harborBhv",
+          "typeName": "org.docksidestage.remote.harbor.RemoteHarborBhv",
+          "simpleTypeName": "RemoteHarborBhv",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "memberBhv",
+          "publicName": "memberBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.MemberBhv",
+          "simpleTypeName": "MemberBhv",
+          "value": null,
+          "description": "The behavior of MEMBER.",
+          "comment": "The behavior of MEMBER.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "pagingAssist",
+          "publicName": "pagingAssist",
+          "typeName": "org.docksidestage.app.web.base.paging.PagingAssist",
+          "simpleTypeName": "PagingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "serhSignin",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute{urlPattern\u003d@word/@word}"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.wx.remoteapi.rmharbor.WxRmharborSigninForm",
+        "simpleTypeName": "WxRmharborSigninForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "account",
+            "publicName": "account",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "password",
+            "publicName": "password",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "rememberMe",
+            "publicName": "rememberMe",
+            "typeName": "boolean",
+            "simpleTypeName": "boolean",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 119,
+      "methodLineCount": 17
     },
     {
       "url": "/wx/remoteapi/rmharbor/via/mypage",
@@ -7092,8 +7262,8 @@
       "returnTypeDocMeta": {
         "name": null,
         "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.mypage.RemoteHbMypageProductReturn\u003e\u003e",
-        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbMypageProductReturn\u003e\u003e",
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cRemoteHbLidoMypageProductReturn\u003e\u003e",
         "value": "asJson(retList)",
         "description": null,
         "comment": null,
@@ -13713,60 +13883,6 @@
       "methodLineCount": 12
     },
     {
-      "url": "/wx/response/stream/csv",
-      "typeName": "org.docksidestage.app.web.wx.response.stream.WxResponseStreamAction",
-      "simpleTypeName": "WxResponseStreamAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "logger",
-          "publicName": "logger",
-          "typeName": "org.slf4j.Logger",
-          "simpleTypeName": "Logger",
-          "value": null,
-          "description": null,
-          "comment": null,
-          "annotationList": [],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "productBhv",
-          "publicName": "productBhv",
-          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
-          "simpleTypeName": "ProductBhv",
-          "value": null,
-          "description": "The behavior of PRODUCT.",
-          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "csv",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [],
-      "formTypeDocMeta": null,
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.StreamResponse",
-        "simpleTypeName": "StreamResponse",
-        "value": "asStream(\"sea.csv\")",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": []
-      },
-      "fileLineCount": 105,
-      "methodLineCount": 18
-    },
-    {
       "url": "/wx/response/stream/output",
       "typeName": "org.docksidestage.app.web.wx.response.stream.WxResponseStreamAction",
       "simpleTypeName": "WxResponseStreamAction",
@@ -13821,7 +13937,7 @@
       "methodLineCount": 6
     },
     {
-      "url": "/wx/response/stream/japanese",
+      "url": "/wx/response/stream/cursortsv",
       "typeName": "org.docksidestage.app.web.wx.response.stream.WxResponseStreamAction",
       "simpleTypeName": "WxResponseStreamAction",
       "description": "@author jflute",
@@ -13852,7 +13968,7 @@
           "nestTypeDocMetaList": []
         }
       ],
-      "methodName": "japanese",
+      "methodName": "cursortsv",
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
@@ -13865,14 +13981,14 @@
         "publicName": null,
         "typeName": "org.lastaflute.web.response.StreamResponse",
         "simpleTypeName": "StreamResponse",
-        "value": "asStream(\"\\u6d77 + \\u9678 in \\u821e\\u6d5c.txt\")",
+        "value": "asStream(\"sea.csv\")",
         "description": null,
         "comment": null,
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
       "fileLineCount": 105,
-      "methodLineCount": 8
+      "methodLineCount": 18
     },
     {
       "url": "/wx/response/stream/updateplain",
@@ -13981,6 +14097,60 @@
       },
       "fileLineCount": 105,
       "methodLineCount": 12
+    },
+    {
+      "url": "/wx/response/stream/japanese",
+      "typeName": "org.docksidestage.app.web.wx.response.stream.WxResponseStreamAction",
+      "simpleTypeName": "WxResponseStreamAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productBhv",
+          "publicName": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "japanese",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.StreamResponse",
+        "simpleTypeName": "StreamResponse",
+        "value": "asStream(\"\\u6d77 + \\u9678 in \\u821e\\u6d5c.txt\")",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 105,
+      "methodLineCount": 8
     },
     {
       "url": "/wx/routing/{first}",
@@ -18892,6 +19062,28 @@
             "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
             "simpleTypeName": "CDef.ProductStatus",
             "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "mutableStatusList",
+            "publicName": "mutableStatusList",
+            "typeName": "java.util.List\u003corg.docksidestage.dbflute.allcommon.CDef$ProductStatus\u003e",
+            "simpleTypeName": "List\u003cCDef$ProductStatus\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "immutableStatusList",
+            "publicName": "immutableStatusList",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003corg.docksidestage.dbflute.allcommon.CDef$ProductStatus\u003e",
+            "simpleTypeName": "ImmutableList\u003cCDef$ProductStatus\u003e",
+            "value": null,
             "description": null,
             "comment": null,
             "annotationList": [],
