@@ -23,7 +23,9 @@ public class RemoteMaihamaShowbaseWxBhvTest extends UnitFortressBasicTestCase {
     //                                                                              ======
     public void test_requestRemogenTrickyNobody_bodyNotPresent() {
         // ## Arrange ##
-        String json = "{key=sea, value=mystic}";
+        // #for_now avoid type mismatch of 'value' item?
+        //String json = "{key=sea, value=mystic}";
+        String json = "{key=sea}";
         MockHttpClient client = MockHttpClient.create(response -> {
             response.peekRequest(request -> {
                 log(request);
