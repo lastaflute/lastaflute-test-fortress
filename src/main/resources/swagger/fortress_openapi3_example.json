@@ -1,0 +1,761 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "lido api",
+    "version": "1.0",
+    "description": "OpenAPI v3 example",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8151",
+      "description": "Fortress project"
+    }
+  ],
+  "paths": {
+    "/lido/following/list": {
+      "get": {
+        "summary": "Following List Search",
+        "tags": [
+          "followings"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "followings": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FollowingMember"
+                      }
+                    },
+                    "followers": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/FollowerMember"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "followings": [
+                        {
+                          "memberId": 7,
+                          "memberName": "Sea",
+                          "memberStatus": {
+                            "memberStatusName": "Formalized"
+                          },
+                          "hasManyPurchases": true
+                        },
+                        {
+                          "memberId": 8,
+                          "memberName": "Land",
+                          "memberStatus": {
+                            "memberStatusName": "Provisional"
+                          },
+                          "hasManyPurchases": false
+                        }
+                      ],
+                      "followers": [
+                        {
+                          "memberId": 11,
+                          "memberName": "Piari",
+                          "memberStatus": {
+                            "memberStatusName": "Formalized"
+                          },
+                          "hasManyPurchases": false
+                        },
+                        {
+                          "memberId": 12,
+                          "memberName": "Bonvo",
+                          "memberStatus": {
+                            "memberStatusName": "Withdrawal"
+                          },
+                          "hasManyPurchases": true
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "examples": {
+                  "validation_error": {
+                    "value": {
+                      "cause": "string",
+                      "erros": [
+                        {
+                          "field": "limit",
+                          "messages": [
+                            "is required",
+                            "should not be minus value"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "followings-list",
+        "description": "フォロー情報を見るAPI",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "in": "query",
+            "name": "limit",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "maxLength": 7
+            },
+            "in": "query",
+            "name": "memberPrefix",
+            "description": "会員名称の前方一致条件",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "in": "query",
+            "name": "fromPurchasePrice",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "livesChiba",
+            "required": false
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/lido/following/register": {
+      "post": {
+        "summary": "Member Following Registration",
+        "tags": [
+          "followings"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "followingCount": {
+                      "type": "integer",
+                      "description": "フォロー数"
+                    }
+                  },
+                  "required": [
+                    "followingCount"
+                  ]
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "followingCount": 7
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "examples": {
+                  "validation_error": {
+                    "value": {
+                      "cause": "VALIDATION_ERROR",
+                      "errors": [
+                        {
+                          "field": "myMemberId",
+                          "messages": [
+                            "is required"
+                          ]
+                        },
+                        {
+                          "field": "yourMemberId",
+                          "messages": [
+                            "is required"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientError"
+                },
+                "examples": {
+                  "client_error": {
+                    "value": {
+                      "cause": "CLIENT_ERROR",
+                      "errors": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerError"
+                },
+                "examples": {
+                  "server_error": {
+                    "value": {
+                      "cause": "SERVER_ERROR",
+                      "errors": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "following-register",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "myMemberId": {
+                    "type": "integer",
+                    "description": "わたしの会員ID",
+                    "minimum": 0
+                  },
+                  "yourMemberId": {
+                    "type": "integer",
+                    "description": "フォローしたい会員ID",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "myMemberId",
+                  "yourMemberId"
+                ]
+              }
+            }
+          },
+          "description": "他の会員をフォローするための情報"
+        },
+        "description": "他の会員をフォローするぞぅ！"
+      }
+    },
+    "/lido/following/delete": {
+      "post": {
+        "summary": "Member Following Delete",
+        "tags": [
+          "followings"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "followingCount": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "followingCount": 7
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "examples": {
+                  "validation_error": {
+                    "value": {
+                      "cause": "VALIDATION_ERROR",
+                      "errors": [
+                        {
+                          "field": "myMemberId",
+                          "messages": [
+                            "is required"
+                          ]
+                        },
+                        {
+                          "field": "yourMemberId",
+                          "messages": [
+                            "is required"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientError"
+                },
+                "examples": {
+                  "client_error": {
+                    "value": {
+                      "cause": "CLIENT_ERROR",
+                      "errors": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerError"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "cause": "SERVER_ERROR",
+                      "errors": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "following-delete",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "myMemberId": {
+                    "type": "integer",
+                    "description": "わたしの会員ID",
+                    "minimum": 0
+                  },
+                  "yourMemberId": {
+                    "type": "integer",
+                    "description": "解除したい会員ID",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "myMemberId",
+                  "yourMemberId"
+                ]
+              }
+            }
+          }
+        },
+        "description": "フォローしたけどちょっと解除したくなっちゃって..."
+      }
+    },
+    "/product/price/update": {
+      "post": {
+        "summary": "Product Price Update",
+        "tags": [
+          "mypage"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "no response"
+                },
+                "examples": {
+                  "example-1": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "examples": {
+                  "validation_error": {
+                    "value": {
+                      "cause": "VALIDATION_EERROR",
+                      "errors": [
+                        {
+                          "field": "regularPrice",
+                          "messages": [
+                            "is required"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "business_error": {
+                    "value": {
+                      "cause": "BUSINESS_ERROR",
+                      "errors": [
+                        {
+                          "field": "_global",
+                          "messages": [
+                            "販売中止しているので価格を変更できません"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientError"
+                },
+                "examples": {
+                  "client_error": {
+                    "value": {
+                      "cause": "CLIENT_ERROR",
+                      "errors": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerError"
+                },
+                "examples": {
+                  "server_error": {
+                    "value": {
+                      "cause": "SERVER_ERROR",
+                      "errors": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "product-price-update",
+        "description": "商品定価の更新",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "regularPrice": {
+                    "type": "integer",
+                    "description": "商品の定価",
+                    "minimum": 1
+                  }
+                },
+                "required": [
+                  "regularPrice"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "regularPrice": 300
+                  }
+                }
+              }
+            }
+          },
+          "description": "商品定価の更新情報"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ValidationError": {
+        "title": "ValidationError",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "cause": "VALIDATION_ERROR",
+            "errors": [
+              {
+                "field": "limit",
+                "messages": [
+                  "is required"
+                ]
+              }
+            ]
+          }
+        },
+        "description": "Valodation Error Model",
+        "properties": {
+          "cause": {
+            "type": "string"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "messages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ServerError": {
+        "title": "ServerError",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "cause": "SERVER_ERROR",
+            "errors": []
+          }
+        },
+        "description": "Server Error Model",
+        "properties": {
+          "cause": {
+            "type": "string"
+          },
+          "messages": {
+            "type": "array",
+            "items": {}
+          }
+        }
+      },
+      "ClientError": {
+        "title": "ClientError",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "cause": "CLIENT_ERROR",
+            "errors": []
+          }
+        },
+        "properties": {
+          "cause": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "description": "Client Error Model"
+      },
+      "BusinessError": {
+        "title": "BusinessError",
+        "type": "object",
+        "properties": {
+          "cause": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-examples": {
+          "example-1": {
+            "cause": "BUSINESS_ERROR",
+            "errors": [
+              {
+                "field": "_global",
+                "messages": [
+                  "とんでもないことが発生しました。他のサイトをご利用ください"
+                ]
+              }
+            ]
+          }
+        },
+        "description": "Business Error Model"
+      },
+      "MemberStatus": {
+        "type": "string",
+        "title": "MemberStatus",
+        "enum": [
+          "FML",
+          "PRV",
+          "WDL"
+        ],
+        "description": "会員ステータス",
+        "x-examples": {
+          "example-1": "FML"
+        }
+      },
+      "FollowingMember": {
+        "description": "フォローしてる会員",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "memberId": 7,
+            "memberName": "Sea",
+            "memberStatus": {
+              "memberStatusName": "Formalized"
+            }
+          }
+        },
+        "properties": {
+          "memberId": {
+            "type": "number",
+            "minimum": 0,
+            "description": "会員ID"
+          },
+          "memberName": {
+            "type": "string",
+            "minLength": 1,
+            "description": "会員名称"
+          },
+          "memberStatus": {
+            "type": "string",
+            "$ref": "#/components/schemas/MemberStatus",
+            "description": "会員ステータス"
+          },
+        },
+        "required": [
+          "memberId",
+          "memberName",
+          "memberStatus"
+        ]
+      },
+      "FollowerMember": {
+        "description": "フォロワー会員",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "memberId": 7,
+            "memberName": "Sea",
+            "memberStatus": {
+              "memberStatusName": "Formalized"
+            }
+          }
+        },
+        "properties": {
+          "memberId": {
+            "type": "number",
+            "minimum": 0,
+            "description": "会員ID"
+          },
+          "memberName": {
+            "type": "string",
+            "minLength": 1,
+            "description": "会員名称"
+          },
+          "memberStatus": {
+            "type": "string",
+            "$ref": "#/components/schemas/MemberStatus",
+            "description": "会員ステータス"
+          },
+        },
+        "required": [
+          "memberId",
+          "memberName",
+          "memberStatus"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "followings"
+    },
+    {
+      "name": "products"
+    }
+  ]
+}
