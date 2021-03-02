@@ -739,7 +739,7 @@
           "PRV",
           "WDL"
         ],
-        "description": "会員ステータス refCls=maihamadb@MemberStatus",
+        "description": "会員ステータス refCls:{maihamadb@MemberStatus}",
         "x-examples": {
           "example-1": "FML"
         }
