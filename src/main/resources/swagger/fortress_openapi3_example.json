@@ -665,19 +665,6 @@
         },
         "description": "Business Error Model"
       },
-      "MemberStatus": {
-        "type": "string",
-        "title": "MemberStatus",
-        "enum": [
-          "FML",
-          "PRV",
-          "WDL"
-        ],
-        "description": "会員ステータス",
-        "x-examples": {
-          "example-1": "FML"
-        }
-      },
       "FollowingMember": {
         "description": "フォローしてる会員",
         "type": "object",
@@ -702,9 +689,7 @@
             "description": "会員名称"
           },
           "memberStatus": {
-            "type": "string",
-            "$ref": "#/components/schemas/MemberStatus",
-            "description": "会員ステータス"
+            "$ref": "#/components/schemas/MemberStatus"
           },
         },
         "required": [
@@ -737,9 +722,7 @@
             "description": "会員名称"
           },
           "memberStatus": {
-            "type": "string",
-            "$ref": "#/components/schemas/MemberStatus",
-            "description": "会員ステータス"
+            "$ref": "#/components/schemas/MemberStatus"
           },
         },
         "required": [
@@ -747,6 +730,19 @@
           "memberName",
           "memberStatus"
         ]
+      },
+      "MemberStatus": {
+        "type": "string",
+        "title": "MemberStatus",
+        "enum": [
+          "FML",
+          "PRV",
+          "WDL"
+        ],
+        "description": "会員ステータス refCls=maihamadb@MemberStatus",
+        "x-examples": {
+          "example-1": "FML"
+        }
       }
     }
   },
