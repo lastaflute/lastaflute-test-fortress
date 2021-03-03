@@ -521,7 +521,7 @@
                 "properties": {
                   "regularPrice": {
                     "type": "integer",
-                    "description": "商品の定価",
+                    "description": "商品の定価 validate:{ @Price }",
                     "minimum": 1
                   }
                 },
