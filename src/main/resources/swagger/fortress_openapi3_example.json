@@ -39,44 +39,40 @@
                         "$ref": "#/components/schemas/FollowerMember"
                       }
                     }
-                  }
+                  },
+                  "required": [
+                    "followings",
+                    "followers"
+                  ]
                 },
                 "examples": {
                   "example": {
                     "value": {
                       "followings": [
                         {
-                          "memberId": 7,
-                          "memberName": "Sea",
-                          "memberStatus": {
-                            "memberStatusName": "Formalized"
-                          },
+                          "member_id": 7,
+                          "member_name": "Sea",
+                          "member_status_code": "Formalized",
                           "hasManyPurchases": true
                         },
                         {
-                          "memberId": 8,
-                          "memberName": "Land",
-                          "memberStatus": {
-                            "memberStatusName": "Provisional"
-                          },
+                          "member_id": 8,
+                          "member_name": "Land",
+                          "member_status_code": "Provisional",
                           "hasManyPurchases": false
                         }
                       ],
                       "followers": [
                         {
-                          "memberId": 11,
-                          "memberName": "Piari",
-                          "memberStatus": {
-                            "memberStatusName": "Formalized"
-                          },
+                          "member_id": 11,
+                          "member_name": "Piari",
+                          "member_status_code": "Formalized",
                           "hasManyPurchases": false
                         },
                         {
-                          "memberId": 12,
-                          "memberName": "Bonvo",
-                          "memberStatus": {
-                            "memberStatusName": "Withdrawal"
-                          },
+                          "member_id": 12,
+                          "member_name": "Bonvo",
+                          "member_status_code": "Withdrawal",
                           "hasManyPurchases": true
                         }
                       ]
@@ -119,6 +115,7 @@
           {
             "schema": {
               "type": "integer",
+              "format": "int32",
               "minimum": 0
             },
             "in": "query",
@@ -138,6 +135,7 @@
           {
             "schema": {
               "type": "integer",
+              "format": "int32",
               "minimum": 100
             },
             "in": "query",
@@ -170,19 +168,20 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "followingCount": {
+                    "following_count": {
                       "type": "integer",
+                      "format": "int32",
                       "description": "フォロー数"
                     }
                   },
                   "required": [
-                    "followingCount"
+                    "following_count"
                   ]
                 },
                 "examples": {
                   "example-1": {
                     "value": {
-                      "followingCount": 7
+                      "following_count": 7
                     }
                   }
                 }
@@ -202,13 +201,13 @@
                       "cause": "VALIDATION_ERROR",
                       "errors": [
                         {
-                          "field": "myMemberId",
+                          "field": "my_member_id",
                           "messages": [
                             "is required"
                           ]
                         },
                         {
-                          "field": "yourMemberId",
+                          "field": "your_member_id",
                           "messages": [
                             "is required"
                           ]
@@ -260,25 +259,28 @@
         "operationId": "following-register",
         "parameters": [],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "myMemberId": {
+                  "my_member_id": {
                     "type": "integer",
+                    "format": "int32",
                     "description": "わたしの会員ID",
                     "minimum": 1
                   },
-                  "yourMemberId": {
+                  "your_member_id": {
                     "type": "integer",
+                    "format": "int32",
                     "description": "フォローしたい会員ID",
                     "minimum": 1
                   }
                 },
                 "required": [
-                  "myMemberId",
-                  "yourMemberId"
+                  "my_member_id",
+                  "your_member_id"
                 ]
               }
             }
@@ -302,15 +304,19 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "followingCount": {
-                      "type": "integer"
+                    "following_count": {
+                      "type": "integer",
+                      "format": "int32"
                     }
-                  }
+                  },
+                  "required": [
+                    "following_count"
+                  ]
                 },
                 "examples": {
                   "example-1": {
                     "value": {
-                      "followingCount": 7
+                      "following_count": 7
                     }
                   }
                 }
@@ -330,13 +336,13 @@
                       "cause": "VALIDATION_ERROR",
                       "errors": [
                         {
-                          "field": "myMemberId",
+                          "field": "my_member_id",
                           "messages": [
                             "is required"
                           ]
                         },
                         {
-                          "field": "yourMemberId",
+                          "field": "your_member_id",
                           "messages": [
                             "is required"
                           ]
@@ -388,25 +394,28 @@
         "operationId": "following-delete",
         "parameters": [],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "myMemberId": {
+                  "my_member_id": {
                     "type": "integer",
+                    "format": "int32",
                     "description": "わたしの会員ID",
                     "minimum": 1
                   },
-                  "yourMemberId": {
+                  "your_member_id": {
                     "type": "integer",
+                    "format": "int32",
                     "description": "解除したい会員ID",
                     "minimum": 1
                   }
                 },
                 "required": [
-                  "myMemberId",
-                  "yourMemberId"
+                  "my_member_id",
+                  "your_member_id"
                 ]
               }
             }
@@ -415,7 +424,7 @@
         "description": "フォローしたけどちょっと解除したくなっちゃって..."
       }
     },
-    "/product/price/update": {
+    "/lido/product/price/update/{productId}": {
       "post": {
         "summary": "Product Price Update",
         "tags": [
@@ -423,18 +432,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "description": "no response"
-                },
-                "examples": {
-                  "example-1": {}
-                }
-              }
-            }
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request",
@@ -449,7 +447,7 @@
                       "cause": "VALIDATION_EERROR",
                       "errors": [
                         {
-                          "field": "regularPrice",
+                          "field": "regular_price",
                           "messages": [
                             "is required"
                           ]
@@ -513,26 +511,40 @@
         },
         "operationId": "product-price-update",
         "description": "商品定価の更新",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            },
+            "in": "path",
+            "name": "productId",
+            "required": true
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "regularPrice": {
+                  "regular_price": {
                     "type": "integer",
+                    "format": "int32",
                     "description": "商品の定価 validate:{ @Price }",
                     "minimum": 10
                   }
                 },
                 "required": [
-                  "regularPrice"
+                  "regular_price"
                 ]
               },
               "examples": {
                 "example-1": {
                   "value": {
-                    "regularPrice": 300
+                    "regular_price": 300
                   }
                 }
               }
@@ -670,32 +682,31 @@
         "type": "object",
         "x-examples": {
           "example-1": {
-            "memberId": 7,
-            "memberName": "Sea",
-            "memberStatus": {
-              "memberStatusName": "Formalized"
-            }
+            "member_id": 7,
+            "member_name": "Sea",
+            "member_status_code": "Formalized"
           }
         },
         "properties": {
-          "memberId": {
-            "type": "number",
+          "member_id": {
+            "type": "integer",
+            "format": "int32",
             "minimum": 0,
             "description": "会員ID"
           },
-          "memberName": {
+          "member_name": {
             "type": "string",
             "minLength": 1,
             "description": "会員名称"
           },
-          "memberStatus": {
-            "$ref": "#/components/schemas/MemberStatus"
+          "member_status_code": {
+            "$ref": "#/components/schemas/memberStatusCode"
           }
         },
         "required": [
-          "memberId",
-          "memberName",
-          "memberStatus"
+          "member_id",
+          "member_name",
+          "member_status_code"
         ]
       },
       "FollowerMember": {
@@ -703,43 +714,42 @@
         "type": "object",
         "x-examples": {
           "example-1": {
-            "memberId": 7,
-            "memberName": "Sea",
-            "memberStatus": {
-              "memberStatusName": "Formalized"
-            }
+            "member_id": 7,
+            "member_name": "Sea",
+            "member_Status_Code": "Formalized"
           }
         },
         "properties": {
-          "memberId": {
-            "type": "number",
+          "member_id": {
+            "type": "integer",
+            "format": "int32",
             "minimum": 0,
             "description": "会員ID"
           },
-          "memberName": {
+          "member_name": {
             "type": "string",
             "minLength": 1,
             "description": "会員名称"
           },
-          "memberStatus": {
-            "$ref": "#/components/schemas/MemberStatus"
+          "member_status_code": {
+            "$ref": "#/components/schemas/memberStatusCode"
           }
         },
         "required": [
-          "memberId",
-          "memberName",
-          "memberStatus"
+          "member_id",
+          "member_name",
+          "member_status_code"
         ]
       },
-      "MemberStatus": {
+      "memberStatusCode": {
         "type": "string",
-        "title": "MemberStatus",
+        "title": "memberStatusCode",
         "enum": [
           "FML",
           "PRV",
           "WDL"
         ],
-        "description": "会員ステータス refCls:{maihamadb@MemberStatus}",
+        "description": "会員ステータス refCls:{maihamadb@memberStatusCode}",
         "x-examples": {
           "example-1": "FML"
         }

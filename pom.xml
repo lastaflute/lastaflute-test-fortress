@@ -26,7 +26,9 @@
 		<lasta.thymeleaf.version>0.4.2</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.4</lasta.job.version>
 		<lasta.remoteapi.version>0.4.5</lasta.remoteapi.version>
-		<lasta.meta.version>0.5.0</lasta.meta.version>
+		<lasta.meta.version>0.5.1-RC1-C-SNAPSHOT</lasta.meta.version>
+		<javaparser.version>3.20.0</javaparser.version>
+		<openapidiff.version>2.0.0-beta.9</openapidiff.version>
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.12</slf4j.version>
@@ -384,6 +386,18 @@
 			<groupId>org.lastaflute.meta</groupId>
 			<artifactId>lasta-meta</artifactId>
 			<version>${lasta.meta.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.javaparser</groupId>
+			<artifactId>javaparser-core</artifactId>
+			<version>${javaparser.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openapitools.openapidiff</groupId>
+			<artifactId>openapi-diff-core</artifactId>
+			<version>${openapidiff.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
