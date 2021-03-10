@@ -27,18 +27,20 @@ import io.swagger.v3.parser.core.models.SwaggerParseResult;
  */
 public class SwaggerDiffTest extends PlainTestCase {
 
-    public void test_fortress_openapi3_example() {
-        String swaggerJson = "./src/main/resources/swagger/fortress_openapi3_example.json";
+    public void test_fortress_openapi3_compare() {
         OpenAPIParser openAPIParser = new OpenAPIParser();
-        SwaggerParseResult result = openAPIParser.readLocation(swaggerJson, null, null);
-        SwaggerParseResult resultEdit = openAPIParser.readLocation(swaggerJson, null, null);
 
-        assertHasZeroElement(result.getMessages());
-        assertHasZeroElement(resultEdit.getMessages());
+        String swaggerJsonLasta = "./src/main/resources/swagger/fortress_lasta_presents_example_minimum.json";
+        SwaggerParseResult resultLasta = openAPIParser.readLocation(swaggerJsonLasta, null, null);
 
-        resultEdit.getOpenAPI().getInfo().description("xxx");
+        String swaggerJsonOpenApi3 = "./src/main/resources/swagger/fortress_openapi3_example_minimum.json";
+        SwaggerParseResult resultOpenApi3 = openAPIParser.readLocation(swaggerJsonOpenApi3, null, null);
+
+        assertHasZeroElement(resultLasta.getMessages());
+        assertHasZeroElement(resultOpenApi3.getMessages());
 
         Javers javers = JaversBuilder.javers().build();
-        System.out.println(javers.compare(result, resultEdit));
+        System.out.println(javers.compare(resultLasta.getOpenAPI().getPaths(), resultOpenApi3.getOpenAPI().getPaths()));
+        //        System.out.println(javers.compare(resultLasta.getOpenAPI().getComponents(), resultOpenApi3.getOpenAPI().getComponents()));
     }
 }
