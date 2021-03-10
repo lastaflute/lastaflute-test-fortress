@@ -15,12 +15,17 @@
  */
 package org.docksidestage.app.web;
 
+import java.io.InputStream;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.dbflute.helper.filesystem.FileTextIO;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.mylasta.direction.FortressConfig;
+import org.lastaflute.core.json.JsonEngineResource;
+import org.lastaflute.core.json.JsonManager;
+import org.lastaflute.core.json.engine.RealJsonEngine;
 import org.lastaflute.meta.SwaggerGenerator;
 import org.lastaflute.meta.agent.SwaggerAgent;
 import org.lastaflute.meta.web.LaActionSwaggerable;
@@ -41,6 +46,8 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    @Resource
+    private JsonManager jsonManager;
     @Resource
     private RequestManager requestManager;
     @Resource
@@ -63,6 +70,22 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
             op.addHeaderParameter("hangar", "mystic");
         });
         return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
+    }
+
+    @Execute
+    public JsonResponse<Map<String, Object>> jsonOpenApi3() {
+        verifySwaggerAllowed();
+        Map<String, Object> swaggerMap = prepareOpenApi3Json();
+        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
+    }
+
+    private Map<String, Object> prepareOpenApi3Json() {
+        RealJsonEngine simpleEngine = jsonManager.newRuledEngine(new JsonEngineResource());
+        InputStream ins = getClass().getClassLoader().getResourceAsStream("/swagger/fortress_openapi3_example.json");
+        String json = new FileTextIO().encodeAsUTF8().read(ins);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> swaggerMap = simpleEngine.fromJson(json, Map.class);
+        return swaggerMap;
     }
 
     private void verifySwaggerAllowed() { // also check in ActionAdjustmentProvider
