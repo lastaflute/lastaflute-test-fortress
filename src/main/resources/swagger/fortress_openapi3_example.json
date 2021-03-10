@@ -690,7 +690,7 @@
           },
           "memberStatus": {
             "$ref": "#/components/schemas/MemberStatus"
-          },
+          }
         },
         "required": [
           "memberId",
@@ -723,7 +723,7 @@
           },
           "memberStatus": {
             "$ref": "#/components/schemas/MemberStatus"
-          },
+          }
         },
         "required": [
           "memberId",
