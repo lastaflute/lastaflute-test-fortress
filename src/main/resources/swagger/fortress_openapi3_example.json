@@ -419,7 +419,7 @@
       "post": {
         "summary": "Product Price Update",
         "tags": [
-          "mypage"
+          "products"
         ],
         "responses": {
           "200": {
@@ -522,7 +522,7 @@
                   "regularPrice": {
                     "type": "integer",
                     "description": "商品の定価 validate:{ @Price }",
-                    "minimum": 1
+                    "minimum": 10
                   }
                 },
                 "required": [
