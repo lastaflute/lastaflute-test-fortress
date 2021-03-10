@@ -396,12 +396,12 @@
                   "myMemberId": {
                     "type": "integer",
                     "description": "わたしの会員ID",
-                    "minimum": 0
+                    "minimum": 1
                   },
                   "yourMemberId": {
                     "type": "integer",
                     "description": "解除したい会員ID",
-                    "minimum": 0
+                    "minimum": 1
                   }
                 },
                 "required": [
