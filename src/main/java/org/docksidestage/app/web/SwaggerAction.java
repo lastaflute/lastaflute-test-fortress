@@ -59,12 +59,12 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     @Execute
     public HtmlResponse index() {
         verifySwaggerAllowed();
-        String swaggerJsonUrl = toActionUrl(SwaggerAction.class, moreUrl("json"));
+        String swaggerJsonUrl = toActionUrl(SwaggerAction.class, moreUrl("json")); // is default method
         return new SwaggerAgent(requestManager).prepareSwaggerUiResponse(swaggerJsonUrl);
     }
 
     @Execute
-    public JsonResponse<Map<String, Object>> json() {
+    public JsonResponse<Map<String, Object>> json() { // using Lasta-presents json
         verifySwaggerAllowed();
         Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
             op.addHeaderParameter("hangar", "mystic");
@@ -73,15 +73,16 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     }
 
     @Execute
-    public JsonResponse<Map<String, Object>> jsonOpenApi3() {
+    public JsonResponse<Map<String, Object>> appjson() { // using application json
         verifySwaggerAllowed();
-        Map<String, Object> swaggerMap = prepareOpenApi3Json();
+        Map<String, Object> swaggerMap = prepareAppJson();
         return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
     }
 
-    private Map<String, Object> prepareOpenApi3Json() {
+    private Map<String, Object> prepareAppJson() {
         RealJsonEngine simpleEngine = jsonManager.newRuledEngine(new JsonEngineResource());
-        InputStream ins = getClass().getClassLoader().getResourceAsStream("/swagger/fortress_openapi3_example.json");
+        String resourcePath = "/swagger/fortress_openapi3_example.json"; // e.g. src/main/resources/swagger
+        InputStream ins = getClass().getClassLoader().getResourceAsStream(resourcePath);
         String json = new FileTextIO().encodeAsUTF8().read(ins);
         @SuppressWarnings("unchecked")
         Map<String, Object> swaggerMap = simpleEngine.fromJson(json, Map.class);
