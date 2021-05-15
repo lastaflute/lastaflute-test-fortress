@@ -17,17 +17,22 @@ package org.docksidestage.app.web.products;
 
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.hibernate.validator.constraints.Length;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
 public class ProductsListForm {
 
+    /** prefix for name of product e.g. R */
     @Length(max = 10)
     public String productName;
 
+    /** status of product e.g. ONS */
+    @Required
     public CDef.ProductStatus productStatus;
 
+    /** prefix for member name who purchases the product e.g. S */
     @Length(max = 5)
     public String purchaseMemberName;
 }

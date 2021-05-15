@@ -39,13 +39,13 @@ import org.lastaflute.web.validation.VaConfigSetupper;
 /**
  * @author jflute
  */
-public class ActionOptionPlanner {
+public class ActionOptionAgent {
 
     // ===================================================================================
     //                                                                             Routing
     //                                                                             =======
-    public RestfulRouter createRestfulRouter() {
-        return new RestfulRouter();
+    public PrimitiveRestfulRouter createRestfulRouter() {
+        return new PrimitiveRestfulRouter();
     }
 
     // ===================================================================================

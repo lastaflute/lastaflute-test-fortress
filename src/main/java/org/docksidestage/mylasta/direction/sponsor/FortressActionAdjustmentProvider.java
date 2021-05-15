@@ -16,10 +16,10 @@
 package org.docksidestage.mylasta.direction.sponsor;
 
 import org.dbflute.util.DfTypeUtil;
-import org.docksidestage.mylasta.direction.sponsor.planner.ActionOptionPlanner;
+import org.docksidestage.mylasta.direction.sponsor.planner.ActionOptionAgent;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableRestlikeRouter;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableSmartphoneMapper;
-import org.docksidestage.mylasta.direction.sponsor.planner.RestfulRouter;
+import org.docksidestage.mylasta.direction.sponsor.planner.PrimitiveRestfulRouter;
 import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
@@ -37,12 +37,12 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    protected final ActionOptionPlanner actionOptionPlanner;
+    protected final ActionOptionAgent actionOptionAgent;
 
     // -----------------------------------------------------
     //                                         Cached Option
     //                                         -------------
-    protected final RestfulRouter restfulRouter;
+    protected final PrimitiveRestfulRouter restfulRouter;
     protected final FormMappingOption formMappingOption;
     protected final VaConfigSetupper vaConfigSetupper;
     protected final ResponseReflectingOption responseReflectingOption;
@@ -54,19 +54,19 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     //                                                                         Constructor
     //                                                                         ===========
     public FortressActionAdjustmentProvider() {
-        actionOptionPlanner = createActionOptionFactory();
+        actionOptionAgent = createActionOptionAgent();
 
-        restfulRouter = actionOptionPlanner.createRestfulRouter();
-        formMappingOption = actionOptionPlanner.createFormMappingOption();
-        vaConfigSetupper = actionOptionPlanner.createValidatorConfigSetupper();
-        responseReflectingOption = actionOptionPlanner.createResponseReflectingOption();
+        restfulRouter = actionOptionAgent.createRestfulRouter();
+        formMappingOption = actionOptionAgent.createFormMappingOption();
+        vaConfigSetupper = actionOptionAgent.createValidatorConfigSetupper();
+        responseReflectingOption = actionOptionAgent.createResponseReflectingOption();
 
         memorableRestlikeRouter = new MemorableRestlikeRouter();
         memorableSmartphoneMapper = new MemorableSmartphoneMapper();
     }
 
-    protected ActionOptionPlanner createActionOptionFactory() {
-        return new ActionOptionPlanner();
+    protected ActionOptionAgent createActionOptionAgent() {
+        return new ActionOptionAgent();
     }
 
     // ===================================================================================
@@ -86,7 +86,9 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
 
     @Override
     public UrlReverseOption customizeActionUrlReverse(UrlReverseResource resource) {
-        return memorableSmartphoneMapper.customizeActionUrlReverse(resource).orElse(null);
+        return restfulRouter.toRestfulReversePath(resource).orElseGet(() -> {
+            return memorableSmartphoneMapper.customizeActionUrlReverse(resource).orElse(null);
+        });
     }
 
     // ===================================================================================
@@ -132,7 +134,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     //                                                                       =============
     @Override
     public boolean isSuppressServerErrorLogging(Throwable cause) {
-        return actionOptionPlanner.isSuppressServerErrorLogging(cause);
+        return actionOptionAgent.isSuppressServerErrorLogging(cause);
     }
 
     // ===================================================================================
