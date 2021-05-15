@@ -60,7 +60,7 @@ public class ProductsCrudAssist {
         });
     }
 
-    public Product selectProduct(int productId) {
+    public Product selectProductById(Integer productId) {
         return productBhv.selectEntity(cb -> {
             cb.setupSelect_ProductCategory();
             cb.query().setProductId_Equal(productId);

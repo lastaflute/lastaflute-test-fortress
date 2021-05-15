@@ -1,7 +1,9 @@
 package org.docksidestage.app.web.wx.routing.restful;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
+import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
+import org.lastaflute.web.response.JsonResponse;
 
 /**
  * @author jflute
@@ -9,5 +11,9 @@ import org.lastaflute.web.login.AllowAnyoneAccess;
 @AllowAnyoneAccess
 public class WxRoutingRestfulAction extends FortressBaseAction {
 
-    // see MembersAction
+    // see ProductsAction for RESTful action test
+    @Execute
+    public JsonResponse<Void> get$dummy() {
+        return JsonResponse.asEmptyBody();
+    }
 }

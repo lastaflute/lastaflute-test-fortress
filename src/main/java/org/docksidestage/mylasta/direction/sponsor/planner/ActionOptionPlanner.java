@@ -42,6 +42,13 @@ import org.lastaflute.web.validation.VaConfigSetupper;
 public class ActionOptionPlanner {
 
     // ===================================================================================
+    //                                                                             Routing
+    //                                                                             =======
+    public RestfulRouter createRestfulRouter() {
+        return new RestfulRouter();
+    }
+
+    // ===================================================================================
     //                                                                        Form Mapping
     //                                                                        ============
     public FormMappingOption createFormMappingOption() {

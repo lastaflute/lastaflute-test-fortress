@@ -31,27 +31,26 @@ public class ProductsMappingAssist {
     // ===================================================================================
     //                                                                         List Result
     //                                                                         ===========
-    public ProductsListResult mappingToListResult(List<Product> page) {
-        List<ProductsRowPart> rows = page.stream().map(product -> {
+    public ProductsListResult mappingToListResult(List<Product> productList) {
+        List<ProductsRowPart> rows = productList.stream().map(product -> {
             return mappingToRowPart(product);
         }).collect(Collectors.toList());
-        ProductsListResult result = new ProductsListResult(rows);
-        return result;
+        return new ProductsListResult(rows);
     }
 
     private ProductsRowPart mappingToRowPart(Product product) {
-        ProductsRowPart bean = new ProductsRowPart();
-        bean.productId = product.getProductId();
-        bean.productName = product.getProductName();
+        ProductsRowPart row = new ProductsRowPart();
+        row.productId = product.getProductId();
+        row.productName = product.getProductName();
         product.getProductStatus().alwaysPresent(status -> {
-            bean.productStatus = status.getProductStatusName();
+            row.productStatus = status.getProductStatusName();
         });
         product.getProductCategory().alwaysPresent(category -> {
-            bean.productCategory = category.getProductCategoryName();
+            row.productCategory = category.getProductCategoryName();
         });
-        bean.regularPrice = product.getRegularPrice();
-        bean.latestPurchaseDate = product.getLatestPurchaseDate();
-        return bean;
+        row.regularPrice = product.getRegularPrice();
+        row.latestPurchaseDate = product.getLatestPurchaseDate();
+        return row;
     }
 
     // ===================================================================================

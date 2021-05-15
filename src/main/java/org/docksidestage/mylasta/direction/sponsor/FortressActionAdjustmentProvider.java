@@ -19,6 +19,7 @@ import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.mylasta.direction.sponsor.planner.ActionOptionPlanner;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableRestlikeRouter;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableSmartphoneMapper;
+import org.docksidestage.mylasta.direction.sponsor.planner.RestfulRouter;
 import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
@@ -41,6 +42,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                         Cached Option
     //                                         -------------
+    protected final RestfulRouter restfulRouter;
     protected final FormMappingOption formMappingOption;
     protected final VaConfigSetupper vaConfigSetupper;
     protected final ResponseReflectingOption responseReflectingOption;
@@ -54,6 +56,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     public FortressActionAdjustmentProvider() {
         actionOptionPlanner = createActionOptionFactory();
 
+        restfulRouter = actionOptionPlanner.createRestfulRouter();
         formMappingOption = actionOptionPlanner.createFormMappingOption();
         vaConfigSetupper = actionOptionPlanner.createValidatorConfigSetupper();
         responseReflectingOption = actionOptionPlanner.createResponseReflectingOption();
@@ -71,23 +74,19 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     //                                                                             =======
     @Override
     public String customizeActionMappingRequestPath(String requestPath) { // old style method
-        return memorableRestlikeRouter.makeRestlike(requestPath, () -> {
-            return ActionAdjustmentProvider.super.customizeActionMappingRequestPath(requestPath);
-        });
+        return memorableRestlikeRouter.makeRestlike(requestPath);
     }
 
     @Override
     public UrlMappingOption customizeActionUrlMapping(UrlMappingResource resource) {
-        return memorableSmartphoneMapper.customizeActionUrlMapping(resource, () -> {
-            return ActionAdjustmentProvider.super.customizeActionUrlMapping(resource);
+        return restfulRouter.toRestfulMappingPath(resource).orElseGet(() -> {
+            return memorableSmartphoneMapper.customizeActionUrlMapping(resource).orElse(null);
         });
     }
 
     @Override
     public UrlReverseOption customizeActionUrlReverse(UrlReverseResource resource) {
-        return memorableSmartphoneMapper.customizeActionUrlReverse(resource, () -> {
-            return ActionAdjustmentProvider.super.customizeActionUrlReverse(resource);
-        });
+        return memorableSmartphoneMapper.customizeActionUrlReverse(resource).orElse(null);
     }
 
     // ===================================================================================

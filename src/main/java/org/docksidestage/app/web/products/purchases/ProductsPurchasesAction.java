@@ -13,16 +13,16 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.products;
+package org.docksidestage.app.web.products.purchases;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.app.web.products.assist.ProductsCrudAssist;
-import org.docksidestage.app.web.products.assist.ProductsMappingAssist;
-import org.docksidestage.dbflute.exentity.Product;
+import org.docksidestage.app.web.products.purchases.assist.PurchasesCrudAssist;
+import org.docksidestage.app.web.products.purchases.assist.PurchasesMappingAssist;
+import org.docksidestage.dbflute.exentity.Purchase;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -31,64 +31,64 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class ProductsAction extends FortressBaseAction {
+public class ProductsPurchasesAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private ProductsCrudAssist productsCrudAssist;
+    private PurchasesCrudAssist purchasesCrudAssist;
     @Resource
-    private ProductsMappingAssist productsMappingAssist;
+    private PurchasesMappingAssist purchasesMappingAssist;
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    // /products/
+    // /products/1/purchases/
     //
     // *it needs "list" in method, which is resolved by ActionAdjustmentProvider
-    // http://localhost:8151/fortress/products/?productName=R
+    // http://localhost:8151/fortress/products/1/purchases/?memberName=S
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
-    public JsonResponse<ProductsListResult> get$list(ProductsListForm form) {
+    public JsonResponse<PurchasesListResult> get$list(Integer productId, PurchasesListForm form) {
         validateApi(form, messages -> {});
-        List<Product> productList = selectProductList(form);
-        ProductsListResult result = mappingToListResult(productList);
+        List<Purchase> purchaseList = selectPurchaseList(productId, form);
+        PurchasesListResult result = mappingToListResult(purchaseList);
         return asJson(result);
     }
 
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    // /products/1
+    // /products/1/purchases/2/
     //
-    // http://localhost:8151/fortress/products/1/
+    // http://localhost:8151/fortress/products/1/purchases/2/
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
-    public JsonResponse<ProductsOneResult> get$index(Integer productId) {
-        Product product = selectProductById(productId);
-        ProductsOneResult result = mappingToOneResult(product);
+    public JsonResponse<PurchasesOneResult> get$index(Integer productId, Long purchaseId) {
+        Purchase purchase = selectPurchaseById(productId, purchaseId);
+        PurchasesOneResult result = mappingToOneResult(purchase);
         return asJson(result);
     }
 
     // ===================================================================================
     //                                                                              Select
     //                                                                              ======
-    private List<Product> selectProductList(ProductsListForm form) {
-        return productsCrudAssist.selectProductList(form);
+    private List<Purchase> selectPurchaseList(Integer productId, PurchasesListForm form) {
+        return purchasesCrudAssist.selectPurchaseList(productId, form);
     }
 
-    private Product selectProductById(Integer productId) {
-        return productsCrudAssist.selectProductById(productId);
+    private Purchase selectPurchaseById(Integer productId, Long purchaseId) {
+        return purchasesCrudAssist.selectPurchaseById(productId, purchaseId);
     }
 
     // ===================================================================================
     //                                                                             Mapping
     //                                                                             =======
-    private ProductsListResult mappingToListResult(List<Product> productList) {
-        return productsMappingAssist.mappingToListResult(productList);
+    private PurchasesListResult mappingToListResult(List<Purchase> purchaseList) {
+        return purchasesMappingAssist.mappingToListResult(purchaseList);
     }
 
-    private ProductsOneResult mappingToOneResult(Product product) {
-        return productsMappingAssist.mappingToOneResult(product);
+    private PurchasesOneResult mappingToOneResult(Purchase purchase) {
+        return purchasesMappingAssist.mappingToOneResult(purchase);
     }
 }

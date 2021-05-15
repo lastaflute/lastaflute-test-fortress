@@ -18,7 +18,6 @@ package org.docksidestage.mylasta.direction.sponsor.planner;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
 import org.dbflute.util.Srl;
@@ -46,7 +45,7 @@ public class MemorableRestlikeRouter {
         return Collections.unmodifiableList(workingList);
     }
 
-    public String makeRestlike(String requestPath, Supplier<String> nextCustomizer) {
+    public String makeRestlike(String requestPath) {
         for (RestlikeResource resource : resourceList) {
             Pattern entryPattern = resource.getEntryPattern();
             Pattern internalPattern = resource.getInternalPattern();
@@ -57,7 +56,7 @@ public class MemorableRestlikeRouter {
                 return restlike;
             }
         }
-        return nextCustomizer.get();
+        return null;
     }
 
     protected String doMakeRestlike(String requestPath, Pattern entryPattern, Pattern internalPattern, String baseWord,

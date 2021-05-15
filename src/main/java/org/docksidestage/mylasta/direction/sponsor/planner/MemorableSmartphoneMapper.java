@@ -15,8 +15,7 @@
  */
 package org.docksidestage.mylasta.direction.sponsor.planner;
 
-import java.util.function.Supplier;
-
+import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.Srl;
 import org.lastaflute.web.path.UrlMappingOption;
 import org.lastaflute.web.path.UrlMappingResource;
@@ -28,7 +27,13 @@ import org.lastaflute.web.path.UrlReverseResource;
  */
 public class MemorableSmartphoneMapper {
 
-    public UrlMappingOption customizeActionUrlMapping(UrlMappingResource resource, Supplier<UrlMappingOption> nextCustomizer) {
+    public OptionalThing<UrlMappingOption> customizeActionUrlMapping(UrlMappingResource resource) {
+        return OptionalThing.ofNullable(doCustomizeActionUrlMapping(resource), () -> {
+            throw new IllegalStateException("No operation for the requestPath: " + resource.getRequestPath());
+        });
+    }
+
+    protected UrlMappingOption doCustomizeActionUrlMapping(UrlMappingResource resource) {
         // for mapping '/sp/product/list/' to ProductListSpAction.class
         // (should also override reverse customization)
         if (resource.getRequestPath().startsWith("/sp/")) { // e.g. /sp/product/list/
@@ -36,10 +41,16 @@ public class MemorableSmartphoneMapper {
                 return Srl.substringFirstRear(requestPath, "/sp"); // e.g. /product/list/
             }).useActionNameSuffix("Sp"); // e.g. productListSpAction
         }
-        return nextCustomizer.get();
+        return null;
     }
 
-    public UrlReverseOption customizeActionUrlReverse(UrlReverseResource resource, Supplier<UrlReverseOption> nextCustomizer) {
+    public OptionalThing<UrlReverseOption> customizeActionUrlReverse(UrlReverseResource resource) {
+        return OptionalThing.ofNullable(doCustomizeActionUrlReverse(resource), () -> {
+            throw new IllegalStateException("No operation for the actionType: " + resource.getActionType());
+        });
+    }
+
+    protected UrlReverseOption doCustomizeActionUrlReverse(UrlReverseResource resource) {
         // for reverse ProductListSpAction.class to '/sp/product/list/'
         // (should also override mapping customization)
         if (resource.getActionType().getSimpleName().endsWith("SpAction")) { // e.g. productListSpAction
@@ -47,6 +58,6 @@ public class MemorableSmartphoneMapper {
                 return "sp" + Srl.initCap(Srl.substringLastFront(actionName, "Sp")); // e.g. spProductList
             });
         }
-        return nextCustomizer.get();
+        return null;
     }
 }
