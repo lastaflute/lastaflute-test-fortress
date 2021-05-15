@@ -15,27 +15,19 @@
  */
 package org.docksidestage.app.web.products;
 
-import org.lastaflute.core.util.Lato;
-import org.lastaflute.web.validation.Required;
+import org.docksidestage.dbflute.allcommon.CDef;
+import org.hibernate.validator.constraints.Length;
 
 /**
  * @author jflute
  */
-public class ProductsDetailBean {
+public class ProductsListForm {
 
-    @Required
-    public Integer productId;
-    @Required
+    @Length(max = 10)
     public String productName;
-    @Required
-    public String categoryName;
-    @Required
-    public Integer regularPrice;
-    @Required
-    public String productHandleCode;
 
-    @Override
-    public String toString() {
-        return Lato.string(this);
-    }
+    public CDef.ProductStatus productStatus;
+
+    @Length(max = 5)
+    public String purchaseMemberName;
 }
