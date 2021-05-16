@@ -58,6 +58,14 @@ public class ProductsPurchasesAction extends FortressBaseAction {
         return asJson(result);
     }
 
+    @Execute
+    public JsonResponse<PurchasesListResult> get$sea(Integer productId, PurchasesListForm form) {
+        validateApi(form, messages -> {});
+        List<Purchase> purchaseList = selectPurchaseList(productId, form);
+        PurchasesListResult result = mappingToListResult(purchaseList);
+        return asJson(result);
+    }
+
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // /products/1/purchases/2/
     //

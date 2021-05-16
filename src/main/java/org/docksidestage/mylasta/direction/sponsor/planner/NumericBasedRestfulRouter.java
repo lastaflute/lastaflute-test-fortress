@@ -15,18 +15,22 @@
  */
 package org.docksidestage.mylasta.direction.sponsor.planner;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.Srl;
 import org.lastaflute.core.util.ContainerUtil;
+import org.lastaflute.web.Execute;
 import org.lastaflute.web.path.UrlMappingOption;
 import org.lastaflute.web.path.UrlMappingResource;
 import org.lastaflute.web.path.UrlReverseOption;
 import org.lastaflute.web.path.UrlReverseResource;
+import org.lastaflute.web.ruts.config.analyzer.MethodNameAnalyzer;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -102,14 +106,20 @@ public class NumericBasedRestfulRouter {
     //                                 ---------------------
     protected boolean isRestfulPath(List<String> elementList) {
         int index = 0;
+        boolean numberAppeared = false;
         for (String element : elementList) {
             if (Srl.isNumberHarfAll(element)) { // e.g. 1
                 if (index % 2 == 0) { // first, third... e.g. /[1]/products/, /products/1/[2]/purchases
                     return false;
                 }
+                numberAppeared = true;
             } else { // e.g. products
-                if (index % 2 == 1) { // second, fourth... e.g. /products/[purchases]/, /products/1/purchases/[payments«/
-                    return false;
+                if (index % 2 == 1) { // second, fourth... e.g. /products/[purchases]/
+                    // allows e.g. /products/1/purchases/[sea]
+                    // one crossed number parameter is enough to judge RESTful
+                    if (!numberAppeared) {
+                        return false;
+                    }
                 }
             }
             ++index;
@@ -139,14 +149,33 @@ public class NumericBasedRestfulRouter {
                 partsElementList.removeFirst();
             }
             final List<String> restfulList = new ArrayList<>();
+            final List<String> methodKeywordList = new ArrayList<>(); // lazy loaded
+            boolean numberAppeared = false;
             for (String classElement : classElementList) {
                 restfulList.add(classElement);
-                if (!partsElementList.isEmpty()) { // avoid returning null
-                    restfulList.add(String.valueOf(partsElementList.pollFirst()));
+                while (true) {
+                    if (partsElementList.isEmpty()) {
+                        break;
+                    }
+                    final String first = String.valueOf(partsElementList.pollFirst());
+                    if (Srl.isNumberHarfAll(first) || "{}".equals(first)) { // number parameter, {} (urlPattern) if Lasta Meta
+                        // #for_now jflute thought rare case, dangerous if "{}" is real value for redirect (2021/05/17)
+                        numberAppeared = true;
+                    }
+                    if (numberAppeared) {
+                        restfulList.add(first);
+                        break;
+                    } else { // before number parameter
+                        methodKeywordList.add(first); // e.g. sea (method keyword)
+                        // no break, continue for next parts element
+                    }
                 }
             }
-            for (String remainingElement : partsElementList) {
-                restfulList.add(remainingElement);
+            for (String methodKeyword : methodKeywordList) { // e.g. get$sea()
+                restfulList.add(methodKeyword); // e.g. /products/{productId}/purchases/sea/
+            }
+            for (String remainingElement : partsElementList) { // basically empty if pure RESTful
+                restfulList.add(remainingElement); // e.g. /products/1/purchases/2/3/4
             }
             return buildPath(restfulList);
         });
@@ -165,12 +194,13 @@ public class NumericBasedRestfulRouter {
     //                                 ---------------------
     protected boolean isRestfulAction(UrlReverseResource resource) {
         final Class<?> actionType = resource.getActionType();
-        // #thinking jflute how can I do? (2021/05/16)
-        //final Method[] methods = actionType.getMethods();
-        //final List<Method> executeMethodList = Stream.of(methods).filter(mt -> {
-        //    return mt.getAnnotation(Execute.class) != null;
-        //}).collect(Collectors.toList());
-        //executeMethodList.stream().allMatch(mt -> mt.getName().contains("$"));
+        // #thinking jflute how can I do? after all, @RestfulAction? (2021/05/16)
+        final Method[] methods = actionType.getMethods();
+        final List<Method> executeMethodList =
+                Stream.of(methods).filter(mt -> mt.getAnnotation(Execute.class) != null).collect(Collectors.toList());
+        if (!executeMethodList.stream().allMatch(mt -> mt.getName().contains(MethodNameAnalyzer.REST_DELIMITER))) {
+            return false;
+        }
         return actionType.getSimpleName().startsWith("Products");
     }
 
@@ -202,7 +232,7 @@ public class NumericBasedRestfulRouter {
     // ===================================================================================
     //                                                                           Component
     //                                                                           =========
-    protected RequestManager getRequestManager() {
+    protected RequestManager getRequestManager() { // used by virtual list
         return ContainerUtil.getComponent(RequestManager.class);
     }
 
