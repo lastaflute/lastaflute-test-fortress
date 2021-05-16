@@ -32,7 +32,21 @@ import org.lastaflute.web.servlet.request.RequestManager;
 /**
  * @author jflute
  */
-public class PrimitiveRestfulRouter {
+public class NumericBasedRestfulRouter {
+
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    // #thinking jflute already unneeded? waiting for working of LastaFlute RESTful GET pair (2021/05/16)
+    protected boolean virtualListHandling;
+
+    // ===================================================================================
+    //                                                                              Option
+    //                                                                              ======
+    public NumericBasedRestfulRouter enableVirtualListHandling() {
+        virtualListHandling = true;
+        return this;
+    }
 
     // ===================================================================================
     //                                                                         URL Mapping
@@ -44,12 +58,12 @@ public class PrimitiveRestfulRouter {
             // you should log as debug here if RESTful only application
             return OptionalThing.empty(); // no filter
         }
-        // comment out because of listGetRequest handling
+        // comment out because of virtual list handling
         //if (elementList.size() <= 2) { // e.g. /products/, /products/1/
         //    return OptionalThing.empty(); // no filter
         //}
 
-        final boolean listGetRequest = isListGetRequest(elementList); // e.g. GET /products/1/purchases/
+        final boolean listGetRequest = isVirtualListGetRequest(elementList); // e.g. GET /products/1/purchases/
 
         final UrlMappingOption option = new UrlMappingOption();
         option.filterRequestPath(requestPath -> { // may be filtered by old style method
@@ -121,7 +135,7 @@ public class PrimitiveRestfulRouter {
             }
             final List<String> classElementList = elementList.subList(0, classElementCount);
             final LinkedList<String> partsElementList = new LinkedList<>(elementList.subList(classElementCount, elementList.size()));
-            if (isListGetMethodFirst(partsElementList)) {
+            if (isVirtualListGetNamingFirst(partsElementList)) {
                 partsElementList.removeFirst();
             }
             final List<String> restfulList = new ArrayList<>();
@@ -161,10 +175,10 @@ public class PrimitiveRestfulRouter {
     }
 
     // ===================================================================================
-    //                                                                    List Get Request
-    //                                                                    ================
-    protected boolean isListGetRequest(List<String> elementList) { // e.g. GET /products/1/purchases/
-        return isCurrentRequestGet() && isLastElementString(elementList);
+    //                                                               Virtual List Handling
+    //                                                               =====================
+    protected boolean isVirtualListGetRequest(List<String> elementList) { // e.g. GET /products/1/purchases/
+        return isVirtualListHandling() && isCurrentRequestGet() && isLastElementString(elementList);
     }
 
     protected boolean isCurrentRequestGet() {
@@ -177,8 +191,8 @@ public class PrimitiveRestfulRouter {
         return !Srl.isNumberHarfAll(lastElement);
     }
 
-    protected boolean isListGetMethodFirst(LinkedList<String> partsElementList) {
-        return getListGetMethodKeyword().equals(partsElementList.getFirst());
+    protected boolean isVirtualListGetNamingFirst(LinkedList<String> partsElementList) {
+        return isVirtualListHandling() && getListGetMethodKeyword().equals(partsElementList.getFirst());
     }
 
     protected String getListGetMethodKeyword() {
@@ -201,5 +215,12 @@ public class PrimitiveRestfulRouter {
 
     protected List<String> splitPath(String path) {
         return Srl.splitList(path, "/").stream().filter(el -> !el.isEmpty()).collect(Collectors.toList());
+    }
+
+    // ===================================================================================
+    //                                                                            Accessor
+    //                                                                            ========
+    public boolean isVirtualListHandling() {
+        return virtualListHandling;
     }
 }

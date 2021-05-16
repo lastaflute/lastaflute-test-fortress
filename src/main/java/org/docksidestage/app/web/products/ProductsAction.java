@@ -51,7 +51,7 @@ public class ProductsAction extends FortressBaseAction {
     // http://localhost:8151/fortress/products/?productName=R
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
-    public JsonResponse<ProductsListResult> get$list(ProductsListForm form) {
+    public JsonResponse<ProductsListResult> get$index(ProductsListForm form) {
         validateApi(form, messages -> {});
         List<Product> productList = selectProductList(form);
         ProductsListResult result = mappingToListResult(productList);

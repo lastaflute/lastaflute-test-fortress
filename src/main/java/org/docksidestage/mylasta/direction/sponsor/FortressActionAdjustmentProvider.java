@@ -19,7 +19,7 @@ import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.mylasta.direction.sponsor.planner.ActionOptionAgent;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableRestlikeRouter;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableSmartphoneMapper;
-import org.docksidestage.mylasta.direction.sponsor.planner.PrimitiveRestfulRouter;
+import org.docksidestage.mylasta.direction.sponsor.planner.NumericBasedRestfulRouter;
 import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
@@ -42,7 +42,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                         Cached Option
     //                                         -------------
-    protected final PrimitiveRestfulRouter restfulRouter;
+    protected final NumericBasedRestfulRouter restfulRouter;
     protected final FormMappingOption formMappingOption;
     protected final VaConfigSetupper vaConfigSetupper;
     protected final ResponseReflectingOption responseReflectingOption;

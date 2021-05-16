@@ -51,7 +51,7 @@ public class ProductsPurchasesAction extends FortressBaseAction {
     // http://localhost:8151/fortress/products/1/purchases/?memberName=S
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
-    public JsonResponse<PurchasesListResult> get$list(Integer productId, PurchasesListForm form) {
+    public JsonResponse<PurchasesListResult> get$index(Integer productId, PurchasesListForm form) {
         validateApi(form, messages -> {});
         List<Purchase> purchaseList = selectPurchaseList(productId, form);
         PurchasesListResult result = mappingToListResult(purchaseList);
@@ -61,7 +61,7 @@ public class ProductsPurchasesAction extends FortressBaseAction {
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // /products/1/purchases/2/
     //
-    // http://localhost:8151/fortress/products/1/purchases/2/
+    // http://localhost:8151/fortress/products/1/purchases/16/
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
     public JsonResponse<PurchasesOneResult> get$index(Integer productId, Long purchaseId) {

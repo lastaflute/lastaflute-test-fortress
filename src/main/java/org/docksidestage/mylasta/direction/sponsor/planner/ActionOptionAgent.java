@@ -44,8 +44,8 @@ public class ActionOptionAgent {
     // ===================================================================================
     //                                                                             Routing
     //                                                                             =======
-    public PrimitiveRestfulRouter createRestfulRouter() {
-        return new PrimitiveRestfulRouter();
+    public NumericBasedRestfulRouter createRestfulRouter() {
+        return new NumericBasedRestfulRouter();
     }
 
     // ===================================================================================

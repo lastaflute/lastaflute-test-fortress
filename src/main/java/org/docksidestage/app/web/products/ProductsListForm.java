@@ -17,7 +17,6 @@ package org.docksidestage.app.web.products;
 
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.hibernate.validator.constraints.Length;
-import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
@@ -29,7 +28,6 @@ public class ProductsListForm {
     public String productName;
 
     /** status of product e.g. ONS */
-    @Required
     public CDef.ProductStatus productStatus;
 
     /** prefix for member name who purchases the product e.g. S */
