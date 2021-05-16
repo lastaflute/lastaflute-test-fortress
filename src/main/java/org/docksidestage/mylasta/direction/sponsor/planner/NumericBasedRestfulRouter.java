@@ -56,7 +56,7 @@ public class NumericBasedRestfulRouter {
     //                                                                         URL Mapping
     //                                                                         ===========
     public OptionalThing<UrlMappingOption> toRestfulMappingPath(UrlMappingResource resource) {
-        final List<String> elementList = splitPath(resource.getRequestPath()); // only for determination
+        final List<String> elementList = splitPath(resource.getMakingMappingPath()); // only for determination
 
         if (!isRestfulPath(elementList)) { // e.g. /1/products/, /products/purchases/
             // you should log as debug here if RESTful only application
@@ -70,7 +70,7 @@ public class NumericBasedRestfulRouter {
         final boolean listGetRequest = isVirtualListGetRequest(elementList); // e.g. GET /products/1/purchases/
 
         final UrlMappingOption option = new UrlMappingOption();
-        option.filterRequestPath(requestPath -> { // may be filtered by old style method
+        option.filterRequestPath(requestPath -> { // is makingMappingPaths
             return convertToMappingPath(requestPath, listGetRequest);
         });
         return OptionalThing.of(option);
