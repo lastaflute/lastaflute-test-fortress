@@ -62,20 +62,26 @@ public class NumericBasedRestfulRouter {
             // you should log as debug here if RESTful only application
             return OptionalThing.empty(); // no filter
         }
-        // comment out because of virtual list handling
+        // comment out because of virtual list handling and RESTful mapping message
         //if (elementList.size() <= 2) { // e.g. /products/, /products/1/
         //    return OptionalThing.empty(); // no filter
         //}
+        return OptionalThing.of(createUrlMappingOption(resource, elementList));
+    }
 
-        final boolean listGetRequest = isVirtualListGetRequest(elementList); // e.g. GET /products/1/purchases/
-
+    protected UrlMappingOption createUrlMappingOption(UrlMappingResource resource, List<String> elementList) {
         final UrlMappingOption option = new UrlMappingOption();
+        final boolean listGetRequest = isVirtualListGetRequest(elementList); // e.g. GET /products/1/purchases/
         option.filterRequestPath(requestPath -> { // is makingMappingPaths
             return convertToMappingPath(requestPath, listGetRequest);
         });
-        return OptionalThing.of(option);
+        option.tellRestfulMapping();
+        return option;
     }
 
+    // -----------------------------------------------------
+    //                                          Convert Path
+    //                                          ------------
     protected String convertToMappingPath(String requestPath, boolean listGetRequest) {
         // e.g.
         //  /products/1/purchases/
