@@ -15,25 +15,25 @@
  */
 package org.docksidestage.mylasta.direction.sponsor;
 
-import org.dbflute.utflute.core.PlainTestCase;
+import javax.annotation.Resource;
+
+import org.docksidestage.mylasta.direction.FortressConfig;
+import org.docksidestage.unit.UnitFortressBasicTestCase;
 
 /**
  * @author jflute at bay maihama
  */
-public class FortressActionAdjustmentProviderTest extends PlainTestCase {
+public class FortressActionAdjustmentProviderTest extends UnitFortressBasicTestCase {
 
-    public void test_customizeActionMappingRequestPath_pattern() {
+    @Resource
+    private FortressConfig config;
+
+    public void test_customizeActionMappingRequestPath_lmlike() {
         // ## Arrange ##
-        FortressActionAdjustmentProvider provider = new FortressActionAdjustmentProvider();
+        FortressActionAdjustmentProvider provider = new FortressActionAdjustmentProvider(config);
 
         // ## Act ##
         // ## Assert ##
-        assertEquals("/products/detail/1", mapping(provider, "/products/1"));
-        assertEquals("/products/detail/1/", mapping(provider, "/products/1/"));
-        assertNull(mapping(provider, "/products"));
-        assertNull(mapping(provider, "/products/"));
-        assertNull(mapping(provider, "/products/1/sea"));
-
         assertEquals("/wx/routing/restlike/lmlike/category/FML/1", mapping(provider, "/wx/routing/restlike/lmlike/FML/1"));
         assertEquals("/wx/routing/restlike/lmlike/category/FML/1/", mapping(provider, "/wx/routing/restlike/lmlike/FML/1/"));
         assertNull(mapping(provider, "/wx/routing/restlike/lmlike"));

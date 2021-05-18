@@ -24,6 +24,7 @@ import javax.validation.valueextraction.ValueExtractor;
 import org.docksidestage.bizfw.json.RuledJsonEngineKeeper;
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
+import org.docksidestage.mylasta.direction.FortressConfig;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.factory.Lists;
@@ -43,8 +44,34 @@ import org.lastaflute.web.validation.VaConfigSetupper;
 public class ActionOptionAgent {
 
     // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    protected final FortressConfig config;
+
+    // ===================================================================================
+    //                                                                         Constructor
+    //                                                                         ===========
+    public ActionOptionAgent(FortressConfig config) {
+        this.config = config;
+    }
+
+    // ===================================================================================
     //                                                                             Routing
     //                                                                             =======
+    // -----------------------------------------------------
+    //                                               Swagger
+    //                                               -------
+    public boolean isDisabledSwaggerRequest(String requestPath) {
+        return !config.isSwaggerEnabled() && isSwaggerRequest(requestPath); // e.g. swagger's html, css
+    }
+
+    private boolean isSwaggerRequest(String requestPath) {
+        return requestPath.startsWith("/webjars/swagger-ui") || requestPath.startsWith("/swagger");
+    }
+
+    // -----------------------------------------------------
+    //                                               Restful
+    //                                               -------
     public NumericBasedRestfulRouter createRestfulRouter() {
         return new NumericBasedRestfulRouter();
     }

@@ -15,7 +15,10 @@
  */
 package org.docksidestage.mylasta.direction.sponsor;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.dbflute.util.DfTypeUtil;
+import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.mylasta.direction.sponsor.planner.ActionOptionAgent;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableRestlikeRouter;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableSmartphoneMapper;
@@ -37,6 +40,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    protected final FortressConfig config;
     protected final ActionOptionAgent actionOptionAgent;
 
     // -----------------------------------------------------
@@ -53,25 +57,45 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public FortressActionAdjustmentProvider() {
-        actionOptionAgent = createActionOptionAgent();
+    public FortressActionAdjustmentProvider(FortressConfig config) {
+        this.config = config;
+        this.actionOptionAgent = newActionOptionAgent(config);
 
-        restfulRouter = actionOptionAgent.createRestfulRouter();
-        formMappingOption = actionOptionAgent.createFormMappingOption();
-        vaConfigSetupper = actionOptionAgent.createValidatorConfigSetupper();
-        responseReflectingOption = actionOptionAgent.createResponseReflectingOption();
+        this.restfulRouter = actionOptionAgent.createRestfulRouter();
+        this.formMappingOption = actionOptionAgent.createFormMappingOption();
+        this.vaConfigSetupper = actionOptionAgent.createValidatorConfigSetupper();
+        this.responseReflectingOption = actionOptionAgent.createResponseReflectingOption();
 
-        memorableRestlikeRouter = new MemorableRestlikeRouter();
-        memorableSmartphoneMapper = new MemorableSmartphoneMapper();
+        // omoide
+        this.memorableRestlikeRouter = new MemorableRestlikeRouter();
+        this.memorableSmartphoneMapper = new MemorableSmartphoneMapper();
     }
 
-    protected ActionOptionAgent createActionOptionAgent() {
-        return new ActionOptionAgent();
+    protected ActionOptionAgent newActionOptionAgent(FortressConfig config) {
+        return new ActionOptionAgent(config);
     }
 
     // ===================================================================================
     //                                                                             Routing
     //                                                                             =======
+    // -----------------------------------------------------
+    //                                 Typical Determination
+    //                                 ---------------------
+    @Override
+    public boolean isForced404NotFoundRouting(HttpServletRequest request, String requestPath) {
+        if (!config.isSwaggerEnabled() && isSwaggerRequest(requestPath)) { // e.g. swagger's html, css
+            return true; // to suppress direct access to swagger resources at e.g. production
+        }
+        return false;
+    }
+
+    private boolean isSwaggerRequest(String requestPath) {
+        return requestPath.startsWith("/webjars/swagger-ui") || requestPath.startsWith("/swagger");
+    }
+
+    // -----------------------------------------------------
+    //                                           URL Mapping
+    //                                           -----------
     @Override
     public String customizeActionMappingRequestPath(String requestPath) { // old style method
         return memorableRestlikeRouter.makeRestlike(requestPath);
