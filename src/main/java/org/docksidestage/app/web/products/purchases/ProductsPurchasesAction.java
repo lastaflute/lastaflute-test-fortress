@@ -24,6 +24,7 @@ import org.docksidestage.app.web.products.purchases.assist.PurchasesCrudAssist;
 import org.docksidestage.app.web.products.purchases.assist.PurchasesMappingAssist;
 import org.docksidestage.dbflute.exentity.Purchase;
 import org.lastaflute.web.Execute;
+import org.lastaflute.web.RestfulAction;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 
@@ -31,6 +32,7 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
+@RestfulAction
 public class ProductsPurchasesAction extends FortressBaseAction {
 
     // ===================================================================================

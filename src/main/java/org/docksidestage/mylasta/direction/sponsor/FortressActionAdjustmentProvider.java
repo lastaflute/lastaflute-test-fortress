@@ -19,7 +19,6 @@ import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.mylasta.direction.sponsor.planner.ActionOptionAgent;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableRestlikeRouter;
 import org.docksidestage.mylasta.direction.sponsor.planner.MemorableSmartphoneMapper;
-import org.docksidestage.mylasta.direction.sponsor.planner.NumericBasedRestfulRouter;
 import org.lastaflute.web.path.ActionAdjustmentProvider;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
@@ -27,6 +26,7 @@ import org.lastaflute.web.path.UrlMappingOption;
 import org.lastaflute.web.path.UrlMappingResource;
 import org.lastaflute.web.path.UrlReverseOption;
 import org.lastaflute.web.path.UrlReverseResource;
+import org.lastaflute.web.path.restful.NumericBasedRestfulRouter;
 import org.lastaflute.web.validation.VaConfigSetupper;
 
 /**

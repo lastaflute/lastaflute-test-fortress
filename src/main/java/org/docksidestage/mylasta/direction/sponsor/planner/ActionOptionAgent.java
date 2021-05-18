@@ -32,6 +32,7 @@ import org.hibernate.validator.internal.cfg.context.DefaultConstraintMapping;
 import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
+import org.lastaflute.web.path.restful.NumericBasedRestfulRouter;
 import org.lastaflute.web.ruts.inoutlogging.InOutLogOption;
 import org.lastaflute.web.ruts.process.populate.FormYourCollectionResource;
 import org.lastaflute.web.validation.VaConfigSetupper;
