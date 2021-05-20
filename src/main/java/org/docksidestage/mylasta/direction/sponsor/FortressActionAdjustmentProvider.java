@@ -29,7 +29,7 @@ import org.lastaflute.web.path.UrlMappingOption;
 import org.lastaflute.web.path.UrlMappingResource;
 import org.lastaflute.web.path.UrlReverseOption;
 import org.lastaflute.web.path.UrlReverseResource;
-import org.lastaflute.web.path.restful.NumericBasedRestfulRouter;
+import org.lastaflute.web.path.restful.router.RestfulRouter;
 import org.lastaflute.web.validation.VaConfigSetupper;
 
 /**
@@ -46,7 +46,7 @@ public class FortressActionAdjustmentProvider implements ActionAdjustmentProvide
     // -----------------------------------------------------
     //                                         Cached Option
     //                                         -------------
-    protected final NumericBasedRestfulRouter restfulRouter;
+    protected final RestfulRouter restfulRouter;
     protected final FormMappingOption formMappingOption;
     protected final VaConfigSetupper vaConfigSetupper;
     protected final ResponseReflectingOption responseReflectingOption;
