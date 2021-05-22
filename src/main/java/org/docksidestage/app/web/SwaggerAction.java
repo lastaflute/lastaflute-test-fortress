@@ -21,6 +21,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.dbflute.helper.filesystem.FileTextIO;
+import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.core.json.JsonEngineResource;
@@ -28,11 +29,13 @@ import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.engine.RealJsonEngine;
 import org.lastaflute.meta.SwaggerGenerator;
 import org.lastaflute.meta.agent.SwaggerAgent;
+import org.lastaflute.meta.diff.SwaggerDiffGenerator;
 import org.lastaflute.meta.web.LaActionSwaggerable;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
 import org.lastaflute.web.response.JsonResponse;
+import org.lastaflute.web.response.StreamResponse;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -69,27 +72,55 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
         Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
             op.addHeaderParameter("hangar", "mystic");
         });
-        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
+        return asJson(swaggerMap).switchMappingOption(op -> {
+        }); // not to depend on application settings
     }
 
     @Execute
-    public JsonResponse<Map<String, Object>> appjson() { // using application json
+    public JsonResponse<Map<String, Object>> jsonLimitedTaget() {
         verifySwaggerAllowed();
-        Map<String, Object> swaggerMap = prepareAppJson();
-        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
+        Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
+            op.derivedTargetActionDocMeta(actionDocMeta -> {
+                return DfCollectionUtil.newArrayList( //
+                        "/lido/following/list", //
+                        "/lido/following/register", //
+                        "/lido/following/delete", //
+                        "/lido/product/price/update/{productId}").contains(actionDocMeta.getUrl());
+            });
+        });
+        return asJson(swaggerMap).switchMappingOption(op -> {
+        }); // not to depend on application settings
     }
 
-    private Map<String, Object> prepareAppJson() {
+    @Execute
+    public JsonResponse<Map<String, Object>> targetJson(SwaggerTargetJsonForm form) {
+        verifySwaggerAllowed();
+        Map<String, Object> swaggerMap = prepareJson(form.path);
+        return asJson(swaggerMap).switchMappingOption(op -> {
+        }); // not to depend on application settings
+    }
+
+    @Execute
+    public StreamResponse diff(SwaggerDiffForm form) {
+        verifySwaggerAllowed();
+        validateApi(form, messages -> {
+        });
+        String diff = new SwaggerDiffGenerator().diffFromLocations(form.leftPath, form.rightPath);
+        return asStream("").data(diff.getBytes()).contentType("text/markdown").headerContentDispositionInline();
+    }
+
+    private void verifySwaggerAllowed() { // also check in ActionAdjustmentProvider
+        verifyOrClientError("Swagger is not enabled.", config.isSwaggerEnabled());
+    }
+
+    private Map<String, Object> prepareJson(String file) {
         RealJsonEngine simpleEngine = jsonManager.newRuledEngine(new JsonEngineResource());
-        String resourcePath = "/swagger/fortress_openapi3_example.json"; // e.g. src/main/resources/swagger
-        InputStream ins = getClass().getClassLoader().getResourceAsStream(resourcePath);
+        InputStream ins = getClass().getClassLoader().getResourceAsStream("/swagger/" + file + ".json");
+        verifyOrClientError("Swagger file is not found.", ins != null);
         String json = new FileTextIO().encodeAsUTF8().read(ins);
         @SuppressWarnings("unchecked")
         Map<String, Object> swaggerMap = simpleEngine.fromJson(json, Map.class);
         return swaggerMap;
     }
 
-    private void verifySwaggerAllowed() { // also check in ActionAdjustmentProvider
-        verifyOrClientError("Swagger is not enabled.", config.isSwaggerEnabled());
-    }
 }
