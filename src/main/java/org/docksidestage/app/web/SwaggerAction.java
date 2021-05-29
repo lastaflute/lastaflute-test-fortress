@@ -59,6 +59,9 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
+    // -----------------------------------------------------
+    //                                              Standard
+    //                                              --------
     @Execute
     public HtmlResponse index() {
         verifySwaggerAllowed();
@@ -70,14 +73,35 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     public JsonResponse<Map<String, Object>> json() { // using Lasta-presents json
         verifySwaggerAllowed();
         Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
-            op.addHeaderParameter("hangar", "mystic");
+            op.addHeaderParameter("hangar", "mystic"); // test for header
         });
-        return asJson(swaggerMap).switchMappingOption(op -> {
-        }); // not to depend on application settings
+        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
     }
 
+    // -----------------------------------------------------
+    //                                           Application
+    //                                           -----------
     @Execute
-    public JsonResponse<Map<String, Object>> jsonLimitedTaget() {
+    public JsonResponse<Map<String, Object>> appjson() { // using application json
+        verifySwaggerAllowed();
+        Map<String, Object> swaggerMap = prepareAppJson();
+        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
+    }
+
+    private Map<String, Object> prepareAppJson() {
+        RealJsonEngine simpleEngine = jsonManager.newRuledEngine(new JsonEngineResource());
+        InputStream ins = getClass().getClassLoader().getResourceAsStream("/swagger/fortress_openapi3_example.json");
+        String json = new FileTextIO().encodeAsUTF8().read(ins);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> swaggerMap = simpleEngine.fromJson(json, Map.class);
+        return swaggerMap;
+    }
+
+    // -----------------------------------------------------
+    //                                             Targeting
+    //                                             ---------
+    @Execute
+    public JsonResponse<Map<String, Object>> jsonLimitedTaget() { // for small test
         verifySwaggerAllowed();
         Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
             op.derivedTargetActionDocMeta(actionDocMeta -> {
@@ -88,32 +112,17 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
                         "/lido/product/price/update/{productId}").contains(actionDocMeta.getUrl());
             });
         });
-        return asJson(swaggerMap).switchMappingOption(op -> {
-        }); // not to depend on application settings
+        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
     }
 
     @Execute
-    public JsonResponse<Map<String, Object>> targetJson(SwaggerTargetJsonForm form) {
+    public JsonResponse<Map<String, Object>> targetJson(SwaggerTargetJsonForm form) { // dynamic
         verifySwaggerAllowed();
         Map<String, Object> swaggerMap = prepareJson(form.path);
-        return asJson(swaggerMap).switchMappingOption(op -> {
-        }); // not to depend on application settings
+        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
     }
 
-    @Execute
-    public StreamResponse diff(SwaggerDiffForm form) {
-        verifySwaggerAllowed();
-        validateApi(form, messages -> {
-        });
-        String diff = new SwaggerDiffGenerator().diffFromLocations(form.leftPath, form.rightPath);
-        return asStream("").data(diff.getBytes()).contentType("text/markdown").headerContentDispositionInline();
-    }
-
-    private void verifySwaggerAllowed() { // also check in ActionAdjustmentProvider
-        verifyOrClientError("Swagger is not enabled.", config.isSwaggerEnabled());
-    }
-
-    private Map<String, Object> prepareJson(String file) {
+    private Map<String, Object> prepareJson(String file) { // copied from prepareAppJson() for independency
         RealJsonEngine simpleEngine = jsonManager.newRuledEngine(new JsonEngineResource());
         InputStream ins = getClass().getClassLoader().getResourceAsStream("/swagger/" + file + ".json");
         verifyOrClientError("Swagger file is not found.", ins != null);
@@ -123,4 +132,21 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
         return swaggerMap;
     }
 
+    // -----------------------------------------------------
+    //                                          Swagger Diff
+    //                                          ------------
+    @Execute
+    public StreamResponse diff(SwaggerDiffForm form) {
+        verifySwaggerAllowed();
+        validateApi(form, messages -> {});
+        String diff = new SwaggerDiffGenerator().diffFromLocations(form.leftPath, form.rightPath);
+        return asStream("").data(diff.getBytes()).contentType("text/markdown").headerContentDispositionInline();
+    }
+
+    // ===================================================================================
+    //                                                                        Small Helper
+    //                                                                        ============
+    private void verifySwaggerAllowed() { // also check in ActionAdjustmentProvider
+        verifyOrClientError("Swagger is not enabled.", config.isSwaggerEnabled());
+    }
 }
