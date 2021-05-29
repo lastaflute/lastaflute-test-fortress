@@ -35,5 +35,11 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
 
     public void test_swaggerJson() throws Exception {
         saveSwaggerMeta(new SwaggerAction());
+
+        // same json so no diff
+        verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
+
+        // having a little diff
+        //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> {});
     }
 }

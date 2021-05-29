@@ -15,18 +15,14 @@
  */
 package org.docksidestage.app.web;
 
-import java.io.InputStream;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.dbflute.helper.filesystem.FileTextIO;
 import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.mylasta.direction.FortressConfig;
-import org.lastaflute.core.json.JsonEngineResource;
 import org.lastaflute.core.json.JsonManager;
-import org.lastaflute.core.json.engine.RealJsonEngine;
 import org.lastaflute.meta.SwaggerGenerator;
 import org.lastaflute.meta.agent.SwaggerAgent;
 import org.lastaflute.meta.diff.SwaggerDiffGenerator;
@@ -84,52 +80,8 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     @Execute
     public JsonResponse<Map<String, Object>> appjson() { // using application json
         verifySwaggerAllowed();
-        Map<String, Object> swaggerMap = prepareAppJson();
+        Map<String, Object> swaggerMap = readResourceJson(jsonManager, "/swagger/fortress_openapi3_example.json");
         return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
-    }
-
-    private Map<String, Object> prepareAppJson() {
-        RealJsonEngine simpleEngine = jsonManager.newRuledEngine(new JsonEngineResource());
-        InputStream ins = getClass().getClassLoader().getResourceAsStream("/swagger/fortress_openapi3_example.json");
-        String json = new FileTextIO().encodeAsUTF8().read(ins);
-        @SuppressWarnings("unchecked")
-        Map<String, Object> swaggerMap = simpleEngine.fromJson(json, Map.class);
-        return swaggerMap;
-    }
-
-    // -----------------------------------------------------
-    //                                             Targeting
-    //                                             ---------
-    @Execute
-    public JsonResponse<Map<String, Object>> jsonLimitedTaget() { // for small test
-        verifySwaggerAllowed();
-        Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
-            op.derivedTargetActionDocMeta(actionDocMeta -> {
-                return DfCollectionUtil.newArrayList( //
-                        "/lido/following/list", //
-                        "/lido/following/register", //
-                        "/lido/following/delete", //
-                        "/lido/product/price/update/{productId}").contains(actionDocMeta.getUrl());
-            });
-        });
-        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
-    }
-
-    @Execute
-    public JsonResponse<Map<String, Object>> targetJson(SwaggerTargetJsonForm form) { // dynamic
-        verifySwaggerAllowed();
-        Map<String, Object> swaggerMap = prepareJson(form.path);
-        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
-    }
-
-    private Map<String, Object> prepareJson(String file) { // copied from prepareAppJson() for independency
-        RealJsonEngine simpleEngine = jsonManager.newRuledEngine(new JsonEngineResource());
-        InputStream ins = getClass().getClassLoader().getResourceAsStream("/swagger/" + file + ".json");
-        verifyOrClientError("Swagger file is not found.", ins != null);
-        String json = new FileTextIO().encodeAsUTF8().read(ins);
-        @SuppressWarnings("unchecked")
-        Map<String, Object> swaggerMap = simpleEngine.fromJson(json, Map.class);
-        return swaggerMap;
     }
 
     // -----------------------------------------------------
@@ -141,6 +93,31 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
         validateApi(form, messages -> {});
         String diff = new SwaggerDiffGenerator().diffFromLocations(form.leftPath, form.rightPath);
         return asStream("").data(diff.getBytes()).contentType("text/markdown").headerContentDispositionInline();
+    }
+
+    // -----------------------------------------------------
+    //                                             Targeting
+    //                                             ---------
+    @Execute
+    public JsonResponse<Map<String, Object>> targetJson(SwaggerTargetJsonForm form) { // dynamic for various case
+        verifySwaggerAllowed();
+        Map<String, Object> swaggerMap = readResourceJson(jsonManager, "/swagger/" + form.path + ".json");
+        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
+    }
+
+    @Execute
+    public JsonResponse<Map<String, Object>> limitedTargetJson() { // for small test
+        verifySwaggerAllowed();
+        Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
+            op.derivedTargetActionDocMeta(actionDocMeta -> {
+                return DfCollectionUtil.newArrayList( //
+                        "/lido/following/list", //
+                        "/lido/following/register", //
+                        "/lido/following/delete", //
+                        "/lido/product/price/update/{productId}").contains(actionDocMeta.getUrl());
+            });
+        });
+        return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
     }
 
     // ===================================================================================

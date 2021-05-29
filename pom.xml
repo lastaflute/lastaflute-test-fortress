@@ -26,8 +26,7 @@
 		<lasta.thymeleaf.version>0.4.2</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.4</lasta.job.version>
 		<lasta.remoteapi.version>0.4.5</lasta.remoteapi.version>
-		<lasta.meta.version>0.5.1-RC1-C-SNAPSHOT</lasta.meta.version>
-		<javaparser.version>3.20.0</javaparser.version>
+		<lasta.meta.version>0.5.1-H-SNAPSHOT</lasta.meta.version>
 		<openapidiff.version>2.0.0-beta.9</openapidiff.version>
 
 		<!-- Partner Library -->
@@ -45,7 +44,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.9.2</utflute.version>
+		<utflute.version>0.9.3-A-SNAPSHOT</utflute.version>
 	</properties>
 
 	<licenses>
@@ -387,13 +386,7 @@
 			<artifactId>lasta-meta</artifactId>
 			<version>${lasta.meta.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.github.javaparser</groupId>
-			<artifactId>javaparser-core</artifactId>
-			<version>${javaparser.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
+		<dependency> <!-- to verify your swagger.json in [App]LastaDocTest -->
 			<groupId>org.openapitools.openapidiff</groupId>
 			<artifactId>openapi-diff-core</artifactId>
 			<version>${openapidiff.version}</version>
