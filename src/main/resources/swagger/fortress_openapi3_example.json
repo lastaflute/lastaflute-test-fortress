@@ -426,7 +426,7 @@
     },
     "/lido/product/price/update/{productId}": {
       "post": {
-        "summary": "Product Price Update",
+        "summary": "Product Price Update, parsing test for regular expression word '%&'",
         "tags": [
           "products"
         ],
