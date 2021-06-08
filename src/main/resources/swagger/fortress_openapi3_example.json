@@ -144,6 +144,19 @@
           },
           {
             "schema": {
+              "type": "array",
+              "enum": [
+                "FML",
+                "PRV",
+                "WDL"
+              ]
+            },
+            "in": "query",
+            "name": "memberStatus",
+            "description": "会員ステータス、type=arrayのテストのためにapp側に手動追加"
+          },
+          {
+            "schema": {
               "type": "boolean"
             },
             "in": "query",

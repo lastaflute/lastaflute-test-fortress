@@ -43,6 +43,16 @@
             "required": false
           },
           {
+            "name": "memberStatus",
+            "description": "会員ステータス、type=arrayのテストのためにlasta側に手動追加",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
             "name": "livesChiba",
             "type": "boolean",
             "in": "query",
