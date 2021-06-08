@@ -32,7 +32,7 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-@RestfulAction
+@RestfulAction(allowEventSuffix = true)
 public class ProductsPurchasesAction extends FortressBaseAction {
 
     // ===================================================================================
