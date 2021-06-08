@@ -29,3 +29,6 @@ trial_config.ignored
 
 # application
 tablecls_injected.txt
+
+# secure guard, to avoid commit mistake
+mysecure*
