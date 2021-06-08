@@ -109,11 +109,6 @@ public class WxRequestFormAction extends FortressBaseAction {
         public static class MyDStorePart {
 
             public String walt;
-
-            @Override
-            public String toString() {
-                return "dstore:{" + walt + "}";
-            }
         }
 
         public MutableList<MyAmbaPart> amba;
@@ -121,11 +116,6 @@ public class WxRequestFormAction extends FortressBaseAction {
         public static class MyAmbaPart {
 
             public String chef;
-
-            @Override
-            public String toString() {
-                return "amba:{" + chef + "}";
-            }
         }
 
         @Override
