@@ -20,28 +20,53 @@ import org.lastaflute.meta.diff.SwaggerDiffGenerator;
 
 /**
  * @author p1us2er0
+ * @author jflute
  */
 public class SwaggerDiffTest extends PlainTestCase {
 
-    public void test_fortressswaggar2_openapi3_compare() {
-        String swaggerJsonOldPath = "/swagger/fortress_lasta_presents_example.json";
-        String swaggerJsonNewPath = "/swagger/fortress_openapi3_example.json";
+    // ===================================================================================
+    //                                                                    fortress example
+    //                                                                    ================
+    public void test_fortressswaggar2_openapi3_compare_lastaAsOld() {
+        // ## Arrange ##
+        String oldPath = "/swagger/fortress_lasta_presents_example.json";
+        String newPath = "/swagger/fortress_openapi3_example.json";
 
-        SwaggerDiffGenerator swaggerDiffGenerator = new SwaggerDiffGenerator();
-        String value = swaggerDiffGenerator.diffFromLocations(swaggerJsonOldPath, swaggerJsonNewPath);
+        // ## Act ##
+        String result = new SwaggerDiffGenerator().diffFromLocations(oldPath, newPath);
 
-        System.out.println(value.isEmpty() ? "### No Change" : value);
-        assertTrue("".equals(value));
+        // ## Assert ##
+        log(result.isEmpty() ? "*no change" : result);
+        assertEquals("", result);
     }
 
-    public void test_petstore_swaggar2_openapi3_compare() {
-        String swaggerJsonOldPath = "/swagger/petstore_swagger.json";
-        String swaggerJsonNewPath = "/swagger/petstore_openapi.json";
-        SwaggerDiffGenerator swaggerDiffGenerator = new SwaggerDiffGenerator();
-        String value = swaggerDiffGenerator.diffFromLocations(swaggerJsonOldPath, swaggerJsonNewPath);
+    public void test_fortressswaggar2_openapi3_compare_lastaAsNew() {
+        // ## Arrange ##
+        String oldPath = "/swagger/fortress_openapi3_example.json";
+        String newPath = "/swagger/fortress_lasta_presents_example.json";
 
-        System.out.println(value.isEmpty() ? "### No Change" : value);
-        assertFalse("".equals(value));
+        // ## Act ##
+        String result = new SwaggerDiffGenerator().diffFromLocations(oldPath, newPath);
+
+        // ## Assert ##
+        log(result.isEmpty() ? "*no change" : result);
+        assertEquals("", result);
+    }
+
+    // ===================================================================================
+    //                                                                            petstore
+    //                                                                            ========
+    public void test_petstore_swaggar2_openapi3_compare() {
+        // ## Arrange ##
+        String oldPath = "/swagger/petstore_swagger.json";
+        String newPath = "/swagger/petstore_openapi.json";
+
+        // ## Act ##
+        String result = new SwaggerDiffGenerator().diffFromLocations(oldPath, newPath);
+
+        // ## Assert ##
+        log(result.isEmpty() ? "### No Change" : result);
+        assertFalse("".equals(result));
     }
 
     // yml is not yet supported.
