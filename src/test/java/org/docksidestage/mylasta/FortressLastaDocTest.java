@@ -37,9 +37,12 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         saveSwaggerMeta(new SwaggerAction());
 
         // same json so no diff
-        verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
+        //verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
 
         // having a little diff
         //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> {});
+
+        // test for your production's one
+        //verifyYourSwaggerSync("/swagger/mysecure-swagger.json", op -> {});
     }
 }
