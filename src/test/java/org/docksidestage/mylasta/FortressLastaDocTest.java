@@ -46,6 +46,6 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         //verifyYourSwaggerSync("/swagger/mysecure-app-swagger.json", op -> {});
 
         // test for your production's two
-        //new SwaggerDiffGenerator().diffFromLocations("/swagger/mysecure-app-swagger.json", "/swagger/mysecure-lasta-swagger.json");
+        //new SwaggerDiff().diffFromLocations("/swagger/mysecure-app-swagger.json", "/swagger/mysecure-lasta-swagger.json");
     }
 }

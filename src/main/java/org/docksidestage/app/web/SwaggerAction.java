@@ -25,8 +25,8 @@ import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.meta.SwaggerGenerator;
 import org.lastaflute.meta.agent.SwaggerAgent;
-import org.lastaflute.meta.diff.SwaggerDiffGenerator;
-import org.lastaflute.meta.web.LaActionSwaggerable;
+import org.lastaflute.meta.swagger.diff.SwaggerDiff;
+import org.lastaflute.meta.swagger.web.LaActionSwaggerable;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
@@ -91,7 +91,7 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     public StreamResponse diff(SwaggerDiffForm form) {
         verifySwaggerAllowed();
         validateApi(form, messages -> {});
-        String diff = new SwaggerDiffGenerator().diffFromLocations(form.leftPath, form.rightPath);
+        String diff = new SwaggerDiff().diffFromLocations(form.leftPath, form.rightPath);
         return asStream("").data(diff.getBytes()).contentType("text/markdown").headerContentDispositionInline();
     }
 

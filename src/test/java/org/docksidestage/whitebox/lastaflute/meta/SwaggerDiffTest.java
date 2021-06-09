@@ -16,7 +16,7 @@
 package org.docksidestage.whitebox.lastaflute.meta;
 
 import org.dbflute.utflute.core.PlainTestCase;
-import org.lastaflute.meta.diff.SwaggerDiffGenerator;
+import org.lastaflute.meta.swagger.diff.SwaggerDiff;
 
 /**
  * @author p1us2er0
@@ -33,7 +33,7 @@ public class SwaggerDiffTest extends PlainTestCase {
         String newPath = "/swagger/fortress_openapi3_example.json";
 
         // ## Act ##
-        String result = new SwaggerDiffGenerator().diffFromLocations(oldPath, newPath);
+        String result = new SwaggerDiff().diffFromLocations(oldPath, newPath);
 
         // ## Assert ##
         log(result.isEmpty() ? "*no change" : result);
@@ -46,7 +46,7 @@ public class SwaggerDiffTest extends PlainTestCase {
         String newPath = "/swagger/fortress_lasta_presents_example.json";
 
         // ## Act ##
-        String result = new SwaggerDiffGenerator().diffFromLocations(oldPath, newPath);
+        String result = new SwaggerDiff().diffFromLocations(oldPath, newPath);
 
         // ## Assert ##
         log(result.isEmpty() ? "*no change" : result);
@@ -62,7 +62,7 @@ public class SwaggerDiffTest extends PlainTestCase {
         String newPath = "/swagger/petstore_openapi.json";
 
         // ## Act ##
-        String result = new SwaggerDiffGenerator().diffFromLocations(oldPath, newPath);
+        String result = new SwaggerDiff().diffFromLocations(oldPath, newPath);
 
         // ## Assert ##
         log(result.isEmpty() ? "### No Change" : result);
