@@ -15,22 +15,25 @@
  */
 package org.docksidestage.app.web.products;
 
-import org.docksidestage.dbflute.allcommon.CDef;
-import org.hibernate.validator.constraints.Length;
+import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class ProductsListForm {
+public class ProductsPostBody {
 
-    /** prefix for name of product e.g. R */
-    @Length(max = 10)
+    @Required
     public String productName;
+    @Required
+    public String productStatus;
+    @Required
+    public String productCategory;
+    @Required
+    public Integer regularPrice;
 
-    /** status of product e.g. ONS */
-    public CDef.ProductStatus productStatus;
-
-    /** prefix for member name who purchases the product e.g. S */
-    @Length(max = 5)
-    public String purchaseMemberName;
+    @Override
+    public String toString() {
+        return Lato.string(this);
+    }
 }

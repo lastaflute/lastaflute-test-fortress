@@ -15,43 +15,24 @@
  */
 package org.docksidestage.app.web.products;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class ProductsListResult {
+public class ProductsPutBody {
 
-    @Valid
-    @NotNull
-    public List<ProductsRowPart> rows;
-
-    public ProductsListResult(List<ProductsRowPart> rows) {
-        this.rows = rows;
-    }
-
-    public static class ProductsRowPart {
-
-        @Required
-        public Integer productId;
-        @Required
-        public String productName;
-        @Required
-        public String productStatus;
-        @Required
-        public String productCategory;
-        @Required
-        public Integer regularPrice;
-        /** null if no purchase */
-        public LocalDate latestPurchaseDate;
-    }
+    @Required
+    public Integer productId;
+    @Required
+    public String productName;
+    @Required
+    public String productStatus;
+    @Required
+    public String productCategory;
+    @Required
+    public Integer regularPrice;
 
     @Override
     public String toString() {

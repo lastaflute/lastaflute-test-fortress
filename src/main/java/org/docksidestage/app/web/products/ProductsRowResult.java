@@ -15,24 +15,28 @@
  */
 package org.docksidestage.app.web.products;
 
+import java.time.LocalDate;
+
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class ProductsOneResult {
+public class ProductsRowResult {
 
     @Required
     public Integer productId;
     @Required
     public String productName;
     @Required
-    public String categoryName;
+    public String productStatus;
+    @Required
+    public String productCategory;
     @Required
     public Integer regularPrice;
-    @Required
-    public String productHandleCode;
+    /** null if no purchase */
+    public LocalDate latestPurchaseDate;
 
     @Override
     public String toString() {

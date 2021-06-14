@@ -32,7 +32,7 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-@RestfulAction
+@RestfulAction(allowEventSuffix = true)
 public class ProductsAction extends FortressBaseAction {
 
     // ===================================================================================
@@ -53,11 +53,11 @@ public class ProductsAction extends FortressBaseAction {
     // http://localhost:8151/fortress/products/?productName=R
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
-    public JsonResponse<ProductsListResult> get$index(ProductsListForm form) {
+    public JsonResponse<List<ProductsRowResult>> get$index(ProductsSearchForm form) {
         validateApi(form, messages -> {});
-        List<Product> productList = selectProductList(form);
-        ProductsListResult result = mappingToListResult(productList);
-        return asJson(result);
+        List<Product> productList = productsCrudAssist.selectProductList(form);
+        List<ProductsRowResult> listResult = productsMappingAssist.mappingToListResult(productList);
+        return asJson(listResult);
     }
 
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -66,31 +66,26 @@ public class ProductsAction extends FortressBaseAction {
     // http://localhost:8151/fortress/products/1/
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
-    public JsonResponse<ProductsOneResult> get$index(Integer productId) {
-        Product product = selectProductById(productId);
-        ProductsOneResult result = mappingToOneResult(product);
-        return asJson(result);
+    public JsonResponse<ProductsResult> get$index(Integer productId) {
+        Product product = productsCrudAssist.selectProductById(productId);
+        ProductsResult singleResult = productsMappingAssist.mappingToSingleResult(product);
+        return asJson(singleResult);
     }
 
-    // ===================================================================================
-    //                                                                              Select
-    //                                                                              ======
-    private List<Product> selectProductList(ProductsListForm form) {
-        return productsCrudAssist.selectProductList(form);
+    @Execute
+    public JsonResponse<Void> post$index(ProductsPostBody body) {
+        validateApi(body, messages -> {});
+        return JsonResponse.asEmptyBody(); // dummy implementation
     }
 
-    private Product selectProductById(Integer productId) {
-        return productsCrudAssist.selectProductById(productId);
+    @Execute
+    public JsonResponse<Void> put$index(Integer productId, ProductsPutBody body) {
+        validateApi(body, messages -> {});
+        return JsonResponse.asEmptyBody(); // dummy implementation
     }
 
-    // ===================================================================================
-    //                                                                             Mapping
-    //                                                                             =======
-    private ProductsListResult mappingToListResult(List<Product> productList) {
-        return productsMappingAssist.mappingToListResult(productList);
-    }
-
-    private ProductsOneResult mappingToOneResult(Product product) {
-        return productsMappingAssist.mappingToOneResult(product);
+    @Execute
+    public JsonResponse<Void> delete$index(Integer productId) {
+        return JsonResponse.asEmptyBody(); // dummy implementation
     }
 }
