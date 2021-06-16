@@ -25,12 +25,14 @@ import org.lastaflute.job.key.LaJobUnique;
 import org.lastaflute.job.subsidiary.LaunchNowOption;
 import org.lastaflute.job.subsidiary.LaunchedProcess;
 import org.lastaflute.web.Execute;
+import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.servlet.request.ResponseManager;
 
 /**
  * @author jflute
  */
+@AllowAnyoneAccess
 public class JobExecuteAction extends FortressBaseAction {
 
     // ===================================================================================
