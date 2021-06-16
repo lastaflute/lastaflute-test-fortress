@@ -17,13 +17,16 @@ package org.docksidestage.app.job;
 
 import javax.annotation.Resource;
 
-import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.DfCollectionUtil;
+import org.docksidestage.app.job.base.JobUserTraceAssist;
 import org.docksidestage.app.job.challenge.AmbaJob;
 import org.docksidestage.app.job.challenge.BonvoJob;
 import org.docksidestage.app.job.challenge.DstoreJob;
 import org.docksidestage.app.job.challenge.PiariJob;
 import org.docksidestage.app.logic.context.AccessContextLogic;
+import org.docksidestage.app.logic.context.AccessContextLogic.ClientInfoSupplier;
+import org.docksidestage.app.logic.context.AccessContextLogic.UserInfoSupplier;
+import org.docksidestage.app.logic.context.AccessContextLogic.UserTypeSupplier;
 import org.lastaflute.job.LaCron;
 import org.lastaflute.job.LaJobRunner;
 import org.lastaflute.job.LaJobScheduler;
@@ -37,6 +40,8 @@ public class AllJobScheduler implements LaJobScheduler {
 
     @Resource
     private AccessContextLogic accessContextLogic;
+    @Resource
+    private JobUserTraceAssist jobUserTraceAssist;
 
     @Override
     public void schedule(LaCron cron) {
@@ -60,7 +65,10 @@ public class AllJobScheduler implements LaJobScheduler {
     @Override
     public LaJobRunner createRunner() {
         return new LaJobRunner().useAccessContext(resource -> {
-            return accessContextLogic.create(resource, () -> optEmpty(), () -> optEmpty(), () -> APP_TYPE, () -> optEmpty());
+            UserTypeSupplier userTypeSupplier = () -> jobUserTraceAssist.extractUserType(resource);
+            UserInfoSupplier userBeanSupplier = () -> jobUserTraceAssist.extractUserId(resource);
+            ClientInfoSupplier clientInfoSupplier = () -> jobUserTraceAssist.extractClientInfo(resource);
+            return accessContextLogic.create(resource, userTypeSupplier, userBeanSupplier, () -> APP_TYPE, clientInfoSupplier);
         });
     }
 
@@ -71,8 +79,4 @@ public class AllJobScheduler implements LaJobScheduler {
     //        job.launchNow();
     //    });
     //}
-
-    private <EMPTY> OptionalThing<EMPTY> optEmpty() {
-        return OptionalThing.empty();
-    }
 }

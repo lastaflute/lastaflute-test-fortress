@@ -15,6 +15,8 @@
  */
 package org.docksidestage.whitebox.db.lazytx;
 
+import java.util.Collections;
+
 import javax.annotation.Resource;
 import javax.transaction.Status;
 import javax.transaction.SystemException;
@@ -85,7 +87,7 @@ public class LazyTxAllTest extends UnitFortressBasicTestCase {
     @Override
     protected AccessContext createPreparedAccessContext() {
         AccessContextLogic logic = getComponent(AccessContextLogic.class);
-        AccessContextResource resource = new AccessContextResource("unit", getTestMethod());
+        AccessContextResource resource = new AccessContextResource("unit", getTestMethod(), Collections.emptyMap());
         return logic.create(resource, () -> OptionalThing.empty(), () -> OptionalThing.empty(), () -> "UT", () -> OptionalThing.empty());
     }
 
