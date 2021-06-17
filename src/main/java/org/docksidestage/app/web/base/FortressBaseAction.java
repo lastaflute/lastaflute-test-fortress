@@ -23,6 +23,7 @@ import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.logic.i18n.I18nDateLogic;
 import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
+import org.docksidestage.bizfw.crosslogin.CrossLoginBridge;
 import org.docksidestage.mylasta.action.FortressHtmlPath;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.mylasta.action.FortressUserBean;
@@ -60,6 +61,8 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     private RequestManager requestManager;
     @Resource
     private FortressConfig fortressConfig;
+    @Resource
+    private CrossLoginBridge crossLoginTransfer;
     @Resource
     private FortressLoginAssist loginAssist;
     @Resource
@@ -107,6 +110,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
         csrfTokenAssist.hookBefore(runtime);
+        crossLoginTransfer.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
         return super.hookBefore(runtime);
     }
 

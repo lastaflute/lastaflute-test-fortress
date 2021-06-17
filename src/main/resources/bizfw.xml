@@ -4,5 +4,6 @@
 <components namespace="bizfw">
 	<include path="lastaflute.xml"/>
 
+	<component class="org.docksidestage.bizfw.crosslogin.CrossLoginBridge"/>
 	<component class="org.docksidestage.bizfw.json.RuledJsonEngineKeeper"/>
 </components>
