@@ -45,6 +45,8 @@ map:{
         ; fortress.freeGen.zoned_cls.outputDirectory = $$baseDir$$/../test/java
         ; fortress.freeGen.zoned_cls.package = org.docksidestage.mylasta.namedcls.zoned
         ; fortress.freeGen.zoned_cls.isSuppressDBClsCollaboration = true
+        # the test of redundant comment
+        #; fortress.freeGen.zoned_cls.isSuppressRedundantCommentStop = true
     }
 
     # sychronized with reflection meta, it's trial
