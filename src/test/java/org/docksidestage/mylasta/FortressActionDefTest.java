@@ -22,6 +22,7 @@ import org.dbflute.utflute.lastaflute.police.LastaPresentsSomethingPolice;
 import org.dbflute.utflute.lastaflute.police.NonActionExtendsActionPolice;
 import org.dbflute.utflute.lastaflute.police.NonWebHasWebReferencePolice;
 import org.dbflute.utflute.lastaflute.police.WebPackageNinjaReferencePolice;
+import org.dbflute.util.Srl;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 
 /**
@@ -49,12 +50,12 @@ public class FortressActionDefTest extends UnitFortressBasicTestCase {
         policeStoryOfJavaClassChase(new WebPackageNinjaReferencePolice() {
             // test of ninja logic customization
             @Override
-            protected boolean existsNinjaReference(Class<?> clazz, String myRearName, String myPackage, String myRelativePackage,
-                    String rearImported) {
+            protected boolean existsNinjaReference(Class<?> clazz, String myRearName, String rearImported) {
+                final String myPackage = Srl.substringLastFront(myRearName, ".");
                 if (rearImported.startsWith(myPackage + ".") && rearImported.contains(".vip")) { // non-perfect simple logic
                     return false;
                 }
-                return super.existsNinjaReference(clazz, myRearName, myPackage, myRelativePackage, rearImported);
+                return super.existsNinjaReference(clazz, myRearName, rearImported);
             }
         });
     }
