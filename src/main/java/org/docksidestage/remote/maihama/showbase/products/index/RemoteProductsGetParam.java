@@ -13,24 +13,24 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.routing;
+package org.docksidestage.remote.maihama.showbase.products.index;
 
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of GET /wx/remogen/routing/{first}.
+ * The bean class as param for remote API of GET /products/.
  * @author FreeGen
  */
-public class RemoteWxRemogenRoutingReturn {
+public class RemoteProductsGetParam {
 
-    /** The property of method. (NullAllowed) */
-    public String method;
+    /** The property of productName. (prefix for name of product e.g. R) (NullAllowed) */
+    public String productName;
 
-    /** The property of first. (NullAllowed) */
-    public java.util.Map<String, Object> first;
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) (NullAllowed) */
+    public String productStatus;
 
-    /** The property of second. (NullAllowed) */
-    public java.util.Map<String, Object> second;
+    /** The property of purchaseMemberName. (prefix for member name who purchases the product e.g. S) (NullAllowed) */
+    public String purchaseMemberName;
 
     @Override
     public String toString() {

@@ -44,26 +44,23 @@ public abstract class BsRemoteMaihamaShowbaseSwaggerBhv extends AbstractRemoteMa
      * Request remote call to /swagger/. (auto-generated method)<br>
      * <pre>
      * url: /swagger/
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public java.util.Map<String, Object> request() {
-        return doRequest(rule -> {});
+    public void request() {
+        doRequest(rule -> {});
     }
 
     /**
      * Request remote call to /swagger/. (auto-generated method)<br>
      * <pre>
      * url: /swagger/
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected java.util.Map<String, Object> doRequest(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.Map<String, Object>>() {
-        }.getType(), "/swagger/", noMoreUrl(), noRequestBody(), rule -> {
+    protected void doRequest(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestGet(void.class, "/swagger/", noMoreUrl(), noQuery(), rule -> {
             ruleOf(rule);
             ruleLambda.accept(rule);
         });
@@ -80,7 +77,7 @@ public abstract class BsRemoteMaihamaShowbaseSwaggerBhv extends AbstractRemoteMa
      * Request remote call to /swagger/json. (auto-generated method)<br>
      * <pre>
      * url: /swagger/json
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @return The bean object as return type, receiving response body. (NotNull)
      */
@@ -92,14 +89,14 @@ public abstract class BsRemoteMaihamaShowbaseSwaggerBhv extends AbstractRemoteMa
      * Request remote call to /swagger/json. (auto-generated method)<br>
      * <pre>
      * url: /swagger/json
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected java.util.Map<String, Object> doRequestJson(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.Map<String, Object>>() {
-        }.getType(), "/swagger/json", noMoreUrl(), noRequestBody(), rule -> {
+        return doRequestGet(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.Map<String, Object>>() {
+        }.getType(), "/swagger/json", noMoreUrl(), noQuery(), rule -> {
             ruleOfJson(rule);
             ruleLambda.accept(rule);
         });

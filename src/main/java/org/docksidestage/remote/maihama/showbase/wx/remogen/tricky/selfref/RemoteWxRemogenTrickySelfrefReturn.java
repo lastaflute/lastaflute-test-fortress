@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/tricky/selfref.
+ * The bean class as return for remote API of GET /wx/remogen/tricky/selfref.
  * @author FreeGen
  */
 public class RemoteWxRemogenTrickySelfrefReturn {

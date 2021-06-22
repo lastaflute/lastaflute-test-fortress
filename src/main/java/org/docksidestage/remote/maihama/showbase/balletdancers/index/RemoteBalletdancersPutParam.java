@@ -13,24 +13,36 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.routing;
+package org.docksidestage.remote.maihama.showbase.balletdancers.index;
 
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of GET /wx/remogen/routing/{first}.
+ * The bean class as param for remote API of PUT /ballet-dancers/{productId}/.
  * @author FreeGen
  */
-public class RemoteWxRemogenRoutingReturn {
+public class RemoteBalletdancersPutParam {
 
-    /** The property of method. (NullAllowed) */
-    public String method;
+    /** The property of productId. */
+    @Required
+    public Integer productId;
 
-    /** The property of first. (NullAllowed) */
-    public java.util.Map<String, Object> first;
+    /** The property of productName. */
+    @Required
+    public String productName;
 
-    /** The property of second. (NullAllowed) */
-    public java.util.Map<String, Object> second;
+    /** The property of productStatus. */
+    @Required
+    public String productStatus;
+
+    /** The property of productCategory. */
+    @Required
+    public String productCategory;
+
+    /** The property of regularPrice. */
+    @Required
+    public Integer regularPrice;
 
     @Override
     public String toString() {

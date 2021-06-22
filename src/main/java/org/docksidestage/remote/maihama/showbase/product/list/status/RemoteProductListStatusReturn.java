@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.product.list.status;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /product/list/status.
+ * The bean class as return for remote API of GET /product/list/status.
  * @author FreeGen
  */
 public class RemoteProductListStatusReturn {

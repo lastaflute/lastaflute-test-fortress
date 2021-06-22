@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/suffix/allsuffix.
+ * The bean class as return for remote API of GET /wx/remogen/suffix/allsuffix.
  * @author FreeGen
  */
 public class RemoteWxRemogenSuffixAllsuffixReturn {

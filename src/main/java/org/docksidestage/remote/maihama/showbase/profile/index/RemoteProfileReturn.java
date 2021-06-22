@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /profile/.
+ * The bean class as return for remote API of GET /profile/.
  * @author FreeGen
  */
 public class RemoteProfileReturn {

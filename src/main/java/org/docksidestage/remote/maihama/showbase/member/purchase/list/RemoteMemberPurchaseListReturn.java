@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /member/purchase/list/{memberId}/{pageNumber}.
+ * The bean class as return for remote API of GET /member/purchase/list/{memberId}/{pageNumber}.
  * @author FreeGen
  */
 public class RemoteMemberPurchaseListReturn {

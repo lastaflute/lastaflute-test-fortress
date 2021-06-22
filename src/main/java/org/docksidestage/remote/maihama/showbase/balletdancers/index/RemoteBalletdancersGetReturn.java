@@ -13,20 +13,39 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.faicli;
+package org.docksidestage.remote.maihama.showbase.balletdancers.index;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as param for remote API of GET /wx/faicli/.
+ * The bean class as return for remote API of GET /ballet-dancers/.
  * @author FreeGen
  */
-public class RemoteWxFaicliParam {
+public class RemoteBalletdancersGetReturn {
 
-    /** The property of sea. */
+    /** The property of productId. */
     @Required
-    public String sea;
+    public Integer productId;
+
+    /** The property of productName. */
+    @Required
+    public String productName;
+
+    /** The property of productStatus. */
+    @Required
+    public String productStatus;
+
+    /** The property of productCategory. */
+    @Required
+    public String productCategory;
+
+    /** The property of regularPrice. */
+    @Required
+    public Integer regularPrice;
+
+    /** The property of latestPurchaseDate. (null if no purchase) (NullAllowed) */
+    public java.time.LocalDate latestPurchaseDate;
 
     @Override
     public String toString() {

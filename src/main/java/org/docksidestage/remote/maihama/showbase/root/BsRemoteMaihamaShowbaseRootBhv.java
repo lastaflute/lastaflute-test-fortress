@@ -44,26 +44,23 @@ public abstract class BsRemoteMaihamaShowbaseRootBhv extends AbstractRemoteMaiha
      * Request remote call to /root/. (auto-generated method)<br>
      * <pre>
      * url: /root/
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public java.util.Map<String, Object> request() {
-        return doRequest(rule -> {});
+    public void request() {
+        doRequest(rule -> {});
     }
 
     /**
      * Request remote call to /root/. (auto-generated method)<br>
      * <pre>
      * url: /root/
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected java.util.Map<String, Object> doRequest(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.Map<String, Object>>() {
-        }.getType(), "/root/", noMoreUrl(), noRequestBody(), rule -> {
+    protected void doRequest(Consumer<FlutyRemoteApiRule> ruleLambda) {
+        doRequestGet(void.class, "/root/", noMoreUrl(), noQuery(), rule -> {
             ruleOf(rule);
             ruleLambda.accept(rule);
         });

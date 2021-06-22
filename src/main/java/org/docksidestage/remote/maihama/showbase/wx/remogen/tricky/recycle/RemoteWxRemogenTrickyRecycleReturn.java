@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/tricky/recycle.
+ * The bean class as return for remote API of GET /wx/remogen/tricky/recycle.
  * @author FreeGen
  */
 public class RemoteWxRemogenTrickyRecycleReturn {

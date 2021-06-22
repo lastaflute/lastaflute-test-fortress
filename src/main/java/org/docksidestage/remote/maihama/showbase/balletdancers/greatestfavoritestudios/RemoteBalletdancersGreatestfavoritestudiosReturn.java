@@ -13,30 +13,41 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.remogen.suffix.partonly;
+package org.docksidestage.remote.maihama.showbase.balletdancers.greatestfavoritestudios;
+
+import javax.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of GET /wx/remogen/suffix/partonly.
+ * The bean class as return for remote API of GET /ballet-dancers/{productId}/greatest-favorite-studios/.
  * @author FreeGen
  */
-public class RemoteWxRemogenSuffixPartonlyReturn {
+public class RemoteBalletdancersGreatestfavoritestudiosReturn {
 
-    /** The property of resortName. */
-    @Required
-    public String resortName;
-
-    /** The property of resortPark. (NullAllowed) */
+    /** The property of rows. */
+    @NotNull
     @javax.validation.Valid
-    public ResortParkPart resortPark;
+    public org.eclipse.collections.api.list.ImmutableList<PurchasesRowPart> rows;
 
     /**
-     * The part class of ResortParkPart.
+     * The part class of PurchasesRowPart.
      * @author FreeGen
      */
-    public static class ResortParkPart {
+    public static class PurchasesRowPart {
+
+        /** The property of purchaseId. */
+        @Required
+        public Long purchaseId;
+
+        /** The property of memberName. */
+        @Required
+        public String memberName;
+
+        /** The property of productName. */
+        @Required
+        public String productName;
     }
 
     @Override

@@ -13,20 +13,42 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.wx.faicli;
+package org.docksidestage.remote.maihama.showbase.products.purchases;
+
+import javax.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as param for remote API of GET /wx/faicli/.
+ * The bean class as return for remote API of GET /products/{productId}/purchases/.
  * @author FreeGen
  */
-public class RemoteWxFaicliParam {
+public class RemoteProductsPurchasesReturn {
 
-    /** The property of sea. */
-    @Required
-    public String sea;
+    /** The property of rows. */
+    @NotNull
+    @javax.validation.Valid
+    public org.eclipse.collections.api.list.ImmutableList<PurchasesRowPart> rows;
+
+    /**
+     * The part class of PurchasesRowPart.
+     * @author FreeGen
+     */
+    public static class PurchasesRowPart {
+
+        /** The property of purchaseId. */
+        @Required
+        public Long purchaseId;
+
+        /** The property of memberName. */
+        @Required
+        public String memberName;
+
+        /** The property of productName. */
+        @Required
+        public String productName;
+    }
 
     @Override
     public String toString() {

@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.celeb;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/routing/celeb/{first}/{second}.
+ * The bean class as return for remote API of GET /wx/remogen/routing/celeb/{first}/{second}.
  * @author FreeGen
  */
 public class RemoteWxRemogenRoutingCelebReturn {

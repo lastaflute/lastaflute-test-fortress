@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.list.innergene;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/list/innergene.
+ * The bean class as return for remote API of GET /wx/remogen/list/innergene.
  * @author FreeGen
  */
 public class RemoteWxRemogenListInnergeneReturn {

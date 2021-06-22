@@ -48,7 +48,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * Request remote call to /product/detail/{productId}. (auto-generated method)<br>
      * <pre>
      * url: /product/detail/{productId}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param productId The value of path variable for productId. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
@@ -61,14 +61,14 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * Request remote call to /product/detail/{productId}. (auto-generated method)<br>
      * <pre>
      * url: /product/detail/{productId}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param productId The value of path variable for productId. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteProductDetailReturn doRequestDetail(Integer productId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteProductDetailReturn.class, "/product/detail/{productId}", moreUrl(productId), noRequestBody(), rule -> {
+        return doRequestGet(RemoteProductDetailReturn.class, "/product/detail/{productId}", moreUrl(productId), noQuery(), rule -> {
             ruleOfDetailProductId(rule);
             ruleLambda.accept(rule);
         });
@@ -165,7 +165,7 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * Request remote call to /product/list/status. (auto-generated method)<br>
      * <pre>
      * url: /product/list/status
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @return The bean object as return type, receiving response body. (NotNull)
      */
@@ -177,14 +177,14 @@ public abstract class BsRemoteMaihamaShowbaseProductBhv extends AbstractRemoteMa
      * Request remote call to /product/list/status. (auto-generated method)<br>
      * <pre>
      * url: /product/list/status
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn> doRequestListStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn>>() {
-        }.getType(), "/product/list/status", noMoreUrl(), noRequestBody(), rule -> {
+        return doRequestGet(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteProductListStatusReturn>>() {
+        }.getType(), "/product/list/status", noMoreUrl(), noQuery(), rule -> {
             ruleOfListStatus(rule);
             ruleLambda.accept(rule);
         });

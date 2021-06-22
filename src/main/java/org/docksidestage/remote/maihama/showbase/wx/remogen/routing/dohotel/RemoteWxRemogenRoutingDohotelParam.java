@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.dohotel;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as param for remote API of POST /wx/remogen/routing/dohotel/{first}.
+ * The bean class as param for remote API of GET /wx/remogen/routing/dohotel/{first}.
  * @author FreeGen
  */
 public class RemoteWxRemogenRoutingDohotelParam {

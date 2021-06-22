@@ -46,7 +46,7 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * Request remote call to /withdrawal/reason. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/reason
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @return The bean object as return type, receiving response body. (NotNull)
      */
@@ -58,14 +58,14 @@ public abstract class BsRemoteMaihamaShowbaseWithdrawalBhv extends AbstractRemot
      * Request remote call to /withdrawal/reason. (auto-generated method)<br>
      * <pre>
      * url: /withdrawal/reason
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn> doRequestReason(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn>>() {
-        }.getType(), "/withdrawal/reason", noMoreUrl(), noRequestBody(), rule -> {
+        return doRequestGet(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteWithdrawalReasonReturn>>() {
+        }.getType(), "/withdrawal/reason", noMoreUrl(), noQuery(), rule -> {
             ruleOfReason(rule);
             ruleLambda.accept(rule);
         });

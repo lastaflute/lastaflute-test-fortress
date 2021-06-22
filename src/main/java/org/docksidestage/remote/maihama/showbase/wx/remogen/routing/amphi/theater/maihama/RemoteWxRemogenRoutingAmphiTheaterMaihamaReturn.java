@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amphi.theat
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/routing/amphi/{first}/theater/{second}/maihama.
+ * The bean class as return for remote API of GET /wx/remogen/routing/amphi/{first}/theater/{second}/maihama.
  * @author FreeGen
  */
 public class RemoteWxRemogenRoutingAmphiTheaterMaihamaReturn {

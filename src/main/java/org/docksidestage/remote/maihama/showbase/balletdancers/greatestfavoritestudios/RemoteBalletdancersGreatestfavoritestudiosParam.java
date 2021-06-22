@@ -13,36 +13,18 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.products.detail;
+package org.docksidestage.remote.maihama.showbase.balletdancers.greatestfavoritestudios;
 
 import org.lastaflute.core.util.Lato;
-import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /products/detail/{productId}.
+ * The bean class as param for remote API of GET /ballet-dancers/{productId}/greatest-favorite-studios/.
  * @author FreeGen
  */
-public class RemoteProductsDetailReturn {
+public class RemoteBalletdancersGreatestfavoritestudiosParam {
 
-    /** The property of productId. */
-    @Required
-    public Integer productId;
-
-    /** The property of productName. */
-    @Required
-    public String productName;
-
-    /** The property of categoryName. */
-    @Required
-    public String categoryName;
-
-    /** The property of regularPrice. */
-    @Required
-    public Integer regularPrice;
-
-    /** The property of productHandleCode. */
-    @Required
-    public String productHandleCode;
+    /** The property of memberName. (NullAllowed) */
+    public String memberName;
 
     @Override
     public String toString() {
