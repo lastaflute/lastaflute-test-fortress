@@ -28925,21 +28925,63 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     <tbody id="rempteapi-$data.schema-list-body">
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#.root.::post">/root/</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.root.::get">/root/</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseRootBhv#request()</td>
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#.swagger.::post">/swagger/</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.swagger.::get">/swagger/</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseSwaggerBhv#request()</td>
     </tr>
     <tr>
         <td class="rowcellnum">2</td>
-        <td class="rowcell"><a href="#.swagger.json::post">/swagger/json</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.swagger.json::get">/swagger/json</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseSwaggerBhv#requestJson()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">1</td>
+        <td class="rowcell"><a href="#.ballet-dancers.::get">/ballet-dancers/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseBalletdancersBhv#requestGet()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">2</td>
+        <td class="rowcell"><a href="#.ballet-dancers.::post">/ballet-dancers/</a></td>
+        <td class="rowcell">post</td>
+        <td class="rowcell">RemoteMaihamaShowbaseBalletdancersBhv#requestPost()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">3</td>
+        <td class="rowcell"><a href="#.ballet-dancers._b_productId_e_.::get">/ballet-dancers/{productId}/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseBalletdancersBhv#requestGet()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">4</td>
+        <td class="rowcell"><a href="#.ballet-dancers._b_productId_e_.::put">/ballet-dancers/{productId}/</a></td>
+        <td class="rowcell">put</td>
+        <td class="rowcell">RemoteMaihamaShowbaseBalletdancersBhv#requestPut()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">5</td>
+        <td class="rowcell"><a href="#.ballet-dancers._b_productId_e_.::delete">/ballet-dancers/{productId}/</a></td>
+        <td class="rowcell">delete</td>
+        <td class="rowcell">RemoteMaihamaShowbaseBalletdancersBhv#requestDelete()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">1</td>
+        <td class="rowcell"><a href="#.ballet-dancers._b_productId_e_.greatest-favorite-studios.::get">/ballet-dancers/{productId}/greatest-favorite-studios/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseBalletdancersGreatestfavoritestudiosBhv#requestGet()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">2</td>
+        <td class="rowcell"><a href="#.ballet-dancers._b_productId_e_.greatest-favorite-studios._b_purchaseId_e_.::get">/ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseBalletdancersGreatestfavoritestudiosBhv#requestGet()</td>
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
@@ -28949,14 +28991,14 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#.member.info::post">/member/info</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.member.info::get">/member/info</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseMemberBhv#requestInfo()</td>
     </tr>
     <tr>
         <td class="rowcellnum">2</td>
-        <td class="rowcell"><a href="#.member.status::post">/member/status</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.member.status::get">/member/status</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseMemberBhv#requestStatus()</td>
     </tr>
     <tr>
@@ -28967,8 +29009,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">4</td>
-        <td class="rowcell"><a href="#.member.edit._b_memberId_e_::post">/member/edit/{memberId}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.member.edit._b_memberId_e_::get">/member/edit/{memberId}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseMemberBhv#requestEdit()</td>
     </tr>
     <tr>
@@ -28991,20 +29033,20 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">8</td>
-        <td class="rowcell"><a href="#.member.purchase.list._b_memberId_e_::post">/member/purchase/list/{memberId}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.member.purchase.list._b_memberId_e_::get">/member/purchase/list/{memberId}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseMemberBhv#requestPurchaseList()</td>
     </tr>
     <tr>
         <td class="rowcellnum">9</td>
-        <td class="rowcell"><a href="#.member.purchase.list._b_memberId_e_._b_pageNumber_e_::post">/member/purchase/list/{memberId}/{pageNumber}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.member.purchase.list._b_memberId_e_._b_pageNumber_e_::get">/member/purchase/list/{memberId}/{pageNumber}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseMemberBhv#requestPurchaseList()</td>
     </tr>
     <tr>
         <td class="rowcellnum">10</td>
-        <td class="rowcell"><a href="#.member.purchase.list.delete._b_purchaseId_e_::post">/member/purchase/list/delete/{purchaseId}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.member.purchase.list.delete._b_purchaseId_e_::get">/member/purchase/list/delete/{purchaseId}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseMemberBhv#requestPurchaseListDelete()</td>
     </tr>
     <tr>
@@ -29015,8 +29057,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#.product.detail._b_productId_e_::post">/product/detail/{productId}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.product.detail._b_productId_e_::get">/product/detail/{productId}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseProductBhv#requestDetail()</td>
     </tr>
     <tr>
@@ -29033,26 +29075,56 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">4</td>
-        <td class="rowcell"><a href="#.product.list.status::post">/product/list/status</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.product.list.status::get">/product/list/status</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseProductBhv#requestListStatus()</td>
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#.products.::post">/products/</a></td>
-        <td class="rowcell">post</td>
-        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#request()</td>
+        <td class="rowcell"><a href="#.products.::get">/products/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestGet()</td>
     </tr>
     <tr>
         <td class="rowcellnum">2</td>
-        <td class="rowcell"><a href="#.products.detail._b_productId_e_::post">/products/detail/{productId}</a></td>
+        <td class="rowcell"><a href="#.products.::post">/products/</a></td>
         <td class="rowcell">post</td>
-        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestDetail()</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestPost()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">3</td>
+        <td class="rowcell"><a href="#.products._b_productId_e_.::get">/products/{productId}/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestGet()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">4</td>
+        <td class="rowcell"><a href="#.products._b_productId_e_.::put">/products/{productId}/</a></td>
+        <td class="rowcell">put</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestPut()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">5</td>
+        <td class="rowcell"><a href="#.products._b_productId_e_.::delete">/products/{productId}/</a></td>
+        <td class="rowcell">delete</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestDelete()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">6</td>
+        <td class="rowcell"><a href="#.products._b_productId_e_.purchases.::get">/products/{productId}/purchases/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestPurchasesGet()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">7</td>
+        <td class="rowcell"><a href="#.products._b_productId_e_.purchases._b_purchaseId_e_.::get">/products/{productId}/purchases/{purchaseId}/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestPurchasesGet()</td>
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#.profile.::post">/profile/</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.profile.::get">/profile/</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseProfileBhv#request()</td>
     </tr>
     <tr>
@@ -29087,8 +29159,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#.withdrawal.reason::post">/withdrawal/reason</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.withdrawal.reason::get">/withdrawal/reason</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWithdrawalBhv#requestReason()</td>
     </tr>
     <tr>
@@ -29099,20 +29171,20 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
-        <td class="rowcell"><a href="#.wx.faicli.::post">/wx/faicli/</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.faicli.::get">/wx/faicli/</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestFaicli()</td>
     </tr>
     <tr>
         <td class="rowcellnum">2</td>
-        <td class="rowcell"><a href="#.wx.faicli.unknown::post">/wx/faicli/unknown</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.faicli.unknown::get">/wx/faicli/unknown</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestFaicliUnknown()</td>
     </tr>
     <tr>
         <td class="rowcellnum">3</td>
-        <td class="rowcell"><a href="#.wx.faicli.entity._b_account_e_::post">/wx/faicli/entity/{account}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.faicli.entity._b_account_e_::get">/wx/faicli/entity/{account}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestFaicliEntity()</td>
     </tr>
     <tr>
@@ -29129,26 +29201,26 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">6</td>
-        <td class="rowcell"><a href="#.wx.remogen.list.basic::post">/wx/remogen/list/basic</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.list.basic::get">/wx/remogen/list/basic</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenListBasic()</td>
     </tr>
     <tr>
         <td class="rowcellnum">7</td>
-        <td class="rowcell"><a href="#.wx.remogen.list.genebean::post">/wx/remogen/list/genebean</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.list.genebean::get">/wx/remogen/list/genebean</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenListGenebean()</td>
     </tr>
     <tr>
         <td class="rowcellnum">8</td>
-        <td class="rowcell"><a href="#.wx.remogen.list.genestring::post">/wx/remogen/list/genestring</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.list.genestring::get">/wx/remogen/list/genestring</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenListGenestring()</td>
     </tr>
     <tr>
         <td class="rowcellnum">9</td>
-        <td class="rowcell"><a href="#.wx.remogen.list.innergene::post">/wx/remogen/list/innergene</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.list.innergene::get">/wx/remogen/list/innergene</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenListInnergene()</td>
     </tr>
     <tr>
@@ -29207,216 +29279,572 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum">19</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing._b_first_e_::post">/wx/remogen/routing/{first}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing._b_first_e_::get">/wx/remogen/routing/{first}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRouting()</td>
     </tr>
     <tr>
         <td class="rowcellnum">20</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.maihama::post">/wx/remogen/routing/maihama</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.maihama::get">/wx/remogen/routing/maihama</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingMaihama()</td>
     </tr>
     <tr>
         <td class="rowcellnum">21</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.sea._b_first_e_::post">/wx/remogen/routing/sea/{first}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.sea._b_first_e_::get">/wx/remogen/routing/sea/{first}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingSea()</td>
     </tr>
     <tr>
         <td class="rowcellnum">22</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.land._b_first_e_._b_second_e_::post">/wx/remogen/routing/land/{first}/{second}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.land._b_first_e_._b_second_e_::get">/wx/remogen/routing/land/{first}/{second}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingLand()</td>
     </tr>
     <tr>
         <td class="rowcellnum">23</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.piari::post">/wx/remogen/routing/piari</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.piari::get">/wx/remogen/routing/piari</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingPiari()</td>
     </tr>
     <tr>
         <td class="rowcellnum">24</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.piari._b_first_e_::post">/wx/remogen/routing/piari/{first}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.piari._b_first_e_::get">/wx/remogen/routing/piari/{first}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingPiari()</td>
     </tr>
     <tr>
         <td class="rowcellnum">25</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.dstore::post">/wx/remogen/routing/dstore</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.dstore::get">/wx/remogen/routing/dstore</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDstore()</td>
     </tr>
     <tr>
         <td class="rowcellnum">26</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.dstore._b_first_e_::post">/wx/remogen/routing/dstore/{first}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.dstore._b_first_e_::get">/wx/remogen/routing/dstore/{first}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDstore()</td>
     </tr>
     <tr>
         <td class="rowcellnum">27</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.dstore._b_first_e_._b_second_e_::post">/wx/remogen/routing/dstore/{first}/{second}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.dstore._b_first_e_._b_second_e_::get">/wx/remogen/routing/dstore/{first}/{second}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDstore()</td>
     </tr>
     <tr>
         <td class="rowcellnum">28</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.bonvo._b_first_e_::post">/wx/remogen/routing/bonvo/{first}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.bonvo._b_first_e_::get">/wx/remogen/routing/bonvo/{first}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingBonvo()</td>
     </tr>
     <tr>
         <td class="rowcellnum">29</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.bonvo._b_first_e_._b_second_e_::post">/wx/remogen/routing/bonvo/{first}/{second}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.bonvo._b_first_e_._b_second_e_::get">/wx/remogen/routing/bonvo/{first}/{second}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingBonvo()</td>
     </tr>
     <tr>
         <td class="rowcellnum">30</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.amba._b_first_e_._b_second_e_::post">/wx/remogen/routing/amba/{first}/{second}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.amba._b_first_e_._b_second_e_::get">/wx/remogen/routing/amba/{first}/{second}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingAmba()</td>
     </tr>
     <tr>
         <td class="rowcellnum">31</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.amba._b_first_e_._b_second_e_._b_third_e_::post">/wx/remogen/routing/amba/{first}/{second}/{third}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.amba._b_first_e_._b_second_e_._b_third_e_::get">/wx/remogen/routing/amba/{first}/{second}/{third}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingAmba()</td>
     </tr>
     <tr>
         <td class="rowcellnum">32</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.miraco._b_first_e_._b_second_e_._b_third_e_::post">/wx/remogen/routing/miraco/{first}/{second}/{third}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.miraco._b_first_e_._b_second_e_._b_third_e_::get">/wx/remogen/routing/miraco/{first}/{second}/{third}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingMiraco()</td>
     </tr>
     <tr>
         <td class="rowcellnum">33</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.miraco._b_first_e_._b_second_e_._b_third_e_._b_fourth_e_::post">/wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.miraco._b_first_e_._b_second_e_._b_third_e_._b_fourth_e_::get">/wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingMiraco()</td>
     </tr>
     <tr>
         <td class="rowcellnum">34</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.dohotel._b_first_e_::post">/wx/remogen/routing/dohotel/{first}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.dohotel._b_first_e_::get">/wx/remogen/routing/dohotel/{first}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDohotel()</td>
     </tr>
     <tr>
         <td class="rowcellnum">35</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.dohotel._b_first_e_._b_second_e_::post">/wx/remogen/routing/dohotel/{first}/{second}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.dohotel._b_first_e_._b_second_e_::get">/wx/remogen/routing/dohotel/{first}/{second}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDohotel()</td>
     </tr>
     <tr>
         <td class="rowcellnum">36</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.celeb._b_first_e_::post">/wx/remogen/routing/celeb/{first}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.celeb._b_first_e_::get">/wx/remogen/routing/celeb/{first}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingCeleb()</td>
     </tr>
     <tr>
         <td class="rowcellnum">37</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.celeb._b_first_e_._b_second_e_::post">/wx/remogen/routing/celeb/{first}/{second}</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.celeb._b_first_e_._b_second_e_::get">/wx/remogen/routing/celeb/{first}/{second}</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingCeleb()</td>
     </tr>
     <tr>
         <td class="rowcellnum">38</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing._b_first_e_.resola::post">/wx/remogen/routing/{first}/resola</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing._b_first_e_.resola::get">/wx/remogen/routing/{first}/resola</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingResola()</td>
     </tr>
     <tr>
         <td class="rowcellnum">39</td>
-        <td class="rowcell"><a href="#.wx.remogen.routing.amphi._b_first_e_.theater._b_second_e_.maihama::post">/wx/remogen/routing/amphi/{first}/theater/{second}/maihama</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.routing.amphi._b_first_e_.theater._b_second_e_.maihama::get">/wx/remogen/routing/amphi/{first}/theater/{second}/maihama</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingAmphiTheaterMaihama()</td>
     </tr>
     <tr>
         <td class="rowcellnum">40</td>
-        <td class="rowcell"><a href="#.wx.remogen.suffix.allsuffix::post">/wx/remogen/suffix/allsuffix</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.suffix.allsuffix::get">/wx/remogen/suffix/allsuffix</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenSuffixAllsuffix()</td>
     </tr>
     <tr>
         <td class="rowcellnum">41</td>
-        <td class="rowcell"><a href="#.wx.remogen.suffix.nosuffix::post">/wx/remogen/suffix/nosuffix</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.suffix.nosuffix::get">/wx/remogen/suffix/nosuffix</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenSuffixNosuffix()</td>
     </tr>
     <tr>
         <td class="rowcellnum">42</td>
-        <td class="rowcell"><a href="#.wx.remogen.suffix.partonly::post">/wx/remogen/suffix/partonly</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.suffix.partonly::get">/wx/remogen/suffix/partonly</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenSuffixPartonly()</td>
     </tr>
     <tr>
         <td class="rowcellnum">43</td>
-        <td class="rowcell"><a href="#.wx.remogen.suffix.toponly::post">/wx/remogen/suffix/toponly</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.suffix.toponly::get">/wx/remogen/suffix/toponly</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenSuffixToponly()</td>
     </tr>
     <tr>
         <td class="rowcellnum">44</td>
-        <td class="rowcell"><a href="#.wx.remogen.tricky.allnone::post">/wx/remogen/tricky/allnone</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.tricky.allnone::get">/wx/remogen/tricky/allnone</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickyAllnone()</td>
     </tr>
     <tr>
         <td class="rowcellnum">45</td>
-        <td class="rowcell"><a href="#.wx.remogen.tricky.nobody::post">/wx/remogen/tricky/nobody</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.tricky.nobody::get">/wx/remogen/tricky/nobody</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickyNobody()</td>
     </tr>
     <tr>
         <td class="rowcellnum">46</td>
-        <td class="rowcell"><a href="#.wx.remogen.tricky.oddprop::post">/wx/remogen/tricky/oddprop</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.tricky.oddprop::get">/wx/remogen/tricky/oddprop</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickyOddprop()</td>
     </tr>
     <tr>
         <td class="rowcellnum">47</td>
-        <td class="rowcell"><a href="#.wx.remogen.tricky.recycle::post">/wx/remogen/tricky/recycle</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.tricky.recycle::get">/wx/remogen/tricky/recycle</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickyRecycle()</td>
     </tr>
     <tr>
         <td class="rowcellnum">48</td>
-        <td class="rowcell"><a href="#.wx.remogen.tricky.selfref::post">/wx/remogen/tricky/selfref</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.tricky.selfref::get">/wx/remogen/tricky/selfref</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickySelfref()</td>
     </tr>
     <tr>
         <td class="rowcellnum">49</td>
-        <td class="rowcell"><a href="#.wx.remogen.tricky.suffixhell::post">/wx/remogen/tricky/suffixhell</a></td>
-        <td class="rowcell">post</td>
+        <td class="rowcell"><a href="#.wx.remogen.tricky.suffixhell::get">/wx/remogen/tricky/suffixhell</a></td>
+        <td class="rowcell">get</td>
         <td class="rowcell">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickySuffixhell()</td>
     </tr>
     </tbody>
 </table>
 
-<h3 id=".root.::post">
-/root/ (post)
+<h3 id=".root.::get">
+/root/ (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseRootBhv#request()</span>
 </p>
-<span class="doctitle">Return as:</span> <span class="docsubvalue">java.util.Map&lt;String,&nbsp;Object&gt;</span>
-
-<h3 id=".swagger.::post">
-/swagger/ (post)
+<h3 id=".swagger.::get">
+/swagger/ (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseSwaggerBhv#request()</span>
 </p>
-<span class="doctitle">Return as:</span> <span class="docsubvalue">java.util.Map&lt;String,&nbsp;Object&gt;</span>
-
-<h3 id=".swagger.json::post">
-/swagger/json (post)
+<h3 id=".swagger.json::get">
+/swagger/json (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseSwaggerBhv#requestJson()</span>
 </p>
 <span class="doctitle">Return as:</span> <span class="docsubvalue">java.util.Map&lt;String,&nbsp;Object&gt;</span>
+
+<h3 id=".ballet-dancers.::get">
+/ballet-dancers/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseBalletdancersBhv#requestGet()</span>
+</p>
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteBalletdancersGetParam</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>productStatus</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>purchaseMemberName</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteBalletdancersGetReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productStatus</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">4</td>
+        <td>productCategory</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">5</td>
+        <td>regularPrice</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">6</td>
+        <td>latestPurchaseDate</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".ballet-dancers.::post">
+/ballet-dancers/ (post)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseBalletdancersBhv#requestPost()</span>
+</p>
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteBalletdancersPostParam</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>productStatus</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productCategory</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">4</td>
+        <td>regularPrice</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".ballet-dancers._b_productId_e_.::get">
+/ballet-dancers/{productId}/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseBalletdancersBhv#requestGet()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteBalletdancersProductidGetReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productStatus</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">4</td>
+        <td>productCategory</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">5</td>
+        <td>regularPrice</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">6</td>
+        <td>latestPurchaseDate</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".ballet-dancers._b_productId_e_.::put">
+/ballet-dancers/{productId}/ (put)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseBalletdancersBhv#requestPut()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteBalletdancersPutParam</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productStatus</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">4</td>
+        <td>productCategory</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">5</td>
+        <td>regularPrice</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".ballet-dancers._b_productId_e_.::delete">
+/ballet-dancers/{productId}/ (delete)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseBalletdancersBhv#requestDelete()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".ballet-dancers._b_productId_e_.greatest-favorite-studios.::get">
+/ballet-dancers/{productId}/greatest-favorite-studios/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseBalletdancersGreatestfavoritestudiosBhv#requestGet()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteBalletdancersGreatestfavoritestudiosParam</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>memberName</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteBalletdancersGreatestfavoritestudiosReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>rows</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".ballet-dancers._b_productId_e_.greatest-favorite-studios._b_purchaseId_e_.::get">
+/ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseBalletdancersGreatestfavoritestudiosBhv#requestGet()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>purchaseId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteBalletdancersProductidGreatestfavoritestudiosPurchaseidReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>purchaseId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>memberName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+</table>
 
 <h3 id=".following.follow::post">
 /following/follow (post)
@@ -29440,8 +29868,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".member.info::post">
-/member/info (post)
+<h3 id=".member.info::get">
+/member/info (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseMemberBhv#requestInfo()</span>
@@ -29472,8 +29900,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".member.status::post">
-/member/status (post)
+<h3 id=".member.status::get">
+/member/status (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseMemberBhv#requestStatus()</span>
@@ -29697,8 +30125,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".member.edit._b_memberId_e_::post">
-/member/edit/{memberId} (post)
+<h3 id=".member.edit._b_memberId_e_::get">
+/member/edit/{memberId} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseMemberBhv#requestEdit()</span>
@@ -29989,8 +30417,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".member.purchase.list._b_memberId_e_::post">
-/member/purchase/list/{memberId} (post)
+<h3 id=".member.purchase.list._b_memberId_e_::get">
+/member/purchase/list/{memberId} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseMemberBhv#requestPurchaseList()</span>
@@ -30047,8 +30475,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".member.purchase.list._b_memberId_e_._b_pageNumber_e_::post">
-/member/purchase/list/{memberId}/{pageNumber} (post)
+<h3 id=".member.purchase.list._b_memberId_e_._b_pageNumber_e_::get">
+/member/purchase/list/{memberId}/{pageNumber} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseMemberBhv#requestPurchaseList()</span>
@@ -30110,8 +30538,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".member.purchase.list.delete._b_purchaseId_e_::post">
-/member/purchase/list/delete/{purchaseId} (post)
+<h3 id=".member.purchase.list.delete._b_purchaseId_e_::get">
+/member/purchase/list/delete/{purchaseId} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseMemberBhv#requestPurchaseListDelete()</span>
@@ -30159,8 +30587,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".product.detail._b_productId_e_::post">
-/product/detail/{productId} (post)
+<h3 id=".product.detail._b_productId_e_::get">
+/product/detail/{productId} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductBhv#requestDetail()</span>
@@ -30369,8 +30797,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".product.list.status::post">
-/product/list/status (post)
+<h3 id=".product.list.status::get">
+/product/list/status (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductBhv#requestListStatus()</span>
@@ -30396,13 +30824,13 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".products.::post">
-/products/ (post)
+<h3 id=".products.::get">
+/products/ (get)
 </h3>
 <p>
-<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#request()</span>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestGet()</span>
 </p>
-<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteProductsParam</span>
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteProductsGetParam</span>
 <table>
     <thead>
     <tr>
@@ -30426,14 +30854,9 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
         <td>purchaseMemberName</td>
         <td>TODO</td>
     </tr>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">4</td>
-        <td>pageNumber</td>
-        <td>TODO</td>
-    </tr>
 </table>
 
-<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteProductsReturn</span>
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteProductsGetReturn</span>
 <table>
     <thead>
     <tr>
@@ -30444,36 +30867,78 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </thead>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">1</td>
-        <td>pageSize</td>
+        <td>productId</td>
         <td>TODO</td>
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">2</td>
-        <td>currentPageNumber</td>
+        <td>productName</td>
         <td>TODO</td>
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">3</td>
-        <td>allRecordCount</td>
+        <td>productStatus</td>
         <td>TODO</td>
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">4</td>
-        <td>allPageCount</td>
+        <td>productCategory</td>
         <td>TODO</td>
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">5</td>
-        <td>rows</td>
+        <td>regularPrice</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">6</td>
+        <td>latestPurchaseDate</td>
         <td>TODO</td>
     </tr>
 </table>
 
-<h3 id=".products.detail._b_productId_e_::post">
-/products/detail/{productId} (post)
+<h3 id=".products.::post">
+/products/ (post)
 </h3>
 <p>
-<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestDetail()</span>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestPost()</span>
+</p>
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteProductsPostParam</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>productStatus</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productCategory</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">4</td>
+        <td>regularPrice</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".products._b_productId_e_.::get">
+/products/{productId}/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestGet()</span>
 </p>
 <span class="doctitle">URL Parameter:</span>
 <table>
@@ -30491,38 +30956,7 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteProductsDetailParam</span>
-<table>
-    <thead>
-    <tr>
-        <th class="rownumhead">No.</th>
-        <th>name</th>
-        <th>type</th>
-    </tr>
-    </thead>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">1</td>
-        <td>productName</td>
-        <td>TODO</td>
-    </tr>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">2</td>
-        <td>productStatus</td>
-        <td>TODO</td>
-    </tr>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">3</td>
-        <td>purchaseMemberName</td>
-        <td>TODO</td>
-    </tr>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">4</td>
-        <td>pageNumber</td>
-        <td>TODO</td>
-    </tr>
-</table>
-
-<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteProductsDetailReturn</span>
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteProductsProductidGetReturn</span>
 <table>
     <thead>
     <tr>
@@ -30543,23 +30977,215 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">3</td>
-        <td>categoryName</td>
+        <td>productStatus</td>
         <td>TODO</td>
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">4</td>
-        <td>regularPrice</td>
+        <td>productCategory</td>
         <td>TODO</td>
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">5</td>
-        <td>productHandleCode</td>
+        <td>regularPrice</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">6</td>
+        <td>latestPurchaseDate</td>
         <td>TODO</td>
     </tr>
 </table>
 
-<h3 id=".profile.::post">
-/profile/ (post)
+<h3 id=".products._b_productId_e_.::put">
+/products/{productId}/ (put)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestPut()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteProductsPutParam</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productStatus</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">4</td>
+        <td>productCategory</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">5</td>
+        <td>regularPrice</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".products._b_productId_e_.::delete">
+/products/{productId}/ (delete)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestDelete()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".products._b_productId_e_.purchases.::get">
+/products/{productId}/purchases/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestPurchasesGet()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteProductsPurchasesParam</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>memberName</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteProductsPurchasesReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>rows</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".products._b_productId_e_.purchases._b_purchaseId_e_.::get">
+/products/{productId}/purchases/{purchaseId}/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestPurchasesGet()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>purchaseId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteProductsProductidPurchasesPurchaseidReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>purchaseId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>memberName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".profile.::get">
+/profile/ (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProfileBhv#request()</span>
@@ -30803,8 +31429,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".withdrawal.reason::post">
-/withdrawal/reason (post)
+<h3 id=".withdrawal.reason::get">
+/withdrawal/reason (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWithdrawalBhv#requestReason()</span>
@@ -30859,8 +31485,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
 
 <span class="doctitle">Return as:</span> <span class="docsubvalue">Integer</span>
 
-<h3 id=".wx.faicli.::post">
-/wx/faicli/ (post)
+<h3 id=".wx.faicli.::get">
+/wx/faicli/ (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestFaicli()</span>
@@ -30883,14 +31509,14 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
 
 <span class="doctitle">Return as:</span> <span class="docsubvalue">java.util.Map&lt;String,&nbsp;Object&gt;</span>
 
-<h3 id=".wx.faicli.unknown::post">
-/wx/faicli/unknown (post)
+<h3 id=".wx.faicli.unknown::get">
+/wx/faicli/unknown (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestFaicliUnknown()</span>
 </p>
-<h3 id=".wx.faicli.entity._b_account_e_::post">
-/wx/faicli/entity/{account} (post)
+<h3 id=".wx.faicli.entity._b_account_e_::get">
+/wx/faicli/entity/{account} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestFaicliEntity()</span>
@@ -30949,6 +31575,22 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenBodyList()</span>
 </p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>bodyList</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
 <span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteWxRemogenBodyListParam</span>
 <table>
     <thead>
@@ -30975,8 +31617,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.list.basic::post">
-/wx/remogen/list/basic (post)
+<h3 id=".wx.remogen.list.basic::get">
+/wx/remogen/list/basic (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenListBasic()</span>
@@ -31002,8 +31644,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.list.genebean::post">
-/wx/remogen/list/genebean (post)
+<h3 id=".wx.remogen.list.genebean::get">
+/wx/remogen/list/genebean (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenListGenebean()</span>
@@ -31029,8 +31671,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.list.genestring::post">
-/wx/remogen/list/genestring (post)
+<h3 id=".wx.remogen.list.genestring::get">
+/wx/remogen/list/genestring (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenListGenestring()</span>
@@ -31056,8 +31698,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.list.innergene::post">
-/wx/remogen/list/innergene (post)
+<h3 id=".wx.remogen.list.innergene::get">
+/wx/remogen/list/innergene (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenListInnergene()</span>
@@ -31579,8 +32221,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing._b_first_e_::post">
-/wx/remogen/routing/{first} (post)
+<h3 id=".wx.remogen.routing._b_first_e_::get">
+/wx/remogen/routing/{first} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRouting()</span>
@@ -31627,8 +32269,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.maihama::post">
-/wx/remogen/routing/maihama (post)
+<h3 id=".wx.remogen.routing.maihama::get">
+/wx/remogen/routing/maihama (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingMaihama()</span>
@@ -31659,8 +32301,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.sea._b_first_e_::post">
-/wx/remogen/routing/sea/{first} (post)
+<h3 id=".wx.remogen.routing.sea._b_first_e_::get">
+/wx/remogen/routing/sea/{first} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingSea()</span>
@@ -31707,8 +32349,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.land._b_first_e_._b_second_e_::post">
-/wx/remogen/routing/land/{first}/{second} (post)
+<h3 id=".wx.remogen.routing.land._b_first_e_._b_second_e_::get">
+/wx/remogen/routing/land/{first}/{second} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingLand()</span>
@@ -31760,8 +32402,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.piari::post">
-/wx/remogen/routing/piari (post)
+<h3 id=".wx.remogen.routing.piari::get">
+/wx/remogen/routing/piari (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingPiari()</span>
@@ -31792,8 +32434,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.piari._b_first_e_::post">
-/wx/remogen/routing/piari/{first} (post)
+<h3 id=".wx.remogen.routing.piari._b_first_e_::get">
+/wx/remogen/routing/piari/{first} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingPiari()</span>
@@ -31840,8 +32482,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.dstore::post">
-/wx/remogen/routing/dstore (post)
+<h3 id=".wx.remogen.routing.dstore::get">
+/wx/remogen/routing/dstore (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDstore()</span>
@@ -31872,56 +32514,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.dstore._b_first_e_::post">
-/wx/remogen/routing/dstore/{first} (post)
-</h3>
-<p>
-<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDstore()</span>
-</p>
-<span class="doctitle">URL Parameter:</span>
-<table>
-    <thead>
-    <tr>
-        <th class="rownumhead">No.</th>
-        <th>name</th>
-        <th>type</th>
-    </tr>
-    </thead>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">1</td>
-        <td>first</td>
-        <td>TODO</td>
-    </tr>
-</table>
-
-<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteWxRemogenRoutingDstoreReturn</span>
-<table>
-    <thead>
-    <tr>
-        <th class="rownumhead">No.</th>
-        <th>name</th>
-        <th>type</th>
-    </tr>
-    </thead>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">1</td>
-        <td>method</td>
-        <td>TODO</td>
-    </tr>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">2</td>
-        <td>first</td>
-        <td>TODO</td>
-    </tr>
-    <tr>
-        <td class="rowcellnum" rowspan="$rowspan">3</td>
-        <td>second</td>
-        <td>TODO</td>
-    </tr>
-</table>
-
-<h3 id=".wx.remogen.routing.dstore._b_first_e_._b_second_e_::post">
-/wx/remogen/routing/dstore/{first}/{second} (post)
+<h3 id=".wx.remogen.routing.dstore._b_first_e_::get">
+/wx/remogen/routing/dstore/{first} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDstore()</span>
@@ -31940,6 +32534,54 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
         <td>first</td>
         <td>TODO</td>
     </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteWxRemogenRoutingDstoreReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>method</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>first</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>second</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".wx.remogen.routing.dstore._b_first_e_._b_second_e_::get">
+/wx/remogen/routing/dstore/{first}/{second} (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDstore()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>first</td>
+        <td>TODO</td>
+    </tr>
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">2</td>
         <td>second</td>
@@ -31973,8 +32615,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.bonvo._b_first_e_::post">
-/wx/remogen/routing/bonvo/{first} (post)
+<h3 id=".wx.remogen.routing.bonvo._b_first_e_::get">
+/wx/remogen/routing/bonvo/{first} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingBonvo()</span>
@@ -32021,8 +32663,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.bonvo._b_first_e_._b_second_e_::post">
-/wx/remogen/routing/bonvo/{first}/{second} (post)
+<h3 id=".wx.remogen.routing.bonvo._b_first_e_._b_second_e_::get">
+/wx/remogen/routing/bonvo/{first}/{second} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingBonvo()</span>
@@ -32074,8 +32716,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.amba._b_first_e_._b_second_e_::post">
-/wx/remogen/routing/amba/{first}/{second} (post)
+<h3 id=".wx.remogen.routing.amba._b_first_e_._b_second_e_::get">
+/wx/remogen/routing/amba/{first}/{second} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingAmba()</span>
@@ -32127,8 +32769,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.amba._b_first_e_._b_second_e_._b_third_e_::post">
-/wx/remogen/routing/amba/{first}/{second}/{third} (post)
+<h3 id=".wx.remogen.routing.amba._b_first_e_._b_second_e_._b_third_e_::get">
+/wx/remogen/routing/amba/{first}/{second}/{third} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingAmba()</span>
@@ -32185,8 +32827,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.miraco._b_first_e_._b_second_e_._b_third_e_::post">
-/wx/remogen/routing/miraco/{first}/{second}/{third} (post)
+<h3 id=".wx.remogen.routing.miraco._b_first_e_._b_second_e_._b_third_e_::get">
+/wx/remogen/routing/miraco/{first}/{second}/{third} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingMiraco()</span>
@@ -32243,8 +32885,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.miraco._b_first_e_._b_second_e_._b_third_e_._b_fourth_e_::post">
-/wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth} (post)
+<h3 id=".wx.remogen.routing.miraco._b_first_e_._b_second_e_._b_third_e_._b_fourth_e_::get">
+/wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingMiraco()</span>
@@ -32306,8 +32948,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.dohotel._b_first_e_::post">
-/wx/remogen/routing/dohotel/{first} (post)
+<h3 id=".wx.remogen.routing.dohotel._b_first_e_::get">
+/wx/remogen/routing/dohotel/{first} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDohotel()</span>
@@ -32370,8 +33012,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.dohotel._b_first_e_._b_second_e_::post">
-/wx/remogen/routing/dohotel/{first}/{second} (post)
+<h3 id=".wx.remogen.routing.dohotel._b_first_e_._b_second_e_::get">
+/wx/remogen/routing/dohotel/{first}/{second} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingDohotel()</span>
@@ -32439,8 +33081,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.celeb._b_first_e_::post">
-/wx/remogen/routing/celeb/{first} (post)
+<h3 id=".wx.remogen.routing.celeb._b_first_e_::get">
+/wx/remogen/routing/celeb/{first} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingCeleb()</span>
@@ -32487,8 +33129,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.celeb._b_first_e_._b_second_e_::post">
-/wx/remogen/routing/celeb/{first}/{second} (post)
+<h3 id=".wx.remogen.routing.celeb._b_first_e_._b_second_e_::get">
+/wx/remogen/routing/celeb/{first}/{second} (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingCeleb()</span>
@@ -32540,8 +33182,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing._b_first_e_.resola::post">
-/wx/remogen/routing/{first}/resola (post)
+<h3 id=".wx.remogen.routing._b_first_e_.resola::get">
+/wx/remogen/routing/{first}/resola (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingResola()</span>
@@ -32588,8 +33230,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.routing.amphi._b_first_e_.theater._b_second_e_.maihama::post">
-/wx/remogen/routing/amphi/{first}/theater/{second}/maihama (post)
+<h3 id=".wx.remogen.routing.amphi._b_first_e_.theater._b_second_e_.maihama::get">
+/wx/remogen/routing/amphi/{first}/theater/{second}/maihama (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenRoutingAmphiTheaterMaihama()</span>
@@ -32641,8 +33283,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.suffix.allsuffix::post">
-/wx/remogen/suffix/allsuffix (post)
+<h3 id=".wx.remogen.suffix.allsuffix::get">
+/wx/remogen/suffix/allsuffix (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenSuffixAllsuffix()</span>
@@ -32668,8 +33310,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.suffix.nosuffix::post">
-/wx/remogen/suffix/nosuffix (post)
+<h3 id=".wx.remogen.suffix.nosuffix::get">
+/wx/remogen/suffix/nosuffix (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenSuffixNosuffix()</span>
@@ -32695,8 +33337,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.suffix.partonly::post">
-/wx/remogen/suffix/partonly (post)
+<h3 id=".wx.remogen.suffix.partonly::get">
+/wx/remogen/suffix/partonly (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenSuffixPartonly()</span>
@@ -32722,8 +33364,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.suffix.toponly::post">
-/wx/remogen/suffix/toponly (post)
+<h3 id=".wx.remogen.suffix.toponly::get">
+/wx/remogen/suffix/toponly (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenSuffixToponly()</span>
@@ -32749,14 +33391,14 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.tricky.allnone::post">
-/wx/remogen/tricky/allnone (post)
+<h3 id=".wx.remogen.tricky.allnone::get">
+/wx/remogen/tricky/allnone (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickyAllnone()</span>
 </p>
-<h3 id=".wx.remogen.tricky.nobody::post">
-/wx/remogen/tricky/nobody (post)
+<h3 id=".wx.remogen.tricky.nobody::get">
+/wx/remogen/tricky/nobody (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickyNobody()</span>
@@ -32782,8 +33424,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.tricky.oddprop::post">
-/wx/remogen/tricky/oddprop (post)
+<h3 id=".wx.remogen.tricky.oddprop::get">
+/wx/remogen/tricky/oddprop (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickyOddprop()</span>
@@ -32829,8 +33471,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.tricky.recycle::post">
-/wx/remogen/tricky/recycle (post)
+<h3 id=".wx.remogen.tricky.recycle::get">
+/wx/remogen/tricky/recycle (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickyRecycle()</span>
@@ -32871,8 +33513,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.tricky.selfref::post">
-/wx/remogen/tricky/selfref (post)
+<h3 id=".wx.remogen.tricky.selfref::get">
+/wx/remogen/tricky/selfref (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickySelfref()</span>
@@ -32903,8 +33545,8 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     </tr>
 </table>
 
-<h3 id=".wx.remogen.tricky.suffixhell::post">
-/wx/remogen/tricky/suffixhell (post)
+<h3 id=".wx.remogen.tricky.suffixhell::get">
+/wx/remogen/tricky/suffixhell (get)
 </h3>
 <p>
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseWxBhv#requestRemogenTrickySuffixhell()</span>
