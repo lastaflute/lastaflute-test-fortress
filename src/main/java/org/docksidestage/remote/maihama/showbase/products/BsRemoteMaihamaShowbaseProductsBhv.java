@@ -246,8 +246,8 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param paramLambda The callback for RemoteProductsPurchasesParam. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteProductsPurchasesReturn requestPurchases(Integer productId, Consumer<RemoteProductsPurchasesParam> paramLambda) {
-        return doRequestPurchases(productId, paramLambda, rule -> {});
+    public RemoteProductsPurchasesReturn requestPurchasesGet(Integer productId, Consumer<RemoteProductsPurchasesParam> paramLambda) {
+        return doRequestPurchasesGet(productId, paramLambda, rule -> {});
     }
 
     /**
@@ -261,11 +261,11 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductsPurchasesReturn doRequestPurchases(Integer productId, Consumer<RemoteProductsPurchasesParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductsPurchasesReturn doRequestPurchasesGet(Integer productId, Consumer<RemoteProductsPurchasesParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
         RemoteProductsPurchasesParam param = new RemoteProductsPurchasesParam();
         paramLambda.accept(param);
         return doRequestGet(RemoteProductsPurchasesReturn.class, "/products/{productId}/purchases/", moreUrl(productId), query(param), rule -> {
-            ruleOfPurchasesProductId(rule);
+            ruleOfPurchasesGetProductId(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -274,7 +274,7 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * Set up method-level rule of /products/{productId}/purchases/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfPurchasesProductId(FlutyRemoteApiRule rule) {
+    protected void ruleOfPurchasesGetProductId(FlutyRemoteApiRule rule) {
     }
 
     /**
@@ -287,8 +287,8 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param purchaseId The value of path variable for purchaseId. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteProductsProductidPurchasesPurchaseidReturn requestPurchases(Integer productId, Long purchaseId) {
-        return doRequestPurchases(productId, purchaseId, rule -> {});
+    public RemoteProductsProductidPurchasesPurchaseidReturn requestPurchasesGet(Integer productId, Long purchaseId) {
+        return doRequestPurchasesGet(productId, purchaseId, rule -> {});
     }
 
     /**
@@ -302,9 +302,9 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductsProductidPurchasesPurchaseidReturn doRequestPurchases(Integer productId, Long purchaseId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected RemoteProductsProductidPurchasesPurchaseidReturn doRequestPurchasesGet(Integer productId, Long purchaseId, Consumer<FlutyRemoteApiRule> ruleLambda) {
         return doRequestGet(RemoteProductsProductidPurchasesPurchaseidReturn.class, "/products/{productId}/purchases/{purchaseId}/", moreUrl(productId, purchaseId), noQuery(), rule -> {
-            ruleOfPurchasesProductIdPurchaseId(rule);
+            ruleOfPurchasesGetProductIdPurchaseId(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -313,6 +313,6 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * Set up method-level rule of /products/{productId}/purchases/{purchaseId}/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfPurchasesProductIdPurchaseId(FlutyRemoteApiRule rule) {
+    protected void ruleOfPurchasesGetProductIdPurchaseId(FlutyRemoteApiRule rule) {
     }
 }

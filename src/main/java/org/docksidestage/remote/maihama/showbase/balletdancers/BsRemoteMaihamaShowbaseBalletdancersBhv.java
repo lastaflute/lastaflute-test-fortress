@@ -19,9 +19,6 @@ import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.balletdancers.greatestfavoritestudios.RemoteBalletdancersGreatestfavoritestudiosParam;
-import org.docksidestage.remote.maihama.showbase.balletdancers.greatestfavoritestudios.RemoteBalletdancersGreatestfavoritestudiosReturn;
-import org.docksidestage.remote.maihama.showbase.balletdancers.greatestfavoritestudios.RemoteBalletdancersProductidGreatestfavoritestudiosPurchaseidReturn;
 import org.docksidestage.remote.maihama.showbase.balletdancers.index.RemoteBalletdancersGetParam;
 import org.docksidestage.remote.maihama.showbase.balletdancers.index.RemoteBalletdancersGetReturn;
 import org.docksidestage.remote.maihama.showbase.balletdancers.index.RemoteBalletdancersPostParam;
@@ -234,85 +231,5 @@ public abstract class BsRemoteMaihamaShowbaseBalletdancersBhv extends AbstractRe
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfDeleteProductId(FlutyRemoteApiRule rule) {
-    }
-
-    /**
-     * Request remote call to /ballet-dancers/{productId}/greatest-favorite-studios/. (auto-generated method)<br>
-     * <pre>
-     * url: /ballet-dancers/{productId}/greatest-favorite-studios/
-     * httpMethod: GET
-     * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param paramLambda The callback for RemoteBalletdancersGreatestfavoritestudiosParam. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    public RemoteBalletdancersGreatestfavoritestudiosReturn requestGreatestfavoritestudios(Integer productId, Consumer<RemoteBalletdancersGreatestfavoritestudiosParam> paramLambda) {
-        return doRequestGreatestfavoritestudios(productId, paramLambda, rule -> {});
-    }
-
-    /**
-     * Request remote call to /ballet-dancers/{productId}/greatest-favorite-studios/. (auto-generated method)<br>
-     * <pre>
-     * url: /ballet-dancers/{productId}/greatest-favorite-studios/
-     * httpMethod: GET
-     * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param paramLambda The callback for RemoteBalletdancersGreatestfavoritestudiosParam. (NotNull)
-     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    protected RemoteBalletdancersGreatestfavoritestudiosReturn doRequestGreatestfavoritestudios(Integer productId, Consumer<RemoteBalletdancersGreatestfavoritestudiosParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemoteBalletdancersGreatestfavoritestudiosParam param = new RemoteBalletdancersGreatestfavoritestudiosParam();
-        paramLambda.accept(param);
-        return doRequestGet(RemoteBalletdancersGreatestfavoritestudiosReturn.class, "/ballet-dancers/{productId}/greatest-favorite-studios/", moreUrl(productId), query(param), rule -> {
-            ruleOfGreatestfavoritestudiosProductId(rule);
-            ruleLambda.accept(rule);
-        });
-    }
-
-    /**
-     * Set up method-level rule of /ballet-dancers/{productId}/greatest-favorite-studios/.<br>
-     * @param rule The rule that class default rule is already set. (NotNull)
-     */
-    protected void ruleOfGreatestfavoritestudiosProductId(FlutyRemoteApiRule rule) {
-    }
-
-    /**
-     * Request remote call to /ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/. (auto-generated method)<br>
-     * <pre>
-     * url: /ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/
-     * httpMethod: GET
-     * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param purchaseId The value of path variable for purchaseId. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    public RemoteBalletdancersProductidGreatestfavoritestudiosPurchaseidReturn requestGreatestfavoritestudios(Integer productId, Long purchaseId) {
-        return doRequestGreatestfavoritestudios(productId, purchaseId, rule -> {});
-    }
-
-    /**
-     * Request remote call to /ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/. (auto-generated method)<br>
-     * <pre>
-     * url: /ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/
-     * httpMethod: GET
-     * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param purchaseId The value of path variable for purchaseId. (NotNull)
-     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    protected RemoteBalletdancersProductidGreatestfavoritestudiosPurchaseidReturn doRequestGreatestfavoritestudios(Integer productId, Long purchaseId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestGet(RemoteBalletdancersProductidGreatestfavoritestudiosPurchaseidReturn.class, "/ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/", moreUrl(productId, purchaseId), noQuery(), rule -> {
-            ruleOfGreatestfavoritestudiosProductIdPurchaseId(rule);
-            ruleLambda.accept(rule);
-        });
-    }
-
-    /**
-     * Set up method-level rule of /ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/.<br>
-     * @param rule The rule that class default rule is already set. (NotNull)
-     */
-    protected void ruleOfGreatestfavoritestudiosProductIdPurchaseId(FlutyRemoteApiRule rule) {
     }
 }

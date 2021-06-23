@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.balletdancers.greatestfavoritestudios;
+package org.docksidestage.remote.maihama.showbase.balletdancers.greatestfavoritestudios.index;
 
 import org.lastaflute.core.util.Lato;
 
