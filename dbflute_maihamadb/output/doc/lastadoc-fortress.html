@@ -29110,16 +29110,28 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
         <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestDelete()</td>
     </tr>
     <tr>
-        <td class="rowcellnum">6</td>
+        <td class="rowcellnum">1</td>
         <td class="rowcell"><a href="#.products._b_productId_e_.purchases.::get">/products/{productId}/purchases/</a></td>
         <td class="rowcell">get</td>
-        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestPurchasesGet()</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsPurchasesBhv#requestGet()</td>
     </tr>
     <tr>
-        <td class="rowcellnum">7</td>
+        <td class="rowcellnum">2</td>
         <td class="rowcell"><a href="#.products._b_productId_e_.purchases._b_purchaseId_e_.::get">/products/{productId}/purchases/{purchaseId}/</a></td>
         <td class="rowcell">get</td>
-        <td class="rowcell">RemoteMaihamaShowbaseProductsBhv#requestPurchasesGet()</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsPurchasesBhv#requestGet()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">1</td>
+        <td class="rowcell"><a href="#.products._b_productId_e_.purchases._b_purchaseId_e_.payments.::get">/products/{productId}/purchases/{purchaseId}/payments/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsPurchasesPaymentsBhv#requestGet()</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum">2</td>
+        <td class="rowcell"><a href="#.products._b_productId_e_.purchases._b_purchaseId_e_.payments._b_paymentId_e_.::get">/products/{productId}/purchases/{purchaseId}/payments/{paymentId}/</a></td>
+        <td class="rowcell">get</td>
+        <td class="rowcell">RemoteMaihamaShowbaseProductsPurchasesPaymentsBhv#requestGet()</td>
     </tr>
     <tr>
         <td class="rowcellnum">1</td>
@@ -31081,7 +31093,7 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
 /products/{productId}/purchases/ (get)
 </h3>
 <p>
-<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestPurchasesGet()</span>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsPurchasesBhv#requestGet()</span>
 </p>
 <span class="doctitle">URL Parameter:</span>
 <table>
@@ -31135,7 +31147,7 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
 /products/{productId}/purchases/{purchaseId}/ (get)
 </h3>
 <p>
-<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsBhv#requestPurchasesGet()</span>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsPurchasesBhv#requestGet()</span>
 </p>
 <span class="doctitle">URL Parameter:</span>
 <table>
@@ -31180,6 +31192,138 @@ test&nbsp;of&nbsp;free&nbsp;located&nbsp;template
     <tr>
         <td class="rowcellnum" rowspan="$rowspan">3</td>
         <td>productName</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".products._b_productId_e_.purchases._b_purchaseId_e_.payments.::get">
+/products/{productId}/purchases/{purchaseId}/payments/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsPurchasesPaymentsBhv#requestGet()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>purchaseId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Param as:</span> <span class="docsubvalue">RemoteProductsPurchasesPaymentsParam</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>productStatus</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>purchaseMemberName</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteProductsPurchasesPaymentsReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>paymentId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>memberName</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>productName</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<h3 id=".products._b_productId_e_.purchases._b_purchaseId_e_.payments._b_paymentId_e_.::get">
+/products/{productId}/purchases/{purchaseId}/payments/{paymentId}/ (get)
+</h3>
+<p>
+<span class="doctitle">Request Method:</span> <span class="docmainvalue">RemoteMaihamaShowbaseProductsPurchasesPaymentsBhv#requestGet()</span>
+</p>
+<span class="doctitle">URL Parameter:</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>productId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>purchaseId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">3</td>
+        <td>paymentId</td>
+        <td>TODO</td>
+    </tr>
+</table>
+
+<span class="doctitle">Return as:</span> <span class="docsubvalue">RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidReturn</span>
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">1</td>
+        <td>paymentId</td>
+        <td>TODO</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="$rowspan">2</td>
+        <td>paymentDatetime</td>
         <td>TODO</td>
     </tr>
 </table>

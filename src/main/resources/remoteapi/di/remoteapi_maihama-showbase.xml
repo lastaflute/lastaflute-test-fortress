@@ -16,6 +16,8 @@
     <component name="remoteMaihamaShowbaseMypageBhv" class="org.docksidestage.remote.maihama.showbase.mypage.RemoteMaihamaShowbaseMypageBhv" />
     <component name="remoteMaihamaShowbaseProductBhv" class="org.docksidestage.remote.maihama.showbase.product.RemoteMaihamaShowbaseProductBhv" />
     <component name="remoteMaihamaShowbaseProductsBhv" class="org.docksidestage.remote.maihama.showbase.products.RemoteMaihamaShowbaseProductsBhv" />
+    <component name="remoteMaihamaShowbaseProductsPurchasesBhv" class="org.docksidestage.remote.maihama.showbase.products.purchases.RemoteMaihamaShowbaseProductsPurchasesBhv" />
+    <component name="remoteMaihamaShowbaseProductsPurchasesPaymentsBhv" class="org.docksidestage.remote.maihama.showbase.products.purchases.payments.RemoteMaihamaShowbaseProductsPurchasesPaymentsBhv" />
     <component name="remoteMaihamaShowbaseProfileBhv" class="org.docksidestage.remote.maihama.showbase.profile.RemoteMaihamaShowbaseProfileBhv" />
     <component name="remoteMaihamaShowbasePurchaseBhv" class="org.docksidestage.remote.maihama.showbase.purchase.RemoteMaihamaShowbasePurchaseBhv" />
     <component name="remoteMaihamaShowbaseSigninBhv" class="org.docksidestage.remote.maihama.showbase.signin.RemoteMaihamaShowbaseSigninBhv" />

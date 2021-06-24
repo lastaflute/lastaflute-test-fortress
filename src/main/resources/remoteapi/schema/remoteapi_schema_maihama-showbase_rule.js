@@ -8,7 +8,7 @@
 // generate hierarchical behaviors if resources hanving many nests
 // @Override
 remoteApiRule.behaviorSubPackage = function(api) {
-    if (api.url.indexOf('/ballet-dancers/') >= 0) { // e.g. resources having many nests
+    if (api.url.indexOf('/ballet-dancers/') >= 0 || api.url.indexOf('/products/') >= 0) { // e.g. resources having many nests
         return this.subPackage(api).replace(/^([^.]*)\.(.+)/, '$1.$2'); // default is $1 only
     } else {
         return baseRule.behaviorSubPackage(api);

@@ -1145,6 +1145,127 @@
         ]
       }
     },
+    "/products/{productId}/purchases/{purchaseId}/payments/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "productId",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "purchaseId",
+            "type": "integer",
+            "format": "int64",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "productName",
+            "description": "prefix for name of product e.g. R",
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
+            "in": "query",
+            "default": "R",
+            "required": false
+          },
+          {
+            "name": "productStatus",
+            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+            "type": "string",
+            "enum": [
+              "ONS",
+              "PST",
+              "SST"
+            ],
+            "in": "query",
+            "default": "ONS",
+            "required": false
+          },
+          {
+            "name": "purchaseMemberName",
+            "description": "prefix for member name who purchases the product e.g. S",
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
+            "in": "query",
+            "default": "S",
+            "required": false
+          }
+        ],
+        "tags": [
+          "products"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List%3Corg.docksidestage.app.web.products.purchases.payments.PaymentsRowResult%3E"
+              }
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/products/{productId}/purchases/{purchaseId}/payments/{paymentId}/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "productId",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "purchaseId",
+            "type": "integer",
+            "format": "int64",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "paymentId",
+            "type": "integer",
+            "format": "int64",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "products"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.products.purchases.payments.PaymentsResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
     "/profile/": {
       "get": {
         "summary": "@author jflute",
@@ -4006,6 +4127,44 @@
         },
         "productName": {
           "type": "string"
+        }
+      }
+    },
+    "java.util.List\u003corg.docksidestage.app.web.products.purchases.payments.PaymentsRowResult\u003e": {
+      "type": "object",
+      "required": [
+        "paymentId",
+        "memberName",
+        "productName"
+      ],
+      "properties": {
+        "paymentId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "memberName": {
+          "type": "string"
+        },
+        "productName": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.products.purchases.payments.PaymentsResult": {
+      "type": "object",
+      "required": [
+        "paymentId",
+        "paymentDatetime"
+      ],
+      "properties": {
+        "paymentId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "paymentDatetime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2000-01-01T00:00:00.000"
         }
       }
     },

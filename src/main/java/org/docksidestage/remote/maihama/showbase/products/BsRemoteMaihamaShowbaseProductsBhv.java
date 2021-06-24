@@ -24,9 +24,6 @@ import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsGe
 import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsPostParam;
 import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsProductidGetReturn;
 import org.docksidestage.remote.maihama.showbase.products.index.RemoteProductsPutParam;
-import org.docksidestage.remote.maihama.showbase.products.purchases.RemoteProductsProductidPurchasesPurchaseidReturn;
-import org.docksidestage.remote.maihama.showbase.products.purchases.RemoteProductsPurchasesParam;
-import org.docksidestage.remote.maihama.showbase.products.purchases.RemoteProductsPurchasesReturn;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -234,85 +231,5 @@ public abstract class BsRemoteMaihamaShowbaseProductsBhv extends AbstractRemoteM
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOfDeleteProductId(FlutyRemoteApiRule rule) {
-    }
-
-    /**
-     * Request remote call to /products/{productId}/purchases/. (auto-generated method)<br>
-     * <pre>
-     * url: /products/{productId}/purchases/
-     * httpMethod: GET
-     * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param paramLambda The callback for RemoteProductsPurchasesParam. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    public RemoteProductsPurchasesReturn requestPurchasesGet(Integer productId, Consumer<RemoteProductsPurchasesParam> paramLambda) {
-        return doRequestPurchasesGet(productId, paramLambda, rule -> {});
-    }
-
-    /**
-     * Request remote call to /products/{productId}/purchases/. (auto-generated method)<br>
-     * <pre>
-     * url: /products/{productId}/purchases/
-     * httpMethod: GET
-     * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param paramLambda The callback for RemoteProductsPurchasesParam. (NotNull)
-     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    protected RemoteProductsPurchasesReturn doRequestPurchasesGet(Integer productId, Consumer<RemoteProductsPurchasesParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemoteProductsPurchasesParam param = new RemoteProductsPurchasesParam();
-        paramLambda.accept(param);
-        return doRequestGet(RemoteProductsPurchasesReturn.class, "/products/{productId}/purchases/", moreUrl(productId), query(param), rule -> {
-            ruleOfPurchasesGetProductId(rule);
-            ruleLambda.accept(rule);
-        });
-    }
-
-    /**
-     * Set up method-level rule of /products/{productId}/purchases/.<br>
-     * @param rule The rule that class default rule is already set. (NotNull)
-     */
-    protected void ruleOfPurchasesGetProductId(FlutyRemoteApiRule rule) {
-    }
-
-    /**
-     * Request remote call to /products/{productId}/purchases/{purchaseId}/. (auto-generated method)<br>
-     * <pre>
-     * url: /products/{productId}/purchases/{purchaseId}/
-     * httpMethod: GET
-     * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param purchaseId The value of path variable for purchaseId. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    public RemoteProductsProductidPurchasesPurchaseidReturn requestPurchasesGet(Integer productId, Long purchaseId) {
-        return doRequestPurchasesGet(productId, purchaseId, rule -> {});
-    }
-
-    /**
-     * Request remote call to /products/{productId}/purchases/{purchaseId}/. (auto-generated method)<br>
-     * <pre>
-     * url: /products/{productId}/purchases/{purchaseId}/
-     * httpMethod: GET
-     * </pre>
-     * @param productId The value of path variable for productId. (NotNull)
-     * @param purchaseId The value of path variable for purchaseId. (NotNull)
-     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    protected RemoteProductsProductidPurchasesPurchaseidReturn doRequestPurchasesGet(Integer productId, Long purchaseId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestGet(RemoteProductsProductidPurchasesPurchaseidReturn.class, "/products/{productId}/purchases/{purchaseId}/", moreUrl(productId, purchaseId), noQuery(), rule -> {
-            ruleOfPurchasesGetProductIdPurchaseId(rule);
-            ruleLambda.accept(rule);
-        });
-    }
-
-    /**
-     * Set up method-level rule of /products/{productId}/purchases/{purchaseId}/.<br>
-     * @param rule The rule that class default rule is already set. (NotNull)
-     */
-    protected void ruleOfPurchasesGetProductIdPurchaseId(FlutyRemoteApiRule rule) {
     }
 }
