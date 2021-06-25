@@ -70,6 +70,19 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
         verifySwaggerAllowed();
         Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
             op.addHeaderParameter("hangar", "mystic"); // test for header
+
+            // test for HTTP status
+            //op.derivedSuccessHttpStatus(meta -> {
+            //    TypicalStructuredSuccessHttpStatusHandler statusHandler = new TypicalStructuredSuccessHttpStatusHandler();
+            //    return statusHandler.deriveSuccessStatus(meta.getActionExecute()).orElse(null);
+            //});
+            //op.derivedFailureHttpStatus(meta -> {
+            //    SwaggerFailureHttpStatusResource resource = new SwaggerFailureHttpStatusResource();
+            //    resource.addMapping(404, EntityAlreadyDeletedException.class);
+            //    resource.addMapping(404, EntityAlreadyExistsException.class);
+            //    resource.addMapping(409, IllegalStateException.class);
+            //    return resource;
+            //});
         });
         return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
     }

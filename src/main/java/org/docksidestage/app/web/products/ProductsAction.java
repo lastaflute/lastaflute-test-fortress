@@ -24,6 +24,7 @@ import org.docksidestage.app.web.products.assist.ProductsCrudAssist;
 import org.docksidestage.app.web.products.assist.ProductsMappingAssist;
 import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
+import org.lastaflute.web.Execute.HttpStatus;
 import org.lastaflute.web.RestfulAction;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -84,7 +85,7 @@ public class ProductsAction extends FortressBaseAction {
         return JsonResponse.asEmptyBody(); // dummy implementation
     }
 
-    @Execute
+    @Execute(successHttpStatus = @HttpStatus(value = 299, desc = "sea")) // test for explicit status
     public JsonResponse<Void> delete$index(Integer productId) {
         return JsonResponse.asEmptyBody(); // dummy implementation
     }
