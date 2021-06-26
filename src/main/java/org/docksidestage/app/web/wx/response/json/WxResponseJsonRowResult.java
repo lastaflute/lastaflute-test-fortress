@@ -19,7 +19,9 @@ import java.time.LocalDate;
 
 import javax.validation.Valid;
 
+import org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFilePart;
 import org.docksidestage.dbflute.allcommon.CDef;
+import org.eclipse.collections.api.list.ImmutableList;
 
 /**
  * @author jflute
@@ -33,11 +35,31 @@ public class WxResponseJsonRowResult {
     public Integer regularPrice;
     public LocalDate latestPurchaseDate;
 
+    // -----------------------------------------------------
+    //                                             Part Test
+    //                                             ---------
     @Valid
     public WhitePart white;
 
     public static class WhitePart {
 
         public CDef.WhiteConfusingFormatBodying formatBodying;
+    }
+
+    // -----------------------------------------------------
+    //                                       File/Inner Test
+    //                                       ---------------
+    // #thinking jflute cannot get fields at swagger, treated as "type": "object" (2021/06/25)
+    @Valid
+    public WxResponseJsonRowFilePart filePart;
+
+    @Valid
+    public WxResponseJsonRowInnerPart innerPart;
+
+    public static class WxResponseJsonRowInnerPart { // same fields as filePart
+
+        public String sea;
+
+        public ImmutableList<Integer> land;
     }
 }
