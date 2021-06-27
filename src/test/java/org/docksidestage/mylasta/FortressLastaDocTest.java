@@ -15,9 +15,13 @@
  */
 package org.docksidestage.mylasta;
 
+import java.util.Set;
+
+import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.FortressTomcatBoot;
 import org.docksidestage.app.web.SwaggerAction;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+import org.lastaflute.meta.agent.yourswagger.YourSwaggerSyncOption;
 
 /**
  * @author jflute
@@ -39,13 +43,28 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         // same json so no diff
         //verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
 
-        // having a little diff
-        //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> {});
+        // having a little changed diff (with many deleted)
+        //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
+    }
 
-        // test for your production's one
-        //verifyYourSwaggerSync("/swagger/mysecure-app-swagger.json", op -> {});
+    protected void customizeDiff(YourSwaggerSyncOption op) { // test for customization
+        // almost ignore "Changed" differences
+        Set<String> exceptSet = DfCollectionUtil.newHashSet(); // e.g. summary is except by default
+        exceptSet.add("format");
+        exceptSet.add("required");
+        exceptSet.add("parameters");
+        exceptSet.add("requestBody");
+        exceptSet.add("responses");
+        op.deriveTargetNode((path, name) -> { // default and your determination
+            return !exceptSet.contains(name);
+        });
 
-        // test for your production's two
-        //new SwaggerDiff().diffFromLocations("/swagger/mysecure-app-swagger.json", "/swagger/mysecure-lasta-swagger.json");
+        // if your swagger.json does not have trailing slash for all actions
+        op.removeLastaTrailingSlash();
+
+        // no exception if New only
+        op.determineException(diffResult -> {
+            return diffResult.contains("Changed") || diffResult.contains("Deleted");
+        });
     }
 }

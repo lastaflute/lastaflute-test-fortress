@@ -21,12 +21,12 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.2.5-C-SNAPSHOT</dbflute.version>
 		<mysql.jdbc.version>8.0.16</mysql.jdbc.version>
-		<lasta.di.version>0.8.3</lasta.di.version>
+		<lasta.di.version>0.8.4-B-SNAPSHOT</lasta.di.version>
 		<lastaflute.version>1.2.1-L-SNAPSHOT</lastaflute.version>
 		<lasta.thymeleaf.version>0.4.2</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.5-A-SNAPSHOT</lasta.job.version>
 		<lasta.remoteapi.version>0.4.5</lasta.remoteapi.version>
-		<lasta.meta.version>0.5.1-Q-SNAPSHOT</lasta.meta.version>
+		<lasta.meta.version>0.5.1-S-SNAPSHOT</lasta.meta.version>
 		<openapidiff.version>2.0.0-beta.9</openapidiff.version>
 
 		<!-- Partner Library -->
@@ -44,7 +44,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.9.3-C-SNAPSHOT</utflute.version>
+		<utflute.version>0.9.3-E-SNAPSHOT</utflute.version>
 	</properties>
 
 	<licenses>
