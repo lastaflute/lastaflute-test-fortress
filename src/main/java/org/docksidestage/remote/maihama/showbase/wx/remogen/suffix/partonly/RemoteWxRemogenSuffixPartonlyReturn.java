@@ -37,6 +37,25 @@ public class RemoteWxRemogenSuffixPartonlyReturn {
      * @author FreeGen
      */
     public static class ResortParkPart {
+
+        /** The property of parkName. */
+        @Required
+        public String parkName;
+
+        /** The property of showStages. (NullAllowed) */
+        @javax.validation.Valid
+        public org.eclipse.collections.api.list.ImmutableList<ShowStagePart> showStages;
+
+        /**
+         * The part class of ShowStagePart.
+         * @author FreeGen
+         */
+        public static class ShowStagePart {
+
+            /** The property of stageName. */
+            @Required
+            public String stageName;
+        }
     }
 
     @Override

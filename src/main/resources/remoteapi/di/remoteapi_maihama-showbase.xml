@@ -7,8 +7,7 @@
     <include condition="#exists('#path')" path="remoteapi/di/remoteapi_maihama-showbase_included.xml"/>
 
     <!-- Remote API Behavior -->
-    <component name="remoteMaihamaShowbaseRootBhv" class="org.docksidestage.remote.maihama.showbase.root.RemoteMaihamaShowbaseRootBhv" />
-    <component name="remoteMaihamaShowbaseSwaggerBhv" class="org.docksidestage.remote.maihama.showbase.swagger.RemoteMaihamaShowbaseSwaggerBhv" />
+    <component name="remoteMaihamaShowbaseBhv" class="org.docksidestage.remote.maihama.showbase.RemoteMaihamaShowbaseBhv" />
     <component name="remoteMaihamaShowbaseBalletdancersBhv" class="org.docksidestage.remote.maihama.showbase.balletdancers.RemoteMaihamaShowbaseBalletdancersBhv" />
     <component name="remoteMaihamaShowbaseBalletdancersGreatestfavoritestudiosBhv" class="org.docksidestage.remote.maihama.showbase.balletdancers.greatestfavoritestudios.RemoteMaihamaShowbaseBalletdancersGreatestfavoritestudiosBhv" />
     <component name="remoteMaihamaShowbaseFollowingBhv" class="org.docksidestage.remote.maihama.showbase.following.RemoteMaihamaShowbaseFollowingBhv" />

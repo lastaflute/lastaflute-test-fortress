@@ -13,19 +13,18 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.swagger;
+package org.docksidestage.remote.maihama.showbase;
 
 import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
-import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * The base class as generation gap for remote API of swagger.
+ * The base class as generation gap for remote API of .
  * @author FreeGen
  */
-public abstract class BsRemoteMaihamaShowbaseSwaggerBhv extends AbstractRemoteMaihamaShowbaseBhv {
+public abstract class BsRemoteMaihamaShowbaseBhv extends AbstractRemoteMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -33,7 +32,7 @@ public abstract class BsRemoteMaihamaShowbaseSwaggerBhv extends AbstractRemoteMa
     /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public BsRemoteMaihamaShowbaseSwaggerBhv(RequestManager requestManager) {
+    public BsRemoteMaihamaShowbaseBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
@@ -41,9 +40,9 @@ public abstract class BsRemoteMaihamaShowbaseSwaggerBhv extends AbstractRemoteMa
     //                                                                             Execute
     //                                                                             =======
     /**
-     * Request remote call to /swagger/. (auto-generated method)<br>
+     * Request remote call to /. (auto-generated method)<br>
      * <pre>
-     * url: /swagger/
+     * url: /
      * httpMethod: GET
      * </pre>
      */
@@ -52,60 +51,24 @@ public abstract class BsRemoteMaihamaShowbaseSwaggerBhv extends AbstractRemoteMa
     }
 
     /**
-     * Request remote call to /swagger/. (auto-generated method)<br>
+     * Request remote call to /. (auto-generated method)<br>
      * <pre>
-     * url: /swagger/
+     * url: /
      * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void doRequest(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestGet(void.class, "/swagger/", noMoreUrl(), noQuery(), rule -> {
+        doRequestGet(void.class, "/", noMoreUrl(), noQuery(), rule -> {
             ruleOf(rule);
             ruleLambda.accept(rule);
         });
     }
 
     /**
-     * Set up method-level rule of /swagger/.<br>
+     * Set up method-level rule of /.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ruleOf(FlutyRemoteApiRule rule) {
-    }
-
-    /**
-     * Request remote call to /swagger/json. (auto-generated method)<br>
-     * <pre>
-     * url: /swagger/json
-     * httpMethod: GET
-     * </pre>
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    public java.util.Map<String, Object> requestJson() {
-        return doRequestJson(rule -> {});
-    }
-
-    /**
-     * Request remote call to /swagger/json. (auto-generated method)<br>
-     * <pre>
-     * url: /swagger/json
-     * httpMethod: GET
-     * </pre>
-     * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
-     * @return The bean object as return type, receiving response body. (NotNull)
-     */
-    protected java.util.Map<String, Object> doRequestJson(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestGet(new org.lastaflute.di.helper.misc.ParameterizedRef<java.util.Map<String, Object>>() {
-        }.getType(), "/swagger/json", noMoreUrl(), noQuery(), rule -> {
-            ruleOfJson(rule);
-            ruleLambda.accept(rule);
-        });
-    }
-
-    /**
-     * Set up method-level rule of /swagger/json.<br>
-     * @param rule The rule that class default rule is already set. (NotNull)
-     */
-    protected void ruleOfJson(FlutyRemoteApiRule rule) {
     }
 }

@@ -13,19 +13,19 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.swagger;
+package org.docksidestage.remote.maihama.showbase;
 
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
- * The behavior for remote API of swagger.
+ * The behavior for remote API of .
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
  */
-public class RemoteMaihamaShowbaseSwaggerBhv extends BsRemoteMaihamaShowbaseSwaggerBhv {
+public class RemoteMaihamaShowbaseBhv extends BsRemoteMaihamaShowbaseBhv {
 
     // ===================================================================================
     //                                                                         Constructor
@@ -33,7 +33,7 @@ public class RemoteMaihamaShowbaseSwaggerBhv extends BsRemoteMaihamaShowbaseSwag
     /**
      * @param requestManager The manager of request, LastaFlute component. (NotNull)
      */
-    public RemoteMaihamaShowbaseSwaggerBhv(RequestManager requestManager) {
+    public RemoteMaihamaShowbaseBhv(RequestManager requestManager) {
         super(requestManager);
     }
 }
