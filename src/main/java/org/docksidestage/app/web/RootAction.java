@@ -32,10 +32,12 @@ public class RootAction extends FortressBaseAction {
         return redirect(MypageAction.class);
     }
 
-    public HtmlResponse rexplorations() {
+    @Execute
+    public HtmlResponse rleonardo() {
         return redirect(MypageAction.class);
     }
 
+    @Execute
     public HtmlResponse rdavinci() {
         return redirect(MypageAction.class);
     }

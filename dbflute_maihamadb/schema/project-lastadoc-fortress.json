@@ -68,7 +68,65 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 15,
+      "fileLineCount": 17,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/rleonardo",
+      "typeName": "org.docksidestage.app.web.RootAction",
+      "simpleTypeName": "RootAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "rleonardo",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "redirect(MypageAction.class)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 17,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/rdavinci",
+      "typeName": "org.docksidestage.app.web.RootAction",
+      "simpleTypeName": "RootAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "rdavinci",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.HtmlResponse",
+        "simpleTypeName": "HtmlResponse",
+        "value": "redirect(MypageAction.class)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 17,
       "methodLineCount": 3
     },
     {
