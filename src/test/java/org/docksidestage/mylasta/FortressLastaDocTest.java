@@ -44,10 +44,11 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         //verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
 
         // having a little changed diff (with many deleted)
-        //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
+        verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
     }
 
     protected void customizeDiff(YourSwaggerSyncOption op) { // test for customization
+        // you can select items for differences
         // almost ignore "Changed" differences
         Set<String> exceptSet = DfCollectionUtil.newHashSet(); // e.g. summary is except by default
         exceptSet.add("format");
@@ -55,16 +56,11 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         exceptSet.add("parameters");
         exceptSet.add("requestBody");
         exceptSet.add("responses");
-        op.deriveTargetNode((path, name) -> { // default and your determination
+        op.deriveTargetNodeAnd((path, name) -> { // default and your determination
             return !exceptSet.contains(name);
         });
 
-        // if your swagger.json does not have trailing slash for all actions
-        op.removeLastaTrailingSlash();
-
-        // no exception if New only
-        op.determineException(diffResult -> {
-            return diffResult.contains("Changed") || diffResult.contains("Deleted");
-        });
+        op.removeLastaTrailingSlash(); // if your swagger.json doesn't have trailing slash
+        op.asLoggingIfNewOnly(); // if new only case is normal situation in development 
     }
 }
