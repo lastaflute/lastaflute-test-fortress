@@ -44,7 +44,7 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         //verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
 
         // having a little changed diff (with many deleted)
-        verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
+        //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
     }
 
     protected void customizeDiff(YourSwaggerSyncOption op) { // test for customization
