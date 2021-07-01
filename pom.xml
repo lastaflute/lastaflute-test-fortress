@@ -26,7 +26,7 @@
 		<lasta.thymeleaf.version>0.4.2</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.5-B-SNAPSHOT</lasta.job.version>
 		<lasta.remoteapi.version>0.4.5</lasta.remoteapi.version>
-		<lasta.meta.version>0.5.1-U-SNAPSHOT</lasta.meta.version>
+		<lasta.meta.version>0.5.1-V-SNAPSHOT</lasta.meta.version>
 		<openapidiff.version>2.0.0-beta.9</openapidiff.version>
 
 		<!-- Partner Library -->
