@@ -60,7 +60,7 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
             return !exceptSet.contains(name);
         });
 
-        op.removeLastaTrailingSlash(); // if your swagger.json doesn't have trailing slash
+        op.ignorePathTrailingSlash(); // if your swagger.json doesn't have trailing slash
         op.asLoggingIfNewOnly(); // if new only case is normal situation in development 
     }
 }
