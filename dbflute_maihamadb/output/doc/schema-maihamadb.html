@@ -504,33 +504,6 @@ pre.spolicyviodisp {
 	<button id="column-mapping-submit-button">Mapping</button>
 </div>
 
-<h2 id="schemapolicyvio">SchemaPolicy Violation</h2>
-<pre class="spolicyviodisp">
-Look! Read the message below.
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-The schema policy has been violated.
-
-[Advice]
-Make sure your violating schema (ERD and DDL).
-You can see violations on this message or SchemaHTML.
-And after that, execute renewal (or regenerate) again.
-(tips: The schema policy is on schemaPolicyMap.dfprop)
-
-[Violation]
-column.statement: if columnName is suffix:_FLG then bad
-                    =&gt; should be _FLG
- |-The column is no good: (会員ログイン.モバイルログインフラグ)MEMBER_LOGIN.MOBILE_LOGIN_FLG INT(10) (NotNull) // モバイル機器からのロ...
- |-The column is no good: (購入.支払完了フラグ)PURCHASE.PAYMENT_COMPLETE_FLG INT(10) (NotNull) // この購入に関しての支...
- +-The column is no good: (サービスランク.新規受け入れ可能フラグ)SERVICE_RANK.NEW_ACCEPTABLE_FLG INT(10) (NotNull) // このランクへの新規受...
-
-column.statement: if columnName is suffix:_FLG then not notNull
-                    =&gt; should be _FLG
- |-The column should not be not-null: (会員ログイン.モバイルログインフラグ)MEMBER_LOGIN.MOBILE_LOGIN_FLG INT(10) (NotNull) // モバイル機器からのロ...
- |-The column should not be not-null: (購入.支払完了フラグ)PURCHASE.PAYMENT_COMPLETE_FLG INT(10) (NotNull) // この購入に関しての支...
- +-The column should not be not-null: (サービスランク.新規受け入れ可能フラグ)SERVICE_RANK.NEW_ACCEPTABLE_FLG INT(10) (NotNull) // このランクへの新規受...
-* * * * * * * * * */
-</pre>
-
 <h2>Table List</h2>
 <div class="keywordsearch">
 	<input type="text" id="incremental-search-field" tabindex=1 value="" placeholder="Table Search" />
@@ -3658,8 +3631,8 @@ column.statement: if columnName is suffix:_FLG then not notNull
  columnMap:
    themeList: [hasAlias, upperCaseBasis]
    statementList:
-    {if:{columnName is suffix:_FLG}} {then bad =&gt; should be _FLG}
-    {if:{columnName is suffix:_FLG}} {then not notNull =&gt; should be _FLG}
+    {if:{columnName is suffix:_FLAG}} {then bad =&gt; should be _FLG}
+    {if:{columnName is suffix:_FLG}} {then notNull}
     {if:{columnName is suffix:_FLG}} {then:{dbType is INT}}
     {if:{columnName is suffix:_FLG}} {then classification}
     {if:{columnName is REGISTER_USER}} {then notNull}
