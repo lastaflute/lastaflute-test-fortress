@@ -24,7 +24,7 @@ import org.dbflute.jdbc.ClassificationMeta;
 import org.dbflute.jdbc.ClassificationUndefinedHandlingType;
 import org.dbflute.optional.OptionalThing;
 import static org.dbflute.util.DfTypeUtil.emptyStrings;
-import org.docksidestage.dbflute.allcommon.*;
+import org.docksidestage.dbflute.allcommon.CDef;
 
 /**
  * The definition of vinci classification.
@@ -200,13 +200,13 @@ public interface VinciCDef extends Classification {
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
+         * @param refCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
-        public static OptionalThing<DaSea> fromDBCls(CDef.MemberStatus dbCls) {
-            String dbCode = dbCls != null ? dbCls.code() : null;
-            return OptionalThing.ofNullable(codeOf(dbCode), () -> {
-                throw new IllegalStateException("Cannot convert CDef.MemberStatus to DaSea by the DB code: " + dbCode);
+        public static OptionalThing<DaSea> fromDBCls(CDef.MemberStatus refCls) {
+            String refCode = refCls != null ? refCls.code() : null;
+            return OptionalThing.ofNullable(codeOf(refCode), () -> {
+                throw new IllegalStateException("Cannot convert CDef.MemberStatus to DaSea by the referred code: " + refCode);
             });
         }
 
@@ -266,7 +266,18 @@ public interface VinciCDef extends Classification {
             return (String)subItemMap().get("keyword");
         }
 
+        /**
+         * Is the classification in the group? <br>
+         * means member that can use services <br>
+         * The group elements:[OneMan]
+         * @return The determination, true or false.
+         */
+        public boolean isServiceAvailable() {
+            return OneMan.equals(this);
+        }
+
         public boolean inGroup(String groupName) {
+            if ("serviceAvailable".equals(groupName)) { return isServiceAvailable(); }
             return false;
         }
 
@@ -334,6 +345,7 @@ public interface VinciCDef extends Classification {
          */
         public static List<DaLand> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
             throw new ClassificationNotFoundException("Unknown classification group: DaLand." + groupName);
         }
 
@@ -350,22 +362,33 @@ public interface VinciCDef extends Classification {
         }
 
         /**
+         * Get the list of group classification elements. (returns new copied list) <br>
+         * means member that can use services <br>
+         * The group elements:[OneMan]
+         * @return The snapshot list of classification elements in the group. (NotNull)
+         */
+        public static List<DaLand> listOfServiceAvailable() {
+            return new ArrayList<DaLand>(Arrays.asList(OneMan));
+        }
+
+        /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<DaLand> groupOf(String groupName) {
+            if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
             return new ArrayList<DaLand>(4);
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
+         * @param refCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
-        public static OptionalThing<DaLand> fromDBCls(CDef.MemberStatus dbCls) {
-            String dbCode = dbCls != null ? dbCls.code() : null;
-            return OptionalThing.ofNullable(codeOf(dbCode), () -> {
-                throw new IllegalStateException("Cannot convert CDef.MemberStatus to DaLand by the DB code: " + dbCode);
+        public static OptionalThing<DaLand> fromDBCls(CDef.MemberStatus refCls) {
+            String refCode = refCls != null ? refCls.code() : null;
+            return OptionalThing.ofNullable(codeOf(refCode), () -> {
+                throw new IllegalStateException("Cannot convert CDef.MemberStatus to DaLand by the referred code: " + refCode);
             });
         }
 
@@ -411,7 +434,29 @@ public interface VinciCDef extends Classification {
         public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
         public ClassificationMeta meta() { return VinciCDef.DefMeta.DaPiari; }
 
+        /**
+         * Is the classification in the group? <br>
+         * means member that can use services <br>
+         * The group elements:[OneMan, Dstore]
+         * @return The determination, true or false.
+         */
+        public boolean isServiceAvailable() {
+            return OneMan.equals(this) || Dstore.equals(this);
+        }
+
+        /**
+         * Is the classification in the group? <br>
+         * Members are not formalized yet <br>
+         * The group elements:[Dstore]
+         * @return The determination, true or false.
+         */
+        public boolean isShortOfFormalized() {
+            return Dstore.equals(this);
+        }
+
         public boolean inGroup(String groupName) {
+            if ("serviceAvailable".equals(groupName)) { return isServiceAvailable(); }
+            if ("shortOfFormalized".equals(groupName)) { return isShortOfFormalized(); }
             return false;
         }
 
@@ -479,6 +524,8 @@ public interface VinciCDef extends Classification {
          */
         public static List<DaPiari> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
+            if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }
             throw new ClassificationNotFoundException("Unknown classification group: DaPiari." + groupName);
         }
 
@@ -495,22 +542,44 @@ public interface VinciCDef extends Classification {
         }
 
         /**
+         * Get the list of group classification elements. (returns new copied list) <br>
+         * means member that can use services <br>
+         * The group elements:[OneMan, Dstore]
+         * @return The snapshot list of classification elements in the group. (NotNull)
+         */
+        public static List<DaPiari> listOfServiceAvailable() {
+            return new ArrayList<DaPiari>(Arrays.asList(OneMan, Dstore));
+        }
+
+        /**
+         * Get the list of group classification elements. (returns new copied list) <br>
+         * Members are not formalized yet <br>
+         * The group elements:[Dstore]
+         * @return The snapshot list of classification elements in the group. (NotNull)
+         */
+        public static List<DaPiari> listOfShortOfFormalized() {
+            return new ArrayList<DaPiari>(Arrays.asList(Dstore));
+        }
+
+        /**
          * Get the list of classification elements in the specified group. (returns new copied list) <br>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          */
         public static List<DaPiari> groupOf(String groupName) {
+            if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
+            if ("shortOfFormalized".equals(groupName)) { return listOfShortOfFormalized(); }
             return new ArrayList<DaPiari>(4);
         }
 
         /**
-         * @param dbCls The DB classification to find. (NullAllowed: if null, returns empty)
+         * @param refCls The DB classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
-        public static OptionalThing<DaPiari> fromDBCls(CDef.MemberStatus dbCls) {
-            String dbCode = dbCls != null ? dbCls.code() : null;
-            return OptionalThing.ofNullable(codeOf(dbCode), () -> {
-                throw new IllegalStateException("Cannot convert CDef.MemberStatus to DaPiari by the DB code: " + dbCode);
+        public static OptionalThing<DaPiari> fromDBCls(CDef.MemberStatus refCls) {
+            String refCode = refCls != null ? refCls.code() : null;
+            return OptionalThing.ofNullable(codeOf(refCode), () -> {
+                throw new IllegalStateException("Cannot convert CDef.MemberStatus to DaPiari by the referred code: " + refCode);
             });
         }
 

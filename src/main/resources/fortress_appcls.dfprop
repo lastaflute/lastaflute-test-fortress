@@ -15,50 +15,199 @@
 # *The line that starts with '#' means comment-out.
 #
 map:{
+    # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    # as LastaFlute FreeGen, so generating AppCDef.java
+    # _/_/_/_/_/_/_/_/_/_/
+
     # ====================================================================================
-    #                                                                                Basic
-    #                                                                                =====
+    #                                                          refCls Table Classification
+    #                                                          ===========================
+    # test of no theme refCls, expects DB cls
+    ; AppMaihama = list:{
+        ; map:{ topComment=test of no theme refCls, expects DB cls ; codeType=String }
+        ; map:{ refCls=MemberStatus ; refType=included }
+    }
+    # test of included, expects grouping, sub-item, sisters
     ; AppSea = list:{
-        ; map:{ topComment=Sea Cls ; codeType=String }
+        ; map:{ topComment=test of included, expects grouping, sub-item, sisters ; codeType=String }
         ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
     }
+    # test of exists, expects no grouping, no sub-item, sisters
     ; AppLand = list:{
-        ; map:{ topComment=Land Cls ; codeType=String }
+        ; map:{ topComment=test of exists, expects no grouping, no sub-item, sisters ; codeType=String }
         ; map:{ refCls=maihamadb@MemberStatus ; refType=exists }
-        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized ; subItemMap=map:{keyword=shining}}
-        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal ; subItemMap=map:{keyword=party}}
-    }
-    ; AppPiari = list:{
-        ; map:{
-            ; topComment=Piari Cls
-            ; codeType=String
-        }
-        ; map:{ refCls=maihamadb@MemberStatus ; refType=matches }
         ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
-        ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
         ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
     }
+    # test of matches, expects no grouping, no sub-item, sisters
+    ; AppPiari = list:{
+        ; map:{ topComment=test of matches, expects no grouping, no sub-item, sisters ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=matches }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+        ; map:{ code=PRV ; name=Parade ; alias=Castle ; comment=Provisional }
+        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    }
+    # test of manual grouping map using refCls as included, expects added
     ; AppBonvo = list:{
         ; map:{
-            ; topComment=Piari Cls
+            ; topComment=test of manual grouping map using refCls as included, expects overridden, added
             ; codeType=String
             ; groupingMap = map:{
-                ; serviceAvailable = map:{
-                    ; groupComment = can login
-                    ; elementList = list:{ OneMan ; Dstore }
+                # cannot same group as refCls-side group (conflict)
+                #; serviceAvailable = map:{
+                #    ; groupComment = @Override, elements are changed
+                #    ; elementList = list:{ Formalized ; Withdrawal ; New }
+                #}
+                ; appNewLiteralAvailable = map:{
+                    ; groupComment = new group name by literal
+                    ; elementList = list:{ Formalized ; Provisional ; Mystic }
+                }
+                ; appNewRefExistingGroupAvailable = map:{
+                    ; groupComment = new group name referring existing group
+                    ; elementList = list:{ $$ref$$.serviceAvailable ; Mystic }
                 }
             }
         }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
+        ; map:{ code=MYS ; name=Mystic ; alias=Hangar ; comment=Rhythms ; subItemMap=map:{order=88} }
+    }
+    # test of manual grouping map using refCls as exists, expects new grouping is available
+    ; AppDstore = list:{
+        ; map:{
+            ; topComment=test of manual grouping map using refCls as exists, expects new grouping is available
+            ; codeType=String
+            ; groupingMap = map:{
+                # cannot same group as refCls-side group (conflict)
+                #; serviceAvailable = map:{
+                #    ; groupComment = @Override elements are changed
+                #    ; elementList = list:{ OneMan }
+                #}
+                ; appNewAvailable = map:{
+                    ; groupComment = new group name as app classfication
+                    ; elementList = list:{ OneMan ; MiniO }
+                }
+            }
+        }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=exists }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    }
+    # test of manual sub-item and sisters as included, expects merged, only order() exists
+    ; AppAmba = list:{
+        ; map:{ topComment=test of manual sub-item and sisters as included, expects merged, only order() exists ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
+        ; map:{
+            ; code=MYS ; name=Mystic ; alias=Hangar ; comment=Rhythms
+            ; sisterCode=Choucho
+            ; subItemMap=map:{ order=1 ; newKeyword=shining }
+        }
+    }
+    # test of manual sub-item and sisters as exists, expects new only here
+    ; AppMiraco = list:{
+        ; map:{ topComment=test of manual sub-item and sisters as exists, expects new only here ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=exists }
+        ; map:{
+            ; code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized
+            ; sisterCode=ONE
+            ; subItemMap=map:{ order=1 ; newKeyword=shining }
+        }
+        ; map:{
+            ; code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal
+            ; sisterCode=MIN
+            ; subItemMap=map:{ order=8 ; newKeyword=party }
+        }
+    }
+    # test of referring group, expects grouped elements only and sub-item, sisters exist
+    ; AppDohotel = list:{
+        ; map:{ topComment=test of referring group, expects grouped elements only and sub-item, sisters exist ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus.serviceAvailable ; refType=included }
+    }
+
+    # ====================================================================================
+    #                                                                   refCls to namedcls
+    #                                                                   ==================
+    # test of reference to namedcls
+    ; AppDockside = list:{
+        ; map:{ topComment=test of reference to namedcls, case1 ; codeType=String }
+        ; map:{ refCls=leonardo_cls@DaSea ; refType=included }
+    }
+    ; AppHangar = list:{
+        ; map:{ topComment=test of reference to namedcls, case2 ; codeType=String }
+        ; map:{ refCls=leonardo_cls@DaLand ; refType=included }
+    }
+    ; AppMagiclamp = list:{
+        ; map:{ topComment=test of reference to namedcls, exists ; codeType=String }
+        ; map:{ refCls=leonardo_cls@DaSea ; refType=exists }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    }
+    ; AppBroadway = list:{
+        ; map:{ topComment=test of reference to namedcls, matches ; codeType=String }
+        ; map:{ refCls=leonardo_cls@DaPiari ; refType=matches }
         ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
         ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
         ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
     }
 
     # ====================================================================================
-    #                                                                             Whitebox
-    #                                                                             ========
+    #                                                       refCls Implicit Classification
+    #                                                       ==============================
+    # test of including sub-item and sisters when implicit classification
+    ; AppFlg = list:{
+        ; map:{ topComment=test of including sub-item and sisters when implicit classification ; codeType=String }
+        ; map:{ refCls=maihamadb@Flg ; refType=included }
+    }
+    # test of including grouping map when implicit classification
+    ; AppPaymentMethod = list:{
+        ; map:{ topComment=test of including grouping map when implicit classification ; codeType=String }
+        ; map:{ refCls=maihamadb@PaymentMethod ; refType=included }
+    }
+
+    # ====================================================================================
+    #                                                                        Deep Whitebox
+    #                                                                        =============
+    # test of groupingMap when literal only
+    ; DeepWxLiteralGrouping = list:{
+        ; map:{
+            ; topComment=test of groupingMap when literal only
+            ; codeType=String
+            ; groupingMap = map:{
+                ; serviceAvailable = map:{
+                    ; groupComment = can login
+                    ; elementList = list:{ OneMan ; Parade }
+                }
+            }
+        }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+        ; map:{ code=PRV ; name=Parade ; alias=Castle ; comment=Provisional }
+        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    }
+    # test of deprecated classification top
+    ; DeepWxDeprecatedCls = list:{
+        ; map:{
+            ; topComment=test of deprecated classification top
+            ; codeType=String
+            ; isDeprecated=true
+        }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
+        ; map:{ code=ALL; name=All; alias=All Statuses; comment=without status filter }
+    }
+    # test of deprecatedMap
+    ; DeepWxDeprecatedElement = list:{
+        ; map:{
+            ; topComment=test of deprecatedMap
+            ; codeType=String
+            ; deprecatedMap = map:{
+                ; Provisional = test of deprecated
+                ; All = and also test of deprecated
+            }
+        }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
+        ; map:{ code=ALL; name=All; alias=All Statuses; comment=without status filter }
+    }
+    # test of path parameter by nameof() in LastaFlute action
     ; AppWxNameOf = list:{
-        ; map:{ topComment=NameOf Cls ; codeType=String }
+        ; map:{ topComment=test of path parameter by nameof() in LastaFlute action ; codeType=String }
         ; map:{ code=ONE ; name=OneMan ; alias=ShowBase ; comment=Formalized ; sisterCode=oneman}
         ; map:{ code=MIN ; name=MiniO ; alias=Orlean ; comment=Withdrawal ; sisterCode=minio}
     }
