@@ -14020,6 +14020,81 @@
       "methodLineCount": 3
     },
     {
+      "url": "/wx/request/pathvar/nameof/{first}",
+      "typeName": "org.docksidestage.app.web.wx.request.pathvar.WxRequestPathvarAction",
+      "simpleTypeName": "WxRequestPathvarAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "nameof",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "first",
+          "publicName": "first",
+          "typeName": "org.docksidestage.mylasta.appcls.AppCDef$AppWxNameOf",
+          "simpleTypeName": "AppCDef.AppWxNameOf",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.request.RequestCheckResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cRequestCheckResult\u003e",
+        "value": "asJson(new RequestCheckResult(getExecuteName()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "method",
+            "publicName": "method",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "first",
+            "publicName": "first",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "second",
+            "publicName": "second",
+            "typeName": "java.lang.Object",
+            "simpleTypeName": "Object",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 30,
+      "methodLineCount": 3
+    },
+    {
       "url": "/wx/response/forward/",
       "typeName": "org.docksidestage.app.web.wx.response.forward.WxResponseForwardAction",
       "simpleTypeName": "WxResponseForwardAction",

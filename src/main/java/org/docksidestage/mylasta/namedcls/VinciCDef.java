@@ -25,6 +25,7 @@ import org.dbflute.jdbc.ClassificationUndefinedHandlingType;
 import org.dbflute.optional.OptionalThing;
 import static org.dbflute.util.DfTypeUtil.emptyStrings;
 import org.docksidestage.dbflute.allcommon.CDef;
+import org.docksidestage.mylasta.namedcls.LeonardoCDef;
 
 /**
  * The definition of vinci classification.
@@ -406,7 +407,7 @@ public interface VinciCDef extends Classification {
     }
 
     /**
-     * Piari Cls
+     * test of namedcls referring namedcls by same classification name
      */
     public enum DaPiari implements VinciCDef {
         /** ShowBase: Formalized */
@@ -573,23 +574,23 @@ public interface VinciCDef extends Classification {
         }
 
         /**
-         * @param refCls The DB classification to find. (NullAllowed: if null, returns empty)
+         * @param refCls The referred classification to find. (NullAllowed: if null, returns empty)
          * @return The the app classification corresponding to the DB classification. (NotNull, EmptyAllowed: when null specified, not found)
          */
-        public static OptionalThing<DaPiari> fromDBCls(CDef.MemberStatus refCls) {
+        public static OptionalThing<DaPiari> fromRefCls(LeonardoCDef.DaPiari refCls) {
             String refCode = refCls != null ? refCls.code() : null;
             return OptionalThing.ofNullable(codeOf(refCode), () -> {
-                throw new IllegalStateException("Cannot convert CDef.MemberStatus to DaPiari by the referred code: " + refCode);
+                throw new IllegalStateException("Cannot convert LeonardoCDef.DaPiari to DaPiari by the referred code: " + refCode);
             });
         }
 
         /**
-         * @return The DB classification corresponding to the app classification. (NotNull, EmptyAllowed: when no-related to DB)
+         * @return The referred classification corresponding to the app classification. (NotNull, EmptyAllowed: when no-related to DB)
          */
-        public OptionalThing<CDef.MemberStatus> toDBCls() {
+        public OptionalThing<LeonardoCDef.DaPiari> toRefCls() {
             String appCode = code();
-            return OptionalThing.ofNullable(CDef.MemberStatus.codeOf(appCode), () -> {
-                throw new IllegalStateException("Cannot convert DaPiari to MemberStatus by the app code: " + appCode);
+            return OptionalThing.ofNullable(LeonardoCDef.DaPiari.codeOf(appCode), () -> {
+                throw new IllegalStateException("Cannot convert DaPiari to DaPiari by the app code: " + appCode);
             });
         }
 
@@ -603,7 +604,7 @@ public interface VinciCDef extends Classification {
         /** Land Cls */
         DaLand
         ,
-        /** Piari Cls */
+        /** test of namedcls referring namedcls by same classification name */
         DaPiari
         ;
         public String classificationName() {
