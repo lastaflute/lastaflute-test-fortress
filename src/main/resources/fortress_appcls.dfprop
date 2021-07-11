@@ -122,6 +122,13 @@ map:{
         ; map:{ topComment=test of referring group, expects grouped elements only and sub-item, sisters exist ; codeType=String }
         ; map:{ refCls=maihamadb@MemberStatus.serviceAvailable ; refType=included }
     }
+    # test of included with overriding, expected merged
+    ; AppAmphi = list:{
+        ; map:{ topComment=test of included with overriding, expected merged ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
+        ; map:{ code=FML ; override=true ; name=OneMan }
+        ; map:{ code=PRV ; override=true ; alias=Castle ; sisterCode=Route ; subItemMap=map:{order=9} }
+    }
 
     # ====================================================================================
     #                                                                   refCls to namedcls
