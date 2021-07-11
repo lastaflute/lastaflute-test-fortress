@@ -32,16 +32,16 @@ map:{
         ; map:{ topComment=test of included, expects grouping, sub-item, sisters ; codeType=String }
         ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
     }
-    # test of exists, expects no grouping, no sub-item, sisters
+    # test of exists, expects minimum grouping, no sub-item, sisters
     ; AppLand = list:{
-        ; map:{ topComment=test of exists, expects no grouping, no sub-item, sisters ; codeType=String }
+        ; map:{ topComment=test of exists, expects minimum grouping, no sub-item, sisters ; codeType=String }
         ; map:{ refCls=maihamadb@MemberStatus ; refType=exists }
         ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
         ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
     }
-    # test of matches, expects no grouping, no sub-item, sisters
+    # test of matches, expects minimum grouping, no sub-item, sisters
     ; AppPiari = list:{
-        ; map:{ topComment=test of matches, expects no grouping, no sub-item, sisters ; codeType=String }
+        ; map:{ topComment=test of matches, expects minimum grouping, no sub-item, sisters ; codeType=String }
         ; map:{ refCls=maihamadb@MemberStatus ; refType=matches }
         ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
         ; map:{ code=PRV ; name=Parade ; alias=Castle ; comment=Provisional }
