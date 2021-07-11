@@ -52,8 +52,10 @@ public class FortressActionDefTest extends UnitFortressBasicTestCase {
             @Override
             protected boolean existsNinjaReference(Class<?> clazz, String myRearName, String rearImported) {
                 final String myPackage = Srl.substringLastFront(myRearName, ".");
-                if (rearImported.startsWith(myPackage + ".") && rearImported.contains(".vip")) { // non-perfect simple logic
-                    return false;
+                if (myPackage.contains(".")) {
+                    if (rearImported.contains(Srl.substringLastFront(myPackage, ".") + ".vip.")) { // non-perfect simple logic
+                        return false;
+                    }
                 }
                 return super.existsNinjaReference(clazz, myRearName, rearImported);
             }
