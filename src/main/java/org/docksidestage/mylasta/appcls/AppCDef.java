@@ -416,7 +416,7 @@ public interface AppCDef extends Classification {
     }
 
     /**
-     * test of exists, expects no grouping, no sub-item, sisters
+     * test of exists, expects minimum grouping, no sub-item, sisters
      */
     public enum AppLand implements AppCDef {
         /** ShowBase: Formalized */
@@ -581,7 +581,7 @@ public interface AppCDef extends Classification {
     }
 
     /**
-     * test of matches, expects no grouping, no sub-item, sisters
+     * test of matches, expects minimum grouping, no sub-item, sisters
      */
     public enum AppPiari implements AppCDef {
         /** ShowBase: Formalized */
@@ -3721,10 +3721,10 @@ public interface AppCDef extends Classification {
         /** test of included, expects grouping, sub-item, sisters */
         AppSea
         ,
-        /** test of exists, expects no grouping, no sub-item, sisters */
+        /** test of exists, expects minimum grouping, no sub-item, sisters */
         AppLand
         ,
-        /** test of matches, expects no grouping, no sub-item, sisters */
+        /** test of matches, expects minimum grouping, no sub-item, sisters */
         AppPiari
         ,
         /** test of manual grouping map using refCls as included, expects overridden, added */
