@@ -25,7 +25,6 @@ import org.dbflute.jdbc.ClassificationUndefinedHandlingType;
 import org.dbflute.optional.OptionalThing;
 import static org.dbflute.util.DfTypeUtil.emptyStrings;
 import org.docksidestage.dbflute.allcommon.CDef;
-import org.docksidestage.mylasta.namedcls.LeonardoCDef;
 
 /**
  * The definition of vinci classification.
