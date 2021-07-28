@@ -83,8 +83,8 @@ var baseRule = {
      * @return {boolean} true if target. (NotNull)
      */
     target: function(api) {
-    	// p1us2er0 fixedly all target (2019/08/31)
-		// previously, it was TARGET when the request body or response body was json or xml content.
+        // p1us2er0 fixedly all target (2019/08/31)
+        // previously, it was TARGET when the request body or response body was json or xml content.
         return true;
     },
 
@@ -233,6 +233,28 @@ var baseRule = {
      * @return {string} definition key before filtering from the filtered definition key. (NotNull)
      */
     unDefinitionKey: function(definitionKey) { return definitionKey; },
+
+    beanExtendsDefinitionGeneration: false,
+
+    /**
+     * Return filtered bean definition subPackage.
+     * @param {Request} request - Request. (NotNull)
+     * @param {string} definitionKey - definition key. (NotNull)
+     * @return {string} filtered bean subPackage. (NotNull)
+     */
+    beanExtendsDefinitionSubPackage: function(request, definitionKey) {
+        return 'definition';
+    },
+
+    /**
+     * Return bean definition class name.
+     * @param {Request} request - Request. (NotNull)
+     * @param {string} definitionKey - definition key. (NotNull)
+     * @return {string} bean definition class name. (NotNull)
+     */
+    beanExtendsDefinitionClassName: function(request, definitionKey) {
+        return definitionKey.replace(/.*\./g, '').replace(/(<|>)/g, '') + 'Definition';
+    },
 
     /**
      * Return bean class name.
@@ -433,14 +455,11 @@ var baseRule = {
      * @return {boolean} delete target. (NotNull)
      */
     deleteTarget: function(request, file) {
-        var nameFunctionList = ['bsBehaviorClassName', 'exBehaviorClassName', 'paramClassName', 'returnClassName'];
-        var dummyApi = {'schema': this.schema(request), 'url': '@@@'};
-        for (var nameFunctionIndex in nameFunctionList) {
-            if (file.getName().match(new RegExp(this[nameFunctionList[nameFunctionIndex]](dummyApi).replace('@@@', '.+')))) {
-                return true;
-            }
+        try {
+            return new java.lang.String(java.nio.file.Files.readAllBytes(file.toPath()), 'UTF-8').contains(' @author FreeGen');
+        } catch (e) {
+            return false;
         }
-        return false;
     }
 };
 
