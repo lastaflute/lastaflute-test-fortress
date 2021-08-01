@@ -21,8 +21,8 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.2.5-D-SNAPSHOT</dbflute.version>
 		<mysql.jdbc.version>8.0.16</mysql.jdbc.version>
-		<lasta.di.version>0.8.4-B-SNAPSHOT</lasta.di.version>
-		<lastaflute.version>1.2.1-P-SNAPSHOT</lastaflute.version>
+		<lasta.di.version>0.8.4-D-SNAPSHOT</lasta.di.version>
+		<lastaflute.version>1.2.1-Q-SNAPSHOT</lastaflute.version>
 		<lasta.thymeleaf.version>0.4.2</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.5-B-SNAPSHOT</lasta.job.version>
 		<lasta.remoteapi.version>0.4.5</lasta.remoteapi.version>
