@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/tricky/oddprop.
+ * The bean class as return for remote API of GET /wx/remogen/tricky/oddprop.
  * @author FreeGen
  */
 public class RemoteWxRemogenTrickyOddpropReturn {
@@ -32,7 +32,15 @@ public class RemoteWxRemogenTrickyOddpropReturn {
     public Integer landBeanCount;
 
     /** The property of normalEntry. (NullAllowed) */
-    public java.util.Map<String, Object> normalEntry;
+    @javax.validation.Valid
+    public PlainNormalEntryPart normalEntry;
+
+    /**
+     * The part class of PlainNormalEntryPart.
+     * @author FreeGen
+     */
+    public static class PlainNormalEntryPart {
+    }
 
     /** The property of beanEntry. (NullAllowed) */
     @javax.validation.Valid
@@ -43,31 +51,28 @@ public class RemoteWxRemogenTrickyOddpropReturn {
      * @author FreeGen
      */
     public static class ResultBeanEntryPart {
-
-        /** The property of piariFormStyle. */
-        @Required
-        public String piariFormStyle;
     }
 
     /** The property of plainGenericEntry. (NullAllowed) */
-    public java.util.Map<String, Object> plainGenericEntry;
+    @javax.validation.Valid
+    public PlainGenericParameterPart plainGenericEntry;
+
+    /**
+     * The part class of PlainGenericParameterPart.
+     * @author FreeGen
+     */
+    public static class PlainGenericParameterPart {
+    }
 
     /** The property of genericEntry. (NullAllowed) */
     @javax.validation.Valid
-    public ResultGenericEntryPart genericEntry;
+    public ResultGenericParameterPart genericEntry;
 
     /**
-     * The part class of ResultGenericEntryPart.
+     * The part class of ResultGenericParameterPart.
      * @author FreeGen
      */
-    public static class ResultGenericEntryPart {
-
-        /** The property of bonvoName. */
-        @Required
-        public String bonvoName;
-
-        /** The property of internalBean. (NullAllowed) */
-        public java.util.Map<String, Object> internalBean;
+    public static class ResultGenericParameterPart {
     }
 
     @Override

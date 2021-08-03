@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.bonvo;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/routing/bonvo/{first}/{second}.
+ * The bean class as return for remote API of GET /wx/remogen/routing/bonvo/{first}/{second}.
  * @author FreeGen
  */
 public class RemoteWxRemogenRoutingBonvoReturn {

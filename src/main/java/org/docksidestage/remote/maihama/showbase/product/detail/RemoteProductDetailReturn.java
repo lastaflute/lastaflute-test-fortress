@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /product/detail/{productId}.
+ * The bean class as return for remote API of GET /product/detail/{productId}.
  * @author FreeGen
  */
 public class RemoteProductDetailReturn {

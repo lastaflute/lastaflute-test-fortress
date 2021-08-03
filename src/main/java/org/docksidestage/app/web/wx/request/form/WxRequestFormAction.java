@@ -109,11 +109,6 @@ public class WxRequestFormAction extends FortressBaseAction {
         public static class MyDStorePart {
 
             public String walt;
-
-            @Override
-            public String toString() {
-                return "dstore:{" + walt + "}";
-            }
         }
 
         public MutableList<MyAmbaPart> amba;
@@ -122,10 +117,16 @@ public class WxRequestFormAction extends FortressBaseAction {
 
             public String chef;
 
-            @Override
-            public String toString() {
-                return "amba:{" + chef + "}";
-            }
+            // #hope jflute fix DfCollectionUtil.orderAccordingTo(), duplicate ID problem (2021/06/08)
+            // first, nested lato is unneeded, it's recursive
+            // while nested lato causes following exception from LastaMeta:
+            // The id was duplicated: id=toString() orderedUniqueIdList=[index(BasicItemForm), eccolle(MyEcColleForm), toString(), toString()]
+            //   at org.dbflute.util.DfCollectionUtil.orderAccordingTo(DfCollectionUtil.java:499)
+            //   at org.lastaflute.meta.reflector.javaparser.parsing.JavaparserSourceMethodHandler.orderMethodListBySource(JavaparserSourceMethodHandler.java:70)
+            //@Override
+            //public String toString() {
+            //    return Lato.string(this);
+            //}
         }
 
         @Override

@@ -159,7 +159,7 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
     }
 
     protected FortressActionAdjustmentProvider createActionAdjustmentProvider() {
-        return new FortressActionAdjustmentProvider();
+        return new FortressActionAdjustmentProvider(config);
     }
 
     protected FortressApiFailureHook createApiFailureHook() {

@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.withdrawal.reason;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /withdrawal/reason.
+ * The bean class as return for remote API of GET /withdrawal/reason.
  * @author FreeGen
  */
 public class RemoteWithdrawalReasonReturn {

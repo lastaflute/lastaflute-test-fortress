@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/suffix/nosuffix.
+ * The bean class as return for remote API of GET /wx/remogen/suffix/nosuffix.
  * @author FreeGen
  */
 public class RemoteWxRemogenSuffixNosuffixReturn {
@@ -29,7 +29,15 @@ public class RemoteWxRemogenSuffixNosuffixReturn {
     public String resortName;
 
     /** The property of resortPark. (NullAllowed) */
-    public java.util.Map<String, Object> resortPark;
+    @javax.validation.Valid
+    public ResortParkPart resortPark;
+
+    /**
+     * The part class of ResortParkPart.
+     * @author FreeGen
+     */
+    public static class ResortParkPart {
+    }
 
     @Override
     public String toString() {

@@ -26,8 +26,8 @@ map:{
         ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal ; subItemMap=map:{keyword=party}}
     }
     ; DaPiari = list:{
-        ; map:{ topComment=Piari Cls ; codeType=String }
-        ; map:{ refCls=maihamadb@MemberStatus ; refType=matches }
+        ; map:{ topComment=test of namedcls referring namedcls by same classification name ; codeType=String }
+        ; map:{ refCls=leonardo_cls@DaPiari ; refType=matches }
         ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
         ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
         ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }

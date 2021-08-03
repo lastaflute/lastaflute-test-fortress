@@ -18,7 +18,8 @@ public class RemoteMaihamaShowbaseProductBhvTest extends UnitFortressBasicTestCa
 
     public void test_requestListStatus_returnsList() {
         // ## Arrange ##
-        String json = "[{key=sea, value=mystic}, {key=land, value=oneman}]";
+        // "type: object" is treated as map by RemoteApiGen
+        String json = "[{key={sea=harbor}, value={hangar=mystic}}, {key={land=castle}, value={showbase=oneman}}]";
         MockHttpClient client = MockHttpClient.create(response -> {
             response.asJsonDirectly(json, request -> true);
         });

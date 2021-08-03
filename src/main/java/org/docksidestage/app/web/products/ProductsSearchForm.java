@@ -17,20 +17,32 @@ package org.docksidestage.app.web.products;
 
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.hibernate.validator.constraints.Length;
+import org.lastaflute.core.util.Lato;
 
 /**
- * @author iwamatsu0430
  * @author jflute
  */
 public class ProductsSearchForm {
 
-    @Length(max = 10) // #simple_for_example just for validtion example
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    /** prefix for name of product e.g. R */
+    @Length(max = 10)
     public String productName;
 
+    /** status of product e.g. ONS */
     public CDef.ProductStatus productStatus;
 
-    @Length(max = 5) // #simple_for_example just for validtion example
+    /** prefix for member name who purchases the product e.g. S */
+    @Length(max = 5)
     public String purchaseMemberName;
 
-    public Integer pageNumber;
+    // ===================================================================================
+    //                                                                      Basic Override
+    //                                                                      ==============
+    @Override
+    public String toString() {
+        return Lato.string(this);
+    }
 }

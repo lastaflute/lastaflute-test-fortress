@@ -19,21 +19,22 @@
 		<app.group.id>org.docksidestage</app.group.id>
 
 		<!-- Main Framework -->
-		<dbflute.version>1.2.1</dbflute.version>
+		<dbflute.version>1.2.5-D-SNAPSHOT</dbflute.version>
 		<mysql.jdbc.version>8.0.16</mysql.jdbc.version>
-		<lasta.di.version>0.8.3-RC1</lasta.di.version>
-		<lastaflute.version>1.1.7</lastaflute.version>
+		<lasta.di.version>0.8.4-D-SNAPSHOT</lasta.di.version>
+		<lastaflute.version>1.2.1-Q-SNAPSHOT</lastaflute.version>
 		<lasta.thymeleaf.version>0.4.2</lasta.thymeleaf.version>
-		<lasta.job.version>0.5.4</lasta.job.version>
+		<lasta.job.version>0.5.5-B-SNAPSHOT</lasta.job.version>
 		<lasta.remoteapi.version>0.4.5</lasta.remoteapi.version>
-		<lasta.doc.version>0.3.7</lasta.doc.version>
+		<lasta.meta.version>0.5.1-W1-SNAPSHOT</lasta.meta.version>
+		<openapidiff.version>2.0.0-beta.9</openapidiff.version>
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.12</slf4j.version>
 		<logback.version>1.2.3</logback.version>
 		<servlet.version>4.0.1</servlet.version>
 		<jetty.boot.version>0.5.0</jetty.boot.version>
-		<tomcat.boot.version>0.7.5</tomcat.boot.version>
+		<tomcat.boot.version>0.7.8</tomcat.boot.version>
 		<swagger.ui.version>3.20.5</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
@@ -43,7 +44,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.9.1</utflute.version>
+		<utflute.version>0.9.3-F-SNAPSHOT</utflute.version>
 	</properties>
 
 	<licenses>
@@ -381,9 +382,15 @@
 			<version>4.5.3</version>
 		</dependency>
 		<dependency> <!-- compile scope for swagger -->
-			<groupId>org.lastaflute.doc</groupId>
-			<artifactId>lasta-doc</artifactId>
-			<version>${lasta.doc.version}</version>
+			<groupId>org.lastaflute.meta</groupId>
+			<artifactId>lasta-meta</artifactId>
+			<version>${lasta.meta.version}</version>
+		</dependency>
+		<dependency> <!-- to verify your swagger.json in [App]LastaDocTest -->
+			<groupId>org.openapitools.openapidiff</groupId>
+			<artifactId>openapi-diff-core</artifactId>
+			<version>${openapidiff.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
@@ -468,7 +475,7 @@
 		<dependency> <!-- used for test client -->
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
+			<version>4.5.13</version>
 		</dependency>
 		<!-- eclipse collections -->
 		<dependency>

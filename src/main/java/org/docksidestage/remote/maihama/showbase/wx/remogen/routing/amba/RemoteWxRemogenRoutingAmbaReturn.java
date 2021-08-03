@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.amba;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/routing/amba/{first}/{second}/{third}.
+ * The bean class as return for remote API of GET /wx/remogen/routing/amba/{first}/{second}/{third}.
  * @author FreeGen
  */
 public class RemoteWxRemogenRoutingAmbaReturn {

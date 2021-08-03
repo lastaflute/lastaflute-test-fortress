@@ -31,4 +31,14 @@ public class RootAction extends FortressBaseAction {
     public HtmlResponse index() {
         return redirect(MypageAction.class);
     }
+
+    @Execute
+    public HtmlResponse rleonardo() {
+        return redirect(MypageAction.class);
+    }
+
+    @Execute
+    public HtmlResponse rdavinci() {
+        return redirect(MypageAction.class);
+    }
 }

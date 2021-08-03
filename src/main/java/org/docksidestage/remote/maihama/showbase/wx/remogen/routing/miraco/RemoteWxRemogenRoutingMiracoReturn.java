@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.miraco;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth}.
+ * The bean class as return for remote API of GET /wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth}.
  * @author FreeGen
  */
 public class RemoteWxRemogenRoutingMiracoReturn {

@@ -53,7 +53,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/info. (auto-generated method)<br>
      * <pre>
      * url: /member/info
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @return The bean object as return type, receiving response body. (NotNull)
      */
@@ -65,13 +65,13 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/info. (auto-generated method)<br>
      * <pre>
      * url: /member/info
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteMemberInfoReturn doRequestInfo(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteMemberInfoReturn.class, "/member/info", noMoreUrl(), noRequestBody(), rule -> {
+        return doRequestGet(RemoteMemberInfoReturn.class, "/member/info", noMoreUrl(), noQuery(), rule -> {
             ruleOfInfo(rule);
             ruleLambda.accept(rule);
         });
@@ -88,7 +88,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/status. (auto-generated method)<br>
      * <pre>
      * url: /member/status
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @return The bean object as return type, receiving response body. (NotNull)
      */
@@ -100,14 +100,14 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/status. (auto-generated method)<br>
      * <pre>
      * url: /member/status
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn> doRequestStatus(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn>>() {
-        }.getType(), "/member/status", noMoreUrl(), noRequestBody(), rule -> {
+        return doRequestGet(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteMemberStatusReturn>>() {
+        }.getType(), "/member/status", noMoreUrl(), noQuery(), rule -> {
             ruleOfStatus(rule);
             ruleLambda.accept(rule);
         });
@@ -163,7 +163,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/edit/{memberId}. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/{memberId}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param memberId The value of path variable for memberId. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
@@ -176,14 +176,14 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/edit/{memberId}. (auto-generated method)<br>
      * <pre>
      * url: /member/edit/{memberId}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param memberId The value of path variable for memberId. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteMemberEditReturn doRequestEdit(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteMemberEditReturn.class, "/member/edit/{memberId}", moreUrl(memberId), noRequestBody(), rule -> {
+        return doRequestGet(RemoteMemberEditReturn.class, "/member/edit/{memberId}", moreUrl(memberId), noQuery(), rule -> {
             ruleOfEditMemberId(rule);
             ruleLambda.accept(rule);
         });
@@ -317,7 +317,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/purchase/list/{memberId}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param memberId The value of path variable for memberId. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
@@ -330,14 +330,14 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/purchase/list/{memberId}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param memberId The value of path variable for memberId. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteMemberPurchaseListReturn doRequestPurchaseList(Integer memberId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}", moreUrl(memberId), noRequestBody(), rule -> {
+        return doRequestGet(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}", moreUrl(memberId), noQuery(), rule -> {
             ruleOfPurchaseListMemberId(rule);
             ruleLambda.accept(rule);
         });
@@ -354,7 +354,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/purchase/list/{memberId}/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}/{pageNumber}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param memberId The value of path variable for memberId. (NotNull)
      * @param pageNumber The value of path variable for pageNumber. (NotNull)
@@ -368,7 +368,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/purchase/list/{memberId}/{pageNumber}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/{memberId}/{pageNumber}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param memberId The value of path variable for memberId. (NotNull)
      * @param pageNumber The value of path variable for pageNumber. (NotNull)
@@ -376,7 +376,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteMemberPurchaseListReturn doRequestPurchaseList(Integer memberId, Integer pageNumber, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), noRequestBody(), rule -> {
+        return doRequestGet(RemoteMemberPurchaseListReturn.class, "/member/purchase/list/{memberId}/{pageNumber}", moreUrl(memberId, pageNumber), noQuery(), rule -> {
             ruleOfPurchaseListMemberIdPageNumber(rule);
             ruleLambda.accept(rule);
         });
@@ -393,7 +393,7 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/purchase/list/delete/{purchaseId}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/delete/{purchaseId}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param purchaseId The value of path variable for purchaseId. (NotNull)
      */
@@ -405,13 +405,13 @@ public abstract class BsRemoteMaihamaShowbaseMemberBhv extends AbstractRemoteMai
      * Request remote call to /member/purchase/list/delete/{purchaseId}. (auto-generated method)<br>
      * <pre>
      * url: /member/purchase/list/delete/{purchaseId}
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param purchaseId The value of path variable for purchaseId. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
     protected void doRequestPurchaseListDelete(Long purchaseId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        doRequestPost(void.class, "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), noRequestBody(), rule -> {
+        doRequestGet(void.class, "/member/purchase/list/delete/{purchaseId}", moreUrl(purchaseId), noQuery(), rule -> {
             ruleOfPurchaseListDeletePurchaseId(rule);
             ruleLambda.accept(rule);
         });

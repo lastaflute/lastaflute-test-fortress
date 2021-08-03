@@ -15,40 +15,17 @@
 # *The line that starts with '#' means comment-out.
 #
 map:{
-    ; WebSea = list:{
-        ; map:{ topComment=Sea Cls ; codeType=String }
-        ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
-    }
-    ; WebLand = list:{
-        ; map:{ topComment=Land Cls ; codeType=String }
-        ; map:{ refCls=maihamadb@MemberStatus ; refType=exists }
-        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized ; subItemMap=map:{keyword=shining}}
-        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal ; subItemMap=map:{keyword=party}}
-    }
-    ; WebPiari = list:{
-        ; map:{
-            ; topComment=Piari Cls
-            ; codeType=String
-        }
-        ; map:{ refCls=maihamadb@MemberStatus ; refType=matches }
-        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
-        ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
-        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
-    }
-    ; WebBonvo = list:{
-        ; map:{
-            ; topComment=Piari Cls
-            ; codeType=String
-            ; groupingMap = map:{
-                ; serviceAvailable = map:{
-                    ; groupComment = can login
-                    ; elementList = list:{ OneMan ; Dstore }
-                }
-            }
-        }
-        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
-        ; map:{ code=PRV ; name=Dstore ; alias=Dstore ; comment=Provisional }
-        ; map:{ code=WDL ; name=MiniO ; alias=Orlean ; comment=Withdrawal }
+    # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    # as LastaFlute FreeGen, so generating WebCDef.java
+    # _/_/_/_/_/_/_/_/_/_/
+
+    # ====================================================================================
+    #                                                                     refCls to appcls
+    #                                                                     ================
+    # test of reference to namedcls
+    ; WebDockside = list:{
+        ; map:{ topComment=test of reference to appcls, case1 ; codeType=String }
+        ; map:{ refCls=appcls@AppDockside ; refType=included }
     }
 }
 # ----------------/

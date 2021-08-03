@@ -102,7 +102,7 @@ public interface FortressEnv {
     String TOMCAT_URIEncoding = "tomcat.URIEncoding";
 
     /** The key of the configuration. e.g. true */
-    String TOMCAT_USE_BODY_ENCODING_FORURI = "tomcat.useBodyEncodingForURI";
+    String TOMCAT_USE_BODY_ENCODING_FOR_U_R_I = "tomcat.useBodyEncodingForURI";
 
     /** The key of the configuration. e.g. /tmp/lastaflute/fortress/tomcat */
     String TOMCAT_LOG_HOME = "tomcat.log.home";
@@ -401,14 +401,14 @@ public interface FortressEnv {
      * The value is, e.g. true <br>
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
-    String getTomcatUseBodyEncodingForuri();
+    String getTomcatUseBodyEncodingForURI();
 
     /**
      * Is the property for the key 'tomcat.useBodyEncodingForURI' true? <br>
      * The value is, e.g. true <br>
      * @return The determination, true or false. (if not found, exception but basically no way)
      */
-    boolean isTomcatUseBodyEncodingForuri();
+    boolean isTomcatUseBodyEncodingForURI();
 
     /**
      * Get the value for the key 'tomcat.log.home'. <br>
@@ -583,12 +583,12 @@ public interface FortressEnv {
             return get(FortressEnv.TOMCAT_URIEncoding);
         }
 
-        public String getTomcatUseBodyEncodingForuri() {
-            return get(FortressEnv.TOMCAT_USE_BODY_ENCODING_FORURI);
+        public String getTomcatUseBodyEncodingForURI() {
+            return get(FortressEnv.TOMCAT_USE_BODY_ENCODING_FOR_U_R_I);
         }
 
-        public boolean isTomcatUseBodyEncodingForuri() {
-            return is(FortressEnv.TOMCAT_USE_BODY_ENCODING_FORURI);
+        public boolean isTomcatUseBodyEncodingForURI() {
+            return is(FortressEnv.TOMCAT_USE_BODY_ENCODING_FOR_U_R_I);
         }
 
         public String getTomcatLogHome() {

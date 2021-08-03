@@ -1,5 +1,5 @@
 ##
-## Copyright 2014-2019 the original author or authors.
+## Copyright 2014-2021 the original author or authors.
 ##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
         <th rowspan="2">No.</th>
         <th rowspan="2">URL</th>
         <th rowspan="2">type</th>
-#if (!$table.tableMap.isSuppressDescriptionInList)
+#if (!$optionMap.isSuppressDescriptionInList)
         <th rowspan="2">description</th>
 #end
         <th rowspan="2">class#method</th>
@@ -50,7 +50,7 @@
             api
 #end
         </td>
-#if (!$table.tableMap.isSuppressDescriptionInList)
+#if (!$optionMap.isSuppressDescriptionInList)
         <td class="rowcell">$!manager.htmlEscape($actionDocMeta.description)</td>
 #end
         <td class="rowcell"><span title="$manager.htmlEscape($actionDocMeta.typeName)">$manager.htmlEscape($actionDocMeta.simpleTypeName)</span>#${actionDocMeta.methodName}()</td>
@@ -65,8 +65,8 @@
 #end
         </td>
         <td class="rowcellnum">$!{actionDocMeta.fieldTypeDocMetaList.size()}</td>
-        <td class="rowcellnum">$!{actionDocMeta.fileLineCount}</td>
-        <td class="rowcellnum">$!{actionDocMeta.methodLineCount}</td>
+        <td class="rowcellnum">$!{manager.toInteger($!{actionDocMeta.fileLineCount})}</td>
+        <td class="rowcellnum">$!{manager.toInteger($!{actionDocMeta.methodLineCount})}</td>
     </tr>
 #end
     </tbody>

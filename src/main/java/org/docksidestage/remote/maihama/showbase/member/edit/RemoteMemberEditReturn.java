@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of POST /member/edit/{memberId}.
+ * The bean class as return for remote API of GET /member/edit/{memberId}.
  * @author FreeGen
  */
 public class RemoteMemberEditReturn {

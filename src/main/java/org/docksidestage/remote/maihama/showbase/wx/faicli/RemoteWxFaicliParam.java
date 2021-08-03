@@ -19,7 +19,7 @@ import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as param for remote API of POST /wx/faicli/.
+ * The bean class as param for remote API of GET /wx/faicli/.
  * @author FreeGen
  */
 public class RemoteWxFaicliParam {

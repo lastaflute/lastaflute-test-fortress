@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/tricky/nobody.
+ * The bean class as return for remote API of GET /wx/remogen/tricky/nobody.
  * @author FreeGen
  */
 public class RemoteWxRemogenTrickyNobodyReturn {

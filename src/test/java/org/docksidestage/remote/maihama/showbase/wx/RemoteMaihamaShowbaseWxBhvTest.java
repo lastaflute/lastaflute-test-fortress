@@ -1,5 +1,7 @@
 package org.docksidestage.remote.maihama.showbase.wx;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.exception.RemoteApiPathVariableNullElementException;
@@ -23,7 +25,8 @@ public class RemoteMaihamaShowbaseWxBhvTest extends UnitFortressBasicTestCase {
     //                                                                              ======
     public void test_requestRemogenTrickyNobody_bodyNotPresent() {
         // ## Arrange ##
-        String json = "{key=sea, value=mystic}";
+        // "type: object" is treated as map by RemoteApiGen 
+        String json = "{key:sea, value:{ hangar : mystic }}";
         MockHttpClient client = MockHttpClient.create(response -> {
             response.peekRequest(request -> {
                 log(request);
@@ -40,7 +43,9 @@ public class RemoteMaihamaShowbaseWxBhvTest extends UnitFortressBasicTestCase {
 
         // ## Assert ##
         assertEquals("sea", ret.key);
-        assertEquals("mystic", ret.value);
+        Map<String, Object> valueMap = ret.value;
+        assertNotNull(valueMap);
+        assertEquals("mystic", valueMap.get("hangar"));
     }
 
     // ===================================================================================

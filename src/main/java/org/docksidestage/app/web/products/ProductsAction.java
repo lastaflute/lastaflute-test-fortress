@@ -16,128 +16,77 @@
 package org.docksidestage.app.web.products;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
-import org.dbflute.cbean.result.PagingResultBean;
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.app.web.base.paging.PagingAssist;
-import org.docksidestage.dbflute.exbhv.ProductBhv;
-import org.docksidestage.dbflute.exbhv.ProductStatusBhv;
+import org.docksidestage.app.web.products.assist.ProductsCrudAssist;
+import org.docksidestage.app.web.products.assist.ProductsMappingAssist;
 import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
+import org.lastaflute.web.Execute.HttpStatus;
+import org.lastaflute.web.RestfulAction;
 import org.lastaflute.web.login.AllowAnyoneAccess;
-import org.lastaflute.web.response.HtmlResponse;
+import org.lastaflute.web.response.JsonResponse;
 
 /**
  * @author jflute
  */
 @AllowAnyoneAccess
+@RestfulAction(allowEventSuffix = true)
 public class ProductsAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private ProductBhv productBhv;
+    private ProductsCrudAssist productsCrudAssist;
     @Resource
-    private ProductStatusBhv productStatusBhv;
-    @Resource
-    private PagingAssist pagingAssist;
+    private ProductsMappingAssist productsMappingAssist;
 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // /products/
+    //
+    // *it needs "list" in method, which is resolved by ActionAdjustmentProvider
+    // http://localhost:8151/fortress/products/?productName=R
+    // _/_/_/_/_/_/_/_/_/_/
     @Execute
-    public HtmlResponse get$index(ProductsSearchForm form) {
-        validate(form, messages -> {}, () -> {
-            return asHtml(path_Product_ProductListHtml);
-        });
-        PagingResultBean<Product> page = selectProductPage(form);
-        List<ProductsSearchRowBean> beans = page.stream().map(product -> {
-            return mappingToRowBean(product);
-        }).collect(Collectors.toList());
-        return asHtml(path_Product_ProductListHtml).renderWith(data -> {
-            data.register("beans", beans);
-            pagingAssist.registerPagingNavi(data, page, form);
-        });
+    public JsonResponse<List<ProductsRowResult>> get$index(ProductsSearchForm form) {
+        validateApi(form, messages -> {});
+        List<Product> productList = productsCrudAssist.selectProductList(form);
+        List<ProductsRowResult> listResult = productsMappingAssist.mappingToListResult(productList);
+        return asJson(listResult);
     }
 
-    // /products/1 (mapping to /products/detail/1 by ActionAdjustmentProvider)
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // /products/1
+    //
+    // http://localhost:8151/fortress/products/1/
+    // _/_/_/_/_/_/_/_/_/_/
     @Execute
-    public HtmlResponse get$detail(Integer productId) {
-        Product product = selectProduct(productId);
-        ProductsDetailBean bean = mappingToDetailBean(product);
-        return asHtml(path_Product_ProductDetailHtml).renderWith(data -> {
-            data.register("product", bean);
-        });
+    public JsonResponse<ProductsResult> get$index(Integer productId) {
+        Product product = productsCrudAssist.selectProductById(productId);
+        ProductsResult singleResult = productsMappingAssist.mappingToSingleResult(product);
+        return asJson(singleResult);
     }
 
-    // ===================================================================================
-    //                                                                              Select
-    //                                                                              ======
-    private PagingResultBean<Product> selectProductPage(ProductsSearchForm form) {
-        int pageNumber = form.pageNumber != null ? form.pageNumber : 1;
-        verifyOrClientError("The pageNumber should be positive number: " + pageNumber, pageNumber > 0);
-        return productBhv.selectPage(cb -> {
-            cb.setupSelect_ProductStatus();
-            cb.setupSelect_ProductCategory();
-            cb.specify().derivedPurchase().max(purchaseCB -> {
-                purchaseCB.specify().columnPurchaseDatetime();
-            }, Product.ALIAS_latestPurchaseDate);
-            if (form.productName != null) {
-                cb.query().setProductName_LikeSearch(form.productName, op -> op.likeContain());
-            }
-            if (form.purchaseMemberName != null) {
-                cb.query().existsPurchase(purchaseCB -> {
-                    purchaseCB.query().queryMember().setMemberName_LikeSearch(form.purchaseMemberName, op -> op.likeContain());
-                });
-            }
-            if (form.productStatus != null) {
-                cb.query().setProductStatusCode_Equal_AsProductStatus(form.productStatus);
-            }
-            cb.query().addOrderBy_ProductName_Asc();
-            cb.query().addOrderBy_ProductId_Asc();
-            cb.paging(4, pageNumber);
-        });
+    @Execute
+    public JsonResponse<Void> post$index(ProductsPostBody body) {
+        validateApi(body, messages -> {});
+        return JsonResponse.asEmptyBody(); // dummy implementation
     }
 
-    private Product selectProduct(int productId) {
-        return productBhv.selectEntity(cb -> {
-            cb.setupSelect_ProductCategory();
-            cb.query().setProductId_Equal(productId);
-        }).get();
+    @Execute
+    public JsonResponse<Void> put$index(Integer productId, ProductsPutBody body) {
+        validateApi(body, messages -> {});
+        return JsonResponse.asEmptyBody(); // dummy implementation
     }
 
-    // ===================================================================================
-    //                                                                             Mapping
-    //                                                                             =======
-    private ProductsSearchRowBean mappingToRowBean(Product product) {
-        ProductsSearchRowBean bean = new ProductsSearchRowBean();
-        bean.productId = product.getProductId();
-        bean.productName = product.getProductName();
-        product.getProductStatus().alwaysPresent(status -> {
-            bean.productStatus = status.getProductStatusName();
-        });
-        product.getProductCategory().alwaysPresent(category -> {
-            bean.productCategory = category.getProductCategoryName();
-        });
-        bean.regularPrice = product.getRegularPrice();
-        bean.latestPurchaseDate = product.getLatestPurchaseDate();
-        return bean;
-    }
-
-    private ProductsDetailBean mappingToDetailBean(Product product) {
-        ProductsDetailBean bean = new ProductsDetailBean();
-        bean.productId = product.getProductId();
-        bean.productName = product.getProductName();
-        bean.regularPrice = product.getRegularPrice();
-        bean.productHandleCode = product.getProductHandleCode();
-        product.getProductCategory().alwaysPresent(category -> {
-            bean.categoryName = category.getProductCategoryName();
-        });
-        return bean;
+    @Execute(successHttpStatus = @HttpStatus(value = 299, desc = "sea")) // test for explicit status
+    public JsonResponse<Void> delete$index(Integer productId) {
+        return JsonResponse.asEmptyBody(); // dummy implementation
     }
 }

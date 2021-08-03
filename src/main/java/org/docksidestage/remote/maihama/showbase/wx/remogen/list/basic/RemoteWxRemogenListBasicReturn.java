@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.list.basic;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/list/basic.
+ * The bean class as return for remote API of GET /wx/remogen/list/basic.
  * @author FreeGen
  */
 public class RemoteWxRemogenListBasicReturn {

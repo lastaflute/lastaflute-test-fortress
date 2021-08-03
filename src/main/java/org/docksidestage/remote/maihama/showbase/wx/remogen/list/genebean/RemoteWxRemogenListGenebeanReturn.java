@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.list.genebean;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/list/genebean.
+ * The bean class as return for remote API of GET /wx/remogen/list/genebean.
  * @author FreeGen
  */
 public class RemoteWxRemogenListGenebeanReturn {

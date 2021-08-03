@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.wx.remogen.routing.sea;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /wx/remogen/routing/sea/{first}.
+ * The bean class as return for remote API of GET /wx/remogen/routing/sea/{first}.
  * @author FreeGen
  */
 public class RemoteWxRemogenRoutingSeaReturn {

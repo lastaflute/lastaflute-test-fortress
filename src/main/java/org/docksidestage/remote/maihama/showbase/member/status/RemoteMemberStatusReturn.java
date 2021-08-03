@@ -18,7 +18,7 @@ package org.docksidestage.remote.maihama.showbase.member.status;
 import org.lastaflute.core.util.Lato;
 
 /**
- * The bean class as return for remote API of POST /member/status.
+ * The bean class as return for remote API of GET /member/status.
  * @author FreeGen
  */
 public class RemoteMemberStatusReturn {

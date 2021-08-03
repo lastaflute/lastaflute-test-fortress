@@ -45,7 +45,7 @@ public abstract class BsRemoteMaihamaShowbaseProfileBhv extends AbstractRemoteMa
      * Request remote call to /profile/. (auto-generated method)<br>
      * <pre>
      * url: /profile/
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @return The bean object as return type, receiving response body. (NotNull)
      */
@@ -57,13 +57,13 @@ public abstract class BsRemoteMaihamaShowbaseProfileBhv extends AbstractRemoteMa
      * Request remote call to /profile/. (auto-generated method)<br>
      * <pre>
      * url: /profile/
-     * httpMethod: POST
+     * httpMethod: GET
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
     protected RemoteProfileReturn doRequest(Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestPost(RemoteProfileReturn.class, "/profile/", noMoreUrl(), noRequestBody(), rule -> {
+        return doRequestGet(RemoteProfileReturn.class, "/profile/", noMoreUrl(), noQuery(), rule -> {
             ruleOf(rule);
             ruleLambda.accept(rule);
         });

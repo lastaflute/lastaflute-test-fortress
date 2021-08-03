@@ -62,23 +62,63 @@ public class RemoteMemberAddRegisterReturn {
     /** The property of versionNo. ((バージョン番号)VERSION_NO: {NotNull, BIGINT(19)}) (NullAllowed) */
     public Long versionNo;
 
-    /** The property of memberStatus. ((会員ステータス)MEMBER_STATUS by my MEMBER_STATUS_CODE, named 'memberStatus') (NullAllowed) */
+    /** The property of memberStatus. (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
-    /** The property of memberAddressAsValid. ((会員住所情報)MEMBER_ADDRESS by my MEMBER_ID, named 'memberAddressAsValid') (NullAllowed) */
-    public java.util.Map<String, Object> memberAddressAsValid;
+    /** The property of memberAddressAsValid. (NullAllowed) */
+    @javax.validation.Valid
+    public MemberAddressPart memberAddressAsValid;
 
-    /** The property of memberLoginAsLatest. ((会員ログイン)MEMBER_LOGIN by my MEMBER_ID, named 'memberLoginAsLatest') (NullAllowed) */
-    public java.util.Map<String, Object> memberLoginAsLatest;
+    /**
+     * The part class of MemberAddressPart.
+     * @author FreeGen
+     */
+    public static class MemberAddressPart {
+    }
 
-    /** The property of memberSecurityAsOne. ((会員セキュリティ)member_security by MEMBER_ID, named 'memberSecurityAsOne') (NullAllowed) */
-    public java.util.Map<String, Object> memberSecurityAsOne;
+    /** The property of memberLoginAsLatest. (NullAllowed) */
+    @javax.validation.Valid
+    public MemberLoginPart memberLoginAsLatest;
 
-    /** The property of memberServiceAsOne. ((会員サービス)member_service by MEMBER_ID, named 'memberServiceAsOne') (NullAllowed) */
-    public java.util.Map<String, Object> memberServiceAsOne;
+    /**
+     * The part class of MemberLoginPart.
+     * @author FreeGen
+     */
+    public static class MemberLoginPart {
+    }
 
-    /** The property of memberWithdrawalAsOne. ((会員退会情報)member_withdrawal by MEMBER_ID, named 'memberWithdrawalAsOne') (NullAllowed) */
-    public java.util.Map<String, Object> memberWithdrawalAsOne;
+    /** The property of memberSecurityAsOne. (NullAllowed) */
+    @javax.validation.Valid
+    public MemberSecurityPart memberSecurityAsOne;
+
+    /**
+     * The part class of MemberSecurityPart.
+     * @author FreeGen
+     */
+    public static class MemberSecurityPart {
+    }
+
+    /** The property of memberServiceAsOne. (NullAllowed) */
+    @javax.validation.Valid
+    public MemberServicePart memberServiceAsOne;
+
+    /**
+     * The part class of MemberServicePart.
+     * @author FreeGen
+     */
+    public static class MemberServicePart {
+    }
+
+    /** The property of memberWithdrawalAsOne. (NullAllowed) */
+    @javax.validation.Valid
+    public MemberWithdrawalPart memberWithdrawalAsOne;
+
+    /**
+     * The part class of MemberWithdrawalPart.
+     * @author FreeGen
+     */
+    public static class MemberWithdrawalPart {
+    }
 
     /** The property of memberAddressList. ((会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressList') (NullAllowed) */
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberAddressList;
@@ -96,16 +136,41 @@ public class RemoteMemberAddRegisterReturn {
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> purchaseList;
 
     /** The property of uniqueDrivenProperties. (NullAllowed) */
-    public java.util.Map<String, Object> uniqueDrivenProperties;
+    @javax.validation.Valid
+    public EntityUniqueDrivenPropertiesPart uniqueDrivenProperties;
+
+    /**
+     * The part class of EntityUniqueDrivenPropertiesPart.
+     * @author FreeGen
+     */
+    public static class EntityUniqueDrivenPropertiesPart {
+    }
 
     /** The property of modifiedProperties. (NullAllowed) */
-    public java.util.Map<String, Object> modifiedProperties;
+    @javax.validation.Valid
+    public EntityModifiedPropertiesPart modifiedProperties;
+
+    /**
+     * The part class of EntityModifiedPropertiesPart.
+     * @author FreeGen
+     */
+    public static class EntityModifiedPropertiesPart {
+    }
 
     /** The property of specifiedProperties. (NullAllowed) */
-    public java.util.Map<String, Object> specifiedProperties;
+    @javax.validation.Valid
+    public EntityModifiedPropertiesPart specifiedProperties;
 
     /** The property of derivedMap. (NullAllowed) */
-    public java.util.Map<String, Object> derivedMap;
+    @javax.validation.Valid
+    public EntityDerivedMapPart derivedMap;
+
+    /**
+     * The part class of EntityDerivedMapPart.
+     * @author FreeGen
+     */
+    public static class EntityDerivedMapPart {
+    }
 
     /** The property of undefinedClassificationSelectAllowed. (NullAllowed) */
     public Boolean undefinedClassificationSelectAllowed;

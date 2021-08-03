@@ -44,4 +44,19 @@ map:{
             ; ruleJsPath = ../src/main/resources/remoteapi/schema/remoteapi_schema_swagger-tricky_rule.js
         }
     }
+    # for emergency test, attention not to commit LastaDoc
+    #; RemoteApiXxxYyy = map:{
+    #    ; resourceMap = map:{
+    #        ; baseDir = ../src/main
+    #        ; resourceType = SWAGGER
+    #        ; resourceFile = $$baseDir$$/resources/remoteapi/schema/remoteapi_schema_xxx-yyy_swagger.json
+    #    }
+    #    ; outputMap = map:{
+    #        ; outputDirectory = $$baseDir$$/java
+    #        ; package = org.docksidestage.remote
+    #    }
+    #    ; optionMap = map:{
+    #        ; ruleJsPath = ../src/main/resources/remoteapi/schema/remoteapi_schema_xxx-yyy_rule.js
+    #    }
+    #}
 }
