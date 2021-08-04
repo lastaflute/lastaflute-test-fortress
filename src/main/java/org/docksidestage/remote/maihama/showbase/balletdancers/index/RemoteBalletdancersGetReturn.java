@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /ballet-dancers/.
  * @author FreeGen
  */
-public class RemoteBalletdancersGetReturn {
+public class RemoteBalletdancersGetReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of productId. */
     @Required

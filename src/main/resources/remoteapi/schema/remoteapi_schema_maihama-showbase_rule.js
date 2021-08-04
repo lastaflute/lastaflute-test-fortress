@@ -3,48 +3,8 @@
 // _/_/_/_/_/_/_/_/_/_/
 
 // ======================================================================================
-//                                                                               Behavior
-//                                                                               ========
-// generate hierarchical behaviors if resources hanving many nests
-// @Override
-remoteApiRule.behaviorSubPackage = function(api) {
-    if (api.url.indexOf('/ballet-dancers/') >= 0 || api.url.indexOf('/products/') >= 0) { // e.g. resources having many nests
-        return this.subPackage(api).replace(/^([^.]*)\.(.+)/, '$1.$2'); // default is $1 only
-    } else {
-        return baseRule.behaviorSubPackage(api);
-    }
-}
-
-// @Override
-remoteApiRule.behaviorRequestMethodName = function(api) {
-    if (api.url.indexOf('/ballet-dancers/') >= 0 || api.url.indexOf('/products/') >= 0) {
-        // always HTTP Method on request method
-        var methodPart = manager.camelize(this.subPackage(api).replace(this.behaviorSubPackage(api), '').replace(/\./g, '_'));
-        return 'request' + manager.initCap(methodPart) + (api.httpMethod ? manager.initCap(api.httpMethod) : '');
-    } else {
-        return baseRule.behaviorRequestMethodName(api);
-    }
-}
-
-// @Override
-remoteApiRule.behaviorRuleMethodName = function(api) {
-    if (api.url.indexOf('/ballet-dancers/') >= 0 || api.url.indexOf('/products/') >= 0) {
-        // always HTTP Method on rule method
-        var methodPart = manager.camelize(this.subPackage(api).replace(this.behaviorSubPackage(api), '').replace(/\./g, '_'));
-        return 'ruleOf' + manager.initCap(methodPart) + (api.httpMethod ? manager.initCap(api.httpMethod) : '');
-    } else {
-        return baseRule.behaviorRuleMethodName(api);
-    }
-}
-
-
-// =======================================================================================
-//                                                                                  Option
-//                                                                                  ======
-//
-// -----------------------------------------------------
-//                                          Type Mapping
-//                                          ------------
+//                                                                                  Base
+//                                                                                 ======
 // @Override
 remoteApiRule.target = function(api) { // you can select generated API 
     if (baseRule.target(api)) { // don't forget calling super's
@@ -65,6 +25,62 @@ remoteApiRule.target = function(api) { // you can select generated API
     }
 }
 
+
+// ======================================================================================
+//                                                                               Behavior
+//                                                                               ========
+// generate hierarchical behaviors if resources hanving many nests
+// @Override
+remoteApiRule.behaviorSubPackage = function(api) {
+    if (api.url.indexOf('/ballet-dancers/') >= 0 || api.url.indexOf('/products/') >= 0) { // e.g. resources having many nests
+        return this.subPackage(api).replace(/^([^.]*)\.(.+)/, '$1.$2'); // default is $1 only
+    } else {
+        return baseRule.behaviorSubPackage(api);
+    }
+}
+
+// always HTTP Method on request method
+// @Override
+remoteApiRule.behaviorRequestMethodName = function(api) {
+    if (api.url.indexOf('/ballet-dancers/') >= 0 || api.url.indexOf('/products/') >= 0) {
+        var methodPart = manager.camelize(this.subPackage(api).replace(this.behaviorSubPackage(api), '').replace(/\./g, '_'));
+        return 'request' + manager.initCap(methodPart) + (api.httpMethod ? manager.initCap(api.httpMethod) : '');
+    } else {
+        return baseRule.behaviorRequestMethodName(api);
+    }
+}
+
+// always HTTP Method on rule method
+// @Override
+remoteApiRule.behaviorRuleMethodName = function(api) {
+    if (api.url.indexOf('/ballet-dancers/') >= 0 || api.url.indexOf('/products/') >= 0) {
+        var methodPart = manager.camelize(this.subPackage(api).replace(this.behaviorSubPackage(api), '').replace(/\./g, '_'));
+        return 'ruleOf' + manager.initCap(methodPart) + (api.httpMethod ? manager.initCap(api.httpMethod) : '');
+    } else {
+        return baseRule.behaviorRuleMethodName(api);
+    }
+}
+
+
+
+// =======================================================================================
+//                                                                            Param/Return
+//                                                                            ============
+// extends common super class for e.g. HTTP headers
+// @Override
+remoteApiRule.returnExtendsClass = function(api, properties) {
+    if (api.httpMethod === 'get' && !api.url.endsWith('}/')) { // means List GET
+        return "org.docksidestage.bizfw.remoteapi.AbstractListGetReturn";
+    } else {
+        return baseRule.returnExtendsClass(api, properties);
+    }
+}
+
+
+
+// =======================================================================================
+//                                                                                  Option
+//                                                                                  ======
 // @Override
 remoteApiRule.typeMap = function() {
     var typeMap = baseRule.typeMap();

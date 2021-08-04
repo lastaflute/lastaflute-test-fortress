@@ -9861,15 +9861,16 @@ table.child, table.child td, table.child th {
     <thead>
     <tr>
         <th class="rownumhead">No.</th>
-        <th>name</th>
+        <th>public name</th>
         <th>type</th>
         <th>comment</th>
         <th>annotations</th>
+        <th>property name</th>
     </tr>
     </thead>
     <tr>
         <td class="rowcellnum" rowspan="1">1</td>
-        <td>method</td>
+        <td class="fieldpublicname">method</td>
         <td><p title="java.lang.String">String</p></td>
         <td class="fieldcomment">
             <p title="The&nbsp;property&nbsp;of&nbsp;method.&nbsp;(NullAllowed)">The&nbsp;property&nbsp;of&nbsp;method</p>
@@ -9877,10 +9878,11 @@ table.child, table.child td, table.child th {
         </td>
         <td class="fieldannotations">
         </td>
+        <td class="fieldpropertyname">method</td>
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="1">2</td>
-        <td>first</td>
+        <td class="fieldpublicname">first</td>
         <td><p title="java.util.Map&lt;java.lang.String,&nbsp;java.lang.Object&gt;">Map&lt;String,&nbsp;Object&gt;</p></td>
         <td class="fieldcomment">
             <p title="The&nbsp;property&nbsp;of&nbsp;first.&nbsp;(NullAllowed)">The&nbsp;property&nbsp;of&nbsp;first</p>
@@ -9888,10 +9890,11 @@ table.child, table.child td, table.child th {
         </td>
         <td class="fieldannotations">
         </td>
+        <td class="fieldpropertyname">first</td>
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="1">3</td>
-        <td>second</td>
+        <td class="fieldpublicname">second</td>
         <td><p title="java.util.Map&lt;java.lang.String,&nbsp;java.lang.Object&gt;">Map&lt;String,&nbsp;Object&gt;</p></td>
         <td class="fieldcomment">
             <p title="The&nbsp;property&nbsp;of&nbsp;second.&nbsp;(NullAllowed)">The&nbsp;property&nbsp;of&nbsp;second</p>
@@ -9899,6 +9902,19 @@ table.child, table.child td, table.child th {
         </td>
         <td class="fieldannotations">
         </td>
+        <td class="fieldpropertyname">second</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">4</td>
+        <td class="fieldpublicname">header_map</td>
+        <td><p title="java.util.Map&lt;java.lang.String,&nbsp;java.lang.String&gt;">Map&lt;String,&nbsp;String&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+        <td class="fieldpropertyname">headerMap</td>
     </tr>
 </table>
 
@@ -9961,6 +9977,18 @@ table.child, table.child td, table.child th {
         <td class="fieldannotations">
         </td>
         <td class="fieldpropertyname">iamResult</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">4</td>
+        <td class="fieldpublicname">header_map</td>
+        <td><p title="java.util.Map&lt;java.lang.String,&nbsp;java.lang.String&gt;">Map&lt;String,&nbsp;String&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+        <td class="fieldpropertyname">headerMap</td>
     </tr>
 </table>
 
@@ -15788,8 +15816,8 @@ table.child, table.child td, table.child th {
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="2">7</td>
-        <td class="fieldpublicname">white</td>
-        <td><p title="org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WhitePart">WhitePart</p></td>
+        <td class="fieldpublicname">white_standard</td>
+        <td><p title="org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WhiteStandardPart">WhiteStandardPart</p></td>
         <td class="fieldcomment">
             <p title=""></p>
             <p></p>
@@ -15797,7 +15825,7 @@ table.child, table.child td, table.child th {
         <td class="fieldannotations">
             &#64;Valid
         </td>
-        <td class="fieldpropertyname">white</td>
+        <td class="fieldpropertyname">whiteStandard</td>
     </tr>
     <tr>
         <td colspan="5">
@@ -15832,7 +15860,7 @@ table.child, table.child td, table.child th {
     </tr>
     <tr>
         <td class="rowcellnum" rowspan="2">8</td>
-        <td class="fieldpublicname">file_part</td>
+        <td class="fieldpublicname">file_part_row</td>
         <td><p title="org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFilePart">WxResponseJsonRowFilePart</p></td>
         <td class="fieldcomment">
             <p title=""></p>
@@ -15841,7 +15869,7 @@ table.child, table.child td, table.child th {
         <td class="fieldannotations">
             &#64;Valid
         </td>
-        <td class="fieldpropertyname">filePart</td>
+        <td class="fieldpropertyname">filePartRow</td>
     </tr>
     <tr>
         <td colspan="5">
@@ -15884,8 +15912,21 @@ table.child, table.child td, table.child th {
         </td>
     </tr>
     <tr>
-        <td class="rowcellnum" rowspan="2">9</td>
-        <td class="fieldpublicname">inner_part</td>
+        <td class="rowcellnum" rowspan="1">9</td>
+        <td class="fieldpublicname">file_part_row_list</td>
+        <td><p title="java.util.List&lt;org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFilePart&gt;">List&lt;WxResponseJsonRowFilePart&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Valid
+        </td>
+        <td class="fieldpropertyname">filePartRowList</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="2">10</td>
+        <td class="fieldpublicname">inner_part_row</td>
         <td><p title="org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerPart">WxResponseJsonRowInnerPart</p></td>
         <td class="fieldcomment">
             <p title=""></p>
@@ -15894,7 +15935,341 @@ table.child, table.child td, table.child th {
         <td class="fieldannotations">
             &#64;Valid
         </td>
-        <td class="fieldpropertyname">innerPart</td>
+        <td class="fieldpropertyname">innerPartRow</td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <div class="nestedbean">
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+        <th>comment</th>
+        <th>annotations</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="1">1</td>
+        <td>sea</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">2</td>
+        <td>land</td>
+        <td><p title="org.eclipse.collections.api.list.ImmutableList&lt;java.lang.Integer&gt;">ImmutableList&lt;Integer&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+</table>
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="2">11</td>
+        <td class="fieldpublicname">inner_part_row_list</td>
+        <td><p title="java.util.List&lt;org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerPart&gt;">List&lt;WxResponseJsonRowInnerPart&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Valid
+        </td>
+        <td class="fieldpropertyname">innerPartRowList</td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <div class="nestedbean">
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+        <th>comment</th>
+        <th>annotations</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="1">1</td>
+        <td>sea</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">2</td>
+        <td>land</td>
+        <td><p title="org.eclipse.collections.api.list.ImmutableList&lt;java.lang.Integer&gt;">ImmutableList&lt;Integer&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+</table>
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="2">12</td>
+        <td class="fieldpublicname">file_result_row</td>
+        <td><p title="org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFileResult">WxResponseJsonRowFileResult</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Valid
+        </td>
+        <td class="fieldpropertyname">fileResultRow</td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <div class="nestedbean">
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+        <th>comment</th>
+        <th>annotations</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="1">1</td>
+        <td>sea</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">2</td>
+        <td>land</td>
+        <td><p title="org.eclipse.collections.api.list.ImmutableList&lt;java.lang.Integer&gt;">ImmutableList&lt;Integer&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+</table>
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">13</td>
+        <td class="fieldpublicname">file_result_row_list</td>
+        <td><p title="java.util.List&lt;org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFileResult&gt;">List&lt;WxResponseJsonRowFileResult&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Valid
+        </td>
+        <td class="fieldpropertyname">fileResultRowList</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="2">14</td>
+        <td class="fieldpublicname">inner_result_row</td>
+        <td><p title="org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerResult">WxResponseJsonRowInnerResult</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Valid
+        </td>
+        <td class="fieldpropertyname">innerResultRow</td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <div class="nestedbean">
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+        <th>comment</th>
+        <th>annotations</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="1">1</td>
+        <td>sea</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">2</td>
+        <td>land</td>
+        <td><p title="org.eclipse.collections.api.list.ImmutableList&lt;java.lang.Integer&gt;">ImmutableList&lt;Integer&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+</table>
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="2">15</td>
+        <td class="fieldpublicname">inner_result_row_list</td>
+        <td><p title="java.util.List&lt;org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerResult&gt;">List&lt;WxResponseJsonRowInnerResult&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Valid
+        </td>
+        <td class="fieldpropertyname">innerResultRowList</td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <div class="nestedbean">
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>name</th>
+        <th>type</th>
+        <th>comment</th>
+        <th>annotations</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="1">1</td>
+        <td>sea</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">2</td>
+        <td>land</td>
+        <td><p title="org.eclipse.collections.api.list.ImmutableList&lt;java.lang.Integer&gt;">ImmutableList&lt;Integer&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+    </tr>
+</table>
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="2">16</td>
+        <td class="fieldpublicname">object_generic_inner_part_row</td>
+        <td><p title="org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonObjectGenericPart">WxResponseJsonObjectGenericPart</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Valid
+        </td>
+        <td class="fieldpropertyname">objectGenericInnerPartRow</td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <div class="nestedbean">
+<table>
+    <thead>
+    <tr>
+        <th class="rownumhead">No.</th>
+        <th>public name</th>
+        <th>type</th>
+        <th>comment</th>
+        <th>annotations</th>
+        <th>property name</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="rowcellnum" rowspan="1">1</td>
+        <td class="fieldpublicname">sea</td>
+        <td><p title="java.lang.String">String</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+        <td class="fieldpropertyname">sea</td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="1">2</td>
+        <td class="fieldpublicname">land_list</td>
+        <td><p title="org.eclipse.collections.api.list.ImmutableList&lt;NEST&gt;">ImmutableList&lt;NEST&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+        </td>
+        <td class="fieldpropertyname">landList</td>
+    </tr>
+</table>
+
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rowcellnum" rowspan="2">17</td>
+        <td class="fieldpublicname">object_generic_inner_part_row_list</td>
+        <td><p title="java.util.List&lt;org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonObjectGenericPart&lt;org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerPart&gt;&gt;">List&lt;WxResponseJsonObjectGenericPart&lt;WxResponseJsonRowInnerPart&gt;&gt;</p></td>
+        <td class="fieldcomment">
+            <p title=""></p>
+            <p></p>
+        </td>
+        <td class="fieldannotations">
+            &#64;Valid
+        </td>
+        <td class="fieldpropertyname">objectGenericInnerPartRowList</td>
     </tr>
     <tr>
         <td colspan="5">

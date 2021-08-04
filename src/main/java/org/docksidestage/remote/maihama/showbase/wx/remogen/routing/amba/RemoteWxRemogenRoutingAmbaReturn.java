@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
  * The bean class as return for remote API of GET /wx/remogen/routing/amba/{first}/{second}/{third}.
  * @author FreeGen
  */
-public class RemoteWxRemogenRoutingAmbaReturn {
+public class RemoteWxRemogenRoutingAmbaReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of method. (NullAllowed) */
     public String method;

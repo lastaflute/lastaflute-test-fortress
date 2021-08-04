@@ -9588,6 +9588,17 @@
             "comment": "The property of second. (NullAllowed)",
             "annotationList": [],
             "nestTypeDocMetaList": []
+          },
+          {
+            "name": "headerMap",
+            "publicName": "header_map",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
           }
         ]
       },
@@ -9663,6 +9674,17 @@
             "value": null,
             "description": "The property of iamResult",
             "comment": "The property of iamResult. (NullAllowed)",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "headerMap",
+            "publicName": "header_map",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
             "annotationList": [],
             "nestTypeDocMetaList": []
           }
@@ -15387,10 +15409,10 @@
             "nestTypeDocMetaList": []
           },
           {
-            "name": "white",
-            "publicName": "white",
-            "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WhitePart",
-            "simpleTypeName": "WhitePart",
+            "name": "whiteStandard",
+            "publicName": "white_standard",
+            "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WhiteStandardPart",
+            "simpleTypeName": "WhiteStandardPart",
             "value": null,
             "description": null,
             "comment": null,
@@ -15412,8 +15434,8 @@
             ]
           },
           {
-            "name": "filePart",
-            "publicName": "file_part",
+            "name": "filePartRow",
+            "publicName": "file_part_row",
             "typeName": "org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFilePart",
             "simpleTypeName": "WxResponseJsonRowFilePart",
             "value": null,
@@ -15448,10 +15470,252 @@
             ]
           },
           {
-            "name": "innerPart",
-            "publicName": "inner_part",
+            "name": "filePartRowList",
+            "publicName": "file_part_row_list",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFilePart\u003e",
+            "simpleTypeName": "List\u003cWxResponseJsonRowFilePart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "innerPartRow",
+            "publicName": "inner_part_row",
             "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerPart",
             "simpleTypeName": "WxResponseJsonRowInnerPart",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "sea",
+                "publicName": "sea",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "land",
+                "publicName": "land",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.Integer\u003e",
+                "simpleTypeName": "ImmutableList\u003cInteger\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "innerPartRowList",
+            "publicName": "inner_part_row_list",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerPart\u003e",
+            "simpleTypeName": "List\u003cWxResponseJsonRowInnerPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "sea",
+                "publicName": "sea",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "land",
+                "publicName": "land",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.Integer\u003e",
+                "simpleTypeName": "ImmutableList\u003cInteger\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "fileResultRow",
+            "publicName": "file_result_row",
+            "typeName": "org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFileResult",
+            "simpleTypeName": "WxResponseJsonRowFileResult",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "sea",
+                "publicName": "sea",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "land",
+                "publicName": "land",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.Integer\u003e",
+                "simpleTypeName": "ImmutableList\u003cInteger\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "fileResultRowList",
+            "publicName": "file_result_row_list",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFileResult\u003e",
+            "simpleTypeName": "List\u003cWxResponseJsonRowFileResult\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "innerResultRow",
+            "publicName": "inner_result_row",
+            "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerResult",
+            "simpleTypeName": "WxResponseJsonRowInnerResult",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "sea",
+                "publicName": "sea",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "land",
+                "publicName": "land",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.Integer\u003e",
+                "simpleTypeName": "ImmutableList\u003cInteger\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "innerResultRowList",
+            "publicName": "inner_result_row_list",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerResult\u003e",
+            "simpleTypeName": "List\u003cWxResponseJsonRowInnerResult\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "sea",
+                "publicName": "sea",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "land",
+                "publicName": "land",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.Integer\u003e",
+                "simpleTypeName": "ImmutableList\u003cInteger\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "objectGenericInnerPartRow",
+            "publicName": "object_generic_inner_part_row",
+            "typeName": "org.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonObjectGenericPart",
+            "simpleTypeName": "WxResponseJsonObjectGenericPart",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "sea",
+                "publicName": "sea",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "landList",
+                "publicName": "land_list",
+                "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cNEST\u003e",
+                "simpleTypeName": "ImmutableList\u003cNEST\u003e",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          },
+          {
+            "name": "objectGenericInnerPartRowList",
+            "publicName": "object_generic_inner_part_row_list",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonObjectGenericPart\u003corg.docksidestage.app.web.wx.response.json.WxResponseJsonRowResult$WxResponseJsonRowInnerPart\u003e\u003e",
+            "simpleTypeName": "List\u003cWxResponseJsonObjectGenericPart\u003cWxResponseJsonRowInnerPart\u003e\u003e",
             "value": null,
             "description": null,
             "comment": null,

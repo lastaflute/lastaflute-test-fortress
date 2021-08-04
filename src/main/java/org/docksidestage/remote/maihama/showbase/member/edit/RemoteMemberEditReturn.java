@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /member/edit/{memberId}.
  * @author FreeGen
  */
-public class RemoteMemberEditReturn {
+public class RemoteMemberEditReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of memberId. */
     @Required

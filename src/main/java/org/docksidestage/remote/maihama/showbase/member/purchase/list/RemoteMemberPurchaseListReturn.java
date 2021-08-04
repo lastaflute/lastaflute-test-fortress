@@ -24,7 +24,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /member/purchase/list/{memberId}/{pageNumber}.
  * @author FreeGen
  */
-public class RemoteMemberPurchaseListReturn {
+public class RemoteMemberPurchaseListReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of pageSize. (row count per one page) */
     @Required
