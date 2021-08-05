@@ -122,7 +122,7 @@
           },
           {
             "name": "productStatus",
-            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)",
             "type": "string",
             "enum": [
               "ONS",
@@ -1034,7 +1034,7 @@
           },
           {
             "name": "productStatus",
-            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop. * `ALL` - All, All Statuses.",
+            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. * `ALL` - All, All Statuses. :: fromCls(AppCDef$SearchProductStatus)",
             "type": "string",
             "enum": [
               "ONS",
@@ -1348,7 +1348,7 @@
           },
           {
             "name": "productStatus",
-            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)",
             "type": "string",
             "enum": [
               "ONS",
@@ -3902,7 +3902,7 @@
             "WDL",
             "PRV"
           ],
-          "description": "memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.",
+          "description": " * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)",
           "example": "FML"
         }
       }
@@ -4115,7 +4115,7 @@
             "WDL",
             "PRV"
           ],
-          "description": "memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.",
+          "description": " * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)",
           "example": "FML"
         },
         "birthdate": {
@@ -4144,7 +4144,7 @@
             "WDL",
             "PRV"
           ],
-          "description": "memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.",
+          "description": " * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)",
           "example": "FML"
         },
         "purchaseProductName": {
@@ -4402,7 +4402,7 @@
             "PST",
             "SST"
           ],
-          "description": "productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+          "description": " * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)",
           "example": "ONS"
         },
         "purchaseMemberName": {
@@ -4509,7 +4509,7 @@
             "PST",
             "SST"
           ],
-          "description": "productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+          "description": " * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(AppCDef$PublicProductStatus)",
           "example": "ONS"
         },
         "productCategory": {
@@ -4553,13 +4553,19 @@
             "PST",
             "SST"
           ],
-          "description": "productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+          "description": " * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(AppCDef$PublicProductStatus)",
           "example": "ONS"
         },
         "pastProductStatuses": {
           "type": "array",
           "items": {
-            "type": "object"
+            "type": "string",
+            "enum": [
+              "ONS",
+              "PST",
+              "SST"
+            ],
+            "description": " * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(AppCDef$PublicProductStatus)"
           }
         },
         "purchasedMemberIds": {
@@ -4880,7 +4886,7 @@
             "FRT",
             "OTH"
           ],
-          "description": "selectedReason: * `SIT` - Sit, SIT. * `PRD` - Prd, PRD. * `FRT` - Frt, FRT. * `OTH` - Oth, OTH.",
+          "description": " * `SIT` - Sit, SIT. * `PRD` - Prd, PRD. * `FRT` - Frt, FRT. * `OTH` - Oth, OTH. :: fromCls(CDef$WithdrawalReason)",
           "example": "SIT"
         },
         "reasonInput": {

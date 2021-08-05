@@ -32,9 +32,9 @@ public class RemoteProductsGetReturn extends org.docksidestage.bizfw.remoteapi.A
     @Required
     public String productName;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) ( * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(AppCDef$PublicProductStatus)) */
     @Required
-    public String productStatus;
+    public org.docksidestage.dbflute.allcommon.CDef.ProductStatus productStatus;
 
     /** The property of productCategory. */
     @Required

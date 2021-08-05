@@ -109,7 +109,9 @@ remoteApiRule.typeMap = function() {
 // name and type mapping for e.g. classification
 var manualMappingClassMap = {
     'memberStatus': 'org.docksidestage.dbflute.allcommon.CDef.MemberStatus',
-    'selectedReason': 'org.docksidestage.dbflute.allcommon.CDef.WithdrawalReason'
+    'selectedReason': 'org.docksidestage.dbflute.allcommon.CDef.WithdrawalReason',
+    'productStatus': 'org.docksidestage.dbflute.allcommon.CDef.ProductStatus',
+    'pastProductStatuses': 'org.docksidestage.dbflute.allcommon.CDef.ProductStatus'
 };
 
 // @Override

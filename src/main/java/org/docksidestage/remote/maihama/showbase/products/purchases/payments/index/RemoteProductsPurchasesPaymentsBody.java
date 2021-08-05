@@ -26,8 +26,8 @@ public class RemoteProductsPurchasesPaymentsBody {
     /** The property of productName. (prefix for name of product e.g. R) (NullAllowed) */
     public String productName;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) (NullAllowed) */
-    public String productStatus;
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (status of product e.g. ONS: * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)) (NullAllowed) */
+    public org.docksidestage.dbflute.allcommon.CDef.ProductStatus productStatus;
 
     /** The property of purchaseMemberName. (prefix for member name who purchases the product e.g. S) (NullAllowed) */
     public String purchaseMemberName;

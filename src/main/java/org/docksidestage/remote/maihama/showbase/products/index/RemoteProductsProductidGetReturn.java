@@ -34,13 +34,13 @@ public class RemoteProductsProductidGetReturn {
     @Required
     public String productName;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) ( * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(AppCDef$PublicProductStatus)) */
     @Required
-    public String productStatus;
+    public org.docksidestage.dbflute.allcommon.CDef.ProductStatus productStatus;
 
-    /** The property of pastProductStatuses. */
+    /** The property of pastProductStatuses. (enumValue=[ONS, PST, SST]) */
     @NotNull
-    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> pastProductStatuses;
+    public org.eclipse.collections.api.list.ImmutableList<org.docksidestage.dbflute.allcommon.CDef.ProductStatus> pastProductStatuses;
 
     /** The property of purchasedMemberIds. */
     @NotNull
