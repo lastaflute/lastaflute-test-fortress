@@ -26,7 +26,7 @@ public class RemoteProductsGetParam {
     /** The property of productName. (prefix for name of product e.g. R) (NullAllowed) */
     public String productName;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) (NullAllowed) */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST, ALL]) (status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop. * `ALL` - All, All Statuses.) (NullAllowed) */
     public String productStatus;
 
     /** The property of purchaseMemberName. (prefix for member name who purchases the product e.g. S) (NullAllowed) */

@@ -15,6 +15,8 @@
  */
 package org.docksidestage.remote.maihama.showbase.products.index;
 
+import javax.validation.constraints.NotNull;
+
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
@@ -32,9 +34,13 @@ public class RemoteProductsProductidGetReturn {
     @Required
     public String productName;
 
-    /** The property of productStatus. */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) */
     @Required
     public String productStatus;
+
+    /** The property of favoriteProductStatuses. */
+    @NotNull
+    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> favoriteProductStatuses;
 
     /** The property of productCategory. */
     @Required

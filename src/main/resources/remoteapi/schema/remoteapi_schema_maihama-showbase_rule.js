@@ -66,6 +66,24 @@ remoteApiRule.behaviorRuleMethodName = function(api) {
 // =======================================================================================
 //                                                                            Param/Return
 //                                                                            ============
+// @Override
+remoteApiRule.paramClassName = function(api, detail) {
+    if (api.url.indexOf('/payments/') >= 0) {
+        return this.beanClassName(api, detail) + 'Body';
+    } else {
+        return baseRule.paramClassName(api, detail);
+    }
+}
+
+// @Override
+remoteApiRule.returnClassName = function(api, detail) {
+  if (api.url.indexOf('/payments/') >= 0) {
+    return this.beanClassName(api, detail) + 'Result';
+  } else {
+    return baseRule.returnClassName(api, detail);
+  }
+}
+
 // extends common super class for e.g. HTTP headers
 // @Override
 remoteApiRule.returnExtendsClass = function(api, properties) {

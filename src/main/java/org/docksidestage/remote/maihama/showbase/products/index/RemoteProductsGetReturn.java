@@ -32,7 +32,7 @@ public class RemoteProductsGetReturn extends org.docksidestage.bizfw.remoteapi.A
     @Required
     public String productName;
 
-    /** The property of productStatus. */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) */
     @Required
     public String productStatus;
 

@@ -16,21 +16,25 @@
 package org.docksidestage.remote.maihama.showbase.products.purchases.payments.index;
 
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as param for remote API of GET /products/{productId}/purchases/{purchaseId}/payments/.
+ * The bean class as return for remote API of GET /products/{productId}/purchases/{purchaseId}/payments/.
  * @author FreeGen
  */
-public class RemoteProductsPurchasesPaymentsParam {
+public class RemoteProductsPurchasesPaymentsResult extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
-    /** The property of productName. (prefix for name of product e.g. R) (NullAllowed) */
+    /** The property of paymentId. */
+    @Required
+    public Long paymentId;
+
+    /** The property of memberName. */
+    @Required
+    public String memberName;
+
+    /** The property of productName. */
+    @Required
     public String productName;
-
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.) (NullAllowed) */
-    public String productStatus;
-
-    /** The property of purchaseMemberName. (prefix for member name who purchases the product e.g. S) (NullAllowed) */
-    public String purchaseMemberName;
 
     @Override
     public String toString() {

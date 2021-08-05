@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /products/{productId}/purchases/{purchaseId}/payments/{paymentId}/.
  * @author FreeGen
  */
-public class RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidReturn {
+public class RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidResult {
 
     /** The property of paymentId. */
     @Required
