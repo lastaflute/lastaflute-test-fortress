@@ -4533,7 +4533,8 @@
         "productId",
         "productName",
         "productStatus",
-        "favoriteProductStatuses",
+        "pastProductStatuses",
+        "purchasedMemberIds",
         "productCategory",
         "regularPrice"
       ],
@@ -4555,10 +4556,17 @@
           "description": "productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
           "example": "ONS"
         },
-        "favoriteProductStatuses": {
+        "pastProductStatuses": {
           "type": "array",
           "items": {
             "type": "object"
+          }
+        },
+        "purchasedMemberIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "productCategory": {

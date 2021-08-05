@@ -38,9 +38,13 @@ public class RemoteProductsProductidGetReturn {
     @Required
     public String productStatus;
 
-    /** The property of favoriteProductStatuses. */
+    /** The property of pastProductStatuses. */
     @NotNull
-    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> favoriteProductStatuses;
+    public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> pastProductStatuses;
+
+    /** The property of purchasedMemberIds. */
+    @NotNull
+    public org.eclipse.collections.api.list.ImmutableList<Integer> purchasedMemberIds;
 
     /** The property of productCategory. */
     @Required
