@@ -11,13 +11,7 @@
   "basePath": "/showbase/",
   "tags": [
     {
-      "name": ""
-    },
-    {
-      "name": "roneman"
-    },
-    {
-      "name": "rshining"
+      "name": "root"
     },
     {
       "name": "ballet-dancers"
@@ -63,7 +57,7 @@
         "description": "@author jflute",
         "parameters": [],
         "tags": [
-          ""
+          "root"
         ],
         "responses": {
           "200": {
@@ -81,7 +75,7 @@
         "description": "@author jflute",
         "parameters": [],
         "tags": [
-          "roneman"
+          "root"
         ],
         "responses": {
           "200": {
@@ -99,7 +93,7 @@
         "description": "@author jflute",
         "parameters": [],
         "tags": [
-          "rshining"
+          "root"
         ],
         "responses": {
           "200": {
@@ -163,14 +157,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -200,14 +194,14 @@
           "201": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -235,14 +229,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.ballet.dancers.BalletDancersResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -279,14 +273,14 @@
           "204": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       },
@@ -309,14 +303,14 @@
           "204": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -350,14 +344,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosListResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -395,14 +389,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosOneResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -434,14 +428,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -461,14 +455,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.member.MemberInfoResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -494,14 +488,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -536,14 +530,14 @@
               "$ref": "#/definitions/org.docksidestage.dbflute.exentity.Member"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -574,14 +568,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.member.MemberEditBody"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -613,14 +607,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -652,14 +646,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult%3Corg.docksidestage.app.web.member.MemberSearchRowResult%3E"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -701,14 +695,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult%3Corg.docksidestage.app.web.member.MemberSearchRowResult%3E"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -739,14 +733,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult%3Corg.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult%3E"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -784,14 +778,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult%3Corg.docksidestage.app.web.member.purchase.MemberPurchaseSearchRowResult%3E"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -819,14 +813,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -846,14 +840,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.mypage.MypageResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -884,14 +878,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.product.ProductDetailResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -926,14 +920,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult%3Corg.docksidestage.app.web.product.ProductRowResult%3E"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -975,14 +969,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.base.paging.SearchPagingResult%3Corg.docksidestage.app.web.product.ProductRowResult%3E"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1008,14 +1002,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1040,12 +1034,13 @@
           },
           {
             "name": "productStatus",
-            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+            "description": "status of product e.g. ONS: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop. * `ALL` - All, All Statuses.",
             "type": "string",
             "enum": [
               "ONS",
               "PST",
-              "SST"
+              "SST",
+              "ALL"
             ],
             "in": "query",
             "default": "ONS",
@@ -1075,14 +1070,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1112,14 +1107,14 @@
           "201": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -1147,14 +1142,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.products.ProductsResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1191,14 +1186,14 @@
           "204": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       },
@@ -1221,14 +1216,14 @@
           "204": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -1262,14 +1257,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.products.purchases.PurchasesListResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1307,14 +1302,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.products.purchases.PurchasesOneResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1388,14 +1383,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1440,14 +1435,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.products.purchases.payments.PaymentsResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1470,14 +1465,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.profile.ProfileResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1512,14 +1507,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.purchase.PurchasePriceResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1554,14 +1549,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.purchase.PurchasePriceResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1596,14 +1591,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.signin.SigninResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1635,14 +1630,14 @@
           "201": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -1672,14 +1667,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -1702,14 +1697,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1745,14 +1740,14 @@
               "format": "int32"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1784,14 +1779,14 @@
               "type": "object"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1811,14 +1806,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -1842,14 +1837,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -1878,14 +1873,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -1923,14 +1918,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -1953,14 +1948,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -1986,14 +1981,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2019,14 +2014,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2052,14 +2047,14 @@
               }
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2102,14 +2097,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2142,14 +2137,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2190,14 +2185,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2240,14 +2235,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2288,14 +2283,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2330,14 +2325,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2370,14 +2365,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2420,14 +2415,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2460,14 +2455,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2490,14 +2485,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2528,14 +2523,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2558,14 +2553,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2595,14 +2590,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2638,14 +2633,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2668,14 +2663,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2705,14 +2700,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2735,14 +2730,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2772,14 +2767,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2815,14 +2810,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2852,14 +2847,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2895,14 +2890,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2938,14 +2933,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -2987,14 +2982,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3036,14 +3031,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3091,14 +3086,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3134,14 +3129,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3183,14 +3178,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3221,14 +3216,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3266,14 +3261,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3304,14 +3299,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3348,14 +3343,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.routing.RoutingCheckResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3378,14 +3373,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.AllSuffixResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3408,14 +3403,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixCompletely"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3438,14 +3433,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.PartOnlySuffix"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3468,14 +3463,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.TonOnlySuffixResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3495,14 +3490,14 @@
           "200": {
             "description": "success"
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         }
       }
@@ -3522,14 +3517,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3552,14 +3547,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3582,14 +3577,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3612,14 +3607,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -3642,14 +3637,14 @@
               "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult"
             }
           },
+          "401": {
+            "description": "AccessTokenUnauthorizedException"
+          },
           "403": {
             "description": "AccessUnderstoodButRefusedException"
           },
           "404": {
             "description": "EntityAlreadyDeletedException"
-          },
-          "401": {
-            "description": "AccessTokenUnauthorizedException"
           }
         },
         "produces": [
@@ -4508,7 +4503,14 @@
           "type": "string"
         },
         "productStatus": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "ONS",
+            "PST",
+            "SST"
+          ],
+          "description": "productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+          "example": "ONS"
         },
         "productCategory": {
           "type": "string"
@@ -4531,6 +4533,7 @@
         "productId",
         "productName",
         "productStatus",
+        "favoriteProductStatuses",
         "productCategory",
         "regularPrice"
       ],
@@ -4543,7 +4546,20 @@
           "type": "string"
         },
         "productStatus": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "ONS",
+            "PST",
+            "SST"
+          ],
+          "description": "productStatus: * `ONS` - OnSaleProduction, OnSaleProduction. * `PST` - ProductionStop, ProductionStop. * `SST` - SaleStop, SaleStop.",
+          "example": "ONS"
+        },
+        "favoriteProductStatuses": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
         },
         "productCategory": {
           "type": "string"
