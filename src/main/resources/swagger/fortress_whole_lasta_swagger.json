@@ -455,12 +455,15 @@
             "name": "limit",
             "type": "integer",
             "format": "int32",
+            "minimum": 0,
             "in": "query",
             "required": true
           },
           {
             "name": "memberPrefix",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 7,
             "in": "query",
             "required": false
           },
@@ -468,6 +471,7 @@
             "name": "fromPurchasePrice",
             "type": "integer",
             "format": "int32",
+            "minimum": 100,
             "in": "query",
             "required": false
           },
@@ -1171,6 +1175,8 @@
           {
             "name": "memberName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 5.0,
             "in": "query",
             "required": false
           },
@@ -1190,6 +1196,8 @@
           {
             "name": "purchaseProductName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 10.0,
             "in": "query",
             "required": false
           },
@@ -1253,6 +1261,8 @@
           {
             "name": "memberName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "required": false
           },
@@ -1272,6 +1282,8 @@
           {
             "name": "purchaseProductName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "required": false
           },
@@ -1970,6 +1982,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 10.0,
             "in": "query",
             "required": false
           },
@@ -1989,6 +2003,8 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 5.0,
             "in": "query",
             "required": false
           }
@@ -2030,6 +2046,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "required": false
           },
@@ -2049,6 +2067,8 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "required": false
           }
@@ -2084,6 +2104,8 @@
             "name": "productName",
             "description": "prefix for name of product e.g. R",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "default": "R",
             "required": false
@@ -2105,6 +2127,8 @@
             "name": "purchaseMemberName",
             "description": "prefix for member name who purchases the product e.g. S",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "default": "S",
             "required": false
@@ -2712,6 +2736,8 @@
           {
             "name": "reasonInput",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 3,
             "in": "query",
             "required": false
           }
@@ -2760,6 +2786,8 @@
           {
             "name": "reasonInput",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 3,
             "in": "query",
             "required": false
           }
@@ -3189,6 +3217,9 @@
           {
             "name": "sea",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 94,
+            "pattern": "mystic\u003e\u003c@\"\u0027bigband",
             "in": "query",
             "required": false
           },
@@ -3597,6 +3628,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 10.0,
             "in": "query",
             "required": false
           },
@@ -3616,6 +3649,8 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 5.0,
             "in": "query",
             "required": false
           }
@@ -3657,6 +3692,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "required": false
           },
@@ -3676,6 +3713,8 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "required": false
           }
@@ -4386,48 +4425,63 @@
           {
             "name": "seaLength",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 16,
             "in": "query",
             "required": false
           },
           {
             "name": "seaSize",
             "type": "string",
+            "minLength": 4,
+            "maxLength": 32,
             "in": "query",
             "required": false
           },
           {
             "name": "seaPatternKana",
             "type": "string",
+            "pattern": "[\\p{InKatakana}]*",
             "in": "query",
             "required": false
           },
           {
             "name": "seaPatternPhone",
             "type": "string",
+            "pattern": "(^[0-9]+$)",
             "in": "query",
             "required": false
           },
           {
             "name": "seaEmail",
             "type": "string",
+            "pattern": ".*",
             "in": "query",
             "required": false
           },
           {
             "name": "seaStringCustomOne",
             "type": "string",
+            "minLength": 3,
+            "maxLength": 9,
             "in": "query",
             "required": false
           },
           {
             "name": "seaStringCustomTwo",
             "type": "string",
+            "minLength": 4,
+            "maxLength": 10,
+            "pattern": ".sea*$",
             "in": "query",
             "required": false
           },
           {
             "name": "seaWhole",
             "type": "string",
+            "minLength": 3,
+            "maxLength": 9,
+            "pattern": ".*hangar$",
             "in": "query",
             "required": true
           },
@@ -4449,18 +4503,23 @@
             "name": "landMinMax",
             "type": "integer",
             "format": "int32",
+            "minimum": 4,
+            "maximum": 32,
             "in": "query",
             "required": false
           },
           {
             "name": "landIntegerCustomOne",
             "type": "string",
+            "minimum": 2,
             "in": "query",
             "required": false
           },
           {
             "name": "landIntegerCustomTwo",
             "type": "string",
+            "minimum": 4,
+            "maximum": 6,
             "in": "query",
             "required": false
           },
@@ -4468,6 +4527,8 @@
             "name": "landWhole",
             "type": "integer",
             "format": "int32",
+            "maximum": 32,
+            "minimum": 2,
             "in": "query",
             "required": true
           },
@@ -5654,6 +5715,8 @@
           {
             "name": "memberName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 5.0,
             "in": "query",
             "required": false
           },
@@ -5673,6 +5736,8 @@
           {
             "name": "purchaseProductName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 10.0,
             "in": "query",
             "required": false
           },
@@ -5736,6 +5801,8 @@
           {
             "name": "memberName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "required": false
           },
@@ -5755,6 +5822,8 @@
           {
             "name": "purchaseProductName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "required": false
           },
@@ -9810,6 +9879,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 10.0,
             "in": "query",
             "required": false
           },
@@ -9859,6 +9930,8 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0.0,
+            "maxLength": 5.0,
             "in": "query",
             "required": false
           }
@@ -9900,6 +9973,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "required": false
           },
@@ -9949,6 +10024,8 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "required": false
           }
@@ -9983,6 +10060,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "required": false
           },
@@ -10002,6 +10081,8 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "required": false
           }
@@ -10036,6 +10117,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "required": false
           },
@@ -10055,6 +10138,8 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "required": false
           }
@@ -10089,6 +10174,8 @@
           {
             "name": "productName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 10,
             "in": "query",
             "required": false
           },
@@ -10108,12 +10195,16 @@
           {
             "name": "purchaseMemberName",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 5,
             "in": "query",
             "required": false
           },
           {
             "name": "seaString",
             "type": "string",
+            "minLength": 0,
+            "maxLength": 3,
             "in": "query",
             "required": false
           },
@@ -10121,6 +10212,7 @@
             "name": "seaInteger",
             "type": "integer",
             "format": "int32",
+            "maximum": 88,
             "in": "query",
             "required": false
           },
@@ -10128,6 +10220,7 @@
             "name": "seaLong",
             "type": "integer",
             "format": "int64",
+            "maximum": 88,
             "in": "query",
             "required": false
           },
@@ -10135,6 +10228,7 @@
             "name": "seaFloat",
             "type": "number",
             "format": "float",
+            "maximum": 88,
             "in": "query",
             "required": false
           },
@@ -10142,6 +10236,7 @@
             "name": "seaDouble",
             "type": "number",
             "format": "double",
+            "maximum": 88,
             "in": "query",
             "required": false
           },
@@ -10149,6 +10244,7 @@
             "name": "seaDecimal",
             "type": "integer",
             "format": "double",
+            "maximum": 88,
             "in": "query",
             "required": false
           },
@@ -10471,6 +10567,8 @@
           {
             "name": "land",
             "type": "string",
+            "minLength": 4,
+            "maxLength": 15,
             "in": "query",
             "required": false
           }
@@ -10697,11 +10795,13 @@
       "properties": {
         "my_member_id": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "minimum": 1
         },
         "your_member_id": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "minimum": 1
         }
       }
     },
@@ -10768,6 +10868,8 @@
         "product_name": {
           "description": "keyword of product name e.g. Stranger",
           "type": "string",
+          "minLength": 0,
+          "maxLength": 10,
           "example": "Stranger"
         },
         "product_status": {
@@ -10783,6 +10885,8 @@
         "purchase_member_name": {
           "description": "keyword of member name that purchases e.g. S",
           "type": "string",
+          "minLength": 0,
+          "maxLength": 5,
           "example": "S"
         }
       }
@@ -10868,7 +10972,8 @@
       "properties": {
         "regular_price": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "minimum": 10
         }
       }
     },
@@ -11450,28 +11555,43 @@
           "type": "string"
         },
         "seaLength": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 16
         },
         "seaSize": {
-          "type": "string"
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 32
         },
         "seaPatternKana": {
-          "type": "string"
+          "type": "string",
+          "pattern": "[\\p{InKatakana}]*"
         },
         "seaPatternPhone": {
-          "type": "string"
+          "type": "string",
+          "pattern": "(^[0-9]+$)"
         },
         "seaEmail": {
-          "type": "string"
+          "type": "string",
+          "pattern": ".*"
         },
         "seaStringCustomOne": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 9
         },
         "seaStringCustomTwo": {
-          "type": "string"
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 10,
+          "pattern": ".sea*$"
         },
         "seaWhole": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 9,
+          "pattern": ".*hangar$"
         },
         "landPlain": {
           "type": "integer",
@@ -11483,17 +11603,24 @@
         },
         "landMinMax": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "minimum": 4,
+          "maximum": 32
         },
         "landIntegerCustomOne": {
-          "type": "string"
+          "type": "string",
+          "minimum": 2
         },
         "landIntegerCustomTwo": {
-          "type": "string"
+          "type": "string",
+          "minimum": 4,
+          "maximum": 6
         },
         "landWhole": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "maximum": 32,
+          "minimum": 2
         },
         "piari": {
           "type": "string",
@@ -11604,7 +11731,9 @@
       "type": "object",
       "properties": {
         "sea": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 2147483647
         },
         "land": {
           "type": "integer",
@@ -11677,28 +11806,43 @@
           "type": "string"
         },
         "sea_length": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 16
         },
         "sea_size": {
-          "type": "string"
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 32
         },
         "sea_pattern_kana": {
-          "type": "string"
+          "type": "string",
+          "pattern": "[\\p{InKatakana}]*"
         },
         "sea_pattern_phone": {
-          "type": "string"
+          "type": "string",
+          "pattern": "(^[0-9]+$)"
         },
         "sea_email": {
-          "type": "string"
+          "type": "string",
+          "pattern": ".*"
         },
         "sea_string_custom_one": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 9
         },
         "sea_string_custom_two": {
-          "type": "string"
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 10,
+          "pattern": ".sea*$"
         },
         "sea_whole": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 9,
+          "pattern": ".*hangar$"
         },
         "land_plain": {
           "type": "integer",
@@ -11710,17 +11854,24 @@
         },
         "land_min_max": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "minimum": 4,
+          "maximum": 32
         },
         "land_integer_custom_one": {
-          "type": "string"
+          "type": "string",
+          "minimum": 2
         },
         "land_integer_custom_two": {
-          "type": "string"
+          "type": "string",
+          "minimum": 4,
+          "maximum": 6
         },
         "land_whole": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "maximum": 32,
+          "minimum": 2
         },
         "piari": {
           "type": "string",
@@ -11970,28 +12121,43 @@
           "type": "string"
         },
         "sea_length": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 16
         },
         "sea_size": {
-          "type": "string"
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 32
         },
         "sea_pattern_kana": {
-          "type": "string"
+          "type": "string",
+          "pattern": "[\\p{InKatakana}]*"
         },
         "sea_pattern_phone": {
-          "type": "string"
+          "type": "string",
+          "pattern": "(^[0-9]+$)"
         },
         "sea_email": {
-          "type": "string"
+          "type": "string",
+          "pattern": ".*"
         },
         "sea_string_custom_one": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 9
         },
         "sea_string_custom_two": {
-          "type": "string"
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 10,
+          "pattern": ".sea*$"
         },
         "sea_whole": {
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 9,
+          "pattern": ".*hangar$"
         },
         "land_plain": {
           "type": "integer",
@@ -12003,17 +12169,24 @@
         },
         "land_min_max": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "minimum": 4,
+          "maximum": 32
         },
         "land_integer_custom_one": {
-          "type": "string"
+          "type": "string",
+          "minimum": 2
         },
         "land_integer_custom_two": {
-          "type": "string"
+          "type": "string",
+          "minimum": 4,
+          "maximum": 6
         },
         "land_whole": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "maximum": 32,
+          "minimum": 2
         },
         "white_standard": {
           "$ref": "#/definitions/org.docksidestage.app.web.wx.response.json.WxResponseJsonSwaggerResult%24WhiteStandardPart"
@@ -12318,7 +12491,9 @@
       "type": "object",
       "properties": {
         "product_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 10
         },
         "product_status": {
           "type": "string",
@@ -12331,30 +12506,39 @@
           "example": "ONS"
         },
         "purchase_member_name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5
         },
         "sea_string": {
-          "type": "string"
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 3
         },
         "sea_integer": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "maximum": 88
         },
         "sea_long": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "maximum": 88
         },
         "sea_float": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "maximum": 88
         },
         "sea_double": {
           "type": "number",
-          "format": "double"
+          "format": "double",
+          "maximum": 88
         },
         "sea_decimal": {
           "type": "integer",
-          "format": "double"
+          "format": "double",
+          "maximum": 88
         },
         "land_date": {
           "type": "string",
