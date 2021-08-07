@@ -24,10 +24,10 @@ import org.lastaflute.web.response.JsonResponse;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxResponseJsonDirectlyAction extends FortressBaseAction {
+public class WxResponseJsonSwaggerAction extends FortressBaseAction {
 
     @Execute
-    public JsonResponse<String> index() {
-        return JsonResponse.asJsonDirectly("{sea: land}");
+    public JsonResponse<WxResponseJsonSwaggerResult> index() {
+        return asJson(new WxResponseJsonSwaggerResult());
     }
 }

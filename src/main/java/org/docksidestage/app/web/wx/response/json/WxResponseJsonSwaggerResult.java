@@ -15,30 +15,88 @@
  */
 package org.docksidestage.app.web.wx.response.json;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
-import org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFilePart;
-import org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonRowFileResult;
+import org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonSwaggerFilePart;
+import org.docksidestage.app.web.wx.response.json.filepart.WxResponseJsonSwaggerFileResult;
+import org.docksidestage.bizfw.validation.custom.LandIntegerCustomOne;
+import org.docksidestage.bizfw.validation.custom.LandIntegerCustomTwo;
+import org.docksidestage.bizfw.validation.custom.SeaStringCustomOne;
+import org.docksidestage.bizfw.validation.custom.SeaStringCustomTwo;
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.eclipse.collections.api.list.ImmutableList;
+import org.hibernate.validator.constraints.Length;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
-public class WxResponseJsonRowResult {
+public class WxResponseJsonSwaggerResult {
 
     // ===================================================================================
-    //                                                                     Value Attribute
-    //                                                                     ===============O
-    public Integer productId;
-    public String productName;
-    public String productStatus;
-    public String productCategory;
-    public Integer regularPrice;
-    public LocalDate latestPurchaseDate;
+    //                                                                           Attribute
+    //                                                                           =========
+    // -----------------------------------------------------
+    //                                                String
+    //                                                ------
+    public String seaPlain;
+
+    @Required
+    public String seaRequired;
+
+    @Length(min = 2, max = 16)
+    public String seaLength;
+
+    @Size(min = 4, max = 32)
+    public String seaSize;
+
+    @Pattern(regexp = ".*hangar$")
+    public String seaPattern;
+
+    @Email
+    public String seaEmail;
+
+    @SeaStringCustomOne
+    public String seaStringCustomOne;
+
+    @SeaStringCustomTwo
+    public String seaStringCustomTwo;
+
+    @Required
+    @Size(min = 4, max = 32)
+    @Pattern(regexp = ".*hangar$")
+    @SeaStringCustomOne
+    public String seaWhole;
+
+    // -----------------------------------------------------
+    //                                                Number
+    //                                                ------
+    public Integer landPlain;
+
+    @Required
+    public Integer landRequired;
+
+    @Min(4)
+    @Max(32)
+    public Integer landMinMax;
+
+    @LandIntegerCustomOne
+    public String landIntegerCustomOne;
+
+    @LandIntegerCustomTwo
+    public String landIntegerCustomTwo;
+
+    @Required
+    @Max(32)
+    @LandIntegerCustomOne
+    public Integer landWhole;
 
     // ===================================================================================
     //                                                                  Standard Part Test
@@ -59,11 +117,11 @@ public class WxResponseJsonRowResult {
     //                                            ----------
     // done (2021/07/18) jflute cannot get fields at swagger, treated as "type": "object" (2021/06/25)
     @Valid
-    public WxResponseJsonRowFilePart filePartRow;
+    public WxResponseJsonSwaggerFilePart filePartRow;
 
     // #thinking jflute cannot get fields at swagger in this list case (2021/07/18)
     @Valid
-    public List<WxResponseJsonRowFilePart> filePartRowList;
+    public List<WxResponseJsonSwaggerFilePart> filePartRowList;
 
     @Valid
     public WxResponseJsonRowInnerPart innerPartRow;
@@ -82,11 +140,11 @@ public class WxResponseJsonRowResult {
     //                                   Nested Result Class
     //                                   -------------------
     @Valid
-    public WxResponseJsonRowFileResult fileResultRow;
+    public WxResponseJsonSwaggerFileResult fileResultRow;
 
     // #thinking jflute also cannot get fields at swagger in this list case (2021/07/18)
     @Valid
-    public List<WxResponseJsonRowFileResult> fileResultRowList;
+    public List<WxResponseJsonSwaggerFileResult> fileResultRowList;
 
     @Valid
     public WxResponseJsonRowInnerResult innerResultRow;

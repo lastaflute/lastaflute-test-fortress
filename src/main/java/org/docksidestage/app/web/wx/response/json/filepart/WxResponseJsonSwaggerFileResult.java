@@ -13,21 +13,16 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.response.json;
+package org.docksidestage.app.web.wx.response.json.filepart;
 
-import org.docksidestage.app.web.base.FortressBaseAction;
-import org.lastaflute.web.Execute;
-import org.lastaflute.web.login.AllowAnyoneAccess;
-import org.lastaflute.web.response.JsonResponse;
+import org.eclipse.collections.api.list.ImmutableList;
 
 /**
  * @author jflute
  */
-@AllowAnyoneAccess
-public class WxResponseJsonDirectlyAction extends FortressBaseAction {
+public class WxResponseJsonSwaggerFileResult {
 
-    @Execute
-    public JsonResponse<String> index() {
-        return JsonResponse.asJsonDirectly("{sea: land}");
-    }
+    public String sea;
+
+    public ImmutableList<Integer> land;
 }

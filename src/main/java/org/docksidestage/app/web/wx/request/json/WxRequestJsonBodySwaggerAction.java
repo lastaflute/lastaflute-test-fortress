@@ -13,16 +13,25 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.response.json.filepart;
+package org.docksidestage.app.web.wx.request.json;
 
-import org.eclipse.collections.api.list.ImmutableList;
+import java.util.Map;
+
+import org.dbflute.util.DfCollectionUtil;
+import org.docksidestage.app.web.base.FortressBaseAction;
+import org.lastaflute.web.Execute;
+import org.lastaflute.web.login.AllowAnyoneAccess;
+import org.lastaflute.web.response.JsonResponse;
 
 /**
  * @author jflute
  */
-public class WxResponseJsonRowFileResult {
+@AllowAnyoneAccess
+public class WxRequestJsonBodySwaggerAction extends FortressBaseAction {
 
-    public String sea;
-
-    public ImmutableList<Integer> land;
+    // http://localhost:8151/fortress/wx/request/json/body/swagger
+    @Execute
+    public JsonResponse<Map<String, Object>> index(WxRequestJsonBodySwaggerBody body) {
+        return asJson(DfCollectionUtil.newHashMap("body", body));
+    }
 }
