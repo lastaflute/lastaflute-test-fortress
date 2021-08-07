@@ -57,8 +57,11 @@ public class WxResponseJsonSwaggerResult {
     @Size(min = 4, max = 32)
     public String seaSize;
 
-    @Pattern(regexp = ".*hangar$")
-    public String seaPattern;
+    @Pattern(regexp = "[\\p{InKatakana}]*")
+    public String seaPatternKana;
+
+    @Pattern(regexp = "(^[0-9]+$)")
+    public String seaPatternPhone;
 
     @Email
     public String seaEmail;
@@ -70,7 +73,7 @@ public class WxResponseJsonSwaggerResult {
     public String seaStringCustomTwo;
 
     @Required
-    @Size(min = 4, max = 32)
+    @Size(max = 32)
     @Pattern(regexp = ".*hangar$")
     @SeaStringCustomOne
     public String seaWhole;

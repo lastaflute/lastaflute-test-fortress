@@ -56,8 +56,11 @@ public class WxRequestJsonBodySwaggerBody {
     @Size(min = 4, max = 32)
     public String seaSize;
 
-    @Pattern(regexp = ".*hangar$")
-    public String seaPattern;
+    @Pattern(regexp = "[\\p{InKatakana}]*")
+    public String seaPatternKana;
+
+    @Pattern(regexp = "(^[0-9]+$)")
+    public String seaPatternPhone;
 
     @Email
     public String seaEmail;
