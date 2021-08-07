@@ -51,7 +51,7 @@ public class WxResponseJsonSwaggerResult {
     @Required
     public String seaRequired;
 
-    @Length(min = 2, max = 16)
+    @Length(max = 16)
     public String seaLength;
 
     @Size(min = 4, max = 32)

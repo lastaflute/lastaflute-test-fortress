@@ -4402,6 +4402,193 @@
         }
       ]
     },
+    "/wx/request/form/swagger/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "seaPlain",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "seaRequired",
+            "type": "string",
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "seaLength",
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 16,
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "seaSize",
+            "type": "string",
+            "minimum": 4,
+            "maximum": 32,
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "seaPatternKana",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "seaPatternPhone",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "seaEmail",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "seaStringCustomOne",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "seaStringCustomTwo",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "seaWhole",
+            "type": "string",
+            "minimum": 4,
+            "maximum": 32,
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "landPlain",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "landRequired",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "landMinMax",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "landIntegerCustomOne",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "landIntegerCustomTwo",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "landWhole",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "piari",
+            "type": "string",
+            "format": "date",
+            "in": "query",
+            "default": "2000-01-01",
+            "required": true
+          },
+          {
+            "name": "bonvo",
+            "type": "string",
+            "format": "date-time",
+            "in": "query",
+            "default": "2000-01-01T00:00:00.000",
+            "required": false
+          },
+          {
+            "name": "dstore",
+            "type": "boolean",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "amba",
+            "type": "string",
+            "enum": [
+              "FML",
+              "WDL",
+              "PRV"
+            ],
+            "description": " * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)",
+            "in": "query",
+            "default": "FML",
+            "required": false
+          },
+          {
+            "name": "miraco",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "white",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.form.WxRequestFormSwaggerForm"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
     "/wx/request/json/body/": {
       "post": {
         "summary": "@author jflute",
@@ -11302,6 +11489,127 @@
         }
       }
     },
+    "org.docksidestage.app.web.wx.request.form.WxRequestFormSwaggerForm$MiracoPart": {
+      "type": "object",
+      "properties": {
+        "sta": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.request.form.WxRequestFormSwaggerForm$WhitePart": {
+      "type": "object",
+      "properties": {
+        "formatBodying": {
+          "type": "string",
+          "enum": [
+            "SEA",
+            "LAN"
+          ],
+          "description": " * `SEA` - Sea, sea. * `LAN` - Land, land. :: fromCls(CDef$WhiteConfusingFormatBodying)",
+          "example": "SEA"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.request.form.WxRequestFormSwaggerForm": {
+      "type": "object",
+      "required": [
+        "seaRequired",
+        "seaWhole",
+        "landRequired",
+        "landWhole",
+        "piari"
+      ],
+      "properties": {
+        "seaPlain": {
+          "type": "string"
+        },
+        "seaRequired": {
+          "type": "string"
+        },
+        "seaLength": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 16
+        },
+        "seaSize": {
+          "type": "string",
+          "minimum": 4,
+          "maximum": 32
+        },
+        "seaPatternKana": {
+          "type": "string"
+        },
+        "seaPatternPhone": {
+          "type": "string"
+        },
+        "seaEmail": {
+          "type": "string"
+        },
+        "seaStringCustomOne": {
+          "type": "string"
+        },
+        "seaStringCustomTwo": {
+          "type": "string"
+        },
+        "seaWhole": {
+          "type": "string",
+          "minimum": 4,
+          "maximum": 32
+        },
+        "landPlain": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "landRequired": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "landMinMax": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "landIntegerCustomOne": {
+          "type": "string"
+        },
+        "landIntegerCustomTwo": {
+          "type": "string"
+        },
+        "landWhole": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "piari": {
+          "type": "string",
+          "format": "date",
+          "example": "2000-01-01"
+        },
+        "bonvo": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2000-01-01T00:00:00.000"
+        },
+        "dstore": {
+          "type": "boolean"
+        },
+        "amba": {
+          "type": "string",
+          "enum": [
+            "FML",
+            "WDL",
+            "PRV"
+          ],
+          "description": " * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)",
+          "example": "FML"
+        },
+        "miraco": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.request.form.WxRequestFormSwaggerForm%24MiracoPart"
+        },
+        "white": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.request.form.WxRequestFormSwaggerForm%24WhitePart"
+        }
+      }
+    },
     "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$MiracoPart": {
       "type": "object",
       "properties": {
@@ -11456,7 +11764,7 @@
         },
         "sea_length": {
           "type": "string",
-          "minLength": 2,
+          "minLength": 0,
           "maxLength": 16
         },
         "sea_size": {
@@ -11755,7 +12063,7 @@
         },
         "sea_length": {
           "type": "string",
-          "minLength": 2,
+          "minLength": 0,
           "maxLength": 16
         },
         "sea_size": {

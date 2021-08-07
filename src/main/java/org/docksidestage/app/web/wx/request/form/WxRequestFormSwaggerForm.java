@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.request.json;
+package org.docksidestage.app.web.wx.request.form;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,7 +37,7 @@ import org.lastaflute.web.validation.Required;
 /**
  * @author jflute
  */
-public class WxRequestJsonBodySwaggerBody {
+public class WxRequestFormSwaggerForm {
 
     // ===================================================================================
     //                                                                           Attribute
