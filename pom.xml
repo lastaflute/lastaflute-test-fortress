@@ -35,7 +35,7 @@
 		<servlet.version>4.0.1</servlet.version>
 		<jetty.boot.version>0.5.0</jetty.boot.version>
 		<tomcat.boot.version>0.7.8</tomcat.boot.version>
-		<swagger.ui.version>3.20.5</swagger.ui.version>
+		<swagger.ui.version>3.35.0</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.8.1</commons.lang.version>
