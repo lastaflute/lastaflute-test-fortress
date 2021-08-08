@@ -5279,6 +5279,177 @@
         }
       ]
     },
+    "/wx/request/pathvar/optional/onparade": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.RequestCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/request/pathvar/optional/onparade/{first}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.RequestCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/request/pathvar/optional/onparade/{first}/{second}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.RequestCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/request/pathvar/optional/onparade/{first}/{second}/{third}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "third",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.RequestCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
     "/wx/response/forward/": {
       "get": {
         "summary": "@author jflute",
@@ -11925,6 +12096,9 @@
           "type": "object"
         },
         "second": {
+          "type": "object"
+        },
+        "third": {
           "type": "object"
         }
       }
