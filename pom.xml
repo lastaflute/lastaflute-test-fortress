@@ -19,7 +19,7 @@
 		<app.group.id>org.docksidestage</app.group.id>
 
 		<!-- Main Framework -->
-		<dbflute.version>1.2.5-D-SNAPSHOT</dbflute.version>
+		<dbflute.version>1.2.5</dbflute.version>
 		<mysql.jdbc.version>8.0.16</mysql.jdbc.version>
 		<lasta.di.version>0.8.4-D-SNAPSHOT</lasta.di.version>
 		<lastaflute.version>1.2.1-R-SNAPSHOT</lastaflute.version>

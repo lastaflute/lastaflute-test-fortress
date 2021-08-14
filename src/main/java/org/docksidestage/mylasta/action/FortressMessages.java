@@ -174,7 +174,6 @@ public class FortressMessages extends FortressLabels {
      * Add the created action message for the key 'constraints.AssertFalse.message' with parameters.
      * <pre>
      * message: must be false
-     * comment: ---------------
      * </pre>
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
@@ -408,7 +407,6 @@ public class FortressMessages extends FortressLabels {
      * Add the created action message for the key 'constraints.CreditCardNumber.message' with parameters.
      * <pre>
      * message: invalid credit card number
-     * comment: -------------------
      * </pre>
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
@@ -589,7 +587,6 @@ public class FortressMessages extends FortressLabels {
      * Add the created action message for the key 'constraints.Required.message' with parameters.
      * <pre>
      * message: is required
-     * comment: --------------------
      * </pre>
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
@@ -675,7 +672,10 @@ public class FortressMessages extends FortressLabels {
      * Add the created action message for the key 'errors.login.failure' with parameters.
      * <pre>
      * message: could not login
-     * comment: - - - - - - - - - -/
+     * comment:
+     * /- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     * six framework-embedded messages (don't change key names)
+     * - - - - - - - - - -/
      * </pre>
      * @param property The property name for the message. (NotNull)
      * @return this. (NotNull)
