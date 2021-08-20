@@ -60,9 +60,22 @@ public class ProductsPurchasesAction extends FortressBaseAction {
         return asJson(result);
     }
 
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // /products/1/purchases/2/
+    //
+    // http://localhost:8151/fortress/products/1/purchases/16/
+    // _/_/_/_/_/_/_/_/_/_/
+    @Execute
+    public JsonResponse<PurchasesOneResult> get$index(Integer productId, Long purchaseId) {
+        Purchase purchase = selectPurchaseById(productId, purchaseId);
+        PurchasesOneResult result = mappingToOneResult(purchase);
+        return asJson(result);
+    }
+
     // -----------------------------------------------------
-    //                                  test of Event Suffix
-    //                                  --------------------
+    //                                   Test of EventSuffix
+    //                                   -------------------
+    // http://localhost:8151/fortress/products/1/purchases/sea?memberName=S
     @Execute
     public JsonResponse<PurchasesListResult> get$sea(Integer productId, PurchasesListForm form) {
         validateApi(form, messages -> {});
@@ -71,14 +84,7 @@ public class ProductsPurchasesAction extends FortressBaseAction {
         return asJson(result);
     }
 
-    @Execute
-    public JsonResponse<PurchasesListResult> get$docksideOver(Integer productId, PurchasesListForm form) {
-        validateApi(form, messages -> {});
-        List<Purchase> purchaseList = selectPurchaseList(productId, form);
-        PurchasesListResult result = mappingToListResult(purchaseList);
-        return asJson(result);
-    }
-
+    // http://localhost:8151/fortress/products/1/purchases/hangarMystic?memberName=S
     @Execute
     public JsonResponse<PurchasesListResult> get$hangarMystic(Integer productId, PurchasesListForm form) {
         validateApi(form, messages -> {});
@@ -87,13 +93,17 @@ public class ProductsPurchasesAction extends FortressBaseAction {
         return asJson(result);
     }
 
-    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    // /products/1/purchases/2/
-    //
-    // http://localhost:8151/fortress/products/1/purchases/16/
-    // _/_/_/_/_/_/_/_/_/_/
+    // http://localhost:8151/fortress/products/1/purchases/16/land
     @Execute
-    public JsonResponse<PurchasesOneResult> get$index(Integer productId, Long purchaseId) {
+    public JsonResponse<PurchasesOneResult> get$land(Integer productId, Long purchaseId) {
+        Purchase purchase = selectPurchaseById(productId, purchaseId);
+        PurchasesOneResult result = mappingToOneResult(purchase);
+        return asJson(result);
+    }
+
+    // http://localhost:8151/fortress/products/1/purchases/16/showbaseOneman
+    @Execute
+    public JsonResponse<PurchasesOneResult> get$showbaseOneman(Integer productId, Long purchaseId) {
         Purchase purchase = selectPurchaseById(productId, purchaseId);
         PurchasesOneResult result = mappingToOneResult(purchase);
         return asJson(result);
