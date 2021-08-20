@@ -60,8 +60,27 @@ public class ProductsPurchasesAction extends FortressBaseAction {
         return asJson(result);
     }
 
+    // -----------------------------------------------------
+    //                                  test of Event Suffix
+    //                                  --------------------
     @Execute
     public JsonResponse<PurchasesListResult> get$sea(Integer productId, PurchasesListForm form) {
+        validateApi(form, messages -> {});
+        List<Purchase> purchaseList = selectPurchaseList(productId, form);
+        PurchasesListResult result = mappingToListResult(purchaseList);
+        return asJson(result);
+    }
+
+    @Execute
+    public JsonResponse<PurchasesListResult> get$docksideOver(Integer productId, PurchasesListForm form) {
+        validateApi(form, messages -> {});
+        List<Purchase> purchaseList = selectPurchaseList(productId, form);
+        PurchasesListResult result = mappingToListResult(purchaseList);
+        return asJson(result);
+    }
+
+    @Execute
+    public JsonResponse<PurchasesListResult> get$hangarMystic(Integer productId, PurchasesListForm form) {
         validateApi(form, messages -> {});
         List<Purchase> purchaseList = selectPurchaseList(productId, form);
         PurchasesListResult result = mappingToListResult(purchaseList);
