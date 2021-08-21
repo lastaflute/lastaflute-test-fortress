@@ -28,12 +28,13 @@ import org.lastaflute.web.Execute.HttpStatus;
 import org.lastaflute.web.RestfulAction;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
+import org.lastaflute.web.util.LaActionRuntimeUtil;
 
 /**
  * @author jflute
  */
 @AllowAnyoneAccess
-@RestfulAction(allowEventSuffix = true)
+@RestfulAction(allowEventSuffix = true, eventSuffixHyphenate = { "hangar-mystic", "showbase-oneman" })
 public class ProductsAction extends FortressBaseAction {
 
     // ===================================================================================
@@ -50,7 +51,6 @@ public class ProductsAction extends FortressBaseAction {
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // /products/
     //
-    // *it needs "list" in method, which is resolved by ActionAdjustmentProvider
     // http://localhost:8151/fortress/products/?productName=R
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
@@ -88,5 +88,80 @@ public class ProductsAction extends FortressBaseAction {
     @Execute(successHttpStatus = @HttpStatus(value = 299, desc = "sea")) // test for explicit status
     public JsonResponse<Void> delete$index(Integer productId) {
         return JsonResponse.asEmptyBody(); // dummy implementation
+    }
+
+    // -----------------------------------------------------
+    //                                   Test of EventSuffix
+    //                                   -------------------
+    // (problem "Restful action but non-restful mapping" until 1.2.1, fixed @since 1.2.2)
+    // http://localhost:8151/fortress/products/sea?productName=S
+    @Execute
+    public JsonResponse<List<ProductsRowResult>> get$sea(ProductsSearchForm form) {
+        validateApi(form, messages -> {});
+        List<Product> productList = productsCrudAssist.selectProductList(form);
+        List<ProductsRowResult> listResult = productsMappingAssist.mappingToListResult(productList);
+        listResult.forEach(row -> row.productName = currentMethodName() + " called");
+        return asJson(listResult);
+    }
+
+    // http://localhost:8151/fortress/products/docksideOver?productName=S
+    // cannot use hyphen because of no setting in annotation
+    // x http://localhost:8151/fortress/products/dockside-over?productName=S
+    @Execute
+    public JsonResponse<List<ProductsRowResult>> get$docksideOver(ProductsSearchForm form) {
+        validateApi(form, messages -> {});
+        List<Product> productList = productsCrudAssist.selectProductList(form);
+        List<ProductsRowResult> listResult = productsMappingAssist.mappingToListResult(productList);
+        listResult.forEach(row -> row.productName = currentMethodName() + " called");
+        return asJson(listResult);
+    }
+
+    // http://localhost:8151/fortress/products/hangar-mystic?productName=S
+    // also direct camel-case is mapped for now
+    // v http://localhost:8151/fortress/products/hangarMystic?productName=S
+    @Execute
+    public JsonResponse<List<ProductsRowResult>> get$hangarMystic(ProductsSearchForm form) {
+        validateApi(form, messages -> {});
+        List<Product> productList = productsCrudAssist.selectProductList(form);
+        List<ProductsRowResult> listResult = productsMappingAssist.mappingToListResult(productList);
+        listResult.forEach(row -> row.productName = currentMethodName() + " called");
+        return asJson(listResult);
+    }
+
+    // POST
+    @Execute
+    public JsonResponse<List<ProductsRowResult>> post$hangarMystic(ProductsSearchForm form) {
+        validateApi(form, messages -> {});
+        List<Product> productList = productsCrudAssist.selectProductList(form);
+        List<ProductsRowResult> listResult = productsMappingAssist.mappingToListResult(productList);
+        listResult.forEach(row -> row.productName = currentMethodName() + " called");
+        return asJson(listResult);
+    }
+
+    // http://localhost:8151/fortress/products/1/land
+    @Execute
+    public JsonResponse<ProductsResult> get$land(Integer productId) {
+        Product product = productsCrudAssist.selectProductById(productId);
+        ProductsResult singleResult = productsMappingAssist.mappingToSingleResult(product);
+        singleResult.productName = currentMethodName() + " called";
+        return asJson(singleResult);
+    }
+
+    // http://localhost:8151/fortress/products/1/showbase-oneman
+    // also direct camel-case is mapped for now
+    // v http://localhost:8151/fortress/products/1/showbaseOneman
+    @Execute
+    public JsonResponse<ProductsResult> get$showbaseOneman(Integer productId) {
+        Product product = productsCrudAssist.selectProductById(productId);
+        ProductsResult singleResult = productsMappingAssist.mappingToSingleResult(product);
+        singleResult.productName = currentMethodName() + " called";
+        return asJson(singleResult);
+    }
+
+    // ===================================================================================
+    //                                                                        Small Helper
+    //                                                                        ============
+    private String currentMethodName() {
+        return LaActionRuntimeUtil.getActionRuntime().getActionExecute().getExecuteMethod().getName() + "()";
     }
 }

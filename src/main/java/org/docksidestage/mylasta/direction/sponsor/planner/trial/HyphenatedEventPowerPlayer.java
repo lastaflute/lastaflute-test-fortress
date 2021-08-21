@@ -70,10 +70,9 @@ public class HyphenatedEventPowerPlayer {
             }
 
             @Override
-            protected String convertToRestfulPath(Class<?> actionType, String actionUrl, int businessElementCount,
-                    List<String> hyphenatedNameList) {
+            protected String convertToRestfulPath(Class<?> actionType, String actionUrl, RestfulPathConvertingParam convertingParam) {
                 final String filtered = filterForRestfulPath(actionUrl);
-                return super.convertToRestfulPath(actionType, filtered, businessElementCount, hyphenatedNameList);
+                return super.convertToRestfulPath(actionType, filtered, convertingParam);
             }
         };
     }
