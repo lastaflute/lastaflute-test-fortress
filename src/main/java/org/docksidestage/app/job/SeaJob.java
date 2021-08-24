@@ -63,6 +63,7 @@ public class SeaJob implements LaJob {
         danceSongLogic.letsDance();
         comedyRhythmLogic.letsLaugh();
         itsMyPartyAssist.beHappy();
+        runtime.stopIfNeeds();
         runtime.showEndTitleRoll(data -> {
             data.register("targetMember", memberId);
         });

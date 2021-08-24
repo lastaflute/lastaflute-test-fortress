@@ -32,7 +32,11 @@ public class MysticConcurrentJob implements LaJob {
     //                                                                             =======
     @Override
     public void run(LaJobRuntime runtime) {
+        Thread currentThread = Thread.currentThread();
+        logger.debug("currentThread: {}, {}", currentThread.getName(), currentThread.hashCode());
+
         waitFirstIfNeeds(runtime);
+        runtime.stopIfNeeds();
     }
 
     private void waitFirstIfNeeds(LaJobRuntime runtime) {

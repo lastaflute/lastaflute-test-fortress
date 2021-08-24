@@ -66,6 +66,9 @@ public class AllJobScheduler implements LaJobScheduler {
         cron.registerNonCron(MysticConcurrentJob.class, waitIfConcurrent(), op -> op.uniqueBy("mystic-wait"));
         cron.registerNonCron(MysticConcurrentJob.class, quitIfConcurrent(), op -> op.uniqueBy("mystic-quit"));
         cron.registerNonCron(MysticConcurrentJob.class, errorIfConcurrent(), op -> op.uniqueBy("mystic-error"));
+        cron.registerNonCron(MysticConcurrentJob.class, waitIfConcurrent(), op -> {
+            op.uniqueBy("mystic-parallel").grantOutlawParallel();
+        });
     }
 
     @Override

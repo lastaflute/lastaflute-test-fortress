@@ -15,6 +15,8 @@
  */
 package org.docksidestage.whitebox.job;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.dbflute.optional.OptionalThing;
@@ -22,15 +24,18 @@ import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.job.JobManager;
 import org.lastaflute.job.LaJobHistory;
 import org.lastaflute.job.LaScheduledJob;
+import org.lastaflute.job.cron4j.Cron4jJob;
 import org.lastaflute.job.key.LaJobUnique;
 import org.lastaflute.job.subsidiary.ExecResultType;
 import org.lastaflute.job.subsidiary.LaunchNowOption;
 import org.lastaflute.job.subsidiary.LaunchedProcess;
 
+import it.sauronsoftware.cron4j.TaskExecutor;
+
 /**
  * @author jflute
  */
-public class WxJobConcurrentTest extends UnitFortressBasicTestCase {
+public class WxJobBasicTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -47,58 +52,44 @@ public class WxJobConcurrentTest extends UnitFortressBasicTestCase {
     }
 
     // ===================================================================================
-    //                                                                          Concurrent
-    //                                                                          ==========
-    // also visual check of serial execution
-    public void test_concurrent_wait() {
+    //                                                                        Basic Launch
+    //                                                                        ============
+    public void test_launchNow_basic() {
         // ## Arrange ##
-        LaScheduledJob job = findConcurrentJob("mystic-wait");
+        LaScheduledJob job = findBasicJob("mystic");
 
         // ## Act ##
-        LaunchedProcess firstProcess = job.launchNow(op -> setupWaitTime(op));
-        LaunchedProcess secondProcess = job.launchNow(op -> setupWaitTime(op));
+        LaunchedProcess process = job.launchNow(op -> setupWaitTime(op));
 
         // ## Assert ##
         assertExecutingNow(job);
-        assertJobHistory(firstProcess.waitForEnding(), ExecResultType.SUCCESS);
-        assertJobHistory(secondProcess.waitForEnding(), ExecResultType.SUCCESS);
+        assertJobHistory(process.waitForEnding(), ExecResultType.SUCCESS);
         assertFalse(job.isExecutingNow());
+        assertExecutorListEmpty(job);
     }
 
-    public void test_concurrent_quit() {
+    // ===================================================================================
+    //                                                                            Stop Now
+    //                                                                            ========
+    public void test_launchNow_stopNow() {
         // ## Arrange ##
-        LaScheduledJob job = findConcurrentJob("mystic-quit");
+        LaScheduledJob job = findBasicJob("mystic");
 
         // ## Act ##
-        LaunchedProcess firstProcess = job.launchNow(op -> setupWaitTime(op));
-        LaunchedProcess secondProcess = job.launchNow(op -> setupWaitTime(op));
+        LaunchedProcess process = job.launchNow(op -> setupWaitTime(op));
 
         // ## Assert ##
+        job.stopNow();
         assertExecutingNow(job);
-        assertJobHistory(firstProcess.waitForEnding(), ExecResultType.SUCCESS);
-        assertJobHistory(secondProcess.waitForEnding(), ExecResultType.QUIT_BY_CONCURRENT);
+        assertJobHistory(process.waitForEnding(), ExecResultType.CAUSED_BY_APPLICATION);
         assertFalse(job.isExecutingNow());
-    }
-
-    public void test_concurrent_error() {
-        // ## Arrange ##
-        LaScheduledJob job = findConcurrentJob("mystic-error");
-
-        // ## Act ##
-        LaunchedProcess firstProcess = job.launchNow(op -> setupWaitTime(op));
-        LaunchedProcess secondProcess = job.launchNow(op -> setupWaitTime(op));
-
-        // ## Assert ##
-        assertExecutingNow(job);
-        assertJobHistory(firstProcess.waitForEnding(), ExecResultType.SUCCESS);
-        assertJobHistory(secondProcess.waitForEnding(), ExecResultType.ERROR_BY_CONCURRENT);
-        assertFalse(job.isExecutingNow());
+        assertExecutorListEmpty(job);
     }
 
     // ===================================================================================
     //                                                                        Assist Logic
     //                                                                        ============
-    private LaScheduledJob findConcurrentJob(String uniqueCode) {
+    private LaScheduledJob findBasicJob(String uniqueCode) {
         LaJobUnique jobUnique = LaJobUnique.of(uniqueCode);
         LaScheduledJob job = jobManager.findJobByUniqueOf(jobUnique).get();
         return job;
@@ -123,5 +114,10 @@ public class WxJobConcurrentTest extends UnitFortressBasicTestCase {
         LaJobHistory history = optHistory.get();
         log(history);
         assertEquals(execResultType, history.getExecResultType());
+    }
+
+    private void assertExecutorListEmpty(LaScheduledJob job) {
+        List<TaskExecutor> executorList = ((Cron4jJob) job).getCron4jNow().getCron4jScheduler().getExecutorList();
+        assertEquals(0, executorList.size());
     }
 }
