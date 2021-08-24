@@ -84,7 +84,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
+					<version>3.0.0-M1</version>
 					<configuration>
 						<updateReleaseInfo>true</updateReleaseInfo>
 					</configuration>
@@ -151,9 +151,9 @@
 						</execution>
 					</executions>
 				</plugin>
-				<plugin>
+				<plugin> <!-- for boot by maven command -->
 					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>exec-maven-plugin</artifactId> <!-- for boot by maven command -->
+					<artifactId>exec-maven-plugin</artifactId>
 					<version>1.6.0</version>
 					<executions>
 						<execution>
@@ -204,7 +204,7 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<plugin>
+			<plugin> <!-- for e.g. swagger in deploy environment -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.2.0</version>
