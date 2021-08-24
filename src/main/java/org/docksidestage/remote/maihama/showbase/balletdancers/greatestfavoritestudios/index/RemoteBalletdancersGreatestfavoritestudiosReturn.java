@@ -24,7 +24,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /ballet-dancers/{productId}/greatest-favorite-studios/.
  * @author FreeGen
  */
-public class RemoteBalletdancersGreatestfavoritestudiosReturn {
+public class RemoteBalletdancersGreatestfavoritestudiosReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of rows. */
     @NotNull

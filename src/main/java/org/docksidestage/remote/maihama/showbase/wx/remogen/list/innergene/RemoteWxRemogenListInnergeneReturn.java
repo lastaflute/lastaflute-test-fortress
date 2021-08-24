@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
  * The bean class as return for remote API of GET /wx/remogen/list/innergene.
  * @author FreeGen
  */
-public class RemoteWxRemogenListInnergeneReturn {
+public class RemoteWxRemogenListInnergeneReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of key. (NullAllowed) */
     public java.util.Map<String, Object> key;

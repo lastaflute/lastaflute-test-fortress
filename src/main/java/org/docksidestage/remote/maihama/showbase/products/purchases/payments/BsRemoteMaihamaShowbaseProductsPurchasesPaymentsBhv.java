@@ -19,9 +19,9 @@ import java.util.function.Consumer;
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.docksidestage.remote.maihama.showbase.AbstractRemoteMaihamaShowbaseBhv;
-import org.docksidestage.remote.maihama.showbase.products.purchases.payments.index.RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidReturn;
-import org.docksidestage.remote.maihama.showbase.products.purchases.payments.index.RemoteProductsPurchasesPaymentsParam;
-import org.docksidestage.remote.maihama.showbase.products.purchases.payments.index.RemoteProductsPurchasesPaymentsReturn;
+import org.docksidestage.remote.maihama.showbase.products.purchases.payments.index.RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidResult;
+import org.docksidestage.remote.maihama.showbase.products.purchases.payments.index.RemoteProductsPurchasesPaymentsBody;
+import org.docksidestage.remote.maihama.showbase.products.purchases.payments.index.RemoteProductsPurchasesPaymentsResult;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -51,10 +51,10 @@ public abstract class BsRemoteMaihamaShowbaseProductsPurchasesPaymentsBhv extend
      * </pre>
      * @param productId The value of path variable for productId. (NotNull)
      * @param purchaseId The value of path variable for purchaseId. (NotNull)
-     * @param paramLambda The callback for RemoteProductsPurchasesPaymentsParam. (NotNull)
+     * @param paramLambda The callback for RemoteProductsPurchasesPaymentsBody. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public org.eclipse.collections.api.list.ImmutableList<RemoteProductsPurchasesPaymentsReturn> requestGet(Integer productId, Long purchaseId, Consumer<RemoteProductsPurchasesPaymentsParam> paramLambda) {
+    public org.eclipse.collections.api.list.ImmutableList<RemoteProductsPurchasesPaymentsResult> requestGet(Integer productId, Long purchaseId, Consumer<RemoteProductsPurchasesPaymentsBody> paramLambda) {
         return doRequestGet(productId, purchaseId, paramLambda, rule -> {});
     }
 
@@ -66,14 +66,14 @@ public abstract class BsRemoteMaihamaShowbaseProductsPurchasesPaymentsBhv extend
      * </pre>
      * @param productId The value of path variable for productId. (NotNull)
      * @param purchaseId The value of path variable for purchaseId. (NotNull)
-     * @param paramLambda The callback for RemoteProductsPurchasesPaymentsParam. (NotNull)
+     * @param paramLambda The callback for RemoteProductsPurchasesPaymentsBody. (NotNull)
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected org.eclipse.collections.api.list.ImmutableList<RemoteProductsPurchasesPaymentsReturn> doRequestGet(Integer productId, Long purchaseId, Consumer<RemoteProductsPurchasesPaymentsParam> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        RemoteProductsPurchasesPaymentsParam param = new RemoteProductsPurchasesPaymentsParam();
+    protected org.eclipse.collections.api.list.ImmutableList<RemoteProductsPurchasesPaymentsResult> doRequestGet(Integer productId, Long purchaseId, Consumer<RemoteProductsPurchasesPaymentsBody> paramLambda, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        RemoteProductsPurchasesPaymentsBody param = new RemoteProductsPurchasesPaymentsBody();
         paramLambda.accept(param);
-        return doRequestGet(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteProductsPurchasesPaymentsReturn>>() {
+        return doRequestGet(new org.lastaflute.di.helper.misc.ParameterizedRef<org.eclipse.collections.api.list.ImmutableList<RemoteProductsPurchasesPaymentsResult>>() {
         }.getType(), "/products/{productId}/purchases/{purchaseId}/payments/", moreUrl(productId, purchaseId), query(param), rule -> {
             ruleOfGetProductIdPurchaseId(rule);
             ruleLambda.accept(rule);
@@ -98,7 +98,7 @@ public abstract class BsRemoteMaihamaShowbaseProductsPurchasesPaymentsBhv extend
      * @param paymentId The value of path variable for paymentId. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    public RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidReturn requestGet(Integer productId, Long purchaseId, Long paymentId) {
+    public RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidResult requestGet(Integer productId, Long purchaseId, Long paymentId) {
         return doRequestGet(productId, purchaseId, paymentId, rule -> {});
     }
 
@@ -114,8 +114,8 @@ public abstract class BsRemoteMaihamaShowbaseProductsPurchasesPaymentsBhv extend
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      * @return The bean object as return type, receiving response body. (NotNull)
      */
-    protected RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidReturn doRequestGet(Integer productId, Long purchaseId, Long paymentId, Consumer<FlutyRemoteApiRule> ruleLambda) {
-        return doRequestGet(RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidReturn.class, "/products/{productId}/purchases/{purchaseId}/payments/{paymentId}/", moreUrl(productId, purchaseId, paymentId), noQuery(), rule -> {
+    protected RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidResult doRequestGet(Integer productId, Long purchaseId, Long paymentId, Consumer<FlutyRemoteApiRule> ruleLambda) {
+        return doRequestGet(RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidResult.class, "/products/{productId}/purchases/{purchaseId}/payments/{paymentId}/", moreUrl(productId, purchaseId, paymentId), noQuery(), rule -> {
             ruleOfGetProductIdPurchaseIdPaymentId(rule);
             ruleLambda.accept(rule);
         });

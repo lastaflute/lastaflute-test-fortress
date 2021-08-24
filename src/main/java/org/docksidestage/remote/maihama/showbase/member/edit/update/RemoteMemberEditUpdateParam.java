@@ -36,7 +36,7 @@ public class RemoteMemberEditUpdateParam {
     @Required
     public String memberAccount;
 
-    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) (memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.) */
+    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 

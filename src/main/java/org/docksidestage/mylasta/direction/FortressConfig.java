@@ -61,6 +61,9 @@ public interface FortressConfig extends FortressEnv, org.docksidestage.mylasta.d
     /** The key of the configuration. e.g. escaped "あいうえお" and plain "あいうえお" */
     String WHITEBOX_CONFIG_JAPANESE_CAOS = "whitebox.config.japanese.caos";
 
+    /** The key of the configuration. e.g. sealandpiari */
+    String WHITEBOX_CONFIG_ESCAPED_LINESEP = "whitebox.config.escaped.linesep";
+
     /**
      * Get the value of property as {@link String}.
      * @param propertyKey The key of the property. (NotNull)
@@ -225,6 +228,13 @@ public interface FortressConfig extends FortressEnv, org.docksidestage.mylasta.d
     String getWhiteboxConfigJapaneseCaos();
 
     /**
+     * Get the value for the key 'whitebox.config.escaped.linesep'. <br>
+     * The value is, e.g. sealandpiari <br>
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getWhiteboxConfigEscapedLinesep();
+
+    /**
      * The simple implementation for configuration.
      * @author FreeGen
      */
@@ -303,6 +313,10 @@ public interface FortressConfig extends FortressEnv, org.docksidestage.mylasta.d
 
         public String getWhiteboxConfigJapaneseCaos() {
             return get(FortressConfig.WHITEBOX_CONFIG_JAPANESE_CAOS);
+        }
+
+        public String getWhiteboxConfigEscapedLinesep() {
+            return get(FortressConfig.WHITEBOX_CONFIG_ESCAPED_LINESEP);
         }
     }
 }

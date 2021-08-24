@@ -15,8 +15,11 @@
  */
 package org.docksidestage.mylasta;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Set;
 
+import org.dbflute.helper.filesystem.FileTextIO;
 import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.FortressTomcatBoot;
 import org.docksidestage.app.web.SwaggerAction;
@@ -40,11 +43,26 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
     public void test_swaggerJson() throws Exception {
         saveSwaggerMeta(new SwaggerAction());
 
+        // to compare with previous swagger.json
+        copyToResourcesJson();
+
         // same json so no diff
         //verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
 
         // having a little changed diff (with many deleted)
         //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
+    }
+
+    protected void copyToResourcesJson() throws IOException {
+        log("...Copying new swagger.json to resources JSON file to compare with previous swagger.json");
+        FileTextIO fileTextIO = new FileTextIO().encodeAsUTF8();
+        String projectPath = getProjectDir().getCanonicalPath();
+        String outputText = fileTextIO.read(projectPath + "/target/lastadoc/swagger.json");
+        String resourcesFile = projectPath + "/src/main/resources/swagger/fortress_whole_lasta_swagger.json";
+        if (!new File(resourcesFile).exists()) {
+            throw new IllegalStateException("Not found the resources JSON file: " + resourcesFile);
+        }
+        fileTextIO.write(resourcesFile, outputText);
     }
 
     protected void customizeDiff(YourSwaggerSyncOption op) { // test for customization

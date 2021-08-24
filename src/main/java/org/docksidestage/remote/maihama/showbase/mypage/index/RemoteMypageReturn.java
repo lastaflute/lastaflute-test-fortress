@@ -24,7 +24,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /mypage/.
  * @author FreeGen
  */
-public class RemoteMypageReturn {
+public class RemoteMypageReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of recentProducts. */
     @NotNull

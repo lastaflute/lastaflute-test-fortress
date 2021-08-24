@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /product/detail/{productId}.
  * @author FreeGen
  */
-public class RemoteProductDetailReturn {
+public class RemoteProductDetailReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of productId. */
     @Required

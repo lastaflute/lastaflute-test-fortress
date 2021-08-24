@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.mylasta.direction.sponsor.planner;
+package org.docksidestage.mylasta.direction.sponsor.planner.memorable;
 
 import java.util.ArrayList;
 import java.util.Collections;

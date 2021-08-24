@@ -20,7 +20,7 @@ import org.eclipse.collections.api.list.ImmutableList;
 /**
  * @author jflute
  */
-public class WxResponseJsonRowFilePart {
+public class WxResponseJsonSwaggerFilePart {
 
     public String sea;
 

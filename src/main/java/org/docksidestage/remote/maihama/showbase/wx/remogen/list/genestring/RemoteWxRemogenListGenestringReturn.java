@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
  * The bean class as return for remote API of GET /wx/remogen/list/genestring.
  * @author FreeGen
  */
-public class RemoteWxRemogenListGenestringReturn {
+public class RemoteWxRemogenListGenestringReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of key. (NullAllowed) */
     public String key;

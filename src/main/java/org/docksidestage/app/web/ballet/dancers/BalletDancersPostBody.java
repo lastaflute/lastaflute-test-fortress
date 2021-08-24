@@ -13,24 +13,24 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.products.purchases.payments.index;
+package org.docksidestage.app.web.ballet.dancers;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 
 /**
- * The bean class as return for remote API of GET /products/{productId}/purchases/{purchaseId}/payments/{paymentId}/.
- * @author FreeGen
+ * @author jflute
  */
-public class RemoteProductsProductidPurchasesPurchaseidPaymentsPaymentidReturn {
+public class BalletDancersPostBody {
 
-    /** The property of paymentId. */
     @Required
-    public Long paymentId;
-
-    /** The property of paymentDatetime. */
+    public String productName;
     @Required
-    public java.time.LocalDateTime paymentDatetime;
+    public String productStatus;
+    @Required
+    public String productCategory;
+    @Required
+    public Integer regularPrice;
 
     @Override
     public String toString() {

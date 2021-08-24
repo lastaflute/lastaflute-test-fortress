@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
  * The bean class as return for remote API of GET /product/list/status.
  * @author FreeGen
  */
-public class RemoteProductListStatusReturn {
+public class RemoteProductListStatusReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of key. (NullAllowed) */
     public java.util.Map<String, Object> key;

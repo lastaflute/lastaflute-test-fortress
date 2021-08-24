@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /member/edit/{memberId}.
  * @author FreeGen
  */
-public class RemoteMemberEditReturn {
+public class RemoteMemberEditReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of memberId. */
     @Required
@@ -36,7 +36,7 @@ public class RemoteMemberEditReturn {
     @Required
     public String memberAccount;
 
-    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) (memberStatus: * `FML` - Formalized, Formalized. * `WDL` - Withdrawal, Withdrawal. * `PRV` - Provisional, Provisional.) */
+    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
