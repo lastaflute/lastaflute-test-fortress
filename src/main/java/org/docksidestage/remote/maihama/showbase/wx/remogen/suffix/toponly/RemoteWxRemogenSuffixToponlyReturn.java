@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /wx/remogen/suffix/toponly.
  * @author FreeGen
  */
-public class RemoteWxRemogenSuffixToponlyReturn {
+public class RemoteWxRemogenSuffixToponlyReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of resortName. */
     @Required

@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
  * The bean class as return for remote API of GET /wx/remogen/method/.
  * @author FreeGen
  */
-public class RemoteWxRemogenMethodGetReturn {
+public class RemoteWxRemogenMethodGetReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of sea. (NullAllowed) */
     public String sea;

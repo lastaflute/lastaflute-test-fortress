@@ -23,6 +23,7 @@ import org.docksidestage.app.job.challenge.AmbaJob;
 import org.docksidestage.app.job.challenge.BonvoJob;
 import org.docksidestage.app.job.challenge.DstoreJob;
 import org.docksidestage.app.job.challenge.PiariJob;
+import org.docksidestage.app.job.concurrent.MysticConcurrentJob;
 import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.logic.context.AccessContextLogic.ClientInfoSupplier;
 import org.docksidestage.app.logic.context.AccessContextLogic.UserInfoSupplier;
@@ -60,6 +61,14 @@ public class AllJobScheduler implements LaJobScheduler {
         cron.registerNonCron(BonvoJob.class, errorIfConcurrent(), op -> op.uniqueBy("bonvo"));
         cron.registerNonCron(DstoreJob.class, errorIfConcurrent(), op -> op.uniqueBy("dstore"));
         cron.registerNonCron(AmbaJob.class, errorIfConcurrent(), op -> op.uniqueBy("amba"));
+
+        // test of concurrent
+        cron.registerNonCron(MysticConcurrentJob.class, waitIfConcurrent(), op -> op.uniqueBy("mystic-wait"));
+        cron.registerNonCron(MysticConcurrentJob.class, quitIfConcurrent(), op -> op.uniqueBy("mystic-quit"));
+        cron.registerNonCron(MysticConcurrentJob.class, errorIfConcurrent(), op -> op.uniqueBy("mystic-error"));
+        cron.registerNonCron(MysticConcurrentJob.class, waitIfConcurrent(), op -> {
+            op.uniqueBy("mystic-parallel").grantOutlawParallel();
+        });
     }
 
     @Override

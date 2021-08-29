@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /wx/remogen/tricky/oddprop.
  * @author FreeGen
  */
-public class RemoteWxRemogenTrickyOddpropReturn {
+public class RemoteWxRemogenTrickyOddpropReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of seaResult. */
     @Required

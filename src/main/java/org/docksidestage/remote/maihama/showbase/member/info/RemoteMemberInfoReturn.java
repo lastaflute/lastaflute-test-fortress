@@ -22,7 +22,7 @@ import org.lastaflute.web.validation.Required;
  * The bean class as return for remote API of GET /member/info.
  * @author FreeGen
  */
-public class RemoteMemberInfoReturn {
+public class RemoteMemberInfoReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of memberId. (NullAllowed) */
     public Integer memberId;

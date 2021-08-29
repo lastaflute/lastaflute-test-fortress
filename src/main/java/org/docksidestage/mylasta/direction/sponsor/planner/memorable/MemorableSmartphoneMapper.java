@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.mylasta.direction.sponsor.planner;
+package org.docksidestage.mylasta.direction.sponsor.planner.memorable;
 
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.Srl;
@@ -29,14 +29,14 @@ public class MemorableSmartphoneMapper {
 
     public OptionalThing<UrlMappingOption> customizeActionUrlMapping(UrlMappingResource resource) {
         return OptionalThing.ofNullable(doCustomizeActionUrlMapping(resource), () -> {
-            throw new IllegalStateException("No operation for the requestPath: " + resource.getRequestPath());
+            throw new IllegalStateException("No operation for the requestPath: " + resource.getPureRequestPath());
         });
     }
 
     protected UrlMappingOption doCustomizeActionUrlMapping(UrlMappingResource resource) {
         // for mapping '/sp/product/list/' to ProductListSpAction.class
         // (should also override reverse customization)
-        if (resource.getRequestPath().startsWith("/sp/")) { // e.g. /sp/product/list/
+        if (resource.getPureRequestPath().startsWith("/sp/")) { // e.g. /sp/product/list/
             return new UrlMappingOption().filterRequestPath(requestPath -> { // e.g. /sp/product/list/
                 return Srl.substringFirstRear(requestPath, "/sp"); // e.g. /product/list/
             }).useActionNameSuffix("Sp"); // e.g. productListSpAction

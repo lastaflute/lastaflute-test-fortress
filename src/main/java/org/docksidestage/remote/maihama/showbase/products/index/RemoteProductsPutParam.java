@@ -34,7 +34,7 @@ public class RemoteProductsPutParam {
 
     /** The property of productStatus. */
     @Required
-    public String productStatus;
+    public org.docksidestage.dbflute.allcommon.CDef.ProductStatus productStatus;
 
     /** The property of productCategory. */
     @Required

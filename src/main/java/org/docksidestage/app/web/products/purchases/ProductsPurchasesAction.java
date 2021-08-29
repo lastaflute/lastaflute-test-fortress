@@ -27,12 +27,13 @@ import org.lastaflute.web.Execute;
 import org.lastaflute.web.RestfulAction;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
+import org.lastaflute.web.util.LaActionRuntimeUtil;
 
 /**
  * @author jflute
  */
 @AllowAnyoneAccess
-@RestfulAction(allowEventSuffix = true)
+@RestfulAction(allowEventSuffix = true, eventSuffixHyphenate = { "hangar-mystic", "showbase-oneman" })
 public class ProductsPurchasesAction extends FortressBaseAction {
 
     // ===================================================================================
@@ -49,19 +50,10 @@ public class ProductsPurchasesAction extends FortressBaseAction {
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // /products/1/purchases/
     //
-    // *it needs "list" in method, which is resolved by ActionAdjustmentProvider
     // http://localhost:8151/fortress/products/1/purchases/?memberName=S
     // _/_/_/_/_/_/_/_/_/_/
     @Execute
     public JsonResponse<PurchasesListResult> get$index(Integer productId, PurchasesListForm form) {
-        validateApi(form, messages -> {});
-        List<Purchase> purchaseList = selectPurchaseList(productId, form);
-        PurchasesListResult result = mappingToListResult(purchaseList);
-        return asJson(result);
-    }
-
-    @Execute
-    public JsonResponse<PurchasesListResult> get$sea(Integer productId, PurchasesListForm form) {
         validateApi(form, messages -> {});
         List<Purchase> purchaseList = selectPurchaseList(productId, form);
         PurchasesListResult result = mappingToListResult(purchaseList);
@@ -77,6 +69,63 @@ public class ProductsPurchasesAction extends FortressBaseAction {
     public JsonResponse<PurchasesOneResult> get$index(Integer productId, Long purchaseId) {
         Purchase purchase = selectPurchaseById(productId, purchaseId);
         PurchasesOneResult result = mappingToOneResult(purchase);
+        return asJson(result);
+    }
+
+    // -----------------------------------------------------
+    //                                   Test of EventSuffix
+    //                                   -------------------
+    // http://localhost:8151/fortress/products/1/purchases/sea?memberName=S
+    @Execute
+    public JsonResponse<PurchasesListResult> get$sea(Integer productId, PurchasesListForm form) {
+        validateApi(form, messages -> {});
+        List<Purchase> purchaseList = selectPurchaseList(productId, form);
+        PurchasesListResult result = mappingToListResult(purchaseList);
+        result.rows.forEach(row -> row.memberName = currentMethodName() + " called");
+        return asJson(result);
+    }
+
+    // http://localhost:8151/fortress/products/1/purchases/docksideOver?memberName=S
+    // cannot use hyphen because of no setting in annotation
+    // x http://localhost:8151/fortress/products/1/purchases/dockside-over?memberName=S
+    @Execute
+    public JsonResponse<PurchasesListResult> get$docksideOver(Integer productId, PurchasesListForm form) {
+        validateApi(form, messages -> {});
+        List<Purchase> purchaseList = selectPurchaseList(productId, form);
+        PurchasesListResult result = mappingToListResult(purchaseList);
+        result.rows.forEach(row -> row.memberName = currentMethodName() + " called");
+        return asJson(result);
+    }
+
+    // http://localhost:8151/fortress/products/1/purchases/hangar-mystic?memberName=S
+    // also direct camel-case is mapped for now
+    // v http://localhost:8151/fortress/products/1/purchases/hangarMystic?memberName=S
+    @Execute
+    public JsonResponse<PurchasesListResult> get$hangarMystic(Integer productId, PurchasesListForm form) {
+        validateApi(form, messages -> {});
+        List<Purchase> purchaseList = selectPurchaseList(productId, form);
+        PurchasesListResult result = mappingToListResult(purchaseList);
+        result.rows.forEach(row -> row.memberName = currentMethodName() + " called");
+        return asJson(result);
+    }
+
+    // http://localhost:8151/fortress/products/1/purchases/16/land
+    @Execute
+    public JsonResponse<PurchasesOneResult> get$land(Integer productId, Long purchaseId) {
+        Purchase purchase = selectPurchaseById(productId, purchaseId);
+        PurchasesOneResult result = mappingToOneResult(purchase);
+        result.memberName = currentMethodName() + " called";
+        return asJson(result);
+    }
+
+    // http://localhost:8151/fortress/products/1/purchases/16/showbase-oneman
+    // also direct camel-case is mapped for now
+    // v http://localhost:8151/fortress/products/1/purchases/16/showbaseOneman
+    @Execute
+    public JsonResponse<PurchasesOneResult> get$showbaseOneman(Integer productId, Long purchaseId) {
+        Purchase purchase = selectPurchaseById(productId, purchaseId);
+        PurchasesOneResult result = mappingToOneResult(purchase);
+        result.memberName = currentMethodName() + " called";
         return asJson(result);
     }
 
@@ -100,5 +149,12 @@ public class ProductsPurchasesAction extends FortressBaseAction {
 
     private PurchasesOneResult mappingToOneResult(Purchase purchase) {
         return purchasesMappingAssist.mappingToOneResult(purchase);
+    }
+
+    // ===================================================================================
+    //                                                                        Small Helper
+    //                                                                        ============
+    private String currentMethodName() {
+        return LaActionRuntimeUtil.getActionRuntime().getActionExecute().getExecuteMethod().getName() + "()";
     }
 }

@@ -13,31 +13,12 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.remote.maihama.showbase.products.purchases.payments.index;
-
-import org.lastaflute.core.util.Lato;
-import org.lastaflute.web.validation.Required;
+package org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios;
 
 /**
- * The bean class as return for remote API of GET /products/{productId}/purchases/{purchaseId}/payments/.
- * @author FreeGen
+ * @author jflute
  */
-public class RemoteProductsPurchasesPaymentsReturn {
+public class GreatestFavoriteStudiosSearchForm {
 
-    /** The property of paymentId. */
-    @Required
-    public Long paymentId;
-
-    /** The property of memberName. */
-    @Required
     public String memberName;
-
-    /** The property of productName. */
-    @Required
-    public String productName;
-
-    @Override
-    public String toString() {
-        return Lato.string(this);
-    }
 }

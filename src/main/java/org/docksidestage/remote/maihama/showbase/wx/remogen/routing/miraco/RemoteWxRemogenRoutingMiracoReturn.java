@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
  * The bean class as return for remote API of GET /wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth}.
  * @author FreeGen
  */
-public class RemoteWxRemogenRoutingMiracoReturn {
+public class RemoteWxRemogenRoutingMiracoReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of method. (NullAllowed) */
     public String method;

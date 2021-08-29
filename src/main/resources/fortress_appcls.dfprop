@@ -117,17 +117,46 @@ map:{
             ; subItemMap=map:{ order=8 ; newKeyword=party }
         }
     }
-    # test of referring group, expects grouped elements only and sub-item, sisters exist
-    ; AppDohotel = list:{
-        ; map:{ topComment=test of referring group, expects grouped elements only and sub-item, sisters exist ; codeType=String }
-        ; map:{ refCls=maihamadb@MemberStatus.serviceAvailable ; refType=included }
-    }
     # test of included with overriding, expected merged
-    ; AppAmphi = list:{
+    ; AppDohotel = list:{
         ; map:{ topComment=test of included with overriding, expected merged ; codeType=String }
         ; map:{ refCls=maihamadb@MemberStatus ; refType=included }
         ; map:{ code=FML ; override=true ; name=OneMan }
-        ; map:{ code=PRV ; override=true ; alias=Castle ; sisterCode=Route ; subItemMap=map:{order=9} }
+        ; map:{ code=PRV ; override=true ; alias=Castle ; comment=ParadeTwoYears ; sisterCode=Route ; subItemMap=map:{order=9} }
+        ; map:{ code=MYS ; name=Mystic ; alias=Hangar ; comment=Rhythms ; subItemMap=map:{order=88} }
+    }
+    # test of exists with inherit, expected merged
+    ; AppAmphi = list:{
+        ; map:{ topComment=test of exists with inheriting, expected merged ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=exists }
+        ; map:{ code=FML ; inherit=true }
+        ; map:{ code=PRV ; inherit=true ; alias=Castle ; comment=ParadeTwoYears }
+    }
+    # test of matches with inherit, expected merged
+    ; AppOrien = list:{
+        ; map:{ topComment=test of matches with inheriting, expected merged ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus ; refType=matches }
+        ; map:{ code=FML ; inherit=true ; name=OneMan}
+        ; map:{ code=WDL ; name=MiniO ; alias=Orleans ; subItemMap=map:{order=5} }
+        ; map:{ code=PRV ; inherit=true ; alias=Castle ; sisterCode=Provisional ; subItemMap=map:{order=9} }
+    }
+    # test of referring group as included, expects grouped elements only and sub-item, sisters exist
+    ; AppCeleb = list:{
+        ; map:{ topComment=test of referring group as included, expects grouped elements only and sub-item, sisters exist ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus.serviceAvailable ; refType=included }
+    }
+    # test of referring group as exists, expects grouped elements only and existence checked
+    ; AppToys = list:{
+        ; map:{ topComment=test of referring group as exists, expects grouped elements only and existence checked ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus.serviceAvailable ; refType=exists }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+    }
+    # test of referring group as matches, expects grouped elements only and matching checked
+    ; AppBrighton = list:{
+        ; map:{ topComment=test of referring group as matches, expects grouped elements only and matching checked ; codeType=String }
+        ; map:{ refCls=maihamadb@MemberStatus.serviceAvailable ; refType=matches }
+        ; map:{ code=FML ; name=OneMan ; alias=ShowBase ; comment=Formalized }
+        ; map:{ code=PRV ; name=Parade ; alias=Castle ; comment=Provisional }
     }
 
     # ====================================================================================

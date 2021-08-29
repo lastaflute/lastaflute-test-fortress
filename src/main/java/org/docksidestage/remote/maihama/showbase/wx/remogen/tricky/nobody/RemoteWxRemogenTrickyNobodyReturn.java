@@ -21,7 +21,7 @@ import org.lastaflute.core.util.Lato;
  * The bean class as return for remote API of GET /wx/remogen/tricky/nobody.
  * @author FreeGen
  */
-public class RemoteWxRemogenTrickyNobodyReturn {
+public class RemoteWxRemogenTrickyNobodyReturn extends org.docksidestage.bizfw.remoteapi.AbstractListGetReturn {
 
     /** The property of key. (NullAllowed) */
     public String key;

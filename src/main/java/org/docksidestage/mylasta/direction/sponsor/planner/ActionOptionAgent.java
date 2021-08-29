@@ -77,6 +77,11 @@ public class ActionOptionAgent {
         return new NumericBasedRestfulRouter();
     }
 
+    // test hyphenated event power play
+    //public RestfulRouter createRestfulRouter() {
+    //    return new HyphenatedEventPowerPlayer().createHyphenatedEventRestfulRouter();
+    //}
+
     // ===================================================================================
     //                                                                        Form Mapping
     //                                                                        ============

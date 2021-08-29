@@ -110,7 +110,13 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     // test of moreUrl() and generics return and as POST
     public RemoteHbPagingReturn<RemoteHbLidoProductRowReturn> requestLidoProductList(RemoteHbLidoProductSearchParam param) {
         return doRequestPost(new ParameterizedRef<RemoteHbPagingReturn<RemoteHbLidoProductRowReturn>>() {
-        }.getType(), "/lido/product/list", moreUrl(1), param, rule -> {});
+        }.getType(), "/lido/product/list", moreUrl(1), param, rule -> {
+            rule.handleResponseHeader(resource -> {
+                // xxxxxxPager.setup(resource.getMappedBodyReturn().get());
+                //
+                // public XxxxxxxxPagingPart pagingPart;
+            });
+        });
     }
 
     // -----------------------------------------------------

@@ -30,9 +30,4 @@ public class WxResponseJsonDirectlyAction extends FortressBaseAction {
     public JsonResponse<String> index() {
         return JsonResponse.asJsonDirectly("{sea: land}");
     }
-
-    @Execute
-    public JsonResponse<WxResponseJsonRowResult> normal() {
-        return asJson(new WxResponseJsonRowResult());
-    }
 }
