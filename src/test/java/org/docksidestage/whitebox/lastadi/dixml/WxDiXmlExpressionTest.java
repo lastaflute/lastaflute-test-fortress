@@ -24,7 +24,7 @@ import org.lastaflute.di.core.factory.SingletonLaContainerFactory;
 public class WxDiXmlExpressionTest extends PlainTestCase {
 
     public void test_read_trialDi() throws Exception {
-        SingletonLaContainerFactory.setConfigPath("trial_di.xml");
+        SingletonLaContainerFactory.setConfigPath("wx_trial_di_app.xml");
         SingletonLaContainerFactory.init(); // expects no exception
     }
 }
