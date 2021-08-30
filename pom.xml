@@ -475,6 +475,12 @@
 			<artifactId>eclipse-collections</artifactId>
 			<version>${eclipse.collections.version}</version>
 		</dependency>
+		<!-- javascript engine instead of nashorn? -->
+		<dependency>
+		    <groupId>org.mozilla</groupId>
+		    <artifactId>rhino-engine</artifactId>
+		    <version>1.7.13</version>
+		</dependency>
 
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
 		<!--                                                                       Testing -->
