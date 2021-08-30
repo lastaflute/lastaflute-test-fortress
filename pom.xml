@@ -34,7 +34,7 @@
 		<logback.version>1.2.3</logback.version>
 		<servlet.version>4.0.1</servlet.version>
 		<jetty.boot.version>0.5.1</jetty.boot.version>
-		<tomcat.boot.version>0.7.8</tomcat.boot.version>
+		<tomcat.boot.version>0.7.9</tomcat.boot.version>
 		<swagger.ui.version>3.35.0</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
@@ -246,7 +246,8 @@
 							<includeArtifactIds>
 								javax.servlet-api, javax.servlet.jsp, javax.servlet.jsp-api
 								, jetty-boot, jetty-all, javax.el, jetty-jsp, jetty-schemas, javax.websocket-api
-								, tomcat-boot, tomcat-embed-core, tomcat-embed-logging-juli, tomcat-jasper
+								, tomcat-boot, tomcat-embed-core, tomcat-embed-logging-juli
+								, tomcat-jasper, tomcat-jasper-el, tomcat-el-api, tomcat-jsp-api, ecj
 							</includeArtifactIds>
 							<overWriteReleases>true</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
