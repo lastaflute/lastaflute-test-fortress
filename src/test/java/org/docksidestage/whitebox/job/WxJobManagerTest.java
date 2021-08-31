@@ -89,7 +89,7 @@ public class WxJobManagerTest extends UnitFortressBasicTestCase {
         assertExecutorExists(job);
         job.stopNow();
         LaJobHistory history = process.waitForEnding().get(); // exists
-        assertEquals(ExecResultType.SUCCESS, history.getExecResultType()); // no implementation for stop
+        assertEquals(ExecResultType.CAUSED_BY_APPLICATION, history.getExecResultType()); // stopIfNeeds() called
     }
 
     // ===================================================================================
