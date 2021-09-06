@@ -60,6 +60,10 @@ public class WxHibernateValidatorCustomTest extends PlainTestCase {
         assertEquals(2, vioSet.size());
     }
 
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // *@ReportAsSingleViolation test is implemenated at ActionValidator's test
+    // _/_/_/_/_/_/_/_/_/_/
+
     // ===================================================================================
     //                                                                        Assist Logic
     //                                                                        ============

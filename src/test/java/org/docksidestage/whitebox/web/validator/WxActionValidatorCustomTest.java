@@ -14,6 +14,7 @@ import java.util.Map.Entry;
 import javax.annotation.Resource;
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import javax.validation.ReportAsSingleViolation;
 
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
@@ -34,10 +35,10 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
     // ===================================================================================
     //                                                                            Messages
     //                                                                            ========
-    public void test_custom_messages_inner_outer() {
+    public void test_custom_messages_default() {
         // ## Arrange ##
         ActionValidator<FortressMessages> validator = createValidator();
-        MaihamaBean maihama = new MaihamaBean();
+        MaihamaMessageBean maihama = new MaihamaMessageBean();
         maihama.sea = "01234567890123456789"; // length over
         maihama.land = "01234567890123456789"; // length over
 
@@ -70,21 +71,55 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
         }
     }
 
-    // ===================================================================================
-    //                                                                        Assist Logic
-    //                                                                        ============
+    public void test_custom_messages_reportAsSingle() {
+        // ## Arrange ##
+        ActionValidator<FortressMessages> validator = createValidator();
+        MaihamaMessageBean maihama = new MaihamaMessageBean();
+        maihama.piari = "01234567890123456789"; // length over
+
+        // ## Act ##
+        try {
+            validator.validateApi(maihama, messages -> {});
+            fail();
+        } catch (ValidationErrorException e) {
+            // ## Assert ##
+            UserMessages messages = e.getMessages();
+            Map<String, List<String>> messageMap = requestManager.getMessageManager().toPropertyMessageMap(Locale.ENGLISH, messages);
+            for (Entry<String, List<String>> entry : messageMap.entrySet()) {
+                String propertyName = entry.getKey();
+                List<String> messageList = entry.getValue();
+                assertHasOnlyOneElement(messageList); // as test logic
+                if ("piari".equals(propertyName)) {
+                    assertContains(messageList.get(0), "may not be empty");
+                    markHere("piari_called");
+                }
+            }
+            assertMarked("piari_called");
+            assertEquals(1, messageMap.size());
+        }
+    }
+
+    // -----------------------------------------------------
+    //                                          Assist Logic
+    //                                          ------------
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // can omit [javax.validator.]constraints.NotBlank.message as ActionValidator
     // _/_/_/_/_/_/_/_/_/_/
-    public static class MaihamaBean {
+    public static class MaihamaMessageBean {
 
         @SeaWithoutMessage
         public String sea;
 
         @LandWithMessage
         public String land;
+
+        @PiariReportAsSingleMessage
+        public String piari;
     }
 
+    // -----------------------------------------------------
+    //                                       Default Message
+    //                                       ---------------
     @Target({ FIELD })
     @Retention(RUNTIME)
     @Constraint(validatedBy = {}) // needed as mark
@@ -107,6 +142,24 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
     public @interface LandWithMessage {
 
         String message() default "{constraints.NotBlank.message}"; // dummy
+
+        Class<?>[] groups() default {};
+
+        Class<? extends Payload>[] payload() default {};
+    }
+
+    // -----------------------------------------------------
+    //                              Report-as-Single Message
+    //                              ------------------------
+    @Target({ FIELD })
+    @Retention(RUNTIME)
+    @Constraint(validatedBy = {}) // needed as mark
+    @Length(min = 3, max = 9)
+    @Documented
+    @ReportAsSingleViolation
+    public @interface PiariReportAsSingleMessage {
+
+        String message() default "{constraints.NotBlank.message}";
 
         Class<?>[] groups() default {};
 
