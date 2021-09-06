@@ -73,6 +73,9 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
     // ===================================================================================
     //                                                                        Assist Logic
     //                                                                        ============
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // can omit [javax.validator.]constraints.NotBlank.message as ActionValidator
+    // _/_/_/_/_/_/_/_/_/_/
     public static class MaihamaBean {
 
         @SeaWithoutMessage
@@ -89,7 +92,7 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
     @Documented
     public @interface SeaWithoutMessage {
 
-        String message() default "{javax.validation.constraints.NotBlank.message}"; // dummy
+        String message() default "{constraints.NotBlank.message}"; // dummy
 
         Class<?>[] groups() default {};
 
@@ -99,11 +102,11 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
     @Target({ FIELD })
     @Retention(RUNTIME)
     @Constraint(validatedBy = {}) // needed as mark
-    @Length(min = 3, max = 9, message = "{javax.validation.constraints.AssertTrue.message}")
+    @Length(min = 3, max = 9, message = "{constraints.AssertTrue.message}")
     @Documented
     public @interface LandWithMessage {
 
-        String message() default "{javax.validation.constraints.NotBlank.message}"; // dummy
+        String message() default "{constraints.NotBlank.message}"; // dummy
 
         Class<?>[] groups() default {};
 
