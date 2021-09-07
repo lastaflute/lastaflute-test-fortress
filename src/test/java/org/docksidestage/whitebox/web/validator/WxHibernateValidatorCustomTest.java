@@ -31,16 +31,16 @@ public class WxHibernateValidatorCustomTest extends PlainTestCase {
     public void test_custom_messages_inner_outer() {
         // ## Arrange ##
         Validator validator = buildValidatorFactory().getValidator();
-        MaihamaBean maihama = new MaihamaBean();
+        MaihamaMessageBean maihama = new MaihamaMessageBean();
         maihama.sea = "01234567890123456789"; // length over
         maihama.land = "01234567890123456789"; // length over
 
         // ## Act ##
-        Set<ConstraintViolation<MaihamaBean>> vioSet = validator.validate(maihama, Default.class);
+        Set<ConstraintViolation<MaihamaMessageBean>> vioSet = validator.validate(maihama, Default.class);
 
         // ## Assert ##
         assertHasAnyElement(vioSet);
-        for (ConstraintViolation<MaihamaBean> vio : vioSet) {
+        for (ConstraintViolation<MaihamaMessageBean> vio : vioSet) {
             log("vio: {}", vio);
             if ("sea".equals(vio.getPropertyPath().toString())) {
                 // custom annotation's message() has NotBlank message but inner annotation is prior
@@ -62,12 +62,13 @@ public class WxHibernateValidatorCustomTest extends PlainTestCase {
 
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // *@ReportAsSingleViolation test is implemenated at ActionValidator's test
+    // (also @OverrideAttribute)
     // _/_/_/_/_/_/_/_/_/_/
 
-    // ===================================================================================
-    //                                                                        Assist Logic
-    //                                                                        ============
-    public static class MaihamaBean {
+    // -----------------------------------------------------
+    //                                          Assist Logic
+    //                                          ------------
+    public static class MaihamaMessageBean {
 
         @SeaWithoutMessage
         public String sea;

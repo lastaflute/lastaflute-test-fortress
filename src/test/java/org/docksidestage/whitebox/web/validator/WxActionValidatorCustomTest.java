@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.validation.Constraint;
+import javax.validation.OverridesAttribute;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 
@@ -35,12 +36,14 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
     // ===================================================================================
     //                                                                            Messages
     //                                                                            ========
-    public void test_custom_messages_default() {
+    public void test_custom_messages() {
         // ## Arrange ##
         ActionValidator<FortressMessages> validator = createValidator();
         MaihamaMessageBean maihama = new MaihamaMessageBean();
         maihama.sea = "01234567890123456789"; // length over
-        maihama.land = "01234567890123456789"; // length over
+        maihama.land = "01234567890123456789";
+        maihama.piari = "01234567890123456789";
+        maihama.dstore = "01234567890123456789";
 
         // ## Act ##
         try {
@@ -55,47 +58,26 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
                 List<String> messageList = entry.getValue();
                 assertHasOnlyOneElement(messageList); // as test logic
                 if ("sea".equals(propertyName)) {
-                    // custom annotation's message() has NotBlank message but inner annotation is prior
+                    // custom annotation's message() has NotBlank message
+                    // but inner annotation is prior
                     assertContains(messageList.get(0), "length must be");
                     markHere("sea_called");
-                }
-                if ("land".equals(propertyName)) {
-                    // inner annotation has explicit annotation
-                    assertContains(messageList.get(0), "must be true");
+                } else if ("land".equals(propertyName)) {
+                    assertContains(messageList.get(0), "must be true"); // inner explicit message
                     markHere("land_called");
+                } else if ("piari".equals(propertyName)) { // using report as single
+                    assertContains(messageList.get(0), "may not be empty");
+                    markHere("piari_called");
+                } else if ("dstore".equals(propertyName)) { // using override attribute
+                    assertContains(messageList.get(0), "may not be empty");
+                    markHere("dstore_called");
                 }
             }
             assertMarked("sea_called");
             assertMarked("land_called");
-            assertEquals(2, messageMap.size());
-        }
-    }
-
-    public void test_custom_messages_reportAsSingle() {
-        // ## Arrange ##
-        ActionValidator<FortressMessages> validator = createValidator();
-        MaihamaMessageBean maihama = new MaihamaMessageBean();
-        maihama.piari = "01234567890123456789"; // length over
-
-        // ## Act ##
-        try {
-            validator.validateApi(maihama, messages -> {});
-            fail();
-        } catch (ValidationErrorException e) {
-            // ## Assert ##
-            UserMessages messages = e.getMessages();
-            Map<String, List<String>> messageMap = requestManager.getMessageManager().toPropertyMessageMap(Locale.ENGLISH, messages);
-            for (Entry<String, List<String>> entry : messageMap.entrySet()) {
-                String propertyName = entry.getKey();
-                List<String> messageList = entry.getValue();
-                assertHasOnlyOneElement(messageList); // as test logic
-                if ("piari".equals(propertyName)) {
-                    assertContains(messageList.get(0), "may not be empty");
-                    markHere("piari_called");
-                }
-            }
             assertMarked("piari_called");
-            assertEquals(1, messageMap.size());
+            assertMarked("dstore_called");
+            assertEquals(4, messageMap.size());
         }
     }
 
@@ -115,6 +97,9 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
 
         @PiariReportAsSingleMessage
         public String piari;
+
+        @DstoreOverrideAttributeMessage
+        public String dstore;
     }
 
     // -----------------------------------------------------
@@ -159,6 +144,24 @@ public class WxActionValidatorCustomTest extends UnitFortressBasicTestCase {
     @ReportAsSingleViolation
     public @interface PiariReportAsSingleMessage {
 
+        String message() default "{constraints.NotBlank.message}";
+
+        Class<?>[] groups() default {};
+
+        Class<? extends Payload>[] payload() default {};
+    }
+
+    // -----------------------------------------------------
+    //                            Override-Attribute Message
+    //                            --------------------------
+    @Target({ FIELD })
+    @Retention(RUNTIME)
+    @Constraint(validatedBy = {}) // needed as mark
+    @Length(min = 3, max = 9)
+    @Documented
+    public @interface DstoreOverrideAttributeMessage {
+
+        @OverridesAttribute(constraint = Length.class)
         String message() default "{constraints.NotBlank.message}";
 
         Class<?>[] groups() default {};
