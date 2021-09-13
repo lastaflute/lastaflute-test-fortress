@@ -1,6 +1,32 @@
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Root control of FreeGen by Velocity
+## _/_/_/_/_/_/_/_/_/_/
 $manager.info("requestList: ${requestList.size()}")
+
+## /- - - - - - - - - - - - - - - - - - - - - - - - - -
+## generate as basic way
+## it can be handled by suffix of FreeGen request name
+##  e.g.
+##   ; SeaBasicSingleGen = map:{
+##   ; LandBasicMultipleGen = map:{
+## - - - - - - - - - -/
+#parse("./basic/ControlFreeGenBasicSingle.vm")
+#parse("./basic/ControlFreeGenBasicMultiple.vm")
+
+## C7aFlute (Cassandra)
 #parse("./c7a/ControlFreeGenC7aJava.vm")
+
+## KVSFlute
 #parse("./kvs/ControlFreeGenKvsJava.vm")
+
+## SolrFlute
 #parse("./solr/ControlFreeGenSolrJava.vm")
+
+## RemoteApiGen
 #parse("./remoteapi/ControlFreeGenRemoteApiJava.vm")
+
+## various DBFlute optional functions (e.g. EntityCache)
 #parse("./dbfluteOptional/ControlFreeGenDbfluteOptionalJava.vm")
+
+## various LastaFlute optional functions (e.g. AppCls)
+#parse("./lastaOptional/ControlFreeGenLastaOptionalJava.vm")

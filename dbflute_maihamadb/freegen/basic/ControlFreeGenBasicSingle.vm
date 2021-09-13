@@ -1,0 +1,15 @@
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## BasicSingleGen: generate single object as basic way
+## _/_/_/_/_/_/_/_/_/_/
+#foreach ($request in $requestList)
+  #if ($request.requestName.endsWith("BasicSingleGen"))
+    ## prepare output directory (make if not exists)
+    $request.enableOutputDirectory()
+    $manager.makeDirectory($request.generateDirPath)
+
+    #set ($optionMap = $request.optionMap)
+    #set ($table = $request.table)
+    $manager.info("parse('${request.generateFilePath}')")
+    $generator.parse($request.templatePath, $request.generateFilePath, "", "")
+  #end
+#end

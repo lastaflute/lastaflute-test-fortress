@@ -1,0 +1,19 @@
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## AppClsIndependentGen: LastaFlute AppCls as independent files
+## _/_/_/_/_/_/_/_/_/_/
+
+#foreach ($request in $requestList)
+  #if ($request.requestName.startsWith("LastaTsClsIndependent"))
+    ## prepare output directory (make if not exists)
+    $request.enableOutputDirectory()
+    $manager.makeDirectory($request.generateDirPath)
+
+    #set ($optionMap = $request.optionMap)
+    #set ($table = $request.table)
+    #foreach ($classificationTop in $optionMap.classificationTopList)
+      #set ($path = "${request.generateDirPath}/${classificationTop.classificationName}.ts")
+      $manager.info("parse('${path}')")
+      $generator.parse($request.templatePath, $path, "", "")
+    #end
+  #end
+#end

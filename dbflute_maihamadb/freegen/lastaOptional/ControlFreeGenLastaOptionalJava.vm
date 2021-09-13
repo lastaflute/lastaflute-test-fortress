@@ -1,0 +1,10 @@
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## LastaOptionalGen: generate anything for LastaFlute optional functions
+## _/_/_/_/_/_/_/_/_/_/
+
+## generate TypeScript classification corresponding to LastaFlute as one aggregate file
+## aggregate AppCls can be handled as basic way so call is unneeded
+## (APP_CLS is treated as only-one table)
+
+## generate TypeScript classification corresponding to LastaFlute as independent file
+#parse("./lastaOptional/tscls/independent/ControlFreeGenTsClsIndependent.vm")

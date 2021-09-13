@@ -1,0 +1,18 @@
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## BasicMultipleGen: multiple objects as basic way
+## _/_/_/_/_/_/_/_/_/_/
+#foreach ($request in $requestList)
+  #if ($request.requestName.endsWith("BasicMultipleGen"))
+    ## prepare output directory (make if not exists)
+    $request.enableOutputDirectory()
+    $manager.makeDirectory($request.generateDirPath)
+
+    #set ($optionMap = $request.optionMap)
+    #foreach ($table in $request.tableList)
+      #set ($path = "${request.generateDirPath}/${table.camelizedName}.java")
+      $manager.makeDirectory($path)
+      $manager.info("parse('${path}')")
+      $generator.parse($request.templatePath, $path, "", "")
+    #end
+  #end
+#end
