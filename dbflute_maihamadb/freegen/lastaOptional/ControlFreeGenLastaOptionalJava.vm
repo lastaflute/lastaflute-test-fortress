@@ -1,10 +1,19 @@
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 ## LastaOptionalGen: generate anything for LastaFlute optional functions
+##
+## This module is application customization area.
+## So you can add your custom FreeGen here.
 ## _/_/_/_/_/_/_/_/_/_/
 
+##
 ## generate TypeScript classification corresponding to LastaFlute as one aggregate file
+##
 ## aggregate AppCls can be handled as basic way so call is unneeded
 ## (APP_CLS is treated as only-one table)
 
+##
 ## generate TypeScript classification corresponding to LastaFlute as independent file
+##
+## APP_CLS is treated as only-one table as default
+## so you need to make custom control file like this:
 #parse("./lastaOptional/tscls/independent/ControlFreeGenTsClsIndependent.vm")

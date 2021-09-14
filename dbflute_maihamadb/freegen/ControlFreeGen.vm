@@ -3,7 +3,10 @@
 ## _/_/_/_/_/_/_/_/_/_/
 $manager.info("requestList: ${requestList.size()}")
 
-## /- - - - - - - - - - - - - - - - - - - - - - - - - -
+## =======================================================================================
+##                                                                                   Basic
+##                                                                                   =====
+## /- - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ## generate as basic way
 ## it can be handled by suffix of FreeGen request name
 ##  e.g.
@@ -13,18 +16,35 @@ $manager.info("requestList: ${requestList.size()}")
 #parse("./basic/ControlFreeGenBasicSingle.vm")
 #parse("./basic/ControlFreeGenBasicMultiple.vm")
 
-## C7aFlute (Cassandra)
+
+## =======================================================================================
+##                                                                               Framework
+##                                                                               =========
+## /- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+## FreeGen modules as Framework should be read-only
+## So don't modify the contents except emergency
+## (And wholly replace them if you upgrade)
+## - - - - - - - - - -/
+## C7aFlute (Cassandra) *ReadOnly
 #parse("./c7a/ControlFreeGenC7aJava.vm")
 
-## KVSFlute
+## KVSFlute *ReadOnly
 #parse("./kvs/ControlFreeGenKvsJava.vm")
 
-## SolrFlute
+## SolrFlute *ReadOnly
 #parse("./solr/ControlFreeGenSolrJava.vm")
 
-## RemoteApiGen
+## RemoteApiGen *ReadOnly
 #parse("./remoteapi/ControlFreeGenRemoteApiJava.vm")
 
+
+## =======================================================================================
+##                                                                         Custom Function
+##                                                                         ===============
+## /- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+## FreeGen modules as application custom functions
+## You can add your custom function in the control files
+## - - - - - - - - - -/
 ## various DBFlute optional functions (e.g. EntityCache)
 #parse("./dbfluteOptional/ControlFreeGenDbfluteOptionalJava.vm")
 
