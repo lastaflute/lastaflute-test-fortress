@@ -19,6 +19,8 @@ import org.dbflute.util.Srl;
 import org.lastaflute.di.naming.styling.StylingFreedomInterfaceMapper;
 
 /**
+ * The mapper of freedom interface styling your naming convention. <br>
+ * This class name is specified in lasta_di.properties.
  * @author jflute
  */
 public class FortressStylingFreedomInterfaceMapper implements StylingFreedomInterfaceMapper {
@@ -26,17 +28,32 @@ public class FortressStylingFreedomInterfaceMapper implements StylingFreedomInte
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    private static final String ONIONARC_DOMAIN_REPOSITORY = ".onionarc.domain.repository.";
-    private static final String ONIONARC_INFRASTRUCTURE = ".onionarc.infrastructure.";
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // e.g.
+    //  biz.onionarc.domain.repository.OnionarcSeaRepository (interface)
+    //  biz.onionarc.infrastructure.OnionarcSeaInfraRepository (implementation)
+    // _/_/_/_/_/_/_/_/_/_/
+    private static final String ONIONARC_DOMAIN_REPOSITORY = ".biz.onionarc.domain.repository.";
+    private static final String ONIONARC_INFRASTRUCTURE = ".biz.onionarc.infrastructure.";
 
     private static final String REPOSITORY = "Repository";
     private static final String INFRA_REPOSITORY = "InfraRepository";
+
+    // ===================================================================================
+    //                                                                         Constructor
+    //                                                                         ===========
+    // default constructor is required so don't change constructor argument definition
 
     // ===================================================================================
     //                                                                   to Implementation
     //                                                                   =================
     @Override
     public String toImplementationClassName(String interfaceClassName) {
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        // e.g.
+        //  from: ...biz.onionarc.domain.repository.OnionarcSeaRepository (interface)
+        //    to: ...biz.onionarc.infrastructure.OnionarcSeaInfraRepository (implementation)
+        // _/_/_/_/_/_/_/_/_/_/
         if (isDomainRepository(interfaceClassName)) {
             return convertToInfraRepository(interfaceClassName);
         }
@@ -58,6 +75,11 @@ public class FortressStylingFreedomInterfaceMapper implements StylingFreedomInte
     //                                                                        ============
     @Override
     public String toInterfaceClassName(String implementationClassName) {
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        // e.g.
+        //  from: ...biz.onionarc.infrastructure.OnionarcSeaInfraRepository (implementation)
+        //    to: ...biz.onionarc.domain.repository.OnionarcSeaRepository (interface)
+        // _/_/_/_/_/_/_/_/_/_/
         if (isInfraRepository(implementationClassName)) {
             return convertToDomainRepository(implementationClassName);
         }
