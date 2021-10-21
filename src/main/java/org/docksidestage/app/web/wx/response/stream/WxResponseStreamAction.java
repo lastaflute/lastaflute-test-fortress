@@ -141,4 +141,21 @@ public class WxResponseStreamAction extends FortressBaseAction {
             }
         });
     }
+
+    // http://localhost:8151/fortress/wx/response/stream/withvalidation/
+    // http://localhost:8151/fortress/wx/response/stream/withvalidation/?land=oneman
+    @Execute
+    public StreamResponse withvalidation(WxResponseStreamForm form) {
+        // you can choose error response, HTML? or JSON?
+        //validate(form, messages -> {}, () -> {
+        //    return asHtml(path_object);
+        //});
+        validateApi(form, messages -> {}); // as JSON (ApiFailureHook)
+        return asStream("sea.txt").stream(out -> {
+            byte[] buf = "download".getBytes("UTF-8");
+            try (InputStream ins = new ByteArrayInputStream(buf)) {
+                out.write(ins);
+            }
+        });
+    }
 }
