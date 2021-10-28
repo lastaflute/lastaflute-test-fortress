@@ -7651,6 +7651,40 @@
         }
       ]
     },
+    "/wx/response/stream/withvalidation": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "land",
+            "type": "string",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "application/octet-stream"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
     "/wx/routing/{first}": {
       "get": {
         "summary": "@author jflute",
