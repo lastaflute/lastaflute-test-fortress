@@ -34,7 +34,7 @@ import org.docksidestage.unit.UnitFortressBasicTestCase;
  * @author jflute
  * @since DBFlute-1.2.5 (2021/11/08 Monday at roppongi japanese)
  */
-public class VendorOtegaruDeadlockTest extends UnitFortressBasicTestCase {
+public class MySqlOtegaruDeadlockTest extends UnitFortressBasicTestCase {
 
     // ===================================================================================
     //                                                                           Attribute
