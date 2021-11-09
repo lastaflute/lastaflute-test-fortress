@@ -125,7 +125,7 @@ public class MySqlOtegaruDeadlockTest extends UnitFortressBasicTestCase {
     // -----------------------------------------------------
     //                                                 by PK
     //                                                 -----
-    public void test_insertOrUpdateNonstrict_updateEmptyByPK_insert() {
+    public void test_insertOrUpdateNonstrict_updateEmptyByPK_insert_byTwoThread() {
         cannonball(car -> {
             adjustTransactionIsolationLevel_RepeatableRead();
             Member memberFirst = memberBhv.selectByPK(1).get();
@@ -162,7 +162,16 @@ public class MySqlOtegaruDeadlockTest extends UnitFortressBasicTestCase {
     // -----------------------------------------------------
     //                                             Unique By
     //                                             ---------
-    public void test_insertOrUpdateNonstrict_updateEmptyUniqueBy_insert() {
+    public void test_insertOrUpdateNonstrict_updateEmptyUniqueBy_insert_byManyThread() {
+        Member member = memberBhv.selectByPK(1).get();
+        member.uniqueBy("sea");
+        cannonball(car -> {
+            adjustTransactionIsolationLevel_RepeatableRead();
+            memberBhv.insertOrUpdateNonstrict(member); // deadlock here
+        }, new CannonballOption().threadCount(5).expectExceptionAny("Deadlock found"));
+    }
+
+    public void test_insertOrUpdateNonstrict_updateEmptyUniqueBy_insert_byTwoThread() {
         cannonball(car -> {
             adjustTransactionIsolationLevel_RepeatableRead();
             Member memberFirst = memberBhv.selectByPK(1).get();
@@ -199,7 +208,7 @@ public class MySqlOtegaruDeadlockTest extends UnitFortressBasicTestCase {
     // ===================================================================================
     //                                                          Solution by Read Committed
     //                                                          ==========================
-    public void test_queryDeleteEmpty_insert_ReadCommitted() { // standard pattern
+    public void test_queryDeleteEmpty_insert_solutionByReadCommitted() { // standard pattern
         Member source = memberBhv.selectByPK(3).get();
         cannonball(car -> {
             adjustTransactionIsolationLevel_ReadCommitted();
@@ -240,6 +249,16 @@ public class MySqlOtegaruDeadlockTest extends UnitFortressBasicTestCase {
             memberBhv.insert(inserted);
         }, new CannonballOption().threadCount(5));
     }
+
+    // #hope jflute test after InsertOrUpdateCountPreCheck (2021/11/09)
+    //public void test_insertOrUpdateNonstrict_updateEmptyUniqueBy_insert_solutionByPreCheck() {
+    //    Member member = memberBhv.selectByPK(1).get();
+    //    member.uniqueBy("sea");
+    //    cannonball(car -> {
+    //        adjustTransactionIsolationLevel_RepeatableRead();
+    //        memberBhv.insertOrUpdateNonstrict(member); // deadlock here
+    //    }, new CannonballOption().threadCount(5).expectExceptionAny("Deadlock found"));
+    //}
 
     // ===================================================================================
     //                                                                        Assist Logic
