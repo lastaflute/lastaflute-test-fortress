@@ -15,11 +15,15 @@
  */
 package org.docksidestage.app.web.wx.response.transition.redirect;
 
+import javax.annotation.Resource;
+
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.product.ProductListAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
+import org.lastaflute.web.servlet.request.RequestManager;
+import org.lastaflute.web.servlet.request.ResponseManager;
 
 /**
  * @author jflute
@@ -27,12 +31,26 @@ import org.lastaflute.web.response.HtmlResponse;
 @AllowAnyoneAccess
 public class WxResponseTransitionRedirectPermanentlyAction extends FortressBaseAction {
 
+    @Resource
+    private RequestManager requestManager;
+    @Resource
+    private ResponseManager responseManager;
+
     // http://localhost:8151/fortress/wx/response/transition/redirect/permanently/
     @Execute
     public HtmlResponse index() {
-        // #hope jflute returning movedPermanently() directly (2021/11/02)
-        //return movedPermanently(redirect(ProductListAction.class));
-        movedPermanently(redirect(ProductListAction.class));
+        // done jflute returning movedPermanently() directly (2021/11/02)
+        return movedPermanently(redirect(ProductListAction.class));
+    }
+
+    // http://localhost:8151/fortress/wx/response/transition/redirect/permanently/ssl/
+    //  => ERR_SSL_PROTOCOL_ERROR
+    //      expects [header] Location=https://localhost:8151/fortress/product/list/
+    @Execute
+    public HtmlResponse ssl() {
+        String host = "localhost";
+        Integer port = 8151;
+        responseManager.movedPermanentlySsl(redirect(ProductListAction.class), host + ":" + port);
         return HtmlResponse.asEmptyBody();
     }
 }

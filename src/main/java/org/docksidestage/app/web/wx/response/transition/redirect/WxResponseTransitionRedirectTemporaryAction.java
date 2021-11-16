@@ -16,14 +16,12 @@
 package org.docksidestage.app.web.wx.response.transition.redirect;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.product.ProductListAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
-import org.lastaflute.web.servlet.request.Redirectable;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.servlet.request.ResponseManager;
 
@@ -47,41 +45,8 @@ public class WxResponseTransitionRedirectTemporaryAction extends FortressBaseAct
     // http://localhost:8151/fortress/wx/response/transition/redirect/temporary/
     @Execute
     public HtmlResponse index() {
-        // #hope jflute support temporaryRedirect() (2021/11/02)
-        temporaryRedirect(redirect(ProductListAction.class));
+        // no super method (as rare case) so use responseManager here (2021/11/15)
+        responseManager.temporaryRedirect(redirect(ProductListAction.class));
         return HtmlResponse.asEmptyBody();
-    }
-
-    // -----------------------------------------------------
-    //                                          307 Redirect
-    //                                          ------------
-    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    // copied from SimpleResponseManager with small fitting
-    // _/_/_/_/_/_/_/_/_/_/
-    protected HtmlResponse temporaryRedirect(Redirectable redirectable) {
-        assertArgumentNotNull("redirectable", redirectable);
-        setLocationPermanently(buildRedirectUrl(responseManager.getResponse(), redirectable));
-        return HtmlResponse.asEmptyBody();
-    }
-
-    protected String buildRedirectUrl(HttpServletResponse response, Redirectable redirectable) {
-        final String routingPath = redirectable.getRoutingPath();
-        final String redirectUrl;
-        if (needsContextPathForRedirectPath(routingPath, redirectable.isAsIs())) {
-            redirectUrl = requestManager.getContextPath() + routingPath;
-        } else {
-            redirectUrl = routingPath;
-        }
-        return response.encodeRedirectURL(redirectUrl);
-    }
-
-    protected boolean needsContextPathForRedirectPath(String redirectPath, boolean asIs) {
-        return !asIs && redirectPath.startsWith("/");
-    }
-
-    protected void setLocationPermanently(String url) {
-        assertArgumentNotNull("url", url);
-        responseManager.getResponse().setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
-        responseManager.getResponse().setHeader("Location", url);
     }
 }
