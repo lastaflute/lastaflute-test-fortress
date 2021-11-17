@@ -593,7 +593,7 @@
         "publicName": null,
         "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.Map\u003cjava.lang.String, java.lang.Object\u003e\u003e",
         "simpleTypeName": "JsonResponse\u003cMap\u003cString, Object\u003e\u003e",
-        "value": "// \nDfCollectionUtil.newArrayList(// \n\"/lido/following/list\", // \n\"/lido/following/register\", // \n\"/lido/following/delete\", \"/lido/product/price/update/{productId}\"),asJson(swaggerMap)",
+        "value": "// \nDfCollectionUtil.// \nnewArrayList(// \n\"/lido/following/list\", // \n\"/lido/following/register\", // \n\"/lido/following/delete\", \"/lido/product/price/update/{productId}\"),asJson(swaggerMap)",
         "description": null,
         "comment": null,
         "annotationList": [],
@@ -601,6 +601,1200 @@
       },
       "fileLineCount": 100,
       "methodLineCount": 13
+    },
+    {
+      "url": "/ballet-dancers/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.BalletDancersAction",
+      "simpleTypeName": "BalletDancersAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "balletDancersCrudAssist",
+          "publicName": "balletDancersCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersCrudAssist",
+          "simpleTypeName": "BalletDancersCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "balletDancersMappingAssist",
+          "publicName": "balletDancersMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersMappingAssist",
+          "simpleTypeName": "BalletDancersMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{hyphenate\u003d[ballet-dancers]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.ballet.dancers.BalletDancersSearchForm",
+        "simpleTypeName": "BalletDancersSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for name of product e.g. R",
+            "comment": "prefix for name of product e.g. R",
+            "annotationList": [
+              "Length{max\u003d10}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": "status of product e.g. ONS",
+            "comment": "status of product e.g. ONS",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "publicName": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for member name who purchases the product e.g. S",
+            "comment": "prefix for member name who purchases the product e.g. S",
+            "annotationList": [
+              "Length{max\u003d5}"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.app.web.ballet.dancers.BalletDancersRowResult\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cBalletDancersRowResult\u003e\u003e",
+        "value": "asJson(listResult)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": "null if no purchase",
+            "comment": "null if no purchase",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 56,
+      "methodLineCount": 6
+    },
+    {
+      "url": "/ballet-dancers/{productId}/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.BalletDancersAction",
+      "simpleTypeName": "BalletDancersAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "balletDancersCrudAssist",
+          "publicName": "balletDancersCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersCrudAssist",
+          "simpleTypeName": "BalletDancersCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "balletDancersMappingAssist",
+          "publicName": "balletDancersMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersMappingAssist",
+          "simpleTypeName": "BalletDancersMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{hyphenate\u003d[ballet-dancers]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.ballet.dancers.BalletDancersResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cBalletDancersResult\u003e",
+        "value": "asJson(singleResult)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": "null if no purchase",
+            "comment": "null if no purchase",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 56,
+      "methodLineCount": 5
+    },
+    {
+      "url": "/ballet-dancers/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.BalletDancersAction",
+      "simpleTypeName": "BalletDancersAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "balletDancersCrudAssist",
+          "publicName": "balletDancersCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersCrudAssist",
+          "simpleTypeName": "BalletDancersCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "balletDancersMappingAssist",
+          "publicName": "balletDancersMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersMappingAssist",
+          "simpleTypeName": "BalletDancersMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "post$index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{hyphenate\u003d[ballet-dancers]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.ballet.dancers.BalletDancersPostBody",
+        "simpleTypeName": "BalletDancersPostBody",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 56,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/ballet-dancers/{productId}/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.BalletDancersAction",
+      "simpleTypeName": "BalletDancersAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "balletDancersCrudAssist",
+          "publicName": "balletDancersCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersCrudAssist",
+          "simpleTypeName": "BalletDancersCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "balletDancersMappingAssist",
+          "publicName": "balletDancersMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersMappingAssist",
+          "simpleTypeName": "BalletDancersMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "put$index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{hyphenate\u003d[ballet-dancers]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.ballet.dancers.BalletDancersPutBody",
+        "simpleTypeName": "BalletDancersPutBody",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 56,
+      "methodLineCount": 4
+    },
+    {
+      "url": "/ballet-dancers/{productId}/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.BalletDancersAction",
+      "simpleTypeName": "BalletDancersAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "balletDancersCrudAssist",
+          "publicName": "balletDancersCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersCrudAssist",
+          "simpleTypeName": "BalletDancersCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "balletDancersMappingAssist",
+          "publicName": "balletDancersMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.assist.BalletDancersMappingAssist",
+          "simpleTypeName": "BalletDancersMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "delete$index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{hyphenate\u003d[ballet-dancers]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 56,
+      "methodLineCount": 3
+    },
+    {
+      "url": "/ballet-dancers/{productId}/greatest-favorite-studios/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.BalletDancersGreatestFavoriteStudiosAction",
+      "simpleTypeName": "BalletDancersGreatestFavoriteStudiosAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "greatestFavoriteStudiosCrudAssist",
+          "publicName": "greatestFavoriteStudiosCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.assist.GreatestFavoriteStudiosCrudAssist",
+          "simpleTypeName": "GreatestFavoriteStudiosCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "greatestFavoriteStudiosMappingAssist",
+          "publicName": "greatestFavoriteStudiosMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.assist.GreatestFavoriteStudiosMappingAssist",
+          "simpleTypeName": "GreatestFavoriteStudiosMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman], hyphenate\u003d[ballet-dancers, greatest-favorite-studios]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosSearchForm",
+        "simpleTypeName": "GreatestFavoriteStudiosSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "memberName",
+            "publicName": "memberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosListResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cGreatestFavoriteStudiosListResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "rows",
+            "publicName": "rows",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosListResult$PurchasesRowPart\u003e",
+            "simpleTypeName": "List\u003cPurchasesRowPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid",
+              "NotNull"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "purchaseId",
+                "publicName": "purchase_id",
+                "typeName": "java.lang.Long",
+                "simpleTypeName": "Long",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "memberName",
+                "publicName": "member_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "productName",
+                "publicName": "product_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          }
+        ]
+      },
+      "fileLineCount": 60,
+      "methodLineCount": 6
+    },
+    {
+      "url": "/ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.BalletDancersGreatestFavoriteStudiosAction",
+      "simpleTypeName": "BalletDancersGreatestFavoriteStudiosAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "greatestFavoriteStudiosCrudAssist",
+          "publicName": "greatestFavoriteStudiosCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.assist.GreatestFavoriteStudiosCrudAssist",
+          "simpleTypeName": "GreatestFavoriteStudiosCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "greatestFavoriteStudiosMappingAssist",
+          "publicName": "greatestFavoriteStudiosMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.assist.GreatestFavoriteStudiosMappingAssist",
+          "simpleTypeName": "GreatestFavoriteStudiosMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman], hyphenate\u003d[ballet-dancers, greatest-favorite-studios]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchaseId",
+          "publicName": "purchaseId",
+          "typeName": "java.lang.Long",
+          "simpleTypeName": "Long",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosOneResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cGreatestFavoriteStudiosOneResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "purchaseId",
+            "publicName": "purchase_id",
+            "typeName": "java.lang.Long",
+            "simpleTypeName": "Long",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "memberName",
+            "publicName": "member_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 60,
+      "methodLineCount": 5
+    },
+    {
+      "url": "/ballet-dancers/{productId}/greatest-favorite-studios/hangar-mystic/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.BalletDancersGreatestFavoriteStudiosAction",
+      "simpleTypeName": "BalletDancersGreatestFavoriteStudiosAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "greatestFavoriteStudiosCrudAssist",
+          "publicName": "greatestFavoriteStudiosCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.assist.GreatestFavoriteStudiosCrudAssist",
+          "simpleTypeName": "GreatestFavoriteStudiosCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "greatestFavoriteStudiosMappingAssist",
+          "publicName": "greatestFavoriteStudiosMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.assist.GreatestFavoriteStudiosMappingAssist",
+          "simpleTypeName": "GreatestFavoriteStudiosMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$hangarMystic",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman], hyphenate\u003d[ballet-dancers, greatest-favorite-studios]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosSearchForm",
+        "simpleTypeName": "GreatestFavoriteStudiosSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "memberName",
+            "publicName": "memberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosListResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cGreatestFavoriteStudiosListResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "rows",
+            "publicName": "rows",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosListResult$PurchasesRowPart\u003e",
+            "simpleTypeName": "List\u003cPurchasesRowPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid",
+              "NotNull"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "purchaseId",
+                "publicName": "purchase_id",
+                "typeName": "java.lang.Long",
+                "simpleTypeName": "Long",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "memberName",
+                "publicName": "member_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "productName",
+                "publicName": "product_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          }
+        ]
+      },
+      "fileLineCount": 60,
+      "methodLineCount": 6
+    },
+    {
+      "url": "/ballet-dancers/{productId}/greatest-favorite-studios/{purchaseId}/showbase-oneman/",
+      "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.BalletDancersGreatestFavoriteStudiosAction",
+      "simpleTypeName": "BalletDancersGreatestFavoriteStudiosAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "greatestFavoriteStudiosCrudAssist",
+          "publicName": "greatestFavoriteStudiosCrudAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.assist.GreatestFavoriteStudiosCrudAssist",
+          "simpleTypeName": "GreatestFavoriteStudiosCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "greatestFavoriteStudiosMappingAssist",
+          "publicName": "greatestFavoriteStudiosMappingAssist",
+          "typeName": "org.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.assist.GreatestFavoriteStudiosMappingAssist",
+          "simpleTypeName": "GreatestFavoriteStudiosMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$showbaseOneman",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman], hyphenate\u003d[ballet-dancers, greatest-favorite-studios]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchaseId",
+          "publicName": "purchaseId",
+          "typeName": "java.lang.Long",
+          "simpleTypeName": "Long",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.ballet.dancers.greatest.favorite.studios.GreatestFavoriteStudiosOneResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cGreatestFavoriteStudiosOneResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "purchaseId",
+            "publicName": "purchase_id",
+            "typeName": "java.lang.Long",
+            "simpleTypeName": "Long",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "memberName",
+            "publicName": "member_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 60,
+      "methodLineCount": 5
     },
     {
       "url": "/job/execute/{jobCode}",
@@ -4957,7 +6151,7 @@
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "RestfulAction{allowEventSuffix\u003dtrue}",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
         "Execute"
       ],
       "parameterTypeDocMetaList": [],
@@ -5098,7 +6292,7 @@
           }
         ]
       },
-      "fileLineCount": 57,
+      "fileLineCount": 131,
       "methodLineCount": 6
     },
     {
@@ -5139,7 +6333,7 @@
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "RestfulAction{allowEventSuffix\u003dtrue}",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
         "Execute"
       ],
       "parameterTypeDocMetaList": [
@@ -5244,7 +6438,7 @@
           }
         ]
       },
-      "fileLineCount": 57,
+      "fileLineCount": 131,
       "methodLineCount": 5
     },
     {
@@ -5285,7 +6479,7 @@
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "RestfulAction{allowEventSuffix\u003dtrue}",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
         "Execute"
       ],
       "parameterTypeDocMetaList": [],
@@ -5364,7 +6558,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 57,
+      "fileLineCount": 131,
       "methodLineCount": 4
     },
     {
@@ -5405,7 +6599,7 @@
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "RestfulAction{allowEventSuffix\u003dtrue}",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
         "Execute"
       ],
       "parameterTypeDocMetaList": [
@@ -5509,7 +6703,7 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 57,
+      "fileLineCount": 131,
       "methodLineCount": 4
     },
     {
@@ -5550,7 +6744,7 @@
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "RestfulAction{allowEventSuffix\u003dtrue}",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
         "Execute{successHttpStatus\u003d@org.lastaflute.web.Execute$HttpStatus(value\u003d299, desc\u003dsea)}"
       ],
       "parameterTypeDocMetaList": [
@@ -5578,8 +6772,1028 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 57,
+      "fileLineCount": 131,
       "methodLineCount": 3
+    },
+    {
+      "url": "/products/sea/",
+      "typeName": "org.docksidestage.app.web.products.ProductsAction",
+      "simpleTypeName": "ProductsAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productsCrudAssist",
+          "publicName": "productsCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsCrudAssist",
+          "simpleTypeName": "ProductsCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productsMappingAssist",
+          "publicName": "productsMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsMappingAssist",
+          "simpleTypeName": "ProductsMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$sea",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.products.ProductsSearchForm",
+        "simpleTypeName": "ProductsSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for name of product e.g. R",
+            "comment": "prefix for name of product e.g. R",
+            "annotationList": [
+              "Length{max\u003d10}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": "status of product e.g. ONS",
+            "comment": "status of product e.g. ONS",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "publicName": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for member name who purchases the product e.g. S",
+            "comment": "prefix for member name who purchases the product e.g. S",
+            "annotationList": [
+              "Length{max\u003d5}"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.app.web.products.ProductsRowResult\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cProductsRowResult\u003e\u003e",
+        "value": "asJson(listResult)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": "null if no purchase",
+            "comment": "null if no purchase",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 131,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/products/docksideOver/",
+      "typeName": "org.docksidestage.app.web.products.ProductsAction",
+      "simpleTypeName": "ProductsAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productsCrudAssist",
+          "publicName": "productsCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsCrudAssist",
+          "simpleTypeName": "ProductsCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productsMappingAssist",
+          "publicName": "productsMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsMappingAssist",
+          "simpleTypeName": "ProductsMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$docksideOver",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.products.ProductsSearchForm",
+        "simpleTypeName": "ProductsSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for name of product e.g. R",
+            "comment": "prefix for name of product e.g. R",
+            "annotationList": [
+              "Length{max\u003d10}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": "status of product e.g. ONS",
+            "comment": "status of product e.g. ONS",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "publicName": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for member name who purchases the product e.g. S",
+            "comment": "prefix for member name who purchases the product e.g. S",
+            "annotationList": [
+              "Length{max\u003d5}"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.app.web.products.ProductsRowResult\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cProductsRowResult\u003e\u003e",
+        "value": "asJson(listResult)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": "null if no purchase",
+            "comment": "null if no purchase",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 131,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/products/hangar-mystic/",
+      "typeName": "org.docksidestage.app.web.products.ProductsAction",
+      "simpleTypeName": "ProductsAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productsCrudAssist",
+          "publicName": "productsCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsCrudAssist",
+          "simpleTypeName": "ProductsCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productsMappingAssist",
+          "publicName": "productsMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsMappingAssist",
+          "simpleTypeName": "ProductsMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$hangarMystic",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.products.ProductsSearchForm",
+        "simpleTypeName": "ProductsSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for name of product e.g. R",
+            "comment": "prefix for name of product e.g. R",
+            "annotationList": [
+              "Length{max\u003d10}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": "status of product e.g. ONS",
+            "comment": "status of product e.g. ONS",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "publicName": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for member name who purchases the product e.g. S",
+            "comment": "prefix for member name who purchases the product e.g. S",
+            "annotationList": [
+              "Length{max\u003d5}"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.app.web.products.ProductsRowResult\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cProductsRowResult\u003e\u003e",
+        "value": "asJson(listResult)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": "null if no purchase",
+            "comment": "null if no purchase",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 131,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/products/hangar-mystic/",
+      "typeName": "org.docksidestage.app.web.products.ProductsAction",
+      "simpleTypeName": "ProductsAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productsCrudAssist",
+          "publicName": "productsCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsCrudAssist",
+          "simpleTypeName": "ProductsCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productsMappingAssist",
+          "publicName": "productsMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsMappingAssist",
+          "simpleTypeName": "ProductsMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "post$hangarMystic",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.products.ProductsSearchForm",
+        "simpleTypeName": "ProductsSearchForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productName",
+            "publicName": "productName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for name of product e.g. R",
+            "comment": "prefix for name of product e.g. R",
+            "annotationList": [
+              "Length{max\u003d10}"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "productStatus",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$ProductStatus",
+            "simpleTypeName": "CDef.ProductStatus",
+            "value": "{ONS\u003dOnSaleProduction, PST\u003dProductionStop, SST\u003dSaleStop}",
+            "description": "status of product e.g. ONS",
+            "comment": "status of product e.g. ONS",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "purchaseMemberName",
+            "publicName": "purchaseMemberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "prefix for member name who purchases the product e.g. S",
+            "comment": "prefix for member name who purchases the product e.g. S",
+            "annotationList": [
+              "Length{max\u003d5}"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.util.List\u003corg.docksidestage.app.web.products.ProductsRowResult\u003e\u003e",
+        "simpleTypeName": "JsonResponse\u003cList\u003cProductsRowResult\u003e\u003e",
+        "value": "asJson(listResult)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": "null if no purchase",
+            "comment": "null if no purchase",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 131,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/products/{productId}/land/",
+      "typeName": "org.docksidestage.app.web.products.ProductsAction",
+      "simpleTypeName": "ProductsAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productsCrudAssist",
+          "publicName": "productsCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsCrudAssist",
+          "simpleTypeName": "ProductsCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productsMappingAssist",
+          "publicName": "productsMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsMappingAssist",
+          "simpleTypeName": "ProductsMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$land",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.products.ProductsResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cProductsResult\u003e",
+        "value": "asJson(singleResult)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": "null if no purchase",
+            "comment": "null if no purchase",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 131,
+      "methodLineCount": 6
+    },
+    {
+      "url": "/products/{productId}/showbase-oneman/",
+      "typeName": "org.docksidestage.app.web.products.ProductsAction",
+      "simpleTypeName": "ProductsAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "productsCrudAssist",
+          "publicName": "productsCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsCrudAssist",
+          "simpleTypeName": "ProductsCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productsMappingAssist",
+          "publicName": "productsMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.assist.ProductsMappingAssist",
+          "simpleTypeName": "ProductsMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$showbaseOneman",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.products.ProductsResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cProductsResult\u003e",
+        "value": "asJson(singleResult)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "productId",
+            "publicName": "product_id",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productStatus",
+            "publicName": "product_status",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productCategory",
+            "publicName": "product_category",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "regularPrice",
+            "publicName": "regular_price",
+            "typeName": "java.lang.Integer",
+            "simpleTypeName": "Integer",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "latestPurchaseDate",
+            "publicName": "latest_purchase_date",
+            "typeName": "java.time.LocalDate",
+            "simpleTypeName": "LocalDate",
+            "value": null,
+            "description": "null if no purchase",
+            "comment": "null if no purchase",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 131,
+      "methodLineCount": 6
     },
     {
       "url": "/products/{productId}/purchases/",
@@ -5619,7 +7833,7 @@
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "RestfulAction{allowEventSuffix\u003dtrue}",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
         "Execute"
       ],
       "parameterTypeDocMetaList": [
@@ -5724,153 +7938,7 @@
           }
         ]
       },
-      "fileLineCount": 70,
-      "methodLineCount": 6
-    },
-    {
-      "url": "/products/{productId}/purchases/sea/",
-      "typeName": "org.docksidestage.app.web.products.purchases.ProductsPurchasesAction",
-      "simpleTypeName": "ProductsPurchasesAction",
-      "description": "@author jflute",
-      "typeComment": "@author jflute",
-      "fieldTypeDocMetaList": [
-        {
-          "name": "purchasesCrudAssist",
-          "publicName": "purchasesCrudAssist",
-          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesCrudAssist",
-          "simpleTypeName": "PurchasesCrudAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        },
-        {
-          "name": "purchasesMappingAssist",
-          "publicName": "purchasesMappingAssist",
-          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesMappingAssist",
-          "simpleTypeName": "PurchasesMappingAssist",
-          "value": null,
-          "description": "@author jflute",
-          "comment": "@author jflute",
-          "annotationList": [
-            "Resource"
-          ],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "methodName": "get$sea",
-      "methodComment": null,
-      "annotationList": [
-        "AllowAnyoneAccess",
-        "RestfulAction{allowEventSuffix\u003dtrue}",
-        "Execute"
-      ],
-      "parameterTypeDocMetaList": [
-        {
-          "name": "productId",
-          "publicName": "productId",
-          "typeName": "java.lang.Integer",
-          "simpleTypeName": "Integer",
-          "value": null,
-          "description": null,
-          "comment": null,
-          "annotationList": [],
-          "nestTypeDocMetaList": []
-        }
-      ],
-      "formTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.docksidestage.app.web.products.purchases.PurchasesListForm",
-        "simpleTypeName": "PurchasesListForm",
-        "value": null,
-        "description": "@author jflute",
-        "comment": "@author jflute",
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "memberName",
-            "publicName": "memberName",
-            "typeName": "java.lang.String",
-            "simpleTypeName": "String",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [],
-            "nestTypeDocMetaList": []
-          }
-        ]
-      },
-      "returnTypeDocMeta": {
-        "name": null,
-        "publicName": null,
-        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.products.purchases.PurchasesListResult\u003e",
-        "simpleTypeName": "JsonResponse\u003cPurchasesListResult\u003e",
-        "value": "asJson(result)",
-        "description": null,
-        "comment": null,
-        "annotationList": [],
-        "nestTypeDocMetaList": [
-          {
-            "name": "rows",
-            "publicName": "rows",
-            "typeName": "java.util.List\u003corg.docksidestage.app.web.products.purchases.PurchasesListResult$PurchasesRowPart\u003e",
-            "simpleTypeName": "List\u003cPurchasesRowPart\u003e",
-            "value": null,
-            "description": null,
-            "comment": null,
-            "annotationList": [
-              "Valid",
-              "NotNull"
-            ],
-            "nestTypeDocMetaList": [
-              {
-                "name": "purchaseId",
-                "publicName": "purchase_id",
-                "typeName": "java.lang.Long",
-                "simpleTypeName": "Long",
-                "value": null,
-                "description": null,
-                "comment": null,
-                "annotationList": [
-                  "Required"
-                ],
-                "nestTypeDocMetaList": []
-              },
-              {
-                "name": "memberName",
-                "publicName": "member_name",
-                "typeName": "java.lang.String",
-                "simpleTypeName": "String",
-                "value": null,
-                "description": null,
-                "comment": null,
-                "annotationList": [
-                  "Required"
-                ],
-                "nestTypeDocMetaList": []
-              },
-              {
-                "name": "productName",
-                "publicName": "product_name",
-                "typeName": "java.lang.String",
-                "simpleTypeName": "String",
-                "value": null,
-                "description": null,
-                "comment": null,
-                "annotationList": [
-                  "Required"
-                ],
-                "nestTypeDocMetaList": []
-              }
-            ]
-          }
-        ]
-      },
-      "fileLineCount": 70,
+      "fileLineCount": 125,
       "methodLineCount": 6
     },
     {
@@ -5911,7 +7979,7 @@
       "methodComment": null,
       "annotationList": [
         "AllowAnyoneAccess",
-        "RestfulAction{allowEventSuffix\u003dtrue}",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
         "Execute"
       ],
       "parameterTypeDocMetaList": [
@@ -5990,8 +8058,686 @@
           }
         ]
       },
-      "fileLineCount": 70,
+      "fileLineCount": 125,
       "methodLineCount": 5
+    },
+    {
+      "url": "/products/{productId}/purchases/sea/",
+      "typeName": "org.docksidestage.app.web.products.purchases.ProductsPurchasesAction",
+      "simpleTypeName": "ProductsPurchasesAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "purchasesCrudAssist",
+          "publicName": "purchasesCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesCrudAssist",
+          "simpleTypeName": "PurchasesCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchasesMappingAssist",
+          "publicName": "purchasesMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesMappingAssist",
+          "simpleTypeName": "PurchasesMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$sea",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.products.purchases.PurchasesListForm",
+        "simpleTypeName": "PurchasesListForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "memberName",
+            "publicName": "memberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.products.purchases.PurchasesListResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cPurchasesListResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "rows",
+            "publicName": "rows",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.products.purchases.PurchasesListResult$PurchasesRowPart\u003e",
+            "simpleTypeName": "List\u003cPurchasesRowPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid",
+              "NotNull"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "purchaseId",
+                "publicName": "purchase_id",
+                "typeName": "java.lang.Long",
+                "simpleTypeName": "Long",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "memberName",
+                "publicName": "member_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "productName",
+                "publicName": "product_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          }
+        ]
+      },
+      "fileLineCount": 125,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/products/{productId}/purchases/docksideOver/",
+      "typeName": "org.docksidestage.app.web.products.purchases.ProductsPurchasesAction",
+      "simpleTypeName": "ProductsPurchasesAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "purchasesCrudAssist",
+          "publicName": "purchasesCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesCrudAssist",
+          "simpleTypeName": "PurchasesCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchasesMappingAssist",
+          "publicName": "purchasesMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesMappingAssist",
+          "simpleTypeName": "PurchasesMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$docksideOver",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.products.purchases.PurchasesListForm",
+        "simpleTypeName": "PurchasesListForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "memberName",
+            "publicName": "memberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.products.purchases.PurchasesListResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cPurchasesListResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "rows",
+            "publicName": "rows",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.products.purchases.PurchasesListResult$PurchasesRowPart\u003e",
+            "simpleTypeName": "List\u003cPurchasesRowPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid",
+              "NotNull"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "purchaseId",
+                "publicName": "purchase_id",
+                "typeName": "java.lang.Long",
+                "simpleTypeName": "Long",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "memberName",
+                "publicName": "member_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "productName",
+                "publicName": "product_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          }
+        ]
+      },
+      "fileLineCount": 125,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/products/{productId}/purchases/hangar-mystic/",
+      "typeName": "org.docksidestage.app.web.products.purchases.ProductsPurchasesAction",
+      "simpleTypeName": "ProductsPurchasesAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "purchasesCrudAssist",
+          "publicName": "purchasesCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesCrudAssist",
+          "simpleTypeName": "PurchasesCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchasesMappingAssist",
+          "publicName": "purchasesMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesMappingAssist",
+          "simpleTypeName": "PurchasesMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$hangarMystic",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.products.purchases.PurchasesListForm",
+        "simpleTypeName": "PurchasesListForm",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "memberName",
+            "publicName": "memberName",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.products.purchases.PurchasesListResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cPurchasesListResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "rows",
+            "publicName": "rows",
+            "typeName": "java.util.List\u003corg.docksidestage.app.web.products.purchases.PurchasesListResult$PurchasesRowPart\u003e",
+            "simpleTypeName": "List\u003cPurchasesRowPart\u003e",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Valid",
+              "NotNull"
+            ],
+            "nestTypeDocMetaList": [
+              {
+                "name": "purchaseId",
+                "publicName": "purchase_id",
+                "typeName": "java.lang.Long",
+                "simpleTypeName": "Long",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "memberName",
+                "publicName": "member_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              },
+              {
+                "name": "productName",
+                "publicName": "product_name",
+                "typeName": "java.lang.String",
+                "simpleTypeName": "String",
+                "value": null,
+                "description": null,
+                "comment": null,
+                "annotationList": [
+                  "Required"
+                ],
+                "nestTypeDocMetaList": []
+              }
+            ]
+          }
+        ]
+      },
+      "fileLineCount": 125,
+      "methodLineCount": 7
+    },
+    {
+      "url": "/products/{productId}/purchases/{purchaseId}/land/",
+      "typeName": "org.docksidestage.app.web.products.purchases.ProductsPurchasesAction",
+      "simpleTypeName": "ProductsPurchasesAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "purchasesCrudAssist",
+          "publicName": "purchasesCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesCrudAssist",
+          "simpleTypeName": "PurchasesCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchasesMappingAssist",
+          "publicName": "purchasesMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesMappingAssist",
+          "simpleTypeName": "PurchasesMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$land",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchaseId",
+          "publicName": "purchaseId",
+          "typeName": "java.lang.Long",
+          "simpleTypeName": "Long",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.products.purchases.PurchasesOneResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cPurchasesOneResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "purchaseId",
+            "publicName": "purchase_id",
+            "typeName": "java.lang.Long",
+            "simpleTypeName": "Long",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "memberName",
+            "publicName": "member_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 125,
+      "methodLineCount": 6
+    },
+    {
+      "url": "/products/{productId}/purchases/{purchaseId}/showbase-oneman/",
+      "typeName": "org.docksidestage.app.web.products.purchases.ProductsPurchasesAction",
+      "simpleTypeName": "ProductsPurchasesAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "purchasesCrudAssist",
+          "publicName": "purchasesCrudAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesCrudAssist",
+          "simpleTypeName": "PurchasesCrudAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchasesMappingAssist",
+          "publicName": "purchasesMappingAssist",
+          "typeName": "org.docksidestage.app.web.products.purchases.assist.PurchasesMappingAssist",
+          "simpleTypeName": "PurchasesMappingAssist",
+          "value": null,
+          "description": "@author jflute",
+          "comment": "@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "get$showbaseOneman",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "RestfulAction{allowEventSuffix\u003dtrue, eventSuffixHyphenate\u003d[hangar-mystic, showbase-oneman]}",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [
+        {
+          "name": "productId",
+          "publicName": "productId",
+          "typeName": "java.lang.Integer",
+          "simpleTypeName": "Integer",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "purchaseId",
+          "publicName": "purchaseId",
+          "typeName": "java.lang.Long",
+          "simpleTypeName": "Long",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.products.purchases.PurchasesOneResult\u003e",
+        "simpleTypeName": "JsonResponse\u003cPurchasesOneResult\u003e",
+        "value": "asJson(result)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "purchaseId",
+            "publicName": "purchase_id",
+            "typeName": "java.lang.Long",
+            "simpleTypeName": "Long",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "memberName",
+            "publicName": "member_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "productName",
+            "publicName": "product_name",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [
+              "Required"
+            ],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 125,
+      "methodLineCount": 6
     },
     {
       "url": "/profile/",
@@ -27905,8 +30651,8 @@
       "noticeLogLevel": "INFO",
       "concurrentExec": "WAIT",
       "triggeredJobKeyList": [],
-      "fileLineCount": 63,
-      "methodLineCount": 15
+      "fileLineCount": 64,
+      "methodLineCount": 16
     },
     {
       "jobKey": "landJob_2",
@@ -28123,6 +30869,134 @@
       "triggeredJobKeyList": [],
       "fileLineCount": 15,
       "methodLineCount": 6
+    },
+    {
+      "jobKey": "mysticConcurrentJob_7",
+      "jobUnique": "mystic-wait",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.concurrent.MysticConcurrentJob",
+      "simpleTypeName": "MysticConcurrentJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": null,
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": null,
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "WAIT",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 27,
+      "methodLineCount": 7
+    },
+    {
+      "jobKey": "mysticConcurrentJob_8",
+      "jobUnique": "mystic-quit",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.concurrent.MysticConcurrentJob",
+      "simpleTypeName": "MysticConcurrentJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": null,
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": null,
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "QUIT",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 27,
+      "methodLineCount": 7
+    },
+    {
+      "jobKey": "mysticConcurrentJob_9",
+      "jobUnique": "mystic-error",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.concurrent.MysticConcurrentJob",
+      "simpleTypeName": "MysticConcurrentJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": null,
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": null,
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "ERROR",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 27,
+      "methodLineCount": 7
+    },
+    {
+      "jobKey": "mysticConcurrentJob_10",
+      "jobUnique": "mystic-parallel",
+      "jobTitle": null,
+      "jobDescription": null,
+      "cronExp": null,
+      "typeName": "org.docksidestage.app.job.concurrent.MysticConcurrentJob",
+      "simpleTypeName": "MysticConcurrentJob",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": null,
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "run",
+      "methodComment": null,
+      "params": null,
+      "noticeLogLevel": "INFO",
+      "concurrentExec": "WAIT",
+      "triggeredJobKeyList": [],
+      "fileLineCount": 27,
+      "methodLineCount": 7
     }
   ]
 }

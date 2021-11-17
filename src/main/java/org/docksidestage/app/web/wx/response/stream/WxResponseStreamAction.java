@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -135,6 +135,23 @@ public class WxResponseStreamAction extends FortressBaseAction {
     @Execute
     public StreamResponse japanese() {
         return asStream("\u6d77 + \u9678 in \u821e\u6d5c.txt").encodeFileName().stream(out -> {
+            byte[] buf = "download".getBytes("UTF-8");
+            try (InputStream ins = new ByteArrayInputStream(buf)) {
+                out.write(ins);
+            }
+        });
+    }
+
+    // http://localhost:8151/fortress/wx/response/stream/withvalidation/
+    // http://localhost:8151/fortress/wx/response/stream/withvalidation/?land=oneman
+    @Execute
+    public StreamResponse withvalidation(WxResponseStreamForm form) {
+        // you can choose error response, HTML? or JSON?
+        //validate(form, messages -> {}, () -> {
+        //    return asHtml(path_object);
+        //});
+        validateApi(form, messages -> {}); // as JSON (ApiFailureHook)
+        return asStream("sea.txt").stream(out -> {
             byte[] buf = "download".getBytes("UTF-8");
             try (InputStream ins = new ByteArrayInputStream(buf)) {
                 out.write(ins);

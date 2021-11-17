@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import org.docksidestage.bizfw.thymeleaf.ThymeleafConfigObject;
 import org.docksidestage.bizfw.thymeleaf.ThymeleafJavaScriptSerializer;
 import org.docksidestage.mylasta.direction.sponsor.FortressActionAdjustmentProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook;
+import org.docksidestage.mylasta.direction.sponsor.FortressConcurrentAsyncExecutorProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressCookieResourceProvider;
 import org.docksidestage.mylasta.direction.sponsor.FortressCurtainBeforeHook;
 import org.docksidestage.mylasta.direction.sponsor.FortressJsonResourceProvider;
@@ -95,6 +96,7 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
         direction.directTime(createTimeResourceProvider());
         direction.directJson(createJsonResourceProvider());
         direction.directMail(createMailDeliveryDepartmentCreator().create());
+        direction.directAsync(createConcurrentAsyncExecutorProvider());
     }
 
     protected FortressCurtainBeforeHook createCurtainBeforeListener() {
@@ -117,6 +119,10 @@ public class FortressFwAssistantDirector extends CachedFwAssistantDirector {
 
     protected FortressMailDeliveryDepartmentCreator createMailDeliveryDepartmentCreator() {
         return new FortressMailDeliveryDepartmentCreator(config);
+    }
+
+    protected FortressConcurrentAsyncExecutorProvider createConcurrentAsyncExecutorProvider() {
+        return new FortressConcurrentAsyncExecutorProvider();
     }
 
     // ===================================================================================

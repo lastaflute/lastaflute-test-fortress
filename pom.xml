@@ -21,12 +21,12 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.2.5</dbflute.version>
 		<mysql.jdbc.version>8.0.16</mysql.jdbc.version>
-		<lasta.di.version>0.8.5-A-SNAPSHOT</lasta.di.version>
-		<lastaflute.version>1.2.2-B-SNAPSHOT</lastaflute.version>
+		<lasta.di.version>0.9.0</lasta.di.version>
+		<lastaflute.version>1.2.3-B-SNAPSHOT</lastaflute.version>
 		<lasta.thymeleaf.version>0.4.2</lasta.thymeleaf.version>
-		<lasta.job.version>0.5.6-B-SNAPSHOT</lasta.job.version>
-		<lasta.remoteapi.version>0.4.5</lasta.remoteapi.version>
-		<lasta.meta.version>0.5.1</lasta.meta.version>
+		<lasta.job.version>0.5.6</lasta.job.version>
+		<lasta.remoteapi.version>0.4.7</lasta.remoteapi.version>
+		<lasta.meta.version>0.5.2</lasta.meta.version>
 		<openapidiff.version>2.0.0-beta.9</openapidiff.version>
 
 		<!-- Partner Library -->
@@ -34,7 +34,7 @@
 		<logback.version>1.2.3</logback.version>
 		<servlet.version>4.0.1</servlet.version>
 		<jetty.boot.version>0.5.1</jetty.boot.version>
-		<tomcat.boot.version>0.7.8</tomcat.boot.version>
+		<tomcat.boot.version>0.8.0</tomcat.boot.version>
 		<swagger.ui.version>3.35.0</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
@@ -44,7 +44,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.9.3</utflute.version>
+		<utflute.version>0.9.4</utflute.version>
 	</properties>
 
 	<licenses>
@@ -246,7 +246,8 @@
 							<includeArtifactIds>
 								javax.servlet-api, javax.servlet.jsp, javax.servlet.jsp-api
 								, jetty-boot, jetty-all, javax.el, jetty-jsp, jetty-schemas, javax.websocket-api
-								, tomcat-boot, tomcat-embed-core, tomcat-embed-logging-juli, tomcat-jasper
+								, tomcat-boot, tomcat-embed-core, tomcat-embed-logging-juli
+								, tomcat-jasper, tomcat-jasper-el, tomcat-el-api, tomcat-jsp-api, ecj
 							</includeArtifactIds>
 							<overWriteReleases>true</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
@@ -474,7 +475,13 @@
 			<artifactId>eclipse-collections</artifactId>
 			<version>${eclipse.collections.version}</version>
 		</dependency>
-		<!-- JAXB (xml parser) needed for #java16 -->
+		<!-- javascript engine (instead of nashorn) -->
+		<dependency>
+		    <groupId>org.mozilla</groupId>
+		    <artifactId>rhino-engine</artifactId>
+		    <version>1.7.13</version>
+		</dependency>
+		<!-- JAXB (xml parser) needed for #java17 -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
