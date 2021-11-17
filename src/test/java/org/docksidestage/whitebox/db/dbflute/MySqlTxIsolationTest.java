@@ -23,7 +23,6 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.dbflute.utflute.core.cannonball.CannonballOption;
-import org.dbflute.utflute.core.transaction.TransactionResource;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.dbflute.exentity.Member;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
@@ -44,52 +43,60 @@ public class MySqlTxIsolationTest extends UnitFortressBasicTestCase {
     //                                                                      Table Snapshot
     //                                                                      ==============
     public void test_RepeatableRead_tableSnapshot() {
-        Member beforeFirst = memberBhv.selectByPK(1).get();
-        Member beforeNinth = memberBhv.selectByPK(9).get();
-        log(beforeFirst);
-        log(beforeNinth);
-        assertNotSame("sea", beforeNinth.getMemberName());
+        // ## Arrange ##
+        Member trigger = memberBhv.selectByPK(1).get(); // snapshot trigger
+        Member updated = memberBhv.selectByPK(9).get(); // actually updated
+        log(trigger);
+        log(updated);
+        String newName = "sea";
+        assertFalse(newName.equals(updated.getMemberName()));
+
+        // ## Act ##
+        // ## Assert ##
         try {
             cannonball(car -> {
                 adjustTransactionIsolationLevel_RepeatableRead();
 
                 car.projectA(dragon -> {
-                    Member member = memberBhv.selectByPK(1).get();
+                    // make table snapshot at No.1
+                    Member member = memberBhv.selectByPK(trigger.getMemberId()).get();
                     log(member.getMemberName());
                 }, 1);
                 car.projectA(dragon -> {
-                    TransactionResource resource = xgetTestCaseTransactionResource();
-                    Member member = new Member();
-                    member.setMemberId(9);
-                    member.setMemberName("sea");
-                    memberBhv.updateNonstrict(member);
-                    commitTransaction(resource);
+                    // actually update at No.2
+                    performNewTransaction(() -> {
+                        Member member = new Member();
+                        member.setMemberId(updated.getMemberId());
+                        member.setMemberName(newName);
+                        memberBhv.updateNonstrict(member);
+                        return true; // committed
+                    });
                 }, 2);
 
                 car.projectA(dragon -> {
                     // table snapshot so old data selected
-                    Member member = memberBhv.selectByPK(9).get();
-                    log(member.getMemberName());
-                    log("first ninth: {}", member.getMemberName());
-                    assertEquals(beforeNinth.getMemberName(), member.getMemberName());
+                    Member member = memberBhv.selectByPK(updated.getMemberId()).get();
+                    String memberName = member.getMemberName();
+                    log("No.1 ninth: {}", memberName);
+                    assertEquals(updated.getMemberName(), memberName);
                 }, 1);
                 car.projectA(dragon -> {
                     // no snapshot so new data selected
-                    Member member = memberBhv.selectByPK(9).get();
-                    log("third ninth: {}", member.getMemberName());
-                    assertEquals("sea", member.getMemberName());
+                    Member member = memberBhv.selectByPK(updated.getMemberId()).get();
+                    String memberName = member.getMemberName();
+                    log("No.3 ninth: {}", memberName);
+                    assertEquals(newName, memberName);
                 }, 3);
             }, new CannonballOption().threadCount(3));
         } finally { // rollback
             performNewTransaction(() -> {
-                Member member = memberBhv.selectByPK(9).get();
-                member.setMemberName(beforeNinth.getMemberName());
+                Member member = memberBhv.selectByPK(updated.getMemberId()).get();
+                member.setMemberName(updated.getMemberName());
                 memberBhv.updateNonstrict(member);
-                return true; // commit
+                return true; // committed
             });
         }
     }
-
     // ===================================================================================
     //                                                                        Assist Logic
     //                                                                        ============
