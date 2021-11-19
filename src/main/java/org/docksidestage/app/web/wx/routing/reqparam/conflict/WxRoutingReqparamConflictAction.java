@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.routing.reqparam;
+package org.docksidestage.app.web.wx.routing.reqparam.conflict;
 
 import java.util.Map;
 
@@ -39,8 +39,9 @@ public class WxRoutingReqparamConflictAction extends FortressBaseAction {
     //  => x until 1.2.2
     @Execute
     public JsonResponse<Map<String, Object>> get$index(WxRoutingReqparamConflictForm form) {
+        validateApi(form, messages -> {});
         logger.debug("form.sea = " + form.sea);
-        return asJson(DfCollectionUtil.newHashMap("hit", "get$index()"));
+        return asJson(DfCollectionUtil.newHashMap("hit", "get$index()", "form.sea", form.sea));
     }
 
     // [hit]

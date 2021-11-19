@@ -59,6 +59,9 @@ public abstract class AbstractRemoteMaihamaShowbaseBhv extends org.lastaflute.re
         rule.sendQueryBy(new LaQuerySender(new LaVacantMappingPolicy()));
         rule.sendBodyBy(new LaJsonSender(requestManager, mappingOption));
         rule.receiveBodyBy(new LaJsonReceiver(requestManager, mappingOption));
+        rule.validateAs(op -> {
+            op.handleAsWarnReturn();
+        });
     }
 
     private List<JsonYourCollectionResource> prepareYourCollections() {
