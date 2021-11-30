@@ -27,8 +27,11 @@ import org.dbflute.helper.token.file.FileToken;
 import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
+import org.docksidestage.mylasta.action.FortressMessages;
+import org.lastaflute.core.message.exception.MessagingApplicationException;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
+import org.lastaflute.web.response.ApiResponse;
 import org.lastaflute.web.response.StreamResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -100,6 +103,9 @@ public class WxResponseStreamAction extends FortressBaseAction {
         });
     }
 
+    // ===================================================================================
+    //                                                                              Update
+    //                                                                              ======
     // http://localhost:8151/fortress/wx/response/stream/updateplain/
     //  => exception (AccessContextNotFoundException, ResponseDownloadStreamCallUpdateException)
     @Execute
@@ -131,6 +137,9 @@ public class WxResponseStreamAction extends FortressBaseAction {
         });
     }
 
+    // ===================================================================================
+    //                                                                            Japanese
+    //                                                                            ========
     // http://localhost:8151/fortress/wx/response/stream/japanese/
     @Execute
     public StreamResponse japanese() {
@@ -142,10 +151,15 @@ public class WxResponseStreamAction extends FortressBaseAction {
         });
     }
 
-    // http://localhost:8151/fortress/wx/response/stream/withvalidation/
-    // http://localhost:8151/fortress/wx/response/stream/withvalidation/?land=oneman
+    // ===================================================================================
+    //                                                                           Exception
+    //                                                                           =========
+    // http://localhost:8151/fortress/wx/response/stream/validationerror/
+    //  => handled by ApiFailureHook
+    // http://localhost:8151/fortress/wx/response/stream/validationerror/?land=oneman
+    //  => download
     @Execute
-    public StreamResponse withvalidation(WxResponseStreamForm form) {
+    public StreamResponse validationerror(WxResponseStreamForm form) {
         // you can choose error response, HTML? or JSON?
         //validate(form, messages -> {}, () -> {
         //    return asHtml(path_object);
@@ -157,5 +171,43 @@ public class WxResponseStreamAction extends FortressBaseAction {
                 out.write(ins);
             }
         });
+    }
+
+    // http://localhost:8151/fortress/wx/response/stream/withbizex/
+    //  => exception (404.html in webapp)
+    @Execute
+    public StreamResponse withbizex() {
+        String debugMsg = "Stream Business Exception Test";
+        FortressMessages messages = createMessages();
+        messages.addErrorsAppIllegalTransition(GLOBAL);
+        throw new MessagingApplicationException(debugMsg, messages);
+    }
+
+    // http://localhost:8151/fortress/wx/response/stream/withbizexapi/
+    //  => handled by ApiFailureHook
+    @Execute
+    public ApiStreamResponse withbizexapi() {
+        if (Boolean.TRUE) { // to avoid suppress warning
+            String debugMsg = "Stream Business Exception Test";
+            FortressMessages messages = createMessages();
+            messages.addErrorsAppIllegalTransition(GLOBAL);
+            throw new MessagingApplicationException(debugMsg, messages);
+        }
+        // dead code here, to check compile
+        ApiStreamResponse response = new ApiStreamResponse("sea.txt");
+        response.stream(out -> {
+            byte[] buf = "download".getBytes("UTF-8");
+            try (InputStream ins = new ByteArrayInputStream(buf)) {
+                out.write(ins);
+            }
+        });
+        return response;
+    }
+
+    public static class ApiStreamResponse extends StreamResponse implements ApiResponse {
+
+        public ApiStreamResponse(String fileName) {
+            super(fileName);
+        }
     }
 }
