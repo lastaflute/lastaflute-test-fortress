@@ -7,7 +7,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>Maihama Base</name>
+	<name>Test Fortress</name>
 	<description>test project for LastaFlute as quick structure</description>
 	<url>http://dbflute.org/lastaflute</url>
 	<inceptionYear>2015</inceptionYear>
