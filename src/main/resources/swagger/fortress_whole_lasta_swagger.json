@@ -4097,6 +4097,109 @@
         }
       ]
     },
+    "/wx/faicli/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 5,
+            "in": "query",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/faicli/unknown": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/faicli/entity/{account}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "account",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
     "/wx/job/sea/{stage}/{jobUnique}": {
       "get": {
         "summary": "@author jflute",
@@ -4755,6 +4858,1905 @@
             "description": "success",
             "schema": {
               "$ref": "#/definitions/org.docksidestage.app.web.wx.namedcls.WxNamedclsAction%24MyNamedClsForm"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/body/basic": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SuperSimpleBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/body/list": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bodyList",
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "List\u003cSuperSimpleBody\u003e",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/list/basic": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List%3Corg.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult%3E"
+              }
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/list/genebean": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List%3Corg.docksidestage.app.web.wx.remogen.bean.recycle.ValueGenericsResult%3Corg.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult%3E%3E"
+              }
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/list/genestring": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List%3Corg.docksidestage.app.web.wx.remogen.bean.recycle.ValueGenericsResult%3Cjava.lang.String%3E%3E"
+              }
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/list/innergene": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/java.util.List%3Cjava.util.AbstractMap%24SimpleEntry%3Cjava.lang.String%2Cjava.lang.String%3E%3E"
+              }
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/method/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "land",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "iamForm",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SuperSimpleBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "land",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "iamForm",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/method/onbodyform": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "land",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "iamForm",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "land",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "iamForm",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/method/onbodyjson": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SuperSimpleBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SuperSimpleBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/method/samename": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "land",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "iamForm",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "SuperSimpleBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/method/noquery": {
+      "delete": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/{first}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/maihama": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/sea/{first}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/land/{first}/{second}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/piari": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/piari/{first}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/dstore": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/dstore/{first}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/dstore/{first}/{second}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/bonvo/{first}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/bonvo/{first}/{second}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/amba/{first}/{second}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/amba/{first}/{second}/{third}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "third",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/miraco/{first}/{second}/{third}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "third",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/miraco/{first}/{second}/{third}/{fourth}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "third",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "fourth",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/dohotel/{first}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "param",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/dohotel/{first}/{second}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "param",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/celeb/{first}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/celeb/{first}/{second}": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "integer",
+            "format": "int64",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/{first}/resola": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/routing/amphi/{first}/theater/{second}/maihama": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "first",
+            "type": "integer",
+            "format": "int32",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "second",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/suffix/allsuffix": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.AllSuffixResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/suffix/nosuffix": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixCompletely"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/suffix/partonly": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.PartOnlySuffix"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/suffix/toponly": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.TonOnlySuffixResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/tricky/allnone": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/tricky/nobody": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/tricky/oddprop": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/tricky/recycle": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/tricky/selfref": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/remogen/tricky/suffixhell": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult"
             }
           },
           "400": {
@@ -6412,33 +8414,6 @@
         }
       ]
     },
-    "/wx/response/forward/": {
-      "get": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "parameters": [],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success"
-          }
-        },
-        "produces": [
-          "text/html"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "header",
-          "type": "string",
-          "required": true,
-          "name": "hangar",
-          "default": "mystic"
-        }
-      ]
-    },
     "/wx/response/html/empty/": {
       "get": {
         "summary": "@author jflute",
@@ -7651,7 +9626,7 @@
         }
       ]
     },
-    "/wx/response/stream/withvalidation": {
+    "/wx/response/stream/validationerror": {
       "get": {
         "summary": "@author jflute",
         "description": "@author jflute",
@@ -7673,6 +9648,256 @@
         },
         "produces": [
           "application/octet-stream"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/stream/withbizex": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "application/octet-stream"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/stream/withbizexapi": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "client error"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/stream/api/validationerror": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "land",
+            "type": "string",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "application/octet-stream"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/stream/api/withbizex": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "application/octet-stream"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/transition/forward/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "text/html"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/transition/redirect/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "text/html"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/transition/redirect/permanently/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "text/html"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/transition/redirect/permanently/ssl": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "text/html"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/response/transition/redirect/temporary/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "produces": [
+          "text/html"
         ]
       },
       "parameters": [
@@ -8826,87 +11051,6 @@
             "description": "success",
             "schema": {
               "$ref": "#/definitions/org.docksidestage.app.web.wx.routing.RoutingCheckResult"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "header",
-          "type": "string",
-          "required": true,
-          "name": "hangar",
-          "default": "mystic"
-        }
-      ]
-    },
-    "/wx/routing/httpmet/sea/{param1}": {
-      "get": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "parameters": [
-          {
-            "name": "param1",
-            "type": "string",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "400": {
-            "description": "client error"
-          }
-        },
-        "produces": [
-          "application/json"
-        ]
-      },
-      "parameters": [
-        {
-          "in": "header",
-          "type": "string",
-          "required": true,
-          "name": "hangar",
-          "default": "mystic"
-        }
-      ]
-    },
-    "/wx/routing/httpmet/land/{param1}": {
-      "get": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
-        "parameters": [
-          {
-            "name": "param1",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "tags": [
-          "wx"
-        ],
-        "responses": {
-          "200": {
-            "description": "success",
-            "schema": {
-              "type": "object"
             }
           },
           "400": {
@@ -10494,6 +12638,152 @@
         }
       ]
     },
+    "/wx/routing/reqparam/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "land",
+            "type": "string",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/routing/reqparam/sea": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/routing/reqparam/conflict/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "sea",
+            "type": "string",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/routing/reqparam/conflict/sea": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
     "/wx/routing/restful/dummy": {
       "get": {
         "summary": "@author jflute",
@@ -11761,6 +14051,105 @@
           "default": "mystic"
         }
       ]
+    },
+    "/wx/validator/groups/response/dockside": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.validator.groups.WxValidatorGroupsResponseResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/validator/groups/response/hangar": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.validator.groups.WxValidatorGroupsResponseResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/validator/groups/response/useDefault": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.validator.groups.WxValidatorGroupsResponseResult"
+            }
+          },
+          "400": {
+            "description": "client error"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
     }
   },
   "definitions": {
@@ -12645,6 +15034,561 @@
             "WDL"
           ],
           "example": "FML"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody": {
+      "type": "object",
+      "properties": {
+        "sea": {
+          "type": "string"
+        },
+        "land": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "iam_body": {
+          "type": "string"
+        }
+      }
+    },
+    "java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        }
+      }
+    },
+    "java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.recycle.ValueGenericsResult\u003corg.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult\u003e\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        }
+      }
+    },
+    "java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.recycle.ValueGenericsResult\u003cjava.lang.String\u003e\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        }
+      }
+    },
+    "java.util.List\u003cjava.util.AbstractMap$SimpleEntry\u003cjava.lang.String,java.lang.String\u003e\u003e": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "object"
+        },
+        "value": {
+          "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult": {
+      "type": "object",
+      "properties": {
+        "sea": {
+          "type": "string"
+        },
+        "land": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "iam_result": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.routing.RoutingCheckResult": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "first": {
+          "type": "object"
+        },
+        "second": {
+          "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.AllSuffixResult$ResortParkPart$ShowStagePart": {
+      "type": "object",
+      "required": [
+        "stage_name"
+      ],
+      "properties": {
+        "stage_name": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.AllSuffixResult$ResortParkPart": {
+      "type": "object",
+      "required": [
+        "park_name"
+      ],
+      "properties": {
+        "park_name": {
+          "type": "string"
+        },
+        "show_stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.AllSuffixResult%24ResortParkPart%24ShowStagePart"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.AllSuffixResult": {
+      "type": "object",
+      "required": [
+        "resort_name"
+      ],
+      "properties": {
+        "resort_name": {
+          "type": "string"
+        },
+        "resort_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.AllSuffixResult%24ResortParkPart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixCompletely$ResortPark": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixCompletely": {
+      "type": "object",
+      "required": [
+        "resort_name"
+      ],
+      "properties": {
+        "resort_name": {
+          "type": "string"
+        },
+        "resort_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixCompletely%24ResortPark"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.PartOnlySuffix$ResortParkPart$ShowStagePart": {
+      "type": "object",
+      "required": [
+        "stage_name"
+      ],
+      "properties": {
+        "stage_name": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.PartOnlySuffix$ResortParkPart": {
+      "type": "object",
+      "required": [
+        "park_name"
+      ],
+      "properties": {
+        "park_name": {
+          "type": "string"
+        },
+        "show_stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.PartOnlySuffix%24ResortParkPart%24ShowStagePart"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.PartOnlySuffix": {
+      "type": "object",
+      "required": [
+        "resort_name"
+      ],
+      "properties": {
+        "resort_name": {
+          "type": "string"
+        },
+        "resort_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.PartOnlySuffix%24ResortParkPart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.TonOnlySuffixResult$ResortPark$ShowStage": {
+      "type": "object",
+      "required": [
+        "stage_name"
+      ],
+      "properties": {
+        "stage_name": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.TonOnlySuffixResult$ResortPark": {
+      "type": "object",
+      "required": [
+        "park_name"
+      ],
+      "properties": {
+        "park_name": {
+          "type": "string"
+        },
+        "show_stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.TonOnlySuffixResult%24ResortPark%24ShowStage"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.TonOnlySuffixResult": {
+      "type": "object",
+      "required": [
+        "resort_name"
+      ],
+      "properties": {
+        "resort_name": {
+          "type": "string"
+        },
+        "resort_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.TonOnlySuffixResult%24ResortPark"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties$PlainNormalEntry": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties$ResultBeanEntry": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties$PlainGenericParameter": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties$ResultGenericParameter": {
+      "type": "object",
+      "properties": {}
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties": {
+      "type": "object",
+      "required": [
+        "sea_result"
+      ],
+      "properties": {
+        "sea_result": {
+          "type": "string"
+        },
+        "land_bean_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "normal_entry": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties%24PlainNormalEntry"
+        },
+        "bean_entry": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties%24ResultBeanEntry"
+        },
+        "plain_generic_entry": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties%24PlainGenericParameter"
+        },
+        "generic_entry": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.oddprop.SuperOddProperties%24ResultGenericParameter"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult$ShowStagePart": {
+      "type": "object",
+      "required": [
+        "stage_name"
+      ],
+      "properties": {
+        "stage_name": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.ThemeColorResult": {
+      "type": "object",
+      "properties": {
+        "color_name": {
+          "type": "string"
+        },
+        "rgb": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult$ResortParkPart": {
+      "type": "object",
+      "required": [
+        "park_name"
+      ],
+      "properties": {
+        "park_name": {
+          "type": "string"
+        },
+        "show_stages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24ShowStagePart"
+          }
+        },
+        "theme_color": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.ThemeColorResult"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult$ExtendedAreaPart": {
+      "type": "object",
+      "required": [
+        "direction"
+      ],
+      "properties": {
+        "direction": {
+          "type": "string"
+        },
+        "next_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24ResortParkPart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult$DepartmentStorePart$OfficialShopPart": {
+      "type": "object",
+      "required": [
+        "shop_name"
+      ],
+      "properties": {
+        "shop_name": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult$DepartmentStorePart": {
+      "type": "object",
+      "required": [
+        "store_name"
+      ],
+      "properties": {
+        "store_name": {
+          "type": "string"
+        },
+        "shop_count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "official_shop": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24DepartmentStorePart%24OfficialShopPart"
+        },
+        "show_stage": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24ShowStagePart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult$ThemeHotelPart": {
+      "type": "object",
+      "required": [
+        "hotel_name"
+      ],
+      "properties": {
+        "hotel_name": {
+          "type": "string"
+        },
+        "corresponding_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24ResortParkPart"
+        },
+        "official_shop": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24DepartmentStorePart%24OfficialShopPart"
+        },
+        "show_stage": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24ShowStagePart"
+        },
+        "theme_color": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.ThemeColorResult"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult": {
+      "type": "object",
+      "required": [
+        "resort_name"
+      ],
+      "properties": {
+        "resort_name": {
+          "type": "string"
+        },
+        "first_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24ResortParkPart"
+        },
+        "extended_areas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24ExtendedAreaPart"
+          }
+        },
+        "department_store": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24DepartmentStorePart"
+        },
+        "big_hotels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.recycle.RecycleParadeResult%24ThemeHotelPart"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ResortPark": {
+      "type": "object",
+      "required": [
+        "park_name"
+      ],
+      "properties": {
+        "park_name": {
+          "type": "string"
+        },
+        "parent_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult%24ResortPark"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ExtendedArea": {
+      "type": "object",
+      "required": [
+        "area_name"
+      ],
+      "properties": {
+        "area_name": {
+          "type": "string"
+        },
+        "parking_area": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult%24ExtendedArea%24ParkingArea"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult$ExtendedArea$ParkingArea": {
+      "type": "object",
+      "required": [
+        "area_name"
+      ],
+      "properties": {
+        "area_name": {
+          "type": "string"
+        },
+        "internal_area": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult%24ExtendedArea"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult": {
+      "type": "object",
+      "required": [
+        "resort_name"
+      ],
+      "properties": {
+        "resort_name": {
+          "type": "string"
+        },
+        "resort_park": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult%24ResortPark"
+        },
+        "extended_area": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.selfref.SelfReferenceResult%24ExtendedArea"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellSeaPart$HellSeaResultPart": {
+      "type": "object",
+      "required": [
+        "stage_name"
+      ],
+      "properties": {
+        "stage_name": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellSeaPart": {
+      "type": "object",
+      "required": [
+        "park_name"
+      ],
+      "properties": {
+        "park_name": {
+          "type": "string"
+        },
+        "hell_sea_result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellSeaPart%24HellSeaResultPart"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellLandPart$HellLandPartPart": {
+      "type": "object",
+      "required": [
+        "stage_name"
+      ],
+      "properties": {
+        "stage_name": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult$HellLandPart": {
+      "type": "object",
+      "required": [
+        "park_name"
+      ],
+      "properties": {
+        "park_name": {
+          "type": "string"
+        },
+        "hell_land_part": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellLandPart%24HellLandPartPart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult": {
+      "type": "object",
+      "required": [
+        "resort_name"
+      ],
+      "properties": {
+        "resort_name": {
+          "type": "string"
+        },
+        "hell_sea": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellSeaPart"
+        },
+        "hell_land": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.remogen.bean.suffix.hell.HellSeaResult%24HellLandPart"
         }
       }
     },
@@ -13609,20 +16553,6 @@
         }
       }
     },
-    "org.docksidestage.app.web.wx.routing.RoutingCheckResult": {
-      "type": "object",
-      "properties": {
-        "method": {
-          "type": "string"
-        },
-        "first": {
-          "type": "object"
-        },
-        "second": {
-          "type": "object"
-        }
-      }
-    },
     "org.docksidestage.app.web.wx.routing.mixworld.RoutingMixworldCheckResult": {
       "type": "object",
       "properties": {
@@ -14028,6 +16958,37 @@
         },
         "data": {
           "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.validator.groups.WxValidatorGroupsResponseResult": {
+      "type": "object",
+      "required": [
+        "dockside_only",
+        "hangar_only",
+        "both_named",
+        "with_default",
+        "no_specified",
+        "default_only"
+      ],
+      "properties": {
+        "dockside_only": {
+          "type": "string"
+        },
+        "hangar_only": {
+          "type": "string"
+        },
+        "both_named": {
+          "type": "string"
+        },
+        "with_default": {
+          "type": "string"
+        },
+        "no_specified": {
+          "type": "string"
+        },
+        "default_only": {
+          "type": "string"
         }
       }
     }
