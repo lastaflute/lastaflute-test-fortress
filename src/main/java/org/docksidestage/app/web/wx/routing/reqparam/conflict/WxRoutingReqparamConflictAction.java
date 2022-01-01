@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.app.web.wx.routing.httpmet;
+package org.docksidestage.app.web.wx.routing.reqparam.conflict;
 
 import java.util.Map;
 
@@ -29,23 +29,25 @@ import org.slf4j.LoggerFactory;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxRoutingHttpmetAction extends FortressBaseAction {
+public class WxRoutingReqparamConflictAction extends FortressBaseAction {
 
-    private static final Logger logger = LoggerFactory.getLogger(WxRoutingHttpmetAction.class);
+    private static final Logger logger = LoggerFactory.getLogger(WxRoutingReqparamConflictAction.class);
 
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/httpmet/sea/mystic
+    // GET http://localhost:8151/fortress/wx/routing/reqparam/conflict/?sea=mystic
+    //  => OK since 1.2.3
+    //  => x until 1.2.2
     @Execute
-    public JsonResponse<Map<String, Object>> get$sea(String param1) {
-        logger.debug("param1 = " + param1);
-        return asJson(DfCollectionUtil.newHashMap("param1", param1));
+    public JsonResponse<Map<String, Object>> get$index(WxRoutingReqparamConflictForm form) {
+        validateApi(form, messages -> {});
+        logger.debug("form.sea = " + form.sea);
+        return asJson(DfCollectionUtil.newHashMap("hit", "get$index()", "form.sea", form.sea));
     }
 
     // [hit]
-    // http://localhost:8151/fortress/wx/routing/httpmet/land/1
+    // POST http://localhost:8151/fortress/wx/routing/reqparam/conflict/sea/
     @Execute
-    public JsonResponse<Map<String, Object>> get$land(Integer param1) {
-        logger.debug("param1 = " + param1);
-        return asJson(DfCollectionUtil.newHashMap("param1", param1));
+    public JsonResponse<Map<String, Object>> post$sea() {
+        return asJson(DfCollectionUtil.newHashMap("hit", "post$sea()"));
     }
 }
