@@ -23,13 +23,13 @@ import org.lastaflute.core.util.Lato;
  */
 public class RemoteWxRequestFormEccolleParam {
 
-    /** The property of sea. (NullAllowed) */
+    /** The property of sea. (string immutable list e.g. [dockside,hangar,magiclamp]) (NullAllowed) */
     public org.eclipse.collections.api.list.ImmutableList<String> sea;
 
     /** The property of land. (NullAllowed) */
     public org.eclipse.collections.api.list.ImmutableList<String> land;
 
-    /** The property of piari. (NullAllowed) */
+    /** The property of piari. (string util) (NullAllowed) */
     public org.eclipse.collections.api.list.ImmutableList<String> piari;
 
     /** The property of bonvo. (NullAllowed) */

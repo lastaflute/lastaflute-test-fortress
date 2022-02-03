@@ -23,20 +23,26 @@ import org.lastaflute.core.util.Lato;
  */
 public class RemoteWxRequestFormParam {
 
-    /** The property of sea. (NullAllowed) */
+    /** The property of sea. (string immutable list e.g. [dockside,hangar,magiclamp]) (NullAllowed) */
     public String sea;
 
     /** The property of land. (NullAllowed) */
     public Integer land;
 
-    /** The property of piari. (NullAllowed) */
+    /** The property of piari. (as date e.g. 2022-02-03) (NullAllowed) */
     public java.time.LocalDate piari;
 
     /** The property of bonvo. (NullAllowed) */
     public java.time.LocalDateTime bonvo;
 
     /** The property of dstore. (NullAllowed) */
-    public Boolean dstore;
+    public String dstore;
+
+    /** The property of amba. (NullAllowed) */
+    public Boolean amba;
+
+    /** The property of miraco. (string list e.g. [harborSide,riverSide]) (NullAllowed) */
+    public org.eclipse.collections.api.list.ImmutableList<String> miraco;
 
     @Override
     public String toString() {

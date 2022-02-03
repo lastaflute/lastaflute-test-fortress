@@ -17069,8 +17069,8 @@
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "string immutable list e.g. [dockside,hangar,magiclamp]",
+            "comment": "string immutable list e.g. [dockside,hangar,magiclamp]",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
@@ -17091,8 +17091,8 @@
             "typeName": "java.time.LocalDate",
             "simpleTypeName": "LocalDate",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "as date e.g. 2022-02-03",
+            "comment": "as date e.g. 2022-02-03",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
@@ -17110,11 +17110,33 @@
           {
             "name": "dstore",
             "publicName": "dstore",
+            "typeName": "java.time.LocalTime",
+            "simpleTypeName": "LocalTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "amba",
+            "publicName": "amba",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
             "description": null,
             "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "miraco",
+            "publicName": "miraco",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": "string list e.g. [harborSide,riverSide]",
+            "comment": "string list e.g. [harborSide,riverSide]",
             "annotationList": [],
             "nestTypeDocMetaList": []
           }
@@ -17136,8 +17158,8 @@
             "typeName": "java.lang.String",
             "simpleTypeName": "String",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "string immutable list e.g. [dockside,hangar,magiclamp]",
+            "comment": "string immutable list e.g. [dockside,hangar,magiclamp]",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
@@ -17158,8 +17180,8 @@
             "typeName": "java.time.LocalDate",
             "simpleTypeName": "LocalDate",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "as date e.g. 2022-02-03",
+            "comment": "as date e.g. 2022-02-03",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
@@ -17177,11 +17199,33 @@
           {
             "name": "dstore",
             "publicName": "dstore",
+            "typeName": "java.time.LocalTime",
+            "simpleTypeName": "LocalTime",
+            "value": null,
+            "description": null,
+            "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "amba",
+            "publicName": "amba",
             "typeName": "java.lang.Boolean",
             "simpleTypeName": "Boolean",
             "value": null,
             "description": null,
             "comment": null,
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "miraco",
+            "publicName": "miraco",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": "string list e.g. [harborSide,riverSide]",
+            "comment": "string list e.g. [harborSide,riverSide]",
             "annotationList": [],
             "nestTypeDocMetaList": []
           }
@@ -17220,8 +17264,8 @@
             "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "string immutable list e.g. [dockside,hangar,magiclamp]",
+            "comment": "string immutable list e.g. [dockside,hangar,magiclamp]",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
@@ -17242,8 +17286,8 @@
             "typeName": "java.util.List\u003cjava.lang.String\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "string util",
+            "comment": "string util.list e.g. [celeb,plaza]",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
@@ -17322,8 +17366,8 @@
             "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
             "simpleTypeName": "ImmutableList\u003cString\u003e",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "string immutable list e.g. [dockside,hangar,magiclamp]",
+            "comment": "string immutable list e.g. [dockside,hangar,magiclamp]",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
@@ -17344,8 +17388,8 @@
             "typeName": "java.util.List\u003cjava.lang.String\u003e",
             "simpleTypeName": "List\u003cString\u003e",
             "value": null,
-            "description": null,
-            "comment": null,
+            "description": "string util",
+            "comment": "string util.list e.g. [celeb,plaza]",
             "annotationList": [],
             "nestTypeDocMetaList": []
           },
