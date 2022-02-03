@@ -44,10 +44,12 @@ public class WxRequestFormAction extends FortressBaseAction {
 
     public static class BasicItemForm {
 
+        // #thinking jflute confusing "e.g. default value", set as MyEcColleForm's one (2022/02/03)
         public String sea;
 
         public Integer land;
 
+        /** as date e.g. 2022-02-03 */
         public LocalDate piari;
 
         public LocalDateTime bonvo;
