@@ -40,7 +40,7 @@
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.8.1</commons.lang.version>
 		<commons.fileupload.version>1.4</commons.fileupload.version>
-		<eclipse.collections.version>9.2.0</eclipse.collections.version>
+		<eclipse.collections.version>11.0.0</eclipse.collections.version>
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
