@@ -2,6 +2,20 @@ map:{
     # ==========================================================================
     #                                                                 Remote Api
     #                                                                 ==========
+    ; RemoteApiFortress = map:{
+        ; resourceMap = map:{
+            ; baseDir = ../src/main
+            ; resourceType = SWAGGER
+            ; resourceFile = $$baseDir$$/resources/remoteapi/schema/remoteapi_schema_fortress_swagger.json
+        }
+        ; outputMap = map:{
+            ; outputDirectory = $$baseDir$$/java
+            ; package = org.docksidestage.remote
+        }
+        ; optionMap = map:{
+            ; ruleJsPath = ../src/main/resources/remoteapi/schema/remoteapi_schema_fortress_rule.js
+        }
+    }
     ; RemoteApiMaihamaShowbase = map:{
         ; resourceMap = map:{
             ; baseDir = ../src/main

@@ -16,6 +16,8 @@
 package org.docksidestage.mylasta.namedcls.zoned;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import org.dbflute.exception.ClassificationNotFoundException;
 import org.dbflute.jdbc.Classification;
@@ -23,7 +25,6 @@ import org.dbflute.jdbc.ClassificationCodeType;
 import org.dbflute.jdbc.ClassificationMeta;
 import org.dbflute.jdbc.ClassificationUndefinedHandlingType;
 import org.dbflute.optional.OptionalThing;
-import static org.dbflute.util.DfTypeUtil.emptyStrings;
 
 /**
  * The definition of zoned classification.
@@ -36,117 +37,72 @@ public interface ZonedCDef extends Classification {
      */
     public enum ZoSea implements ZonedCDef {
         /** Formalized: as formal member, allowed to use all service */
-        Formalized("FML", "Formalized", emptyStrings())
-        ,
+        Formalized("FML", "Formalized"),
         /** Withdrawal: withdrawal is fixed, not allowed to use service */
-        Withdrawal("WDL", "Withdrawal", emptyStrings())
-        ,
+        Withdrawal("WDL", "Withdrawal"),
         /** Provisional: first status after entry, allowed to use only part of service */
-        Provisional("PRV", "Provisional", emptyStrings())
-        ;
-        private static final Map<String, ZoSea> _codeClsMap = new HashMap<String, ZoSea>();
-        private static final Map<String, ZoSea> _nameClsMap = new HashMap<String, ZoSea>();
-        static {
-            for (ZoSea value : values()) {
-                _codeClsMap.put(value.code().toLowerCase(), value);
-                for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
-            }
-        }
-        private String _code; private String _alias; private Set<String> _sisterSet;
-        private ZoSea(String code, String alias, String[] sisters)
-        { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
+        Provisional("PRV", "Provisional");
+        private static ZzzoneSlimmer<ZoSea> _slimmer = new ZzzoneSlimmer<>(ZoSea.class, values());
+        private String _code; private String _alias;
+        private ZoSea(String code, String alias) { _code = code; _alias = alias; }
         public String code() { return _code; } public String alias() { return _alias; }
-        public Set<String> sisterSet() { return _sisterSet; }
+        public Set<String> sisterSet() { return Collections.emptySet(); }
         public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
         public ClassificationMeta meta() { return ZonedCDef.DefMeta.ZoSea; }
-
         /**
          * Is the classification in the group? <br>
          * means member that can use services <br>
          * The group elements:[Formalized, Provisional]
          * @return The determination, true or false.
          */
-        public boolean isServiceAvailable() {
-            return Formalized.equals(this) || Provisional.equals(this);
-        }
-
+        public boolean isServiceAvailable() { return Formalized.equals(this) || Provisional.equals(this); }
         /**
          * Is the classification in the group? <br>
          * Members are not formalized yet <br>
          * The group elements:[Provisional]
          * @return The determination, true or false.
          */
-        public boolean isShortOfFormalized() {
-            return Provisional.equals(this);
-        }
-
+        public boolean isShortOfFormalized() { return Provisional.equals(this); }
         public boolean inGroup(String groupName) {
-            if ("serviceAvailable".equals(groupName)) { return isServiceAvailable(); }
-            if ("shortOfFormalized".equals(groupName)) { return isShortOfFormalized(); }
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return isServiceAvailable(); }
+            if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return isShortOfFormalized(); }
             return false;
         }
-
         /**
          * Get the classification of the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
          * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<ZoSea> of(Object code) {
-            if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
-            if (code instanceof ZoSea) { return OptionalThing.of((ZoSea)code); }
-            if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
-            return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
-                throw new ClassificationNotFoundException("Unknown classification code: " + code);
-            });
-        }
-
+        public static OptionalThing<ZoSea> of(Object code) { return _slimmer.of(code); }
         /**
          * Find the classification by the name. (CaseInsensitive)
          * @param name The string of name, which is case-insensitive. (NotNull)
          * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<ZoSea> byName(String name) {
-            if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
-            return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
-                throw new ClassificationNotFoundException("Unknown classification name: " + name);
-            });
-        }
-
+        public static OptionalThing<ZoSea> byName(String name) { return _slimmer.byName(name); }
         /**
-         * <span style="color: #AD4747; font-size: 120%">Old style so use of(code).</span> <br>
-         * Get the classification by the code. (CaseInsensitive)
+         * <span style="color: #AD4747; font-size: 120%">Old style so use of(code).</span>
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
          */
-        public static ZoSea codeOf(Object code) {
-            if (code == null) { return null; }
-            if (code instanceof ZoSea) { return (ZoSea)code; }
-            return _codeClsMap.get(code.toString().toLowerCase());
-        }
-
+        public static ZoSea codeOf(Object code) { return _slimmer.codeOf(code); }
         /**
-         * <span style="color: #AD4747; font-size: 120%">Old style so use byName(name).</span> <br>
-         * Get the classification by the name (also called 'value' in ENUM world).
+         * <span style="color: #AD4747; font-size: 120%">Old style so use byName(name).</span>
          * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
+         * @deprecated use byName(name) instead.
          */
-        public static ZoSea nameOf(String name) {
-            if (name == null) { return null; }
-            try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
-        }
-
+        public static ZoSea nameOf(String name) { return _slimmer.nameOf(name, nm -> valueOf(nm)); }
         /**
          * Get the list of all classification elements. (returns new copied list)
          * @return The snapshot list of all classification elements. (NotNull)
          */
-        public static List<ZoSea> listAll() {
-            return new ArrayList<ZoSea>(Arrays.asList(values()));
-        }
-
+        public static List<ZoSea> listAll() { return _slimmer.listAll(values()); }
         /**
-         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * Get the list of classification elements in the specified group. (returns new copied list)
          * @param groupName The string of group name, which is case-insensitive. (NotNull)
-         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
+         * @return The snapshot list of classification elements in the group. (NotNull)
+         * @throws ClassificationNotFoundException When the group is not found.
          */
         public static List<ZoSea> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
@@ -154,19 +110,13 @@ public interface ZonedCDef extends Classification {
             if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }
             throw new ClassificationNotFoundException("Unknown classification group: ZoSea." + groupName);
         }
-
         /**
-         * Get the list of classification elements corresponding to the specified codes. (returns new copied list) <br>
+         * <span style="color: #AD4747; font-size: 120%">Old style so use e.g. Stream API with of().</span>
          * @param codeList The list of plain code, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
+         * @deprecated use e.g. Stream API with of() instead.
          */
-        public static List<ZoSea> listOf(Collection<String> codeList) {
-            if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
-            List<ZoSea> clsList = new ArrayList<ZoSea>(codeList.size());
-            for (String code : codeList) { clsList.add(of(code).get()); }
-            return clsList;
-        }
-
+        public static List<ZoSea> listOf(Collection<String> codeList) { return _slimmer.listOf(codeList); }
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
          * means member that can use services <br>
@@ -174,9 +124,8 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull)
          */
         public static List<ZoSea> listOfServiceAvailable() {
-            return new ArrayList<ZoSea>(Arrays.asList(Formalized, Provisional));
+            return new ArrayList<>(Arrays.asList(Formalized, Provisional));
         }
-
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
          * Members are not formalized yet <br>
@@ -184,20 +133,19 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull)
          */
         public static List<ZoSea> listOfShortOfFormalized() {
-            return new ArrayList<ZoSea>(Arrays.asList(Provisional));
+            return new ArrayList<>(Arrays.asList(Provisional));
         }
-
         /**
-         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * <span style="color: #AD4747; font-size: 120%">Old style so use listByGroup(groupName).</span>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
+         * @deprecated use listByGroup(groupName) instead.
          */
         public static List<ZoSea> groupOf(String groupName) {
-            if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
-            if ("shortOfFormalized".equals(groupName)) { return listOfShortOfFormalized(); }
-            return new ArrayList<ZoSea>(4);
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
+            if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }
+            return new ArrayList<>();
         }
-
         @Override public String toString() { return code(); }
     }
 
@@ -206,19 +154,10 @@ public interface ZonedCDef extends Classification {
      */
     public enum ZoLand implements ZonedCDef {
         /** ShowBase: Formalized */
-        OneMan("FML", "ShowBase", emptyStrings())
-        ,
+        OneMan("FML", "ShowBase"),
         /** Orlean: Withdrawal */
-        MiniO("WDL", "Orlean", emptyStrings())
-        ;
-        private static final Map<String, ZoLand> _codeClsMap = new HashMap<String, ZoLand>();
-        private static final Map<String, ZoLand> _nameClsMap = new HashMap<String, ZoLand>();
-        static {
-            for (ZoLand value : values()) {
-                _codeClsMap.put(value.code().toLowerCase(), value);
-                for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
-            }
-        }
+        MiniO("WDL", "Orlean");
+        private static ZzzoneSlimmer<ZoLand> _slimmer = new ZzzoneSlimmer<>(ZoLand.class, values());
         private static final Map<String, Map<String, Object>> _subItemMapMap = new HashMap<String, Map<String, Object>>();
         static {
             {
@@ -232,113 +171,74 @@ public interface ZonedCDef extends Classification {
                 _subItemMapMap.put(MiniO.code(), Collections.unmodifiableMap(subItemMap));
             }
         }
-        private String _code; private String _alias; private Set<String> _sisterSet;
-        private ZoLand(String code, String alias, String[] sisters)
-        { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
+        private String _code; private String _alias;
+        private ZoLand(String code, String alias) { _code = code; _alias = alias; }
         public String code() { return _code; } public String alias() { return _alias; }
-        public Set<String> sisterSet() { return _sisterSet; }
+        public Set<String> sisterSet() { return Collections.emptySet(); }
         public Map<String, Object> subItemMap() { return _subItemMapMap.get(code()); }
         public ClassificationMeta meta() { return ZonedCDef.DefMeta.ZoLand; }
-
         public String keyword() {
             return (String)subItemMap().get("keyword");
         }
-
         /**
          * Is the classification in the group? <br>
          * means member that can use services <br>
          * The group elements:[OneMan]
          * @return The determination, true or false.
          */
-        public boolean isServiceAvailable() {
-            return OneMan.equals(this);
-        }
-
+        public boolean isServiceAvailable() { return OneMan.equals(this); }
         public boolean inGroup(String groupName) {
-            if ("serviceAvailable".equals(groupName)) { return isServiceAvailable(); }
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return isServiceAvailable(); }
             return false;
         }
-
         /**
          * Get the classification of the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
          * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<ZoLand> of(Object code) {
-            if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
-            if (code instanceof ZoLand) { return OptionalThing.of((ZoLand)code); }
-            if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
-            return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
-                throw new ClassificationNotFoundException("Unknown classification code: " + code);
-            });
-        }
-
+        public static OptionalThing<ZoLand> of(Object code) { return _slimmer.of(code); }
         /**
          * Find the classification by the name. (CaseInsensitive)
          * @param name The string of name, which is case-insensitive. (NotNull)
          * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<ZoLand> byName(String name) {
-            if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
-            return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
-                throw new ClassificationNotFoundException("Unknown classification name: " + name);
-            });
-        }
-
+        public static OptionalThing<ZoLand> byName(String name) { return _slimmer.byName(name); }
         /**
-         * <span style="color: #AD4747; font-size: 120%">Old style so use of(code).</span> <br>
-         * Get the classification by the code. (CaseInsensitive)
+         * <span style="color: #AD4747; font-size: 120%">Old style so use of(code).</span>
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
          */
-        public static ZoLand codeOf(Object code) {
-            if (code == null) { return null; }
-            if (code instanceof ZoLand) { return (ZoLand)code; }
-            return _codeClsMap.get(code.toString().toLowerCase());
-        }
-
+        public static ZoLand codeOf(Object code) { return _slimmer.codeOf(code); }
         /**
-         * <span style="color: #AD4747; font-size: 120%">Old style so use byName(name).</span> <br>
-         * Get the classification by the name (also called 'value' in ENUM world).
+         * <span style="color: #AD4747; font-size: 120%">Old style so use byName(name).</span>
          * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
+         * @deprecated use byName(name) instead.
          */
-        public static ZoLand nameOf(String name) {
-            if (name == null) { return null; }
-            try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
-        }
-
+        public static ZoLand nameOf(String name) { return _slimmer.nameOf(name, nm -> valueOf(nm)); }
         /**
          * Get the list of all classification elements. (returns new copied list)
          * @return The snapshot list of all classification elements. (NotNull)
          */
-        public static List<ZoLand> listAll() {
-            return new ArrayList<ZoLand>(Arrays.asList(values()));
-        }
-
+        public static List<ZoLand> listAll() { return _slimmer.listAll(values()); }
         /**
-         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * Get the list of classification elements in the specified group. (returns new copied list)
          * @param groupName The string of group name, which is case-insensitive. (NotNull)
-         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
+         * @return The snapshot list of classification elements in the group. (NotNull)
+         * @throws ClassificationNotFoundException When the group is not found.
          */
         public static List<ZoLand> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
             if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
             throw new ClassificationNotFoundException("Unknown classification group: ZoLand." + groupName);
         }
-
         /**
-         * Get the list of classification elements corresponding to the specified codes. (returns new copied list) <br>
+         * <span style="color: #AD4747; font-size: 120%">Old style so use e.g. Stream API with of().</span>
          * @param codeList The list of plain code, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
+         * @deprecated use e.g. Stream API with of() instead.
          */
-        public static List<ZoLand> listOf(Collection<String> codeList) {
-            if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
-            List<ZoLand> clsList = new ArrayList<ZoLand>(codeList.size());
-            for (String code : codeList) { clsList.add(of(code).get()); }
-            return clsList;
-        }
-
+        public static List<ZoLand> listOf(Collection<String> codeList) { return _slimmer.listOf(codeList); }
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
          * means member that can use services <br>
@@ -346,19 +246,18 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull)
          */
         public static List<ZoLand> listOfServiceAvailable() {
-            return new ArrayList<ZoLand>(Arrays.asList(OneMan));
+            return new ArrayList<>(Arrays.asList(OneMan));
         }
-
         /**
-         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * <span style="color: #AD4747; font-size: 120%">Old style so use listByGroup(groupName).</span>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
+         * @deprecated use listByGroup(groupName) instead.
          */
         public static List<ZoLand> groupOf(String groupName) {
-            if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
-            return new ArrayList<ZoLand>(4);
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
+            return new ArrayList<>();
         }
-
         @Override public String toString() { return code(); }
     }
 
@@ -367,117 +266,72 @@ public interface ZonedCDef extends Classification {
      */
     public enum ZoPiari implements ZonedCDef {
         /** ShowBase: Formalized */
-        OneMan("FML", "ShowBase", emptyStrings())
-        ,
+        OneMan("FML", "ShowBase"),
         /** Dstore: Provisional */
-        Dstore("PRV", "Dstore", emptyStrings())
-        ,
+        Dstore("PRV", "Dstore"),
         /** Orlean: Withdrawal */
-        MiniO("WDL", "Orlean", emptyStrings())
-        ;
-        private static final Map<String, ZoPiari> _codeClsMap = new HashMap<String, ZoPiari>();
-        private static final Map<String, ZoPiari> _nameClsMap = new HashMap<String, ZoPiari>();
-        static {
-            for (ZoPiari value : values()) {
-                _codeClsMap.put(value.code().toLowerCase(), value);
-                for (String sister : value.sisterSet()) { _codeClsMap.put(sister.toLowerCase(), value); }
-            }
-        }
-        private String _code; private String _alias; private Set<String> _sisterSet;
-        private ZoPiari(String code, String alias, String[] sisters)
-        { _code = code; _alias = alias; _sisterSet = Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters))); }
+        MiniO("WDL", "Orlean");
+        private static ZzzoneSlimmer<ZoPiari> _slimmer = new ZzzoneSlimmer<>(ZoPiari.class, values());
+        private String _code; private String _alias;
+        private ZoPiari(String code, String alias) { _code = code; _alias = alias; }
         public String code() { return _code; } public String alias() { return _alias; }
-        public Set<String> sisterSet() { return _sisterSet; }
+        public Set<String> sisterSet() { return Collections.emptySet(); }
         public Map<String, Object> subItemMap() { return Collections.emptyMap(); }
         public ClassificationMeta meta() { return ZonedCDef.DefMeta.ZoPiari; }
-
         /**
          * Is the classification in the group? <br>
          * means member that can use services <br>
          * The group elements:[OneMan, Dstore]
          * @return The determination, true or false.
          */
-        public boolean isServiceAvailable() {
-            return OneMan.equals(this) || Dstore.equals(this);
-        }
-
+        public boolean isServiceAvailable() { return OneMan.equals(this) || Dstore.equals(this); }
         /**
          * Is the classification in the group? <br>
          * Members are not formalized yet <br>
          * The group elements:[Dstore]
          * @return The determination, true or false.
          */
-        public boolean isShortOfFormalized() {
-            return Dstore.equals(this);
-        }
-
+        public boolean isShortOfFormalized() { return Dstore.equals(this); }
         public boolean inGroup(String groupName) {
-            if ("serviceAvailable".equals(groupName)) { return isServiceAvailable(); }
-            if ("shortOfFormalized".equals(groupName)) { return isShortOfFormalized(); }
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return isServiceAvailable(); }
+            if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return isShortOfFormalized(); }
             return false;
         }
-
         /**
          * Get the classification of the code. (CaseInsensitive)
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns empty)
          * @return The optional classification corresponding to the code. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<ZoPiari> of(Object code) {
-            if (code == null) { return OptionalThing.ofNullable(null, () -> { throw new ClassificationNotFoundException("null code specified"); }); }
-            if (code instanceof ZoPiari) { return OptionalThing.of((ZoPiari)code); }
-            if (code instanceof OptionalThing<?>) { return of(((OptionalThing<?>)code).orElse(null)); }
-            return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () ->{
-                throw new ClassificationNotFoundException("Unknown classification code: " + code);
-            });
-        }
-
+        public static OptionalThing<ZoPiari> of(Object code) { return _slimmer.of(code); }
         /**
          * Find the classification by the name. (CaseInsensitive)
          * @param name The string of name, which is case-insensitive. (NotNull)
          * @return The optional classification corresponding to the name. (NotNull, EmptyAllowed: if not found, returns empty)
          */
-        public static OptionalThing<ZoPiari> byName(String name) {
-            if (name == null) { throw new IllegalArgumentException("The argument 'name' should not be null."); }
-            return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () ->{
-                throw new ClassificationNotFoundException("Unknown classification name: " + name);
-            });
-        }
-
+        public static OptionalThing<ZoPiari> byName(String name) { return _slimmer.byName(name); }
         /**
-         * <span style="color: #AD4747; font-size: 120%">Old style so use of(code).</span> <br>
-         * Get the classification by the code. (CaseInsensitive)
+         * <span style="color: #AD4747; font-size: 120%">Old style so use of(code).</span>
          * @param code The value of code, which is case-insensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the code. (NullAllowed: if not found, returns null)
          */
-        public static ZoPiari codeOf(Object code) {
-            if (code == null) { return null; }
-            if (code instanceof ZoPiari) { return (ZoPiari)code; }
-            return _codeClsMap.get(code.toString().toLowerCase());
-        }
-
+        public static ZoPiari codeOf(Object code) { return _slimmer.codeOf(code); }
         /**
-         * <span style="color: #AD4747; font-size: 120%">Old style so use byName(name).</span> <br>
-         * Get the classification by the name (also called 'value' in ENUM world).
+         * <span style="color: #AD4747; font-size: 120%">Old style so use byName(name).</span>
          * @param name The string of name, which is case-sensitive. (NullAllowed: if null, returns null)
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
+         * @deprecated use byName(name) instead.
          */
-        public static ZoPiari nameOf(String name) {
-            if (name == null) { return null; }
-            try { return valueOf(name); } catch (RuntimeException ignored) { return null; }
-        }
-
+        public static ZoPiari nameOf(String name) { return _slimmer.nameOf(name, nm -> valueOf(nm)); }
         /**
          * Get the list of all classification elements. (returns new copied list)
          * @return The snapshot list of all classification elements. (NotNull)
          */
-        public static List<ZoPiari> listAll() {
-            return new ArrayList<ZoPiari>(Arrays.asList(values()));
-        }
-
+        public static List<ZoPiari> listAll() { return _slimmer.listAll(values()); }
         /**
-         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * Get the list of classification elements in the specified group. (returns new copied list)
          * @param groupName The string of group name, which is case-insensitive. (NotNull)
-         * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if not found, throws exception)
+         * @return The snapshot list of classification elements in the group. (NotNull)
+         * @throws ClassificationNotFoundException When the group is not found.
          */
         public static List<ZoPiari> listByGroup(String groupName) {
             if (groupName == null) { throw new IllegalArgumentException("The argument 'groupName' should not be null."); }
@@ -485,19 +339,13 @@ public interface ZonedCDef extends Classification {
             if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }
             throw new ClassificationNotFoundException("Unknown classification group: ZoPiari." + groupName);
         }
-
         /**
-         * Get the list of classification elements corresponding to the specified codes. (returns new copied list) <br>
+         * <span style="color: #AD4747; font-size: 120%">Old style so use e.g. Stream API with of().</span>
          * @param codeList The list of plain code, which is case-insensitive. (NotNull)
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
+         * @deprecated use e.g. Stream API with of() instead.
          */
-        public static List<ZoPiari> listOf(Collection<String> codeList) {
-            if (codeList == null) { throw new IllegalArgumentException("The argument 'codeList' should not be null."); }
-            List<ZoPiari> clsList = new ArrayList<ZoPiari>(codeList.size());
-            for (String code : codeList) { clsList.add(of(code).get()); }
-            return clsList;
-        }
-
+        public static List<ZoPiari> listOf(Collection<String> codeList) { return _slimmer.listOf(codeList); }
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
          * means member that can use services <br>
@@ -505,9 +353,8 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull)
          */
         public static List<ZoPiari> listOfServiceAvailable() {
-            return new ArrayList<ZoPiari>(Arrays.asList(OneMan, Dstore));
+            return new ArrayList<>(Arrays.asList(OneMan, Dstore));
         }
-
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
          * Members are not formalized yet <br>
@@ -515,133 +362,207 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull)
          */
         public static List<ZoPiari> listOfShortOfFormalized() {
-            return new ArrayList<ZoPiari>(Arrays.asList(Dstore));
+            return new ArrayList<>(Arrays.asList(Dstore));
         }
-
         /**
-         * Get the list of classification elements in the specified group. (returns new copied list) <br>
+         * <span style="color: #AD4747; font-size: 120%">Old style so use listByGroup(groupName).</span>
          * @param groupName The string of group name, which is case-sensitive. (NullAllowed: if null, returns empty list)
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
+         * @deprecated use listByGroup(groupName) instead.
          */
         public static List<ZoPiari> groupOf(String groupName) {
-            if ("serviceAvailable".equals(groupName)) { return listOfServiceAvailable(); }
-            if ("shortOfFormalized".equals(groupName)) { return listOfShortOfFormalized(); }
-            return new ArrayList<ZoPiari>(4);
+            if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
+            if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }
+            return new ArrayList<>();
         }
-
         @Override public String toString() { return code(); }
     }
 
     public enum DefMeta implements ClassificationMeta {
         /** Sea Cls */
-        ZoSea
-        ,
+        ZoSea(cd -> ZonedCDef.ZoSea.of(cd), nm -> ZonedCDef.ZoSea.byName(nm)
+        , () -> ZonedCDef.ZoSea.listAll(), gp -> ZonedCDef.ZoSea.listByGroup(gp)
+        , ClassificationCodeType.String, ClassificationUndefinedHandlingType.LOGGING),
+
         /** Land Cls */
-        ZoLand
-        ,
+        ZoLand(cd -> ZonedCDef.ZoLand.of(cd), nm -> ZonedCDef.ZoLand.byName(nm)
+        , () -> ZonedCDef.ZoLand.listAll(), gp -> ZonedCDef.ZoLand.listByGroup(gp)
+        , ClassificationCodeType.String, ClassificationUndefinedHandlingType.LOGGING),
+
         /** Piari Cls */
-        ZoPiari
-        ;
-        public String classificationName() {
-            return name(); // same as definition name
+        ZoPiari(cd -> ZonedCDef.ZoPiari.of(cd), nm -> ZonedCDef.ZoPiari.byName(nm)
+        , () -> ZonedCDef.ZoPiari.listAll(), gp -> ZonedCDef.ZoPiari.listByGroup(gp)
+        , ClassificationCodeType.String, ClassificationUndefinedHandlingType.LOGGING);
+
+        private static final Map<String, DefMeta> _nameMetaMap = new HashMap<>();
+        static {
+            for (DefMeta value : values()) {
+                _nameMetaMap.put(value.name().toLowerCase(), value);
+            }
+        }
+        private final Function<Object, OptionalThing<? extends Classification>> _ofCall;
+        private final Function<String, OptionalThing<? extends Classification>> _byNameCall;
+        private final Supplier<List<? extends Classification>> _listAllCall;
+        private final Function<String, List<? extends Classification>> _listByGroupCall;
+        private final ClassificationCodeType _codeType;
+        private final ClassificationUndefinedHandlingType _undefinedHandlingType;
+        private DefMeta(Function<Object, OptionalThing<? extends Classification>> ofCall
+                      , Function<String, OptionalThing<? extends Classification>> byNameCall
+                      , Supplier<List<? extends Classification>> listAllCall
+                      , Function<String, List<? extends Classification>> listByGroupCall
+                      , ClassificationCodeType codeType
+                      , ClassificationUndefinedHandlingType undefinedHandlingType
+                ) {
+            _ofCall = ofCall;
+            _byNameCall = byNameCall;
+            _listAllCall = listAllCall;
+            _listByGroupCall = listByGroupCall;
+            _codeType = codeType;
+            _undefinedHandlingType = undefinedHandlingType;
+        }
+        public String classificationName() { return name(); } // same as definition name
+
+        public OptionalThing<? extends Classification> of(Object code) { return _ofCall.apply(code); }
+        public OptionalThing<? extends Classification> byName(String name) { return _byNameCall.apply(name); }
+
+        public Classification codeOf(Object code) // null allowed, old style
+        { return of(code).orElse(null); }
+        public Classification nameOf(String name) { // null allowed, old style
+            if (name == null) { return null; } // for compatible
+            return byName(name).orElse(null); // case insensitive
         }
 
-        public OptionalThing<? extends Classification> of(Object code) {
-            if (ZoSea.name().equals(name())) { return ZonedCDef.ZoSea.of(code); }
-            if (ZoLand.name().equals(name())) { return ZonedCDef.ZoLand.of(code); }
-            if (ZoPiari.name().equals(name())) { return ZonedCDef.ZoPiari.of(code); }
-            throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
-        }
-
-        public OptionalThing<? extends Classification> byName(String name) {
-            if (ZoSea.name().equals(name())) { return ZonedCDef.ZoSea.byName(name); }
-            if (ZoLand.name().equals(name())) { return ZonedCDef.ZoLand.byName(name); }
-            if (ZoPiari.name().equals(name())) { return ZonedCDef.ZoPiari.byName(name); }
-            throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
-        }
-
-        public Classification codeOf(Object code) { // null if not found, old style so use of(code)
-            if (ZoSea.name().equals(name())) { return ZonedCDef.ZoSea.codeOf(code); }
-            if (ZoLand.name().equals(name())) { return ZonedCDef.ZoLand.codeOf(code); }
-            if (ZoPiari.name().equals(name())) { return ZonedCDef.ZoPiari.codeOf(code); }
-            throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
-        }
-
-        public Classification nameOf(String name) { // null if not found, old style so use byName(name)
-            if (ZoSea.name().equals(name())) { return ZonedCDef.ZoSea.valueOf(name); }
-            if (ZoLand.name().equals(name())) { return ZonedCDef.ZoLand.valueOf(name); }
-            if (ZoPiari.name().equals(name())) { return ZonedCDef.ZoPiari.valueOf(name); }
-            throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
-        }
-
-        public List<Classification> listAll() {
-            if (ZoSea.name().equals(name())) { return toClsList(ZonedCDef.ZoSea.listAll()); }
-            if (ZoLand.name().equals(name())) { return toClsList(ZonedCDef.ZoLand.listAll()); }
-            if (ZoPiari.name().equals(name())) { return toClsList(ZonedCDef.ZoPiari.listAll()); }
-            throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
-        }
-
-        public List<Classification> listByGroup(String groupName) { // exception if not found
-            if (ZoSea.name().equals(name())) { return toClsList(ZonedCDef.ZoSea.listByGroup(groupName)); }
-            if (ZoLand.name().equals(name())) { return toClsList(ZonedCDef.ZoLand.listByGroup(groupName)); }
-            if (ZoPiari.name().equals(name())) { return toClsList(ZonedCDef.ZoPiari.listByGroup(groupName)); }
-            throw new IllegalStateException("Unknown groupName: " + groupName + ", " + this); // basically unreachable
-        }
-
-        public List<Classification> listOf(Collection<String> codeList) {
-            if (ZoSea.name().equals(name())) { return toClsList(ZonedCDef.ZoSea.listOf(codeList)); }
-            if (ZoLand.name().equals(name())) { return toClsList(ZonedCDef.ZoLand.listOf(codeList)); }
-            if (ZoPiari.name().equals(name())) { return toClsList(ZonedCDef.ZoPiari.listOf(codeList)); }
-            throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
-        }
-
-        public List<Classification> groupOf(String groupName) { // old style
-            if (ZoSea.name().equals(name())) { return toClsList(ZonedCDef.ZoSea.groupOf(groupName)); }
-            if (ZoLand.name().equals(name())) { return toClsList(ZonedCDef.ZoLand.groupOf(groupName)); }
-            if (ZoPiari.name().equals(name())) { return toClsList(ZonedCDef.ZoPiari.groupOf(groupName)); }
-            throw new IllegalStateException("Unknown definition: " + this); // basically unreachable
-        }
+        public List<Classification> listAll()
+        { return toClsList(_listAllCall.get()); }
+        public List<Classification> listByGroup(String groupName) // exception if not found
+        { return toClsList(_listByGroupCall.apply(groupName)); }
 
         @SuppressWarnings("unchecked")
-        private List<Classification> toClsList(List<?> clsList) {
-            return (List<Classification>)clsList;
+        private List<Classification> toClsList(List<?> clsList) { return (List<Classification>)clsList; }
+
+        public List<Classification> listOf(Collection<String> codeList) { // copied from slimmer, old style
+            if (codeList == null) {
+                throw new IllegalArgumentException("The argument 'codeList' should not be null.");
+            }
+            List<Classification> clsList = new ArrayList<>(codeList.size());
+            for (String code : codeList) {
+                clsList.add(of(code).get());
+            }
+            return clsList;
+        }
+        public List<Classification> groupOf(String groupName) { // empty if not found, old style
+            try {
+                return listByGroup(groupName); // case insensitive
+            } catch (IllegalArgumentException | ClassificationNotFoundException e) {
+                return new ArrayList<>();
+            }
         }
 
-        public ClassificationCodeType codeType() {
-            if (ZoSea.name().equals(name())) { return ClassificationCodeType.String; }
-            if (ZoLand.name().equals(name())) { return ClassificationCodeType.String; }
-            if (ZoPiari.name().equals(name())) { return ClassificationCodeType.String; }
-            return ClassificationCodeType.String; // as default
-        }
-
-        public ClassificationUndefinedHandlingType undefinedHandlingType() {
-            if (ZoSea.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
-            if (ZoLand.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
-            if (ZoPiari.name().equals(name())) { return ClassificationUndefinedHandlingType.LOGGING; }
-            return ClassificationUndefinedHandlingType.LOGGING; // as default
-        }
+        public ClassificationCodeType codeType() { return _codeType; }
+        public ClassificationUndefinedHandlingType undefinedHandlingType() { return _undefinedHandlingType; }
 
         public static OptionalThing<ZonedCDef.DefMeta> find(String classificationName) { // instead of valueOf()
             if (classificationName == null) { throw new IllegalArgumentException("The argument 'classificationName' should not be null."); }
-            if (ZoSea.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(ZonedCDef.DefMeta.ZoSea); }
-            if (ZoLand.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(ZonedCDef.DefMeta.ZoLand); }
-            if (ZoPiari.name().equalsIgnoreCase(classificationName)) { return OptionalThing.of(ZonedCDef.DefMeta.ZoPiari); }
-            return OptionalThing.ofNullable(null, () -> {
+            return OptionalThing.ofNullable(_nameMetaMap.get(classificationName.toLowerCase()), () -> {
                 throw new ClassificationNotFoundException("Unknown classification: " + classificationName);
             });
         }
-
         public static ZonedCDef.DefMeta meta(String classificationName) { // old style so use find(name)
-            if (classificationName == null) { throw new IllegalArgumentException("The argument 'classificationName' should not be null."); }
-            if (ZoSea.name().equalsIgnoreCase(classificationName)) { return ZonedCDef.DefMeta.ZoSea; }
-            if (ZoLand.name().equalsIgnoreCase(classificationName)) { return ZonedCDef.DefMeta.ZoLand; }
-            if (ZoPiari.name().equalsIgnoreCase(classificationName)) { return ZonedCDef.DefMeta.ZoPiari; }
-            throw new IllegalStateException("Unknown classification: " + classificationName);
+            return find(classificationName).orElseTranslatingThrow(cause -> {
+                return new IllegalStateException("Unknown classification: " + classificationName);
+            });
+        }
+    }
+
+    public static class ZzzoneSlimmer<CLS extends ZonedCDef> {
+
+        public static Set<String> toSisterSet(String[] sisters) { // used by initializer so static
+            return Collections.unmodifiableSet(new LinkedHashSet<String>(Arrays.asList(sisters)));
         }
 
-        @SuppressWarnings("unused")
-        private String[] xinternalEmptyString() {
-            return emptyStrings(); // to suppress 'unused' warning of import statement
+        private final Class<CLS> _clsType;
+        private final Map<String, CLS> _codeClsMap = new HashMap<>();
+        private final Map<String, CLS> _nameClsMap = new HashMap<>();
+
+        public ZzzoneSlimmer(Class<CLS> clsType, CLS[] values) {
+            _clsType = clsType;
+            initMap(values);
+        }
+
+        private void initMap(CLS[] values) {
+            for (CLS value : values) {
+                _codeClsMap.put(value.code().toLowerCase(), value);
+                for (String sister : value.sisterSet()) {
+                    _codeClsMap.put(sister.toLowerCase(), value);
+                }
+                _nameClsMap.put(value.name().toLowerCase(), value);
+            }
+        }
+
+        public OptionalThing<CLS> of(Object code) {
+            if (code == null) {
+                return OptionalThing.ofNullable(null, () -> {
+                    throw new ClassificationNotFoundException("null code specified");
+                });
+            }
+            if (_clsType.isAssignableFrom(code.getClass())) {
+                @SuppressWarnings("unchecked")
+                CLS cls = (CLS) code;
+                return OptionalThing.of(cls);
+            }
+            if (code instanceof OptionalThing<?>) {
+                return of(((OptionalThing<?>) code).orElse(null));
+            }
+            return OptionalThing.ofNullable(_codeClsMap.get(code.toString().toLowerCase()), () -> {
+                throw new ClassificationNotFoundException("Unknown classification code: " + code);
+            });
+        }
+
+        public OptionalThing<CLS> byName(String name) {
+            if (name == null) {
+                throw new IllegalArgumentException("The argument 'name' should not be null.");
+            }
+            return OptionalThing.ofNullable(_nameClsMap.get(name.toLowerCase()), () -> {
+                throw new ClassificationNotFoundException("Unknown classification name: " + name);
+            });
+        }
+
+        public CLS codeOf(Object code) {
+            if (code == null) {
+                return null;
+            }
+            if (_clsType.isAssignableFrom(code.getClass())) {
+                @SuppressWarnings("unchecked")
+                CLS cls = (CLS) code;
+                return cls;
+            }
+            return _codeClsMap.get(code.toString().toLowerCase());
+        }
+
+        public CLS nameOf(String name, java.util.function.Function<String, CLS> valueOfCall) {
+            if (name == null) {
+                return null;
+            }
+            try {
+                return valueOfCall.apply(name);
+            } catch (RuntimeException ignored) { // not found
+                return null;
+            }
+        }
+
+        public List<CLS> listAll(CLS[] clss) {
+            return new ArrayList<>(Arrays.asList(clss));
+        }
+
+        public List<CLS> listOf(Collection<String> codeList) {
+            if (codeList == null) {
+                throw new IllegalArgumentException("The argument 'codeList' should not be null.");
+            }
+            List<CLS> clsList = new ArrayList<>(codeList.size());
+            for (String code : codeList) {
+                clsList.add(of(code).get());
+            }
+            return clsList;
         }
     }
 }

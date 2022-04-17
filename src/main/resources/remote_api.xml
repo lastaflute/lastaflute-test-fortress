@@ -4,6 +4,9 @@
 <components namespace="remote_api">
 	<include path="lastaflute.xml"/>
 
+	<!-- fortress myself (single project) -->
+	<include path="remoteapi/di/remoteapi_fortress.xml"/>
+
 	<!-- showbase of maihama (multi project) -->
 	<include path="remoteapi/di/remoteapi_maihama-showbase.xml"/>
 
@@ -17,5 +20,5 @@
 	<component name="remoteMaihamaHangarBhv" class="org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv"/>
 
 	<!-- fortress (single project) -->
-	<component name="remoteFortressBhv" class="org.docksidestage.remote.fortress.RemoteFortressBhv"/>
+	<component name="remoteFortressBhv" class="org.docksidestage.remote.fortressman.RemoteFortressBhv"/>
 </components>

@@ -2,8 +2,8 @@ package org.docksidestage.app.web.wx.remogen;
 
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.app.web.wx.routing.RoutingCheckForm;
-import org.docksidestage.app.web.wx.routing.RoutingCheckResult;
+import org.docksidestage.app.web.wx.remogen.routing.RemogenRoutingCheckForm;
+import org.docksidestage.app.web.wx.remogen.routing.RemogenRoutingCheckResult;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
@@ -23,8 +23,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // [not]
     // http://localhost:8098/showbase/wx/remogen/routing/
     @Execute
-    public JsonResponse<RoutingCheckResult> index(Integer first) {
-        return asJson(new RoutingCheckResult("index()", "specified: " + first, null));
+    public JsonResponse<RemogenRoutingCheckResult> index(Integer first) {
+        return asJson(new RemogenRoutingCheckResult("index()", "specified: " + first, null));
     }
 
     // [hit]
@@ -33,8 +33,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // http://localhost:8098/showbase/wx/remogen/routing/
     // http://localhost:8098/showbase/wx/remogen/routing/maihama/dockside
     @Execute
-    public JsonResponse<RoutingCheckResult> maihama() {
-        return asJson(new RoutingCheckResult("maihama()", null, null));
+    public JsonResponse<RemogenRoutingCheckResult> maihama() {
+        return asJson(new RemogenRoutingCheckResult("maihama()", null, null));
     }
 
     // [hit]
@@ -42,8 +42,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // [not]
     // http://localhost:8098/showbase/wx/remogen/routing/sea/dockside/hangar
     @Execute
-    public JsonResponse<RoutingCheckResult> sea(String first) {
-        return asJson(new RoutingCheckResult("sea()", first, null));
+    public JsonResponse<RemogenRoutingCheckResult> sea(String first) {
+        return asJson(new RemogenRoutingCheckResult("sea()", first, null));
     }
 
     // Cannot define overload method of action execute
@@ -58,8 +58,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // http://localhost:8098/showbase/wx/remogen/routing/land/dockside
     // http://localhost:8098/showbase/wx/remogen/routing/land/dockside/hangar/magiclamp
     @Execute
-    public JsonResponse<RoutingCheckResult> land(String first, String second) {
-        return asJson(new RoutingCheckResult("land()", first, second));
+    public JsonResponse<RemogenRoutingCheckResult> land(String first, String second) {
+        return asJson(new RemogenRoutingCheckResult("land()", first, second));
     }
 
     // [hit]
@@ -68,8 +68,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // [not]
     // http://localhost:8098/showbase/wx/remogen/routing/piari/dockside/hangar
     @Execute
-    public JsonResponse<RoutingCheckResult> piari(OptionalThing<String> first) {
-        return asJson(new RoutingCheckResult("piari()", first.orElse("*first"), null));
+    public JsonResponse<RemogenRoutingCheckResult> piari(OptionalThing<String> first) {
+        return asJson(new RemogenRoutingCheckResult("piari()", first.orElse("*first"), null));
     }
 
     // [hit]
@@ -79,8 +79,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // [not]
     // http://localhost:8098/showbase/wx/remogen/routing/dstore/dockside/hangar/magiclamp
     @Execute
-    public JsonResponse<RoutingCheckResult> dstore(OptionalThing<String> first, OptionalThing<String> second) {
-        return asJson(new RoutingCheckResult("dstore()", first.orElse("*first"), second.orElse("*second")));
+    public JsonResponse<RemogenRoutingCheckResult> dstore(OptionalThing<String> first, OptionalThing<String> second) {
+        return asJson(new RemogenRoutingCheckResult("dstore()", first.orElse("*first"), second.orElse("*second")));
     }
 
     // [hit]
@@ -90,8 +90,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // http://localhost:8098/showbase/wx/remogen/routing/bonvo
     // http://localhost:8098/showbase/wx/remogen/routing/bonvo/dockside/hangar/magiclamp
     @Execute
-    public JsonResponse<RoutingCheckResult> bonvo(String first, OptionalThing<String> second) {
-        return asJson(new RoutingCheckResult("bonvo()", first, second.orElse("*second")));
+    public JsonResponse<RemogenRoutingCheckResult> bonvo(String first, OptionalThing<String> second) {
+        return asJson(new RemogenRoutingCheckResult("bonvo()", first, second.orElse("*second")));
     }
 
     // [hit]
@@ -101,8 +101,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // http://localhost:8098/showbase/wx/remogen/routing/amba/dockside
     // http://localhost:8098/showbase/wx/remogen/routing/amba/dockside/hangar/magiclamp/orleans
     @Execute
-    public JsonResponse<RoutingCheckResult> amba(String first, String second, OptionalThing<String> third) {
-        return asJson(new RoutingCheckResult("amba()", first, second + " :: " + third.orElse("*third")));
+    public JsonResponse<RemogenRoutingCheckResult> amba(String first, String second, OptionalThing<String> third) {
+        return asJson(new RemogenRoutingCheckResult("amba()", first, second + " :: " + third.orElse("*third")));
     }
 
     // [hit]
@@ -112,8 +112,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // http://localhost:8098/showbase/wx/remogen/routing/miraco/dockside
     // http://localhost:8098/showbase/wx/remogen/routing/miraco/dockside/hangar
     @Execute
-    public JsonResponse<RoutingCheckResult> miraco(String first, String second, String third, OptionalThing<String> fourth) {
-        return asJson(new RoutingCheckResult("miraco()", first, second + " :: " + third + " :: " + fourth.orElse("*fourth")));
+    public JsonResponse<RemogenRoutingCheckResult> miraco(String first, String second, String third, OptionalThing<String> fourth) {
+        return asJson(new RemogenRoutingCheckResult("miraco()", first, second + " :: " + third + " :: " + fourth.orElse("*fourth")));
     }
 
     // [hit]
@@ -123,8 +123,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // [not]
     // http://localhost:8098/showbase/wx/remogen/routing/dohotel/dockside/hangar/magiclamp
     @Execute
-    public JsonResponse<RoutingCheckResult> dohotel(String first, OptionalThing<String> second, RoutingCheckForm form) {
-        return asJson(new RoutingCheckResult("dohotel()", first, second.orElse("*second") + " :: " + form));
+    public JsonResponse<RemogenRoutingCheckResult> dohotel(String first, OptionalThing<String> second, RemogenRoutingCheckForm form) {
+        return asJson(new RemogenRoutingCheckResult("dohotel()", first, second.orElse("*second") + " :: " + form));
     }
 
     // [hit]
@@ -134,8 +134,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // http://localhost:8098/showbase/wx/remogen/routing/celeb/dockside
     // http://localhost:8098/showbase/wx/remogen/routing/celeb/1/2/3
     @Execute
-    public JsonResponse<RoutingCheckResult> celeb(Integer first, OptionalThing<Long> second) {
-        return asJson(new RoutingCheckResult("celeb()", first, second.orElse(-99999L)));
+    public JsonResponse<RemogenRoutingCheckResult> celeb(Integer first, OptionalThing<Long> second) {
+        return asJson(new RemogenRoutingCheckResult("celeb()", first, second.orElse(-99999L)));
     }
 
     // [hit]
@@ -144,8 +144,8 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // http://localhost:8151/showbase/wx/remogen/routing/resola/1
     // http://localhost:8151/showbase/wx/remogen/routing/sea/resola
     @Execute(urlPattern = "{}/@word")
-    public JsonResponse<RoutingCheckResult> resola(Integer first) {
-        return asJson(new RoutingCheckResult("resola()", first, null));
+    public JsonResponse<RemogenRoutingCheckResult> resola(Integer first) {
+        return asJson(new RemogenRoutingCheckResult("resola()", first, null));
     }
 
     // [hit]
@@ -154,7 +154,7 @@ public class WxRemogenRoutingAction extends FortressBaseAction {
     // http://localhost:8098/showbase/wx/remogen/routing/amphi/1/2
     // http://localhost:8098/showbase/wx/remogen/routing/amphi/1/theater/zed
     @Execute(urlPattern = "@word/{}/@word/{}/@word")
-    public JsonResponse<RoutingCheckResult> amphiTheaterMaihama(Integer first, String second) {
-        return asJson(new RoutingCheckResult("amphiTheaterMaihama()", first, second));
+    public JsonResponse<RemogenRoutingCheckResult> amphiTheaterMaihama(Integer first, String second) {
+        return asJson(new RemogenRoutingCheckResult("amphiTheaterMaihama()", first, second));
     }
 }

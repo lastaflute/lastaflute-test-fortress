@@ -17,6 +17,7 @@ package org.docksidestage.app.web.wx.request.form;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
@@ -43,15 +44,22 @@ public class WxRequestFormAction extends FortressBaseAction {
 
     public static class BasicItemForm {
 
+        // #thinking jflute confusing "e.g. default value", set as MyEcColleForm's one (2022/02/03)
         public String sea;
 
         public Integer land;
 
+        /** as date e.g. 2022-02-03 */
         public LocalDate piari;
 
         public LocalDateTime bonvo;
 
-        public Boolean dstore;
+        public LocalTime dstore;
+
+        public Boolean amba;
+
+        /** string list e.g. [harborSide,riverSide] */
+        public List<String> miraco;
     }
 
     // [success]
@@ -96,10 +104,12 @@ public class WxRequestFormAction extends FortressBaseAction {
 
     public static class MyEcColleForm {
 
+        /** string immutable list e.g. [dockside,hangar,magiclamp] */
         public ImmutableList<String> sea;
 
         public MutableList<String> land;
 
+        /** string util.list e.g. [celeb,plaza] */
         public List<String> piari;
 
         public ImmutableMap<String, String> bonvo;

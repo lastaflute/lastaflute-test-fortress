@@ -15,6 +15,10 @@
  */
 package org.docksidestage.app.web.wx.remogen.bean.simple;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import org.lastaflute.core.util.Lato;
 
 /**
@@ -24,6 +28,9 @@ public class SuperSimpleBody {
 
     public String sea;
     public Integer land;
+    public LocalDate piari;
+    public LocalDateTime bonvo;
+    public LocalTime dstore;
     public String iamBody;
 
     @Override

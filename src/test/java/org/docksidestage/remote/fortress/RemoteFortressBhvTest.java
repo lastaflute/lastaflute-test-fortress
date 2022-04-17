@@ -8,7 +8,8 @@ import java.io.UnsupportedEncodingException;
 import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.exception.RemoteApiIOException;
-import org.docksidestage.remote.fortress.wx.multipart.RemoteFrMultipartParam;
+import org.docksidestage.remote.fortressman.RemoteFortressBhv;
+import org.docksidestage.remote.fortressman.wx.multipart.RemoteFrMultipartParam;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.ruts.multipart.MultipartFormFile;
 

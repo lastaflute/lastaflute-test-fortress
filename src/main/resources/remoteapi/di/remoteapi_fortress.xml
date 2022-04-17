@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//DBFLUTE//DTD LastaDi 1.0//EN"
+    "http://dbflute.org/meta/lastadi10.dtd">
+<!-- @author FreeGen -->
+<components namespace="remoteapi_fortress">
+    <include path="lastaflute.xml"/>
+    <include condition="#exists('#path')" path="remoteapi/di/remoteapi_all_included.xml"/>
+    <include condition="#exists('#path')" path="remoteapi/di/remoteapi_fortress_included.xml"/>
+
+    <!-- Remote API Behavior -->
+    <component name="remoteFortressLogoutBhv" class="org.docksidestage.remote.fortress.logout.RemoteFortressLogoutBhv" />
+    <component name="remoteFortressBhv" class="org.docksidestage.remote.fortress.RemoteFortressBhv" />
+    <component name="remoteFortressRleonardoBhv" class="org.docksidestage.remote.fortress.rleonardo.RemoteFortressRleonardoBhv" />
+    <component name="remoteFortressRdavinciBhv" class="org.docksidestage.remote.fortress.rdavinci.RemoteFortressRdavinciBhv" />
+    <component name="remoteFortressBalletdancersBhv" class="org.docksidestage.remote.fortress.balletdancers.RemoteFortressBalletdancersBhv" />
+    <component name="remoteFortressBalletdancersGreatestfavoritestudiosBhv" class="org.docksidestage.remote.fortress.balletdancers.greatestfavoritestudios.RemoteFortressBalletdancersGreatestfavoritestudiosBhv" />
+    <component name="remoteFortressBalletdancersGreatestfavoritestudiosHangarmysticBhv" class="org.docksidestage.remote.fortress.balletdancers.greatestfavoritestudios.hangarmystic.RemoteFortressBalletdancersGreatestfavoritestudiosHangarmysticBhv" />
+    <component name="remoteFortressBalletdancersGreatestfavoritestudiosShowbaseonemanBhv" class="org.docksidestage.remote.fortress.balletdancers.greatestfavoritestudios.showbaseoneman.RemoteFortressBalletdancersGreatestfavoritestudiosShowbaseonemanBhv" />
+    <component name="remoteFortressJobBhv" class="org.docksidestage.remote.fortress.job.RemoteFortressJobBhv" />
+    <component name="remoteFortressLidoBhv" class="org.docksidestage.remote.fortress.lido.RemoteFortressLidoBhv" />
+    <component name="remoteFortressMemberBhv" class="org.docksidestage.remote.fortress.member.RemoteFortressMemberBhv" />
+    <component name="remoteFortressMembersBhv" class="org.docksidestage.remote.fortress.members.RemoteFortressMembersBhv" />
+    <component name="remoteFortressMembersSearchBhv" class="org.docksidestage.remote.fortress.members.search.RemoteFortressMembersSearchBhv" />
+    <component name="remoteFortressMypageBhv" class="org.docksidestage.remote.fortress.mypage.RemoteFortressMypageBhv" />
+    <component name="remoteFortressOnparadeBhv" class="org.docksidestage.remote.fortress.onparade.RemoteFortressOnparadeBhv" />
+    <component name="remoteFortressProductBhv" class="org.docksidestage.remote.fortress.product.RemoteFortressProductBhv" />
+    <component name="remoteFortressProductsBhv" class="org.docksidestage.remote.fortress.products.RemoteFortressProductsBhv" />
+    <component name="remoteFortressProductsSeaBhv" class="org.docksidestage.remote.fortress.products.sea.RemoteFortressProductsSeaBhv" />
+    <component name="remoteFortressProductsDocksideoverBhv" class="org.docksidestage.remote.fortress.products.docksideover.RemoteFortressProductsDocksideoverBhv" />
+    <component name="remoteFortressProductsHangarmysticBhv" class="org.docksidestage.remote.fortress.products.hangarmystic.RemoteFortressProductsHangarmysticBhv" />
+    <component name="remoteFortressProductsLandBhv" class="org.docksidestage.remote.fortress.products.land.RemoteFortressProductsLandBhv" />
+    <component name="remoteFortressProductsShowbaseonemanBhv" class="org.docksidestage.remote.fortress.products.showbaseoneman.RemoteFortressProductsShowbaseonemanBhv" />
+    <component name="remoteFortressProductsPurchasesBhv" class="org.docksidestage.remote.fortress.products.purchases.RemoteFortressProductsPurchasesBhv" />
+    <component name="remoteFortressProductsPurchasesSeaBhv" class="org.docksidestage.remote.fortress.products.purchases.sea.RemoteFortressProductsPurchasesSeaBhv" />
+    <component name="remoteFortressProductsPurchasesDocksideoverBhv" class="org.docksidestage.remote.fortress.products.purchases.docksideover.RemoteFortressProductsPurchasesDocksideoverBhv" />
+    <component name="remoteFortressProductsPurchasesHangarmysticBhv" class="org.docksidestage.remote.fortress.products.purchases.hangarmystic.RemoteFortressProductsPurchasesHangarmysticBhv" />
+    <component name="remoteFortressProductsPurchasesLandBhv" class="org.docksidestage.remote.fortress.products.purchases.land.RemoteFortressProductsPurchasesLandBhv" />
+    <component name="remoteFortressProductsPurchasesShowbaseonemanBhv" class="org.docksidestage.remote.fortress.products.purchases.showbaseoneman.RemoteFortressProductsPurchasesShowbaseonemanBhv" />
+    <component name="remoteFortressProfileBhv" class="org.docksidestage.remote.fortress.profile.RemoteFortressProfileBhv" />
+    <component name="remoteFortressSigninBhv" class="org.docksidestage.remote.fortress.signin.RemoteFortressSigninBhv" />
+    <component name="remoteFortressSignoutBhv" class="org.docksidestage.remote.fortress.signout.RemoteFortressSignoutBhv" />
+    <component name="remoteFortressSignupBhv" class="org.docksidestage.remote.fortress.signup.RemoteFortressSignupBhv" />
+    <component name="remoteFortressWithdrawalBhv" class="org.docksidestage.remote.fortress.withdrawal.RemoteFortressWithdrawalBhv" />
+    <component name="remoteFortressWxBhv" class="org.docksidestage.remote.fortress.wx.RemoteFortressWxBhv" />
+    <component name="remoteFortressSpBhv" class="org.docksidestage.remote.fortress.sp.RemoteFortressSpBhv" />
+    <component name="remoteFortressWxRoutingRestlikeBhv" class="org.docksidestage.remote.fortress.wx.routing.restlike.RemoteFortressWxRoutingRestlikeBhv" />
+    <component name="remoteFortressWxRoutingRestlikeOperationBhv" class="org.docksidestage.remote.fortress.wx.routing.restlike.operation.RemoteFortressWxRoutingRestlikeOperationBhv" />
+    <component name="remoteFortressWxRoutingRestlikeNextBhv" class="org.docksidestage.remote.fortress.wx.routing.restlike.next.RemoteFortressWxRoutingRestlikeNextBhv" />
+    <component name="remoteFortressWxRoutingRestlikeNextNextnextBhv" class="org.docksidestage.remote.fortress.wx.routing.restlike.next.nextnext.RemoteFortressWxRoutingRestlikeNextNextnextBhv" />
+    <component name="remoteFortressWxRoutingRestlikeLmlikeBhv" class="org.docksidestage.remote.fortress.wx.routing.restlike.lmlike.RemoteFortressWxRoutingRestlikeLmlikeBhv" />
+    <component name="remoteFortressWxRoutingRestlikeLmlikeCategoryBhv" class="org.docksidestage.remote.fortress.wx.routing.restlike.lmlike.category.RemoteFortressWxRoutingRestlikeLmlikeCategoryBhv" />
+    <component name="remoteFortressWxRoutingRestlikeLmlikeDetailBhv" class="org.docksidestage.remote.fortress.wx.routing.restlike.lmlike.detail.RemoteFortressWxRoutingRestlikeLmlikeDetailBhv" />
+</components>
