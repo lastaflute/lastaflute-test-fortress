@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import org.docksidestage.app.web.wx.response.json.WxResponseJsonSwaggerResult;
+import org.docksidestage.app.web.wx.response.json.WxResponseJsonSwaggerResult.WhiteStandardPart;
 import org.docksidestage.app.web.wx.response.json.WxResponseJsonSwaggerResult.WxResponseJsonObjectGenericPart;
 import org.docksidestage.app.web.wx.response.json.WxResponseJsonSwaggerResult.WxResponseJsonRowInnerPart;
 import org.docksidestage.dbflute.allcommon.CDef;
@@ -43,9 +44,23 @@ public class WxJsonManagerTest extends UnitFortressBasicTestCase {
     public void test_fromJson_hierarchical() { // #hope jflute more test, Json hierarchical (2022/04/18)
         // ## Arrange ##
         WxResponseJsonSwaggerResult result = new WxResponseJsonSwaggerResult();
+        result.seaPlain = "plain mystic";
+        result.seaRequired = "required mystic";
+        result.seaLength = "length mystic";
+        result.seaSize = "size mystic";
+        result.seaPatternKana = "kana mystic";
+        result.seaPatternPhone = "phone mystic";
+        result.seaEmail = "email mystic";
+        result.seaWhole = "whole mystic";
 
-        result.objectGenericInnerPartRowList =
-                new ArrayList<WxResponseJsonSwaggerResult.WxResponseJsonObjectGenericPart<WxResponseJsonRowInnerPart>>();
+        result.landPlain = 444;
+        result.landRequired = 999;
+        result.landWhole = 666;
+
+        result.whiteStandard = new WhiteStandardPart();
+        result.whiteStandard.formatBodying = CDef.WhiteConfusingFormatBodying.Sea;
+
+        result.objectGenericInnerPartRowList = new ArrayList<WxResponseJsonObjectGenericPart<WxResponseJsonRowInnerPart>>();
         result.objectGenericInnerPartRowList.add(createGeneritPart());
         String json = jsonManager.toJson(result);
         log("\n" + json);
@@ -61,14 +76,14 @@ public class WxJsonManagerTest extends UnitFortressBasicTestCase {
     private WxResponseJsonObjectGenericPart<WxResponseJsonRowInnerPart> createGeneritPart() {
         WxResponseJsonObjectGenericPart<WxResponseJsonRowInnerPart> genericPart = new WxResponseJsonObjectGenericPart<>();
         genericPart.sea = "generic mystic";
-        WxResponseJsonRowInnerPart innerPart = createInnerPart();
-        genericPart.landList = Lists.immutable.of(innerPart);
+        genericPart.landList = Lists.immutable.of(createInnerPart());
         return genericPart;
     }
 
     private WxResponseJsonRowInnerPart createInnerPart() {
         WxResponseJsonRowInnerPart innerPart = new WxResponseJsonRowInnerPart();
         innerPart.sea = "inner mystic";
+        innerPart.land = Lists.immutable.of(1, 2, 3);
         return innerPart;
     }
 
