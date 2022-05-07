@@ -10716,6 +10716,377 @@
       "methodLineCount": 3
     },
     {
+      "url": "/wx/lastameta/",
+      "typeName": "org.docksidestage.app.web.wx.lastameta.WxLastametaAction",
+      "simpleTypeName": "WxLastametaAction",
+      "description": "This is the first line of class java-doc. \u003cbr\u003e",
+      "typeComment": "This is the first line of class java-doc. \u003cbr\u003e\nAnd the second line is here.\n\n@author jflute",
+      "fieldTypeDocMetaList": [],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.docksidestage.app.web.wx.lastameta.WxLastametaBody",
+        "simpleTypeName": "WxLastametaBody",
+        "value": null,
+        "description": "@author jflute",
+        "comment": "@author jflute",
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "seaStringBasic",
+            "publicName": "sea_string_basic",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "Sea String basic e.g. SeaOfDreams",
+            "comment": "Sea String basic e.g. SeaOfDreams",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaStringQuoted",
+            "publicName": "sea_string_quoted",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "Sea String quoted e.g. \"Sea of Dreams\"",
+            "comment": "Sea String quoted e.g. \"Sea of Dreams\"",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaStringNonSpace",
+            "publicName": "sea_string_non_space",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "Sea String non space e.g. \"Sea of Dreams\"",
+            "comment": "Sea String non space e.g. \"Sea of Dreams\"",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaListBasic",
+            "publicName": "sea_list_basic",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": "Sea List basic e.g. [dockside,hangar]",
+            "comment": "Sea List basic e.g. [dockside,hangar]",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaImmutableListBasic",
+            "publicName": "sea_immutable_list_basic",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
+            "value": null,
+            "description": "Sea ImmutableList basic e.g. [dockside,hangar]",
+            "comment": "Sea ImmutableList basic e.g. [dockside,hangar]",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapBasic",
+            "publicName": "sea_map_basic",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": "Sea Map basic e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map basic e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapQuoted",
+            "publicName": "sea_map_quoted",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": "Sea Map quoted e.g. {\"dockside\":\"over\",\"hangar\":\"mystic\"}",
+            "comment": "Sea Map quoted e.g. {\"dockside\":\"over\",\"hangar\":\"mystic\"}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapSpaceDelimiter",
+            "publicName": "sea_map_space_delimiter",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": "Sea Map space delimiter e.g. {dockside : over , hangar : mystic}",
+            "comment": "Sea Map space delimiter e.g. {dockside : over , hangar : mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapSpaceValue",
+            "publicName": "sea_map_space_value",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": "Sea Map space value e.g. {dock side:over the waves,han gar:mys tic}",
+            "comment": "Sea Map space value e.g. {dock side:over the waves,han gar:mys tic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapNonGeneric",
+            "publicName": "sea_map_non_generic",
+            "typeName": "java.util.Map",
+            "simpleTypeName": "Map",
+            "value": null,
+            "description": "Sea Map non generic e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map non generic e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapNonTyped",
+            "publicName": "sea_map_non_typed",
+            "typeName": "java.util.Map\u003c?, ?\u003e",
+            "simpleTypeName": "Map\u003c?, ?\u003e",
+            "value": null,
+            "description": "Sea Map non typed e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map non typed e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapInteger",
+            "publicName": "sea_map_integer",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.Integer\u003e",
+            "simpleTypeName": "Map\u003cString, Integer\u003e",
+            "value": null,
+            "description": "Sea Map Integer e.g. {dockside:1,hangar:2}",
+            "comment": "Sea Map Integer e.g. {dockside:1,hangar:2}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapIntegerMismatched",
+            "publicName": "sea_map_integer_mismatched",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.Integer\u003e",
+            "simpleTypeName": "Map\u003cString, Integer\u003e",
+            "value": null,
+            "description": "Sea Map Integer Mismatched e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map Integer Mismatched e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapNestBean",
+            "publicName": "sea_map_nest_bean",
+            "typeName": "java.util.Map\u003cjava.lang.String, org.docksidestage.app.web.wx.lastameta.WxLastametaBody$MapNestPart\u003e",
+            "simpleTypeName": "Map\u003cString, WxLastametaBody$MapNestPart\u003e",
+            "value": null,
+            "description": "Sea Map nest bean e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map nest bean e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaClsBasic",
+            "publicName": "sea_cls_basic",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
+            "description": "Sea Classification basic e.g. FML",
+            "comment": "Sea Classification basic e.g. FML",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003corg.docksidestage.app.web.wx.lastameta.WxLastametaBody\u003e",
+        "simpleTypeName": "JsonResponse\u003cWxLastametaBody\u003e",
+        "value": "asJson(body)",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": [
+          {
+            "name": "seaStringBasic",
+            "publicName": "sea_string_basic",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "Sea String basic e.g. SeaOfDreams",
+            "comment": "Sea String basic e.g. SeaOfDreams",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaStringQuoted",
+            "publicName": "sea_string_quoted",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "Sea String quoted e.g. \"Sea of Dreams\"",
+            "comment": "Sea String quoted e.g. \"Sea of Dreams\"",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaStringNonSpace",
+            "publicName": "sea_string_non_space",
+            "typeName": "java.lang.String",
+            "simpleTypeName": "String",
+            "value": null,
+            "description": "Sea String non space e.g. \"Sea of Dreams\"",
+            "comment": "Sea String non space e.g. \"Sea of Dreams\"",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaListBasic",
+            "publicName": "sea_list_basic",
+            "typeName": "java.util.List\u003cjava.lang.String\u003e",
+            "simpleTypeName": "List\u003cString\u003e",
+            "value": null,
+            "description": "Sea List basic e.g. [dockside,hangar]",
+            "comment": "Sea List basic e.g. [dockside,hangar]",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaImmutableListBasic",
+            "publicName": "sea_immutable_list_basic",
+            "typeName": "org.eclipse.collections.api.list.ImmutableList\u003cjava.lang.String\u003e",
+            "simpleTypeName": "ImmutableList\u003cString\u003e",
+            "value": null,
+            "description": "Sea ImmutableList basic e.g. [dockside,hangar]",
+            "comment": "Sea ImmutableList basic e.g. [dockside,hangar]",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapBasic",
+            "publicName": "sea_map_basic",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": "Sea Map basic e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map basic e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapQuoted",
+            "publicName": "sea_map_quoted",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": "Sea Map quoted e.g. {\"dockside\":\"over\",\"hangar\":\"mystic\"}",
+            "comment": "Sea Map quoted e.g. {\"dockside\":\"over\",\"hangar\":\"mystic\"}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapSpaceDelimiter",
+            "publicName": "sea_map_space_delimiter",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": "Sea Map space delimiter e.g. {dockside : over , hangar : mystic}",
+            "comment": "Sea Map space delimiter e.g. {dockside : over , hangar : mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapSpaceValue",
+            "publicName": "sea_map_space_value",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.String\u003e",
+            "simpleTypeName": "Map\u003cString, String\u003e",
+            "value": null,
+            "description": "Sea Map space value e.g. {dock side:over the waves,han gar:mys tic}",
+            "comment": "Sea Map space value e.g. {dock side:over the waves,han gar:mys tic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapNonGeneric",
+            "publicName": "sea_map_non_generic",
+            "typeName": "java.util.Map",
+            "simpleTypeName": "Map",
+            "value": null,
+            "description": "Sea Map non generic e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map non generic e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapNonTyped",
+            "publicName": "sea_map_non_typed",
+            "typeName": "java.util.Map\u003c?, ?\u003e",
+            "simpleTypeName": "Map\u003c?, ?\u003e",
+            "value": null,
+            "description": "Sea Map non typed e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map non typed e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapInteger",
+            "publicName": "sea_map_integer",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.Integer\u003e",
+            "simpleTypeName": "Map\u003cString, Integer\u003e",
+            "value": null,
+            "description": "Sea Map Integer e.g. {dockside:1,hangar:2}",
+            "comment": "Sea Map Integer e.g. {dockside:1,hangar:2}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapIntegerMismatched",
+            "publicName": "sea_map_integer_mismatched",
+            "typeName": "java.util.Map\u003cjava.lang.String, java.lang.Integer\u003e",
+            "simpleTypeName": "Map\u003cString, Integer\u003e",
+            "value": null,
+            "description": "Sea Map Integer Mismatched e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map Integer Mismatched e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaMapNestBean",
+            "publicName": "sea_map_nest_bean",
+            "typeName": "java.util.Map\u003cjava.lang.String, org.docksidestage.app.web.wx.lastameta.WxLastametaBody$MapNestPart\u003e",
+            "simpleTypeName": "Map\u003cString, WxLastametaBody$MapNestPart\u003e",
+            "value": null,
+            "description": "Sea Map nest bean e.g. {dockside:over,hangar:mystic}",
+            "comment": "Sea Map nest bean e.g. {dockside:over,hangar:mystic}",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          },
+          {
+            "name": "seaClsBasic",
+            "publicName": "sea_cls_basic",
+            "typeName": "org.docksidestage.dbflute.allcommon.CDef$MemberStatus",
+            "simpleTypeName": "CDef.MemberStatus",
+            "value": "{FML\u003dFormalized, WDL\u003dWithdrawal, PRV\u003dProvisional}",
+            "description": "Sea Classification basic e.g. FML",
+            "comment": "Sea Classification basic e.g. FML",
+            "annotationList": [],
+            "nestTypeDocMetaList": []
+          }
+        ]
+      },
+      "fileLineCount": 8,
+      "methodLineCount": 3
+    },
+    {
       "url": "/wx/login/surprised/",
       "typeName": "org.docksidestage.app.web.wx.login.WxLoginSurprisedAction",
       "simpleTypeName": "WxLoginSurprisedAction",
