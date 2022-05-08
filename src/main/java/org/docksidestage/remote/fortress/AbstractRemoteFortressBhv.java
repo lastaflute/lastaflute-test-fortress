@@ -25,6 +25,7 @@ import org.lastaflute.web.servlet.request.RequestManager;
  * This class remains when re-generating.
  * </p>
  * @author FreeGen
+ * @author jflute
  */
 public abstract class AbstractRemoteFortressBhv extends org.lastaflute.remoteapi.LastaRemoteBehavior {
 
@@ -43,19 +44,11 @@ public abstract class AbstractRemoteFortressBhv extends org.lastaflute.remoteapi
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO you #change_it set your common default rule here
-        // e.g. When you want to convert the field naming from CAMEL to LOWER_SNAKE.
-        // FlSelectedMappingPolicy selectedMappingPolicy = new LaSelectedMappingPolicy().fieldNaming(FormFieldNaming.CAMEL_TO_LOWER_SNAKE);
-        // JsonMappingOption jsonMappingOption = new JsonMappingOption().asFieldNaming(JsonFieldNaming.CAMEL_TO_LOWER_SNAKE);
-        // rule.sendQueryBy(new LaQuerySender(selectedMappingPolicy));
-        // rule.sendBodyBy(new LaJsonSender(requestManager, jsonMappingOption)); or rule.sendBodyBy(new LaFormSender(selectedMappingPolicy));
-        // rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
-        throw new IllegalStateException("set your common default rule here.");
+        throw new IllegalStateException("example so no implementation.");
     }
 
     @Override
     protected String getUrlBase() {
-        // TODO you #change_it set base URL for the remote api here
-        throw new IllegalStateException("set url base here.");
+        throw new IllegalStateException("example so no implementation.");
     }
 }

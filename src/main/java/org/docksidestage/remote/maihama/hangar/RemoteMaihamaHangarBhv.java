@@ -89,6 +89,7 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
         rule.showSendReceiveLog(op -> {});
     }
 
+    // [example] how to use client-managed message (translate it here)
     private UserMessage toUserMessage(FaicliFailureErrorPart error) {
         String plainMessage = messageManager.getMessage(Locale.ENGLISH, "constraints." + error.code + ".message");
         Map<String, String> fromToMap = new HashMap<>();
@@ -96,6 +97,23 @@ public class RemoteMaihamaHangarBhv extends LastaRemoteBehavior {
         return UserMessage.asDirectMessage(Srl.replaceBy(plainMessage, fromToMap));
     }
 
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // [example] how to use basic authentication
+    //rule.setupNativeHttpClient(builder -> {
+    //    String host = ...;
+    //    String username = ...;
+    //    String password = ...;
+    //    if (username != null && !username.isEmpty()) { // as trigger
+    //        HttpHost httpHost = new HttpHost(host, -1, "https");
+    //        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+    //        credentialsProvider.setCredentials(new AuthScope(httpHost.getHostName(), httpHost.getPort()),
+    //                new UsernamePasswordCredentials(username, password));
+    //        httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+    //    }
+    //});
+    // _/_/_/_/_/_/_/_/_/_/
+
+    // [example] how to use application user-agent including e.g. class name
     @Override
     protected boolean isUseApplicationalUserAgent() {
         return true;

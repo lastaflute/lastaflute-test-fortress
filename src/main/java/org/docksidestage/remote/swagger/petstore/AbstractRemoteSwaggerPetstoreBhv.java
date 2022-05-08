@@ -43,13 +43,11 @@ public abstract class AbstractRemoteSwaggerPetstoreBhv extends org.lastaflute.re
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO you #change_it set your common default rule here
-        throw new IllegalStateException("set your common default rule here.");
+        throw new IllegalStateException("example so no implementation.");
     }
 
     @Override
     protected String getUrlBase() {
-        // TODO you #change_it set your base URL for the remote api here
-        throw new IllegalStateException("set your common default rule here.");
+        throw new IllegalStateException("example so no implementation.");
     }
 }
