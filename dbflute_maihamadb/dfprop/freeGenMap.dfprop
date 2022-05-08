@@ -2,6 +2,20 @@ map:{
     # ==========================================================================
     #                                                                 Remote Api
     #                                                                 ==========
+    ; RemoteApiFortress = map:{
+        ; resourceMap = map:{
+            ; baseDir = ../src/main
+            ; resourceType = SWAGGER
+            ; resourceFile = $$baseDir$$/resources/remoteapi/schema/remoteapi_schema_fortress_swagger.json
+        }
+        ; outputMap = map:{
+            ; outputDirectory = $$baseDir$$/java
+            ; package = org.docksidestage.remote
+        }
+        ; optionMap = map:{
+            ; ruleJsPath = ../src/main/resources/remoteapi/schema/remoteapi_schema_fortress_rule.js
+        }
+    }
     ; RemoteApiMaihamaShowbase = map:{
         ; resourceMap = map:{
             ; baseDir = ../src/main
@@ -59,4 +73,44 @@ map:{
     #        ; ruleJsPath = ../src/main/resources/remoteapi/schema/remoteapi_schema_xxx-yyy_rule.js
     #    }
     #}
+
+    # ==========================================================================
+    #                                                  TypeScript Classification
+    #                                                  =========================
+    # test of appcls as one aggregate file for typescript
+    ; LastaTsClsBasicSingleGen = map:{
+        ; resourceMap = map:{
+            ; resourceType = APP_CLS
+            ; resourceFile = ../src/main/resources/fortress_appcls.dfprop
+        }
+        ; outputMap = map:{
+            ; outputDirectory = ./output/shared/tscls
+            ; package = aggregate
+            ; templateFile = lastaOptional/tscls/aggregate/TsClsAggregate.vm
+            ; className = FortressCDef
+            ; fileExt = ts
+        }
+        ; optionMap = map:{
+            # test of option to supress redundant comment stop
+            #; isSuppressRedundantCommentStop = true
+        }
+    }
+    # test of appcls as independet files for typescript
+    ; LastaTsClsIndependentGen = map:{
+        ; resourceMap = map:{
+            ; resourceType = APP_CLS
+            ; resourceFile = ../src/main/resources/fortress_appcls.dfprop
+        }
+        ; outputMap = map:{
+            ; outputDirectory = ./output/shared/tscls
+            ; package = independent
+            ; templateFile = lastaOptional/tscls/independent/TsClsIndependent.vm
+            # because of customization of control file
+            #; className = unused
+        }
+        ; optionMap = map:{
+            # test of option to supress redundant comment stop
+            #; isSuppressRedundantCommentStop = true
+        }
+    }
 }

@@ -3,7 +3,9 @@ package org.docksidestage.remote.harbor;
 import javax.annotation.Resource;
 
 import org.dbflute.optional.OptionalThing;
+import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.exception.RemoteApiResponseValidationErrorException;
+import org.dbflute.remoteapi.http.SupportedHttpMethod;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.lido.product.RemoteHbLidoProductRowReturn;
@@ -111,6 +113,25 @@ public class RemoteHarborBhvTest extends UnitFortressBasicTestCase {
     // ===================================================================================
     //                                                                       for Framework
     //                                                                       =============
+    public void test_framework_clientError_basic() {
+        // ## Arrange ##
+        RemoteHbLidoProductSearchParam param = new RemoteHbLidoProductSearchParam();
+        String json = "{cause=BUSINESS_ERROR, errors : [{field=productName, messages=[\"sea land piari\"]}]}";
+        MockHttpClient client = MockHttpClient.create(resopnse -> {
+            resopnse.asJsonDirectly(json, request -> true).httpStatus(404);
+        });
+        registerMock(client);
+        RemoteHarborBhv bhv = new RemoteHarborBhv(requestManager);
+        inject(bhv);
+
+        // ## Act ##
+        // ## Assert ##
+        assertException(RemoteApiHttpClientErrorException.class, () -> bhv.requestLidoProductList(param)).handle(cause -> {
+            assertEquals(SupportedHttpMethod.POST, cause.getHttpMethod());
+            assertEquals(404, cause.getHttpStatus());
+        });
+    }
+
     public void test_framework_validationError_basic() {
         // ## Arrange ##
         RemoteHbLidoProductSearchParam param = new RemoteHbLidoProductSearchParam();

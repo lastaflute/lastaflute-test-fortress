@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,13 +43,11 @@ public abstract class AbstractRemoteSwaggerPetstoreBhv extends org.lastaflute.re
     //                                                                          ==========
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
-        // TODO you #change_it set your common default rule here
-        throw new IllegalStateException("set your common default rule here.");
+        throw new IllegalStateException("example so no implementation.");
     }
 
     @Override
     protected String getUrlBase() {
-        // TODO you #change_it set your base URL for the remote api here
-        throw new IllegalStateException("set your common default rule here.");
+        throw new IllegalStateException("example so no implementation.");
     }
 }

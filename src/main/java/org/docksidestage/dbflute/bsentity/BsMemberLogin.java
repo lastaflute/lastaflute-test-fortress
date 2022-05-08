@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -147,7 +147,7 @@ public abstract class BsMemberLogin extends AbstractEntity implements DomainEnti
      * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
      */
     public CDef.Flg getMobileLoginFlgAsFlg() {
-        return CDef.Flg.codeOf(getMobileLoginFlg());
+        return CDef.Flg.of(getMobileLoginFlg()).orElse(null);
     }
 
     /**
@@ -167,7 +167,7 @@ public abstract class BsMemberLogin extends AbstractEntity implements DomainEnti
      * @param determination The determination, true or false. (NullAllowed: if null, null value is set to the column)
      */
     public void setMobileLoginFlgAsBoolean(Boolean determination) {
-        setMobileLoginFlgAsFlg(CDef.Flg.codeOf(determination));
+        setMobileLoginFlgAsFlg(CDef.Flg.of(determination).orElse(null));
     }
 
     /**
@@ -178,7 +178,7 @@ public abstract class BsMemberLogin extends AbstractEntity implements DomainEnti
      * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
      */
     public CDef.MemberStatus getLoginMemberStatusCodeAsMemberStatus() {
-        return CDef.MemberStatus.codeOf(getLoginMemberStatusCode());
+        return CDef.MemberStatus.of(getLoginMemberStatusCode()).orElse(null);
     }
 
     /**

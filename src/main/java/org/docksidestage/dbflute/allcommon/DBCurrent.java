@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,17 +42,14 @@ public class DBCurrent {
 
     protected DBDef _currentDBDef;
     {
-        _currentDBDef = DBDef.codeOf("mysql");
-        if (_currentDBDef == null) {
-            _currentDBDef = DBDef.Unknown;
-        }
+        _currentDBDef = DBDef.of("mysql").orElse(DBDef.Unknown);
     }
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
     /**
-     * Constructor.
+     * Only for singleton.
      */
     private DBCurrent() {
     }
@@ -61,8 +58,8 @@ public class DBCurrent {
     //                                                                           Singleton
     //                                                                           =========
     /**
-     * Get singleton instance.
-     * @return Singleton instance. (NotNull)
+     * Get the saved singleton instance.
+     * @return always same instance. (NotNull)
      */
     public static DBCurrent getInstance() {
         return _instance;

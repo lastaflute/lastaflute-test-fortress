@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -147,7 +147,7 @@ public abstract class BsServiceRank extends AbstractEntity implements DomainEnti
      * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
      */
     public CDef.ServiceRank getServiceRankCodeAsServiceRank() {
-        return CDef.ServiceRank.codeOf(getServiceRankCode());
+        return CDef.ServiceRank.of(getServiceRankCode()).orElse(null);
     }
 
     /**
@@ -168,7 +168,7 @@ public abstract class BsServiceRank extends AbstractEntity implements DomainEnti
      * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
      */
     public CDef.Flg getNewAcceptableFlgAsFlg() {
-        return CDef.Flg.codeOf(getNewAcceptableFlg());
+        return CDef.Flg.of(getNewAcceptableFlg()).orElse(null);
     }
 
     /**
@@ -188,7 +188,7 @@ public abstract class BsServiceRank extends AbstractEntity implements DomainEnti
      * @param determination The determination, true or false. (NullAllowed: if null, null value is set to the column)
      */
     public void setNewAcceptableFlgAsBoolean(Boolean determination) {
-        setNewAcceptableFlgAsFlg(CDef.Flg.codeOf(determination));
+        setNewAcceptableFlgAsFlg(CDef.Flg.of(determination).orElse(null));
     }
 
     // ===================================================================================

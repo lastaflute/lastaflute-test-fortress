@@ -1,5 +1,5 @@
 ##
-## Copyright 2014-2018 the original author or authors.
+## Copyright 2015-2021 the original author or authors.
 ##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
@@ -13,22 +13,14 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
-#set ($genCachedThreadEntity = false)
-#foreach ($request in $requestList)
-#set ($tableMap = $request.tableMap)
-$request.enableOutputDirectory()
-$manager.makeDirectory($request.generateDirPath)
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## DBFluteOptionalGen: generate anything for DBFlute optional functions
+##
+## This module is application customization area.
+## So you can add your custom FreeGen here.
+## _/_/_/_/_/_/_/_/_/_/
 
-#if ($request.isResourceTypeJsonSchema())
-  #if ($request.requestName.startsWith("DbfluteOptional"))
-    #if (!$genCachedThreadEntity)
-      #set ($genCachedThreadEntity = true)
-
-      #set ($path = "org/dbflute/cache/CachedThreadEntity.java")
-      $manager.makeDirectory($path)
-      $request.info("parse('${path}')")
-      $generator.parse("./dbfluteOptional/CachedThreadEntity.vm", $path, "", "")
-    #end
-  #end
-#end
-#end
+##
+## generate Entity Cache for DBFlute entities
+##
+#parse("./dbfluteOptional/entitycache/ControlFreeGenEntityCacheJava.vm")

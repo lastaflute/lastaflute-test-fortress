@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import java.util.List;
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
+import org.dbflute.remoteapi.exception.translation.ClientErrorTranslator;
 import org.dbflute.remoteapi.receiver.FlBaseReceiver;
 import org.docksidestage.remote.harbor.base.RemoteHbPagingReturn;
 import org.docksidestage.remote.harbor.base.RemoteHbUnifiedFailureResult;
@@ -34,6 +35,7 @@ import org.docksidestage.remote.harbor.serh.signin.RemoteHbSerhSigninParam;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.message.UserMessage;
 import org.lastaflute.core.message.UserMessages;
+import org.lastaflute.core.message.exception.MessagingApplicationException;
 import org.lastaflute.di.helper.misc.ParameterizedRef;
 import org.lastaflute.remoteapi.LastaRemoteBehavior;
 import org.lastaflute.remoteapi.mapping.LaVacantMappingPolicy;
@@ -41,6 +43,8 @@ import org.lastaflute.remoteapi.receiver.LaJsonReceiver;
 import org.lastaflute.remoteapi.sender.body.LaFormSender;
 import org.lastaflute.remoteapi.sender.body.LaJsonSender;
 import org.lastaflute.remoteapi.sender.query.LaQuerySender;
+import org.lastaflute.web.login.exception.LoginFailureException;
+import org.lastaflute.web.login.exception.LoginRequiredException;
 import org.lastaflute.web.servlet.request.RequestManager;
 
 /**
@@ -58,6 +62,9 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
     // ===================================================================================
     //                                                                          Initialize
     //                                                                          ==========
+    // -----------------------------------------------------
+    //                                          Default Rule
+    //                                          ------------
     @Override
     protected void yourDefaultRule(FlutyRemoteApiRule rule) {
         rule.sendQueryBy(new LaQuerySender(new LaVacantMappingPolicy()));
@@ -67,24 +74,57 @@ public class RemoteHarborBhv extends LastaRemoteBehavior {
         rule.receiveBodyBy(new LaJsonReceiver(requestManager, jsonMappingOption));
 
         rule.handleFailureResponseAs(RemoteHbUnifiedFailureResult.class); // server-managed message way
-        rule.translateClientError(resource -> {
+        rule.translateClientError(createClientErrorTranslator());
+    }
+
+    // -----------------------------------------------------
+    //                                          Client Error
+    //                                          ------------
+    protected ClientErrorTranslator createClientErrorTranslator() {
+        return resource -> {
             RemoteApiHttpClientErrorException clientError = resource.getClientError();
             if (clientError.getHttpStatus() == 400) { // controlled client error
                 RemoteHbUnifiedFailureResult result = (RemoteHbUnifiedFailureResult) clientError.getFailureResponse().get();
+                UserMessages messages = prepareErrorMessages(result);
+                // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+                // add translation here if new failure type is added
+                // _/_/_/_/_/_/_/_/_/_/
                 if (RemoteUnifiedFailureType.VALIDATION_ERROR.equals(result.cause)) {
-                    UserMessages messages = new UserMessages();
-                    result.errors.forEach(error -> {
-                        error.messages.forEach(message -> {
-                            messages.add(error.field, UserMessage.asDirectMessage(message));
-                        });
-                    });
+                    // server validation error can be directly treated as action validation error here
+                    // (returning LastaFlute validation error exception for action)
                     return resource.asActionValidationError(messages);
+                } else if (RemoteUnifiedFailureType.BUSINESS_ERROR.equals(result.cause)) {
+                    // server business error can be directly treated as business error of this application
+                    // (returning LastaFlute application exception with messages)
+                    return new MessagingApplicationException("Business Error from RemoteApi: " + messages, messages, clientError);
+                } else if (RemoteUnifiedFailureType.LOGIN_FAILURE.equals(result.cause)) {
+                    return new LoginFailureException("Login Failure from RemoteApi: " + messages, clientError);
+                } else if (RemoteUnifiedFailureType.LOGIN_REQUIRED.equals(result.cause)) {
+                    return new LoginRequiredException("Login Required from RemoteApi: " + messages, clientError);
                 }
             }
+            // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+            // 404, 500 are handled as system exception in this application
+            // so no handling here
+            // _/_/_/_/_/_/_/_/_/_/
             return null; // no translation
-        });
+        };
+
     }
 
+    protected UserMessages prepareErrorMessages(RemoteHbUnifiedFailureResult result) {
+        UserMessages messages = new UserMessages(); // as server-managed message way
+        result.errors.forEach(error -> {
+            error.messages.forEach(message -> {
+                messages.add(error.field, UserMessage.asDirectMessage(message));
+            });
+        });
+        return messages;
+    }
+
+    // -----------------------------------------------------
+    //                                              URL Base
+    //                                              --------
     @Override
     protected String getUrlBase() {
         return "http://localhost:8090/harbor";

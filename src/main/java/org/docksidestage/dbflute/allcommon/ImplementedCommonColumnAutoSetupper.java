@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * Copyright 2015-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,8 @@ public class ImplementedCommonColumnAutoSetupper implements CommonColumnAutoSetu
     }
 
     protected void doHandleCommonColumnOfInsertIfNeeds(EntityDefinedCommonColumn entity) {
+        // this implementation is generated based on commonColumnMap.dfprop
+        // so confirm the settings if you have compile errors here
         final java.time.LocalDateTime registerDatetime = org.dbflute.hook.AccessContext.getAccessLocalDateTimeOnThread();
         entity.setRegisterDatetime(registerDatetime);
         final String registerUser = org.dbflute.hook.AccessContext.getAccessUserOnThread();
@@ -75,6 +77,8 @@ public class ImplementedCommonColumnAutoSetupper implements CommonColumnAutoSetu
     }
 
     protected void doHandleCommonColumnOfUpdateIfNeeds(EntityDefinedCommonColumn entity) {
+        // this implementation is generated based on commonColumnMap.dfprop
+        // so confirm the settings if you have compile errors here
         final java.time.LocalDateTime updateDatetime = org.dbflute.hook.AccessContext.getAccessLocalDateTimeOnThread();
         entity.setUpdateDatetime(updateDatetime);
         final String updateUser = org.dbflute.hook.AccessContext.getAccessUserOnThread();

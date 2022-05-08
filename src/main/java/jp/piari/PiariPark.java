@@ -6,34 +6,41 @@ import java.util.Map;
 
 import org.lastaflute.core.security.PrimaryCipher;
 import org.lastaflute.di.util.LdiArrayUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+/**
+ * @author jflute
+ */
 public class PiariPark implements Depart {
 
+    private static final Logger logger = LoggerFactory.getLogger(PiariPark.class);
+
     public void addIntArray(int[] intAry) {
-        System.out.println("intAry: " + LdiArrayUtil.toList(intAry));
+        logger.debug("intAry: " + LdiArrayUtil.toList(intAry));
     }
 
     public void addStringArray(String[] StrAry) {
-        System.out.println("strAry: " + Arrays.asList(StrAry));
+        logger.debug("strAry: " + Arrays.asList(StrAry));
     }
 
     public void addList(List<String> strList) {
-        System.out.println("strList: " + strList);
+        logger.debug("strList: " + strList);
     }
 
     public void addMap(Map<String, String> strMap) {
-        System.out.println("strMap: " + strMap);
+        logger.debug("strMap: " + strMap);
     }
 
     public void addString(String str) {
-        System.out.println("str: " + str);
+        logger.debug("str: " + str);
     }
 
     public void addConfigProp(String configProp) {
-        System.out.println("configProp: " + configProp);
+        logger.debug("configProp: " + configProp);
     }
 
     public void addCipher(PrimaryCipher cipher) {
-        System.out.println("cipher: " + cipher);
+        logger.debug("cipher: " + cipher);
     }
 }
