@@ -5,7 +5,7 @@
 #
 # o isGenerateProcedureParameterBean: (NotRequired - Default false)
 # o isGenerateProcedureCustomizeEntity: (NotRequired - Default false)
-# o targetProcedureFortressList: (NotRequired - Default list:{})
+# o targetProcedureCatalogList: (NotRequired - Default list:{})
 # o targetProcedureSchemaList: (NotRequired - Default list:{})
 # o targetProcedureNameList: (NotRequired - Default list:{})
 # o executionMetaProcedureNameList: (NotRequired - Default list:{})
@@ -44,18 +44,18 @@ map:{
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    # o targetProcedureFortressList: (NotRequired - Default list:{})
-    #  You can specify target fortress of generated parameter bean for procedure.
+    # o targetProcedureCatalogList: (NotRequired - Default list:{})
+    #  You can specify target catalog of generated parameter bean for procedure.
     #  This property is valid only when generateProcedureParameterBean is valid.
     #
-    #; targetProcedureFortressList = list:{FOO_CATALOG ; prefix:FOO_ ; suffix:_FOO ; contain:_FOO_}
+    #; targetProcedureCatalogList = list:{FOO_CATALOG ; prefix:FOO_ ; suffix:_FOO ; contain:_FOO_}
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # o targetProcedureSchemaList: (NotRequired - Default list:{})
     #  You can specify target schema of generated parameter bean for procedure.
     #  This property is valid only when generateProcedureParameterBean is valid.
-    #  e.g. list:{PROCEDUREDB}
+    #   e.g. list:{PROCEDUREDB}
     #
     #; targetProcedureSchemaList = list:{FOO_SCHEMA ; prefix:FOO_ ; suffix:_FOO ; contain:_FOO_}
     # - - - - - - - - - -/
@@ -64,7 +64,11 @@ map:{
     # o targetProcedureNameList: (NotRequired - Default list:{})
     #  You can specify target name of generated parameter bean for procedure.
     #  This property is valid only when isGenerateProcedureParameterBean is valid.
-    #  e.g. list:{prefix:SP_}
+    #   e.g. list:{prefix:SP_}
+    #  And you can specify procedures through DB link.
+    #  This is treated as additional setting
+    #  so it is independent from specifications for main schema.
+    #   e.g. SP_FOO@NEXT_LINK (when DB link name is 'NEXT_LINK')  
     #
     #; targetProcedureNameList = list:{FOO_PROCEDURE ; prefix:FOO_ ; suffix:_FOO ; contain:_FOO_}
     # - - - - - - - - - -/
@@ -73,7 +77,7 @@ map:{
     # o executionMetaProcedureNameList: (NotRequired - Default list:{})
     #  You can specify target name of generated customize entity for procedure.
     #  This property is valid only when isGenerateProcedureCustomizeEntity is valid.
-    #  e.g. list:{prefix:SP_}
+    #   e.g. list:{prefix:SP_}
     #
     #; executionMetaProcedureNameList = list:{FOO_PROCEDURE ; prefix:FOO_ ; suffix:_FOO ; contain:_FOO_}
     # - - - - - - - - - -/
@@ -94,9 +98,6 @@ map:{
     #     You should always write the title of outsideSql.
     #     If it doesn't exist, the OutsideSqlTest task fails.
     #
-    #   [false]
-    #     Non.
-    #
     #; isRequiredSqlTitle = true
     # - - - - - - - - - -/
 
@@ -105,9 +106,6 @@ map:{
     #   [true]
     #     You should always write the description of outsideSql.
     #     If it doesn't exist, the OutsideSqlTest task fails.
-    #
-    #   [false]
-    #     Non.
     #
     #; isRequiredSqlDescription = true
     # - - - - - - - - - -/
