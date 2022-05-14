@@ -1,3 +1,10 @@
+# /---------------------------------------------------------------------------
+# sourceCopyright: (NotRequired - Default '')
+#
+# The copyright for all class sources.
+# This property is NOT map style.
+# You should specify before your first generating.
+#
 /*
  * Copyright 2015-2022 the original author or authors.
  *
@@ -13,13 +20,4 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.dbflute.resola.allcommon;
-
-import org.dbflute.Entity;
-
-/**
- * The interface of entity defined common columns.
- * @author DBFlute(AutoGenerator)
- */
-public interface RsoEntityDefinedCommonColumn extends Entity {
-}
+# ----------------/
