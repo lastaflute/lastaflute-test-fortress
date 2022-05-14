@@ -189,7 +189,7 @@ map:{
     #   o password: The database password. (NotRequired - Default '')
     #
     ; schemaSyncCheckMap = map:{
-        ; url = jdbc:mysql://localhost:3306/maihamasyncdb
+        ; url = jdbc:mysql://localhost:3306/maihamasyncdb?allowPublicKeyRetrieval=true&useSSL=false
         ; schema = 
         ; user = root
         ; password = df:dfprop/system-password.txt|
