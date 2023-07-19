@@ -1,5 +1,6 @@
 package org.docksidestage.whitebox.db.dbflute;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.annotation.Resource;
@@ -60,7 +61,7 @@ public class WxOutsideSqlGroupByTest extends UnitFortressBasicTestCase {
     public void test_outsideSql_groupBy_where_monthFromBad() {
         // ## Arrange ##
         MemberMonthlyPurchasePmb pmb = new MemberMonthlyPurchasePmb();
-        pmb.setMonthFromBad("2005-04"); // grouping item
+        pmb.setMonthFromBad(LocalDate.of(2005, 4, 1)); // grouping item
 
         // ## Act ##
         ListResultBean<MemberMonthlyPurchase> purchaseList = purchaseBhv.outsideSql().selectList(pmb);
@@ -78,7 +79,7 @@ public class WxOutsideSqlGroupByTest extends UnitFortressBasicTestCase {
     public void test_outsideSql_groupBy_having_monthToHaving() {
         // ## Arrange ##
         MemberMonthlyPurchasePmb pmb = new MemberMonthlyPurchasePmb();
-        pmb.setMonthToHaving("2167-09"); // grouping item
+        pmb.setMonthToHaving(LocalDate.of(2167, 9, 1)); // grouping item
 
         // ## Act ##
         ListResultBean<MemberMonthlyPurchase> purchaseList = purchaseBhv.outsideSql().selectList(pmb);
