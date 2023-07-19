@@ -63,6 +63,7 @@ public class MemberMonthlyPurchaseDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getPurchasePriceAvg(), (et, vl) -> ((MemberMonthlyPurchase)et).setPurchasePriceAvg(ctb(vl)), "purchasePriceAvg");
         setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getPurchasePriceMax(), (et, vl) -> ((MemberMonthlyPurchase)et).setPurchasePriceMax(cti(vl)), "purchasePriceMax");
         setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getPurchaseCount(), (et, vl) -> ((MemberMonthlyPurchase)et).setPurchaseCount(cti(vl)), "purchaseCount");
+        setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getServicePointCount(), (et, vl) -> ((MemberMonthlyPurchase)et).setServicePointCount(cti(vl)), "servicePointCount");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
@@ -89,6 +90,7 @@ public class MemberMonthlyPurchaseDbm extends AbstractDBMeta {
     protected final ColumnInfo _columnPurchasePriceAvg = cci("PURCHASE_PRICE_AVG", "PURCHASE_PRICE_AVG", null, null, java.math.BigDecimal.class, "purchasePriceAvg", null, false, false, false, "DECIMAL", 14, 4, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnPurchasePriceMax = cci("PURCHASE_PRICE_MAX", "PURCHASE_PRICE_MAX", null, null, Integer.class, "purchasePriceMax", null, false, false, false, "INT", 11, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnPurchaseCount = cci("PURCHASE_COUNT", "PURCHASE_COUNT", null, "購入数量", Integer.class, "purchaseCount", null, false, false, false, "INT", 11, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnServicePointCount = cci("SERVICE_POINT_COUNT", "SERVICE_POINT_COUNT", null, "サービスポイント数", Integer.class, "servicePointCount", null, false, false, false, "INT", 11, 0, null, null, false, null, null, null, null, null, false);
 
     /**
      * (会員ID)MEMBER_ID: {INT(11), refers to member.MEMBER_ID}
@@ -120,6 +122,11 @@ public class MemberMonthlyPurchaseDbm extends AbstractDBMeta {
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnPurchaseCount() { return _columnPurchaseCount; }
+    /**
+     * (サービスポイント数)SERVICE_POINT_COUNT: {INT(11), refers to member_service.SERVICE_POINT_COUNT}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnServicePointCount() { return _columnServicePointCount; }
 
     protected List<ColumnInfo> ccil() {
         List<ColumnInfo> ls = newArrayList();
@@ -129,6 +136,7 @@ public class MemberMonthlyPurchaseDbm extends AbstractDBMeta {
         ls.add(columnPurchasePriceAvg());
         ls.add(columnPurchasePriceMax());
         ls.add(columnPurchaseCount());
+        ls.add(columnServicePointCount());
         return ls;
     }
 

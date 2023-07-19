@@ -30,7 +30,7 @@ import org.docksidestage.dbflute.exentity.customize.*;
  *     
  *
  * [column]
- *     MEMBER_ID, MEMBER_NAME, PURCHASE_MONTH, PURCHASE_PRICE_AVG, PURCHASE_PRICE_MAX, PURCHASE_COUNT
+ *     MEMBER_ID, MEMBER_NAME, PURCHASE_MONTH, PURCHASE_PRICE_AVG, PURCHASE_PRICE_MAX, PURCHASE_COUNT, SERVICE_POINT_COUNT
  *
  * [sequence]
  *     
@@ -61,12 +61,14 @@ import org.docksidestage.dbflute.exentity.customize.*;
  * java.math.BigDecimal purchasePriceAvg = entity.getPurchasePriceAvg();
  * Integer purchasePriceMax = entity.getPurchasePriceMax();
  * Integer purchaseCount = entity.getPurchaseCount();
+ * Integer servicePointCount = entity.getServicePointCount();
  * entity.setMemberId(memberId);
  * entity.setMemberName(memberName);
  * entity.setPurchaseMonth(purchaseMonth);
  * entity.setPurchasePriceAvg(purchasePriceAvg);
  * entity.setPurchasePriceMax(purchasePriceMax);
  * entity.setPurchaseCount(purchaseCount);
+ * entity.setServicePointCount(servicePointCount);
  * = = = = = = = = = =/
  * </pre>
  * @author DBFlute(AutoGenerator)
@@ -99,6 +101,9 @@ public abstract class BsMemberMonthlyPurchase extends AbstractEntity implements 
 
     /** (購入数量)PURCHASE_COUNT: {INT(11), refers to purchase.PURCHASE_COUNT} */
     protected Integer _purchaseCount;
+
+    /** (サービスポイント数)SERVICE_POINT_COUNT: {INT(11), refers to member_service.SERVICE_POINT_COUNT} */
+    protected Integer _servicePointCount;
 
     // ===================================================================================
     //                                                                             DB Meta
@@ -144,6 +149,7 @@ public abstract class BsMemberMonthlyPurchase extends AbstractEntity implements 
             if (!xSV(_purchasePriceAvg, other._purchasePriceAvg)) { return false; }
             if (!xSV(_purchasePriceMax, other._purchasePriceMax)) { return false; }
             if (!xSV(_purchaseCount, other._purchaseCount)) { return false; }
+            if (!xSV(_servicePointCount, other._servicePointCount)) { return false; }
             return true;
         } else {
             return false;
@@ -160,6 +166,7 @@ public abstract class BsMemberMonthlyPurchase extends AbstractEntity implements 
         hs = xCH(hs, _purchasePriceAvg);
         hs = xCH(hs, _purchasePriceMax);
         hs = xCH(hs, _purchaseCount);
+        hs = xCH(hs, _servicePointCount);
         return hs;
     }
 
@@ -177,6 +184,7 @@ public abstract class BsMemberMonthlyPurchase extends AbstractEntity implements 
         sb.append(dm).append(xfND(_purchasePriceAvg));
         sb.append(dm).append(xfND(_purchasePriceMax));
         sb.append(dm).append(xfND(_purchaseCount));
+        sb.append(dm).append(xfND(_servicePointCount));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -223,7 +231,7 @@ public abstract class BsMemberMonthlyPurchase extends AbstractEntity implements 
      * [get] (会員名称)MEMBER_NAME: {VARCHAR(100), refers to member.MEMBER_NAME} <br>
      * 会員のフルネームの名称。<br>
      * 苗字と名前を分けて管理することが多いが、ここでは単純にひとまとめ。<br>
-     * // non grouping item is allowed on MySQL-5.6
+     * // non grouping item (1:1 data) is allowed on MySQL-5.6
      * @return The value of the column 'MEMBER_NAME'. (NullAllowed even if selected: for no constraint)
      */
     public String getMemberName() {
@@ -235,7 +243,7 @@ public abstract class BsMemberMonthlyPurchase extends AbstractEntity implements 
      * [set] (会員名称)MEMBER_NAME: {VARCHAR(100), refers to member.MEMBER_NAME} <br>
      * 会員のフルネームの名称。<br>
      * 苗字と名前を分けて管理することが多いが、ここでは単純にひとまとめ。<br>
-     * // non grouping item is allowed on MySQL-5.6
+     * // non grouping item (1:1 data) is allowed on MySQL-5.6
      * @param memberName The value of the column 'MEMBER_NAME'. (NullAllowed: null update allowed for no constraint)
      */
     public void setMemberName(String memberName) {
@@ -321,5 +329,27 @@ public abstract class BsMemberMonthlyPurchase extends AbstractEntity implements 
     public void setPurchaseCount(Integer purchaseCount) {
         registerModifiedProperty("purchaseCount");
         _purchaseCount = purchaseCount;
+    }
+
+    /**
+     * [get] (サービスポイント数)SERVICE_POINT_COUNT: {INT(11), refers to member_service.SERVICE_POINT_COUNT} <br>
+     * 購入したら増えて使ったら減る。<br>
+     * // non grouping item (relationship 1:1 data) is allowed on MySQL-5.6
+     * @return The value of the column 'SERVICE_POINT_COUNT'. (NullAllowed even if selected: for no constraint)
+     */
+    public Integer getServicePointCount() {
+        checkSpecifiedProperty("servicePointCount");
+        return _servicePointCount;
+    }
+
+    /**
+     * [set] (サービスポイント数)SERVICE_POINT_COUNT: {INT(11), refers to member_service.SERVICE_POINT_COUNT} <br>
+     * 購入したら増えて使ったら減る。<br>
+     * // non grouping item (relationship 1:1 data) is allowed on MySQL-5.6
+     * @param servicePointCount The value of the column 'SERVICE_POINT_COUNT'. (NullAllowed: null update allowed for no constraint)
+     */
+    public void setServicePointCount(Integer servicePointCount) {
+        registerModifiedProperty("servicePointCount");
+        _servicePointCount = servicePointCount;
     }
 }

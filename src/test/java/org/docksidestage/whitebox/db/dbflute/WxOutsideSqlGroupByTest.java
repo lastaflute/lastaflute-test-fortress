@@ -111,6 +111,6 @@ public class WxOutsideSqlGroupByTest extends UnitFortressBasicTestCase {
     //                                                                        ============
     private void showPurchase(MemberMonthlyPurchase purchase) {
         log(purchase.getMemberId(), purchase.getMemberName(), purchase.getPurchaseMonth(), purchase.getPurchasePriceAvg(),
-                purchase.getPurchasePriceMax(), purchase.getPurchaseCount());
+                purchase.getPurchasePriceMax(), purchase.getPurchaseCount(), purchase.getServicePointCount());
     }
 }
