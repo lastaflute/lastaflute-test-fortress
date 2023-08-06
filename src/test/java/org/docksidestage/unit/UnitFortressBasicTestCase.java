@@ -20,6 +20,7 @@ import javax.annotation.Resource;
 import org.dbflute.utflute.lastaflute.WebContainerTestCase;
 import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaDBMasterSlaveManager;
 import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBMasterSlaveManager;
+import org.docksidestage.unit.mock.SpecifiedMockActionRuntimeFactory;
 import org.lastaflute.web.ruts.process.ActionRuntime;
 
 /**
@@ -72,20 +73,17 @@ public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
     }
 
     // #needs_fix jflute make mock runtime by original action type (2023/08/06)
-    //@Override
-    //protected ActionRuntime getMockJsonRuntime() {
-    //    return new MockRuntimeFactory() {
-    //        protected ComponentDefImpl createComponentDefImpl(Class<?> componentClass, String componentName) {
-    //            Class<?> actionType = getMockActionType();
-    //            if (actionType != null) {
-    //                componentClass = actionType; // switch
-    //            }
-    //            return new ComponentDefImpl(componentClass, componentName);
-    //        };
-    //    }.createJsonRuntime();
-    //}
-    //
-    //protected Class<?> getMockActionType() { // you can override
-    //    return null; // as default
-    //}
+    @Override
+    protected ActionRuntime getMockJsonRuntime() {
+        Class<?> actionType = getMockActionType();
+        if (actionType != null) {
+            return new SpecifiedMockActionRuntimeFactory(actionType).createJsonRuntime();
+        } else {
+            return super.getMockJsonRuntime();
+        }
+    }
+
+    protected Class<?> getMockActionType() { // you can override
+        return null; // as default
+    }
 }

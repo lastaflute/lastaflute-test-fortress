@@ -8,6 +8,11 @@ import org.docksidestage.unit.UnitFortressBasicTestCase;
  */
 public class WxMasterslaveSlavebasisAnnotationActionTest extends UnitFortressBasicTestCase {
 
+    @Override
+    protected Class<?> getMockActionType() {
+        return WxMasterslaveSlavebasisAnnotationAction.class;
+    }
+
     public void test_annotated_basic() {
         // ## Arrange ##
         WxMasterslaveSlavebasisAnnotationAction action = new WxMasterslaveSlavebasisAnnotationAction();
