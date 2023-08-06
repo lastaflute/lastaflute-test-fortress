@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.maihamadb;
+package org.docksidestage.bizfw.masterslave.resortlinedb;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
@@ -22,11 +22,33 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+// _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+// [tips] this annotation is for slave-basis annotation style
+// so delete this class if you use slave-basis on-demand style
+// _/_/_/_/_/_/_/_/_/_/
 /**
+ * The annotation for access to master explicitly.
+ * <pre>
+ * &#064;[Schema]MasterDB
+ * pulic class SeaAction extends ... {
+ * }
+ * 
+ *  or
+ * 
+ * pulic class SeaAction extends ... {
+ * 
+ *     public JsonResponse... index(...) { // select only
+ *     } 
+ * 
+ *     &#064;[Schema]MasterDB
+ *     public void update(...) {
+ *     } 
+ * }
+ * </pre>
  * @author jflute
  */
-@Target({ ElementType.TYPE })
+@Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(RUNTIME)
 @Documented
-public @interface MaihamaMasterDB {
+public @interface ResortlineMasterDB {
 }

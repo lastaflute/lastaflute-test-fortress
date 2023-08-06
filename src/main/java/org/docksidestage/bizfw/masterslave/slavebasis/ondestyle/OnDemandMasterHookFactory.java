@@ -13,18 +13,26 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.slavebasis;
+package org.docksidestage.bizfw.masterslave.slavebasis.ondestyle;
 
 import org.dbflute.bhv.core.BehaviorCommandHook;
 import org.dbflute.bhv.core.BehaviorCommandMeta;
-import org.dbflute.helper.message.ExceptionMessageBuilder;
+import org.dbflute.util.DfTypeUtil;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
+ * The factory to create BehaviorCommand hook switching master on demand.
  * @author jflute
  */
-public class SlaveUpdateBlockFactory {
+public class OnDemandMasterHookFactory {
+
+    // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
+    private static final Logger logger = LoggerFactory.getLogger(OnDemandMasterHookFactory.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -35,7 +43,7 @@ public class SlaveUpdateBlockFactory {
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public SlaveUpdateBlockFactory(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) {
+    public OnDemandMasterHookFactory(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) {
         this.slaveDBAccessor = slaveDBAccessor;
         this.selectableDataSourceHolder = selectableDataSourceHolder;
     }
@@ -43,47 +51,41 @@ public class SlaveUpdateBlockFactory {
     // ===================================================================================
     //                                                                              Create
     //                                                                              ======
-    public BehaviorCommandHook createBlockHook(Class<?> actionType) {
+    /**
+     * @param actionType The type of currently-requested action for (basically) logging. (NotNull)
+     * @return The new-created hook, which is inheritable. (NotNull)
+     */
+    public BehaviorCommandHook createHook(Class<?> actionType) {
         return new BehaviorCommandHook() {
             public void hookBefore(BehaviorCommandMeta meta) {
                 if (!meta.isSelect()) { // e.g. insert, update
                     final String masterKey = slaveDBAccessor.prepareMasterDataSourceKey();
                     final String currentKey = selectableDataSourceHolder.getCurrentSelectableDataSourceKey();
                     if (!masterKey.equals(currentKey)) { // slave now
-                        throwNonSelectCommandButSlaveDBException(actionType, meta);
+                        if (logger.isDebugEnabled()) {
+                            logger.debug(buildForcedMasterHookDebugMessage(masterKey, actionType));
+                        }
+                        selectableDataSourceHolder.switchSelectableDataSourceKey(masterKey);
                     }
                 }
             }
 
-            private void throwNonSelectCommandButSlaveDBException(Class<?> actionType, BehaviorCommandMeta meta) {
-                final ExceptionMessageBuilder br = new ExceptionMessageBuilder();
-                br.addNotice("Non-select command but slave DB now.");
-                br.addItem("Advice");
-                br.addElement("You cannot update slave DB.");
-                br.addElement("Don't forget XxxMasterDB annotation.");
-                br.addElement("For example:");
-                br.addElement("  @XxxMasterDB");
-                br.addElement("  public class YourAction extends ... {");
-                br.addElement("      ...");
-                br.addElement("  }");
-                br.addItem("Action");
-                br.addElement(actionType);
-                br.addItem("Behavior");
-                br.addElement(meta);
-                throw new NonSelectCommandButSlaveDBException("You cannot update slave DB: " + meta);
+            protected String buildForcedMasterHookDebugMessage(String masterKey, Class<?> actionType) {
+                // basically SlaveDBAccessor class name teach us schema
+                // but overriding slaveDBAccessor toString() is recommended for this logging
+                final String rearExp = " in " + DfTypeUtil.toClassTitle(actionType);
+                return "...Accessing to MasterDB for " + slaveDBAccessor + " forcedly by the key: " + masterKey + rearExp;
             }
 
             public void hookFinally(BehaviorCommandMeta meta, RuntimeException cause) {
+                // no need to restore here
+                // because also select after update needs to access master until request end
+                // e.g. one Action flow
+                //  1. select // slave
+                //  2. update // master (forcedly)
+                //  3. select // master
+                //  (4. update) // master
             }
         };
-    }
-
-    public static class NonSelectCommandButSlaveDBException extends RuntimeException {
-
-        private static final long serialVersionUID = 1L;
-
-        public NonSelectCommandButSlaveDBException(String msg) {
-            super(msg);
-        }
     }
 }
