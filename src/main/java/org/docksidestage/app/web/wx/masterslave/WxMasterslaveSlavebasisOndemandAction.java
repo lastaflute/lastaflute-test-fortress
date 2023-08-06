@@ -35,9 +35,9 @@ import org.slf4j.LoggerFactory;
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxMasterslaveSlavebasisAnnotationAction extends FortressBaseAction {
+public class WxMasterslaveSlavebasisOndemandAction extends FortressBaseAction {
 
-    private static final Logger logger = LoggerFactory.getLogger(WxMasterslaveSlavebasisAnnotationAction.class);
+    private static final Logger logger = LoggerFactory.getLogger(WxMasterslaveSlavebasisOndemandAction.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -55,18 +55,10 @@ public class WxMasterslaveSlavebasisAnnotationAction extends FortressBaseAction 
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
-    // http://localhost:8151/fortress/wx/masterslave/slavebasis/annotation/annotated/
+    // http://localhost:8151/fortress/wx/masterslave/slavebasis/ondemand/
     @MaihamaMasterDB
     @Execute
-    public JsonResponse<Void> annotated() {
-        showVisualCheck();
-        return JsonResponse.asEmptyBody();
-    }
-
-    // http://localhost:8151/fortress/wx/masterslave/slavebasis/annotation/none/
-    //  -> NonSelectCommandButSlaveDBException
-    @Execute
-    public JsonResponse<Void> none() {
+    public JsonResponse<Void> index() {
         showVisualCheck();
         return JsonResponse.asEmptyBody();
     }
