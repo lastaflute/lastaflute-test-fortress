@@ -13,15 +13,23 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.resortlinedb;
+package org.docksidestage.bizfw.masterslave.resortlinedb.subschema_basic_example;
 
 import org.dbflute.util.DfTypeUtil;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
 
+// _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+// [notice as example]
+// this example has sub-package but you don't need it
+// you can make it like this:
+// 
+//  bizfw.masterslave
+//    |-[schema]
+//       |-...SlaveDBAccessor.java
+// _/_/_/_/_/_/_/_/_/_/
 /**
  * Accessor for slave-basis style of master/slave as sub schema. <br>
- * Application business classes don't need to use this. (so "backstage" prefix) <br>
- * This accessor is used only for framework logic.
+ * Application business classes use this to access slave for e.g. heavy select.
  * <pre>
  * features:
  *  o slave basis
@@ -32,14 +40,22 @@ import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
  * how to set up:
  *  1. register this class to DI xml as DI component.
  *   app.xml
- *    |-rdb-[schema].xml
- *       |-jdbc-[schema].xml // here
- *          |-jdbc-[schema]-master.xml
- *          |-jdbc-[schema]-slave.xml
+ *    |-dbflute.xml
+ *      |-rdb.xml
+ *         |-jdbc+.xml // here (if main schema)
+ *            |-jdbc-master.xml
+ *            |-jdbc-slave.xml
+ *    or
+ *   app.xml
+ *    |-dbflute-[schema].xml
+ *      |-rdb-[schema].xml
+ *         |-jdbc-[schema].xml // here (if sub schema)
+ *            |-jdbc-[schema]-master.xml
+ *            |-jdbc-[schema]-slave.xml
  * </pre> 
  * @author jflute
  */
-public class BackstageResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
+public class ResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
 
     @Override
     protected String mySchemaKeyword() { // needs for sub schema

@@ -17,9 +17,9 @@ package org.docksidestage.bizfw.masterslave.slavebasis.ondestyle;
 
 import org.dbflute.bhv.core.BehaviorCommandHook;
 import org.dbflute.bhv.core.BehaviorCommandMeta;
-import org.dbflute.util.DfTypeUtil;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessor;
+import org.lastaflute.web.ruts.process.ActionRuntime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,10 +52,10 @@ public class OnDemandMasterHookFactory {
     //                                                                              Create
     //                                                                              ======
     /**
-     * @param actionType The type of currently-requested action for (basically) logging. (NotNull)
+     * @param runtime The runtime object of currently-requested action for (basically) logging. (NotNull)
      * @return The new-created hook, which is inheritable. (NotNull)
      */
-    public BehaviorCommandHook createHook(Class<?> actionType) {
+    public BehaviorCommandHook createHook(ActionRuntime runtime) {
         return new BehaviorCommandHook() {
             public void hookBefore(BehaviorCommandMeta meta) {
                 if (!meta.isSelect()) { // e.g. insert, update
@@ -63,17 +63,17 @@ public class OnDemandMasterHookFactory {
                     final String currentKey = selectableDataSourceHolder.getCurrentSelectableDataSourceKey();
                     if (!masterKey.equals(currentKey)) { // slave now
                         if (logger.isDebugEnabled()) {
-                            logger.debug(buildForcedMasterHookDebugMessage(masterKey, actionType));
+                            logger.debug(buildForcedMasterHookDebugMessage(masterKey, runtime));
                         }
                         selectableDataSourceHolder.switchSelectableDataSourceKey(masterKey);
                     }
                 }
             }
 
-            protected String buildForcedMasterHookDebugMessage(String masterKey, Class<?> actionType) {
+            protected String buildForcedMasterHookDebugMessage(String masterKey, ActionRuntime runtime) {
                 // basically SlaveDBAccessor class name teach us schema
                 // but overriding slaveDBAccessor toString() is recommended for this logging
-                final String rearExp = " in " + DfTypeUtil.toClassTitle(actionType);
+                final String rearExp = " in " + runtime.getActionExecute().toSimpleMethodExp();
                 return "...Accessing to MasterDB for " + slaveDBAccessor + " forcedly by the key: " + masterKey + rearExp;
             }
 

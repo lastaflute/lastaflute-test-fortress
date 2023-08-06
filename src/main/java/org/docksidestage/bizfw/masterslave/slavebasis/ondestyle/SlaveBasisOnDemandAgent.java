@@ -63,8 +63,7 @@ public class SlaveBasisOnDemandAgent implements SlaveBasisAgent { // not DI comp
 
     private BehaviorCommandHook createOnDemandHook(ActionRuntime runtime) {
         final OnDemandMasterHookFactory factory = createOnDemandFactory();
-        final Class<?> actionType = runtime.getActionType();
-        return factory.createHook(actionType);
+        return factory.createHook(runtime);
     }
 
     private OnDemandMasterHookFactory createOnDemandFactory() {

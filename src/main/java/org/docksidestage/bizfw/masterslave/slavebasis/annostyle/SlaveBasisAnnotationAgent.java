@@ -79,8 +79,7 @@ public class SlaveBasisAnnotationAgent implements SlaveBasisAgent { // not DI co
 
     private BehaviorCommandHook createBlockHook(ActionRuntime runtime) {
         final BlockingSlaveUpdateHookFactory factory = createBlockHookFactory();
-        final Class<?> actionType = runtime.getActionType();
-        return factory.createHook(actionType);
+        return factory.createHook(runtime);
     }
 
     private BlockingSlaveUpdateHookFactory createBlockHookFactory() {

@@ -20,6 +20,7 @@ import org.dbflute.bhv.core.BehaviorCommandMeta;
 import org.dbflute.helper.message.ExceptionMessageBuilder;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessor;
+import org.lastaflute.web.ruts.process.ActionRuntime;
 
 /**
  * The factory to create BehaviorCommand hook blocking update of slave DB.
@@ -45,22 +46,22 @@ public class BlockingSlaveUpdateHookFactory {
     //                                                                              Create
     //                                                                              ======
     /**
-     * @param actionType The type of currently-requested action for (basically) logging. (NotNull)
+     * @param runtime The runtime object of currently-requested action for (basically) logging. (NotNull)
      * @return The new-created hook, which is inheritable. (NotNull)
      */
-    public BehaviorCommandHook createHook(Class<?> actionType) {
+    public BehaviorCommandHook createHook(ActionRuntime runtime) {
         return new BehaviorCommandHook() {
             public void hookBefore(BehaviorCommandMeta meta) {
                 if (!meta.isSelect()) { // e.g. insert, update
                     final String masterKey = slaveDBAccessor.prepareMasterDataSourceKey();
                     final String currentKey = selectableDataSourceHolder.getCurrentSelectableDataSourceKey();
                     if (!masterKey.equals(currentKey)) { // slave now
-                        throwNonSelectCommandButSlaveDBException(actionType, meta);
+                        throwNonSelectCommandButSlaveDBException(runtime, meta);
                     }
                 }
             }
 
-            private void throwNonSelectCommandButSlaveDBException(Class<?> actionType, BehaviorCommandMeta meta) {
+            private void throwNonSelectCommandButSlaveDBException(ActionRuntime runtime, BehaviorCommandMeta meta) {
                 final ExceptionMessageBuilder br = new ExceptionMessageBuilder();
                 br.addNotice("Non-select command but slave DB now.");
                 br.addItem("Advice");
@@ -71,8 +72,18 @@ public class BlockingSlaveUpdateHookFactory {
                 br.addElement("  public class YourAction extends ... {");
                 br.addElement("      ...");
                 br.addElement("  }");
+                br.addElement("  ");
+                br.addElement("   or");
+                br.addElement("  ");
+                br.addElement("  public class YourAction extends ... {");
+                br.addElement("  ");
+                br.addElement("      @XxxMasterDB");
+                br.addElement("      public JsonResponse... update(...) {");
+                br.addElement("          ...");
+                br.addElement("      }");
+                br.addElement("  }");
                 br.addItem("Action");
-                br.addElement(actionType);
+                br.addElement(runtime);
                 br.addItem("Behavior");
                 br.addElement(meta);
                 throw new NonSelectCommandButSlaveDBException("You cannot update slave DB: " + meta);

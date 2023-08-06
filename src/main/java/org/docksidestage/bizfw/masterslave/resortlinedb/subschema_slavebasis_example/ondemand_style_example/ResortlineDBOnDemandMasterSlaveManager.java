@@ -13,14 +13,30 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.maihamadb.slavebasis_example;
+package org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ondemand_style_example;
 
+import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.BackstageResortlineSlaveDBAccessor;
+import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.ondestyle.SlaveBasisOnDemandAgent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessor;
 import org.lastaflute.web.ruts.process.ActionRuntime;
 
+// _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+// [notice as example]
+// this example has sub-package but you don't need it
+// you can make it like this:
+// 
+//  bizfw.masterslave
+//   |-[schema]
+//      |-...MasterSlaveManager.java
+// 
+// [notice as example]
+// this example (reluctantly) needs style name "OnDemand" in class name
+// but actually you don't need it like this:
+// rename [Schema]OnDemandMasterSlaveManager to [Schema]MasterSlaveManager
+// _/_/_/_/_/_/_/_/_/_/
 /**
  * The manager of master/slave for the DB schema. <br>
  * this schema uses slave-basis way.
@@ -28,29 +44,37 @@ import org.lastaflute.web.ruts.process.ActionRuntime;
  * how to set up:
  *  1. register this class to DI xml as DI component.
  *   app.xml
- *    |-rdb-[schema].xml
- *       |-jdbc-[schema].xml // here
- *          |-jdbc-[schema]-master.xml
- *          |-jdbc-[schema]-slave.xml
+ *    |-dbflute.xml
+ *      |-rdb.xml
+ *         |-jdbc+.xml // here (if main schema)
+ *            |-jdbc-master.xml
+ *            |-jdbc-slave.xml
+ *    or
+ *   app.xml
+ *    |-dbflute-[schema].xml
+ *      |-rdb-[schema].xml
+ *         |-jdbc-[schema].xml // here (if sub schema)
+ *            |-jdbc-[schema]-master.xml
+ *            |-jdbc-[schema]-slave.xml
  * 
- * 2. call this class in action hook of BaseAction.
+ *  2. call this class in action hook of BaseAction.
  * 
- *  &#064;Resource
- *  private [Schema]MasterSlaveManager [schema]MasterSlaveManager;
+ *   &#064;Resource
+ *   private [Schema]MasterSlaveManager [schema]MasterSlaveManager;
  * 
- *  &#064;Override
- *  public ActionResponse hookBefore(ActionRuntime runtime) {
- *      [schema]MasterSlaveManager.beginSlaveBasis();
- *  }
+ *   &#064;Override
+ *   public ActionResponse hookBefore(ActionRuntime runtime) {
+ *       [schema]MasterSlaveManager.beginSlaveBasis();
+ *   }
  * 
- *  &#064;Override
- *  public void hookFinally(ActionRuntime runtime) {
- *      [schema]MasterSlaveManager.endSlaveBasis(runtime);
- *  }
+ *   &#064;Override
+ *   public void hookFinally(ActionRuntime runtime) {
+ *       [schema]MasterSlaveManager.endSlaveBasis(runtime);
+ *   }
  * </pre>
  * @author jflute
  */
-public class MaihamaDBMasterSlaveManager { // DI component
+public class ResortlineDBOnDemandMasterSlaveManager { // DI component
 
     // ===================================================================================
     //                                                                           Attribute
@@ -60,8 +84,8 @@ public class MaihamaDBMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public MaihamaDBMasterSlaveManager(BackstageMaihamaSlaveDBAccessor slaveDBAccessor,
-            MaihamaDBSelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
+    public ResortlineDBOnDemandMasterSlaveManager(BackstageResortlineSlaveDBAccessor slaveDBAccessor,
+            ResortlineDBSelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
         agent = createAgent(slaveDBAccessor, selectableDataSourceHolder);
     }
 
@@ -75,7 +99,7 @@ public class MaihamaDBMasterSlaveManager { // DI component
 
     // if you use annotation style
     //private Class<? extends Annotation> getAnnotationType() {
-    //    return MaihamaMasterDB.class; // specific point
+    //    return ResortlineMasterDB.class; // specific point
     //}
 
     // ===================================================================================
