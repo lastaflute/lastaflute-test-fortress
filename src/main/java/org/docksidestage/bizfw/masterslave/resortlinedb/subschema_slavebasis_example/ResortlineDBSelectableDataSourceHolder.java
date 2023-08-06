@@ -36,8 +36,8 @@ import org.lastaflute.db.replication.selectable.ThreadLocalSelectableDataSourceH
  *    |-dbflute.xml
  *      |-rdb.xml
  *         |-jdbc+.xml // here (if main schema)
- *            |-jdbc-master.xml
- *            |-jdbc-slave.xml
+ *            |-jdbc-[schema]-master.xml
+ *            |-jdbc-[schema]-slave.xml
  *    or
  *   app.xml
  *    |-dbflute-[schema].xml
