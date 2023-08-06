@@ -59,6 +59,9 @@ public class ResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { // DI compo
 
     @Override
     protected String mySchemaKeyword() { // needs for sub schema
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        // [tips] you can use also nickname e.g. resola (for resortlinedb)
+        // _/_/_/_/_/_/_/_/_/_/
         return "resola"; // data source name is e.g. masterResolaDataSource
     }
 
