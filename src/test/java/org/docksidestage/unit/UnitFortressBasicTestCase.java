@@ -15,7 +15,12 @@
  */
 package org.docksidestage.unit;
 
+import javax.annotation.Resource;
+
 import org.dbflute.utflute.lastaflute.WebContainerTestCase;
+import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.annotation_style_example.MaihamaDBAnnotationMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.annotation_style_example.ResortlineDBAnnotationMasterSlaveManager;
+import org.lastaflute.web.ruts.process.ActionRuntime;
 
 /**
  * Use like this:
@@ -39,27 +44,30 @@ import org.dbflute.utflute.lastaflute.WebContainerTestCase;
  */
 public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
 
-    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-    // [tips] how to enable master/slave access in also UnitTest environment
-    // (same implementation as ActionHook in your [App]BaseAction)
-    //
-    //@Resource
-    //private MaihamaDBAnnotationMasterSlaveManager maihamaDBAnnotationMasterSlaveManager;
-    //@Resource
-    //private ResortlineDBAnnotationMasterSlaveManager resortlineDBAnnotationMasterSlaveManager;
-    //
-    //@Override
-    //public void setUp() throws Exception {
-    //    super.setUp();
-    //    maihamaDBAnnotationMasterSlaveManager.beginSlaveBasis(getMockJsonRuntime());
-    //    resortlineDBAnnotationMasterSlaveManager.beginSlaveBasis(getMockJsonRuntime());
-    //}
-    //
-    //@Override
-    //public void tearDown() throws Exception {
-    //    maihamaDBAnnotationMasterSlaveManager.endSlaveBasis(getMockJsonRuntime());
-    //    resortlineDBAnnotationMasterSlaveManager.endSlaveBasis(getMockJsonRuntime());
-    //    super.tearDown();
-    //}
-    // _/_/_/_/_/_/_/_/_/_/
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    @Resource
+    private MaihamaDBAnnotationMasterSlaveManager maihamaDBAnnotationMasterSlaveManager;
+    @Resource
+    private ResortlineDBAnnotationMasterSlaveManager resortlineDBAnnotationMasterSlaveManager;
+
+    // ===================================================================================
+    //                                                                            Settings
+    //                                                                            ========
+    @Override
+    public void setUp() throws Exception {
+        super.setUp();
+        ActionRuntime runtime = getMockJsonRuntime(); // only for logging so either (json or html)
+        maihamaDBAnnotationMasterSlaveManager.beginSlaveBasis(runtime);
+        resortlineDBAnnotationMasterSlaveManager.beginSlaveBasis(runtime);
+    }
+
+    @Override
+    public void tearDown() throws Exception {
+        ActionRuntime runtime = getMockJsonRuntime(); // me too
+        maihamaDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
+        resortlineDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
+        super.tearDown();
+    }
 }
