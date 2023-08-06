@@ -1,37 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE components PUBLIC "-//DBFLUTE//DTD LastaDi 1.0//EN"
 	"http://dbflute.org/meta/lastadi10.dtd">
-<components namespace="jdbc"> <!-- included by rdb.xml of Lasta Di for main schema -->
-	<include path="jta.xml"/> <!-- for e.g. transaction manager -->
-	<include path="lastaflute_assist.xml"/> <!-- for configuration provider -->
+<components namespace="jdbc_resola">
+    <!-- not use embedded holder instance as sub schema
+     <include path="plugin/selectable_datasource.xml"/>
+    -->
+    <include path="jdbc-resola-master.xml"/>
+    <include path="jdbc-resola-slave.xml"/>
 
-	<component name="xaDataSource" class="org.lastaflute.db.dbcp.HookedXADataSource">
-		<property name="driverClassName">
-			provider.config().getResolaJdbcDriver()
-		</property>
-		<property name="URL">
-			provider.config().getResolaJdbcUrl()
-		</property>
-		<property name="user">provider.config().getResolaJdbcUser()</property>
-		<property name="password">provider.config().getResolaJdbcPassword()</property>
-	</component>
-
-	<component name="connectionPool" class="org.lastaflute.db.dbcp.HookedConnectionPool">
-		<!-- main option, required -->
-		<property name="maxPoolSize">provider.config().getResolaJdbcConnectionPoolingSize()</property>
-
-		<!-- sub option, not required (setter not called if null) -->
-		<property name="minPoolSize">        provider.config().getOrDefault("resola.jdbc.connection.pooling.min.size", null)            </property>
-		<property name="maxWait">            provider.config().getOrDefault("resola.jdbc.connection.pooling.max.wait", null)            </property>
-		<property name="timeout">            provider.config().getOrDefault("resola.jdbc.connection.pooling.timeout", null)             </property>
-		<property name="suppressLocalTx">    provider.config().getOrDefault("resola.jdbc.connection.pooling.suppress.local.tx", null)   </property>
-		<property name="readOnly">           provider.config().getOrDefault("resola.jdbc.connection.pooling.read.only", null)           </property>
-		<property name="validationQuery">    provider.config().getOrDefault("resola.jdbc.connection.pooling.validation.query", null)    </property>
-		<property name="validationInterval"> provider.config().getOrDefault("resola.jdbc.connection.pooling.validation.interval", null) </property>
-		<!-- may be almost unused (want to change property type if supported)
-		<property name="transactionIsolationLevel">provider.config().getOrDefault("resola.jdbc.connection.pooling.transaction.isolation.level", null)</property>
-		 -->
-	</component>
-
-	<component name="dataSource" class="org.lastaflute.db.dbcp.HookedPooledDataSource"/>
+    <!-- these component names are basically unused so non-unique names are allowed
+     attention: but if you use by-name injection, set unique name here
+     e.g. resolaDataSource, resolaSlaveDBAccessor (if schema nickname is "resola")
+     -->
+    <component name="dataSource" class="org.lastaflute.db.replication.slavedb.MasterBasisSelectableDataSource"/>
+    <component name="slaveDBAccessor" class="org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.BackstageResortlineSlaveDBAccessor"/>
+    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.annotation_style_example.ResortlineDBAnnotationMasterSlaveManager"/>
+    <component name="selectableDataSourceHolder" class="org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ResortlineDBSelectableDataSourceHolder"/>
 </components>
