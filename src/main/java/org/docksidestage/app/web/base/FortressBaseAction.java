@@ -64,7 +64,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Resource
     private FortressConfig fortressConfig;
     @Resource
-    private CrossLoginBridge crossLoginTransfer;
+    private CrossLoginBridge crossLoginBridge;
     @Resource
     private FortressLoginAssist loginAssist;
     @Resource
@@ -126,7 +126,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
         csrfTokenAssist.hookBefore(runtime);
-        crossLoginTransfer.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
+        crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
         beginSlaveBasis(runtime);
         return super.hookBefore(runtime);
     }

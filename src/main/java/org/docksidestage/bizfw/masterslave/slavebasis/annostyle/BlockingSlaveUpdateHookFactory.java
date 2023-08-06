@@ -86,7 +86,8 @@ public class BlockingSlaveUpdateHookFactory {
                 br.addElement(runtime);
                 br.addItem("Behavior");
                 br.addElement(meta);
-                throw new NonSelectCommandButSlaveDBException("You cannot update slave DB: " + meta);
+                final String msg = br.buildExceptionMessage();
+                throw new NonSelectCommandButSlaveDBException(msg);
             }
 
             public void hookFinally(BehaviorCommandMeta meta, RuntimeException cause) {

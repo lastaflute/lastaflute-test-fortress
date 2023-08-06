@@ -69,6 +69,6 @@ public class BackstageMaihamaSlaveDBAccessor extends SlaveDBAccessorImpl { // DI
 
     @Override
     public String toString() { // for logging
-        return DfTypeUtil.toClassTitle(this) + ":{" + mySchemaKeyword() + "}";
+        return DfTypeUtil.toClassTitle(this) + ":{schemaKeyword=" + mySchemaKeyword() + "}";
     }
 }

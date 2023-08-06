@@ -60,11 +60,14 @@ public class BackstageResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { //
 
     @Override
     protected String mySchemaKeyword() { // needs for sub schema
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        // [tips] you can use also nickname e.g. resola (for resortlinedb)
+        // _/_/_/_/_/_/_/_/_/_/
         return "resola"; // data source name is e.g. masterResolaDataSource
     }
 
     @Override
     public String toString() { // for logging
-        return DfTypeUtil.toClassTitle(this) + ":{" + mySchemaKeyword() + "}";
+        return DfTypeUtil.toClassTitle(this) + ":{schemaKeyword=" + mySchemaKeyword() + "}";
     }
 }
