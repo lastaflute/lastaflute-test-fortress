@@ -43,10 +43,10 @@ public class StationDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                       Current DBDef
     //                                                                       =============
-    public String getProjectName() { return RsoDBCurrent.getInstance().projectName(); }
-    public String getProjectPrefix() { return RsoDBCurrent.getInstance().projectPrefix(); }
-    public String getGenerationGapBasePrefix() { return RsoDBCurrent.getInstance().generationGapBasePrefix(); }
-    public DBDef getCurrentDBDef() { return RsoDBCurrent.getInstance().currentDBDef(); }
+    public String getProjectName() { return ResolaDBCurrent.getInstance().projectName(); }
+    public String getProjectPrefix() { return ResolaDBCurrent.getInstance().projectPrefix(); }
+    public String getGenerationGapBasePrefix() { return ResolaDBCurrent.getInstance().generationGapBasePrefix(); }
+    public DBDef getCurrentDBDef() { return ResolaDBCurrent.getInstance().currentDBDef(); }
 
     // ===================================================================================
     //                                                                    Property Gateway
@@ -73,7 +73,7 @@ public class StationDbm extends AbstractDBMeta {
     protected final String _tableDispName = "STATION";
     protected final String _tablePropertyName = "station";
     protected final TableSqlName _tableSqlName = new TableSqlName("STATION", _tableDbName);
-    { _tableSqlName.xacceptFilter(RsoDBFluteConfig.getInstance().getTableSqlNameFilter()); }
+    { _tableSqlName.xacceptFilter(ResolaDBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }

@@ -24,13 +24,13 @@ import org.slf4j.LoggerFactory;
 /**
  * @author DBFlute(AutoGenerator)
  */
-public class RsoDBFluteInitializer {
+public class ResolaDBFluteInitializer {
 
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
     /** The logger instance for this class. (NotNull) */
-    private static final Logger _log = LoggerFactory.getLogger(RsoDBFluteInitializer.class);
+    private static final Logger _log = LoggerFactory.getLogger(ResolaDBFluteInitializer.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -42,7 +42,7 @@ public class RsoDBFluteInitializer {
     /**
      * Constructor, which initializes various components.
      */
-    public RsoDBFluteInitializer() {
+    public ResolaDBFluteInitializer() {
         announce();
         prologue();
         standBy();
@@ -71,8 +71,8 @@ public class RsoDBFluteInitializer {
      * Enjoy your DBFlute life.
      */
     protected void standBy() {
-        if (!RsoDBFluteConfig.getInstance().isLocked()) {
-            RsoDBFluteConfig.getInstance().lock();
+        if (!ResolaDBFluteConfig.getInstance().isLocked()) {
+            ResolaDBFluteConfig.getInstance().lock();
         }
         if (!DBFluteSystem.isLocked()) {
             DBFluteSystem.lock();
@@ -92,7 +92,7 @@ public class RsoDBFluteInitializer {
     //                                                                       Assist Helper
     //                                                                       =============
     protected boolean isCurrentDBDef(DBDef currentDBDef) {
-        return RsoDBCurrent.getInstance().isCurrentDBDef(currentDBDef);
+        return ResolaDBCurrent.getInstance().isCurrentDBDef(currentDBDef);
     }
 
     // ===================================================================================

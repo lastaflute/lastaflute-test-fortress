@@ -31,7 +31,7 @@ import org.dbflute.util.DfAssertUtil;
  * The handler of the instance of DB meta.
  * @author DBFlute(AutoGenerator)
  */
-public class RsoDBMetaInstanceHandler implements DBMetaProvider {
+public class ResolaDBMetaInstanceHandler implements DBMetaProvider {
 
     // ===================================================================================
     //                                                                        Resource Map
@@ -94,7 +94,7 @@ public class RsoDBMetaInstanceHandler implements DBMetaProvider {
     // ===================================================================================
     //                                                                  Provider Singleton
     //                                                                  ==================
-    protected static final DBMetaProvider _provider = new RsoDBMetaInstanceHandler();
+    protected static final DBMetaProvider _provider = new ResolaDBMetaInstanceHandler();
 
     public static DBMetaProvider getProvider() {
         return _provider;

@@ -48,7 +48,7 @@ public abstract class AbstractBsStationCQ extends AbstractConditionQuery {
     //                                                                             =======
     @Override
     protected DBMetaProvider xgetDBMetaProvider() {
-        return RsoDBMetaInstanceHandler.getProvider();
+        return ResolaDBMetaInstanceHandler.getProvider();
     }
 
     public String asTableDbName() {

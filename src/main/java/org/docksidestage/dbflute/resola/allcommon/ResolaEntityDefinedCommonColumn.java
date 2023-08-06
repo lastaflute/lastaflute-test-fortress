@@ -21,5 +21,5 @@ import org.dbflute.Entity;
  * The interface of entity defined common columns.
  * @author DBFlute(AutoGenerator)
  */
-public interface RsoEntityDefinedCommonColumn extends Entity {
+public interface ResolaEntityDefinedCommonColumn extends Entity {
 }

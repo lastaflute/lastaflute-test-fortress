@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.AbstractEntity;
 import org.dbflute.dbmeta.accessory.DomainEntity;
-import org.docksidestage.dbflute.resola.allcommon.RsoDBMetaInstanceHandler;
+import org.docksidestage.dbflute.resola.allcommon.ResolaDBMetaInstanceHandler;
 import org.docksidestage.dbflute.resola.exentity.*;
 
 /**
@@ -101,7 +101,7 @@ public abstract class BsStation extends AbstractEntity implements DomainEntity {
     //                                                                             =======
     /** {@inheritDoc} */
     public DBMeta asDBMeta() {
-        return RsoDBMetaInstanceHandler.findDBMeta(asTableDbName());
+        return ResolaDBMetaInstanceHandler.findDBMeta(asTableDbName());
     }
 
     /** {@inheritDoc} */

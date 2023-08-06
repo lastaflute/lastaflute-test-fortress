@@ -53,7 +53,7 @@ import org.lastaflute.di.DisposableUtil;
 /**
  * @author DBFlute(AutoGenerator)
  */
-public class RsoImplementedInvokerAssistant implements InvokerAssistant {
+public class ResolaImplementedInvokerAssistant implements InvokerAssistant {
 
     // ===================================================================================
     //                                                                           Attribute
@@ -71,7 +71,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     //                                          DI Component
     //                                          ------------
     protected DataSource _dataSource;
-    protected RsoDBFluteInitializer _introduction;
+    protected ResolaDBFluteInitializer _introduction;
 
     // -----------------------------------------------------
     //                                        Lazy Component
@@ -100,7 +100,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     //                                         -------------
     /** {@inheritDoc} */
     public DBDef assistCurrentDBDef() {
-        return RsoDBCurrent.getInstance().currentDBDef();
+        return ResolaDBCurrent.getInstance().currentDBDef();
     }
 
     // -----------------------------------------------------
@@ -111,7 +111,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
         // this instance will be cached in SQL executions
         // so the handler should be set before initialization of DBFlute
         // (and it means you cannot switch data source after initialization)
-        DataSourceHandler handler = RsoDBFluteConfig.getInstance().getDataSourceHandler();
+        DataSourceHandler handler = ResolaDBFluteConfig.getInstance().getDataSourceHandler();
         return handler != null ? new HandlingDataSourceWrapper(_dataSource, handler) : _dataSource;
     }
 
@@ -133,7 +133,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     }
 
     protected DBMetaProvider createDBMetaProvider() {
-        return RsoDBMetaInstanceHandler.getProvider();
+        return ResolaDBMetaInstanceHandler.getProvider();
     }
 
     // -----------------------------------------------------
@@ -154,15 +154,15 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     }
 
     protected SqlClauseCreator createSqlClauseCreator() {
-        SqlClauseCreator creator = RsoDBFluteConfig.getInstance().getSqlClauseCreator();
+        SqlClauseCreator creator = ResolaDBFluteConfig.getInstance().getSqlClauseCreator();
         if (creator != null) {
             return creator;
         }
         return newImplementedSqlClauseCreator(); // as default
     }
 
-    protected RsoImplementedSqlClauseCreator newImplementedSqlClauseCreator() {
-        return new RsoImplementedSqlClauseCreator();
+    protected ResolaImplementedSqlClauseCreator newImplementedSqlClauseCreator() {
+        return new ResolaImplementedSqlClauseCreator();
     }
 
     // -----------------------------------------------------
@@ -185,7 +185,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     protected StatementFactory createStatementFactory() {
         final TnStatementFactoryImpl factory = newStatementFactoryImpl();
         factory.setDefaultStatementConfig(assistDefaultStatementConfig());
-        RsoDBFluteConfig config = RsoDBFluteConfig.getInstance();
+        ResolaDBFluteConfig config = ResolaDBFluteConfig.getInstance();
         factory.setInternalDebug(config.isInternalDebug());
         factory.setCursorSelectFetchSize(config.getCursorSelectFetchSize());
         factory.setEntitySelectFetchSize(config.getEntitySelectFetchSize());
@@ -219,7 +219,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
         RelationOptionalFactory relationOptionalFactory = assistRelationOptionalFactory();
         final TnBeanMetaDataFactoryExtension factory = newBeanMetaDataFactoryExtension(relationOptionalFactory);
         factory.setDataSource(_dataSource);
-        factory.setInternalDebug(RsoDBFluteConfig.getInstance().isInternalDebug());
+        factory.setInternalDebug(ResolaDBFluteConfig.getInstance().isInternalDebug());
         return factory;
     }
 
@@ -311,7 +311,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     }
 
     protected OutsideSqlOption prepareFirstOutsideSqlOption(String tableDbName) {
-        if (RsoDBFluteConfig.getInstance().isNonSpecifiedColumnAccessAllowed()) {
+        if (ResolaDBFluteConfig.getInstance().isNonSpecifiedColumnAccessAllowed()) {
             OutsideSqlOption option = new OutsideSqlOption();
             option.setTableDbName(tableDbName);
             return option.enableNonSpecifiedColumnAccess();
@@ -337,7 +337,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     }
 
     protected OutsideSqlExecutorFactory createOutsideSqlExecutorFactory() {
-        OutsideSqlExecutorFactory factory = RsoDBFluteConfig.getInstance().getOutsideSqlExecutorFactory();
+        OutsideSqlExecutorFactory factory = ResolaDBFluteConfig.getInstance().getOutsideSqlExecutorFactory();
         if (factory != null) {
             return factory;
         }
@@ -357,7 +357,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     }
 
     protected SQLExceptionDigger createSQLExceptionDigger() {
-        return RsoDBFluteConfig.getInstance().getSQLExceptionDigger();
+        return ResolaDBFluteConfig.getInstance().getSQLExceptionDigger();
     }
 
     // -----------------------------------------------------
@@ -404,11 +404,11 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
 
     protected SequenceCacheHandler createSequenceCacheHandler() {
         SequenceCacheHandler handler = newSequenceCacheHandler();
-        SequenceCacheKeyGenerator generator = RsoDBFluteConfig.getInstance().getSequenceCacheKeyGenerator();
+        SequenceCacheKeyGenerator generator = ResolaDBFluteConfig.getInstance().getSequenceCacheKeyGenerator();
         if (generator != null) {
             handler.setSequenceCacheKeyGenerator(generator);
         }
-        handler.setInternalDebug(RsoDBFluteConfig.getInstance().isInternalDebug());
+        handler.setInternalDebug(ResolaDBFluteConfig.getInstance().isInternalDebug());
         return handler;
     }
 
@@ -429,7 +429,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     //                               -----------------------
     /** {@inheritDoc} */
     public StatementConfig assistDefaultStatementConfig() {
-        return RsoDBFluteConfig.getInstance().getDefaultStatementConfig();
+        return ResolaDBFluteConfig.getInstance().getDefaultStatementConfig();
     }
 
     // -----------------------------------------------------
@@ -445,7 +445,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     //                                 ---------------------
     /** {@inheritDoc} */
     public GearedCipherManager assistGearedCipherManager() {
-        return RsoDBFluteConfig.getInstance().getGearedCipherManager();
+        return ResolaDBFluteConfig.getInstance().getGearedCipherManager();
     }
 
     // -----------------------------------------------------
@@ -458,13 +458,13 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
 
     protected ResourceParameter createResourceParameter() {
         ResourceParameter parameter = newResourceParameter();
-        parameter.setOutsideSqlPackage(RsoDBFluteConfig.getInstance().getOutsideSqlPackage());
-        parameter.setMappingDateTimeZoneProvider(RsoDBFluteConfig.getInstance().getMappingDateTimeZoneProvider());
-        parameter.setLogDatePattern(RsoDBFluteConfig.getInstance().getLogDatePattern());
-        parameter.setLogTimestampPattern(RsoDBFluteConfig.getInstance().getLogTimestampPattern());
-        parameter.setLogTimePattern(RsoDBFluteConfig.getInstance().getLogTimePattern());
-        parameter.setLogTimeZoneProvider(RsoDBFluteConfig.getInstance().getLogTimeZoneProvider());
-        parameter.setInternalDebug(RsoDBFluteConfig.getInstance().isInternalDebug());
+        parameter.setOutsideSqlPackage(ResolaDBFluteConfig.getInstance().getOutsideSqlPackage());
+        parameter.setMappingDateTimeZoneProvider(ResolaDBFluteConfig.getInstance().getMappingDateTimeZoneProvider());
+        parameter.setLogDatePattern(ResolaDBFluteConfig.getInstance().getLogDatePattern());
+        parameter.setLogTimestampPattern(ResolaDBFluteConfig.getInstance().getLogTimestampPattern());
+        parameter.setLogTimePattern(ResolaDBFluteConfig.getInstance().getLogTimePattern());
+        parameter.setLogTimeZoneProvider(ResolaDBFluteConfig.getInstance().getLogTimeZoneProvider());
+        parameter.setInternalDebug(ResolaDBFluteConfig.getInstance().isInternalDebug());
         return parameter;
     }
 
@@ -529,7 +529,7 @@ public class RsoImplementedInvokerAssistant implements InvokerAssistant {
     // so this variable is actually unused in this class
     // (needs to be injected only when the DI container is set by its DI setting file)
     @Resource
-    public void setIntroduction(RsoDBFluteInitializer introduction) {
+    public void setIntroduction(ResolaDBFluteInitializer introduction) {
         _introduction = introduction;
     }
 }

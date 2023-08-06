@@ -37,13 +37,13 @@ import org.lastaflute.di.core.exception.ComponentNotFoundException;
  * The implementation of behavior selector.
  * @author DBFlute(AutoGenerator)
  */
-public class RsoImplementedBehaviorSelector implements BehaviorSelector {
+public class ResolaImplementedBehaviorSelector implements BehaviorSelector {
 
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
     /** The logger instance for this class. (NotNull) */
-    private static final Logger _log = LoggerFactory.getLogger(RsoImplementedBehaviorSelector.class);
+    private static final Logger _log = LoggerFactory.getLogger(ResolaImplementedBehaviorSelector.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -61,7 +61,7 @@ public class RsoImplementedBehaviorSelector implements BehaviorSelector {
      * Initialize condition-bean meta data.
      */
     public void initializeConditionBeanMetaData() {
-        final Map<String, DBMeta> dbmetaMap = RsoDBMetaInstanceHandler.getUnmodifiableDBMetaMap();
+        final Map<String, DBMeta> dbmetaMap = ResolaDBMetaInstanceHandler.getUnmodifiableDBMetaMap();
         final Collection<DBMeta> dbmetas = dbmetaMap.values();
         long before = 0;
         if (_log.isInfoEnabled()) {
@@ -123,7 +123,7 @@ public class RsoImplementedBehaviorSelector implements BehaviorSelector {
      */
     public BehaviorReadable byName(String tableFlexibleName) {
         assertStringNotNullAndNotTrimmedEmpty("tableFlexibleName", tableFlexibleName);
-        final DBMeta dbmeta = RsoDBMetaInstanceHandler.findDBMeta(tableFlexibleName);
+        final DBMeta dbmeta = ResolaDBMetaInstanceHandler.findDBMeta(tableFlexibleName);
         return select(getBehaviorType(dbmeta));
     }
 

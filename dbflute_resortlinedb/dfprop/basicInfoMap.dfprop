@@ -162,7 +162,7 @@ map:{
     #  It may be needed if multiple DB structure, to identify allcommon.
     #  (Use this instead of projectPrefix)
     #
-    ; allcommonPrefix = Rso
+    ; allcommonPrefix = Resola
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

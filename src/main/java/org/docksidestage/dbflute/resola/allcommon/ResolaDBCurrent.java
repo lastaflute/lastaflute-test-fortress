@@ -22,16 +22,16 @@ import org.dbflute.dbway.DBDef;
 /**
  * @author DBFlute(AutoGenerator)
  */
-public class RsoDBCurrent {
+public class ResolaDBCurrent {
 
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
     /** The logger instance for this class. (NotNull) */
-    private static final Logger _log = LoggerFactory.getLogger(RsoDBCurrent.class);
+    private static final Logger _log = LoggerFactory.getLogger(ResolaDBCurrent.class);
 
     /** Singleton instance. */
-    private static final RsoDBCurrent _instance = new RsoDBCurrent();
+    private static final ResolaDBCurrent _instance = new ResolaDBCurrent();
 
     // ===================================================================================
     //                                                                           Attribute
@@ -51,7 +51,7 @@ public class RsoDBCurrent {
     /**
      * Only for singleton.
      */
-    private RsoDBCurrent() {
+    private ResolaDBCurrent() {
     }
 
     // ===================================================================================
@@ -61,7 +61,7 @@ public class RsoDBCurrent {
      * Get the saved singleton instance.
      * @return always same instance. (NotNull)
      */
-    public static RsoDBCurrent getInstance() {
+    public static ResolaDBCurrent getInstance() {
         return _instance;
     }
 

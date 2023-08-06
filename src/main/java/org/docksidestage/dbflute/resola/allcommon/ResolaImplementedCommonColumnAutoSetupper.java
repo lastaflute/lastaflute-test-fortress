@@ -25,13 +25,13 @@ import org.dbflute.hook.CommonColumnAutoSetupper;
  * The basic implementation of the auto set-upper of common column.
  * @author DBFlute(AutoGenerator)
  */
-public class RsoImplementedCommonColumnAutoSetupper implements CommonColumnAutoSetupper {
+public class ResolaImplementedCommonColumnAutoSetupper implements CommonColumnAutoSetupper {
 
     // =====================================================================================
     //                                                                            Definition
     //                                                                            ==========
     /** The logger instance for this class. (NotNull) */
-    private static final Logger _log = LoggerFactory.getLogger(RsoImplementedCommonColumnAutoSetupper.class);
+    private static final Logger _log = LoggerFactory.getLogger(ResolaImplementedCommonColumnAutoSetupper.class);
 
     // =====================================================================================
     //                                                                                Set up
@@ -48,10 +48,10 @@ public class RsoImplementedCommonColumnAutoSetupper implements CommonColumnAutoS
     //                                                                               Logging
     //                                                                               =======
     protected boolean isInternalDebugEnabled() {
-        return RsoDBFluteConfig.getInstance().isInternalDebug() && _log.isDebugEnabled();
+        return ResolaDBFluteConfig.getInstance().isInternalDebug() && _log.isDebugEnabled();
     }
 
-    protected void logSettingUp(RsoEntityDefinedCommonColumn entity, String keyword) {
+    protected void logSettingUp(ResolaEntityDefinedCommonColumn entity, String keyword) {
         _log.debug("...Setting up column columns of " + entity.asTableDbName() + " before " + keyword);
     }
 }
