@@ -18,6 +18,31 @@ package org.docksidestage.bizfw.masterslave.slavebasis;
 import org.lastaflute.web.ruts.process.ActionRuntime;
 
 /**
+ * The agent to provide slave basis way.
+ * <pre>
+ * e.g. maihamadb as slave basis
+ * 
+ * schema classes:
+ *  bizfw.masterslave
+ *   |-maihamadb
+ *      |-BackstageMaihamaSlaveDBAccessor
+ *      |-MaihamaDBMasterSlaveManager
+ *      |-MaihamaDBSelectableDataSourceHolder
+ *      |-MaihamaMasterDB // if annotation style
+ * 
+ * call flow:
+ *  [App]BaseAction
+ *    | (at hookBefore(), hookFinally())
+ *    |
+ *    |-calls MaihamaDBMasterSlaveManager (DI)
+ *              |  |
+ *              |  |-accept BackstageMaihamaSlaveDBAccessor (DI)
+ *              |  |-accept MaihamaDBSelectableDataSourceHolder (DI)
+ *              |                   ^
+ *              |                   | uses
+ *              |                   |
+ *              |-calls SlaveBasisAgent (new)
+ * </pre>
  * @author jflute
  */
 public interface SlaveBasisAgent { // called by your master/slave manager
