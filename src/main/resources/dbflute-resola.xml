@@ -6,11 +6,11 @@
 	<include path="rdb-resola.xml"/>
 
 	<!-- The components of DBFlute Runtime. -->
-	<component name="rsoIntroduction" class="org.docksidestage.dbflute.resola.allcommon.RsoDBFluteInitializer"/>
-	<component name="rsoInvokerAssistant" class="org.docksidestage.dbflute.resola.allcommon.RsoImplementedInvokerAssistant"/>
-	<component name="rsoBehaviorCommandInvoker" class="org.dbflute.bhv.core.BehaviorCommandInvoker"/>
-	<component name="rsoBehaviorSelector" class="org.docksidestage.dbflute.resola.allcommon.RsoImplementedBehaviorSelector"/>
-	<component name="rsoCommonColumnAutoSetupper" class="org.docksidestage.dbflute.resola.allcommon.RsoImplementedCommonColumnAutoSetupper"/>
+	<component name="resolaIntroduction" class="org.docksidestage.dbflute.resola.allcommon.ResolaDBFluteInitializer"/>
+	<component name="resolaInvokerAssistant" class="org.docksidestage.dbflute.resola.allcommon.ResolaImplementedInvokerAssistant"/>
+	<component name="resolaBehaviorCommandInvoker" class="org.dbflute.bhv.core.BehaviorCommandInvoker"/>
+	<component name="resolaBehaviorSelector" class="org.docksidestage.dbflute.resola.allcommon.ResolaImplementedBehaviorSelector"/>
+	<component name="resolaCommonColumnAutoSetupper" class="org.docksidestage.dbflute.resola.allcommon.ResolaImplementedCommonColumnAutoSetupper"/>
 
 	<!-- The components of Behavior. -->
 	<component name="stationBhv" class="org.docksidestage.dbflute.resola.exbhv.StationBhv"/>
