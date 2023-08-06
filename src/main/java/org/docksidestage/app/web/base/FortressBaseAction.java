@@ -24,6 +24,8 @@ import org.docksidestage.app.logic.i18n.I18nDateLogic;
 import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.docksidestage.bizfw.crosslogin.CrossLoginBridge;
+import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.annotation_style_example.MaihamaDBAnnotationMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.annotation_style_example.ResortlineDBAnnotationMasterSlaveManager;
 import org.docksidestage.mylasta.action.FortressHtmlPath;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.mylasta.action.FortressUserBean;
@@ -72,6 +74,14 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Resource
     private CsrfTokenAssist csrfTokenAssist;
 
+    // -----------------------------------------------------
+    //                                          Master/Slave
+    //                                          ------------
+    @Resource
+    private MaihamaDBAnnotationMasterSlaveManager maihamaDBAnnotationMasterSlaveManager;
+    @Resource
+    private ResortlineDBAnnotationMasterSlaveManager resortlineDBAnnotationMasterSlaveManager;
+
     // ===================================================================================
     //                                                                          Validation
     //                                                                          ==========
@@ -89,6 +99,9 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // ===================================================================================
     //                                                                               Hook
     //                                                                              ======
+    // -----------------------------------------------------
+    //                                              God Hand
+    //                                              --------
     // to suppress unexpected override by sub-class
     // you should remove the 'final' if you need to override this
     @Override
@@ -106,11 +119,15 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
         super.godHandEpilogue(runtime);
     }
 
+    // -----------------------------------------------------
+    //                                             Your Hook
+    //                                             ---------
     // #app_customize you can customize the action hook
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
         csrfTokenAssist.hookBefore(runtime);
         crossLoginTransfer.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
+        beginSlaveBasis(runtime);
         return super.hookBefore(runtime);
     }
 
@@ -122,7 +139,21 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
             }).orElse(FortressHeaderBean.empty()));
         }
         csrfTokenAssist.hookFinally(runtime);
+        endSlaveBasis(runtime);
         super.hookFinally(runtime);
+    }
+
+    // -----------------------------------------------------
+    //                                          Master/Slave
+    //                                          ------------
+    private void beginSlaveBasis(ActionRuntime runtime) {
+        maihamaDBAnnotationMasterSlaveManager.beginSlaveBasis(runtime);
+        resortlineDBAnnotationMasterSlaveManager.beginSlaveBasis(runtime);
+    }
+
+    private void endSlaveBasis(ActionRuntime runtime) {
+        maihamaDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
+        resortlineDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
     }
 
     // ===================================================================================
