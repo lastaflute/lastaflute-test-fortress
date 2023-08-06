@@ -38,4 +38,28 @@ import org.dbflute.utflute.lastaflute.WebContainerTestCase;
  * @author jflute
  */
 public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
+
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // [tips] how to enable master/slave access in also UnitTest environment
+    // (same implementation as ActionHook in your [App]BaseAction)
+    //
+    //@Resource
+    //private MaihamaDBAnnotationMasterSlaveManager maihamaDBAnnotationMasterSlaveManager;
+    //@Resource
+    //private ResortlineDBAnnotationMasterSlaveManager resortlineDBAnnotationMasterSlaveManager;
+    //
+    //@Override
+    //public void setUp() throws Exception {
+    //    super.setUp();
+    //    maihamaDBAnnotationMasterSlaveManager.beginSlaveBasis(getMockJsonRuntime());
+    //    resortlineDBAnnotationMasterSlaveManager.beginSlaveBasis(getMockJsonRuntime());
+    //}
+    //
+    //@Override
+    //public void tearDown() throws Exception {
+    //    maihamaDBAnnotationMasterSlaveManager.endSlaveBasis(getMockJsonRuntime());
+    //    resortlineDBAnnotationMasterSlaveManager.endSlaveBasis(getMockJsonRuntime());
+    //    super.tearDown();
+    //}
+    // _/_/_/_/_/_/_/_/_/_/
 }

@@ -68,6 +68,6 @@ public class BackstageResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { //
 
     @Override
     public String toString() { // for logging
-        return DfTypeUtil.toClassTitle(this) + ":{" + mySchemaKeyword() + "}";
+        return DfTypeUtil.toClassTitle(this) + ":{schemaKeyword=" + mySchemaKeyword() + "}";
     }
 }

@@ -15,6 +15,7 @@
  */
 package org.docksidestage.bizfw.masterslave.maihamadb.mainschema_basic_example;
 
+import org.dbflute.util.DfTypeUtil;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
 
 // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
@@ -68,4 +69,9 @@ public class MaihamaSlaveDBAccessor extends SlaveDBAccessorImpl {
     //protected String mySchemaKeyword() {
     //    return "maihamadb"; // data source name is e.g. masterMaihamadbDataSource
     //}
+
+    @Override
+    public String toString() { // for logging
+        return DfTypeUtil.toClassTitle(this) + ":{schemaKeyword=" + mySchemaKeyword() + "}";
+    }
 }
