@@ -17,8 +17,6 @@ package org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_ex
 
 import java.lang.annotation.Annotation;
 
-import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.BackstageResortlineSlaveDBAccessor;
-import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.annostyle.SlaveBasisAnnotationAgent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
@@ -86,8 +84,8 @@ public class ResortlineDBAnnotationMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public ResortlineDBAnnotationMasterSlaveManager(BackstageResortlineSlaveDBAccessor slaveDBAccessor,
-            ResortlineDBSelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
+    public ResortlineDBAnnotationMasterSlaveManager(SlaveDBAccessor slaveDBAccessor,
+            SelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
         agent = createAgent(slaveDBAccessor, selectableDataSourceHolder);
     }
 

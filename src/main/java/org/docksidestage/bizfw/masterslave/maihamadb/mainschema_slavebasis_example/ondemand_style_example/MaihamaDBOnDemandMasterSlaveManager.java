@@ -16,7 +16,6 @@
 package org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.ondemand_style_example;
 
 import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.BackstageMaihamaSlaveDBAccessor;
-import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.MaihamaDBSelectableDataSourceHolder;
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.ondestyle.SlaveBasisOnDemandAgent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
@@ -85,7 +84,7 @@ public class MaihamaDBOnDemandMasterSlaveManager { // DI component
     //                                                                         Constructor
     //                                                                         ===========
     public MaihamaDBOnDemandMasterSlaveManager(BackstageMaihamaSlaveDBAccessor slaveDBAccessor,
-            MaihamaDBSelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
+            SelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
         agent = createAgent(slaveDBAccessor, selectableDataSourceHolder);
     }
 

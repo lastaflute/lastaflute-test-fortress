@@ -15,8 +15,6 @@
  */
 package org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ondemand_style_example;
 
-import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.BackstageResortlineSlaveDBAccessor;
-import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.ondestyle.SlaveBasisOnDemandAgent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
@@ -84,8 +82,7 @@ public class ResortlineDBOnDemandMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public ResortlineDBOnDemandMasterSlaveManager(BackstageResortlineSlaveDBAccessor slaveDBAccessor,
-            ResortlineDBSelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
+    public ResortlineDBOnDemandMasterSlaveManager(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
         agent = createAgent(slaveDBAccessor, selectableDataSourceHolder);
     }
 

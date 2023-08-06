@@ -27,7 +27,7 @@ import org.lastaflute.web.ruts.process.ActionRuntime;
  *   |-maihamadb
  *      |-BackstageMaihamaSlaveDBAccessor
  *      |-MaihamaDBMasterSlaveManager
- *      |-MaihamaDBSelectableDataSourceHolder
+ *      |-MaihamaDBSelectableDataSourceHolder // if sub schema
  *      |-MaihamaMasterDB // if annotation style
  * 
  * call flow:
@@ -36,8 +36,8 @@ import org.lastaflute.web.ruts.process.ActionRuntime;
  *    |
  *    |-calls MaihamaDBMasterSlaveManager (DI)
  *              |  |
- *              |  |-accept BackstageMaihamaSlaveDBAccessor (DI)
- *              |  |-accept MaihamaDBSelectableDataSourceHolder (DI)
+ *              |  |-accept SlaveDBAccessor (DI)
+ *              |  |-accept SelectableDataSourceHolder (DI)
  *              |                   ^
  *              |                   | uses
  *              |                   |

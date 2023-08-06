@@ -17,8 +17,6 @@ package org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_exam
 
 import java.lang.annotation.Annotation;
 
-import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.BackstageMaihamaSlaveDBAccessor;
-import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.MaihamaDBSelectableDataSourceHolder;
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.annostyle.SlaveBasisAnnotationAgent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
@@ -86,8 +84,7 @@ public class MaihamaDBAnnotationMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public MaihamaDBAnnotationMasterSlaveManager(BackstageMaihamaSlaveDBAccessor slaveDBAccessor,
-            MaihamaDBSelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
+    public MaihamaDBAnnotationMasterSlaveManager(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
         agent = createAgent(slaveDBAccessor, selectableDataSourceHolder);
     }
 
