@@ -64,7 +64,7 @@ public class BackstageMaihamaSlaveDBAccessor extends SlaveDBAccessorImpl { // DI
     // _/_/_/_/_/_/_/_/_/_/
     //@Override
     //protected String mySchemaKeyword() { // needs for sub schema
-    //    return "maihamadb"; // data source name is e.g. masterResortlinedbDataSource
+    //    return "maihamadb"; // data source name is e.g. masterMaihamadbDataSource
     //}
 
     @Override

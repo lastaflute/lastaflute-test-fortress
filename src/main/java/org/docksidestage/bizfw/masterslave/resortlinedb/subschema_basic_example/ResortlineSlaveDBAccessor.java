@@ -59,7 +59,7 @@ public class ResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { // DI compo
 
     @Override
     protected String mySchemaKeyword() { // needs for sub schema
-        return "resortlinedb"; // data source name is e.g. masterResortlinedbDataSource
+        return "resola"; // data source name is e.g. masterResolaDataSource
     }
 
     @Override

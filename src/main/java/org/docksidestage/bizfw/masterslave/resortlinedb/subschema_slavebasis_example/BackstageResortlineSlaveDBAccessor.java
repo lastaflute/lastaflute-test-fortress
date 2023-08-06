@@ -60,7 +60,7 @@ public class BackstageResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { //
 
     @Override
     protected String mySchemaKeyword() { // needs for sub schema
-        return "resortlinedb"; // data source name is e.g. masterResortlinedbDataSource
+        return "resola"; // data source name is e.g. masterResolaDataSource
     }
 
     @Override
