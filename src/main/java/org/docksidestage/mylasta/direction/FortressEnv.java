@@ -77,6 +77,18 @@ public interface FortressEnv {
     /** The key of the configuration. e.g. 10 */
     String JDBC_CONNECTION_POOLING_SIZE = "jdbc.connection.pooling.size";
 
+    /** The key of the configuration. e.g. jdbc:mysql://localhost:3306/maihamadb?allowPublicKeyRetrieval=true&amp;useSSL=false */
+    String SLAVE_JDBC_URL = "slave.jdbc.url";
+
+    /** The key of the configuration. e.g. maihamadb */
+    String SLAVE_JDBC_USER = "slave.jdbc.user";
+
+    /** The key of the configuration. e.g. 12 */
+    String SLAVE_JDBC_CONNECTION_POOLING_SIZE = "slave.jdbc.connection.pooling.size";
+
+    /** The key of the configuration. e.g. true */
+    String SLAVE_JDBC_CONNECTION_POOLING_READ_ONLY = "slave.jdbc.connection.pooling.read.only";
+
     /** The key of the configuration. e.g. com.mysql.cj.jdbc.Driver */
     String RESOLA_JDBC_DRIVER = "resola.jdbc.driver";
 
@@ -91,6 +103,18 @@ public interface FortressEnv {
 
     /** The key of the configuration. e.g. 10 */
     String RESOLA_JDBC_CONNECTION_POOLING_SIZE = "resola.jdbc.connection.pooling.size";
+
+    /** The key of the configuration. e.g. jdbc:mysql://localhost:3306/resortlinedb?allowPublicKeyRetrieval=true&amp;useSSL=false */
+    String SLAVE_RESOLA_JDBC_URL = "slave.resola.jdbc.url";
+
+    /** The key of the configuration. e.g. resortlinedb */
+    String SLAVE_RESOLA_JDBC_USER = "slave.resola.jdbc.user";
+
+    /** The key of the configuration. e.g. 12 */
+    String SLAVE_RESOLA_JDBC_CONNECTION_POOLING_SIZE = "slave.resola.jdbc.connection.pooling.size";
+
+    /** The key of the configuration. e.g. true */
+    String SLAVE_RESOLA_JDBC_CONNECTION_POOLING_READ_ONLY = "slave.resola.jdbc.connection.pooling.read.only";
 
     /** The key of the configuration. e.g. localhost:8097 */
     String SERVER_DOMAIN = "server.domain";
@@ -322,6 +346,55 @@ public interface FortressEnv {
     Integer getJdbcConnectionPoolingSizeAsInteger();
 
     /**
+     * Get the value for the key 'slave.jdbc.url'. <br>
+     * The value is, e.g. jdbc:mysql://localhost:3306/maihamadb?allowPublicKeyRetrieval=true&amp;useSSL=false <br>
+     * comment: The URL of database connection for JDBC as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveJdbcUrl();
+
+    /**
+     * Get the value for the key 'slave.jdbc.user'. <br>
+     * The value is, e.g. maihamadb <br>
+     * comment: The user of database connection for JDBC as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveJdbcUser();
+
+    /**
+     * Get the value for the key 'slave.jdbc.connection.pooling.size'. <br>
+     * The value is, e.g. 12 <br>
+     * comment: The (max) pooling size of connection pool as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveJdbcConnectionPoolingSize();
+
+    /**
+     * Get the value for the key 'slave.jdbc.connection.pooling.size' as {@link Integer}. <br>
+     * The value is, e.g. 12 <br>
+     * comment: The (max) pooling size of connection pool as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     * @throws NumberFormatException When the property is not integer.
+     */
+    Integer getSlaveJdbcConnectionPoolingSizeAsInteger();
+
+    /**
+     * Get the value for the key 'slave.jdbc.connection.pooling.read.only'. <br>
+     * The value is, e.g. true <br>
+     * comment: Does it treat the slave schema as read only?
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveJdbcConnectionPoolingReadOnly();
+
+    /**
+     * Is the property for the key 'slave.jdbc.connection.pooling.read.only' true? <br>
+     * The value is, e.g. true <br>
+     * comment: Does it treat the slave schema as read only?
+     * @return The determination, true or false. (if not found, exception but basically no way)
+     */
+    boolean isSlaveJdbcConnectionPoolingReadOnly();
+
+    /**
      * Get the value for the key 'resola.jdbc.driver'. <br>
      * The value is, e.g. com.mysql.cj.jdbc.Driver <br>
      * comment: The driver FQCN to connect database for JDBC
@@ -369,6 +442,55 @@ public interface FortressEnv {
      * @throws NumberFormatException When the property is not integer.
      */
     Integer getResolaJdbcConnectionPoolingSizeAsInteger();
+
+    /**
+     * Get the value for the key 'slave.resola.jdbc.url'. <br>
+     * The value is, e.g. jdbc:mysql://localhost:3306/resortlinedb?allowPublicKeyRetrieval=true&amp;useSSL=false <br>
+     * comment: The URL of database connection for JDBC as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveResolaJdbcUrl();
+
+    /**
+     * Get the value for the key 'slave.resola.jdbc.user'. <br>
+     * The value is, e.g. resortlinedb <br>
+     * comment: The user of database connection for JDBC as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveResolaJdbcUser();
+
+    /**
+     * Get the value for the key 'slave.resola.jdbc.connection.pooling.size'. <br>
+     * The value is, e.g. 12 <br>
+     * comment: The (max) pooling size of connection pool as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveResolaJdbcConnectionPoolingSize();
+
+    /**
+     * Get the value for the key 'slave.resola.jdbc.connection.pooling.size' as {@link Integer}. <br>
+     * The value is, e.g. 12 <br>
+     * comment: The (max) pooling size of connection pool as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     * @throws NumberFormatException When the property is not integer.
+     */
+    Integer getSlaveResolaJdbcConnectionPoolingSizeAsInteger();
+
+    /**
+     * Get the value for the key 'slave.resola.jdbc.connection.pooling.read.only'. <br>
+     * The value is, e.g. true <br>
+     * comment: Does it treat the slave schema as read only?
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveResolaJdbcConnectionPoolingReadOnly();
+
+    /**
+     * Is the property for the key 'slave.resola.jdbc.connection.pooling.read.only' true? <br>
+     * The value is, e.g. true <br>
+     * comment: Does it treat the slave schema as read only?
+     * @return The determination, true or false. (if not found, exception but basically no way)
+     */
+    boolean isSlaveResolaJdbcConnectionPoolingReadOnly();
 
     /**
      * Get the value for the key 'server.domain'. <br>
@@ -548,6 +670,30 @@ public interface FortressEnv {
             return getAsInteger(FortressEnv.JDBC_CONNECTION_POOLING_SIZE);
         }
 
+        public String getSlaveJdbcUrl() {
+            return get(FortressEnv.SLAVE_JDBC_URL);
+        }
+
+        public String getSlaveJdbcUser() {
+            return get(FortressEnv.SLAVE_JDBC_USER);
+        }
+
+        public String getSlaveJdbcConnectionPoolingSize() {
+            return get(FortressEnv.SLAVE_JDBC_CONNECTION_POOLING_SIZE);
+        }
+
+        public Integer getSlaveJdbcConnectionPoolingSizeAsInteger() {
+            return getAsInteger(FortressEnv.SLAVE_JDBC_CONNECTION_POOLING_SIZE);
+        }
+
+        public String getSlaveJdbcConnectionPoolingReadOnly() {
+            return get(FortressEnv.SLAVE_JDBC_CONNECTION_POOLING_READ_ONLY);
+        }
+
+        public boolean isSlaveJdbcConnectionPoolingReadOnly() {
+            return is(FortressEnv.SLAVE_JDBC_CONNECTION_POOLING_READ_ONLY);
+        }
+
         public String getResolaJdbcDriver() {
             return get(FortressEnv.RESOLA_JDBC_DRIVER);
         }
@@ -570,6 +716,30 @@ public interface FortressEnv {
 
         public Integer getResolaJdbcConnectionPoolingSizeAsInteger() {
             return getAsInteger(FortressEnv.RESOLA_JDBC_CONNECTION_POOLING_SIZE);
+        }
+
+        public String getSlaveResolaJdbcUrl() {
+            return get(FortressEnv.SLAVE_RESOLA_JDBC_URL);
+        }
+
+        public String getSlaveResolaJdbcUser() {
+            return get(FortressEnv.SLAVE_RESOLA_JDBC_USER);
+        }
+
+        public String getSlaveResolaJdbcConnectionPoolingSize() {
+            return get(FortressEnv.SLAVE_RESOLA_JDBC_CONNECTION_POOLING_SIZE);
+        }
+
+        public Integer getSlaveResolaJdbcConnectionPoolingSizeAsInteger() {
+            return getAsInteger(FortressEnv.SLAVE_RESOLA_JDBC_CONNECTION_POOLING_SIZE);
+        }
+
+        public String getSlaveResolaJdbcConnectionPoolingReadOnly() {
+            return get(FortressEnv.SLAVE_RESOLA_JDBC_CONNECTION_POOLING_READ_ONLY);
+        }
+
+        public boolean isSlaveResolaJdbcConnectionPoolingReadOnly() {
+            return is(FortressEnv.SLAVE_RESOLA_JDBC_CONNECTION_POOLING_READ_ONLY);
         }
 
         public String getServerDomain() {
