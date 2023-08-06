@@ -15,7 +15,12 @@
  */
 package org.docksidestage.unit;
 
+import javax.annotation.Resource;
+
 import org.dbflute.utflute.lastaflute.WebContainerTestCase;
+import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.ondemand_style_example.MaihamaDBOnDemandMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ondemand_style_example.ResortlineDBOnDemandMasterSlaveManager;
+import org.lastaflute.web.ruts.process.ActionRuntime;
 
 /**
  * Use like this:
@@ -38,4 +43,31 @@ import org.dbflute.utflute.lastaflute.WebContainerTestCase;
  * @author jflute
  */
 public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
+
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    @Resource
+    private MaihamaDBOnDemandMasterSlaveManager maihamaDBOnDemandMasterSlaveManager;
+    @Resource
+    private ResortlineDBOnDemandMasterSlaveManager resortlineDBOnDemandMasterSlaveManager;
+
+    // ===================================================================================
+    //                                                                            Settings
+    //                                                                            ========
+    @Override
+    public void setUp() throws Exception {
+        super.setUp();
+        ActionRuntime runtime = getMockJsonRuntime(); // only for logging so either (json or html)
+        maihamaDBOnDemandMasterSlaveManager.beginSlaveBasis(runtime);
+        resortlineDBOnDemandMasterSlaveManager.beginSlaveBasis(runtime);
+    }
+
+    @Override
+    public void tearDown() throws Exception {
+        ActionRuntime runtime = getMockJsonRuntime(); // me too
+        maihamaDBOnDemandMasterSlaveManager.endSlaveBasis(runtime);
+        resortlineDBOnDemandMasterSlaveManager.endSlaveBasis(runtime);
+        super.tearDown();
+    }
 }
