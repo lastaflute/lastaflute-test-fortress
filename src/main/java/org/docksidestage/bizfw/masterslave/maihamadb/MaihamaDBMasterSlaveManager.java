@@ -13,29 +13,14 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.ondemand_style_example;
+package org.docksidestage.bizfw.masterslave.maihamadb;
 
-import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.BackstageMaihamaSlaveDBAccessor;
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.ondestyle.SlaveBasisOnDemandAgent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessor;
 import org.lastaflute.web.ruts.process.ActionRuntime;
 
-// _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-// [notice as example]
-// this example has sub-package but you don't need it
-// you can make it like this:
-// 
-//  bizfw.masterslave
-//    |-[schema]
-//       |-...MasterSlaveManager.java
-//
-// [notice as example]
-// this example (reluctantly) needs style name "OnDemand" in class name
-// but actually you don't need it like this:
-// rename [Schema]OnDecmandMasterSlaveManager to [Schema]MasterSlaveManager
-// _/_/_/_/_/_/_/_/_/_/
 /**
  * The manager of master/slave for the DB schema. <br>
  * this schema uses slave-basis way.
@@ -73,7 +58,7 @@ import org.lastaflute.web.ruts.process.ActionRuntime;
  * </pre>
  * @author jflute
  */
-public class MaihamaDBOnDemandMasterSlaveManager { // DI component
+public class MaihamaDBMasterSlaveManager { // DI component
 
     // ===================================================================================
     //                                                                           Attribute
@@ -83,7 +68,7 @@ public class MaihamaDBOnDemandMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public MaihamaDBOnDemandMasterSlaveManager(BackstageMaihamaSlaveDBAccessor slaveDBAccessor,
+    public MaihamaDBMasterSlaveManager(BackstageMaihamaSlaveDBAccessor slaveDBAccessor,
             SelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
         agent = createAgent(slaveDBAccessor, selectableDataSourceHolder);
     }

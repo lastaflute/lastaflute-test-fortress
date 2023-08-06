@@ -13,30 +13,14 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.annotation_style_example;
-
-import java.lang.annotation.Annotation;
+package org.docksidestage.bizfw.masterslave.resortlinedb;
 
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
-import org.docksidestage.bizfw.masterslave.slavebasis.annostyle.SlaveBasisAnnotationAgent;
+import org.docksidestage.bizfw.masterslave.slavebasis.ondestyle.SlaveBasisOnDemandAgent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessor;
 import org.lastaflute.web.ruts.process.ActionRuntime;
 
-// _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-// [notice as example]
-// this example has sub-package but you don't need it
-// you can make it like this:
-// 
-//  bizfw.masterslave
-//    |-[schema]
-//       |-...MasterSlaveManager.java
-// 
-// [notice as example]
-// this example (reluctantly) needs style name "Annotation" in class name
-// but actually you don't need it like this:
-// rename [Schema]AnnotationMasterSlaveManager to [Schema]MasterSlaveManager
-// _/_/_/_/_/_/_/_/_/_/
 /**
  * The manager of master/slave for the DB schema. <br>
  * this schema uses slave-basis way.
@@ -74,7 +58,7 @@ import org.lastaflute.web.ruts.process.ActionRuntime;
  * </pre>
  * @author jflute
  */
-public class MaihamaDBAnnotationMasterSlaveManager { // DI component
+public class ResortlineDBMasterSlaveManager { // DI component
 
     // ===================================================================================
     //                                                                           Attribute
@@ -84,7 +68,7 @@ public class MaihamaDBAnnotationMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public MaihamaDBAnnotationMasterSlaveManager(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
+    public ResortlineDBMasterSlaveManager(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
         agent = createAgent(slaveDBAccessor, selectableDataSourceHolder);
     }
 
@@ -93,13 +77,13 @@ public class MaihamaDBAnnotationMasterSlaveManager { // DI component
     //                                         -------------
     private SlaveBasisAgent createAgent(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) {
         // you can select annotation way or on-demand way or ... here
-        return new SlaveBasisAnnotationAgent(getAnnotationType(), slaveDBAccessor, selectableDataSourceHolder);
+        return new SlaveBasisOnDemandAgent(slaveDBAccessor, selectableDataSourceHolder);
     }
 
     // if you use annotation style
-    private Class<? extends Annotation> getAnnotationType() {
-        return MaihamaMasterDB.class; // specific point
-    }
+    //private Class<? extends Annotation> getAnnotationType() {
+    //    return ResortlineMasterDB.class; // specific point
+    //}
 
     // ===================================================================================
     //                                                                         Hook Before

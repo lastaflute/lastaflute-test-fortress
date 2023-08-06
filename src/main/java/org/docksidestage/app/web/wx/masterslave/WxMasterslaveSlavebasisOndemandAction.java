@@ -18,8 +18,7 @@ package org.docksidestage.app.web.wx.masterslave;
 import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.annotation_style_example.MaihamaMasterDB;
-import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ResortlineDBSelectableDataSourceHolder;
+import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
 import org.docksidestage.dbflute.resola.exbhv.StationBhv;
@@ -56,9 +55,13 @@ public class WxMasterslaveSlavebasisOndemandAction extends FortressBaseAction {
     //                                                                             Execute
     //                                                                             =======
     // http://localhost:8151/fortress/wx/masterslave/slavebasis/ondemand/
-    @MaihamaMasterDB
     @Execute
     public JsonResponse<Void> index() {
+        showVisualCheck();
+        return JsonResponse.asEmptyBody();
+    }
+
+    private void showVisualCheck() {
         Product product = productBhv.selectByPK(1).get();
         Station station = stationBhv.selectByPK(1).get();
 
@@ -79,7 +82,5 @@ public class WxMasterslaveSlavebasisOndemandAction extends FortressBaseAction {
         logger.debug("#masterslave third");
         logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
         logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
-
-        return JsonResponse.asEmptyBody();
     }
 }
