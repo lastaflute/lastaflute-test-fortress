@@ -14,6 +14,6 @@
      -->
     <component name="dataSource" class="org.lastaflute.db.replication.slavedb.MasterBasisSelectableDataSource"/>
     <component name="slaveDBAccessor" class="org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.BackstageResortlineSlaveDBAccessor"/>
-    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.annotation_style_example.ResortlineDBAnnotationMasterSlaveManager"/>
+    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ondemand_style_example.ResortlineDBOnDemandMasterSlaveManager"/>
     <component name="selectableDataSourceHolder" class="org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ResortlineDBSelectableDataSourceHolder"/>
 </components>

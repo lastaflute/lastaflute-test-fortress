@@ -8,5 +8,5 @@
 
     <component name="dataSource" class="org.lastaflute.db.replication.slavedb.MasterBasisSelectableDataSource"/>
     <component name="slaveDBAccessor" class="org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.BackstageMaihamaSlaveDBAccessor"/>
-    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.annotation_style_example.MaihamaDBAnnotationMasterSlaveManager"/>
+    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.ondemand_style_example.MaihamaDBOnDemandMasterSlaveManager"/>
 </components>

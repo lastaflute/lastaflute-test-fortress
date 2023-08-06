@@ -24,8 +24,8 @@ import org.docksidestage.app.logic.i18n.I18nDateLogic;
 import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.docksidestage.bizfw.crosslogin.CrossLoginBridge;
-import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.annotation_style_example.MaihamaDBAnnotationMasterSlaveManager;
-import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.annotation_style_example.ResortlineDBAnnotationMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.ondemand_style_example.MaihamaDBOnDemandMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ondemand_style_example.ResortlineDBOnDemandMasterSlaveManager;
 import org.docksidestage.mylasta.action.FortressHtmlPath;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.mylasta.action.FortressUserBean;
@@ -78,9 +78,9 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     //                                          Master/Slave
     //                                          ------------
     @Resource
-    private MaihamaDBAnnotationMasterSlaveManager maihamaDBAnnotationMasterSlaveManager;
+    private MaihamaDBOnDemandMasterSlaveManager maihamaDBOnDemandMasterSlaveManager;
     @Resource
-    private ResortlineDBAnnotationMasterSlaveManager resortlineDBAnnotationMasterSlaveManager;
+    private ResortlineDBOnDemandMasterSlaveManager resortlineDBOnDemandMasterSlaveManager;
 
     // ===================================================================================
     //                                                                          Validation
@@ -147,13 +147,13 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     //                                          Master/Slave
     //                                          ------------
     private void beginSlaveBasis(ActionRuntime runtime) {
-        maihamaDBAnnotationMasterSlaveManager.beginSlaveBasis(runtime);
-        resortlineDBAnnotationMasterSlaveManager.beginSlaveBasis(runtime);
+        maihamaDBOnDemandMasterSlaveManager.beginSlaveBasis(runtime);
+        resortlineDBOnDemandMasterSlaveManager.beginSlaveBasis(runtime);
     }
 
     private void endSlaveBasis(ActionRuntime runtime) {
-        maihamaDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
-        resortlineDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
+        maihamaDBOnDemandMasterSlaveManager.endSlaveBasis(runtime);
+        resortlineDBOnDemandMasterSlaveManager.endSlaveBasis(runtime);
     }
 
     // ===================================================================================
