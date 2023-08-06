@@ -14,26 +14,26 @@
 			provider.config().getResolaJdbcDriver()
 		</property>
 		<property name="URL">
-			provider.config().getResolaJdbcUrl()
+			provider.config().getSlaveResolaJdbcUrl()
 		</property>
-		<property name="user">provider.config().getResolaJdbcUser()</property>
+		<property name="user">provider.config().getSlaveResolaJdbcUser()</property>
 		<property name="password">provider.config().getResolaJdbcPassword()</property>
 	</component>
 
 	<component name="connectionPool" class="org.lastaflute.db.dbcp.HookedConnectionPool">
 		<!-- main option, required -->
-		<property name="maxPoolSize">provider.config().getResolaJdbcConnectionPoolingSize()</property>
+		<property name="maxPoolSize">provider.config().getSlaveResolaJdbcConnectionPoolingSize()</property>
 
 		<!-- sub option, not required (setter not called if null) -->
-		<property name="minPoolSize">        provider.config().getOrDefault("resola.jdbc.connection.pooling.min.size", null)            </property>
-		<property name="maxWait">            provider.config().getOrDefault("resola.jdbc.connection.pooling.max.wait", null)            </property>
-		<property name="timeout">            provider.config().getOrDefault("resola.jdbc.connection.pooling.timeout", null)             </property>
-		<property name="suppressLocalTx">    provider.config().getOrDefault("resola.jdbc.connection.pooling.suppress.local.tx", null)   </property>
-		<property name="readOnly">           provider.config().getOrDefault("resola.jdbc.connection.pooling.read.only", null)           </property>
-		<property name="validationQuery">    provider.config().getOrDefault("resola.jdbc.connection.pooling.validation.query", null)    </property>
-		<property name="validationInterval"> provider.config().getOrDefault("resola.jdbc.connection.pooling.validation.interval", null) </property>
+		<property name="minPoolSize">        provider.config().getOrDefault("slave.resola.jdbc.connection.pooling.min.size", null)            </property>
+		<property name="maxWait">            provider.config().getOrDefault("slave.resola.jdbc.connection.pooling.max.wait", null)            </property>
+		<property name="timeout">            provider.config().getOrDefault("slave.resola.jdbc.connection.pooling.timeout", null)             </property>
+		<property name="suppressLocalTx">    provider.config().getOrDefault("slave.resola.jdbc.connection.pooling.suppress.local.tx", null)   </property>
+		<property name="readOnly">           provider.config().getOrDefault("slave.resola.jdbc.connection.pooling.read.only", null)           </property>
+		<property name="validationQuery">    provider.config().getOrDefault("slave.resola.jdbc.connection.pooling.validation.query", null)    </property>
+		<property name="validationInterval"> provider.config().getOrDefault("slave.resola.jdbc.connection.pooling.validation.interval", null) </property>
 		<!-- may be almost unused (want to change property type if supported)
-		<property name="transactionIsolationLevel">provider.config().getOrDefault("resola.jdbc.connection.pooling.transaction.isolation.level", null)</property>
+		<property name="transactionIsolationLevel">provider.config().getOrDefault("slave.resola.jdbc.connection.pooling.transaction.isolation.level", null)</property>
 		 -->
 	</component>
 

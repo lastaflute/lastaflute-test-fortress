@@ -70,4 +70,22 @@ public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
         resortlineDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
         super.tearDown();
     }
+
+    // #needs_fix jflute make mock runtime by original action type (2023/08/06)
+    //@Override
+    //protected ActionRuntime getMockJsonRuntime() {
+    //    return new MockRuntimeFactory() {
+    //        protected ComponentDefImpl createComponentDefImpl(Class<?> componentClass, String componentName) {
+    //            Class<?> actionType = getMockActionType();
+    //            if (actionType != null) {
+    //                componentClass = actionType; // switch
+    //            }
+    //            return new ComponentDefImpl(componentClass, componentName);
+    //        };
+    //    }.createJsonRuntime();
+    //}
+    //
+    //protected Class<?> getMockActionType() { // you can override
+    //    return null; // as default
+    //}
 }
