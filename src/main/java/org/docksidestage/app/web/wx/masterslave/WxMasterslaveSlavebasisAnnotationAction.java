@@ -18,8 +18,8 @@ package org.docksidestage.app.web.wx.masterslave;
 import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
-import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.annotation_style_example.MaihamaMasterDB;
-import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.ResortlineDBSelectableDataSourceHolder;
+import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaMasterDB;
+import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
 import org.docksidestage.dbflute.resola.exbhv.StationBhv;

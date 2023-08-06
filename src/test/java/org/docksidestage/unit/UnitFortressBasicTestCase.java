@@ -18,8 +18,8 @@ package org.docksidestage.unit;
 import javax.annotation.Resource;
 
 import org.dbflute.utflute.lastaflute.WebContainerTestCase;
-import org.docksidestage.bizfw.masterslave.maihamadb.mainschema_slavebasis_example.annotation_style_example.MaihamaDBAnnotationMasterSlaveManager;
-import org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.annotation_style_example.ResortlineDBAnnotationMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaDBMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBMasterSlaveManager;
 import org.lastaflute.web.ruts.process.ActionRuntime;
 
 /**
@@ -48,9 +48,9 @@ public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
     //                                                                           Attribute
     //                                                                           =========
     @Resource
-    private MaihamaDBAnnotationMasterSlaveManager maihamaDBAnnotationMasterSlaveManager;
+    private MaihamaDBMasterSlaveManager maihamaDBAnnotationMasterSlaveManager;
     @Resource
-    private ResortlineDBAnnotationMasterSlaveManager resortlineDBAnnotationMasterSlaveManager;
+    private ResortlineDBMasterSlaveManager resortlineDBAnnotationMasterSlaveManager;
 
     // ===================================================================================
     //                                                                            Settings

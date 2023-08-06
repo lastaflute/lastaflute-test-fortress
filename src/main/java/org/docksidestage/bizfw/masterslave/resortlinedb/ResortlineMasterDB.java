@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.resortlinedb.subschema_slavebasis_example.annotation_style_example;
+package org.docksidestage.bizfw.masterslave.resortlinedb;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
@@ -23,15 +23,6 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-// _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-// [notice as example]
-// this example has sub-package but you don't need it
-// you can make it like this:
-// 
-// bizfw.masterslave
-//   |-[schema]
-//      |-...MasterDB.java
-// _/_/_/_/_/_/_/_/_/_/
 /**
  * The annotation for access to master explicitly.
  * <pre>
