@@ -52,7 +52,15 @@ public interface SlaveBasisAgent { // called by your master/slave manager
     //                                                                         ===========
     /**
      * Begin slave basis process in request beginning. <br>
-     * Called by hookBefore() of application action (basically [App]BaseAction).
+     * Called by hookBefore() of application action (basically [App]BaseAction). <br>
+     * It should be called before LazyTx ready not to begin transaction for slave. <br>
+     * So calling outside of super.hookBefore() is recommended.
+     * <pre>
+     * public ActionResponse hookBefore(ActionRuntime runtime) {
+     *     agent.beginSlaveBasis(); // here
+     *     super.hookBefore();
+     * }
+     * </pre>
      * @param runtime The runtime object of currently-requested action. (NotNull)
      */
     void beginSlaveBasis(ActionRuntime runtime);

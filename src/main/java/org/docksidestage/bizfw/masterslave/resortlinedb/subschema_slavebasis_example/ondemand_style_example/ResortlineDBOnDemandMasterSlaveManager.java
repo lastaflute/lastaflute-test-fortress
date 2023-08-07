@@ -102,6 +102,10 @@ public class ResortlineDBOnDemandMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                         Hook Before
     //                                                                         ===========
+    /**
+     * See the agent's javadoc for the details.
+     * @param runtime The runtime object of currently-requested action. (NotNull)
+     */
     public void beginSlaveBasis(ActionRuntime runtime) {
         agent.beginSlaveBasis(runtime);
     }
@@ -109,6 +113,10 @@ public class ResortlineDBOnDemandMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                        Hook Finally
     //                                                                        ============
+    /**
+     * See the agent's javadoc for the details.
+     * @param runtime The runtime object of currently-requested action. (NotNull)
+     */
     public void endSlaveBasis(ActionRuntime runtime) {
         agent.endSlaveBasis(runtime);
     }
