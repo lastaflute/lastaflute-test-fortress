@@ -149,8 +149,8 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
         }
         super.hookFinally(runtime);
 
-        csrfTokenAssist.hookFinally(runtime); // outside fitting with before
         endSlaveBasis(runtime); // outside fitting with before
+        csrfTokenAssist.hookFinally(runtime); // outside fitting with before
     }
 
     // -----------------------------------------------------
@@ -162,8 +162,8 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     }
 
     private void endSlaveBasis(ActionRuntime runtime) {
-        maihamaDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
         resortlineDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
+        maihamaDBAnnotationMasterSlaveManager.endSlaveBasis(runtime);
     }
 
     // ===================================================================================
