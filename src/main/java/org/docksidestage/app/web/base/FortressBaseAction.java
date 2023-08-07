@@ -64,13 +64,21 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Resource
     private FortressConfig fortressConfig;
     @Resource
-    private CrossLoginBridge crossLoginTransfer;
-    @Resource
     private FortressLoginAssist loginAssist;
     @Resource
     private AccessContextLogic accessContextLogic;
     @Resource
     private I18nDateLogic i18nDateLogic;
+
+    // -----------------------------------------------------
+    //                                           Cross Login
+    //                                           -----------
+    @Resource
+    private CrossLoginBridge crossLoginBridge;
+
+    // -----------------------------------------------------
+    //                                            CSRF Token
+    //                                            ----------
     @Resource
     private CsrfTokenAssist csrfTokenAssist;
 
@@ -125,9 +133,10 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // #app_customize you can customize the action hook
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
-        csrfTokenAssist.hookBefore(runtime);
-        crossLoginTransfer.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
-        beginSlaveBasis(runtime);
+        crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
+        csrfTokenAssist.hookBefore(runtime); // outside just decision-making
+        beginSlaveBasis(runtime); // outside is recommended for e.g. lazyTx
+
         return super.hookBefore(runtime);
     }
 
@@ -138,9 +147,10 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
                 return new FortressHeaderBean(userBean);
             }).orElse(FortressHeaderBean.empty()));
         }
-        csrfTokenAssist.hookFinally(runtime);
-        endSlaveBasis(runtime);
         super.hookFinally(runtime);
+
+        endSlaveBasis(runtime); // outside fitting with before
+        csrfTokenAssist.hookFinally(runtime); // outside fitting with before
     }
 
     // -----------------------------------------------------
@@ -152,8 +162,8 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     }
 
     private void endSlaveBasis(ActionRuntime runtime) {
-        maihamaDBOnDemandMasterSlaveManager.endSlaveBasis(runtime);
         resortlineDBOnDemandMasterSlaveManager.endSlaveBasis(runtime);
+        maihamaDBOnDemandMasterSlaveManager.endSlaveBasis(runtime);
     }
 
     // ===================================================================================
