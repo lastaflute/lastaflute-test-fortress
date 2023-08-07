@@ -20,7 +20,6 @@ import javax.validation.ConstraintViolation;
 
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.logic.context.AccessContextLogic;
-import org.docksidestage.app.logic.i18n.I18nDateLogic;
 import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.docksidestage.bizfw.crosslogin.CrossLoginBridge;
@@ -59,18 +58,27 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    // -----------------------------------------------------
+    //                                                 Basic
+    //                                                 -----
     @Resource
     private RequestManager requestManager;
     @Resource
     private FortressConfig fortressConfig;
     @Resource
-    private CrossLoginBridge crossLoginBridge;
-    @Resource
     private FortressLoginAssist loginAssist;
     @Resource
     private AccessContextLogic accessContextLogic;
+
+    // -----------------------------------------------------
+    //                                           Cross Login
+    //                                           -----------
     @Resource
-    private I18nDateLogic i18nDateLogic;
+    private CrossLoginBridge crossLoginBridge;
+
+    // -----------------------------------------------------
+    //                                            CSRF Token
+    //                                            ----------
     @Resource
     private CsrfTokenAssist csrfTokenAssist;
 
@@ -125,9 +133,10 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // #app_customize you can customize the action hook
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
-        csrfTokenAssist.hookBefore(runtime);
         crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
-        beginSlaveBasis(runtime);
+        csrfTokenAssist.hookBefore(runtime);
+        beginSlaveBasis(runtime); // outer than super is recommended for e.g. lazyTx
+
         return super.hookBefore(runtime);
     }
 
@@ -138,9 +147,10 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
                 return new FortressHeaderBean(userBean);
             }).orElse(FortressHeaderBean.empty()));
         }
-        csrfTokenAssist.hookFinally(runtime);
-        endSlaveBasis(runtime);
         super.hookFinally(runtime);
+
+        csrfTokenAssist.hookFinally(runtime);
+        endSlaveBasis(runtime); // also outer
     }
 
     // -----------------------------------------------------
