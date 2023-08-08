@@ -19,9 +19,7 @@ import org.dbflute.util.DfTypeUtil;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
 
 /**
- * Accessor for slave-basis style of master/slave as main schema. <br>
- * Application business classes don't need to use this. (so "backstage" prefix) <br>
- * This accessor is used only for framework logic.
+ * Accessor for slave-basis style of master/slave as main schema.
  * <pre>
  * features:
  *  o slave basis
@@ -47,7 +45,7 @@ import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
  * </pre> 
  * @author jflute
  */
-public class BackstageMaihamaSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
+public class MaihamaSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
 
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // [tips] basically main schema does not need this override

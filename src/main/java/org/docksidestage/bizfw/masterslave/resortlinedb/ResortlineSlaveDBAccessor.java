@@ -19,9 +19,7 @@ import org.dbflute.util.DfTypeUtil;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
 
 /**
- * Accessor for slave-basis style of master/slave as sub schema. <br>
- * Application business classes don't need to use this. (so "backstage" prefix) <br>
- * This accessor is used only for framework logic.
+ * Accessor for slave-basis style of master/slave as sub schema.
  * <pre>
  * features:
  *  o slave basis
@@ -47,7 +45,7 @@ import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
  * </pre> 
  * @author jflute
  */
-public class BackstageResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
+public class ResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
 
     @Override
     protected String mySchemaKeyword() { // needs for sub schema
