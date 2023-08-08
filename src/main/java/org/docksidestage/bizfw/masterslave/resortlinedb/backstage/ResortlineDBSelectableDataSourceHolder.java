@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.resortlinedb;
+package org.docksidestage.bizfw.masterslave.resortlinedb.backstage;
 
 import org.lastaflute.db.replication.selectable.ThreadLocalSelectableDataSourceHolder;
 

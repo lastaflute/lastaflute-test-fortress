@@ -13,10 +13,11 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.maihamadb;
+package org.docksidestage.bizfw.masterslave.maihamadb.backstage;
 
 import java.lang.annotation.Annotation;
 
+import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaMasterDB;
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.annostyle.SlaveBasisAnnotationAgent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;

@@ -6,7 +6,10 @@
     <include path="jdbc-maihamadb-master.xml"/>
     <include path="jdbc-maihamadb-slave.xml"/>
 
+    <!-- main cast -->
     <component name="dataSource" class="org.lastaflute.db.replication.slavedb.MasterBasisSelectableDataSource"/>
     <component name="slaveDBAccessor" class="org.docksidestage.bizfw.masterslave.maihamadb.MaihamaSlaveDBAccessor"/>
-    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.maihamadb.MaihamaDBMasterSlaveManager"/>
+
+    <!-- backstage -->
+    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.maihamadb.backstage.MaihamaDBMasterSlaveManager"/>
 </components>

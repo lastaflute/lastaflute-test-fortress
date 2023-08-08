@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaMasterDB;
-import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBSelectableDataSourceHolder;
+import org.docksidestage.bizfw.masterslave.resortlinedb.backstage.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
 import org.docksidestage.dbflute.resola.exbhv.StationBhv;

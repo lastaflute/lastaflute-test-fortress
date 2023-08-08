@@ -18,8 +18,8 @@ package org.docksidestage.unit;
 import javax.annotation.Resource;
 
 import org.dbflute.utflute.lastaflute.WebContainerTestCase;
-import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaDBMasterSlaveManager;
-import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.maihamadb.backstage.MaihamaDBMasterSlaveManager;
+import org.docksidestage.bizfw.masterslave.resortlinedb.backstage.ResortlineDBMasterSlaveManager;
 import org.docksidestage.unit.mock.SpecifiedMockActionRuntimeFactory;
 import org.lastaflute.web.ruts.process.ActionRuntime;
 
