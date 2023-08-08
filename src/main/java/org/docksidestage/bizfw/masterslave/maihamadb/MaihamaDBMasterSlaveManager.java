@@ -68,7 +68,7 @@ public class MaihamaDBMasterSlaveManager { // DI component
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public MaihamaDBMasterSlaveManager(BackstageMaihamaSlaveDBAccessor slaveDBAccessor,
+    public MaihamaDBMasterSlaveManager(MaihamaSlaveDBAccessor slaveDBAccessor,
             SelectableDataSourceHolder selectableDataSourceHolder) { // specific point, are injected
         agent = createAgent(slaveDBAccessor, selectableDataSourceHolder);
     }

@@ -13,21 +13,19 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.resortlinedb;
+package org.docksidestage.bizfw.masterslave.maihamadb;
 
 import org.dbflute.util.DfTypeUtil;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
 
 /**
- * Accessor for slave-basis style of master/slave as sub schema. <br>
- * Application business classes don't need to use this. (so "backstage" prefix) <br>
- * This accessor is used only for framework logic.
+ * Accessor for slave-basis style of master/slave as main schema.
  * <pre>
  * features:
  *  o slave basis
  *  o no SlaveDBAccessor use
- *  o sub schema (needs schema suffix)
- *  o master switch way: annotation
+ *  o main schema (not need schema suffix)
+ *  o master switch way: on-demand
  * 
  * how to set up:
  *  1. register this class to DI xml as DI component.
@@ -47,12 +45,16 @@ import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
  * </pre> 
  * @author jflute
  */
-public class BackstageResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
+public class MaihamaSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
 
-    @Override
-    protected String mySchemaKeyword() { // needs for sub schema
-        return "resola"; // data source name is e.g. masterResolaDataSource
-    }
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // [tips] basically main schema does not need this override
+    // (if data source component names on DI xml are e.g. masterDataSource, slaveDataSource)
+    // _/_/_/_/_/_/_/_/_/_/
+    //@Override
+    //protected String mySchemaKeyword() { // needs for sub schema
+    //    return "maihamadb"; // data source name is e.g. masterMaihamadbDataSource
+    //}
 
     @Override
     public String toString() { // for logging

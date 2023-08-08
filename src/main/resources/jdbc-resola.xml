@@ -13,7 +13,7 @@
      e.g. resolaDataSource, resolaSlaveDBAccessor (if schema nickname is "resola")
      -->
     <component name="dataSource" class="org.lastaflute.db.replication.slavedb.MasterBasisSelectableDataSource"/>
-    <component name="slaveDBAccessor" class="org.docksidestage.bizfw.masterslave.resortlinedb.BackstageResortlineSlaveDBAccessor"/>
-    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBMasterSlaveManager"/>
+    <component name="slaveDBAccessor" class="org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineSlaveDBAccessor"/>
     <component name="selectableDataSourceHolder" class="org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBSelectableDataSourceHolder"/>
+    <component name="masterSlaveManager" class="org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBMasterSlaveManager"/>
 </components>
