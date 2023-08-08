@@ -18,6 +18,7 @@ package org.docksidestage.app.web.base;
 import javax.annotation.Resource;
 import javax.validation.ConstraintViolation;
 
+import org.dbflute.hook.CallbackContext;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.logic.i18n.I18nDateLogic;
@@ -33,6 +34,7 @@ import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.core.message.supplier.UserMessagesCreator;
 import org.lastaflute.db.dbflute.accesscontext.AccessContextArranger;
+import org.lastaflute.db.jta.lazytx.LazyTransactionArranger;
 import org.lastaflute.web.TypicalAction;
 import org.lastaflute.web.login.LoginManager;
 import org.lastaflute.web.response.ActionResponse;
@@ -90,6 +92,11 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Resource
     private ResortlineDBMasterSlaveManager resortlineDBOnDemandMasterSlaveManager;
 
+    // -----------------------------------------------------
+    //                                      Lazy Transaction
+    //                                      ----------------
+    private final LazyTransactionArranger lazyTransactionArranger = new LazyTransactionArranger();
+
     // ===================================================================================
     //                                                                          Validation
     //                                                                          ==========
@@ -134,8 +141,13 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
         crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
-        csrfTokenAssist.hookBefore(runtime); // outside just decision-making
-        beginSlaveBasis(runtime); // outside is recommended for e.g. lazyTx
+        csrfTokenAssist.hookBefore(runtime); // using web resources e.g. response, session
+        beginSlaveBasis(runtime); // outside of lazyTx is recommended just in case
+        lazyTransactionArranger.readyLazyTransaction(hook -> {
+            // eventually no problem about ordering with slave basis
+            // but inside of it is recommended just in case
+            CallbackContext.setBehaviorCommandHookOnThread(hook);
+        });
 
         return super.hookBefore(runtime);
     }
@@ -149,8 +161,9 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
         }
         super.hookFinally(runtime);
 
-        endSlaveBasis(runtime); // outside fitting with before
-        csrfTokenAssist.hookFinally(runtime); // outside fitting with before
+        lazyTransactionArranger.closeLazyTransaction();
+        endSlaveBasis(runtime);
+        csrfTokenAssist.hookFinally(runtime);
     }
 
     // -----------------------------------------------------
