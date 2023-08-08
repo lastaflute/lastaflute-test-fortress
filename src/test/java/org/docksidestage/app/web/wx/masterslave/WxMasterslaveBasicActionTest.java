@@ -14,6 +14,6 @@ public class WxMasterslaveBasicActionTest extends UnitFortressBasicTestCase {
 
         // ## Act ##
         // ## Assert ##
-        action.index(); // visual check
+        action.index(); // expect no exception, visual check
     }
 }

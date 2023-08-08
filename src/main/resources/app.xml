@@ -3,8 +3,13 @@
 	"http://dbflute.org/meta/lastadi10.dtd">
 <components>
 	<include path="convention.xml"/>
-	<include path="dbflute.xml"/>
-	<include path="dbflute-resola.xml"/>
+
+	<!-- [tips] including order influences interface DI
+	 so basically main schema first and don't move it
+	 -->
+	<include path="dbflute.xml"/> <!-- main schema -->
+	<include path="dbflute-resola.xml"/> <!-- sub schema -->
+
 	<include path="lastaflute.xml"/>
 	<include path="lasta_job.xml"/>
 	<include path="remote_api.xml"/>

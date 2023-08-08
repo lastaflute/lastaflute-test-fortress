@@ -48,14 +48,14 @@ public class WxMasterslaveBasicAction extends FortressBaseAction {
     private StationBhv stationBhv;
 
     @Resource
-    private SlaveDBAccessor slaveDBAccessor; // ambiguos so random
+    private SlaveDBAccessor slaveDBAccessor; // ambiguos, depends on including order
     @Resource
     private MaihamaSlaveDBAccessor maihamaSlaveDBAccessor;
     @Resource
     private ResortlineSlaveDBAccessor resortlineSlaveDBAccessor;
 
     @Resource
-    private ThreadLocalSelectableDataSourceHolder maihamaDBSelectableDataSourceHolder; // ambiguos so random
+    private ThreadLocalSelectableDataSourceHolder maihamaDBSelectableDataSourceHolder; // also ambiguos
     @Resource
     private ResortlineDBSelectableDataSourceHolder resortlineDBSelectableDataSourceHolder;
 
@@ -70,6 +70,15 @@ public class WxMasterslaveBasicAction extends FortressBaseAction {
     }
 
     private void showVisualCheck() {
+        logger.debug("/- - - - - - - - - - - - - - - - - - - - - - - - -");
+        logger.debug("slaveDBAccessor: " + slaveDBAccessor);
+        logger.debug("maihamaSlaveDBAccessor: " + maihamaSlaveDBAccessor);
+        logger.debug("resortlineSlaveDBAccessor: " + resortlineSlaveDBAccessor);
+        logger.debug("maihamaDBSelectableDataSourceHolder: " + maihamaDBSelectableDataSourceHolder);
+        logger.debug("maihamaDBSelectableDataSourceHolder: " + maihamaDBSelectableDataSourceHolder);
+        logger.debug("resortlineDBSelectableDataSourceHolder: " + resortlineDBSelectableDataSourceHolder);
+        logger.debug("- - - - - - - - - -/");
+
         slaveDBAccessor.accessFixedly(() -> {
             // maihamadb here but basically random, it depends on including order
             //  e.g. dbflute.xml and dbflute-resola.xml in app.xml
