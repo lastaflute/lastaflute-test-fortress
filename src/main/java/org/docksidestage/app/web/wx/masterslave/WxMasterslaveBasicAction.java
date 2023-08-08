@@ -19,8 +19,8 @@ import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaSlaveDBAccessor;
-import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineSlaveDBAccessor;
+import org.docksidestage.bizfw.masterslave.resortlinedb.backstage.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.resola.exbhv.StationBhv;
 import org.lastaflute.db.replication.selectable.ThreadLocalSelectableDataSourceHolder;
