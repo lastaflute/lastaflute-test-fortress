@@ -13,29 +13,19 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.masterslave.resortlinedb.subschema_basic_example;
+package org.docksidestage.bizfw.masterslave.maihamadb;
 
 import org.dbflute.util.DfTypeUtil;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
 
-// _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-// [notice as example]
-// this example has sub-package but you don't need it
-// you can make it like this:
-// 
-//  bizfw.masterslave
-//    |-[schema]
-//       |-...SlaveDBAccessor.java
-// _/_/_/_/_/_/_/_/_/_/
 /**
- * Accessor for slave-basis style of master/slave as sub schema. <br>
+ * Accessor for Standard style of master/slave and main schema. <br>
  * Application business classes use this to access slave for e.g. heavy select.
  * <pre>
  * features:
- *  o slave basis
- *  o no SlaveDBAccessor use
- *  o sub schema (needs schema suffix)
- *  o master switch way: annotation
+ *  o master basis
+ *  o SlaveDBAccessor use
+ *  o main schema (no schema suffix)
  * 
  * how to set up:
  *  1. register this class to DI xml as DI component.
@@ -55,15 +45,21 @@ import org.lastaflute.db.replication.slavedb.SlaveDBAccessorImpl;
  * </pre> 
  * @author jflute
  */
-public class ResortlineSlaveDBAccessor extends SlaveDBAccessorImpl { // DI component
+public class MaihamaSlaveDBAccessor extends SlaveDBAccessorImpl {
 
-    @Override
-    protected String mySchemaKeyword() { // needs for sub schema
-        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-        // [tips] you can use also nickname e.g. resola (for resortlinedb)
-        // _/_/_/_/_/_/_/_/_/_/
-        return "resola"; // data source name is e.g. masterResolaDataSource
-    }
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // [tips] this extended class is not required if the schema is the only one DB in the service
+    // (injection by SlaveDBAccessor interface becomes ambiguos when multiple DB)
+    // _/_/_/_/_/_/_/_/_/_/
+
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // [tips] no schema suffix as main schema
+    // (however you can use explicit suffix even if main schema)
+    // _/_/_/_/_/_/_/_/_/_/
+    //@Override
+    //protected String mySchemaKeyword() {
+    //    return "maihamadb"; // data source name is e.g. masterMaihamadbDataSource
+    //}
 
     @Override
     public String toString() { // for logging
