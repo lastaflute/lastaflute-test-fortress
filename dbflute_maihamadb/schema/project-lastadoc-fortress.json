@@ -11729,6 +11729,138 @@
       "methodLineCount": 10
     },
     {
+      "url": "/wx/masterslave/basic/",
+      "typeName": "org.docksidestage.app.web.wx.masterslave.WxMasterslaveBasicAction",
+      "simpleTypeName": "WxMasterslaveBasicAction",
+      "description": "@author jflute",
+      "typeComment": "@author jflute",
+      "fieldTypeDocMetaList": [
+        {
+          "name": "logger",
+          "publicName": "logger",
+          "typeName": "org.slf4j.Logger",
+          "simpleTypeName": "Logger",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "productBhv",
+          "publicName": "productBhv",
+          "typeName": "org.docksidestage.dbflute.exbhv.ProductBhv",
+          "simpleTypeName": "ProductBhv",
+          "value": null,
+          "description": "The behavior of PRODUCT.",
+          "comment": "The behavior of PRODUCT.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "stationBhv",
+          "publicName": "stationBhv",
+          "typeName": "org.docksidestage.dbflute.resola.exbhv.StationBhv",
+          "simpleTypeName": "StationBhv",
+          "value": null,
+          "description": "The behavior of station.",
+          "comment": "The behavior of station.\n\u003cp\u003e\nYou can implement your original methods here.\nThis class remains when re-generating.\n\u003c/p\u003e\n\n@author DBFlute(AutoGenerator)",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "slaveDBAccessor",
+          "publicName": "slaveDBAccessor",
+          "typeName": "org.lastaflute.db.replication.slavedb.SlaveDBAccessor",
+          "simpleTypeName": "SlaveDBAccessor",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "maihamaSlaveDBAccessor",
+          "publicName": "maihamaSlaveDBAccessor",
+          "typeName": "org.docksidestage.bizfw.masterslave.maihamadb.MaihamaSlaveDBAccessor",
+          "simpleTypeName": "MaihamaSlaveDBAccessor",
+          "value": null,
+          "description": "Accessor for Standard style of master/slave and main schema. \u003cbr\u003e",
+          "comment": "Accessor for Standard style of master/slave and main schema. \u003cbr\u003e\nApplication business classes use this to access slave for e.g. heavy select.\n\u003cpre\u003e\nfeatures:\n o master basis\n o SlaveDBAccessor use\n o main schema (no schema suffix)\n\nhow to set up:\n 1. register this class to DI xml as DI component.\n  app.xml\n   |-dbflute.xml\n     |-rdb.xml\n        |-jdbc+.xml // here (if main schema)\n           |-jdbc-[schema]-master.xml\n           |-jdbc-[schema]-slave.xml\n   or\n  app.xml\n   |-dbflute-[schema].xml\n     |-rdb-[schema].xml\n        |-jdbc-[schema].xml // here (if sub schema)\n           |-jdbc-[schema]-master.xml\n           |-jdbc-[schema]-slave.xml\n\u003c/pre\u003e\n\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "resortlineSlaveDBAccessor",
+          "publicName": "resortlineSlaveDBAccessor",
+          "typeName": "org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineSlaveDBAccessor",
+          "simpleTypeName": "ResortlineSlaveDBAccessor",
+          "value": null,
+          "description": "Accessor for slave-basis style of master/slave as sub schema. \u003cbr\u003e",
+          "comment": "Accessor for slave-basis style of master/slave as sub schema. \u003cbr\u003e\nApplication business classes use this to access slave for e.g. heavy select.\n\u003cpre\u003e\nfeatures:\n o slave basis\n o no SlaveDBAccessor use\n o sub schema (needs schema suffix)\n o master switch way: annotation\n\nhow to set up:\n 1. register this class to DI xml as DI component.\n  app.xml\n   |-dbflute.xml\n     |-rdb.xml\n        |-jdbc+.xml // here (if main schema)\n           |-jdbc-[schema]-master.xml\n           |-jdbc-[schema]-slave.xml\n   or\n  app.xml\n   |-dbflute-[schema].xml\n     |-rdb-[schema].xml\n        |-jdbc-[schema].xml // here (if sub schema)\n           |-jdbc-[schema]-master.xml\n           |-jdbc-[schema]-slave.xml\n\u003c/pre\u003e\n\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "maihamaDBSelectableDataSourceHolder",
+          "publicName": "maihamaDBSelectableDataSourceHolder",
+          "typeName": "org.lastaflute.db.replication.selectable.ThreadLocalSelectableDataSourceHolder",
+          "simpleTypeName": "ThreadLocalSelectableDataSourceHolder",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "resortlineDBSelectableDataSourceHolder",
+          "publicName": "resortlineDBSelectableDataSourceHolder",
+          "typeName": "org.docksidestage.bizfw.masterslave.resortlinedb.backstage.ResortlineDBSelectableDataSourceHolder",
+          "simpleTypeName": "ResortlineDBSelectableDataSourceHolder",
+          "value": null,
+          "description": "The holder of selectable data source for the DB schema. \u003cbr\u003e",
+          "comment": "The holder of selectable data source for the DB schema. \u003cbr\u003e\nUsing specific thread local instance so this extends the framework class.\n\u003cpre\u003e\nhow to set up:\n 1. register this class to DI xml as DI component.\n  app.xml\n   |-dbflute.xml\n     |-rdb.xml\n        |-jdbc+.xml // here (if main schema)\n           |-jdbc-[schema]-master.xml\n           |-jdbc-[schema]-slave.xml\n   or\n  app.xml\n   |-dbflute-[schema].xml\n     |-rdb-[schema].xml\n        |-jdbc-[schema].xml // here (if sub schema)\n           |-jdbc-[schema]-master.xml\n           |-jdbc-[schema]-slave.xml\n\u003c/pre\u003e\n\n@author jflute",
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
+        }
+      ],
+      "methodName": "index",
+      "methodComment": null,
+      "annotationList": [
+        "AllowAnyoneAccess",
+        "Execute"
+      ],
+      "parameterTypeDocMetaList": [],
+      "formTypeDocMeta": null,
+      "returnTypeDocMeta": {
+        "name": null,
+        "publicName": null,
+        "typeName": "org.lastaflute.web.response.JsonResponse\u003cjava.lang.Void\u003e",
+        "simpleTypeName": "JsonResponse\u003cVoid\u003e",
+        "value": "JsonResponse.asEmptyBody()",
+        "description": null,
+        "comment": null,
+        "annotationList": [],
+        "nestTypeDocMetaList": []
+      },
+      "fileLineCount": 86,
+      "methodLineCount": 4
+    },
+    {
       "url": "/wx/message/{pageNumber}",
       "typeName": "org.docksidestage.app.web.wx.message.WxMessageAction",
       "simpleTypeName": "WxMessageAction",
