@@ -34,15 +34,17 @@ public class SpecifiedMockActionRuntimeFactory {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    protected final ActionMapping _mapping;
+    protected final ActionMapping _mapping; // not null
+    protected final String _testMethodName; // not null
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public SpecifiedMockActionRuntimeFactory(Class<?> actionType) {
+    public SpecifiedMockActionRuntimeFactory(Class<?> actionType, String testMethodName) {
         final MockRomanticActionCustomizer customizer = createMockRomanticActionCustomizer();
         final String componentName = Srl.initUncap(actionType.getSimpleName());
         _mapping = customizer.createActionMapping(createComponentDefImpl(actionType, componentName));
+        _testMethodName = testMethodName;
     }
 
     protected MockRomanticActionCustomizer createMockRomanticActionCustomizer() {
@@ -68,12 +70,18 @@ public class SpecifiedMockActionRuntimeFactory {
 
     protected ActionExecute findActionExecute() {
         // #for_now jflute judge HtmlResponse, JsonResponse (2023/08/07)
+        final List<ActionExecute> executeList = _mapping.getExecuteList();
+        for (ActionExecute execute : executeList) {
+            if (_testMethodName.contains(execute.getExecuteMethod().getName())) { // e.g. test_annotated_...()
+                return execute; // first priority
+            }
+        }
+        // random search here
         final ActionExecute foundExecute;
-        List<ActionExecute> indexList = _mapping.searchByMethodName("index");
+        final List<ActionExecute> indexList = _mapping.searchByMethodName("index");
         if (indexList.size() >= 1) {
             foundExecute = indexList.get(0); // simple
         } else {
-            List<ActionExecute> executeList = _mapping.getExecuteList();
             if (executeList.size() >= 1) {
                 foundExecute = executeList.get(0); // simple
             } else { // no way

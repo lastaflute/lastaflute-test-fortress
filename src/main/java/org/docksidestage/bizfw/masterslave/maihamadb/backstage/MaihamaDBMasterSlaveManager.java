@@ -20,6 +20,7 @@ import java.lang.annotation.Annotation;
 import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaMasterDB;
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.annostyle.SlaveBasisAnnotationAgent;
+import org.docksidestage.dbflute.allcommon.DBCurrent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessor;
 import org.lastaflute.web.ruts.process.ActionRuntime;
@@ -80,7 +81,15 @@ public class MaihamaDBMasterSlaveManager { // DI component
     //                                         -------------
     private SlaveBasisAgent createAgent(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) {
         // you can select annotation way or on-demand way or ... here
-        return new SlaveBasisAnnotationAgent(getAnnotationType(), slaveDBAccessor, selectableDataSourceHolder);
+        return new SlaveBasisAnnotationAgent(getDBFluteProjectName(), getAnnotationType(), slaveDBAccessor, selectableDataSourceHolder);
+    }
+
+    private String getDBFluteProjectName() {
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        // DON'T FORGET to change this DB current
+        //  when you copy this class
+        // _/_/_/_/_/_/_/_/_/_/
+        return DBCurrent.getInstance().projectName(); // specific point 
     }
 
     // if you use annotation style

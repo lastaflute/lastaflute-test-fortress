@@ -37,13 +37,16 @@ public class SlaveBasisOnDemandAgent implements SlaveBasisAgent { // not DI comp
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    private final String dbfluteProjectName; // not null
     private final SlaveDBAccessor slaveDBAccessor; // not null
     private final SelectableDataSourceHolder selectableDataSourceHolder; // not null
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public SlaveBasisOnDemandAgent(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) {
+    public SlaveBasisOnDemandAgent(String dbfluteProjectName, SlaveDBAccessor slaveDBAccessor,
+            SelectableDataSourceHolder selectableDataSourceHolder) {
+        this.dbfluteProjectName = dbfluteProjectName;
         this.slaveDBAccessor = slaveDBAccessor;
         this.selectableDataSourceHolder = selectableDataSourceHolder;
     }
@@ -67,7 +70,7 @@ public class SlaveBasisOnDemandAgent implements SlaveBasisAgent { // not DI comp
     }
 
     private OnDemandMasterHookFactory createOnDemandFactory() {
-        return new OnDemandMasterHookFactory(slaveDBAccessor, selectableDataSourceHolder);
+        return new OnDemandMasterHookFactory(dbfluteProjectName, slaveDBAccessor, selectableDataSourceHolder);
     }
 
     // ===================================================================================

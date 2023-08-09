@@ -31,13 +31,16 @@ public class BlockingSlaveUpdateHookFactory {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    private final String dbfluteProjectName; // not null
     private final SlaveDBAccessor slaveDBAccessor; // not null
     private final SelectableDataSourceHolder selectableDataSourceHolder; // not null
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public BlockingSlaveUpdateHookFactory(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) {
+    public BlockingSlaveUpdateHookFactory(String dbfluteProjectName, SlaveDBAccessor slaveDBAccessor,
+            SelectableDataSourceHolder selectableDataSourceHolder) {
+        this.dbfluteProjectName = dbfluteProjectName;
         this.slaveDBAccessor = slaveDBAccessor;
         this.selectableDataSourceHolder = selectableDataSourceHolder;
     }
@@ -50,49 +53,75 @@ public class BlockingSlaveUpdateHookFactory {
      * @return The new-created hook, which is inheritable. (NotNull)
      */
     public BehaviorCommandHook createHook(ActionRuntime runtime) {
-        return new BehaviorCommandHook() {
-            public void hookBefore(BehaviorCommandMeta meta) {
-                if (!meta.isSelect()) { // e.g. insert, update
-                    final String masterKey = slaveDBAccessor.prepareMasterDataSourceKey();
-                    final String currentKey = selectableDataSourceHolder.getCurrentSelectableDataSourceKey();
-                    if (!masterKey.equals(currentKey)) { // slave now
-                        throwNonSelectCommandButSlaveDBException(runtime, meta);
-                    }
+        return new BlockingSlaveUpdateHook(runtime);
+    }
+
+    public class BlockingSlaveUpdateHook implements BehaviorCommandHook {
+
+        protected final ActionRuntime runtime;
+
+        public BlockingSlaveUpdateHook(ActionRuntime runtime) {
+            this.runtime = runtime;
+        }
+
+        public void hookBefore(BehaviorCommandMeta meta) {
+            if (!matchesDBFluteProject(meta)) { // different schema
+                return;
+            }
+            if (!meta.isSelect()) { // e.g. insert, update
+                final String masterKey = slaveDBAccessor.prepareMasterDataSourceKey();
+                final String currentKey = selectableDataSourceHolder.getCurrentSelectableDataSourceKey();
+                if (!masterKey.equals(currentKey)) { // slave now
+                    throwNonSelectCommandButSlaveDBException(runtime, meta);
                 }
             }
+        }
 
-            private void throwNonSelectCommandButSlaveDBException(ActionRuntime runtime, BehaviorCommandMeta meta) {
-                final ExceptionMessageBuilder br = new ExceptionMessageBuilder();
-                br.addNotice("Non-select command but slave DB now.");
-                br.addItem("Advice");
-                br.addElement("You cannot update slave DB.");
-                br.addElement("Don't forget XxxMasterDB annotation.");
-                br.addElement("For example:");
-                br.addElement("  @XxxMasterDB");
-                br.addElement("  public class YourAction extends ... {");
-                br.addElement("      ...");
-                br.addElement("  }");
-                br.addElement("  ");
-                br.addElement("   or");
-                br.addElement("  ");
-                br.addElement("  public class YourAction extends ... {");
-                br.addElement("  ");
-                br.addElement("      @XxxMasterDB");
-                br.addElement("      public JsonResponse... update(...) {");
-                br.addElement("          ...");
-                br.addElement("      }");
-                br.addElement("  }");
-                br.addItem("Action");
-                br.addElement(runtime);
-                br.addItem("Behavior");
-                br.addElement(meta);
-                final String msg = br.buildExceptionMessage();
-                throw new NonSelectCommandButSlaveDBException(msg);
-            }
+        private void throwNonSelectCommandButSlaveDBException(ActionRuntime runtime, BehaviorCommandMeta meta) {
+            final ExceptionMessageBuilder br = new ExceptionMessageBuilder();
+            br.addNotice("Non-select command but slave DB now.");
+            br.addItem("Advice");
+            br.addElement("You cannot update slave DB.");
+            br.addElement("Don't forget XxxMasterDB annotation.");
+            br.addElement("For example:");
+            br.addElement("  @XxxMasterDB");
+            br.addElement("  public class YourAction extends ... {");
+            br.addElement("      ...");
+            br.addElement("  }");
+            br.addElement("  ");
+            br.addElement("   or");
+            br.addElement("  ");
+            br.addElement("  public class YourAction extends ... {");
+            br.addElement("  ");
+            br.addElement("      @XxxMasterDB");
+            br.addElement("      public JsonResponse... update(...) {");
+            br.addElement("          ...");
+            br.addElement("      }");
+            br.addElement("  }");
+            br.addItem("Action");
+            br.addElement(runtime);
+            br.addItem("Behavior");
+            br.addElement(meta);
+            br.addItem("Schema");
+            br.addElement(dbfluteProjectName);
+            br.addItem("slaveDBAccessor");
+            br.addElement(slaveDBAccessor);
+            br.addItem("selectableDataSourceHolder");
+            br.addElement(selectableDataSourceHolder);
+            final String msg = br.buildExceptionMessage();
+            throw new NonSelectCommandButSlaveDBException(msg);
+        }
 
-            public void hookFinally(BehaviorCommandMeta meta, RuntimeException cause) {
+        public void hookFinally(BehaviorCommandMeta meta, RuntimeException cause) {
+            if (!matchesDBFluteProject(meta)) { // different schema
+                return; // determinate just in case even if nothing to do
             }
-        };
+            // basically do nothing for now
+        }
+
+        protected boolean matchesDBFluteProject(BehaviorCommandMeta meta) {
+            return dbfluteProjectName.equals(meta.getProjectName());
+        }
     }
 
     public static class NonSelectCommandButSlaveDBException extends RuntimeException {

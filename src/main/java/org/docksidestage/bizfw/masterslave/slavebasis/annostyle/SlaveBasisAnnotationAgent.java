@@ -33,6 +33,7 @@ public class SlaveBasisAnnotationAgent implements SlaveBasisAgent { // not DI co
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    private final String dbfluteProjectName; // not null
     private final Class<? extends Annotation> masterAnnoType; // not null
     private final SlaveDBAccessor slaveDBAccessor; // not null
     private final SelectableDataSourceHolder selectableDataSourceHolder; // not null
@@ -40,8 +41,9 @@ public class SlaveBasisAnnotationAgent implements SlaveBasisAgent { // not DI co
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public SlaveBasisAnnotationAgent(Class<? extends Annotation> masterAnnoType, SlaveDBAccessor slaveDBAccessor,
+    public SlaveBasisAnnotationAgent(String dbfluteProjectName, Class<? extends Annotation> masterAnnoType, SlaveDBAccessor slaveDBAccessor,
             SelectableDataSourceHolder selectableDataSourceHolder) {
+        this.dbfluteProjectName = dbfluteProjectName;
         this.masterAnnoType = masterAnnoType;
         this.slaveDBAccessor = slaveDBAccessor;
         this.selectableDataSourceHolder = selectableDataSourceHolder;
@@ -83,7 +85,7 @@ public class SlaveBasisAnnotationAgent implements SlaveBasisAgent { // not DI co
     }
 
     private BlockingSlaveUpdateHookFactory createBlockHookFactory() {
-        return new BlockingSlaveUpdateHookFactory(slaveDBAccessor, selectableDataSourceHolder);
+        return new BlockingSlaveUpdateHookFactory(dbfluteProjectName, slaveDBAccessor, selectableDataSourceHolder);
     }
 
     // ===================================================================================

@@ -77,7 +77,7 @@ public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
     protected ActionRuntime getMockJsonRuntime() {
         Class<?> actionType = getMockActionType();
         if (actionType != null) {
-            return new SpecifiedMockActionRuntimeFactory(actionType).createJsonRuntime();
+            return new SpecifiedMockActionRuntimeFactory(actionType, getName()).createJsonRuntime();
         } else {
             return super.getMockJsonRuntime();
         }

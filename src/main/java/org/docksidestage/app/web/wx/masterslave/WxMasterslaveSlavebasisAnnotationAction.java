@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.bizfw.masterslave.maihamadb.MaihamaMasterDB;
+import org.docksidestage.bizfw.masterslave.resortlinedb.ResortlineMasterDB;
 import org.docksidestage.bizfw.masterslave.resortlinedb.backstage.ResortlineDBSelectableDataSourceHolder;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
@@ -34,6 +35,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author jflute
  */
+@ResortlineMasterDB
 @AllowAnyoneAccess
 public class WxMasterslaveSlavebasisAnnotationAction extends FortressBaseAction {
 
@@ -59,7 +61,7 @@ public class WxMasterslaveSlavebasisAnnotationAction extends FortressBaseAction 
     @MaihamaMasterDB
     @Execute
     public JsonResponse<Void> annotated() {
-        showVisualCheck();
+        executeVisualCheck();
         return JsonResponse.asEmptyBody();
     }
 
@@ -67,40 +69,40 @@ public class WxMasterslaveSlavebasisAnnotationAction extends FortressBaseAction 
     //  -> NonSelectCommandButSlaveDBException
     @Execute
     public JsonResponse<Void> none() {
-        showVisualCheck();
+        executeVisualCheck();
         return JsonResponse.asEmptyBody();
     }
 
-    private void showVisualCheck() {
+    private void executeVisualCheck() {
         {
+            logger.debug("#masterslave sea // beginning");
+            showBothCurrent();
+
             Product product = productBhv.selectByPK(1).get();
             Station station = stationBhv.selectByPK(1).get();
-
-            logger.debug("#masterslave first");
-            logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
-            logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
+            logger.debug("#masterslave land // after first select");
+            showBothCurrent();
 
             productBhv.updateNonstrict(product);
             stationBhv.update(station);
-
-            logger.debug("#masterslave second");
-            logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
-            logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
+            logger.debug("#masterslave piari // after first update");
+            showBothCurrent();
         }
         {
             Product product = productBhv.selectByPK(1).get();
             Station station = stationBhv.selectByPK(1).get();
-
-            logger.debug("#masterslave third");
-            logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
-            logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
+            logger.debug("#masterslave dstore // after second select");
+            showBothCurrent();
 
             productBhv.updateNonstrict(product);
             stationBhv.update(station);
-
-            logger.debug("#masterslave fourth");
-            logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
-            logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
+            logger.debug("#masterslave bonvo // after second update");
+            showBothCurrent();
         }
+    }
+
+    private void showBothCurrent() {
+        logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
+        logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
     }
 }

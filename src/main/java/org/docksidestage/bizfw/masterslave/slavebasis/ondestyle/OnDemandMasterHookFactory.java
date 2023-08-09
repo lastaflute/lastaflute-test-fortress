@@ -37,13 +37,16 @@ public class OnDemandMasterHookFactory {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    private final String dbfluteProjectName; // not null
     private final SlaveDBAccessor slaveDBAccessor; // not null
     private final SelectableDataSourceHolder selectableDataSourceHolder; // not null
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public OnDemandMasterHookFactory(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) {
+    public OnDemandMasterHookFactory(String dbfluteProjectName, SlaveDBAccessor slaveDBAccessor,
+            SelectableDataSourceHolder selectableDataSourceHolder) {
+        this.dbfluteProjectName = dbfluteProjectName;
         this.slaveDBAccessor = slaveDBAccessor;
         this.selectableDataSourceHolder = selectableDataSourceHolder;
     }
@@ -56,36 +59,55 @@ public class OnDemandMasterHookFactory {
      * @return The new-created hook, which is inheritable. (NotNull)
      */
     public BehaviorCommandHook createHook(ActionRuntime runtime) {
-        return new BehaviorCommandHook() {
-            public void hookBefore(BehaviorCommandMeta meta) {
-                if (!meta.isSelect()) { // e.g. insert, update
-                    final String masterKey = slaveDBAccessor.prepareMasterDataSourceKey();
-                    final String currentKey = selectableDataSourceHolder.getCurrentSelectableDataSourceKey();
-                    if (!masterKey.equals(currentKey)) { // slave now
-                        if (logger.isDebugEnabled()) {
-                            logger.debug(buildForcedMasterHookDebugMessage(masterKey, runtime));
-                        }
-                        selectableDataSourceHolder.switchSelectableDataSourceKey(masterKey);
+        return new OnDemandMasterHook(runtime);
+    }
+
+    public class OnDemandMasterHook implements BehaviorCommandHook {
+
+        protected final ActionRuntime runtime;
+
+        public OnDemandMasterHook(ActionRuntime runtime) {
+            this.runtime = runtime;
+        }
+
+        public void hookBefore(BehaviorCommandMeta meta) {
+            if (!matchesDBFluteProject(meta)) { // different schema
+                return;
+            }
+            if (!meta.isSelect()) { // e.g. insert, update
+                final String masterKey = slaveDBAccessor.prepareMasterDataSourceKey();
+                final String currentKey = selectableDataSourceHolder.getCurrentSelectableDataSourceKey();
+                if (!masterKey.equals(currentKey)) { // slave now
+                    if (logger.isDebugEnabled()) {
+                        logger.debug(buildForcedMasterHookDebugMessage(masterKey, runtime));
                     }
+                    selectableDataSourceHolder.switchSelectableDataSourceKey(masterKey);
                 }
             }
+        }
 
-            protected String buildForcedMasterHookDebugMessage(String masterKey, ActionRuntime runtime) {
-                // basically SlaveDBAccessor class name teach us schema
-                // but overriding slaveDBAccessor toString() is recommended for this logging
-                final String rearExp = " in " + runtime.getActionExecute().toSimpleMethodExp();
-                return "...Accessing to MasterDB for " + slaveDBAccessor + " forcedly by the key: " + masterKey + rearExp;
-            }
+        protected String buildForcedMasterHookDebugMessage(String masterKey, ActionRuntime runtime) {
+            // basically SlaveDBAccessor class name teach us schema
+            // but overriding slaveDBAccessor toString() is recommended for this logging
+            final String rearExp = " in " + runtime.getActionExecute().toSimpleMethodExp();
+            return "...Accessing to master DB for " + slaveDBAccessor + " forcedly by the key: " + masterKey + rearExp;
+        }
 
-            public void hookFinally(BehaviorCommandMeta meta, RuntimeException cause) {
-                // no need to restore here
-                // because also select after update needs to access master until request end
-                // e.g. one Action flow
-                //  1. select // slave
-                //  2. update // master (forcedly)
-                //  3. select // master
-                //  (4. update) // master
+        public void hookFinally(BehaviorCommandMeta meta, RuntimeException cause) {
+            if (!matchesDBFluteProject(meta)) { // different schema
+                return; // determinate just in case even if nothing to do
             }
-        };
+            // no need to restore here
+            // because also select after update needs to access master until request end
+            // e.g. one Action flow
+            //  1. select // slave
+            //  2. update // master (forcedly)
+            //  3. select // master
+            //  (4. update) // master
+        }
+
+        protected boolean matchesDBFluteProject(BehaviorCommandMeta meta) {
+            return dbfluteProjectName.equals(meta.getProjectName());
+        }
     }
 }

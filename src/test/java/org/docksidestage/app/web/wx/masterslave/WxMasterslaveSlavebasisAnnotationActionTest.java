@@ -19,10 +19,7 @@ public class WxMasterslaveSlavebasisAnnotationActionTest extends UnitFortressBas
         inject(action);
 
         // ## Act ##
-        // #needs_fix jflute synchronize mock action annotation with real action annotation (2023/08/06)
-        assertException(NonSelectCommandButSlaveDBException.class, () -> {
-            action.annotated();
-        });
+        action.annotated();
 
         // ## Assert ##
         // visual check
