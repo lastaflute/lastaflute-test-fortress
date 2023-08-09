@@ -17,7 +17,7 @@
 			provider.config().getSlaveResolaJdbcUrl()
 		</property>
 		<property name="user">provider.config().getSlaveResolaJdbcUser()</property>
-		<property name="password">provider.config().getResolaJdbcPassword()</property>
+		<property name="password">provider.config().getSlaveResolaJdbcPassword()</property>
 	</component>
 
 	<component name="connectionPool" class="org.lastaflute.db.dbcp.HookedConnectionPool">

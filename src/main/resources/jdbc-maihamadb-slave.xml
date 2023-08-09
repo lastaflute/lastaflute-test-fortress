@@ -17,7 +17,7 @@
 			provider.config().getSlaveJdbcUrl()
 		</property>
 		<property name="user">provider.config().getSlaveJdbcUser()</property>
-		<property name="password">provider.config().getJdbcPassword()</property>
+		<property name="password">provider.config().getSlaveJdbcPassword()</property>
 	</component>
 
 	<component name="connectionPool" class="org.lastaflute.db.dbcp.HookedConnectionPool">
@@ -33,7 +33,7 @@
 		<property name="validationQuery">    provider.config().getOrDefault("slave.jdbc.connection.pooling.validation.query", null)    </property>
 		<property name="validationInterval"> provider.config().getOrDefault("slave.jdbc.connection.pooling.validation.interval", null) </property>
 		<!-- may be almost unused (want to change property type if supported)
-		<property name="transactionIsolationLevel">provider.config().getOrDefault("jdbc.connection.pooling.transaction.isolation.level", null)</property>
+		<property name="transactionIsolationLevel">provider.config().getOrDefault("slave.jdbc.connection.pooling.transaction.isolation.level", null)</property>
 		 -->
 	</component>
 
