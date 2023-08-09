@@ -83,6 +83,9 @@ public interface FortressEnv {
     /** The key of the configuration. e.g. maihamadb */
     String SLAVE_JDBC_USER = "slave.jdbc.user";
 
+    /** The key of the configuration. e.g. maihamadb */
+    String SLAVE_JDBC_PASSWORD = "slave.jdbc.password";
+
     /** The key of the configuration. e.g. 12 */
     String SLAVE_JDBC_CONNECTION_POOLING_SIZE = "slave.jdbc.connection.pooling.size";
 
@@ -109,6 +112,9 @@ public interface FortressEnv {
 
     /** The key of the configuration. e.g. resortlinedb */
     String SLAVE_RESOLA_JDBC_USER = "slave.resola.jdbc.user";
+
+    /** The key of the configuration. e.g. resortlinedb */
+    String SLAVE_RESOLA_JDBC_PASSWORD = "slave.resola.jdbc.password";
 
     /** The key of the configuration. e.g. 12 */
     String SLAVE_RESOLA_JDBC_CONNECTION_POOLING_SIZE = "slave.resola.jdbc.connection.pooling.size";
@@ -362,6 +368,14 @@ public interface FortressEnv {
     String getSlaveJdbcUser();
 
     /**
+     * Get the value for the key 'slave.jdbc.password'. <br>
+     * The value is, e.g. maihamadb <br>
+     * comment: @Secure The password of database connection for JDBC as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveJdbcPassword();
+
+    /**
      * Get the value for the key 'slave.jdbc.connection.pooling.size'. <br>
      * The value is, e.g. 12 <br>
      * comment: The (max) pooling size of connection pool as slave
@@ -458,6 +472,14 @@ public interface FortressEnv {
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
     String getSlaveResolaJdbcUser();
+
+    /**
+     * Get the value for the key 'slave.resola.jdbc.password'. <br>
+     * The value is, e.g. resortlinedb <br>
+     * comment: @Secure The password of database connection for JDBC as slave
+     * @return The value of found property. (NotNull: if not found, exception but basically no way)
+     */
+    String getSlaveResolaJdbcPassword();
 
     /**
      * Get the value for the key 'slave.resola.jdbc.connection.pooling.size'. <br>
@@ -678,6 +700,10 @@ public interface FortressEnv {
             return get(FortressEnv.SLAVE_JDBC_USER);
         }
 
+        public String getSlaveJdbcPassword() {
+            return get(FortressEnv.SLAVE_JDBC_PASSWORD);
+        }
+
         public String getSlaveJdbcConnectionPoolingSize() {
             return get(FortressEnv.SLAVE_JDBC_CONNECTION_POOLING_SIZE);
         }
@@ -724,6 +750,10 @@ public interface FortressEnv {
 
         public String getSlaveResolaJdbcUser() {
             return get(FortressEnv.SLAVE_RESOLA_JDBC_USER);
+        }
+
+        public String getSlaveResolaJdbcPassword() {
+            return get(FortressEnv.SLAVE_RESOLA_JDBC_PASSWORD);
         }
 
         public String getSlaveResolaJdbcConnectionPoolingSize() {
