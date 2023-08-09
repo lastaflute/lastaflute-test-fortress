@@ -95,7 +95,7 @@ public class OnDemandMasterHookFactory {
 
         public void hookFinally(BehaviorCommandMeta meta, RuntimeException cause) {
             if (!matchesDBFluteProject(meta)) { // different schema
-                return;
+                return; // determinate just in case even if nothing to do
             }
             // no need to restore here
             // because also select after update needs to access master until request end
