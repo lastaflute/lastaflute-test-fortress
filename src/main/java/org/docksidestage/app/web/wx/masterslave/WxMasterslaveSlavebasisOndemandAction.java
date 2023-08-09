@@ -57,29 +57,34 @@ public class WxMasterslaveSlavebasisOndemandAction extends FortressBaseAction {
     // http://localhost:8151/fortress/wx/masterslave/slavebasis/ondemand/
     @Execute
     public JsonResponse<Void> index() {
-        showVisualCheck();
+        executeVisualCheck();
         return JsonResponse.asEmptyBody();
     }
 
-    private void showVisualCheck() {
+    private void executeVisualCheck() {
+        logger.debug("#masterslave sea // beginning visual check");
+        showBothCurrent();
+
         Product product = productBhv.selectByPK(1).get();
         Station station = stationBhv.selectByPK(1).get();
-
-        logger.debug("#masterslave first");
-        logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
-        logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
+        logger.debug("#masterslave land // after first select both");
+        showBothCurrent();
 
         productBhv.updateNonstrict(product);
-        stationBhv.update(station);
+        logger.debug("#masterslave piari // after first update maihamadb");
+        showBothCurrent();
 
-        logger.debug("#masterslave second");
-        logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
-        logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
+        stationBhv.update(station);
+        logger.debug("#masterslave dstore // after first update resortlinedb");
+        showBothCurrent();
 
         productBhv.selectByPK(1).get();
         stationBhv.selectByPK(1).get();
+        logger.debug("#masterslave dstore // after second select both");
+        showBothCurrent();
+    }
 
-        logger.debug("#masterslave third");
+    private void showBothCurrent() {
         logger.debug("maihamadb: " + maihamaDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
         logger.debug("resortlinedb: " + resortlineDBSelectableDataSourceHolder.getCurrentSelectableDataSourceKey());
     }

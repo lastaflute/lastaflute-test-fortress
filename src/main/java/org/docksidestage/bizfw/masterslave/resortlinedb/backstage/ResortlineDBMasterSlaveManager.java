@@ -17,6 +17,7 @@ package org.docksidestage.bizfw.masterslave.resortlinedb.backstage;
 
 import org.docksidestage.bizfw.masterslave.slavebasis.SlaveBasisAgent;
 import org.docksidestage.bizfw.masterslave.slavebasis.ondestyle.SlaveBasisOnDemandAgent;
+import org.docksidestage.dbflute.resola.allcommon.ResolaDBCurrent;
 import org.lastaflute.db.replication.selectable.SelectableDataSourceHolder;
 import org.lastaflute.db.replication.slavedb.SlaveDBAccessor;
 import org.lastaflute.web.ruts.process.ActionRuntime;
@@ -77,7 +78,15 @@ public class ResortlineDBMasterSlaveManager { // DI component
     //                                         -------------
     private SlaveBasisAgent createAgent(SlaveDBAccessor slaveDBAccessor, SelectableDataSourceHolder selectableDataSourceHolder) {
         // you can select annotation way or on-demand way or ... here
-        return new SlaveBasisOnDemandAgent(slaveDBAccessor, selectableDataSourceHolder);
+        return new SlaveBasisOnDemandAgent(getDBFluteProjectName(), slaveDBAccessor, selectableDataSourceHolder);
+    }
+
+    private String getDBFluteProjectName() {
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        // DON'T FORGET to change this DB current
+        //  when you copy this class
+        // _/_/_/_/_/_/_/_/_/_/
+        return ResolaDBCurrent.getInstance().projectName(); // specific point 
     }
 
     // if you use annotation style
