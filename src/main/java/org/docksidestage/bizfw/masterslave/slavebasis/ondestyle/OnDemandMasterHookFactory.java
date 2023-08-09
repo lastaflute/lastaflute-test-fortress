@@ -90,7 +90,7 @@ public class OnDemandMasterHookFactory {
             // basically SlaveDBAccessor class name teach us schema
             // but overriding slaveDBAccessor toString() is recommended for this logging
             final String rearExp = " in " + runtime.getActionExecute().toSimpleMethodExp();
-            return "...Accessing to MasterDB for " + slaveDBAccessor + " forcedly by the key: " + masterKey + rearExp;
+            return "...Accessing to master DB for " + slaveDBAccessor + " forcedly by the key: " + masterKey + rearExp;
         }
 
         public void hookFinally(BehaviorCommandMeta meta, RuntimeException cause) {
