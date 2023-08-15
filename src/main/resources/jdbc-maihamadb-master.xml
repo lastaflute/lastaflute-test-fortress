@@ -20,16 +20,17 @@
 		<!-- main option, required -->
 		<property name="maxPoolSize">provider.config().getJdbcConnectionPoolingSize()</property>
 
-		<!-- sub option, not required (setter not called if null) -->
-		<property name="minPoolSize">        provider.config().getOrDefault("jdbc.connection.pooling.min.size", null)            </property>
-		<property name="maxWait">            provider.config().getOrDefault("jdbc.connection.pooling.max.wait", null)            </property>
-		<property name="timeout">            provider.config().getOrDefault("jdbc.connection.pooling.timeout", null)             </property>
-		<property name="suppressLocalTx">    provider.config().getOrDefault("jdbc.connection.pooling.suppress.local.tx", null)   </property>
-		<property name="readOnly">           provider.config().getOrDefault("jdbc.connection.pooling.read.only", null)           </property>
-		<property name="validationQuery">    provider.config().getOrDefault("jdbc.connection.pooling.validation.query", null)    </property>
-		<property name="validationInterval"> provider.config().getOrDefault("jdbc.connection.pooling.validation.interval", null) </property>
+		<!-- sub option, not required (setter not called if null)
+		<property name="minPoolSize">provider.config().getJdbcConnectionPoolingMinSize()</property>
+		<property name="maxWait">provider.config().getJdbcConnectionPoolingMaxWait()</property>
+		<property name="timeout">provider.config().getJdbcConnectionPoolingTimeout()</property>
+		<property name="suppressLocalTx">provider.config().getJdbcConnectionPoolingSuppressLocalTx()</property>
+		<property name="readOnly">provider.config().getJdbcConnectionPoolingReadOnly()</property>
+		<property name="validationQuery">provider.config().getJdbcConnectionPoolingValidationQuery()</property>
+		<property name="validationInterval">provider.config().getJdbcConnectionPoolingValidationInterval()</property>
+		-->
 		<!-- may be almost unused (want to change property type if supported)
-		<property name="transactionIsolationLevel">provider.config().getOrDefault("jdbc.connection.pooling.transaction.isolation.level", null)</property>
+		<property name="transactionIsolationLevel">provider.config().getJdbcConnectionPoolingTransactionIsolationLevel()</property>
 		 -->
 	</component>
 
