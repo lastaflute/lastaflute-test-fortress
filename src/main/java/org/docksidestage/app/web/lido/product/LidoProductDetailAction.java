@@ -17,6 +17,7 @@ package org.docksidestage.app.web.lido.product;
 
 import javax.annotation.Resource;
 
+import org.dbflute.exception.EntityAlreadyDeletedException;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
@@ -42,6 +43,13 @@ public class LidoProductDetailAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
+    /**
+     * Returns the detail of the product. <br>
+     * This is the basic example for JSON API action.
+     * @param productId The ID of selected product. (NotNull)
+     * @return The JSON response having selected product information. (NotNull)
+     * @throws EntityAlreadyDeletedException When the product is not found. (400)
+     */
     @Execute
     public JsonResponse<ProductDetailResult> index(Integer productId) {
         Product product = selectProduct(productId);

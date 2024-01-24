@@ -55,6 +55,13 @@ public class LidoProductListAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
+    /**
+     * Returns list of products as paging. <br>
+     * This is the basic example for JSON API action.
+     * @param pageNumber The current page number for paging select. (NotNull)
+     * @param body The object for request body containing search condition. (NotNull)
+     * @return The JSON response having selected paging result. (NotNull)
+     */
     @Execute
     public JsonResponse<SearchPagingResult<ProductRowResult>> index(OptionalThing<Integer> pageNumber, ProductSearchBody body) {
         validateApi(body, messages -> {});

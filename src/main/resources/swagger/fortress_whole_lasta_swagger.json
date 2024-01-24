@@ -1079,8 +1079,8 @@
     },
     "/lido/product/list": {
       "post": {
-        "summary": "@author s.tadokoro",
-        "description": "@author s.tadokoro",
+        "summary": "@author s.tadokoro, Returns list of products as paging. \u003cbr\u003e",
+        "description": "@author s.tadokoro, Returns list of products as paging. \u003cbr\u003e",
         "consumes": [
           "application/json"
         ],
@@ -1124,14 +1124,15 @@
     },
     "/lido/product/list/{pageNumber}": {
       "post": {
-        "summary": "@author s.tadokoro",
-        "description": "@author s.tadokoro",
+        "summary": "@author s.tadokoro, Returns list of products as paging. \u003cbr\u003e",
+        "description": "@author s.tadokoro, Returns list of products as paging. \u003cbr\u003e",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "pageNumber",
+            "description": "The current page number for paging select.",
             "type": "integer",
             "format": "int32",
             "in": "path",
