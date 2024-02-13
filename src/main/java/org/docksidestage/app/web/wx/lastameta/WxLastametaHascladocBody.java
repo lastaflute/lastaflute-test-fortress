@@ -23,9 +23,11 @@ import org.eclipse.collections.api.list.ImmutableList;
 import org.lastaflute.web.validation.Required;
 
 /**
+ * This is the first line of Body class java-doc. <br>
+ * And the second line is here.
  * @author jflute
  */
-public class WxLastametaBody {
+public class WxLastametaHascladocBody {
 
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // description can be identified for debug log (unknown variableName case)

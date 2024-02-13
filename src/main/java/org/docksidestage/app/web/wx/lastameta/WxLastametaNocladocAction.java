@@ -15,22 +15,34 @@
  */
 package org.docksidestage.app.web.wx.lastameta;
 
+import org.dbflute.exception.EntityAlreadyDeletedException;
+import org.dbflute.exception.EntityAlreadyExistsException;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 
-/**
- * This is the first line of class java-doc. <br>
- * And the second line is here.
- * @author jflute
- */
+// without javadoc
 @AllowAnyoneAccess
-public class WxLastametaAction extends FortressBaseAction {
+public class WxLastametaNocladocAction extends FortressBaseAction {
 
-    // http://localhost:8151/fortress/wx/lastameta/
+    // http://localhost:8151/fortress/wx/lastameta/nocladoc/
+    /**
+     * This is the first line of execute method java-doc. <br>
+     * And the second line is here.
+     * @param body nice body (NotNull)
+     * @return same as body (tekito) (NotNull)
+     * @throws EntityAlreadyDeletedException When kimagure (404)
+     * @throws EntityAlreadyExistsException When kimagure (400)
+     */
     @Execute
-    public JsonResponse<WxLastametaBody> index(WxLastametaBody body) {
+    public JsonResponse<WxLastametaHascladocBody> index(WxLastametaHascladocBody body) {
+        return asJson(body);
+    }
+
+    // http://localhost:8151/fortress/wx/lastameta/nocladoc/nomedoc/
+    @Execute
+    public JsonResponse<WxLastametaHascladocBody> nomedoc(WxLastametaHascladocBody body) { // without javadoc
         return asJson(body);
     }
 }
