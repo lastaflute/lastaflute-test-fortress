@@ -83,6 +83,7 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
             //    resource.addMapping(409, IllegalStateException.class);
             //    return resource;
             //});
+            //op.suppressDefaultFailureHttpStatus();
         });
         return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
     }
