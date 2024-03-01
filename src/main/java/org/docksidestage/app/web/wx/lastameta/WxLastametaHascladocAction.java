@@ -17,14 +17,17 @@ package org.docksidestage.app.web.wx.lastameta;
 
 import org.dbflute.exception.EntityAlreadyDeletedException;
 import org.dbflute.exception.EntityAlreadyExistsException;
+import org.dbflute.exception.EntityAlreadyUpdatedException;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 
 /**
+ * <pre>
  * This is the first line of Action class java-doc. <br>
  * And the second line is here.
+ * </pre>
  * @author jflute
  */
 @AllowAnyoneAccess
@@ -34,10 +37,11 @@ public class WxLastametaHascladocAction extends FortressBaseAction {
     /**
      * This is the first line of execute method java-doc. <br>
      * And the second line is here.
-     * @param body nice body (NotNull)
+     * @param body Oh yeah nice body (NotNull)
      * @return same as body (tekito) (NotNull)
-     * @throws EntityAlreadyDeletedException When kimagure (404)
-     * @throws EntityAlreadyExistsException When kimagure (400)
+     * @throws EntityAlreadyDeletedException When the resource is not found (404)
+     * @throws EntityAlreadyUpdatedException When the resource already has been updated (400)
+     * @throws EntityAlreadyExistsException When the resource already exists (400)
      */
     @Execute
     public JsonResponse<WxLastametaHascladocBody> index(WxLastametaHascladocBody body) {
