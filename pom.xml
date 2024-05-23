@@ -487,19 +487,6 @@
 		    <version>1.7.13</version>
 		</dependency>
 
-<!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
-<dependency>
-    <groupId>com.rabbitmq</groupId>
-    <artifactId>amqp-client</artifactId>
-    <version>5.20.0</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.springframework.amqp/spring-rabbit -->
-<dependency>
-    <groupId>org.springframework.amqp</groupId>
-    <artifactId>spring-rabbit</artifactId>
-    <version>3.1.1</version>
-</dependency>
-
 		<!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = -->
 		<!--                                                                       Testing -->
 		<!--                                                                       = = = = -->
