@@ -74,6 +74,7 @@ public interface HarborCDef extends Classification {
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          * @deprecated use byName(name) instead.
          */
+        @Deprecated
         public static MemberStatus nameOf(String name) { return _slimmer.nameOf(name, nm -> valueOf(nm)); }
         /**
          * Get the list of all classification elements. (returns new copied list)
@@ -96,6 +97,7 @@ public interface HarborCDef extends Classification {
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          * @deprecated use e.g. Stream API with of() instead.
          */
+        @Deprecated
         public static List<MemberStatus> listOf(Collection<String> codeList) { return _slimmer.listOf(codeList); }
         /**
          * <span style="color: #AD4747; font-size: 120%">Old style so use listByGroup(groupName).</span>
@@ -103,6 +105,7 @@ public interface HarborCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          * @deprecated use listByGroup(groupName) instead.
          */
+        @Deprecated
         public static List<MemberStatus> groupOf(String groupName) { return new ArrayList<>(); }
         @Override public String toString() { return code(); }
     }

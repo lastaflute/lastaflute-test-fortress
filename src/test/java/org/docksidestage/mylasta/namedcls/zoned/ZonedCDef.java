@@ -92,6 +92,7 @@ public interface ZonedCDef extends Classification {
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          * @deprecated use byName(name) instead.
          */
+        @Deprecated
         public static ZoSea nameOf(String name) { return _slimmer.nameOf(name, nm -> valueOf(nm)); }
         /**
          * Get the list of all classification elements. (returns new copied list)
@@ -116,6 +117,7 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          * @deprecated use e.g. Stream API with of() instead.
          */
+        @Deprecated
         public static List<ZoSea> listOf(Collection<String> codeList) { return _slimmer.listOf(codeList); }
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
@@ -141,6 +143,7 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          * @deprecated use listByGroup(groupName) instead.
          */
+        @Deprecated
         public static List<ZoSea> groupOf(String groupName) {
             if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
             if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }
@@ -215,6 +218,7 @@ public interface ZonedCDef extends Classification {
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          * @deprecated use byName(name) instead.
          */
+        @Deprecated
         public static ZoLand nameOf(String name) { return _slimmer.nameOf(name, nm -> valueOf(nm)); }
         /**
          * Get the list of all classification elements. (returns new copied list)
@@ -238,6 +242,7 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          * @deprecated use e.g. Stream API with of() instead.
          */
+        @Deprecated
         public static List<ZoLand> listOf(Collection<String> codeList) { return _slimmer.listOf(codeList); }
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
@@ -254,6 +259,7 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          * @deprecated use listByGroup(groupName) instead.
          */
+        @Deprecated
         public static List<ZoLand> groupOf(String groupName) {
             if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
             return new ArrayList<>();
@@ -321,6 +327,7 @@ public interface ZonedCDef extends Classification {
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          * @deprecated use byName(name) instead.
          */
+        @Deprecated
         public static ZoPiari nameOf(String name) { return _slimmer.nameOf(name, nm -> valueOf(nm)); }
         /**
          * Get the list of all classification elements. (returns new copied list)
@@ -345,6 +352,7 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          * @deprecated use e.g. Stream API with of() instead.
          */
+        @Deprecated
         public static List<ZoPiari> listOf(Collection<String> codeList) { return _slimmer.listOf(codeList); }
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
@@ -370,6 +378,7 @@ public interface ZonedCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          * @deprecated use listByGroup(groupName) instead.
          */
+        @Deprecated
         public static List<ZoPiari> groupOf(String groupName) {
             if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
             if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }

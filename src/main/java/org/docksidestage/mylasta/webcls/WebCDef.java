@@ -93,6 +93,7 @@ public interface WebCDef extends Classification {
          * @return The instance of the corresponding classification to the name. (NullAllowed: if not found, returns null)
          * @deprecated use byName(name) instead.
          */
+        @Deprecated
         public static WebDockside nameOf(String name) { return _slimmer.nameOf(name, nm -> valueOf(nm)); }
         /**
          * Get the list of all classification elements. (returns new copied list)
@@ -117,6 +118,7 @@ public interface WebCDef extends Classification {
          * @return The snapshot list of classification elements in the code list. (NotNull, EmptyAllowed: when empty specified)
          * @deprecated use e.g. Stream API with of() instead.
          */
+        @Deprecated
         public static List<WebDockside> listOf(Collection<String> codeList) { return _slimmer.listOf(codeList); }
         /**
          * Get the list of group classification elements. (returns new copied list) <br>
@@ -142,6 +144,7 @@ public interface WebCDef extends Classification {
          * @return The snapshot list of classification elements in the group. (NotNull, EmptyAllowed: if the group is not found)
          * @deprecated use listByGroup(groupName) instead.
          */
+        @Deprecated
         public static List<WebDockside> groupOf(String groupName) {
             if ("serviceAvailable".equalsIgnoreCase(groupName)) { return listOfServiceAvailable(); }
             if ("shortOfFormalized".equalsIgnoreCase(groupName)) { return listOfShortOfFormalized(); }

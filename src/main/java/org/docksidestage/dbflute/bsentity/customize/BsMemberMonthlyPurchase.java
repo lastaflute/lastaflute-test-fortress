@@ -24,53 +24,7 @@ import org.dbflute.dbmeta.accessory.CustomizeEntity;
 import org.docksidestage.dbflute.exentity.customize.*;
 
 /**
- * The entity of MemberMonthlyPurchase. <br>
- * <pre>
- * [primary-key]
- *     
- *
- * [column]
- *     MEMBER_ID, MEMBER_NAME, PURCHASE_MONTH, PURCHASE_PRICE_AVG, PURCHASE_PRICE_MAX, PURCHASE_COUNT, SERVICE_POINT_COUNT
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     
- *
- * [get/set template]
- * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
- * Integer memberId = entity.getMemberId();
- * String memberName = entity.getMemberName();
- * java.time.LocalDate purchaseMonth = entity.getPurchaseMonth();
- * java.math.BigDecimal purchasePriceAvg = entity.getPurchasePriceAvg();
- * Integer purchasePriceMax = entity.getPurchasePriceMax();
- * Integer purchaseCount = entity.getPurchaseCount();
- * Integer servicePointCount = entity.getServicePointCount();
- * entity.setMemberId(memberId);
- * entity.setMemberName(memberName);
- * entity.setPurchaseMonth(purchaseMonth);
- * entity.setPurchasePriceAvg(purchasePriceAvg);
- * entity.setPurchasePriceMax(purchasePriceMax);
- * entity.setPurchaseCount(purchaseCount);
- * entity.setServicePointCount(servicePointCount);
- * = = = = = = = = = =/
- * </pre>
+ * The entity of MemberMonthlyPurchase.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsMemberMonthlyPurchase extends AbstractEntity implements CustomizeEntity {
