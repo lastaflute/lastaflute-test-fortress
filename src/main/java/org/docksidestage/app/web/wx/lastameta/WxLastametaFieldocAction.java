@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,30 @@
  */
 package org.docksidestage.app.web.wx.lastameta;
 
+import org.dbflute.exception.EntityAlreadyDeletedException;
+import org.dbflute.exception.EntityAlreadyExistsException;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 
 /**
- * This is the first line of class java-doc. <br>
- * And the second line is here.
  * @author jflute
  */
 @AllowAnyoneAccess
-public class WxLastametaAction extends FortressBaseAction {
+public class WxLastametaFieldocAction extends FortressBaseAction {
 
-    // http://localhost:8151/fortress/wx/lastameta/
+    // http://localhost:8151/fortress/wx/lastameta/fieldoc/
+    /**
+     * This is the first line of execute method java-doc. <br>
+     * And the second line is here.
+     * @param body nice body (NotNull)
+     * @return same as body (tekito) (NotNull)
+     * @throws EntityAlreadyDeletedException When kimagure (404)
+     * @throws EntityAlreadyExistsException When kimagure (400)
+     */
     @Execute
-    public JsonResponse<WxLastametaBody> index(WxLastametaBody body) {
+    public JsonResponse<WxLastametaFieldocBody> index(WxLastametaFieldocBody body) {
         return asJson(body);
     }
 }

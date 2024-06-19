@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,35 +24,7 @@ import org.docksidestage.dbflute.exentity.*;
 import org.docksidestage.dbflute.cbean.*;
 
 /**
- * The referrer loader of (サービスランク)SERVICE_RANK as TABLE. <br>
- * <pre>
- * [primary key]
- *     SERVICE_RANK_CODE
- *
- * [column]
- *     SERVICE_RANK_CODE, SERVICE_RANK_NAME, SERVICE_POINT_INCIDENCE, NEW_ACCEPTABLE_FLG, DESCRIPTION, DISPLAY_ORDER
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     MEMBER_SERVICE
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     memberServiceList
- * </pre>
+ * The referrer loader of (サービスランク)SERVICE_RANK as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public class LoaderOfServiceRank {

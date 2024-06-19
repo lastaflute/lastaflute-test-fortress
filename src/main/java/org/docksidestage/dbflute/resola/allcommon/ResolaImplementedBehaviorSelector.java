@@ -1,3 +1,18 @@
+/*
+ * Copyright 2015-2024 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.docksidestage.dbflute.resola.allcommon;
 
 import java.util.Collection;
@@ -22,13 +37,13 @@ import org.lastaflute.di.core.exception.ComponentNotFoundException;
  * The implementation of behavior selector.
  * @author DBFlute(AutoGenerator)
  */
-public class RsoImplementedBehaviorSelector implements BehaviorSelector {
+public class ResolaImplementedBehaviorSelector implements BehaviorSelector {
 
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
     /** The logger instance for this class. (NotNull) */
-    private static final Logger _log = LoggerFactory.getLogger(RsoImplementedBehaviorSelector.class);
+    private static final Logger _log = LoggerFactory.getLogger(ResolaImplementedBehaviorSelector.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -46,7 +61,7 @@ public class RsoImplementedBehaviorSelector implements BehaviorSelector {
      * Initialize condition-bean meta data.
      */
     public void initializeConditionBeanMetaData() {
-        final Map<String, DBMeta> dbmetaMap = RsoDBMetaInstanceHandler.getUnmodifiableDBMetaMap();
+        final Map<String, DBMeta> dbmetaMap = ResolaDBMetaInstanceHandler.getUnmodifiableDBMetaMap();
         final Collection<DBMeta> dbmetas = dbmetaMap.values();
         long before = 0;
         if (_log.isInfoEnabled()) {
@@ -108,7 +123,7 @@ public class RsoImplementedBehaviorSelector implements BehaviorSelector {
      */
     public BehaviorReadable byName(String tableFlexibleName) {
         assertStringNotNullAndNotTrimmedEmpty("tableFlexibleName", tableFlexibleName);
-        final DBMeta dbmeta = RsoDBMetaInstanceHandler.findDBMeta(tableFlexibleName);
+        final DBMeta dbmeta = ResolaDBMetaInstanceHandler.findDBMeta(tableFlexibleName);
         return select(getBehaviorType(dbmeta));
     }
 

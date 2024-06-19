@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,35 +24,7 @@ import org.docksidestage.dbflute.exentity.*;
 import org.docksidestage.dbflute.cbean.*;
 
 /**
- * The referrer loader of (商品カテゴリ)PRODUCT_CATEGORY as TABLE. <br>
- * <pre>
- * [primary key]
- *     PRODUCT_CATEGORY_CODE
- *
- * [column]
- *     PRODUCT_CATEGORY_CODE, PRODUCT_CATEGORY_NAME, PARENT_CATEGORY_CODE
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     PRODUCT_CATEGORY
- *
- * [referrer table]
- *     PRODUCT, PRODUCT_CATEGORY
- *
- * [foreign property]
- *     productCategorySelf
- *
- * [referrer property]
- *     productList, productCategorySelfList
- * </pre>
+ * The referrer loader of (商品カテゴリ)PRODUCT_CATEGORY as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public class LoaderOfProductCategory {

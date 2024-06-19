@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -405,7 +405,7 @@ public abstract class AbstractBsMemberLoginCQ extends AbstractConditionQuery {
      * @param determination The determination, true or false. (basically NotNull: error as default, or no condition as option)
      */
     public void setMobileLoginFlg_Equal_AsBoolean(Boolean determination) {
-        setMobileLoginFlg_Equal_AsFlg(CDef.Flg.of(determination).get());
+        setMobileLoginFlg_Equal_AsFlg(CDef.Flg.of(determination).orElse(null));
     }
 
     /**

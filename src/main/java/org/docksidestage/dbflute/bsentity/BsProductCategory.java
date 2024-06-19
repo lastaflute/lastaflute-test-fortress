@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,44 +29,6 @@ import org.docksidestage.dbflute.exentity.*;
 /**
  * The entity of (商品カテゴリ)PRODUCT_CATEGORY as TABLE. <br>
  * 商品のカテゴリを表現するマスタ。自己参照FKの階層になっている。
- * <pre>
- * [primary-key]
- *     PRODUCT_CATEGORY_CODE
- *
- * [column]
- *     PRODUCT_CATEGORY_CODE, PRODUCT_CATEGORY_NAME, PARENT_CATEGORY_CODE
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     PRODUCT_CATEGORY
- *
- * [referrer table]
- *     PRODUCT, PRODUCT_CATEGORY
- *
- * [foreign property]
- *     productCategorySelf
- *
- * [referrer property]
- *     productList, productCategorySelfList
- *
- * [get/set template]
- * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
- * String productCategoryCode = entity.getProductCategoryCode();
- * String productCategoryName = entity.getProductCategoryName();
- * String parentCategoryCode = entity.getParentCategoryCode();
- * entity.setProductCategoryCode(productCategoryCode);
- * entity.setProductCategoryName(productCategoryName);
- * entity.setParentCategoryCode(parentCategoryCode);
- * = = = = = = = = = =/
- * </pre>
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsProductCategory extends AbstractEntity implements DomainEntity {

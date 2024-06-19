@@ -1,3 +1,18 @@
+/*
+ * Copyright 2015-2024 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.docksidestage.dbflute.resola.cbean.bs;
 
 import org.dbflute.cbean.AbstractConditionBean;
@@ -12,10 +27,10 @@ import org.dbflute.cbean.scoping.*;
 import org.dbflute.dbmeta.DBMetaProvider;
 import org.dbflute.twowaysql.factory.SqlAnalyzerFactory;
 import org.dbflute.twowaysql.style.BoundDateDisplayTimeZoneProvider;
-import org.docksidestage.dbflute.resola.allcommon.RsoDBFluteConfig;
-import org.docksidestage.dbflute.resola.allcommon.RsoDBMetaInstanceHandler;
-import org.docksidestage.dbflute.resola.allcommon.RsoImplementedInvokerAssistant;
-import org.docksidestage.dbflute.resola.allcommon.RsoImplementedSqlClauseCreator;
+import org.docksidestage.dbflute.resola.allcommon.ResolaDBFluteConfig;
+import org.docksidestage.dbflute.resola.allcommon.ResolaDBMetaInstanceHandler;
+import org.docksidestage.dbflute.resola.allcommon.ResolaImplementedInvokerAssistant;
+import org.docksidestage.dbflute.resola.allcommon.ResolaImplementedSqlClauseCreator;
 import org.docksidestage.dbflute.resola.cbean.*;
 import org.docksidestage.dbflute.resola.cbean.cq.*;
 
@@ -34,23 +49,23 @@ public class BsStationCB extends AbstractConditionBean {
     //                                                                         Constructor
     //                                                                         ===========
     public BsStationCB() {
-        if (RsoDBFluteConfig.getInstance().isPagingCountLater()) {
+        if (ResolaDBFluteConfig.getInstance().isPagingCountLater()) {
             enablePagingCountLater();
         }
-        if (RsoDBFluteConfig.getInstance().isPagingCountLeastJoin()) {
+        if (ResolaDBFluteConfig.getInstance().isPagingCountLeastJoin()) {
             enablePagingCountLeastJoin();
         }
-        if (RsoDBFluteConfig.getInstance().isNonSpecifiedColumnAccessAllowed()) {
+        if (ResolaDBFluteConfig.getInstance().isNonSpecifiedColumnAccessAllowed()) {
             enableNonSpecifiedColumnAccess();
         }
-        if (RsoDBFluteConfig.getInstance().isSpecifyColumnRequired()) {
+        if (ResolaDBFluteConfig.getInstance().isSpecifyColumnRequired()) {
             enableSpecifyColumnRequired();
         }
-        xsetSpecifyColumnRequiredExceptDeterminer(RsoDBFluteConfig.getInstance().getSpecifyColumnRequiredExceptDeterminer());
-        if (RsoDBFluteConfig.getInstance().isSpecifyColumnRequiredWarningOnly()) {
+        xsetSpecifyColumnRequiredExceptDeterminer(ResolaDBFluteConfig.getInstance().getSpecifyColumnRequiredExceptDeterminer());
+        if (ResolaDBFluteConfig.getInstance().isSpecifyColumnRequiredWarningOnly()) {
             xenableSpecifyColumnRequiredWarningOnly();
         }
-        if (RsoDBFluteConfig.getInstance().isQueryUpdateCountPreCheck()) {
+        if (ResolaDBFluteConfig.getInstance().isQueryUpdateCountPreCheck()) {
             enableQueryUpdateCountPreCheck();
         }
     }
@@ -60,11 +75,11 @@ public class BsStationCB extends AbstractConditionBean {
     //                                                                           =========
     @Override
     protected SqlClause createSqlClause() {
-        SqlClauseCreator creator = RsoDBFluteConfig.getInstance().getSqlClauseCreator();
+        SqlClauseCreator creator = ResolaDBFluteConfig.getInstance().getSqlClauseCreator();
         if (creator != null) {
             return creator.createSqlClause(this);
         }
-        return new RsoImplementedSqlClauseCreator().createSqlClause(this); // as default
+        return new ResolaImplementedSqlClauseCreator().createSqlClause(this); // as default
     }
 
     // ===================================================================================
@@ -72,7 +87,7 @@ public class BsStationCB extends AbstractConditionBean {
     //                                                                             =======
     @Override
     protected DBMetaProvider getDBMetaProvider() {
-        return RsoDBMetaInstanceHandler.getProvider(); // as default
+        return ResolaDBMetaInstanceHandler.getProvider(); // as default
     }
 
     public String asTableDbName() {
@@ -428,15 +443,15 @@ public class BsStationCB extends AbstractConditionBean {
     //                                                                          ==========
     @Override
     protected SqlAnalyzerFactory getSqlAnalyzerFactory()
-    { return new RsoImplementedInvokerAssistant().assistSqlAnalyzerFactory(); }
+    { return new ResolaImplementedInvokerAssistant().assistSqlAnalyzerFactory(); }
     @Override
-    protected String getConfiguredLogDatePattern() { return RsoDBFluteConfig.getInstance().getLogDatePattern(); }
+    protected String getConfiguredLogDatePattern() { return ResolaDBFluteConfig.getInstance().getLogDatePattern(); }
     @Override
-    protected String getConfiguredLogTimestampPattern() { return RsoDBFluteConfig.getInstance().getLogTimestampPattern(); }
+    protected String getConfiguredLogTimestampPattern() { return ResolaDBFluteConfig.getInstance().getLogTimestampPattern(); }
     @Override
-    protected String getConfiguredLogTimePattern() { return RsoDBFluteConfig.getInstance().getLogTimePattern(); }
+    protected String getConfiguredLogTimePattern() { return ResolaDBFluteConfig.getInstance().getLogTimePattern(); }
     @Override
-    protected BoundDateDisplayTimeZoneProvider getConfiguredLogTimeZoneProvider() { return RsoDBFluteConfig.getInstance().getLogTimeZoneProvider(); }
+    protected BoundDateDisplayTimeZoneProvider getConfiguredLogTimeZoneProvider() { return ResolaDBFluteConfig.getInstance().getLogTimeZoneProvider(); }
 
     // ===================================================================================
     //                                                                       Meta Handling

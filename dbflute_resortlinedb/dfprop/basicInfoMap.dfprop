@@ -41,21 +41,21 @@ map:{
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # o targetLanguage: (Required)
-    #  The target language.
+    #  The target language for generated classes.
     #  Your possible choices are:
-    #
+    # 
     #       java, csharp, scala
-    #
+    # 
     ; targetLanguage = java
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # o targetContainer: (Required)
-    #  The target DI container.
+    #  The target DI container for DBFlute components.
     #  Your possible choices are:
-    #
-    #       spring, guice, seasar, cdi, lasta_di
-    #
+    # 
+    #       spring, guice, cdi, seasar, lasta_di
+    # 
     ; targetContainer = lasta_di
     # - - - - - - - - - -/
 
@@ -125,7 +125,7 @@ map:{
     #    [true]
     #      The table name is camel case.
     #      e.g. If the table name is 'OrderDetail', the class name is 'OrderDetail'.
-    #
+    # 
     #    [false]
     #      e.g. If the table name is 'ORDER_DETAIL', the class name is 'OrderDetail'.
     #      e.g. If the table name is 'OrderDetail', the class name is 'Orderdetail'.
@@ -140,7 +140,7 @@ map:{
     #    [true]
     #      The column name is camel case.
     #      e.g. If the column name is 'OrderDetailId', the class name is 'OrderDetailId'.
-    #
+    # 
     #    [false]
     #      e.g. If the column name is 'ORDER_DETAIL_ID', the class name is 'OrderDetailId'.
     #      e.g. If the column name is 'OrderDetailId',  the class name is 'Orderdetailid'.
@@ -162,7 +162,7 @@ map:{
     #  It may be needed if multiple DB structure, to identify allcommon.
     #  (Use this instead of projectPrefix)
     #
-    ; allcommonPrefix = Rso
+    ; allcommonPrefix = Resola
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -186,7 +186,7 @@ map:{
     #  The line separator setting for source code of generated classes.
     #   LF   -> converted to LF
     #   CRLF -> converted to CRLF
-    #   (no setting) -> no convert (template default is CRLF)
+    #   (no setting) -> no convert (template files are basically LF)
     #
     #; sourceCodeLineSeparator = LF
     # - - - - - - - - - -/
