@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import javax.validation.ConstraintViolation;
 
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.logic.context.AccessContextLogic;
-import org.docksidestage.app.logic.i18n.I18nDateLogic;
 import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.docksidestage.bizfw.crosslogin.CrossLoginBridge;
@@ -57,18 +56,27 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    // -----------------------------------------------------
+    //                                                 Basic
+    //                                                 -----
     @Resource
     private RequestManager requestManager;
     @Resource
     private FortressConfig fortressConfig;
     @Resource
-    private CrossLoginBridge crossLoginTransfer;
-    @Resource
     private FortressLoginAssist loginAssist;
     @Resource
     private AccessContextLogic accessContextLogic;
+
+    // -----------------------------------------------------
+    //                                           Cross Login
+    //                                           -----------
     @Resource
-    private I18nDateLogic i18nDateLogic;
+    private CrossLoginBridge crossLoginBridge;
+
+    // -----------------------------------------------------
+    //                                            CSRF Token
+    //                                            ----------
     @Resource
     private CsrfTokenAssist csrfTokenAssist;
 
@@ -89,6 +97,9 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // ===================================================================================
     //                                                                               Hook
     //                                                                              ======
+    // -----------------------------------------------------
+    //                                              God Hand
+    //                                              --------
     // to suppress unexpected override by sub-class
     // you should remove the 'final' if you need to override this
     @Override
@@ -106,11 +117,15 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
         super.godHandEpilogue(runtime);
     }
 
+    // -----------------------------------------------------
+    //                                             Your Hook
+    //                                             ---------
     // #app_customize you can customize the action hook
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
-        csrfTokenAssist.hookBefore(runtime);
-        crossLoginTransfer.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
+        crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
+        csrfTokenAssist.hookBefore(runtime); // outsdie just decision-making
+
         return super.hookBefore(runtime);
     }
 
@@ -121,8 +136,9 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
                 return new FortressHeaderBean(userBean);
             }).orElse(FortressHeaderBean.empty()));
         }
-        csrfTokenAssist.hookFinally(runtime);
         super.hookFinally(runtime);
+
+        csrfTokenAssist.hookFinally(runtime); // outsdie fitting with before
     }
 
     // ===================================================================================

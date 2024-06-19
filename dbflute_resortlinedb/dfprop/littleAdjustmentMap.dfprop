@@ -38,6 +38,7 @@ map:{
     # o isAvailableAddingCatalogToTableSqlName: (NotRequired - Default false)
     #   [true]
     #     Add catalog to table SQL name. (The table name on query is CATALOG.SCHEMA.TABLE)
+    #     This property works only when isAvailableAddingSchemaToTableSqlName is true.
     #
     #; isAvailableAddingCatalogToTableSqlName = false
     # - - - - - - - - - -/
@@ -67,7 +68,7 @@ map:{
     #   LOGGING   - logging only when found (exception if ReplaceSchema)
     #   ALLOWED   - no action
     #
-    #; classificationUndefinedHandlingType = LOGGING
+    ; classificationUndefinedHandlingType = EXCEPTION
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,7 +76,7 @@ map:{
     #   [true]
     #     Convert empty-string data to null in entity.
     #
-    #; isEntityConvertEmptyStringToNull = false
+    ; isEntityConvertEmptyStringToNull = true
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -113,7 +114,7 @@ map:{
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    # o extendedDBFluteInitializerClass: (NotRequired - Default null)
+    # o extendedDBFluteInitializerClass: (NotRequired - Default '')
     #  If you want to extend the embedded DBFlute initializer,
     #  specify the class name of your original initializer
     #  that extends the embedded one.
@@ -135,14 +136,16 @@ map:{
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # o quoteTableNameList: (NotRequired - Default list:{})
-    #  The list of table DB names that need to be quoted. Specified tables is quoted on auto-generated SQL.
+    #  The list of table DB names that need to be quoted.
+    #  Specified tables is quoted on auto-generated SQL.
     #
     #; quoteTableNameList = list:{}
     # - - - - - - - - - -/
 
     # /- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # o quoteColumnNameList: (NotRequired - Default list:{})
-    #  The list of column DB names that need to be quoted. Specified columns is quoted on auto-generated SQL.
+    #  The list of column DB names that need to be quoted.
+    #  Specified columns is quoted on auto-generated SQL.
     #
     #; quoteColumnNameList = list:{}
     # - - - - - - - - - -/

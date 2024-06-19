@@ -1,3 +1,18 @@
+/*
+ * Copyright 2015-2024 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.docksidestage.dbflute.resola.bsentity.dbmeta;
 
 import java.util.List;
@@ -28,10 +43,10 @@ public class StationDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                       Current DBDef
     //                                                                       =============
-    public String getProjectName() { return RsoDBCurrent.getInstance().projectName(); }
-    public String getProjectPrefix() { return RsoDBCurrent.getInstance().projectPrefix(); }
-    public String getGenerationGapBasePrefix() { return RsoDBCurrent.getInstance().generationGapBasePrefix(); }
-    public DBDef getCurrentDBDef() { return RsoDBCurrent.getInstance().currentDBDef(); }
+    public String getProjectName() { return ResolaDBCurrent.getInstance().projectName(); }
+    public String getProjectPrefix() { return ResolaDBCurrent.getInstance().projectPrefix(); }
+    public String getGenerationGapBasePrefix() { return ResolaDBCurrent.getInstance().generationGapBasePrefix(); }
+    public DBDef getCurrentDBDef() { return ResolaDBCurrent.getInstance().currentDBDef(); }
 
     // ===================================================================================
     //                                                                    Property Gateway
@@ -58,7 +73,7 @@ public class StationDbm extends AbstractDBMeta {
     protected final String _tableDispName = "STATION";
     protected final String _tablePropertyName = "station";
     protected final TableSqlName _tableSqlName = new TableSqlName("STATION", _tableDbName);
-    { _tableSqlName.xacceptFilter(RsoDBFluteConfig.getInstance().getTableSqlNameFilter()); }
+    { _tableSqlName.xacceptFilter(ResolaDBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }

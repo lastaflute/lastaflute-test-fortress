@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,10 +22,8 @@ import org.docksidestage.dbflute.allcommon.CDef;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.lastaflute.web.validation.Required;
 
-/**
- * @author jflute
- */
-public class WxLastametaBody {
+// without javadoc
+public class WxLastametaNocladocBody {
 
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // description can be identified for debug log (unknown variableName case)

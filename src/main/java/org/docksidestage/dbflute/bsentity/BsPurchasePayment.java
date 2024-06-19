@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,56 +32,6 @@ import org.docksidestage.dbflute.exentity.*;
  * The entity of (購入支払)PURCHASE_PAYMENT as TABLE. <br>
  * 購入に対する支払。<br>
  * 分割払いもできるのでmanyとなり、会員からの孫テーブルのテストができてうれしい。
- * <pre>
- * [primary-key]
- *     PURCHASE_PAYMENT_ID
- *
- * [column]
- *     PURCHASE_PAYMENT_ID, PURCHASE_ID, PAYMENT_AMOUNT, PAYMENT_DATETIME, PAYMENT_METHOD_CODE, REGISTER_DATETIME, REGISTER_USER, UPDATE_DATETIME, UPDATE_USER
- *
- * [sequence]
- *     
- *
- * [identity]
- *     PURCHASE_PAYMENT_ID
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     PURCHASE
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     purchase
- *
- * [referrer property]
- *     
- *
- * [get/set template]
- * /= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
- * Long purchasePaymentId = entity.getPurchasePaymentId();
- * Long purchaseId = entity.getPurchaseId();
- * java.math.BigDecimal paymentAmount = entity.getPaymentAmount();
- * java.time.LocalDateTime paymentDatetime = entity.getPaymentDatetime();
- * String paymentMethodCode = entity.getPaymentMethodCode();
- * java.time.LocalDateTime registerDatetime = entity.getRegisterDatetime();
- * String registerUser = entity.getRegisterUser();
- * java.time.LocalDateTime updateDatetime = entity.getUpdateDatetime();
- * String updateUser = entity.getUpdateUser();
- * entity.setPurchasePaymentId(purchasePaymentId);
- * entity.setPurchaseId(purchaseId);
- * entity.setPaymentAmount(paymentAmount);
- * entity.setPaymentDatetime(paymentDatetime);
- * entity.setPaymentMethodCode(paymentMethodCode);
- * entity.setRegisterDatetime(registerDatetime);
- * entity.setRegisterUser(registerUser);
- * entity.setUpdateDatetime(updateDatetime);
- * entity.setUpdateUser(updateUser);
- * = = = = = = = = = =/
- * </pre>
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsPurchasePayment extends AbstractEntity implements DomainEntity, EntityDefinedCommonColumn {

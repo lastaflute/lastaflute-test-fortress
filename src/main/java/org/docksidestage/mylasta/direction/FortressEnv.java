@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ public interface FortressEnv {
     /** The key of the configuration. e.g. com.mysql.cj.jdbc.Driver */
     String JDBC_DRIVER = "jdbc.driver";
 
-    /** The key of the configuration. e.g. jdbc:mysql://localhost:3306/maihamadb */
+    /** The key of the configuration. e.g. jdbc:mysql://localhost:3306/maihamadb?allowPublicKeyRetrieval=true&amp;useSSL=false */
     String JDBC_URL = "jdbc.url";
 
     /** The key of the configuration. e.g. maihamadb */
@@ -80,7 +80,7 @@ public interface FortressEnv {
     /** The key of the configuration. e.g. com.mysql.cj.jdbc.Driver */
     String RESOLA_JDBC_DRIVER = "resola.jdbc.driver";
 
-    /** The key of the configuration. e.g. jdbc:mysql://localhost:3306/resortlinedb */
+    /** The key of the configuration. e.g. jdbc:mysql://localhost:3306/resortlinedb?allowPublicKeyRetrieval=true&amp;useSSL=false */
     String RESOLA_JDBC_URL = "resola.jdbc.url";
 
     /** The key of the configuration. e.g. resortlinedb */
@@ -282,7 +282,7 @@ public interface FortressEnv {
 
     /**
      * Get the value for the key 'jdbc.url'. <br>
-     * The value is, e.g. jdbc:mysql://localhost:3306/maihamadb <br>
+     * The value is, e.g. jdbc:mysql://localhost:3306/maihamadb?allowPublicKeyRetrieval=true&amp;useSSL=false <br>
      * comment: The URL of database connection for JDBC
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */
@@ -331,7 +331,7 @@ public interface FortressEnv {
 
     /**
      * Get the value for the key 'resola.jdbc.url'. <br>
-     * The value is, e.g. jdbc:mysql://localhost:3306/resortlinedb <br>
+     * The value is, e.g. jdbc:mysql://localhost:3306/resortlinedb?allowPublicKeyRetrieval=true&amp;useSSL=false <br>
      * comment: The URL of database connection for JDBC
      * @return The value of found property. (NotNull: if not found, exception but basically no way)
      */

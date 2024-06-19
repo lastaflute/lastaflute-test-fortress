@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,35 +22,7 @@ import org.docksidestage.dbflute.exbhv.*;
 import org.docksidestage.dbflute.exentity.*;
 
 /**
- * The referrer loader of (会員フォローイング)MEMBER_FOLLOWING as TABLE. <br>
- * <pre>
- * [primary key]
- *     MEMBER_FOLLOWING_ID
- *
- * [column]
- *     MEMBER_FOLLOWING_ID, MY_MEMBER_ID, YOUR_MEMBER_ID, FOLLOW_DATETIME
- *
- * [sequence]
- *     
- *
- * [identity]
- *     MEMBER_FOLLOWING_ID
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     MEMBER
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     memberByMyMemberId, memberByYourMemberId
- *
- * [referrer property]
- *     
- * </pre>
+ * The referrer loader of (会員フォローイング)MEMBER_FOLLOWING as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public class LoaderOfMemberFollowing {

@@ -40,13 +40,13 @@ public class WithdrawalAction extends FortressBaseAction {
 
     @Execute
     public HtmlResponse confirm(WithdrawalForm form) {
-        validate(form, messages -> moreValidation(form, messages), () -> {
+        validate(form, messages -> moreValidate(form, messages), () -> {
             return asEntryHtml();
         });
         return asConfirmHtml();
     }
 
-    private void moreValidation(WithdrawalForm form, FortressMessages messages) {
+    private void moreValidate(WithdrawalForm form, FortressMessages messages) {
         if (form.selectedReason == null && LaStringUtil.isEmpty(form.reasonInput)) {
             messages.addConstraintsRequiredMessage("selectedReason");
         }

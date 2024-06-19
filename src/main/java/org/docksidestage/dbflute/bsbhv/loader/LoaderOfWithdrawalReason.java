@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2021 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,35 +24,7 @@ import org.docksidestage.dbflute.exentity.*;
 import org.docksidestage.dbflute.cbean.*;
 
 /**
- * The referrer loader of (退会理由)WITHDRAWAL_REASON as TABLE. <br>
- * <pre>
- * [primary key]
- *     WITHDRAWAL_REASON_CODE
- *
- * [column]
- *     WITHDRAWAL_REASON_CODE, WITHDRAWAL_REASON_TEXT, DISPLAY_ORDER
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     MEMBER_WITHDRAWAL
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     memberWithdrawalList
- * </pre>
+ * The referrer loader of (退会理由)WITHDRAWAL_REASON as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public class LoaderOfWithdrawalReason {

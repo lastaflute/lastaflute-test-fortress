@@ -1,3 +1,18 @@
+/*
+ * Copyright 2015-2024 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.docksidestage.dbflute.resola.allcommon;
 
 import java.lang.reflect.Field;
@@ -35,16 +50,16 @@ import org.lastaflute.di.exception.SQLRuntimeException;
 /**
  * @author DBFlute(AutoGenerator)
  */
-public class RsoDBFluteConfig {
+public class ResolaDBFluteConfig {
 
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
     /** The logger instance for this class. (NotNull) */
-    private static final Logger _log = LoggerFactory.getLogger(RsoDBFluteConfig.class);
+    private static final Logger _log = LoggerFactory.getLogger(ResolaDBFluteConfig.class);
 
     /** Singleton instance. */
-    private static final RsoDBFluteConfig _instance = new RsoDBFluteConfig();
+    private static final ResolaDBFluteConfig _instance = new ResolaDBFluteConfig();
 
     // ===================================================================================
     //                                                                           Attribute
@@ -116,7 +131,7 @@ public class RsoDBFluteConfig {
     /**
      * Constructor.
      */
-    private RsoDBFluteConfig() { // adjusts default settings
+    private ResolaDBFluteConfig() { // adjusts default settings
         _physicalConnectionDigger = new ImplementedPhysicalConnectionDigger();
         _sqlExceptionDigger = new ImplementedSQLExceptionDigger();
     }
@@ -128,7 +143,7 @@ public class RsoDBFluteConfig {
      * Get singleton instance.
      * @return Singleton instance. (NotNull)
      */
-    public static RsoDBFluteConfig getInstance() {
+    public static ResolaDBFluteConfig getInstance() {
         return _instance;
     }
 
@@ -869,11 +884,11 @@ public class RsoDBFluteConfig {
     //                                                                       Assist Helper
     //                                                                       =============
     protected DBDef currentDBDef() {
-        return RsoDBCurrent.getInstance().currentDBDef();
+        return ResolaDBCurrent.getInstance().currentDBDef();
     }
 
     protected boolean isCurrentDBDef(DBDef currentDBDef) {
-        return RsoDBCurrent.getInstance().isCurrentDBDef(currentDBDef);
+        return ResolaDBCurrent.getInstance().isCurrentDBDef(currentDBDef);
     }
 
     // ===================================================================================

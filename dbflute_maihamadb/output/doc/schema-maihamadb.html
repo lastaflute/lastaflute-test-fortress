@@ -443,6 +443,7 @@ pre.spolicyviodisp {
 <p class="sublink">
  <a href="#cdef">Classification Definition</a>
 | <a href="#arrangequery">ArrangeQuery List</a>
+| <a href="#outsidesql">OutsideSql List</a>
 | <a href="#procedure">Procedure List</a>
 | <a href="#schemapolicy">Schema Policy</a>
 | <a href="#diagram">Schema Diagram</a>
@@ -2527,6 +2528,7 @@ pre.spolicyviodisp {
 
 <h2 id="purchase" title="type=TABLE, primaryKey={PURCHASE_ID}, nameLength=8, columnCount=12">
 (購入)PURCHASE
+&nbsp;<span class="bqpcount"><a href="#purchase_sql">(outsideSql=1)</a></span>
 </h2>
 <div class="tablecomment purchase_comment" data-name="purchase"><pre>一つの商品に対する購入を表現する(購入履歴とも言える)。
 実業務であれば購入詳細というテーブルを作り、「購入という行為」と「その中身（詳細）」を違う粒度のデータとしてそれぞれ管理するのが一般的と言えるでしょう。というか、注文とか請求とかそういうことを考え始めたらもっと複雑になるはずですが、ExampleDBということで割り切っています。</pre></div>
@@ -3493,17 +3495,17 @@ pre.spolicyviodisp {
 			<tr>
 				<td>HEB</td>
 				<td>Herb</td>
-				<td class="commentcell">0</td>
-			</tr>
-			<tr>
-				<td>INS</td>
-				<td>Instruments</td>
-				<td class="commentcell">0</td>
+				<td class="commentcell">of&nbsp;Food</td>
 			</tr>
 			<tr>
 				<td>MCD</td>
 				<td>MusicCD</td>
-				<td class="commentcell">0</td>
+				<td class="commentcell">of&nbsp;Music</td>
+			</tr>
+			<tr>
+				<td>INS</td>
+				<td>Instruments</td>
+				<td class="commentcell">of&nbsp;Music</td>
 			</tr>
 			</table>
 		</td>
@@ -3609,6 +3611,20 @@ pre.spolicyviodisp {
 	<dd>&nbsp;</dd>
 	<dt>arrangeLoginByIdentity() <span class="commentdesc">// Arrange member login query by identity.</span></dt>
 	<dd>&nbsp;</dd>
+</dl>
+<h2 id="outsidesql">OutsideSql List</h2>
+<h3 id="purchase_sql"><a href="#purchase">PURCHASE</a></h3>
+<dl class="bqplist">
+	<dt>(Example&nbsp;for&nbsp;group-by&nbsp;on&nbsp;MySQL-5.6)selectMemberMonthlyPurchase</dt>
+	<dd>
+		<pre class="commentdesc"> This SQL is an example for group-by of outsideSql.
+ DBFlute functions are not related to group-by, purely SQL example.</pre>
+	</dd>
+	<dd class="subinfo">
+		<span class="file">PurchaseBhv_selectMemberMonthlyPurchase.sql</span>
+		<span class="ctet">(df:entity)</span>
+		<span class="pmb">(df:pmb)</span>
+	</dd>
 </dl>
 <h2 id="procedure">Procedure</h2>
 

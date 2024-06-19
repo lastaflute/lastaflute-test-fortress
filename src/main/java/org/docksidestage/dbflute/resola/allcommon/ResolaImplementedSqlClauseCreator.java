@@ -1,3 +1,18 @@
+/*
+ * Copyright 2015-2024 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.docksidestage.dbflute.resola.allcommon;
 
 import org.dbflute.cbean.ConditionBean;
@@ -10,7 +25,7 @@ import org.dbflute.dbway.DBDef;
  * The creator of SQL clause.
  * @author DBFlute(AutoGenerator)
  */
-public class RsoImplementedSqlClauseCreator implements SqlClauseCreator {
+public class ResolaImplementedSqlClauseCreator implements SqlClauseCreator {
 
     // ===================================================================================
     //                                                                      Implementation
@@ -128,11 +143,11 @@ public class RsoImplementedSqlClauseCreator implements SqlClauseCreator {
     //                                                                           Supporter
     //                                                                           =========
     protected DBMetaProvider getDBMetaProvider() {
-        return RsoDBMetaInstanceHandler.getProvider();
+        return ResolaDBMetaInstanceHandler.getProvider();
     }
 
     protected GearedCipherManager getGearedCipherManager() {
-        return RsoDBFluteConfig.getInstance().getGearedCipherManager();
+        return ResolaDBFluteConfig.getInstance().getGearedCipherManager();
     }
 
     // ===================================================================================
@@ -218,42 +233,42 @@ public class RsoImplementedSqlClauseCreator implements SqlClauseCreator {
     //                                                                       Determination
     //                                                                       =============
     protected boolean isCurrentDBDef(DBDef currentDBDef) {
-        return RsoDBCurrent.getInstance().isCurrentDBDef(currentDBDef);
+        return ResolaDBCurrent.getInstance().isCurrentDBDef(currentDBDef);
     }
 
     protected boolean isInnerJoinAutoDetect() {
-        return RsoDBFluteConfig.getInstance().isInnerJoinAutoDetect();
+        return ResolaDBFluteConfig.getInstance().isInnerJoinAutoDetect();
     }
 
     protected boolean isThatsBadTimingDetect() {
-        return RsoDBFluteConfig.getInstance().isThatsBadTimingDetect();
+        return ResolaDBFluteConfig.getInstance().isThatsBadTimingDetect();
     }
 
     protected boolean isNullOrEmptyQueryAllowed() {
-        return RsoDBFluteConfig.getInstance().isNullOrEmptyQueryAllowed();
+        return ResolaDBFluteConfig.getInstance().isNullOrEmptyQueryAllowed();
     }
 
     protected boolean isEmptyStringQueryAllowed() {
-        return RsoDBFluteConfig.getInstance().isEmptyStringQueryAllowed();
+        return ResolaDBFluteConfig.getInstance().isEmptyStringQueryAllowed();
     }
 
     protected boolean isOverridingQueryAllowed() {
-        return RsoDBFluteConfig.getInstance().isOverridingQueryAllowed();
+        return ResolaDBFluteConfig.getInstance().isOverridingQueryAllowed();
     }
 
     protected boolean isColumnNullObjectAllowed() {
-        return RsoDBFluteConfig.getInstance().isColumnNullObjectAllowed();
+        return ResolaDBFluteConfig.getInstance().isColumnNullObjectAllowed();
     }
 
     protected boolean isColumnNullObjectGearedToSpecify() {
-        return RsoDBFluteConfig.getInstance().isColumnNullObjectGearedToSpecify();
+        return ResolaDBFluteConfig.getInstance().isColumnNullObjectGearedToSpecify();
     }
 
     protected boolean isDatetimePrecisionTruncationOfCondition() {
-        return RsoDBFluteConfig.getInstance().isDatetimePrecisionTruncationOfCondition();
+        return ResolaDBFluteConfig.getInstance().isDatetimePrecisionTruncationOfCondition();
     }
 
     protected boolean isDisableSelectIndex() {
-        return RsoDBFluteConfig.getInstance().isDisableSelectIndex();
+        return ResolaDBFluteConfig.getInstance().isDisableSelectIndex();
     }
 }
