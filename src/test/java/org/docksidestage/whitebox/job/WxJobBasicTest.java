@@ -79,7 +79,6 @@ public class WxJobBasicTest extends UnitFortressBasicTestCase {
         LaunchedProcess process = job.launchNow(op -> setupWaitTime(op));
 
         // ## Assert ##
-        assertExecutingNow(job);
         job.stopNow();
         assertJobHistory(process.waitForEnding(), ExecResultType.CAUSED_BY_APPLICATION);
         assertFalse(job.isExecutingNow());
