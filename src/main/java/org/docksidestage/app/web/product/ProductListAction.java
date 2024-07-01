@@ -19,13 +19,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
+import javax.transaction.SystemException;
 
 import org.dbflute.cbean.result.PagingResultBean;
+import org.dbflute.hook.AccessContext;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
 import org.docksidestage.dbflute.exentity.Product;
+import org.lastaflute.db.dbflute.accesscontext.PreparedAccessContext;
+import org.lastaflute.jta.core.LaUserTransaction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
@@ -44,6 +48,14 @@ public class ProductListAction extends FortressBaseAction {
     @Resource
     private PagingAssist pagingAssist;
 
+    @Resource
+    private LaUserTransaction userTransaction;
+
+    @Override
+    protected boolean isUseLazyTransaction() {
+        return true; // change for test
+    }
+
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
@@ -52,6 +64,8 @@ public class ProductListAction extends FortressBaseAction {
         validate(form, messages -> {}, () -> {
             return asHtml(path_Product_ProductListHtml);
         });
+
+        verifyAccessContextLifecycle();
 
         PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
         List<ProductSearchRowBean> beans = page.stream().map(product -> {
@@ -62,6 +76,36 @@ public class ProductListAction extends FortressBaseAction {
             data.register("beans", beans);
             pagingAssist.registerPagingNavi(data, page, form);
         });
+    }
+
+    private void verifyAccessContextLifecycle() {
+        // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+        // AccessContext lifecycle in LazyTransaction (2024/07/02)
+        // _/_/_/_/_/_/_/_/_/_/
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@");
+        try {
+            // 0: STATUS_ACTIVE
+            // 6: STATUS_NO_TRANSACTION
+            // should be 6 (STATUS_NO_TRANSACTION) if lazyTx
+            System.out.println("@@@: " + userTransaction.getStatus());
+        } catch (SystemException e) {
+            System.out.println("@@@: error => " + e.getClass().getName() + " :: " + e.getMessage());
+        }
+
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println("@@@: onThread=" + AccessContext.getAccessLocalDateTimeOnThread());
+        AccessContext context = AccessContext.getAccessContextOnThread();
+        if (context != null) {
+            System.out.println("@@@: context.datetime=" + context.getAccessLocalDateTime());
+            System.out.println("@@@: context.provider=" + context.getAccessLocalDateTimeProvider());
+        }
+
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@");
+        AccessContext prepared = PreparedAccessContext.getAccessContextOnThread();
+        if (prepared != null) {
+            System.out.println("@@@: prepared.datetime=" + prepared.getAccessLocalDateTime());
+            System.out.println("@@@: prepared.provider=" + prepared.getAccessLocalDateTimeProvider());
+        }
     }
 
     // #hope showDerived() as JsonResponse by jflute (2016/08/08)
