@@ -18,6 +18,7 @@ package org.docksidestage.app.web.base;
 import javax.annotation.Resource;
 import javax.validation.ConstraintViolation;
 
+import org.dbflute.hook.CallbackContext;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
@@ -30,6 +31,7 @@ import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.core.message.supplier.UserMessagesCreator;
 import org.lastaflute.db.dbflute.accesscontext.AccessContextArranger;
+import org.lastaflute.db.jta.lazytx.LazyTransactionArranger;
 import org.lastaflute.web.TypicalAction;
 import org.lastaflute.web.login.LoginManager;
 import org.lastaflute.web.response.ActionResponse;
@@ -52,6 +54,9 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
 
     /** The user type for Member, e.g. used by access context. */
     protected static final String USER_TYPE = "M";
+
+    // #lazyTx
+    private static final LazyTransactionArranger lazyTransactionArranger = new LazyTransactionArranger();
 
     // ===================================================================================
     //                                                                           Attribute
@@ -126,6 +131,13 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
         crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
         csrfTokenAssist.hookBefore(runtime); // outsdie just decision-making
 
+        // #lazyTx
+        if (isUseLazyTransaction()) {
+            lazyTransactionArranger.readyLazyTransaction(hook -> {
+                CallbackContext.setBehaviorCommandHookOnThread(hook);
+            });
+        }
+
         return super.hookBefore(runtime);
     }
 
@@ -136,9 +148,26 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
                 return new FortressHeaderBean(userBean);
             }).orElse(FortressHeaderBean.empty()));
         }
+        if (isUseLazyTransaction()) {
+            lazyTransactionArranger.closeLazyTransaction();
+        }
+        CallbackContext.clearBehaviorCommandHookOnThread(); // 安全のためにLazyTransactionに関わらず必ずclearしておく
+
         super.hookFinally(runtime);
 
         csrfTokenAssist.hookFinally(runtime); // outsdie fitting with before
+    }
+
+    /**
+     * LazyTransactionを使うかどうか？ <br>
+     * LazyTransactionとは、更新時に初めて実際のTransactionを開始する機能で、<br>
+     * Transactionかかっていたら問答無用にmasterに割り振る Atlas+Percona 対応。<br>
+     * もし、アプリで Atlas+Percona を使うようであれば、オーバーライドしてtrueに。<br>
+     * 加えて、jta+transactionManagerAdapter.xml と jta+userTransaction.xml を用意すること。
+     * @return trueならLazyTransaction使う
+     */
+    protected boolean isUseLazyTransaction() {
+        return true;
     }
 
     // ===================================================================================
