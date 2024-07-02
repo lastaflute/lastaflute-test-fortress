@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +71,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     private AccessContextLogic accessContextLogic;
 
     // -----------------------------------------------------
-    //                                           Cross Login
+    //                                           Cross Login
     //                                           -----------
     @Resource
     private CrossLoginBridge crossLoginBridge;
@@ -134,7 +134,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
         crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
-        csrfTokenAssist.hookBefore(runtime); // using web resource e.g. session, response
+        csrfTokenAssist.hookBefore(runtime); // outsdie just decision-making
         beginSlaveBasis(runtime); // outside of lazyTx is recommended just in case
 
         return super.hookBefore(runtime);
@@ -150,7 +150,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
         super.hookFinally(runtime);
 
         endSlaveBasis(runtime);
-        csrfTokenAssist.hookFinally(runtime);
+        csrfTokenAssist.hookFinally(runtime); // outsdie fitting with before
     }
 
     // -----------------------------------------------------

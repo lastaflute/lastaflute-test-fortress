@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,35 +22,7 @@ import org.docksidestage.dbflute.exbhv.*;
 import org.docksidestage.dbflute.exentity.*;
 
 /**
- * The referrer loader of (会員ログイン)MEMBER_LOGIN as TABLE. <br>
- * <pre>
- * [primary key]
- *     MEMBER_LOGIN_ID
- *
- * [column]
- *     MEMBER_LOGIN_ID, MEMBER_ID, LOGIN_DATETIME, MOBILE_LOGIN_FLG, LOGIN_MEMBER_STATUS_CODE
- *
- * [sequence]
- *     
- *
- * [identity]
- *     MEMBER_LOGIN_ID
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     MEMBER, MEMBER_STATUS
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     member, memberStatus
- *
- * [referrer property]
- *     
- * </pre>
+ * The referrer loader of (会員ログイン)MEMBER_LOGIN as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public class LoaderOfMemberLogin {

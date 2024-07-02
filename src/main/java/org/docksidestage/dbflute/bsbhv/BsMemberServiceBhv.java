@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,35 +35,7 @@ import org.docksidestage.dbflute.bsentity.dbmeta.*;
 import org.docksidestage.dbflute.cbean.*;
 
 /**
- * The behavior of (会員サービス)MEMBER_SERVICE as TABLE. <br>
- * <pre>
- * [primary key]
- *     MEMBER_SERVICE_ID
- *
- * [column]
- *     MEMBER_SERVICE_ID, MEMBER_ID, SERVICE_POINT_COUNT, SERVICE_RANK_CODE, REGISTER_DATETIME, REGISTER_USER, UPDATE_DATETIME, UPDATE_USER, VERSION_NO
- *
- * [sequence]
- *     
- *
- * [identity]
- *     MEMBER_SERVICE_ID
- *
- * [version-no]
- *     VERSION_NO
- *
- * [foreign table]
- *     MEMBER, SERVICE_RANK
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     member, serviceRank
- *
- * [referrer property]
- *     
- * </pre>
+ * The behavior of (会員サービス)MEMBER_SERVICE as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public abstract class BsMemberServiceBhv extends AbstractBehaviorWritable<MemberService, MemberServiceCB> {
@@ -746,7 +718,7 @@ public abstract class BsMemberServiceBhv extends AbstractBehaviorWritable<Member
     /**
      * Delete the several entities by query. (NonExclusiveControl)
      * <pre>
-     * <span style="color: #0000C0">memberServiceBhv</span>.<span style="color: #CC4747">queryDelete</span>(memberService, <span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
+     * <span style="color: #0000C0">memberServiceBhv</span>.<span style="color: #CC4747">queryDelete</span>(<span style="color: #553000">cb</span> <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> {
      *     <span style="color: #553000">cb</span>.query().setFoo...
      * });
      * </pre>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +55,13 @@ public class LidoProductListAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
+    /**
+     * Returns list of products as paging. <br>
+     * This is the basic example for JSON API action.
+     * @param pageNumber The current page number for paging select. (NotNull)
+     * @param body The object for request body containing search condition. (NotNull)
+     * @return The JSON response having selected paging result. (NotNull)
+     */
     @Execute
     public JsonResponse<SearchPagingResult<ProductRowResult>> index(OptionalThing<Integer> pageNumber, ProductSearchBody body) {
         validateApi(body, messages -> {});
