@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,4 +70,28 @@ public abstract class UnitFortressBasicTestCase extends WebContainerTestCase {
         resortlineDBOnDemandMasterSlaveManager.endSlaveBasis(runtime);
         super.tearDown();
     }
+
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // [tips] how to enable master/slave access in also UnitTest environment
+    // (same implementation as ActionHook in your [App]BaseAction)
+    //
+    //@Resource
+    //private MaihamaDBAnnotationMasterSlaveManager maihamaDBAnnotationMasterSlaveManager;
+    //@Resource
+    //private ResortlineDBAnnotationMasterSlaveManager resortlineDBAnnotationMasterSlaveManager;
+    //
+    //@Override
+    //public void setUp() throws Exception {
+    //    super.setUp();
+    //    maihamaDBAnnotationMasterSlaveManager.beginSlaveBasis(getMockJsonRuntime());
+    //    resortlineDBAnnotationMasterSlaveManager.beginSlaveBasis(getMockJsonRuntime());
+    //}
+    //
+    //@Override
+    //public void tearDown() throws Exception {
+    //    maihamaDBAnnotationMasterSlaveManager.endSlaveBasis(getMockJsonRuntime());
+    //    resortlineDBAnnotationMasterSlaveManager.endSlaveBasis(getMockJsonRuntime());
+    //    super.tearDown();
+    //}
+    // _/_/_/_/_/_/_/_/_/_/
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -459,11 +459,12 @@ public class ImplementedInvokerAssistant implements InvokerAssistant {
     protected ResourceParameter createResourceParameter() {
         ResourceParameter parameter = newResourceParameter();
         parameter.setOutsideSqlPackage(DBFluteConfig.getInstance().getOutsideSqlPackage());
-        parameter.setMappingDateTimeZoneProvider(DBFluteConfig.getInstance().getMappingDateTimeZoneProvider());
+        parameter.setMappingDateTimeZoneProvider(DBFluteConfig.getInstance().getMappingDateTimeZoneProvider()); // since 1.1.0
         parameter.setLogDatePattern(DBFluteConfig.getInstance().getLogDatePattern());
         parameter.setLogTimestampPattern(DBFluteConfig.getInstance().getLogTimestampPattern());
         parameter.setLogTimePattern(DBFluteConfig.getInstance().getLogTimePattern());
         parameter.setLogTimeZoneProvider(DBFluteConfig.getInstance().getLogTimeZoneProvider());
+        parameter.setBehaviorLogMaskProvider(DBFluteConfig.getInstance().getBehaviorLogMaskProvider()); // since 1.2.7
         parameter.setInternalDebug(DBFluteConfig.getInstance().isInternalDebug());
         return parameter;
     }

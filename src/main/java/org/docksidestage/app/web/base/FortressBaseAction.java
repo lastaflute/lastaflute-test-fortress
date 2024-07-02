@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import javax.validation.ConstraintViolation;
 import org.dbflute.hook.CallbackContext;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.logic.context.AccessContextLogic;
-import org.docksidestage.app.logic.i18n.I18nDateLogic;
 import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.docksidestage.bizfw.crosslogin.CrossLoginBridge;
@@ -61,6 +60,9 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    // -----------------------------------------------------
+    //                                                 Basic
+    //                                                 -----
     @Resource
     private RequestManager requestManager;
     @Resource
@@ -69,13 +71,20 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     private FortressLoginAssist loginAssist;
     @Resource
     private AccessContextLogic accessContextLogic;
+
+    // -----------------------------------------------------
+    //                                           Cross Login
+    //                                           -----------
     @Resource
+<<<<<<< HEAD
     private I18nDateLogic i18nDateLogic;
 
     // -----------------------------------------------------
     //                                           Cross Login
     //                                           -----------
     @Resource
+=======
+>>>>>>> refs/heads/master
     private CrossLoginBridge crossLoginBridge;
 
     // -----------------------------------------------------
@@ -141,7 +150,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
         crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
-        csrfTokenAssist.hookBefore(runtime); // using web resources e.g. response, session
+        csrfTokenAssist.hookBefore(runtime); // outsdie just decision-making
         beginSlaveBasis(runtime); // outside of lazyTx is recommended just in case
         lazyTransactionArranger.readyLazyTransaction(hook -> {
             // eventually no problem about ordering with slave basis
@@ -163,7 +172,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
 
         lazyTransactionArranger.closeLazyTransaction();
         endSlaveBasis(runtime);
-        csrfTokenAssist.hookFinally(runtime);
+        csrfTokenAssist.hookFinally(runtime); // outsdie fitting with before
     }
 
     // -----------------------------------------------------

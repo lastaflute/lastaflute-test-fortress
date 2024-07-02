@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,35 +24,7 @@ import org.docksidestage.dbflute.exentity.*;
 import org.docksidestage.dbflute.cbean.*;
 
 /**
- * The referrer loader of (地域)REGION as TABLE. <br>
- * <pre>
- * [primary key]
- *     REGION_ID
- *
- * [column]
- *     REGION_ID, REGION_NAME
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     MEMBER_ADDRESS
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     memberAddressList
- * </pre>
+ * The referrer loader of (地域)REGION as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public class LoaderOfRegion {
