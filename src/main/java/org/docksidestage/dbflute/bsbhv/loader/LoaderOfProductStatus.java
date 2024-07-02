@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2022 the original author or authors.
+ * Copyright 2015-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,35 +24,7 @@ import org.docksidestage.dbflute.exentity.*;
 import org.docksidestage.dbflute.cbean.*;
 
 /**
- * The referrer loader of (商品ステータス)PRODUCT_STATUS as TABLE. <br>
- * <pre>
- * [primary key]
- *     PRODUCT_STATUS_CODE
- *
- * [column]
- *     PRODUCT_STATUS_CODE, PRODUCT_STATUS_NAME, DISPLAY_ORDER
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     PRODUCT
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     productList
- * </pre>
+ * The referrer loader of (商品ステータス)PRODUCT_STATUS as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public class LoaderOfProductStatus {

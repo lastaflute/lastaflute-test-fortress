@@ -3609,7 +3609,7 @@
       "url": "/lido/product/list/{pageNumber}",
       "typeName": "org.docksidestage.app.web.lido.product.LidoProductListAction",
       "simpleTypeName": "LidoProductListAction",
-      "description": "@author s.tadokoro",
+      "description": "@author s.tadokoro, Returns list of products as paging. \u003cbr\u003e",
       "typeComment": "@author s.tadokoro\n@author jflute",
       "fieldTypeDocMetaList": [
         {
@@ -3653,7 +3653,7 @@
         }
       ],
       "methodName": "index",
-      "methodComment": null,
+      "methodComment": "Returns list of products as paging. \u003cbr\u003e\nThis is the basic example for JSON API action.\n\n@param pageNumber The current page number for paging select. (NotNull)\n@param body The object for request body containing search condition. (NotNull)\n@return The JSON response having selected paging result. (NotNull)\n@throws EntityAlreadyDeletedException xxxx",
       "annotationList": [
         "AllowAnyoneAccess",
         "Execute"
@@ -3665,8 +3665,8 @@
           "typeName": "org.dbflute.optional.OptionalThing\u003cjava.lang.Integer\u003e",
           "simpleTypeName": "OptionalThing\u003cInteger\u003e",
           "value": null,
-          "description": null,
-          "comment": null,
+          "description": "The current page number for paging select.",
+          "comment": "The current page number for paging select. (NotNull)",
           "annotationList": [],
           "nestTypeDocMetaList": []
         }
@@ -3875,7 +3875,7 @@
           }
         ]
       },
-      "fileLineCount": 75,
+      "fileLineCount": 83,
       "methodLineCount": 11
     },
     {
@@ -22512,6 +22512,19 @@
           "comment": null,
           "annotationList": [],
           "nestTypeDocMetaList": []
+        },
+        {
+          "name": "requestManager",
+          "publicName": "requestManager",
+          "typeName": "org.lastaflute.web.servlet.request.RequestManager",
+          "simpleTypeName": "RequestManager",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
+          "nestTypeDocMetaList": []
         }
       ],
       "methodName": "index",
@@ -22533,8 +22546,8 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 32,
-      "methodLineCount": 3
+      "fileLineCount": 57,
+      "methodLineCount": 4
     },
     {
       "url": "/wx/request/multipart/upload",
@@ -22552,6 +22565,19 @@
           "description": null,
           "comment": null,
           "annotationList": [],
+          "nestTypeDocMetaList": []
+        },
+        {
+          "name": "requestManager",
+          "publicName": "requestManager",
+          "typeName": "org.lastaflute.web.servlet.request.RequestManager",
+          "simpleTypeName": "RequestManager",
+          "value": null,
+          "description": null,
+          "comment": null,
+          "annotationList": [
+            "Resource"
+          ],
           "nestTypeDocMetaList": []
         }
       ],
@@ -22620,8 +22646,8 @@
         "annotationList": [],
         "nestTypeDocMetaList": []
       },
-      "fileLineCount": 32,
-      "methodLineCount": 7
+      "fileLineCount": 57,
+      "methodLineCount": 9
     },
     {
       "url": "/wx/request/pathvar/string/{first}",
