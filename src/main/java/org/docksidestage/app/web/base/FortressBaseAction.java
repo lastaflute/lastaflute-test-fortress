@@ -76,15 +76,6 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     //                                           Cross Login
     //                                           -----------
     @Resource
-<<<<<<< HEAD
-    private I18nDateLogic i18nDateLogic;
-
-    // -----------------------------------------------------
-    //                                           Cross Login
-    //                                           -----------
-    @Resource
-=======
->>>>>>> refs/heads/master
     private CrossLoginBridge crossLoginBridge;
 
     // -----------------------------------------------------
