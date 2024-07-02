@@ -95,6 +95,9 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     // -----------------------------------------------------
     //                                      Lazy Transaction
     //                                      ----------------
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // on-demand master/slave is compatible with lazy-transaction 
+    // _/_/_/_/_/_/_/_/_/_/
     private final LazyTransactionArranger lazyTransactionArranger = new LazyTransactionArranger();
 
     // ===================================================================================
