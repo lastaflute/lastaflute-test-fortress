@@ -44,13 +44,13 @@ public class WxHibernateValidatorCustomTest extends PlainTestCase {
             log("vio: {}", vio);
             if ("sea".equals(vio.getPropertyPath().toString())) {
                 // custom annotation's message() has NotBlank message but inner annotation is prior
-                assertContains(vio.getMessage(), "length must be");
+                assertContainsAny(vio.getMessage(), "length", "長さ");
                 assertContains(vio.getMessageTemplate(), Length.class.getName() + ".message");
                 markHere("sea_called");
             }
             if ("land".equals(vio.getPropertyPath().toString())) {
                 // inner annotation has explicit annotation
-                assertContains(vio.getMessage(), "must be true");
+                assertContainsAny(vio.getMessage(), "true");
                 assertContains(vio.getMessageTemplate(), AssertTrue.class.getName() + ".message");
                 markHere("land_called");
             }
@@ -84,7 +84,7 @@ public class WxHibernateValidatorCustomTest extends PlainTestCase {
     @Documented
     public @interface SeaWithoutMessage {
 
-        String message() default "{javax.validation.constraints.NotBlank.message}"; // dummy
+        String message() default "{jakarta.validation.constraints.NotBlank.message}"; // dummy
 
         Class<?>[] groups() default {};
 
@@ -94,11 +94,11 @@ public class WxHibernateValidatorCustomTest extends PlainTestCase {
     @Target({ FIELD })
     @Retention(RUNTIME)
     @Constraint(validatedBy = {}) // needed as mark
-    @Length(min = 3, max = 9, message = "{javax.validation.constraints.AssertTrue.message}")
+    @Length(min = 3, max = 9, message = "{jakarta.validation.constraints.AssertTrue.message}")
     @Documented
     public @interface LandWithMessage {
 
-        String message() default "{javax.validation.constraints.NotBlank.message}"; // dummy
+        String message() default "{jakarta.validation.constraints.NotBlank.message}"; // dummy
 
         Class<?>[] groups() default {};
 
