@@ -29,7 +29,7 @@ public class RemoteWxRemogenTrickySelfrefReturn extends org.docksidestage.bizfw.
     public String resortName;
 
     /** The property of resortPark. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public ResortParkPart resortPark;
 
     /**
@@ -43,12 +43,12 @@ public class RemoteWxRemogenTrickySelfrefReturn extends org.docksidestage.bizfw.
         public String parkName;
 
         /** The property of parentPark. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ResortParkPart parentPark;
     }
 
     /** The property of extendedArea. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public ExtendedAreaPart extendedArea;
 
     /**
@@ -62,7 +62,7 @@ public class RemoteWxRemogenTrickySelfrefReturn extends org.docksidestage.bizfw.
         public String areaName;
 
         /** The property of parkingArea. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ParkingAreaPart parkingArea;
 
         /**
@@ -76,7 +76,7 @@ public class RemoteWxRemogenTrickySelfrefReturn extends org.docksidestage.bizfw.
             public String areaName;
 
             /** The property of internalArea. (NullAllowed) */
-            @javax.validation.Valid
+            @jakarta.validation.Valid
             public ExtendedAreaPart internalArea;
         }
     }

@@ -33,7 +33,7 @@ public class RemoteWxValidatorListjsonReturn {
     public String landName;
 
     /** The property of nestedBean. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public WhiteboxValidatorNestedPart nestedBean;
 
     /**
@@ -52,7 +52,7 @@ public class RemoteWxValidatorListjsonReturn {
     }
 
     /** The property of recursiveBean. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public WxValidatorListElementPart recursiveBean;
 
     /**
@@ -70,11 +70,11 @@ public class RemoteWxValidatorListjsonReturn {
         public String landName;
 
         /** The property of nestedBean. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public WhiteboxValidatorNestedPart nestedBean;
 
         /** The property of recursiveBean. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public WxValidatorListElementPart recursiveBean;
     }
 

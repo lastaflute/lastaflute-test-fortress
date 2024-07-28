@@ -29,7 +29,7 @@ public class RemoteHellsuffixReservedsuffixjustReturn {
     public String resortName;
 
     /** The property of hellSuffixes. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public java.util.List<ReservedSuffixJustPart> hellSuffixes;
 
     /**
@@ -43,7 +43,7 @@ public class RemoteHellsuffixReservedsuffixjustReturn {
         public String parkName;
 
         /** The property of reservedSuffixJustResult. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ReservedSuffixJustResultPart reservedSuffixJustResult;
 
         /**

@@ -32,7 +32,7 @@ public class RemoteWxRemogenTrickyOddpropReturn extends org.docksidestage.bizfw.
     public Integer landBeanCount;
 
     /** The property of normalEntry. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public PlainNormalEntryPart normalEntry;
 
     /**
@@ -43,7 +43,7 @@ public class RemoteWxRemogenTrickyOddpropReturn extends org.docksidestage.bizfw.
     }
 
     /** The property of beanEntry. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public ResultBeanEntryPart beanEntry;
 
     /**
@@ -54,7 +54,7 @@ public class RemoteWxRemogenTrickyOddpropReturn extends org.docksidestage.bizfw.
     }
 
     /** The property of plainGenericEntry. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public PlainGenericParameterPart plainGenericEntry;
 
     /**
@@ -65,7 +65,7 @@ public class RemoteWxRemogenTrickyOddpropReturn extends org.docksidestage.bizfw.
     }
 
     /** The property of genericEntry. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public ResultGenericParameterPart genericEntry;
 
     /**

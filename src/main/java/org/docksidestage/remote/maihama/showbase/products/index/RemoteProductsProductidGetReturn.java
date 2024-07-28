@@ -15,7 +15,7 @@
  */
 package org.docksidestage.remote.maihama.showbase.products.index;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;

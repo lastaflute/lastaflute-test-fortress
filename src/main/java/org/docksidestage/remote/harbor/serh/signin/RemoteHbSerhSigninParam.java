@@ -1,9 +1,9 @@
 package org.docksidestage.remote.harbor.serh.signin;
 
-import javax.validation.Valid;
-
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
 
 /**
  * @author jflute

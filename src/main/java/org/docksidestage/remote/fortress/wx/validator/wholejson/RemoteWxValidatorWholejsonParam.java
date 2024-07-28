@@ -15,7 +15,7 @@
  */
 package org.docksidestage.remote.fortress.wx.validator.wholejson;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -78,7 +78,7 @@ public class RemoteWxValidatorWholejsonParam {
     public org.eclipse.collections.api.list.ImmutableList<String> dstoreImmutableList;
 
     /** The property of seaBean. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public SeaPart seaBean;
 
     /**
@@ -96,7 +96,7 @@ public class RemoteWxValidatorWholejsonParam {
         public Boolean mystic;
 
         /** The property of restaurantList. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public org.eclipse.collections.api.list.ImmutableList<RestaurantPart> restaurantList;
 
         /**
@@ -113,7 +113,7 @@ public class RemoteWxValidatorWholejsonParam {
             public org.eclipse.collections.api.list.ImmutableList<String> genreList;
 
             /** The property of menuList. (NullAllowed) */
-            @javax.validation.Valid
+            @jakarta.validation.Valid
             public org.eclipse.collections.api.list.ImmutableList<MenuPart> menuList;
 
             /**
@@ -129,28 +129,28 @@ public class RemoteWxValidatorWholejsonParam {
         }
 
         /** The property of restaurantImmutableInstanceList. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public org.eclipse.collections.api.list.ImmutableList<RestaurantPart> restaurantImmutableInstanceList;
 
         /** The property of restaurantImmutableTypeList. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public org.eclipse.collections.api.list.ImmutableList<RestaurantPart> restaurantImmutableTypeList;
 
         /** The property of restaurantIterableArrayList. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public org.eclipse.collections.api.list.ImmutableList<RestaurantPart> restaurantIterableArrayList;
 
         /** The property of restaurantIterableImmutableList. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public org.eclipse.collections.api.list.ImmutableList<RestaurantPart> restaurantIterableImmutableList;
     }
 
     /** The property of seaBeanList. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<SeaPart> seaBeanList;
 
     /** The property of landBean. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public LandPart landBean;
 
     /**
@@ -173,7 +173,7 @@ public class RemoteWxValidatorWholejsonParam {
 
         /** The property of bonvoBean. */
         @Required
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public BonvoPart bonvoBean;
 
         /**
@@ -189,7 +189,7 @@ public class RemoteWxValidatorWholejsonParam {
     }
 
     /** The property of dstoreBean. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public DstorePart dstoreBean;
 
     /**
@@ -204,7 +204,7 @@ public class RemoteWxValidatorWholejsonParam {
     }
 
     /** The property of ambaBean. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public AmbaPart ambaBean;
 
     /**

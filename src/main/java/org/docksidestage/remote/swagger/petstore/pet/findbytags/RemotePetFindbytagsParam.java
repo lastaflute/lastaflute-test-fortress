@@ -15,7 +15,7 @@
  */
 package org.docksidestage.remote.swagger.petstore.pet.findbytags;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 

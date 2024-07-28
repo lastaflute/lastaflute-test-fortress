@@ -43,7 +43,7 @@ public class RemoteWxRequestJsonBodyValidatedlonelylistParam {
     public String amba;
 
     /** The property of miraco. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public MiracoPart miraco;
 
     /**

@@ -15,7 +15,7 @@
  */
 package org.docksidestage.remote.fortress.wx.remoteapi.rmhangar.mypage;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -28,7 +28,7 @@ public class RemoteWxRemoteapiRmhangarMypageReturn extends org.docksidestage.biz
 
     /** The property of recentProducts. */
     @NotNull
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<ProductPart> recentProducts;
 
     /**
@@ -48,7 +48,7 @@ public class RemoteWxRemoteapiRmhangarMypageReturn extends org.docksidestage.biz
 
     /** The property of highPriceProducts. */
     @NotNull
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<ProductPart> highPriceProducts;
 
     @Override

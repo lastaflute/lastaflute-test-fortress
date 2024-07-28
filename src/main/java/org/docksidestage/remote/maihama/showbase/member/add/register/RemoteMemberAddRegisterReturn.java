@@ -66,7 +66,7 @@ public class RemoteMemberAddRegisterReturn {
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
     /** The property of memberAddressAsValid. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public MemberAddressPart memberAddressAsValid;
 
     /**
@@ -77,7 +77,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberLoginAsLatest. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public MemberLoginPart memberLoginAsLatest;
 
     /**
@@ -88,7 +88,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberSecurityAsOne. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public MemberSecurityPart memberSecurityAsOne;
 
     /**
@@ -99,7 +99,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberServiceAsOne. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public MemberServicePart memberServiceAsOne;
 
     /**
@@ -110,7 +110,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberWithdrawalAsOne. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public MemberWithdrawalPart memberWithdrawalAsOne;
 
     /**
@@ -136,7 +136,7 @@ public class RemoteMemberAddRegisterReturn {
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> purchaseList;
 
     /** The property of uniqueDrivenProperties. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public EntityUniqueDrivenPropertiesPart uniqueDrivenProperties;
 
     /**
@@ -147,7 +147,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of modifiedProperties. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public EntityModifiedPropertiesPart modifiedProperties;
 
     /**
@@ -158,11 +158,11 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of specifiedProperties. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public EntityModifiedPropertiesPart specifiedProperties;
 
     /** The property of derivedMap. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public EntityDerivedMapPart derivedMap;
 
     /**

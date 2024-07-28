@@ -29,7 +29,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
     public String resortName;
 
     /** The property of firstPark. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public ResortParkPart firstPark;
 
     /**
@@ -43,7 +43,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
         public String parkName;
 
         /** The property of showStages. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public org.eclipse.collections.api.list.ImmutableList<ShowStagePart> showStages;
 
         /**
@@ -58,7 +58,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
         }
 
         /** The property of themeColor. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ThemeColorPart themeColor;
 
         /**
@@ -76,7 +76,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
     }
 
     /** The property of extendedAreas. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<ExtendedAreaPart> extendedAreas;
 
     /**
@@ -90,12 +90,12 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
         public String direction;
 
         /** The property of nextPark. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ResortParkPart nextPark;
     }
 
     /** The property of departmentStore. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public DepartmentStorePart departmentStore;
 
     /**
@@ -112,7 +112,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
         public Integer shopCount;
 
         /** The property of officialShop. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public OfficialShopPart officialShop;
 
         /**
@@ -127,7 +127,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
         }
 
         /** The property of showStage. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ShowStagePart showStage;
 
         /**
@@ -143,7 +143,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
     }
 
     /** The property of bigHotels. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<ThemeHotelPart> bigHotels;
 
     /**
@@ -157,11 +157,11 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
         public String hotelName;
 
         /** The property of correspondingPark. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ResortParkPart correspondingPark;
 
         /** The property of officialShop. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public OfficialShopPart officialShop;
 
         /**
@@ -176,7 +176,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
         }
 
         /** The property of showStage. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ShowStagePart showStage;
 
         /**
@@ -191,7 +191,7 @@ public class RemoteWxRemogenTrickyRecycleReturn extends org.docksidestage.bizfw.
         }
 
         /** The property of themeColor. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public ThemeColorPart themeColor;
 
         /**

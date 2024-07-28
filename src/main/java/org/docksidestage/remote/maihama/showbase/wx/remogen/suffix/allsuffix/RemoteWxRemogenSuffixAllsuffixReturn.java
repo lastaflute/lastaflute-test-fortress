@@ -29,7 +29,7 @@ public class RemoteWxRemogenSuffixAllsuffixReturn extends org.docksidestage.bizf
     public String resortName;
 
     /** The property of resortPark. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public ResortParkPart resortPark;
 
     /**
@@ -43,7 +43,7 @@ public class RemoteWxRemogenSuffixAllsuffixReturn extends org.docksidestage.bizf
         public String parkName;
 
         /** The property of showStages. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public org.eclipse.collections.api.list.ImmutableList<ShowStagePart> showStages;
 
         /**

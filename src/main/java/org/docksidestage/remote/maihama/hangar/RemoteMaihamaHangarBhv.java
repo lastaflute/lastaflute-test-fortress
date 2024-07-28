@@ -19,8 +19,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
@@ -44,6 +42,8 @@ import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult;
 import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult.FaicliFailureErrorPart;
 import org.lastaflute.web.api.theme.FaicliUnifiedFailureResult.FaicliUnifiedFailureType;
 import org.lastaflute.web.servlet.request.RequestManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

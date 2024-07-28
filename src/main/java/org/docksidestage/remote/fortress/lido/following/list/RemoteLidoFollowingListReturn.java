@@ -15,7 +15,7 @@
  */
 package org.docksidestage.remote.fortress.lido.following.list;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -28,7 +28,7 @@ public class RemoteLidoFollowingListReturn extends org.docksidestage.bizfw.remot
 
     /** The property of followings. */
     @NotNull
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<FollowingMemberPart> followings;
 
     /**
@@ -52,7 +52,7 @@ public class RemoteLidoFollowingListReturn extends org.docksidestage.bizfw.remot
 
     /** The property of followers. */
     @NotNull
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<FollowerMemberPart> followers;
 
     /**

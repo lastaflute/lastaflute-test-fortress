@@ -90,7 +90,7 @@ public class RemoteWxRequestJsonBodySwaggerParam {
     public String amba;
 
     /** The property of miraco. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public MiracoPart miraco;
 
     /**
@@ -104,7 +104,7 @@ public class RemoteWxRequestJsonBodySwaggerParam {
     }
 
     /** The property of white. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public WhitePart white;
 
     /**

@@ -15,7 +15,7 @@
  */
 package org.docksidestage.remote.fortress.wx.response.json.eccolle.list;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 

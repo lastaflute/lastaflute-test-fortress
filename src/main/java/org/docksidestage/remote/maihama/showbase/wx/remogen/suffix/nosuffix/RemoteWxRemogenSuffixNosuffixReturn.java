@@ -29,7 +29,7 @@ public class RemoteWxRemogenSuffixNosuffixReturn extends org.docksidestage.bizfw
     public String resortName;
 
     /** The property of resortPark. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public ResortParkPart resortPark;
 
     /**

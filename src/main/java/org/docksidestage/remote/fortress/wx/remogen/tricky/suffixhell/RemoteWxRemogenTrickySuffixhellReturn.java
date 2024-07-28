@@ -29,7 +29,7 @@ public class RemoteWxRemogenTrickySuffixhellReturn extends org.docksidestage.biz
     public String resortName;
 
     /** The property of hellSea. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public HellSeaPart hellSea;
 
     /**
@@ -43,7 +43,7 @@ public class RemoteWxRemogenTrickySuffixhellReturn extends org.docksidestage.biz
         public String parkName;
 
         /** The property of hellSeaResult. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public org.eclipse.collections.api.list.ImmutableList<HellSeaResultPart> hellSeaResult;
 
         /**
@@ -59,7 +59,7 @@ public class RemoteWxRemogenTrickySuffixhellReturn extends org.docksidestage.biz
     }
 
     /** The property of hellLand. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public HellLandPart hellLand;
 
     /**
@@ -73,7 +73,7 @@ public class RemoteWxRemogenTrickySuffixhellReturn extends org.docksidestage.biz
         public String parkName;
 
         /** The property of hellLandPart. (NullAllowed) */
-        @javax.validation.Valid
+        @jakarta.validation.Valid
         public HellLandPartPart hellLandPart;
 
         /**

@@ -15,7 +15,7 @@
  */
 package org.docksidestage.remote.fortress.products.purchases.hangarmystic.index;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -28,7 +28,7 @@ public class RemoteProductsPurchasesHangarmysticReturn extends org.docksidestage
 
     /** The property of rows. */
     @NotNull
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<PurchasesRowPart> rows;
 
     /**

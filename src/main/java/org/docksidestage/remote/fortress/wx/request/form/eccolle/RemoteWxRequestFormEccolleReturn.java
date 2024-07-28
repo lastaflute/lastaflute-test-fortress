@@ -36,7 +36,7 @@ public class RemoteWxRequestFormEccolleReturn extends org.docksidestage.bizfw.re
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> bonvo;
 
     /** The property of dstore. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<MyDStorePart> dstore;
 
     /**
@@ -50,7 +50,7 @@ public class RemoteWxRequestFormEccolleReturn extends org.docksidestage.bizfw.re
     }
 
     /** The property of amba. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<MyAmbaPart> amba;
 
     /**

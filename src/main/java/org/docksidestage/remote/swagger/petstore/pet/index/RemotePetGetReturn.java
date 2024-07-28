@@ -15,8 +15,9 @@
  */
 package org.docksidestage.remote.swagger.petstore.pet.index;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
+
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -33,7 +34,7 @@ public class RemotePetGetReturn {
 
     /** The property of category. (NullAllowed) */
     @XmlElement(name = "category")
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public CategoryPart category;
 
     /**
@@ -63,7 +64,7 @@ public class RemotePetGetReturn {
 
     /** The property of tags. (NullAllowed) */
     @XmlElement(name = "tags")
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<TagPart> tags;
 
     /**

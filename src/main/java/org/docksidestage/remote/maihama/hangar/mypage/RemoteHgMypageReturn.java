@@ -17,10 +17,10 @@ package org.docksidestage.remote.maihama.hangar.mypage;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
 
 /**
  * @author jflute

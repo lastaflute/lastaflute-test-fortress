@@ -42,7 +42,7 @@ public class RemoteWxRequestJsonBodyClienterrorParam {
     public String amba;
 
     /** The property of miraco. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public MiracoPart miraco;
 
     /**
@@ -56,7 +56,7 @@ public class RemoteWxRequestJsonBodyClienterrorParam {
     }
 
     /** The property of white. (NullAllowed) */
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public WhitePart white;
 
     /**

@@ -15,7 +15,7 @@
  */
 package org.docksidestage.remote.maihama.showbase.product.list.search;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -44,7 +44,7 @@ public class RemoteProductListSearchReturn {
 
     /** The property of rows. (paging data for current page) */
     @NotNull
-    @javax.validation.Valid
+    @jakarta.validation.Valid
     public org.eclipse.collections.api.list.ImmutableList<ProductRowPart> rows;
 
     /**
