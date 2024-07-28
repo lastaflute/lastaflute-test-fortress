@@ -249,8 +249,8 @@
 							<outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
 							<!-- servlet container libraries are located as war resource -->
 							<includeArtifactIds>
-								javax.servlet-api, javax.servlet.jsp, javax.servlet.jsp-api
-								, jetty-boot, jetty-all, javax.el, jetty-jsp, jetty-schemas, javax.websocket-api
+								jakarta.servlet-api, jakarta.servlet.jsp, jakarta.servlet.jsp-api
+								, jetty-boot, jetty-all, javax.el, jetty-jsp, jetty-schemas, jakarta.websocket-api
 								, tomcat-boot, tomcat-embed-core, tomcat-embed-logging-juli
 								, tomcat-jasper, tomcat-jasper-el, tomcat-el-api, tomcat-jsp-api, ecj
 							</includeArtifactIds>
@@ -266,8 +266,8 @@
 				<configuration>
 					<!-- servlet container libraries are not in application -->
 					<packagingExcludes>
-						WEB-INF/lib/javax.servlet-api-*.jar, WEB-INF/lib/javax.servlet.jsp-*.jar
-						, WEB-INF/lib/jetty-*.jar, WEB-INF/lib/javax.el-*.jar, WEB-INF/lib/javax.websocket-*.jar
+						WEB-INF/lib/jakarta.servlet-api-*.jar, WEB-INF/lib/jakarta.servlet.jsp-*.jar
+						, WEB-INF/lib/jetty-*.jar, WEB-INF/lib/javax.el-*.jar, WEB-INF/lib/jakarta.websocket-*.jar
 						, WEB-INF/lib/org.eclipse.jdt.core-*.jar
 						, WEB-INF/lib/tomcat-*.jar
 					</packagingExcludes>
