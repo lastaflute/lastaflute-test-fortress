@@ -17,10 +17,6 @@ package org.docksidestage.whitebox.db.lazytx;
 
 import java.util.Collections;
 
-import javax.transaction.Status;
-import javax.transaction.SystemException;
-import javax.transaction.TransactionManager;
-
 import org.dbflute.hook.AccessContext;
 import org.dbflute.hook.CallbackContext;
 import org.dbflute.optional.OptionalThing;
@@ -33,6 +29,9 @@ import org.lastaflute.db.jta.lazytx.LazyTransactionArranger;
 import org.lastaflute.db.jta.stage.TransactionStage;
 
 import jakarta.annotation.Resource;
+import jakarta.transaction.Status;
+import jakarta.transaction.SystemException;
+import jakarta.transaction.TransactionManager;
 
 /**
  * @author jflute
