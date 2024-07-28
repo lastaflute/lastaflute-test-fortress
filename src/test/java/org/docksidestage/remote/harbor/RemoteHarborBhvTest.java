@@ -1,7 +1,5 @@
 package org.docksidestage.remote.harbor;
 
-import javax.annotation.Resource;
-
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.exception.RemoteApiResponseValidationErrorException;
@@ -14,6 +12,8 @@ import org.docksidestage.remote.harbor.serh.product.RemoteHbSerhProductSearchPar
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

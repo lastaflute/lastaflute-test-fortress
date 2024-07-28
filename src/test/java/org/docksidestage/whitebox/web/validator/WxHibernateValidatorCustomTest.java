@@ -8,17 +8,17 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import java.util.Set;
 
-import javax.validation.Constraint;
-import javax.validation.ConstraintViolation;
-import javax.validation.Payload;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.groups.Default;
-
 import org.dbflute.utflute.core.PlainTestCase;
 import org.hibernate.validator.constraints.Length;
+
+import jakarta.validation.Constraint;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Payload;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.groups.Default;
 
 /**
  * @author jflute

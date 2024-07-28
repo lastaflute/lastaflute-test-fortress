@@ -11,11 +11,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.validation.Constraint;
-import javax.validation.OverridesAttribute;
-import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
-
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.hibernate.validator.constraints.Length;
@@ -25,6 +20,10 @@ import org.lastaflute.web.validation.ActionValidator;
 import org.lastaflute.web.validation.exception.ValidationErrorException;
 
 import jakarta.annotation.Resource;
+import jakarta.validation.Constraint;
+import jakarta.validation.OverridesAttribute;
+import jakarta.validation.Payload;
+import jakarta.validation.ReportAsSingleViolation;
 
 /**
  * @author jflute

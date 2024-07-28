@@ -3,8 +3,6 @@ package org.docksidestage.app.web.wx.validator;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.validation.constraints.Max;
-
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.LandBean;
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.PiariBean;
 import org.docksidestage.app.web.wx.validator.WxValidatorForm.SeaBean;
@@ -17,6 +15,8 @@ import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.constraints.Max;
 
 /**
  * @author jflute

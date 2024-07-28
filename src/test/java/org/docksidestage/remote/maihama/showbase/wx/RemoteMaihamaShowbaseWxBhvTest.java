@@ -2,8 +2,6 @@ package org.docksidestage.remote.maihama.showbase.wx;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.dbflute.remoteapi.exception.RemoteApiPathVariableNullElementException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.piari.RemoteWxRemogenRoutingPiariReturn;
@@ -11,6 +9,8 @@ import org.docksidestage.remote.maihama.showbase.wx.remogen.routing.resola.Remot
 import org.docksidestage.remote.maihama.showbase.wx.remogen.tricky.nobody.RemoteWxRemogenTrickyNobodyReturn;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.servlet.request.RequestManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

@@ -18,10 +18,6 @@ package org.docksidestage.whitebox.web.validator;
 import java.util.List;
 import java.util.Locale;
 
-import javax.validation.Configuration;
-import javax.validation.UnexpectedTypeException;
-import javax.validation.constraints.Size;
-
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
@@ -29,6 +25,9 @@ import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.hibernate.validator.internal.cfg.context.DefaultConstraintMapping;
+import org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider;
+import org.hibernate.validator.internal.properties.DefaultGetterPropertySelectionStrategy;
+import org.hibernate.validator.internal.properties.javabean.JavaBeanHelper;
 import org.lastaflute.core.message.MessageManager;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.web.servlet.request.RequestManager;
@@ -37,6 +36,9 @@ import org.lastaflute.web.validation.VaConfigSetupper;
 import org.lastaflute.web.validation.exception.ValidationStoppedException;
 
 import jakarta.annotation.Resource;
+import jakarta.validation.Configuration;
+import jakarta.validation.UnexpectedTypeException;
+import jakarta.validation.constraints.Size;
 
 /**
  * @author jflute
@@ -122,9 +124,16 @@ public class WxValidatorYourCollectionTest extends UnitFortressBasicTestCase {
 
     private void prepareImmutableList(Configuration<?> configuration) {
         if (configuration instanceof HibernateValidatorConfiguration) {
-            DefaultConstraintMapping mapping = new DefaultConstraintMapping();
+            DefaultConstraintMapping mapping = createDefaultConstraintMapping();
             mapping.constraintDefinition(Size.class).validatedBy(SizeValidatorForImmutableList.class);
             ((HibernateValidatorConfiguration) configuration).addMapping(mapping);
         }
+    }
+
+    private DefaultConstraintMapping createDefaultConstraintMapping() { // #hibernate8
+        final DefaultGetterPropertySelectionStrategy strategy = new DefaultGetterPropertySelectionStrategy();
+        final DefaultPropertyNodeNameProvider provider = new DefaultPropertyNodeNameProvider();
+        final JavaBeanHelper javaBeanHelper = new JavaBeanHelper(strategy, provider);
+        return new DefaultConstraintMapping(javaBeanHelper);
     }
 }

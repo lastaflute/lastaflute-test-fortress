@@ -1,12 +1,12 @@
 package org.docksidestage.remote.maihama.showbase.product;
 
-import javax.annotation.Resource;
-
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.maihama.showbase.product.list.status.RemoteProductListStatusReturn;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.lastaflute.web.servlet.request.RequestManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

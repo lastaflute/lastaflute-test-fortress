@@ -4,16 +4,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import javax.validation.Configuration;
-import javax.validation.ConstraintViolation;
-import javax.validation.Valid;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.validation.bootstrap.GenericBootstrap;
-import javax.validation.constraints.NotNull;
-import javax.validation.groups.Default;
-
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.docksidestage.whitebox.web.validator.WxHibernateValidatorFrameworkTest.MaihamaListParadeBean.StageBean;
@@ -23,6 +13,15 @@ import org.hibernate.validator.constraints.Length;
 import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.VaValidListBean;
 
+import jakarta.validation.Configuration;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Valid;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
+import jakarta.validation.bootstrap.GenericBootstrap;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.groups.Default;
 import jakarta.validation.valueextraction.ExtractedValue;
 import jakarta.validation.valueextraction.ValueExtractor;
 

@@ -15,8 +15,6 @@
  */
 package org.docksidestage.remote.maihama.hangar;
 
-import javax.annotation.Resource;
-
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.docksidestage.remote.maihama.hangar.base.RemoteHgPagingReturn;
@@ -24,6 +22,8 @@ import org.docksidestage.remote.maihama.hangar.product.RemoteHgProductRowReturn;
 import org.docksidestage.remote.maihama.hangar.product.RemoteHgProductSearchParam;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.servlet.request.RequestManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute
