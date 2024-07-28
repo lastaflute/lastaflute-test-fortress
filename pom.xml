@@ -27,7 +27,7 @@
 		<lasta.job.version>2.0.0-A-SNAPSHOT</lasta.job.version> <!-- #jakarta -->
 		<lasta.remoteapi.version>2.0.0-A-SNAPSHOT</lasta.remoteapi.version> <!-- #jakarta -->
 		<lasta.meta.version>2.0.0-A-SNAPSHOT</lasta.meta.version> <!-- #jakarta -->
-		<openapidiff.version>2.0.1</openapidiff.version>
+		<openapidiff.version>2.1.0-beta.11</openapidiff.version> <!-- #jakarta -->
 
 		<!-- Partner Library -->
 		<slf4j.version>1.7.36</slf4j.version>
