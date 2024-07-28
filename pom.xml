@@ -21,12 +21,12 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.2.8</dbflute.version>
 		<mysql.jdbc.version>8.0.29</mysql.jdbc.version>
-		<lasta.di.version>0.9.2</lasta.di.version>
-		<lastaflute.version>1.2.7</lastaflute.version>
-		<lasta.thymeleaf.version>0.4.3</lasta.thymeleaf.version>
-		<lasta.job.version>0.5.7</lasta.job.version>
-		<lasta.remoteapi.version>0.5.1</lasta.remoteapi.version>
-		<lasta.meta.version>0.6.2</lasta.meta.version>
+		<lasta.di.version>2.0.0-A-SNAPSHOT</lasta.di.version> <!-- #jakarta -->
+		<lastaflute.version>2.0.0-B-SNAPSHOT</lastaflute.version> <!-- #jakarta -->
+		<lasta.thymeleaf.version>2.0.0-A-SNAPSHOT</lasta.thymeleaf.version> <!-- #jakarta -->
+		<lasta.job.version>2.0.0-A-SNAPSHOT</lasta.job.version> <!-- #jakarta -->
+		<lasta.remoteapi.version>2.0.0-A-SNAPSHOT</lasta.remoteapi.version> <!-- #jakarta -->
+		<lasta.meta.version>2.0.0-A-SNAPSHOT</lasta.meta.version> <!-- #jakarta -->
 		<openapidiff.version>2.0.1</openapidiff.version>
 
 		<!-- Partner Library -->
@@ -37,19 +37,19 @@
 		 -->
 		<logback.version>1.2.13</logback.version>
 
-		<servlet.version>4.0.1</servlet.version>
-		<jetty.boot.version>0.5.3</jetty.boot.version>
-		<tomcat.boot.version>0.8.5</tomcat.boot.version>
+		<servlet.version>6.0.0</servlet.version> <!-- #jakarta -->
+		<jetty.boot.version>2.0.0-A-SNAPSHOT</jetty.boot.version> <!-- #jakarta -->
+		<tomcat.boot.version>2.0.0-A-SNAPSHOT</tomcat.boot.version> <!-- #jakarta -->
 		<swagger.ui.version>3.35.0</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.8.1</commons.lang.version>
-		<commons.fileupload.version>1.5</commons.fileupload.version>
+		<commons.fileupload.version>2.0.0-M2</commons.fileupload.version> <!-- #jakarta -->
 		<eclipse.collections.version>11.0.0</eclipse.collections.version>
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.9.6</utflute.version>
+		<utflute.version>2.0.0-A-SNAPSHOT</utflute.version> <!-- #jakarta -->
 	</properties>
 
 	<licenses>
@@ -81,8 +81,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.1</version>
 					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>21</source>
+						<target>21</target>
 						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
@@ -432,8 +432,8 @@
 
 		<!-- servlet -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
 			<version>${servlet.version}</version>
 		</dependency>
 		<dependency>
@@ -465,8 +465,8 @@
 			<version>${commons.lang.version}</version>
 		</dependency>
 		<dependency> <!-- used for multipart request -->
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
+			<groupId>org.apache.commons</groupId> <!-- #jakarta -->
+			<artifactId>commons-fileupload2-jakarta-servlet6</artifactId> <!-- #jakarta -->
 			<version>${commons.fileupload.version}</version>
 		</dependency>
 		<dependency> <!-- used for test client -->
