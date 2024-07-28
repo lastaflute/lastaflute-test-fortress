@@ -28,7 +28,7 @@ ${manager.allClassCopyright}package ${data.package};
 #set ($property = $propertyEntry.value)
 #if (${property.required})
 #if ($property.type == 'array')
-#set($added = $importList.add('javax.validation.constraints.NotNull'))
+#set($added = $importList.add('${manager.currentJakartaPackage}.validation.constraints.NotNull'))
 #else
 #set($added = $importList.add('org.lastaflute.web.validation.Required'))
 #end
@@ -78,7 +78,7 @@ public class ${data.className}#if ($data.extendsClass && $data.extendsClass != '
 #set ($nestProperty = $nestPropertyEntry.value)
 #if (${nestProperty.required})
 #if ($nestProperty.type == 'array')
-#set($added = $importList.add('javax.validation.constraints.NotNull'))
+#set($added = $importList.add('${manager.currentJakartaPackage}.validation.constraints.NotNull'))
 #else
 #set($added = $importList.add('org.lastaflute.web.validation.Required'))
 #end
@@ -145,7 +145,7 @@ public class ${data.className}#if ($data.extendsClass && $data.extendsClass != '
 #end
 #adjustType($nestType)
 #set ($fieldClass = "${typeMap[$property.type]}<$adjustType>")
-#generateIndent($nestList.size())@javax.validation.Valid
+#generateIndent($nestList.size())@${manager.currentJakartaPackage}.validation.Valid
 #end
 #elseif ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $class, $property))
 #set ($fieldClass = $scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $class, $property))
@@ -161,7 +161,7 @@ public class ${data.className}#if ($data.extendsClass && $data.extendsClass != '
 #end
 #adjustType($nestType)
 #set ($fieldClass = $adjustType)
-#generateIndent($nestList.size())@javax.validation.Valid
+#generateIndent($nestList.size())@${manager.currentJakartaPackage}.validation.Valid
 #end
 #if ($fieldClass == '')
 #set ($fieldClass = ${typeMap['']})

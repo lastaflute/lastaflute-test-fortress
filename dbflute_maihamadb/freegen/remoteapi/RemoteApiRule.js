@@ -365,7 +365,7 @@ var baseRule = {
      * @return java import order list. (NotNull)
      */
     importOrderList: function() {
-        return ['java', 'javax', 'junit', 'org', 'com', 'net', 'ognl', 'mockit', 'jp'];
+        return ['java', 'javax', 'jakarta', 'junit', 'org', 'com', 'net', 'ognl', 'mockit', 'jp'];
     },
 
     /**
