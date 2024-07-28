@@ -18,8 +18,6 @@ package org.docksidestage.app.web.wx.transaction;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.dbflute.cbean.result.PagingResultBean;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.paging.PagingAssist;
@@ -33,6 +31,8 @@ import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
 import org.lastaflute.web.servlet.request.ResponseManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

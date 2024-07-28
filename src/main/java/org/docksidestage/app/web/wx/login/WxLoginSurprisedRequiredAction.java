@@ -15,14 +15,14 @@
  */
 package org.docksidestage.app.web.wx.login;
 
-import javax.annotation.Resource;
-
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.login.FortressSurprisedLoginAssist;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.LoginManager;
 import org.lastaflute.web.response.HtmlResponse;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

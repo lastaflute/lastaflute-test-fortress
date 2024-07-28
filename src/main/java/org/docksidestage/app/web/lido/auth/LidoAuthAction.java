@@ -17,8 +17,6 @@ package org.docksidestage.app.web.lido.auth;
 
 import java.util.Random;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
@@ -39,6 +37,8 @@ import org.lastaflute.web.login.credential.UserPasswordCredential;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.servlet.request.ResponseManager;
 import org.lastaflute.web.servlet.session.SessionManager;
+
+import jakarta.annotation.Resource;
 
 // the 'lido' package is example for JSON API in simple project
 // client application is riot.js in lidoisle directory

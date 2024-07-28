@@ -19,12 +19,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.web.ruts.process.debugchallenge.JsonDebugChallenge;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

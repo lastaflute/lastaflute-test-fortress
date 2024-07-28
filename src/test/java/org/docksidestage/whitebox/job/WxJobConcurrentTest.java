@@ -15,8 +15,6 @@
  */
 package org.docksidestage.whitebox.job;
 
-import javax.annotation.Resource;
-
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.job.JobManager;
@@ -26,6 +24,8 @@ import org.lastaflute.job.key.LaJobUnique;
 import org.lastaflute.job.subsidiary.ExecResultType;
 import org.lastaflute.job.subsidiary.LaunchNowOption;
 import org.lastaflute.job.subsidiary.LaunchedProcess;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

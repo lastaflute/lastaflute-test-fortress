@@ -15,10 +15,10 @@
  */
 package org.docksidestage.app.web.wx.validator.custom;
 
-import javax.validation.constraints.Size;
-
 import org.docksidestage.bizfw.validation.fess.CustomSize;
 import org.lastaflute.core.util.Lato;
+
+import jakarta.validation.constraints.Size;
 
 /**
  * @author jflute

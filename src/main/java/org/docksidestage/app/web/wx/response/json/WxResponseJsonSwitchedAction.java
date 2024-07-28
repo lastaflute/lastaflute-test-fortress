@@ -18,8 +18,6 @@ package org.docksidestage.app.web.wx.response.json;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.bizfw.json.RuledJsonEngineKeeper;
 import org.lastaflute.core.util.Lato;
@@ -27,6 +25,8 @@ import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

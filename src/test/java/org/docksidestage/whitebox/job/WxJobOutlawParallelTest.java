@@ -18,8 +18,6 @@ package org.docksidestage.whitebox.job;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.job.JobManager;
@@ -36,6 +34,7 @@ import org.lastaflute.job.subsidiary.LaunchedProcess;
 import org.lastaflute.job.subsidiary.SnapshotExecState;
 
 import it.sauronsoftware.cron4j.TaskExecutor;
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

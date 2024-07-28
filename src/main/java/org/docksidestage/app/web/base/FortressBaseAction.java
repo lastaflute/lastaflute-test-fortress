@@ -15,9 +15,6 @@
  */
 package org.docksidestage.app.web.base;
 
-import javax.annotation.Resource;
-import javax.validation.ConstraintViolation;
-
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.web.base.csrf.CsrfTokenAssist;
@@ -37,6 +34,9 @@ import org.lastaflute.web.ruts.process.ActionRuntime;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.validation.ActionValidator;
 import org.lastaflute.web.validation.LaValidatable;
+
+import jakarta.annotation.Resource;
+import jakarta.validation.ConstraintViolation;
 
 /**
  * @author jflute

@@ -17,8 +17,6 @@ package org.docksidestage.app.web.products;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.products.assist.ProductsCrudAssist;
 import org.docksidestage.app.web.products.assist.ProductsMappingAssist;
@@ -29,6 +27,8 @@ import org.lastaflute.web.RestfulAction;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.util.LaActionRuntimeUtil;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

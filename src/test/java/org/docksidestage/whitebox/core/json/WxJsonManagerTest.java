@@ -17,8 +17,6 @@ package org.docksidestage.whitebox.core.json;
 
 import java.util.ArrayList;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.wx.response.json.WxResponseJsonSwaggerResult;
 import org.docksidestage.app.web.wx.response.json.WxResponseJsonSwaggerResult.WhiteStandardPart;
 import org.docksidestage.app.web.wx.response.json.WxResponseJsonSwaggerResult.WxResponseJsonObjectGenericPart;
@@ -29,6 +27,8 @@ import org.eclipse.collections.api.factory.Lists;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.exception.JsonPropertyClassificationCodeUnknownException;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

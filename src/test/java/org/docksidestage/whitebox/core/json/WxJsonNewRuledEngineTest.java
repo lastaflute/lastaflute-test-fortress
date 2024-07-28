@@ -20,8 +20,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.function.Consumer;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
@@ -36,6 +34,8 @@ import org.lastaflute.web.validation.Required;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonWriter;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

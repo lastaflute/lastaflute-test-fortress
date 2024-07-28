@@ -18,13 +18,6 @@ package org.docksidestage.app.web.wx.request.json;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
 import org.docksidestage.bizfw.validation.custom.LandIntegerCustomOne;
 import org.docksidestage.bizfw.validation.custom.LandIntegerCustomTwo;
 import org.docksidestage.bizfw.validation.custom.SeaStringCustomOne;
@@ -33,6 +26,13 @@ import org.docksidestage.dbflute.allcommon.CDef;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 /**
  * @author jflute

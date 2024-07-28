@@ -17,12 +17,12 @@ package org.docksidestage.app.job.challenge;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
 import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
 import org.lastaflute.job.LaJob;
 import org.lastaflute.job.LaJobRuntime;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

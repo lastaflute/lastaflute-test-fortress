@@ -17,12 +17,12 @@ package org.docksidestage.whitebox.core.dfpm;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.dbflute.helper.mapstring.MapListString;
 import org.docksidestage.mylasta.template.bean.WxOrelseVariableTemplateBean;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.template.TemplateManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

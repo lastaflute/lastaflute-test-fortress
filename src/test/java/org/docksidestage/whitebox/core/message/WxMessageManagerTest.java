@@ -19,8 +19,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
@@ -28,6 +26,8 @@ import org.lastaflute.core.message.MessageManager;
 import org.lastaflute.core.message.UserMessage;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.core.message.resources.MessageNamedParameter;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

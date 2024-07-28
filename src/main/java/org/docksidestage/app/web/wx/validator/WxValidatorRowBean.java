@@ -17,10 +17,10 @@ package org.docksidestage.app.web.wx.validator;
 
 import java.time.LocalDateTime;
 
-import javax.validation.constraints.AssertTrue;
-
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.constraints.AssertTrue;
 
 /**
  * @author jflute

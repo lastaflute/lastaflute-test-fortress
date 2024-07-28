@@ -15,8 +15,6 @@
  */
 package org.docksidestage.app.web.wx.response.transition.redirect;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.product.ProductListAction;
 import org.lastaflute.web.Execute;
@@ -24,6 +22,8 @@ import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.servlet.request.ResponseManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

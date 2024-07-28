@@ -15,12 +15,12 @@
  */
 package org.docksidestage.app.biz.cleaneg.infrastructure;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.biz.cleaneg.domain.repository.CleanegSeaRepository;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

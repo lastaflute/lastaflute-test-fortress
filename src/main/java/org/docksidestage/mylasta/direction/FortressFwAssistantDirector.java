@@ -15,8 +15,6 @@
  */
 package org.docksidestage.mylasta.direction;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.bizfw.thymeleaf.ThymeleafConfigObject;
 import org.docksidestage.bizfw.thymeleaf.ThymeleafJavaScriptSerializer;
 import org.docksidestage.mylasta.direction.sponsor.FortressActionAdjustmentProvider;
@@ -46,6 +44,8 @@ import org.lastaflute.thymeleaf.ThymeleafRenderingProvider;
 import org.lastaflute.web.direction.FwWebDirection;
 import org.lastaflute.web.ruts.multipart.MultipartResourceProvider;
 import org.lastaflute.web.ruts.renderer.HtmlRenderingProvider;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

@@ -19,7 +19,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.dbflute.exception.EntityAlreadyDeletedException;
@@ -29,6 +28,8 @@ import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.dbflute.exbhv.MemberLoginBhv;
 import org.docksidestage.dbflute.exentity.Member;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

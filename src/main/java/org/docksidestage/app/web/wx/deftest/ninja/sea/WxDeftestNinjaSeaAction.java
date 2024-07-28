@@ -15,13 +15,13 @@
  */
 package org.docksidestage.app.web.wx.deftest.ninja.sea;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.wx.deftest.ninja.vip.WxDeftestNinjaVipAssist;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

@@ -22,8 +22,6 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 
-import javax.annotation.Resource;
-
 import org.dbflute.exception.AccessContextNotFoundException;
 import org.dbflute.exception.EntityAlreadyDeletedException;
 import org.dbflute.util.DfTraceViewUtil;
@@ -38,6 +36,8 @@ import org.lastaflute.core.magic.async.waiting.WaitingAsyncException;
 import org.lastaflute.core.magic.async.waiting.WaitingAsyncResult;
 import org.lastaflute.core.magic.destructive.BowgunDestructiveAdjuster;
 import org.lastaflute.db.jta.stage.TransactionStage;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

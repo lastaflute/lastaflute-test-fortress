@@ -19,8 +19,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.mail.MessagingException;
-
 import org.dbflute.mail.CardView;
 import org.dbflute.mail.Postcard;
 import org.dbflute.mail.send.SMailDeliveryDepartment;
@@ -47,6 +45,8 @@ import org.lastaflute.core.message.MessageManager;
 import org.lastaflute.core.util.ContainerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.mail.MessagingException;
 
 /**
  * @author jflute

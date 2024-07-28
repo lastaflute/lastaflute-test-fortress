@@ -15,8 +15,6 @@
  */
 package org.docksidestage.app.web.wx.appex;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.lastaflute.core.message.exception.MessagingApplicationException;
@@ -24,6 +22,8 @@ import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.login.exception.LoginFailureException;
 import org.lastaflute.web.response.HtmlResponse;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

@@ -18,8 +18,6 @@ package org.docksidestage.app.web.lido.mypage;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.annotation.Resource;
-
 import org.dbflute.cbean.result.ListResultBean;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.dbflute.exbhv.ProductBhv;
@@ -27,6 +25,8 @@ import org.docksidestage.dbflute.exentity.Product;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
+
+import jakarta.annotation.Resource;
 
 // the 'lido' package is example for JSON API in simple project
 // client application is riot.js in lidoisle directory

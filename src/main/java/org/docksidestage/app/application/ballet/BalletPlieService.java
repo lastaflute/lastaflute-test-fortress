@@ -15,9 +15,9 @@
  */
 package org.docksidestage.app.application.ballet;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.dbflute.exbhv.MemberBhv;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

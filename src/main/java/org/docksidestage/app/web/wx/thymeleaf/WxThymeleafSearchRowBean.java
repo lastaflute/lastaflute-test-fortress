@@ -17,11 +17,11 @@ package org.docksidestage.app.web.wx.thymeleaf;
 
 import java.time.LocalDate;
 
-import javax.validation.Valid;
-
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
 
 /**
  * @author jflute

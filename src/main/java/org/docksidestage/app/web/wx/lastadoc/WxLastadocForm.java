@@ -15,12 +15,12 @@
  */
 package org.docksidestage.app.web.wx.lastadoc;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
-
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 
 /**
  * @author jflute

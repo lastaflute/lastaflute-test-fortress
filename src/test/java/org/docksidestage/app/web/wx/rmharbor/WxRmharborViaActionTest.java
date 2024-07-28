@@ -17,8 +17,6 @@ package org.docksidestage.app.web.wx.rmharbor;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.dbflute.remoteapi.exception.RemoteApiIOException;
 import org.dbflute.remoteapi.mock.MockHttpClient;
 import org.dbflute.utflute.lastaflute.mock.TestingJsonData;
@@ -28,6 +26,8 @@ import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductRetu
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.servlet.request.RequestManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

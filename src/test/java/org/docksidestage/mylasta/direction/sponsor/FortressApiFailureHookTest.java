@@ -1,7 +1,5 @@
 package org.docksidestage.mylasta.direction.sponsor;
 
-import javax.annotation.Resource;
-
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook.UnifiedFailureResult;
 import org.docksidestage.mylasta.direction.sponsor.FortressApiFailureHook.UnifiedFailureType;
@@ -11,6 +9,8 @@ import org.lastaflute.web.api.ApiFailureResource;
 import org.lastaflute.web.login.exception.LoginFailureException;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.servlet.request.RequestManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

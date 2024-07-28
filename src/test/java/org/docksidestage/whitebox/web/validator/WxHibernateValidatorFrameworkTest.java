@@ -13,8 +13,6 @@ import javax.validation.ValidatorFactory;
 import javax.validation.bootstrap.GenericBootstrap;
 import javax.validation.constraints.NotNull;
 import javax.validation.groups.Default;
-import javax.validation.valueextraction.ExtractedValue;
-import javax.validation.valueextraction.ValueExtractor;
 
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
@@ -24,6 +22,9 @@ import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.constraints.Length;
 import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.VaValidListBean;
+
+import jakarta.validation.valueextraction.ExtractedValue;
+import jakarta.validation.valueextraction.ValueExtractor;
 
 /**
  * @author jflute

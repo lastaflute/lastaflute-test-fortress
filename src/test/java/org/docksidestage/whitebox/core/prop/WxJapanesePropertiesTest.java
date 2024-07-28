@@ -17,11 +17,11 @@ package org.docksidestage.whitebox.core.prop;
 
 import java.util.Locale;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.message.MessageManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

@@ -17,10 +17,10 @@ package org.docksidestage.app.web.wx.remoteapi.rmharbor;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.remote.harbor.RemoteHarborBhv;
 import org.docksidestage.remote.harbor.lido.mypage.RemoteHbLidoMypageProductReturn;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

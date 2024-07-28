@@ -17,8 +17,6 @@ package org.docksidestage.app.web.wx.request.multipart;
 
 import java.io.IOException;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.mylasta.direction.sponsor.FortressMultipartRequestHandler;
 import org.lastaflute.web.Execute;
@@ -29,6 +27,8 @@ import org.lastaflute.web.ruts.multipart.exception.MultipartExceededException;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

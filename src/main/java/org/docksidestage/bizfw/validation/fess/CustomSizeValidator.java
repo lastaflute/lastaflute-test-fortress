@@ -17,12 +17,12 @@ package org.docksidestage.bizfw.validation.fess;
 
 import java.util.Map;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import org.dbflute.util.DfCollectionUtil;
 import org.eclipse.jetty.util.StringUtil;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
+
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 /**
  * @author jflute (refers to fess)

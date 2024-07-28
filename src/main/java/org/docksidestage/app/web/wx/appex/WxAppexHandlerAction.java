@@ -15,8 +15,6 @@
  */
 package org.docksidestage.app.web.wx.appex;
 
-import javax.annotation.Resource;
-
 import org.dbflute.exception.EntityAlreadyDeletedException;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
@@ -26,6 +24,8 @@ import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.ruts.process.ActionRuntime;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

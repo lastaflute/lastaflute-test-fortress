@@ -15,8 +15,6 @@
  */
 package org.docksidestage.app.job;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.logic.DanceSongLogic;
 import org.docksidestage.app.logic.env.ComedyRhythmLogic;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
@@ -26,6 +24,8 @@ import org.lastaflute.job.LaJob;
 import org.lastaflute.job.LaJobRuntime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

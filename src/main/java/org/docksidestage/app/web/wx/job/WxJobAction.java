@@ -15,8 +15,6 @@
  */
 package org.docksidestage.app.web.wx.job;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.lastaflute.core.magic.async.AsyncManager;
@@ -25,6 +23,8 @@ import org.lastaflute.job.key.LaJobUnique;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

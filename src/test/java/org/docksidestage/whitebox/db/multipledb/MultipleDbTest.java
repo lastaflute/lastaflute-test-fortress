@@ -15,11 +15,11 @@
  */
 package org.docksidestage.whitebox.db.multipledb;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.docksidestage.dbflute.resola.exbhv.StationBhv;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

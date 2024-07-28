@@ -15,12 +15,12 @@
  */
 package org.docksidestage.app.web.base.csrf;
 
-import javax.annotation.Resource;
-
 import org.dbflute.util.Srl;
 import org.lastaflute.web.ruts.process.ActionRuntime;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.token.CsrfManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

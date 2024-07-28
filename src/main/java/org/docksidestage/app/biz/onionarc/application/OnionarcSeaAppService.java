@@ -15,9 +15,9 @@
  */
 package org.docksidestage.app.biz.onionarc.application;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.biz.onionarc.domain.service.OnionarcSeaDomainService;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

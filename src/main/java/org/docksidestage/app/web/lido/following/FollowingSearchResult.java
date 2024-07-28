@@ -2,11 +2,11 @@ package org.docksidestage.app.web.lido.following;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
 
 /**
  * @author jflute

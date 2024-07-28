@@ -15,13 +15,13 @@
  */
 package org.docksidestage.whitebox.core.json;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.web.validation.Required;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

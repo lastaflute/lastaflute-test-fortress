@@ -17,10 +17,6 @@ package org.docksidestage.mylasta.direction.sponsor.planner;
 
 import java.util.Arrays;
 
-import javax.validation.Configuration;
-import javax.validation.constraints.Size;
-import javax.validation.valueextraction.ValueExtractor;
-
 import org.docksidestage.bizfw.json.RuledJsonEngineKeeper;
 import org.docksidestage.bizfw.validation.SizeValidatorForImmutableList;
 import org.docksidestage.bizfw.validation.ValueExtractorForImmutableList;
@@ -30,6 +26,9 @@ import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.factory.Lists;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 import org.hibernate.validator.internal.cfg.context.DefaultConstraintMapping;
+import org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider;
+import org.hibernate.validator.internal.properties.DefaultGetterPropertySelectionStrategy;
+import org.hibernate.validator.internal.properties.javabean.JavaBeanHelper;
 import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.web.path.FormMappingOption;
 import org.lastaflute.web.path.ResponseReflectingOption;
@@ -38,6 +37,10 @@ import org.lastaflute.web.path.restful.router.RestfulRouter;
 import org.lastaflute.web.ruts.inoutlogging.InOutLogOption;
 import org.lastaflute.web.ruts.process.populate.FormYourCollectionResource;
 import org.lastaflute.web.validation.VaConfigSetupper;
+
+import jakarta.validation.Configuration;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.valueextraction.ValueExtractor;
 
 /**
  * @author jflute
@@ -117,9 +120,16 @@ public class ActionOptionAgent {
     }
 
     protected DefaultConstraintMapping createImmutableListConstraintMapping() {
-        DefaultConstraintMapping mapping = new DefaultConstraintMapping();
+        final DefaultConstraintMapping mapping = createDefaultConstraintMapping();
         mapping.constraintDefinition(Size.class).validatedBy(SizeValidatorForImmutableList.class);
         return mapping;
+    }
+
+    protected DefaultConstraintMapping createDefaultConstraintMapping() { // #hibernate8
+        final DefaultGetterPropertySelectionStrategy strategy = new DefaultGetterPropertySelectionStrategy();
+        final DefaultPropertyNodeNameProvider provider = new DefaultPropertyNodeNameProvider();
+        final JavaBeanHelper javaBeanHelper = new JavaBeanHelper(strategy, provider);
+        return new DefaultConstraintMapping(javaBeanHelper);
     }
 
     protected ValueExtractor<?> createImmutableListValueExtractor() {

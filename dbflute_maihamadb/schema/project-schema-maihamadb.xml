@@ -171,12 +171,12 @@
             javaType="String" name="LOGIN_MEMBER_STATUS_CODE"
             required="true" size="3" type="CHAR"/>
         <foreign-key foreignSchema="maihamadb.$$NoNameSchema$$"
-            foreignTable="member" name="FK_MEMBER_LOGIN_MEMBER">
-            <reference foreign="MEMBER_ID" local="MEMBER_ID"/>
-        </foreign-key>
-        <foreign-key foreignSchema="maihamadb.$$NoNameSchema$$"
             foreignTable="member_status" name="FK_MEMBER_LOGIN_MEMBER_STATUS">
             <reference foreign="MEMBER_STATUS_CODE" local="LOGIN_MEMBER_STATUS_CODE"/>
+        </foreign-key>
+        <foreign-key foreignSchema="maihamadb.$$NoNameSchema$$"
+            foreignTable="member" name="FK_MEMBER_LOGIN_MEMBER">
+            <reference foreign="MEMBER_ID" local="MEMBER_ID"/>
         </foreign-key>
         <unique name="UQ_MEMBER_LOGIN">
             <unique-column name="MEMBER_ID" position="1"/>

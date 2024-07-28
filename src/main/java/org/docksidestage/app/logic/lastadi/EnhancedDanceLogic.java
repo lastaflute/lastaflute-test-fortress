@@ -15,11 +15,12 @@
  */
 package org.docksidestage.app.logic.lastadi;
 
-import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import org.docksidestage.dbflute.exbhv.MemberBhv;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

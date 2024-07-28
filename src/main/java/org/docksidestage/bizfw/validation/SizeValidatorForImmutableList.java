@@ -15,11 +15,11 @@
  */
 package org.docksidestage.bizfw.validation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraints.Size;
-
 import org.eclipse.collections.api.list.ImmutableList;
+
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.constraints.Size;
 
 /**
  * @author jflute

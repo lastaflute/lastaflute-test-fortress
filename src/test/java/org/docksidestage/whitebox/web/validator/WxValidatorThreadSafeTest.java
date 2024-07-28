@@ -17,8 +17,6 @@ package org.docksidestage.whitebox.web.validator;
 
 import java.util.Locale;
 
-import javax.annotation.Resource;
-
 import org.dbflute.utflute.core.cannonball.CannonballOption;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
@@ -27,6 +25,8 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.validation.ActionValidator;
 import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.VaConfigSetupper;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

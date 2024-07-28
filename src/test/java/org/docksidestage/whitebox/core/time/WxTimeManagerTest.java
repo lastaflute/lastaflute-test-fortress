@@ -20,11 +20,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-import javax.annotation.Resource;
-
 import org.dbflute.system.DBFluteSystem;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.time.TimeManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

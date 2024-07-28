@@ -15,12 +15,12 @@
  */
 package org.docksidestage.app.biz.onionarc.infrastructure;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.biz.onionarc.domain.repository.OnionarcSeaRepository;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

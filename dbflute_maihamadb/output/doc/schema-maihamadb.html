@@ -550,7 +550,7 @@ pre.spolicyviodisp {
 会員を基点に考えた場合、構造的には one-to-many だが、業務的な定型条件で one-to-one になる。このような構造を「業務的one-to-one」と呼ぶ！
 有効期間は隙間なく埋められるが、ここでは住所情報のない会員も存在し、厳密には(業務的な) "1 : 0..1" である。</pre></td>
 		<td class="subcell">MemberAddress</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -568,12 +568,12 @@ pre.spolicyviodisp {
 		<td class="aliascell">会員ログイン</td>
 		<td class="namecell" data-name="member_login"><a href="#member_login" title="type=TABLE, primaryKey={MEMBER_LOGIN_ID}, nameLength=12, columnCount=5">MEMBER_LOGIN</a></td>
 		<td class="typecell">TABLE</td>
-		<td class="relcell"><a href="#member" title="FK_MEMBER_LOGIN_MEMBER">MEMBER</a>, <a href="#member_status" title="FK_MEMBER_LOGIN_MEMBER_STATUS">MEMBER_STATUS</a></td>
+		<td class="relcell"><a href="#member_status" title="FK_MEMBER_LOGIN_MEMBER_STATUS">MEMBER_STATUS</a>, <a href="#member" title="FK_MEMBER_LOGIN_MEMBER">MEMBER</a></td>
 		<td class="relcell">&nbsp;</td>
 		<td class="commentcell member_login_comment"><pre>ログインするたびに登録されるログイン履歴。
 登録されたら更新されるも削除されることもない。さらには、登録する人もプログラムもはっきりしているので、(紙面の都合上もあって)ここでは共通カラムは省略している。</pre></td>
 		<td class="subcell">MemberLogin</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">5</td>
@@ -584,7 +584,7 @@ pre.spolicyviodisp {
 		<td class="relcell">&nbsp;</td>
 		<td class="commentcell member_security_comment"><pre>会員とは one-to-one で、会員一人につき必ず一つのセキュリティ情報がある</pre></td>
 		<td class="subcell">MemberSecurity</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">6</td>
@@ -610,7 +610,7 @@ pre.spolicyviodisp {
 
 こういった固定的なマスタテーブルには、更新日時などの共通カラムは定義していないが、業務上そういった情報を管理する必要性が低いという理由に加え、ExampleDBとして共通カラムでER図が埋め尽くされてしまい見づらくなるというところで割り切っている。実業務では統一的に定義することもある。</pre></td>
 		<td class="subcell">MemberStatus</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">8</td>
@@ -624,7 +624,7 @@ pre.spolicyviodisp {
 共通カラムがあってバージョンNOがないパターン。
 基本的に更新は入らないが、重要なデータなので万が一のために更新系の共通カラムも。</pre></td>
 		<td class="subcell">MemberWithdrawal</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">9</td>
@@ -635,7 +635,7 @@ pre.spolicyviodisp {
 		<td class="relcell"><a href="#purchase" title="FK_PURCHASE_PRODUCT">PURCHASE</a></td>
 		<td class="commentcell product_comment"><pre>相当偏ったラインナップ</pre></td>
 		<td class="subcell">Product</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">10</td>
@@ -657,7 +657,7 @@ pre.spolicyviodisp {
 		<td class="relcell"><a href="#product" title="FK_PRODUCT_PRODUCT_STATUS">PRODUCT</a></td>
 		<td class="commentcell product_status_comment"><pre>商品のステータスを表現する固定的なマスタ。</pre></td>
 		<td class="subcell">ProductStatus</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">12</td>
@@ -669,7 +669,7 @@ pre.spolicyviodisp {
 		<td class="commentcell purchase_comment"><pre>一つの商品に対する購入を表現する(購入履歴とも言える)。
 実業務であれば購入詳細というテーブルを作り、「購入という行為」と「その中身（詳細）」を違う粒度のデータとしてそれぞれ管理するのが一般的と言えるでしょう。というか、注文とか請求とかそういうことを考え始めたらもっと複雑になるはずですが、ExampleDBということで割り切っています。</pre></td>
 		<td class="subcell">Purchase</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">13</td>
@@ -715,7 +715,7 @@ pre.spolicyviodisp {
 		<td class="relcell"><a href="#member_withdrawal" title="FK_MEMBER_WITHDRAWAL_WITHDRAWAL_REASON">MEMBER_WITHDRAWAL</a></td>
 		<td class="commentcell withdrawal_reason_comment"><pre>会員に選ばせる定型的な退会理由のマスタ。そういえば、これ表示順カラムがないですねぇ...</pre></td>
 		<td class="subcell">WithdrawalReason</td>
-		<td class="subcell"></td>
+		<td class="subcell">2024/07/28</td>
 	</tr>
 	</tbody>
 </table>
@@ -957,6 +957,7 @@ pre.spolicyviodisp {
 
 <h2 id="member_address" title="type=TABLE, primaryKey={MEMBER_ADDRESS_ID}, nameLength=14, columnCount=11">
 (会員住所情報)MEMBER_ADDRESS
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 </h2>
 <div class="tablecomment member_address_comment" data-name="member_address"><pre>会員の住所に関する情報で、同時に有効期間ごとに履歴管理されている。
 会員を基点に考えた場合、構造的には one-to-many だが、業務的な定型条件で one-to-one になる。このような構造を「業務的one-to-one」と呼ぶ！
@@ -981,6 +982,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="member_address-body">
@@ -1002,6 +1004,7 @@ pre.spolicyviodisp {
 期間ごとに同じ会員のデータを保持することがあるため、これは単なるPKであってFKではない。</pre></td>
 		<td class="subcell">memberAddressId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -1021,6 +1024,7 @@ pre.spolicyviodisp {
 期間ごとのデータがあるので、これだけではユニークにはならない。有効開始日と合わせて複合ユニーク制約となるが、厳密には完全な制約にはなっていない。有効期間の概念はRDBでは表現しきれないのである。</pre></td>
 		<td class="subcell">memberId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -1040,6 +1044,7 @@ pre.spolicyviodisp {
 前の有効終了日の次の日の値が格納される。</pre></td>
 		<td class="subcell">validBeginDate</td>
 		<td class="subcell">LocalDate</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">4</td>
@@ -1059,6 +1064,7 @@ pre.spolicyviodisp {
 期間の最後の日が格納される。基本的に、次の有効開始日の一日前の値となるが、次の有効期間がない場合は 9999/12/31 となる。</pre></td>
 		<td class="subcell">validEndDate</td>
 		<td class="subcell">LocalDate</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">5</td>
@@ -1077,6 +1083,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>まるごと住所</pre></td>
 		<td class="subcell">address</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">6</td>
@@ -1095,6 +1102,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>地域を参照するID。かなり漠然とした地域。</pre></td>
 		<td class="subcell">regionId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">2011/08/27</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">7</td>
@@ -1113,6 +1121,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが登録された日時</pre></td>
 		<td class="subcell">registerDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">8</td>
@@ -1131,6 +1140,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを登録したユーザー</pre></td>
 		<td class="subcell">registerUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">9</td>
@@ -1149,6 +1159,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが(最後に)更新された日時</pre></td>
 		<td class="subcell">updateDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">10</td>
@@ -1167,6 +1178,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを(最後に)更新したユーザー</pre></td>
 		<td class="subcell">updateUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">11</td>
@@ -1185,6 +1197,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>排他制御用、更新されるごとにインクリメントされる</pre></td>
 		<td class="subcell">versionNo</td>
 		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
 	</tr>
 	</tbody>
 </table>
@@ -1299,6 +1312,7 @@ pre.spolicyviodisp {
 
 <h2 id="member_login" title="type=TABLE, primaryKey={MEMBER_LOGIN_ID}, nameLength=12, columnCount=5">
 (会員ログイン)MEMBER_LOGIN
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 </h2>
 <div class="tablecomment member_login_comment" data-name="member_login"><pre>ログインするたびに登録されるログイン履歴。
 登録されたら更新されるも削除されることもない。さらには、登録する人もプログラムもはっきりしているので、(紙面の都合上もあって)ここでは共通カラムは省略している。</pre></div>
@@ -1322,6 +1336,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="member_login-body">
@@ -1342,6 +1357,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>&nbsp;</pre></td>
 		<td class="subcell">memberLoginId</td>
 		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -1360,6 +1376,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>連番として自動採番される。会員IDだけに限らず採番方法はDBMS次第。</pre></td>
 		<td class="subcell">memberId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -1379,6 +1396,7 @@ pre.spolicyviodisp {
 同じ会員が同じ日時にログインはできない。(ユニーク制約で重複ログインできないようにしてある)</pre></td>
 		<td class="subcell">loginDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">4</td>
@@ -1397,6 +1415,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>モバイル機器からのログインか否か。</pre></td>
 		<td class="subcell">mobileLoginFlg</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">5</td>
@@ -1415,12 +1434,14 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>ログイン時の会員ステータス</pre></td>
 		<td class="subcell">loginMemberStatusCode</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	</tbody>
 </table>
 
 <h2 id="member_security" title="type=TABLE, primaryKey={MEMBER_ID}, nameLength=15, columnCount=10">
 (会員セキュリティ)MEMBER_SECURITY
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 </h2>
 <div class="tablecomment member_security_comment" data-name="member_security"><pre>会員とは one-to-one で、会員一人につき必ず一つのセキュリティ情報がある</pre></div>
 <input type="hidden" value="member_security">
@@ -1443,6 +1464,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="member_security-body">
@@ -1463,6 +1485,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>そのまま one-to-one を構成するためのFKとなる。</pre></td>
 		<td class="subcell">memberId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -1482,6 +1505,7 @@ pre.spolicyviodisp {
 本当は良くないが、Exampleなのでひとまず暗号化していない。</pre></td>
 		<td class="subcell">loginPassword</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -1500,6 +1524,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>パスワードを忘れた際のリマインダ機能における質問の内容。</pre></td>
 		<td class="subcell">reminderQuestion</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">4</td>
@@ -1518,6 +1543,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>パスワードを忘れた際のリマインダ機能における質問の答え。</pre></td>
 		<td class="subcell">reminderAnswer</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">5</td>
@@ -1537,6 +1563,7 @@ pre.spolicyviodisp {
 これが多いと忘れっぽい会員と言えるが、そんなことを知ってもしょうがない。</pre></td>
 		<td class="subcell">reminderUseCount</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">2011/08/27</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">6</td>
@@ -1555,6 +1582,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが登録された日時</pre></td>
 		<td class="subcell">registerDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">7</td>
@@ -1573,6 +1601,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを登録したユーザー</pre></td>
 		<td class="subcell">registerUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">8</td>
@@ -1591,6 +1620,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが(最後に)更新された日時</pre></td>
 		<td class="subcell">updateDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">9</td>
@@ -1609,6 +1639,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを(最後に)更新したユーザー</pre></td>
 		<td class="subcell">updateUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">10</td>
@@ -1627,6 +1658,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>排他制御用、更新されるごとにインクリメントされる</pre></td>
 		<td class="subcell">versionNo</td>
 		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
 	</tr>
 	</tbody>
 </table>
@@ -1837,6 +1869,7 @@ pre.spolicyviodisp {
 
 <h2 id="member_status" title="type=TABLE, primaryKey={MEMBER_STATUS_CODE}, nameLength=13, columnCount=4">
 (会員ステータス)MEMBER_STATUS
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 </h2>
 <div class="tablecomment member_status_comment" data-name="member_status"><pre>会員のステータスを示す固定的なマスタテーブル。いわゆるテーブル区分値！
 業務運用上で増えることはなく、増減するときはプログラム修正ともなうレベルの業務変更と考えられる。
@@ -1862,6 +1895,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="member_status-body">
@@ -1883,6 +1917,7 @@ pre.spolicyviodisp {
 固定的なデータなので連番とか番号にはせず、データを直接見たときも人が直感的にわかるように、例えば "FML" とかの３桁のコード形式にしている。(3って何会員だっけ？とかの問答をやりたくないので)</pre></td>
 		<td class="subcell">memberStatusCode</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -1902,6 +1937,7 @@ pre.spolicyviodisp {
 国際化対応するときはもっと色々考える必要があるかと...ということで英語名カラムがないので、そのまま区分値メソッド名の一部としても利用される。</pre></td>
 		<td class="subcell">memberStatusName</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -1921,6 +1957,7 @@ pre.spolicyviodisp {
 区分値の一つ一つの要素に気の利いた説明があるとディベロッパーがとても助かるので絶対に欲しい。</pre></td>
 		<td class="subcell">description</td>
 		<td class="subcell">String</td>
+		<td class="subcell">2011/08/27</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">4</td>
@@ -1940,12 +1977,14 @@ pre.spolicyviodisp {
 並べるときは、このカラムに対して昇順のソート条件にする。</pre></td>
 		<td class="subcell">displayOrder</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	</tbody>
 </table>
 
 <h2 id="member_withdrawal" title="type=TABLE, primaryKey={MEMBER_ID}, nameLength=17, columnCount=8">
 (会員退会情報)MEMBER_WITHDRAWAL
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 </h2>
 <div class="tablecomment member_withdrawal_comment" data-name="member_withdrawal"><pre>退会会員の退会に関する詳細な情報。
 退会会員のみデータが存在し、"1 : 0..1" のパターンの one-to-one である。
@@ -1971,6 +2010,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="member_withdrawal-body">
@@ -1991,6 +2031,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>連番として自動採番される。会員IDだけに限らず採番方法はDBMS次第。</pre></td>
 		<td class="subcell">memberId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -2010,6 +2051,7 @@ pre.spolicyviodisp {
 何も言わずに退会する会員もいるので必須項目ではない。</pre></td>
 		<td class="subcell">withdrawalReasonCode</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -2029,6 +2071,7 @@ pre.spolicyviodisp {
 もう言いたいこと言ってもらう感じ。サイト運営側としてはこういうのは真摯に受け止めて改善していきたいところ。</pre></td>
 		<td class="subcell">withdrawalReasonInputText</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">4</td>
@@ -2048,6 +2091,7 @@ pre.spolicyviodisp {
 正式会員日時と違い、こっちは one-to-one の別テーブルで管理されている。</pre></td>
 		<td class="subcell">withdrawalDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">5</td>
@@ -2066,6 +2110,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが登録された日時</pre></td>
 		<td class="subcell">registerDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">6</td>
@@ -2084,6 +2129,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを登録したユーザー</pre></td>
 		<td class="subcell">registerUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">7</td>
@@ -2102,6 +2148,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが(最後に)更新された日時</pre></td>
 		<td class="subcell">updateDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">8</td>
@@ -2120,12 +2167,14 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを(最後に)更新したユーザー</pre></td>
 		<td class="subcell">updateUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	</tbody>
 </table>
 
 <h2 id="product" title="type=TABLE, primaryKey={PRODUCT_ID}, nameLength=7, columnCount=11">
 (商品)PRODUCT
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 </h2>
 <div class="tablecomment product_comment" data-name="product"><pre>相当偏ったラインナップ</pre></div>
 <input type="hidden" value="product">
@@ -2148,6 +2197,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="product-body">
@@ -2168,6 +2218,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>&nbsp;</pre></td>
 		<td class="subcell">productId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -2187,6 +2238,7 @@ pre.spolicyviodisp {
 実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜</pre></td>
 		<td class="subcell">productName</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -2205,6 +2257,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...</pre></td>
 		<td class="subcell">productHandleCode</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">4</td>
@@ -2223,6 +2276,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>自分のテーブルの別のレコードからも参照される。</pre></td>
 		<td class="subcell">productCategoryCode</td>
 		<td class="subcell">String</td>
+		<td class="subcell">2011/08/27</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">5</td>
@@ -2241,6 +2295,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>商品ステータスを識別するコード。</pre></td>
 		<td class="subcell">productStatusCode</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">6</td>
@@ -2259,6 +2314,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>&nbsp;</pre></td>
 		<td class="subcell">regularPrice</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">2011/08/27</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">7</td>
@@ -2277,6 +2333,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが登録された日時</pre></td>
 		<td class="subcell">registerDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">8</td>
@@ -2295,6 +2352,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを登録したユーザー</pre></td>
 		<td class="subcell">registerUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">9</td>
@@ -2313,6 +2371,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが(最後に)更新された日時</pre></td>
 		<td class="subcell">updateDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">10</td>
@@ -2331,6 +2390,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを(最後に)更新したユーザー</pre></td>
 		<td class="subcell">updateUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">11</td>
@@ -2349,6 +2409,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>排他制御用、更新されるごとにインクリメントされる</pre></td>
 		<td class="subcell">versionNo</td>
 		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
 	</tr>
 	</tbody>
 </table>
@@ -2444,6 +2505,7 @@ pre.spolicyviodisp {
 
 <h2 id="product_status" title="type=TABLE, primaryKey={PRODUCT_STATUS_CODE}, nameLength=14, columnCount=3">
 (商品ステータス)PRODUCT_STATUS
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 </h2>
 <div class="tablecomment product_status_comment" data-name="product_status"><pre>商品のステータスを表現する固定的なマスタ。</pre></div>
 <input type="hidden" value="product_status">
@@ -2466,6 +2528,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="product_status-body">
@@ -2486,6 +2549,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>商品ステータスを識別するコード。</pre></td>
 		<td class="subcell">productStatusCode</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -2504,6 +2568,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>表示用の名称、英語名カラムがないのでそのままメソッド名の一部としても利用される。</pre></td>
 		<td class="subcell">productStatusName</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -2522,12 +2587,14 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>もう、ご想像の通りです。</pre></td>
 		<td class="subcell">displayOrder</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">2011/08/27</td>
 	</tr>
 	</tbody>
 </table>
 
 <h2 id="purchase" title="type=TABLE, primaryKey={PURCHASE_ID}, nameLength=8, columnCount=12">
 (購入)PURCHASE
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 &nbsp;<span class="bqpcount"><a href="#purchase_sql">(outsideSql=1)</a></span>
 </h2>
 <div class="tablecomment purchase_comment" data-name="purchase"><pre>一つの商品に対する購入を表現する(購入履歴とも言える)。
@@ -2552,6 +2619,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="purchase-body">
@@ -2572,6 +2640,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>連番</pre></td>
 		<td class="subcell">purchaseId</td>
 		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -2591,6 +2660,7 @@ pre.spolicyviodisp {
 購入を識別する自然キー(複合ユニーク制約)の筆頭要素。</pre></td>
 		<td class="subcell">memberId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -2609,6 +2679,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>あなたは何を買ったのか？</pre></td>
 		<td class="subcell">productId</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">4</td>
@@ -2627,6 +2698,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>購入した瞬間の日時。</pre></td>
 		<td class="subcell">purchaseDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">5</td>
@@ -2645,6 +2717,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>購入した商品の一回の購入における数量。</pre></td>
 		<td class="subcell">purchaseCount</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">6</td>
@@ -2664,6 +2737,7 @@ pre.spolicyviodisp {
 基本は商品の定価に購入数量を掛けたものになるが、ポイント利用や割引があったりと必ずしもそうはならない。</pre></td>
 		<td class="subcell">purchasePrice</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">7</td>
@@ -2682,6 +2756,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>この購入に関しての支払いが完了しているか否か。</pre></td>
 		<td class="subcell">paymentCompleteFlg</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">8</td>
@@ -2700,6 +2775,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが登録された日時</pre></td>
 		<td class="subcell">registerDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">9</td>
@@ -2718,6 +2794,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを登録したユーザー</pre></td>
 		<td class="subcell">registerUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">10</td>
@@ -2736,6 +2813,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードが(最後に)更新された日時</pre></td>
 		<td class="subcell">updateDatetime</td>
 		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">11</td>
@@ -2754,6 +2832,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>レコードを(最後に)更新したユーザー</pre></td>
 		<td class="subcell">updateUser</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">12</td>
@@ -2772,6 +2851,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>排他制御用、更新されるごとにインクリメントされる</pre></td>
 		<td class="subcell">versionNo</td>
 		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
 	</tr>
 	</tbody>
 </table>
@@ -3202,6 +3282,7 @@ pre.spolicyviodisp {
 
 <h2 id="withdrawal_reason" title="type=TABLE, primaryKey={WITHDRAWAL_REASON_CODE}, nameLength=17, columnCount=3">
 (退会理由)WITHDRAWAL_REASON
+&nbsp;<span class="tablefirstdatetitle">since 2024/07/28</span>
 </h2>
 <div class="tablecomment withdrawal_reason_comment" data-name="withdrawal_reason"><pre>会員に選ばせる定型的な退会理由のマスタ。そういえば、これ表示順カラムがないですねぇ...</pre></div>
 <input type="hidden" value="withdrawal_reason">
@@ -3224,6 +3305,7 @@ pre.spolicyviodisp {
 		<th>ColumnComment</th>
 		<th>PropertyName</th>
 		<th>JavaType</th>
+		<th>Since</th>
 	</tr>
 	</thead>
 	<tbody id="withdrawal_reason-body">
@@ -3244,6 +3326,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>&nbsp;</pre></td>
 		<td class="subcell">withdrawalReasonCode</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
@@ -3263,6 +3346,7 @@ pre.spolicyviodisp {
 テキスト形式なので目いっぱい書けるが、そうするとUI側できれいに見せるのが大変でしょうね。</pre></td>
 		<td class="subcell">withdrawalReasonText</td>
 		<td class="subcell">String</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -3281,6 +3365,7 @@ pre.spolicyviodisp {
 		<td class="commentcell"><pre>もう、ご想像の通りです。</pre></td>
 		<td class="subcell">displayOrder</td>
 		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
 	</tr>
 	</tbody>
 </table>

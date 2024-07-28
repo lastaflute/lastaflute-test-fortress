@@ -15,9 +15,9 @@
  */
 package org.docksidestage.app.web.wx.validator;
 
-import javax.validation.Valid;
-
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
 
 /**
  * @param <DATA> The type of data bean.

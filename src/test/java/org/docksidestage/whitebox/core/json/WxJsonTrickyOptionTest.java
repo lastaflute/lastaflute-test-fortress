@@ -15,8 +15,6 @@
  */
 package org.docksidestage.whitebox.core.json;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.product.ProductSearchForm;
 import org.docksidestage.app.web.product.ProductSearchRowBean;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
@@ -24,6 +22,8 @@ import org.lastaflute.core.json.JsonEngineResource;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.json.engine.RealJsonEngine;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

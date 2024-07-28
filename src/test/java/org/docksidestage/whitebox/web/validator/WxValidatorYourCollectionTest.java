@@ -18,7 +18,6 @@ package org.docksidestage.whitebox.web.validator;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
 import javax.validation.Configuration;
 import javax.validation.UnexpectedTypeException;
 import javax.validation.constraints.Size;
@@ -36,6 +35,8 @@ import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.validation.ActionValidator;
 import org.lastaflute.web.validation.VaConfigSetupper;
 import org.lastaflute.web.validation.exception.ValidationStoppedException;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

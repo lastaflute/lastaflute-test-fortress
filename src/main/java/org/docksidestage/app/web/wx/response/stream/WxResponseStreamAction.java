@@ -21,8 +21,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.dbflute.helper.token.file.FileToken;
 import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
@@ -35,6 +33,8 @@ import org.lastaflute.web.response.ApiResponse;
 import org.lastaflute.web.response.StreamResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

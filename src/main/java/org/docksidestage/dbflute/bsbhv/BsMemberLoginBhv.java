@@ -376,20 +376,20 @@ public abstract class BsMemberLoginBhv extends AbstractBehaviorWritable<MemberLo
     //                                                                   Pull out Relation
     //                                                                   =================
     /**
-     * Pull out the list of foreign table 'Member'.
-     * @param memberLoginList The list of memberLogin. (NotNull, EmptyAllowed)
-     * @return The list of foreign table. (NotNull, EmptyAllowed, NotNullElement)
-     */
-    public List<Member> pulloutMember(List<MemberLogin> memberLoginList)
-    { return helpPulloutInternally(memberLoginList, "member"); }
-
-    /**
      * Pull out the list of foreign table 'MemberStatus'.
      * @param memberLoginList The list of memberLogin. (NotNull, EmptyAllowed)
      * @return The list of foreign table. (NotNull, EmptyAllowed, NotNullElement)
      */
     public List<MemberStatus> pulloutMemberStatus(List<MemberLogin> memberLoginList)
     { return helpPulloutInternally(memberLoginList, "memberStatus"); }
+
+    /**
+     * Pull out the list of foreign table 'Member'.
+     * @param memberLoginList The list of memberLogin. (NotNull, EmptyAllowed)
+     * @return The list of foreign table. (NotNull, EmptyAllowed, NotNullElement)
+     */
+    public List<Member> pulloutMember(List<MemberLogin> memberLoginList)
+    { return helpPulloutInternally(memberLoginList, "member"); }
 
     // ===================================================================================
     //                                                                      Extract Column

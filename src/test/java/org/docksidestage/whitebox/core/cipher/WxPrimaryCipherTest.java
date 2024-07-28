@@ -15,10 +15,10 @@
  */
 package org.docksidestage.whitebox.core.cipher;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.security.PrimaryCipher;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

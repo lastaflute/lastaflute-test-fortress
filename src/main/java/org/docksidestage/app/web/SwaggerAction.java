@@ -17,8 +17,6 @@ package org.docksidestage.app.web;
 
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.mylasta.direction.FortressConfig;
@@ -33,6 +31,8 @@ import org.lastaflute.web.response.HtmlResponse;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.response.StreamResponse;
 import org.lastaflute.web.servlet.request.RequestManager;
+
+import jakarta.annotation.Resource;
 
 /**
  * The action to show swaggar-ui.

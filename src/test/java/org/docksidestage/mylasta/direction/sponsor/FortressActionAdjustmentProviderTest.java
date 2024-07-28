@@ -15,10 +15,10 @@
  */
 package org.docksidestage.mylasta.direction.sponsor;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute at bay maihama

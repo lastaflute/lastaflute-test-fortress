@@ -20,11 +20,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.eclipse.collections.api.list.ImmutableList;
@@ -32,6 +27,11 @@ import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
 import org.lastaflute.web.validation.theme.conversion.ValidateTypeFailure;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author jflute

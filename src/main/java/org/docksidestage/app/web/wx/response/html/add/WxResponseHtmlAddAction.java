@@ -15,8 +15,6 @@
  */
 package org.docksidestage.app.web.wx.response.html.add;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.app.web.wx.response.html.list.WxResponseHtmlListAction;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
@@ -24,6 +22,8 @@ import org.docksidestage.dbflute.exentity.Member;
 import org.lastaflute.core.time.TimeManager;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.response.HtmlResponse;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

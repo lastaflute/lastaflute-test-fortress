@@ -1,7 +1,5 @@
 package org.docksidestage.app.web.signup;
 
-import javax.annotation.Resource;
-
 import org.dbflute.utflute.lastaflute.mock.TestingHtmlData;
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.docksidestage.app.web.mypage.MypageAction;
@@ -12,6 +10,8 @@ import org.docksidestage.mylasta.action.FortressHtmlPath;
 import org.docksidestage.mylasta.mail.member.WelcomeMemberPostcard;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.response.HtmlResponse;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

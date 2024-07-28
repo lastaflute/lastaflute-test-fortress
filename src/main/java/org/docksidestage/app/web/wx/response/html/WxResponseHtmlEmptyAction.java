@@ -17,10 +17,6 @@ package org.docksidestage.app.web.wx.response.html;
 
 import java.io.IOException;
 
-import javax.annotation.Resource;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -28,6 +24,10 @@ import org.lastaflute.web.response.HtmlResponse;
 import org.lastaflute.web.servlet.request.ResponseManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.annotation.Resource;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * @author jflute

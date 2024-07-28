@@ -17,8 +17,6 @@ package org.docksidestage.app.web.wx.appex;
 
 import java.util.stream.Stream;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.mylasta.action.FortressMessages;
 import org.lastaflute.core.exception.LaApplicationMessage;
@@ -29,6 +27,8 @@ import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.JsonResponse;
 import org.lastaflute.web.ruts.process.ActionRuntime;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

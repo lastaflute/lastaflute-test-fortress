@@ -18,11 +18,11 @@ package org.docksidestage.whitebox.core.json;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import javax.annotation.Resource;
-
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.annotation.JsonDatePattern;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

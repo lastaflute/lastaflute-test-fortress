@@ -18,8 +18,6 @@ package org.docksidestage.app.web.wx.remoteapi.rmharbor;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.annotation.Resource;
-
 import org.dbflute.cbean.result.PagingResultBean;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.docksidestage.app.web.base.FortressBaseAction;
@@ -42,6 +40,8 @@ import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.login.exception.LoginFailureException;
 import org.lastaflute.web.response.HtmlResponse;
 import org.lastaflute.web.response.JsonResponse;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

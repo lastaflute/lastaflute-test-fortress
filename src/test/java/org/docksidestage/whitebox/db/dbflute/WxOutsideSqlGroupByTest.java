@@ -3,13 +3,13 @@ package org.docksidestage.whitebox.db.dbflute;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import javax.annotation.Resource;
-
 import org.dbflute.cbean.result.ListResultBean;
 import org.docksidestage.dbflute.exbhv.PurchaseBhv;
 import org.docksidestage.dbflute.exbhv.pmbean.MemberMonthlyPurchasePmb;
 import org.docksidestage.dbflute.exentity.customize.MemberMonthlyPurchase;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

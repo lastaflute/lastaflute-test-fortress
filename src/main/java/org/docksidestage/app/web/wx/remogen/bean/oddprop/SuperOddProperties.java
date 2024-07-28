@@ -15,9 +15,9 @@
  */
 package org.docksidestage.app.web.wx.remogen.bean.oddprop;
 
-import javax.validation.Valid;
-
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
 
 /**
  * @author jflute

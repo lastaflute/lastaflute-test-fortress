@@ -15,8 +15,6 @@
  */
 package org.docksidestage.mylasta.direction.sponsor;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.dbflute.util.DfTypeUtil;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.mylasta.direction.sponsor.planner.ActionOptionAgent;
@@ -31,6 +29,8 @@ import org.lastaflute.web.path.UrlReverseOption;
 import org.lastaflute.web.path.UrlReverseResource;
 import org.lastaflute.web.path.restful.router.RestfulRouter;
 import org.lastaflute.web.validation.VaConfigSetupper;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * @author jflute

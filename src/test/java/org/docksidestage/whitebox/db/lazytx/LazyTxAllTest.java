@@ -17,7 +17,6 @@ package org.docksidestage.whitebox.db.lazytx;
 
 import java.util.Collections;
 
-import javax.annotation.Resource;
 import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.TransactionManager;
@@ -32,6 +31,8 @@ import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.db.dbflute.accesscontext.AccessContextResource;
 import org.lastaflute.db.jta.lazytx.LazyTransactionArranger;
 import org.lastaflute.db.jta.stage.TransactionStage;
+
+import jakarta.annotation.Resource;
 
 /**
  * @author jflute

@@ -15,10 +15,10 @@
  */
 package org.docksidestage.bizfw.validation;
 
-import javax.validation.valueextraction.ExtractedValue;
-import javax.validation.valueextraction.ValueExtractor;
-
 import org.eclipse.collections.api.list.ImmutableList;
+
+import jakarta.validation.valueextraction.ExtractedValue;
+import jakarta.validation.valueextraction.ValueExtractor;
 
 /**
  * Extension to avoid "sea[].land", to be "sea[0].land" since Hibernate Validator-6.0.x.

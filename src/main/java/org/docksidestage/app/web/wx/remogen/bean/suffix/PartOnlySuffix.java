@@ -17,9 +17,9 @@ package org.docksidestage.app.web.wx.remogen.bean.suffix;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.lastaflute.web.validation.Required;
+
+import jakarta.validation.Valid;
 
 /**
  * @author jflute
