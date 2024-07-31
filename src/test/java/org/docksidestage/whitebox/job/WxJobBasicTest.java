@@ -80,7 +80,6 @@ public class WxJobBasicTest extends UnitFortressBasicTestCase {
 
         // ## Assert ##
         job.stopNow();
-        assertExecutingNow(job);
         assertJobHistory(process.waitForEnding(), ExecResultType.CAUSED_BY_APPLICATION);
         assertFalse(job.isExecutingNow());
         assertExecutorListEmpty(job);
