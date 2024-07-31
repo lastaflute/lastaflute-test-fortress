@@ -124,7 +124,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
     @Override
     public ActionResponse hookBefore(ActionRuntime runtime) { // application may override
         crossLoginBridge.transfer(APP_TYPE, getUserBean(), USER_TYPE); // for e.g. RemoteApi
-        csrfTokenAssist.hookBefore(runtime); // outsdie just decision-making
+        csrfTokenAssist.hookBefore(runtime); // outside just decision-making
 
         return super.hookBefore(runtime);
     }
@@ -138,7 +138,7 @@ public abstract class FortressBaseAction extends TypicalAction // has several in
         }
         super.hookFinally(runtime);
 
-        csrfTokenAssist.hookFinally(runtime); // outsdie fitting with before
+        csrfTokenAssist.hookFinally(runtime); // outside fitting with before
     }
 
     // ===================================================================================

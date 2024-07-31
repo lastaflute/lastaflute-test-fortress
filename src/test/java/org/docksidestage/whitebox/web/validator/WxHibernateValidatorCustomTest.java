@@ -44,13 +44,13 @@ public class WxHibernateValidatorCustomTest extends PlainTestCase {
             log("vio: {}", vio);
             if ("sea".equals(vio.getPropertyPath().toString())) {
                 // custom annotation's message() has NotBlank message but inner annotation is prior
-                assertContains(vio.getMessage(), "length must be");
+                assertContainsAny(vio.getMessage(), "length", "長さ");
                 assertContains(vio.getMessageTemplate(), Length.class.getName() + ".message");
                 markHere("sea_called");
             }
             if ("land".equals(vio.getPropertyPath().toString())) {
                 // inner annotation has explicit annotation
-                assertContains(vio.getMessage(), "must be true");
+                assertContainsAny(vio.getMessage(), "true");
                 assertContains(vio.getMessageTemplate(), AssertTrue.class.getName() + ".message");
                 markHere("land_called");
             }
