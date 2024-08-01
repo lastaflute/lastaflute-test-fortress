@@ -30,13 +30,14 @@ public class WxDiXmlExpressionTest extends PlainTestCase {
     // ===================================================================================
     //                                                                            Trial Di
     //                                                                            ========
-    public void test_read_trialDi_nashorn() throws Exception { // cannot work since java15
-        forceInternalDebug();
-        forceSpecifiedEngine("nashorn"); // name "javascript" is conflicted to rhino so specific name 
-        log("...Booting Lasta Di as trial Di using nashorn");
-        SingletonLaContainerFactory.setConfigPath("wx_trial_di_app.xml");
-        SingletonLaContainerFactory.init(); // expects no exception
-    }
+    // cannot work at java21 so comment it out
+    //public void test_read_trialDi_nashorn() throws Exception { // cannot work since java15
+    //    forceInternalDebug();
+    //    forceSpecifiedEngine("nashorn"); // name "javascript" is conflicted to rhino so specific name 
+    //    log("...Booting Lasta Di as trial Di using nashorn");
+    //    SingletonLaContainerFactory.setConfigPath("wx_trial_di_app.xml");
+    //    SingletonLaContainerFactory.init(); // expects no exception
+    //}
 
     public void test_read_trialDi_rhino() throws Exception {
         forceInternalDebug();
