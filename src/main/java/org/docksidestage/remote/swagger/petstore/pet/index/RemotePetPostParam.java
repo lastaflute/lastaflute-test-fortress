@@ -15,9 +15,8 @@
  */
 package org.docksidestage.remote.swagger.petstore.pet.index;
 
-import javax.xml.bind.annotation.XmlElement;
-
 import jakarta.validation.constraints.NotNull;
+import jakarta.xml.bind.annotation.XmlElement;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
