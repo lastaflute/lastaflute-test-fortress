@@ -413,14 +413,14 @@
 		<!--                                                               = = = = = = = = -->
 		<!-- transaction -->
 		<dependency> <!-- Lasta Di uses e.g. TransactionManager -->
-			<groupId>jakarta.transaction</groupId>
+			<groupId>jakarta.transaction</groupId> <!-- #jakarta -->
 			<artifactId>jakarta.transaction-api</artifactId>
 			<version>2.0.1</version>
 		</dependency>
 
 		<!-- annotation -->
 		<dependency> <!-- Lasta Di uses e.g. @Resource -->
-			<groupId>jakarta.annotation</groupId>
+			<groupId>jakarta.annotation</groupId> <!-- #jakarta -->
 			<artifactId>jakarta.annotation-api</artifactId>
 			<version>2.1.1</version>
 			<scope>provided</scope> <!-- existing in jetty/tomcat -->
@@ -475,7 +475,7 @@
 		</dependency>
 		<dependency> <!-- used for multipart request -->
 			<groupId>org.apache.commons</groupId> <!-- #jakarta -->
-			<artifactId>commons-fileupload2-jakarta-servlet6</artifactId> <!-- #jakarta -->
+			<artifactId>commons-fileupload2-jakarta-servlet6</artifactId>
 			<version>${commons.fileupload.version}</version>
 		</dependency>
 		<dependency> <!-- used for test client -->
@@ -496,8 +496,8 @@
 		    <version>1.7.13</version>
 		</dependency>
 		<!-- JAXB (xml parser) needed for #java17 -->
-		<dependency> <!-- #jakarta -->
-			<groupId>jakarta.xml.bind</groupId>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId> <!-- #jakarta -->
 			<artifactId>jakarta.xml.bind-api</artifactId>
 			<version>4.0.2</version>
 		</dependency>
