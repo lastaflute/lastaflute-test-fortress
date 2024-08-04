@@ -412,10 +412,18 @@
 		<!--                                                               Partner Library -->
 		<!--                                                               = = = = = = = = -->
 		<!-- transaction -->
-		<dependency>
+		<dependency> <!-- Lasta Di uses e.g. TransactionManager -->
 			<groupId>jakarta.transaction</groupId>
 			<artifactId>jakarta.transaction-api</artifactId>
 			<version>2.0.1</version>
+		</dependency>
+
+		<!-- annotation -->
+		<dependency> <!-- Lasta Di uses e.g. @Resource -->
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+			<version>2.1.1</version>
+			<scope>provided</scope> <!-- existing in jetty/tomcat -->
 		</dependency>
 
 		<!-- logging -->
