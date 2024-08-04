@@ -19,7 +19,7 @@ import org.docksidestage.app.web.wx.validator.groups.group.WxValidatorGroupsGrou
 import org.docksidestage.app.web.wx.validator.groups.group.WxValidatorGroupsGroupHangar;
 import org.lastaflute.web.validation.Required;
 
-import jakarta.enterprise.inject.Default;
+import jakarta.validation.groups.Default;
 
 /**
  * @author jflute
