@@ -21,12 +21,12 @@
 		<!-- Main Framework -->
 		<dbflute.version>1.2.8</dbflute.version>
 		<mysql.jdbc.version>8.0.33</mysql.jdbc.version>
-		<lasta.di.version>2.0.0-A-SNAPSHOT</lasta.di.version> <!-- #jakarta -->
-		<lastaflute.version>2.0.0-C-SNAPSHOT</lastaflute.version> <!-- #jakarta -->
-		<lasta.thymeleaf.version>2.0.0-A-SNAPSHOT</lasta.thymeleaf.version> <!-- #jakarta -->
-		<lasta.job.version>2.0.0-A-SNAPSHOT</lasta.job.version> <!-- #jakarta -->
-		<lasta.remoteapi.version>2.0.0-B-SNAPSHOT</lasta.remoteapi.version> <!-- #jakarta -->
-		<lasta.meta.version>2.0.0-B-SNAPSHOT</lasta.meta.version> <!-- #jakarta -->
+		<lasta.di.version>2.0.0</lasta.di.version> <!-- #jakarta -->
+		<lastaflute.version>2.0.0</lastaflute.version> <!-- #jakarta -->
+		<lasta.thymeleaf.version>2.0.0</lasta.thymeleaf.version> <!-- #jakarta -->
+		<lasta.job.version>2.0.0</lasta.job.version> <!-- #jakarta -->
+		<lasta.remoteapi.version>2.0.0</lasta.remoteapi.version> <!-- #jakarta -->
+		<lasta.meta.version>2.0.0</lasta.meta.version> <!-- #jakarta -->
 		<openapidiff.version>2.1.0-beta.11</openapidiff.version> <!-- #jakarta -->
 
 		<!-- Partner Library -->
@@ -39,7 +39,7 @@
 
 		<servlet.version>6.0.0</servlet.version> <!-- #jakarta -->
 		<jetty.boot.version>2.0.0-A-SNAPSHOT</jetty.boot.version> <!-- #jakarta -->
-		<tomcat.boot.version>2.0.0-A-SNAPSHOT</tomcat.boot.version> <!-- #jakarta -->
+		<tomcat.boot.version>2.0.0</tomcat.boot.version> <!-- #jakarta -->
 		<swagger.ui.version>3.35.0</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
@@ -49,7 +49,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>2.0.0-B-SNAPSHOT</utflute.version> <!-- #jakarta -->
+		<utflute.version>2.0.0</utflute.version> <!-- #jakarta -->
 	</properties>
 
 	<licenses>
