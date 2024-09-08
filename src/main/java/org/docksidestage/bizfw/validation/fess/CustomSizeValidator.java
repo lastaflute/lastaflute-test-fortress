@@ -20,8 +20,8 @@ import java.util.Map;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.apache.commons.lang3.StringUtils;
 import org.dbflute.util.DfCollectionUtil;
-import org.eclipse.jetty.util.StringUtil;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 
 /**
@@ -37,11 +37,11 @@ public class CustomSizeValidator implements ConstraintValidator<CustomSize, Stri
     public void initialize(final CustomSize constraintAnnotation) {
         final Map<String, String> fessConfig = DfCollectionUtil.newHashMap("seaMin", "4", "seaMax", "9"); // mock
         final String minKey = constraintAnnotation.minKey();
-        if (StringUtil.isNotBlank(minKey)) {
+        if (StringUtils.isNotBlank(minKey)) {
             min = Integer.parseInt(fessConfig.get(minKey));
         }
         final String maxKey = constraintAnnotation.maxKey();
-        if (StringUtil.isNotBlank(maxKey)) {
+        if (StringUtils.isNotBlank(maxKey)) {
             max = Integer.parseInt(fessConfig.get(maxKey));
         }
         message = constraintAnnotation.message();
