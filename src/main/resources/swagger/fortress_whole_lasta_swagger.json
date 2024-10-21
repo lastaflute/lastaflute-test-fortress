@@ -8567,9 +8567,9 @@
           {
             "name": "seaStringCustomTwo",
             "type": "string",
+            "pattern": ".sea*$",
             "minLength": 4,
             "maxLength": 10,
-            "pattern": ".sea*$",
             "in": "query",
             "required": false,
             "collectionFormat": "multi"
@@ -8577,9 +8577,9 @@
           {
             "name": "seaWhole",
             "type": "string",
+            "pattern": ".*hangar$",
             "minLength": 3,
             "maxLength": 9,
-            "pattern": ".*hangar$",
             "in": "query",
             "required": true,
             "collectionFormat": "multi"
@@ -18126,15 +18126,15 @@
         },
         "seaStringCustomTwo": {
           "type": "string",
+          "pattern": ".sea*$",
           "minLength": 4,
-          "maxLength": 10,
-          "pattern": ".sea*$"
+          "maxLength": 10
         },
         "seaWhole": {
           "type": "string",
+          "pattern": ".*hangar$",
           "minLength": 3,
-          "maxLength": 9,
-          "pattern": ".*hangar$"
+          "maxLength": 9
         },
         "landPlain": {
           "type": "integer",
@@ -18377,15 +18377,15 @@
         },
         "sea_string_custom_two": {
           "type": "string",
+          "pattern": ".sea*$",
           "minLength": 4,
-          "maxLength": 10,
-          "pattern": ".sea*$"
+          "maxLength": 10
         },
         "sea_whole": {
           "type": "string",
+          "pattern": ".*hangar$",
           "minLength": 3,
-          "maxLength": 9,
-          "pattern": ".*hangar$"
+          "maxLength": 9
         },
         "land_plain": {
           "type": "integer",
@@ -18695,15 +18695,15 @@
         },
         "sea_string_custom_two": {
           "type": "string",
+          "pattern": ".sea*$",
           "minLength": 4,
-          "maxLength": 10,
-          "pattern": ".sea*$"
+          "maxLength": 10
         },
         "sea_whole": {
           "type": "string",
+          "pattern": ".*hangar$",
           "minLength": 3,
-          "maxLength": 9,
-          "pattern": ".*hangar$"
+          "maxLength": 9
         },
         "land_plain": {
           "type": "integer",

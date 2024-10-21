@@ -101,6 +101,23 @@ h4 {
 }
 
 /* -------------------------------------------------
+                                    Schema Comment
+------------------------------------------------- */
+pre.schemaalias {
+	padding-top: 0.5em;
+	padding-left: 0.5em;
+	color: #3F7E5E;
+	font-size: 2.0em;
+}
+
+pre.schemadescription {
+	padding-top: 0.5em;
+	padding-left: 0.5em;
+	color: #3F7E5E;
+	font-size: 1.2em;
+}
+
+/* -------------------------------------------------
                                    Database Table
 ------------------------------------------------- */
 table {
@@ -119,7 +136,7 @@ td {
 	padding:2px;
 }
 .tablecomment {
-	font-size: 0.8em;
+	font-size: 1.0em;
 	color: #3F7E5E;
 	padding:0 0 0.2em 1em;
 }
@@ -142,6 +159,14 @@ td {
 .flgcell {
 	text-align: center;
 }
+.notnullbusiness {
+	font-style: italic;
+	font-size: 0.7em;
+}
+.notnullmaybe {
+	font-style: italic;
+	font-size: 0.7em;
+}
 .flgplus {
 	font-size: 0.7em;
 }
@@ -157,10 +182,10 @@ td {
 	font-size: 0.6em;
 }
 .relcell {
-	font-size: 0.7em;
+	font-size: 0.8em;
 }
 .commentcell {
-	font-size: 0.7em;
+	font-size: 0.9em;
 	color: #3F7E5E;
 }
 .commentcellerror {
@@ -504,6 +529,8 @@ pre.spolicyviodisp {
 	</table>
 	<button id="column-mapping-submit-button">Mapping</button>
 </div>
+
+
 
 <h2>Table List</h2>
 <div class="keywordsearch">
@@ -3568,13 +3595,13 @@ pre.spolicyviodisp {
 				<th>Comment</th>
 			</tr>
 			<tr>
-				<td>MSC</td>
-				<td>Music</td>
+				<td>FOD</td>
+				<td>Food</td>
 				<td class="commentcell">&nbsp;</td>
 			</tr>
 			<tr>
-				<td>FOD</td>
-				<td>Food</td>
+				<td>MSC</td>
+				<td>Music</td>
 				<td class="commentcell">&nbsp;</td>
 			</tr>
 			<tr>
@@ -3583,13 +3610,13 @@ pre.spolicyviodisp {
 				<td class="commentcell">of&nbsp;Food</td>
 			</tr>
 			<tr>
-				<td>MCD</td>
-				<td>MusicCD</td>
+				<td>INS</td>
+				<td>Instruments</td>
 				<td class="commentcell">of&nbsp;Music</td>
 			</tr>
 			<tr>
-				<td>INS</td>
-				<td>Instruments</td>
+				<td>MCD</td>
+				<td>MusicCD</td>
 				<td class="commentcell">of&nbsp;Music</td>
 			</tr>
 			</table>

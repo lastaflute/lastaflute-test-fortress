@@ -1,0 +1,5 @@
+"MEMBER_ID"	"WITHDRAWAL_REASON_CODE"	"WITHDRAWAL_REASON_INPUT_TEXT"	"WITHDRAWAL_DATETIME"	"REGISTER_DATETIME"	"REGISTER_USER"	"UPDATE_DATETIME"	"UPDATE_USER"
+"3"	""	"I missed the PK in 98 world cup"	"2006-12-24 23:59:59.000"	"2013-08-02 22:31:27.000"	"R:-2,ReplaceSchema"	"2013-08-02 22:31:27.000"	"R:-2,ReplaceSchema"
+"6"	"SIT"	""	"2007-11-11 16:00:00.000"	"2013-08-02 22:31:27.000"	"R:-2,ReplaceSchema"	"2013-08-02 22:31:27.000"	"R:-2,ReplaceSchema"
+"13"	"PRD"	"I'm so tired because of left side running"	"2006-12-24 05:52:29.000"	"2013-08-02 22:31:27.000"	"R:-2,ReplaceSchema"	"2013-08-02 22:31:27.000"	"R:-2,ReplaceSchema"
+"16"	"SIT"	"two kovac"	"2007-11-13 16:00:00.000"	"2013-08-02 22:31:27.000"	"R:-2,ReplaceSchema"	"2013-08-02 22:31:27.000"	"R:-2,ReplaceSchema"
