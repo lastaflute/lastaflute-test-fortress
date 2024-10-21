@@ -1,4 +1,4 @@
-package org.docksidestage.bizfw.whitebox;
+package org.docksidestage.bizfw.whitebox.fess;
 
 import org.docksidestage.bizfw.whitebox.fess.WhiteFessSearchEngineClient;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
