@@ -1,5 +1,6 @@
 package org.docksidestage.bizfw.whitebox;
 
+import org.docksidestage.bizfw.whitebox.fess.WhiteFessSearchEngineClient;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.direction.FwAssistantDirector;
 import org.lastaflute.web.LastaFilter;
@@ -8,7 +9,7 @@ import org.lastaflute.web.servlet.filter.LastaPrepareFilter;
 /**
  * @author jflute
  */
-public class WhiteLoginReferenceClientTest extends UnitFortressBasicTestCase {
+public class WhiteFessSearchEngineClientTest extends UnitFortressBasicTestCase {
 
     @Override
     protected String prepareConfigFile() {
@@ -39,7 +40,7 @@ public class WhiteLoginReferenceClientTest extends UnitFortressBasicTestCase {
         // ## Arrange ##
 
         // ## Act ##
-        WhiteLoginReferenceClient client = getComponent(WhiteLoginReferenceClient.class);
+        WhiteFessSearchEngineClient client = getComponent(WhiteFessSearchEngineClient.class);
 
         // ## Assert ##
         log("client: {}", client);

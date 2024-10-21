@@ -1,6 +1,6 @@
-package org.docksidestage.bizfw.whitebox;
+package org.docksidestage.bizfw.whitebox.fess;
 
-import org.docksidestage.app.web.base.login.fess.FessTrialLoginAssist;
+import org.docksidestage.app.web.base.login.fess.TrialFessLoginAssist;
 import org.lastaflute.core.util.ContainerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +10,9 @@ import jakarta.annotation.PostConstruct;
 /**
  * @author jflute
  */
-public class WhiteLoginReferenceClient {
+public class WhiteFessSearchEngineClient {
 
-    private static final Logger logger = LoggerFactory.getLogger(WhiteLoginReferenceClient.class);
+    private static final Logger logger = LoggerFactory.getLogger(WhiteFessSearchEngineClient.class);
 
     @PostConstruct
     public void initialize() {
@@ -30,11 +30,11 @@ public class WhiteLoginReferenceClient {
         // _/_/_/_/_/_/_/_/_/_/
         logger.debug("#fess getComponent() test here:");
 
-        FessTrialLoginAssist loginAssist = ContainerUtil.getComponent(FessTrialLoginAssist.class);
+        TrialFessLoginAssist loginAssist = ContainerUtil.getComponent(TrialFessLoginAssist.class);
         logger.debug("  getComponent(loginAssist): " + loginAssist);
 
         // recommended way
-        FessTrialLoginManager loginManager = ContainerUtil.getComponent(FessTrialLoginManager.class);
+        TrialFessLoginManager loginManager = ContainerUtil.getComponent(TrialFessLoginManager.class);
         logger.debug("  getComponent(loginManager): " + loginManager);
     }
 }

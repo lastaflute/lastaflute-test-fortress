@@ -3,5 +3,5 @@
 	"http://dbflute.org/meta/lastadi10.dtd">
 <components namespace="trial_fess">
 	<!-- test of fess way (2024/10/21) -->
-	<component class="org.docksidestage.bizfw.whitebox.WhiteLoginReferenceClient"/>
+	<component class="org.docksidestage.bizfw.whitebox.fess.WhiteFessSearchEngineClient"/>
 </components>
