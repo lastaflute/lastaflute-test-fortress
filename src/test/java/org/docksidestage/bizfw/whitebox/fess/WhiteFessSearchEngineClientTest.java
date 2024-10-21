@@ -1,6 +1,5 @@
 package org.docksidestage.bizfw.whitebox.fess;
 
-import org.docksidestage.bizfw.whitebox.fess.WhiteFessSearchEngineClient;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.direction.FwAssistantDirector;
 import org.lastaflute.web.LastaFilter;
