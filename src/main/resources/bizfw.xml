@@ -6,7 +6,4 @@
 
 	<component class="org.docksidestage.bizfw.crosslogin.CrossLoginBridge"/>
 	<component class="org.docksidestage.bizfw.json.RuledJsonEngineKeeper"/>
-
-	<!-- test of fess way (2024/10/21) -->
-	<component class="org.docksidestage.bizfw.whitebox.WhiteLoginReferenceClient"/>
 </components>
