@@ -15,10 +15,10 @@
  */
 package org.docksidestage.app.web.base.login.fess;
 
-import org.docksidestage.bizfw.whitebox.FessTrialLoginManager;
+import org.docksidestage.bizfw.whitebox.fess.TrialFessLoginManager;
 
 /**
  * @author jflute
  */
-public class FessTrialLoginAssist implements FessTrialLoginManager {
+public class TrialFessLoginAssist implements TrialFessLoginManager {
 }
