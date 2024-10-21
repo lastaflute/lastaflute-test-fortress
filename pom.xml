@@ -364,13 +364,12 @@
 			<artifactId>lasta-di</artifactId>
 			<version>${lasta.di.version}</version>
 		</dependency>
-		<!-- test of sai
+		<!-- test of sai -->
 		<dependency>
 			<groupId>org.codelibs</groupId>
 			<artifactId>sai</artifactId>
 			<version>0.2.0</version>
 		</dependency>
-		 -->
 		<dependency>
 			<groupId>org.lastaflute</groupId>
 			<artifactId>lastaflute</artifactId>
