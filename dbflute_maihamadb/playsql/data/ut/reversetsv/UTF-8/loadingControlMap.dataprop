@@ -16,7 +16,7 @@ map:{
     #     ; MEMBER = map:{ BIRTHDATE = addDay(0) }
     # }
     ; dateAdjustmentMap = map:{
-        ; df:originDate = 2014/04/30
+        ; df:originDate = 2024/10/07
         #; $$ALL$$ = map:{
         #    ; $$ALL$$ = addDay($distance)
         #}

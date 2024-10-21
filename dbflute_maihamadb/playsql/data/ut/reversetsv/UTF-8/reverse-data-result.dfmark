@@ -1,0 +1,32 @@
+
+* * * * * * * * * * *
+*                   *
+* Load Data Reverse *
+*                   *
+* * * * * * * * * * *
+...Outputting load data: tables=10
+  recordLimit = -1
+  isReplaceSchemaDirectUse = true
+  isOverrideExistingDataFile = false
+  isSynchronizeOriginDate = true
+  isDelimiterDataBasis = true
+  isDelimiterDataMinimallyQuoted = false
+
+[section: 01_MEMBER-plus]
+  playsql/data/ut/reversetsv/UTF-8/cyclic_01_01-MEMBER.tsv (20)
+  playsql/data/ut/reversetsv/UTF-8/cyclic_01_02-MEMBER_ADDRESS.tsv (20)
+  playsql/data/ut/reversetsv/UTF-8/cyclic_01_03-MEMBER_FOLLOWING.tsv (111)
+  playsql/data/ut/reversetsv/UTF-8/cyclic_01_04-MEMBER_LOGIN.tsv (56)
+  playsql/data/ut/reversetsv/UTF-8/cyclic_01_05-MEMBER_SECURITY.tsv (20)
+  playsql/data/ut/reversetsv/UTF-8/cyclic_01_06-MEMBER_SERVICE.tsv (20)
+  playsql/data/ut/reversetsv/UTF-8/cyclic_01_07-MEMBER_WITHDRAWAL.tsv (4)
+  playsql/data/ut/reversetsv/UTF-8/cyclic_01_08-PRODUCT.tsv (20)
+
+[section: 02_PURCHASE]
+  playsql/data/ut/reversetsv/UTF-8/cyclic_02_01-PURCHASE.tsv (70)
+  playsql/data/ut/reversetsv/UTF-8/cyclic_02_02-PURCHASE_PAYMENT.tsv (100)
+
+[loadingControlMap.dataprop]
+df:originDate: 2014/04/30 -> 2024/10/07
+
+Output Date: 2024/10/07 07:03:13
