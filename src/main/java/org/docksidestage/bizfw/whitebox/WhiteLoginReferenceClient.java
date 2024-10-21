@@ -1,12 +1,12 @@
 package org.docksidestage.bizfw.whitebox;
 
-import javax.annotation.PostConstruct;
-
 import org.docksidestage.app.web.base.login.FortressLoginAssist;
 import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.web.login.PrimaryLoginManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.annotation.PostConstruct;
 
 /**
  * @author jflute
