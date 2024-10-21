@@ -29,11 +29,13 @@ public class WhiteLoginReferenceClient {
         // however rich component should not refer to quick component as concrete type originally
         // to avoid hotdeploy break so use PrimaryLoginManager interface
         // _/_/_/_/_/_/_/_/_/_/
+        logger.debug("#fess getComponent() test here:");
+
         FortressLoginAssist loginAssist = ContainerUtil.getComponent(FortressLoginAssist.class);
-        logger.debug("#fess getComponent(loginAssist): {}", loginAssist);
+        logger.debug("  getComponent(loginAssist): " + loginAssist);
 
         // recommended way
         PrimaryLoginManager loginManager = ContainerUtil.getComponent(PrimaryLoginManager.class);
-        logger.debug("#fess getComponent(loginManager): {}", loginManager);
+        logger.debug("  getComponent(loginManager): " + loginManager);
     }
 }
