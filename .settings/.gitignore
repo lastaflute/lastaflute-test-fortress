@@ -2,3 +2,4 @@
 org.eclipse.wst.*
 org.eclipse.m2e.core.prefs
 org.eclipse.buildship.core.prefs
+org.eclipse.jdt.apt.core.prefs
