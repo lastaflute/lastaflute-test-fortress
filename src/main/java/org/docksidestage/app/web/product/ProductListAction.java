@@ -36,79 +36,103 @@ import org.lastaflute.web.response.HtmlResponse;
 @AllowAnyoneAccess
 public class ProductListAction extends FortressBaseAction {
 
-    // ===================================================================================
-    //                                                                           Attribute
-    //                                                                           =========
-    @Resource
-    private ProductBhv productBhv;
-    @Resource
-    private PagingAssist pagingAssist;
+  // ===================================================================================
+  //                                                                           Attribute
+  //                                                                           =========
+  @Resource private ProductBhv productBhv;
+  @Resource private PagingAssist pagingAssist;
 
-    // ===================================================================================
-    //                                                                             Execute
-    //                                                                             =======
-    @Execute
-    public HtmlResponse index(OptionalThing<Integer> pageNumber, ProductSearchForm form) {
-        validate(form, messages -> {}, () -> {
-            return asHtml(path_Product_ProductListHtml);
+  // ===================================================================================
+  //                                                                             Execute
+  //                                                                             =======
+  @Execute
+  public HtmlResponse index(OptionalThing<Integer> pageNumber, ProductSearchForm form) {
+    validate(
+        form,
+        messages -> {},
+        () -> {
+          return asHtml(path_Product_ProductListHtml);
         });
 
-        PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
-        List<ProductSearchRowBean> beans = page.stream().map(product -> {
-            return mappingToBean(product);
-        }).collect(Collectors.toList());
+    PagingResultBean<Product> page = selectProductPage(pageNumber.orElse(1), form);
+    List<ProductSearchRowBean> beans =
+        page.stream()
+            .map(
+                product -> {
+                  return mappingToBean(product);
+                })
+            .collect(Collectors.toList());
 
-        return asHtml(path_Product_ProductListHtml).renderWith(data -> {
-            data.register("beans", beans);
-            pagingAssist.registerPagingNavi(data, page, form);
-        });
-    }
+    return asHtml(path_Product_ProductListHtml)
+        .renderWith(
+            data -> {
+              data.register("beans", beans);
+              pagingAssist.registerPagingNavi(data, page, form);
+            });
+  }
 
-    // #hope showDerived() as JsonResponse by jflute (2016/08/08)
+  // #hope showDerived() as JsonResponse by jflute (2016/08/08)
 
-    // ===================================================================================
-    //                                                                              Select
-    //                                                                              ======
-    private PagingResultBean<Product> selectProductPage(int pageNumber, ProductSearchForm form) {
-        verifyOrClientError("The pageNumber should be positive number: " + pageNumber, pageNumber > 0);
-        return productBhv.selectPage(cb -> {
-            cb.setupSelect_ProductStatus();
-            cb.setupSelect_ProductCategory();
-            cb.specify().derivedPurchase().max(purchaseCB -> {
-                purchaseCB.specify().columnPurchaseDatetime();
-            }, Product.ALIAS_latestPurchaseDate);
-            if (form.productName != null) {
-                cb.query().setProductName_LikeSearch(form.productName, op -> op.likeContain());
-            }
-            if (form.purchaseMemberName != null) {
-                cb.query().existsPurchase(purchaseCB -> {
-                    purchaseCB.query().queryMember().setMemberName_LikeSearch(form.purchaseMemberName, op -> op.likeContain());
-                });
-            }
-            if (form.productStatus != null) {
-                cb.query().setProductStatusCode_Equal_AsProductStatus(form.productStatus);
-            }
-            cb.query().addOrderBy_ProductName_Asc();
-            cb.query().addOrderBy_ProductId_Asc();
-            cb.paging(4, pageNumber);
+  // ===================================================================================
+  //                                                                              Select
+  //                                                                              ======
+  private PagingResultBean<Product> selectProductPage(int pageNumber, ProductSearchForm form) {
+    verifyOrClientError("The pageNumber should be positive number: " + pageNumber, pageNumber > 0);
+    return productBhv.selectPage(
+        cb -> {
+          cb.setupSelect_ProductStatus();
+          cb.setupSelect_ProductCategory();
+          cb.specify()
+              .derivedPurchase()
+              .max(
+                  purchaseCB -> {
+                    purchaseCB.specify().columnPurchaseDatetime();
+                  },
+                  Product.ALIAS_latestPurchaseDate);
+          if (form.productName != null) {
+            cb.query().setProductName_LikeSearch(form.productName, op -> op.likeContain());
+          }
+          if (form.purchaseMemberName != null) {
+            cb.query()
+                .existsPurchase(
+                    purchaseCB -> {
+                      purchaseCB
+                          .query()
+                          .queryMember()
+                          .setMemberName_LikeSearch(
+                              form.purchaseMemberName, op -> op.likeContain());
+                    });
+          }
+          if (form.productStatus != null) {
+            cb.query().setProductStatusCode_Equal_AsProductStatus(form.productStatus);
+          }
+          cb.query().addOrderBy_ProductName_Asc();
+          cb.query().addOrderBy_ProductId_Asc();
+          cb.paging(4, pageNumber);
         });
-    }
+  }
 
-    // ===================================================================================
-    //                                                                             Mapping
-    //                                                                             =======
-    private ProductSearchRowBean mappingToBean(Product product) {
-        ProductSearchRowBean bean = new ProductSearchRowBean();
-        bean.productId = product.getProductId();
-        bean.productName = product.getProductName();
-        product.getProductStatus().alwaysPresent(status -> {
-            bean.productStatus = status.getProductStatusName();
-        });
-        product.getProductCategory().alwaysPresent(category -> {
-            bean.productCategory = category.getProductCategoryName();
-        });
-        bean.regularPrice = product.getRegularPrice();
-        bean.latestPurchaseDate = product.getLatestPurchaseDate();
-        return bean;
-    }
+  // ===================================================================================
+  //                                                                             Mapping
+  //                                                                             =======
+  private ProductSearchRowBean mappingToBean(Product product) {
+    ProductSearchRowBean bean = new ProductSearchRowBean();
+    bean.productId = product.getProductId();
+    bean.productName = product.getProductName();
+    product
+        .getProductStatus()
+        .alwaysPresent(
+            status -> {
+              bean.productStatus = status.getProductStatusName();
+            });
+    product
+        .getProductCategory()
+        .alwaysPresent(
+            category -> {
+              bean.productCategory = category.getProductCategoryName();
+            });
+    bean.regularPrice = product.getRegularPrice();
+    bean.latestPurchaseDate = product.getLatestPurchaseDate();
+    return bean;
+  }
 }
