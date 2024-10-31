@@ -1,0 +1,7 @@
+{
+  "editor.defaultFormatter": "vscjava.vscode-java-pack",
+  "java.format.settings.profile": "DBFlute Style",
+  "java.format.settings.url": "https://dbflute.org/meta/friends/eclipse/dbflute-eclipse-code-formatter.xml",
+  "editor.formatOnSave": true,
+  "java.saveActions.organizeImports": true
+}
