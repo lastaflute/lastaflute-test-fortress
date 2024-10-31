@@ -1,0 +1,18 @@
+
+* * * * * * * * * *
+*                 *
+* Tsv Data Result *
+*                 *
+* * * * * * * * * *
+data-directory: playsql/data/ut/reversetsv/UTF-8
+
+cyclic_01_01-MEMBER.tsv (20)
+cyclic_01_02-MEMBER_ADDRESS.tsv (20)
+cyclic_01_03-MEMBER_FOLLOWING.tsv (111)
+cyclic_01_04-MEMBER_LOGIN.tsv (56)
+cyclic_01_05-MEMBER_SECURITY.tsv (20)
+cyclic_01_06-MEMBER_SERVICE.tsv (20)
+cyclic_01_07-MEMBER_WITHDRAWAL.tsv (4)
+cyclic_01_08-PRODUCT.tsv (20)
+cyclic_02_01-PURCHASE.tsv (70)
+cyclic_02_02-PURCHASE_PAYMENT.tsv (100)

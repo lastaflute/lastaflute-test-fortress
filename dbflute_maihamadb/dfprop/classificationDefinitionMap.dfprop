@@ -110,7 +110,7 @@ map:{
  PRODUCT_CATEGORY loc left outer join PRODUCT_CATEGORY rel on loc.PARENT_CATEGORY_CODE = rel.PRODUCT_CATEGORY_CODE
             ; code=$sql: loc.PRODUCT_CATEGORY_CODE
             ; name=$sql: loc.PRODUCT_CATEGORY_NAME
-            ; comment=$sql: 'of ' || rel.PRODUCT_CATEGORY_NAME
+            ; comment=$sql: concat('of ', rel.PRODUCT_CATEGORY_NAME)
             ; orderBy=loc.PARENT_CATEGORY_CODE is not null, loc.PARENT_CATEGORY_CODE
         }
     }

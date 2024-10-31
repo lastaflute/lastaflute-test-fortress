@@ -35,11 +35,11 @@
 			<arg>(String[])["sea" ,  "land" ]</arg>
 		</postConstruct>
 
+		<!-- by plain hook -->
 		<postConstruct name="addNewInstance"><arg>new org.dbflute.cbean.coption.LikeSearchOption()</arg></postConstruct>
 		<postConstruct name="addStaticFinal"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.STATIC_DEF</arg></postConstruct>
 		<postConstruct name="addStaticMethod"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.callStatic()</arg></postConstruct>
 
-		<!-- by plain hook -->
 		<postConstruct name="addType"><arg>@jp.sea.SeaPark@class</arg></postConstruct>
 		<postConstruct name="addType"><arg>org.docksidestage.mylasta.trial.TrialDiMaihama.class</arg></postConstruct>
 		<postConstruct name="addStaticFinal"><arg>@jp.sea.SeaPark@STATIC_DEF</arg></postConstruct>
@@ -55,6 +55,7 @@
 		</postConstruct>
 	</component>
 
+	<!-- by plain hook since Lasta Di-1.0.0 -->
 	<component name="switchedPark">
 		provider.config().isDevelopmentHere()
 			? "new org.docksidestage.mylasta.trial.TrialSwitchableSea()"
