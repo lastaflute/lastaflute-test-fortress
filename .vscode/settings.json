@@ -1,5 +1,5 @@
 {
-  "editor.defaultFormatter": "vscjava.vscode-java-pack",
+  "editor.defaultFormatter": "redhat.java",
   "java.format.settings.profile": "DBFlute Style",
   "java.format.settings.url": "https://dbflute.org/meta/friends/eclipse/dbflute-eclipse-code-formatter.xml",
   "editor.formatOnSave": true,
