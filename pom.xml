@@ -301,6 +301,38 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<!-- _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/ -->
+				<!-- trial of spotless (code formatting by command line) -->
+				<!-- _/_/_/_/ -->
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>2.43.0</version>
+				<configuration>
+					<upToDateChecking> <!-- https://zenn.dev/toms74209200/scraps/8d773c97cf7b5c -->
+						<enabled>false</enabled>
+					</upToDateChecking>
+					<java>
+						<eclipse>
+							<file>./etc/tools/eclipse/dbflute-eclipse-code-formatter.xml</file>
+						</eclipse>
+						<excludes> <!-- https://github.com/diffplug/spotless/issues/1744 -->
+							<!-- ignore genearted classes -->
+							<exclude>src/main/java/**/dbflute/</exclude>
+							<exclude>src/main/java/**/mylasta/action/</exclude>
+							<exclude>src/main/java/**/mylasta/appcls/</exclude>
+							<exclude>src/main/java/**/mylasta/mail/</exclude>
+							<exclude>src/main/java/**/mylasta/namedcls/</exclude>
+							<exclude>src/main/java/**/mylasta/webcls/</exclude>
+							<exclude>src/main/java/**/remote/</exclude>
+							<exclude>src/test/java/**/mylasta/namedcls/zoned/</exclude>
+						</excludes>
+						<!-- not match with Eclipse import organization e.g. empty lines
+							<importOrder/> -->
+						<removeUnusedImports/>
+					</java>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
