@@ -309,14 +309,18 @@
 				<artifactId>spotless-maven-plugin</artifactId>
 				<version>2.43.0</version>
 				<configuration>
-					<upToDateChecking> <!-- https://zenn.dev/toms74209200/scraps/8d773c97cf7b5c -->
+					<!-- needs upToDateChecking false for spotless working 
+					 https://zenn.dev/toms74209200/scraps/8d773c97cf7b5c -->
+					<upToDateChecking>
 						<enabled>false</enabled>
 					</upToDateChecking>
 					<java>
 						<eclipse>
 							<file>./etc/tools/eclipse/dbflute-eclipse-code-formatter.xml</file>
 						</eclipse>
-						<excludes> <!-- https://github.com/diffplug/spotless/issues/1744 -->
+						<!-- needs to define excludes in java tag for correct working
+						 https://github.com/diffplug/spotless/issues/1744 -->
+						<excludes>
 							<!-- ignore genearted classes -->
 							<exclude>src/main/java/**/dbflute/</exclude>
 							<exclude>src/main/java/**/mylasta/action/</exclude>
@@ -328,7 +332,7 @@
 							<exclude>src/test/java/**/mylasta/namedcls/zoned/</exclude>
 						</excludes>
 						<!-- not match with Eclipse import organization e.g. empty lines
-							<importOrder/> -->
+						<importOrder/> -->
 						<removeUnusedImports/>
 					</java>
 				</configuration>
