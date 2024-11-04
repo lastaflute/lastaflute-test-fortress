@@ -322,9 +322,19 @@
 						 https://github.com/diffplug/spotless/issues/1744 -->
 						<excludes>
 							<!-- ignore genearted classes -->
-							<exclude>src/main/java/**/dbflute/</exclude>
-							<exclude>src/main/java/**/mylasta/action/</exclude>
+							<exclude>src/main/java/**/dbflute/**/allcommon/</exclude>
+							<exclude>src/main/java/**/dbflute/**/bsbhv/</exclude>
+							<exclude>src/main/java/**/dbflute/**/bsentity/</exclude>
+							<exclude>src/main/java/**/dbflute/**/cbean/bs/</exclude>
+							<exclude>src/main/java/**/dbflute/**/cbean/cq/bs/</exclude>
+							<exclude>src/main/java/**/dbflute/**/cbean/cq/ciq/</exclude>
+							<exclude>src/main/java/**/dbflute/**/cbean/nss/</exclude>
+							<exclude>src/main/java/**/mylasta/action/*HtmlPath.java</exclude>
+							<exclude>src/main/java/**/mylasta/action/*Labels.java</exclude>
+							<exclude>src/main/java/**/mylasta/action/*Messages.java</exclude>
 							<exclude>src/main/java/**/mylasta/appcls/</exclude>
+							<exclude>src/main/java/**/mylasta/direction/*Config.java</exclude>
+							<exclude>src/main/java/**/mylasta/direction/*Env.java</exclude>
 							<exclude>src/main/java/**/mylasta/mail/</exclude>
 							<exclude>src/main/java/**/mylasta/namedcls/</exclude>
 							<exclude>src/main/java/**/mylasta/webcls/</exclude>
@@ -333,6 +343,9 @@
 						</excludes>
 						<!-- not match with Eclipse import organization e.g. empty lines
 						<importOrder/> -->
+						<importOrder> <!-- fitting with Eclipse default -->
+							<order>java,javax,org,com</order>
+						</importOrder>
 						<removeUnusedImports/>
 					</java>
 				</configuration>
