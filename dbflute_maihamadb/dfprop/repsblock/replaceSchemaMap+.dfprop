@@ -1,0 +1,41 @@
+map:{
+    ; repsEnvType = repsblock
+
+    # no system user here
+    ; additionalUserMap = map:{
+    }
+
+    # _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    # [example] 特定の環境で ReplaceSchema を実行させないようにする設定。(ブロック設定)
+    # 例えば、IT環境に ReplaceSchema はしないけど LoadDataReverse はするようなケース。
+    # 間違えて ReplaceSchema を実行しないように鍵を掛けておく。
+    #
+    # IT環境の設定ファイルをそもそも用意しないとなると、
+    # LoadDataReverse をする人が、ローカル用の設定ファイルを一時的にIT環境に書き換えて実行して、
+    # その後戻し忘れて ReplaceSchema をしてしまう可能性が考えられるので、
+    # あえてIT環境用の設定を明示的に用意しておく方が安全かもという考え方。
+    # _/_/_/_/_/_/_/_/_/_/
+
+    # ReplaceSchema鍵1: 問答無用でReplaceSchemaを実行しない
+    ; isReplaceSchemaLimited = true
+
+    # ReplaceSchema鍵2: VIEWしかdrop対象にしない (基本的にcreateの時点で重複で落ちる: 注1)
+    ; objectTypeTargetList = list:{ VIEW }
+
+    # ReplaceSchema鍵3: 空っぽplaysqlならReplaceSchemaは実行されない
+    ; playSqlDirectory = ./dummy_playsql
+
+    # ReplaceSchema鍵4: そもそもdropしない (基本的にcreateの時点で重複で落ちる: 注1)
+    ; isSuppressTruncateTable = true
+    ; isSuppressDropForeignKey = true
+    ; isSuppressDropTable = true
+    ; isSuppressDropSequence = true
+    ; isSuppressDropProcedure = true
+    ; isSuppressDropDBLink = true
+
+    # ReplaceSchema鍵5: 最初に "でたらめ" というSQLが実行されていきなり落ちる
+    ; initializeFirstSqlList = list:{ でたらめ }
+    
+    # 注1: DDL文自体が create or replace をしていると replace されてしまう可能性はあり。
+    # (ただ、そもそもReplaceSchemaは基本的にcreateのみのDDLを使うのがオーソドックスではある)
+}
