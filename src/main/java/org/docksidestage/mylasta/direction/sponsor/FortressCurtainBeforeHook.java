@@ -29,15 +29,21 @@ import org.docksidestage.dbflute.allcommon.DBMetaInstanceHandler;
 import org.docksidestage.dbflute.allcommon.ImplementedBehaviorSelector;
 import org.docksidestage.mylasta.action.FortressUserBean;
 import org.docksidestage.mylasta.direction.FortressConfig;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.RabbitMQConsumerSetupper;
 import org.lastaflute.core.direction.CurtainBeforeHook;
 import org.lastaflute.core.direction.FwAssistantDirector;
+import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.message.UserMessages;
 import org.lastaflute.core.util.ContainerUtil;
+import org.lastaflute.job.JobManager;
+import org.lastaflute.job.key.LaJobUnique;
 import org.lastaflute.web.login.LoginManager;
 import org.lastaflute.web.servlet.request.RequestManager;
 import org.lastaflute.web.validation.ActionValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.rabbitmq.client.ConnectionFactory;
 
 /**
  * @author jflute
@@ -69,6 +75,8 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
         whiteboxtest_findLoginManager();
         whiteboxtest_prepareAccessContextForInsert();
         whiteboxtest_initializeMetaIfNeeds();
+
+        bootRabbitMQSubscriber();
     }
 
     // ===================================================================================
@@ -157,6 +165,35 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
         RequestManager requestManager = ContainerUtil.getComponent(RequestManager.class);
         new ActionValidator<UserMessages>(requestManager, () -> new UserMessages(), ActionValidator.DEFAULT_GROUPS);
         logger.debug("Loaded Hibernate Validator classes: {}", preparePerformanceView(before));
+    }
+
+    // ===================================================================================
+    //                                                                            RabbitMQ
+    //                                                                            ========
+    protected void bootRabbitMQSubscriber() {
+        RabbitMQConsumerSetupper consumerSetupper = prepareRabbitMQConsumer();
+
+        // your settings here
+        consumerSetupper.asyncBoot("seaQueue", LaJobUnique.of("mysticJob"));
+        consumerSetupper.asyncBoot("landQueue", LaJobUnique.of("onemanJob"));
+    }
+
+    protected RabbitMQConsumerSetupper prepareRabbitMQConsumer() {
+        AsyncManager asyncManager = ContainerUtil.getComponent(AsyncManager.class);
+        JobManager jobManager = ContainerUtil.getComponent(JobManager.class);
+        return create(asyncManager, jobManager);
+    }
+
+    protected RabbitMQConsumerSetupper create(AsyncManager asyncManager, JobManager jobManager) {
+        return new RabbitMQConsumerSetupper(asyncManager, jobManager, () -> {
+            // your settings here
+            ConnectionFactory factory = new ConnectionFactory();
+            factory.setHost("localhost");
+            factory.setPort(5672);
+            factory.setUsername("land");
+            factory.setPassword("oneman");
+            return factory;
+        });
     }
 
     // ===================================================================================
