@@ -1,5 +1,7 @@
 package org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq;
 
+import org.lastaflute.core.util.Lato;
+
 /**
  * @author jflute
  */
@@ -24,6 +26,14 @@ public class RabbitJobResource {
         this.queueName = queueName;
         this.consumerTag = consumerTag;
         this.messageBody = messageBody;
+    }
+
+    // ===================================================================================
+    //                                                                      Basic Override
+    //                                                                      ==============
+    @Override
+    public String toString() {
+        return Lato.string(this);
     }
 
     // ===================================================================================
