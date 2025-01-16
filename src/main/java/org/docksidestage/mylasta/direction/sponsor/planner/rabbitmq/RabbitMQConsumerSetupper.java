@@ -82,7 +82,8 @@ public class RabbitMQConsumerSetupper {
             queueDeclare(queueName, channel);
             basicConsume(queueName, jobUnique, channel); // ここで待ち受けするので止まる
         } catch (IOException | TimeoutException e) {
-            throw new IllegalStateException("Failed to wait message queue: " + queueName, e);
+            String msg = "Failed to consume message queue: " + queueName + ", " + jobUnique;
+            throw new IllegalStateException(msg, e);
         }
     }
 
