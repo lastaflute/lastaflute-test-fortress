@@ -1,5 +1,6 @@
 package org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq;
 
+import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.util.ContainerUtil;
 import org.lastaflute.job.JobManager;
@@ -14,11 +15,24 @@ import com.rabbitmq.client.ConnectionFactory;
 public class AllRabbitMQPlanner {
 
     // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
+    protected final FortressConfig config; // not null
+
+    // ===================================================================================
+    //                                                                         Constructor
+    //                                                                         ===========
+    public AllRabbitMQPlanner(FortressConfig config) {
+        this.config = config;
+    }
+
+    // ===================================================================================
     //                                                                            Consumer
     //                                                                            ========
     /**
      * RabbitMQ のすべての Consumer を起動する。<br>
-     * アプリ起動時 (アプリ初期化済み、かつ、Tomcat開放直前) に実行されることを前提。
+     * アプリ起動時 (アプリ初期化済み、かつ、Tomcat開放直前) に実行されることを前提。<br>
+     * (例えば LastaFluteなら、CurtainBeforeHook にて)
      */
     public void bootAllConsumer() {
         RabbitMQConsumerSetupper consumerSetupper = prepareConsumerSetupper();
@@ -41,12 +55,18 @@ public class AllRabbitMQPlanner {
     //                                         -------------
     protected ConnectionFactory prepareConnectionFactory() {
         // your settings here
-        ConnectionFactory factory = new ConnectionFactory();
+        // #for_now jflute configを連れてきて、[app]_env.properties に定義した値を持ってくるのが良い (2025/01/17)
+        //  e.g. String host = config.getRabbitMQConsumerHost();
+        ConnectionFactory factory = newConnectionFactory();
         factory.setHost("localhost");
         factory.setPort(5672);
         factory.setUsername("land");
         factory.setPassword("oneman");
         return factory;
+    }
+
+    protected ConnectionFactory newConnectionFactory() {
+        return new ConnectionFactory();
     }
 
     // -----------------------------------------------------

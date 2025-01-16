@@ -27,11 +27,6 @@ import com.rabbitmq.client.Delivery;
 public class RabbitMQConsumerSetupper {
 
     // ===================================================================================
-    //                                                                          Definition
-    //                                                                          ==========
-    public static final String JOB_PARAMETER_MESSAGE_KEY = "message";
-
-    // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     protected final AsyncManager asyncManager; // not null
@@ -94,19 +89,19 @@ public class RabbitMQConsumerSetupper {
 
     protected void basicConsume(String queueName, LaJobUnique jobUnique, Channel channel) throws IOException {
         // #for_now jflute basicConsume()のオプション引数autoAckやconsumerTagはこれでいいのか？恐らく現場で要調整 (2025/01/16)
-        DeliverCallback deliverCallback = createDeliverCallback(jobUnique);
+        DeliverCallback deliverCallback = createDeliverCallback(queueName, jobUnique);
         channel.basicConsume(queueName, /*autoAck*/true, deliverCallback, consumerTag -> {});
     }
 
     // -----------------------------------------------------
     //                                       DeliverCallback
     //                                       ---------------
-    protected DeliverCallback createDeliverCallback(LaJobUnique jobUnique) {
+    protected DeliverCallback createDeliverCallback(String queueName, LaJobUnique jobUnique) {
         AsyncStateBridge bridge = asyncManager.bridgeState(op -> {});
         return (consumerTag, delivery) -> { // ここはまた別スレッドのはず
             bridge.cross(() -> { // launch処理内での例外ハンドリングなどをいい感じにするために
-                String message = extractStringBody(delivery);
-                launchRabbitJob(jobUnique, message);
+                String messageBody = extractStringBody(delivery);
+                launchRabbitJob(queueName, jobUnique, consumerTag, messageBody);
             });
         };
     }
@@ -118,11 +113,11 @@ public class RabbitMQConsumerSetupper {
     // ===================================================================================
     //                                                                           Lasta Job
     //                                                                           =========
-    protected void launchRabbitJob(LaJobUnique jobUnique, String message) {
-        // TODO jflute Stringじゃなく統一的な引数オブジェクトがあった方が汎用性が高い (2025/01/16)
+    protected void launchRabbitJob(String queueName, LaJobUnique jobUnique, String consumerTag, String messageBody) {
         jobManager.findJobByUniqueOf(jobUnique).alwaysPresent(job -> {
             job.launchNow(op -> { // JobはLastaJob側のスレッドで非同期で実行される
-                op.param(JOB_PARAMETER_MESSAGE_KEY, message);
+                RabbitJobResource resource = new RabbitJobResource(queueName, consumerTag, messageBody);
+                op.param(RabbitJobResource.JOB_PARAMETER_KEY, resource);
 
                 // Consumerがパラレルに受け付け実行する設定になっても、同じJobはデフォルトではシリアルに実行される
                 // もし同じJobをパラレルで実行したい場合はこちらのオプションがあるが実験的な機能ではある。

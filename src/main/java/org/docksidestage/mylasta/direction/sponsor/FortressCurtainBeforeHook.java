@@ -166,7 +166,11 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     //                                                                            RabbitMQ
     //                                                                            ========
     protected void bootRabbitMQConsumer() {
-        new AllRabbitMQPlanner().bootAllConsumer();
+        createAllRabbitMQPlanner().bootAllConsumer();
+    }
+
+    protected AllRabbitMQPlanner createAllRabbitMQPlanner() {
+        return new AllRabbitMQPlanner(config);
     }
 
     // ===================================================================================
