@@ -28,6 +28,7 @@ import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.logic.context.AccessContextLogic.ClientInfoSupplier;
 import org.docksidestage.app.logic.context.AccessContextLogic.UserInfoSupplier;
 import org.docksidestage.app.logic.context.AccessContextLogic.UserTypeSupplier;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.AllRabbitMQPlanner;
 import org.lastaflute.job.LaCron;
 import org.lastaflute.job.LaJobRunner;
 import org.lastaflute.job.LaJobScheduler;
@@ -68,6 +69,18 @@ public class AllJobScheduler implements LaJobScheduler {
         cron.registerNonCron(MysticConcurrentJob.class, errorIfConcurrent(), op -> op.uniqueBy("mystic-error"));
         cron.registerNonCron(MysticConcurrentJob.class, waitIfConcurrent(), op -> {
             op.uniqueBy("mystic-parallel").grantOutlawParallel();
+        });
+
+        // test of RabbitMQ
+        doSchedule_Rabbit(cron);
+    }
+
+    private void doSchedule_Rabbit(LaCron cron) {
+        cron.registerNonCron(SeaJob.class, waitIfConcurrent(), op -> {
+            op.uniqueBy(AllRabbitMQPlanner.mysticJobUnique);
+        });
+        cron.registerNonCron(LandJob.class, waitIfConcurrent(), op -> {
+            op.uniqueBy(AllRabbitMQPlanner.onemanJobUnique);
         });
     }
 

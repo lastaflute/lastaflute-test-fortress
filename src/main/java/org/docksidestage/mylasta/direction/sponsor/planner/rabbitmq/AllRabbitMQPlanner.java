@@ -15,6 +15,13 @@ import com.rabbitmq.client.ConnectionFactory;
 public class AllRabbitMQPlanner {
 
     // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
+    // AllJobScheduler から参照するための定数定義、名前ズレしないように
+    public static final String mysticJobUnique = "mysticJob";
+    public static final String onemanJobUnique = "onemanJob";
+
+    // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     protected final FortressConfig config; // not null
@@ -38,8 +45,8 @@ public class AllRabbitMQPlanner {
         RabbitMQConsumerSetupper consumerSetupper = prepareConsumerSetupper();
 
         // your queues here
-        consumerSetupper.asyncBoot("seaQueue", toUnique("mysticJob"));
-        consumerSetupper.asyncBoot("landQueue", toUnique("onemanJob"));
+        consumerSetupper.asyncBoot("seaQueue", LaJobUnique.of(mysticJobUnique));
+        consumerSetupper.asyncBoot("landQueue", LaJobUnique.of(onemanJobUnique));
     }
 
     protected RabbitMQConsumerSetupper prepareConsumerSetupper() {
@@ -67,12 +74,5 @@ public class AllRabbitMQPlanner {
 
     protected ConnectionFactory newConnectionFactory() {
         return new ConnectionFactory();
-    }
-
-    // -----------------------------------------------------
-    //                                             Lasta Job
-    //                                             ---------
-    protected LaJobUnique toUnique(String uniqueCode) {
-        return LaJobUnique.of(uniqueCode);
     }
 }
