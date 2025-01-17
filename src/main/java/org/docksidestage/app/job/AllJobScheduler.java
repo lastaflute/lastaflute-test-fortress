@@ -24,6 +24,7 @@ import org.docksidestage.app.job.challenge.BonvoJob;
 import org.docksidestage.app.job.challenge.DstoreJob;
 import org.docksidestage.app.job.challenge.PiariJob;
 import org.docksidestage.app.job.concurrent.MysticConcurrentJob;
+import org.docksidestage.app.job.rabbit.sea.RabbitSeaJob;
 import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.logic.context.AccessContextLogic.ClientInfoSupplier;
 import org.docksidestage.app.logic.context.AccessContextLogic.UserInfoSupplier;
@@ -75,13 +76,14 @@ public class AllJobScheduler implements LaJobScheduler {
         doSchedule_Rabbit(cron);
     }
 
-    private void doSchedule_Rabbit(LaCron cron) {
-        cron.registerNonCron(SeaJob.class, waitIfConcurrent(), op -> {
+    private void doSchedule_Rabbit(LaCron cron) { // #rabbit
+        cron.registerNonCron(RabbitSeaJob.class, waitIfConcurrent(), op -> {
             op.uniqueBy(AllRabbitMQPlanner.mysticJobUnique);
         });
-        cron.registerNonCron(LandJob.class, waitIfConcurrent(), op -> {
-            op.uniqueBy(AllRabbitMQPlanner.onemanJobUnique);
-        });
+        // second example
+        //cron.registerNonCron(RabbitLandJob.class, waitIfConcurrent(), op -> {
+        //    op.uniqueBy(AllRabbitMQPlanner.onemanJobUnique);
+        //});
     }
 
     @Override

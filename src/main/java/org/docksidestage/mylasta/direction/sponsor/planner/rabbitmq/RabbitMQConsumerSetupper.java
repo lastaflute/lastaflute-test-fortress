@@ -83,12 +83,12 @@ public class RabbitMQConsumerSetupper {
     }
 
     protected void queueDeclare(String queueName, Channel channel) throws IOException {
-        // #for_now jflute queueDeclare()のオプション引数たちこれでいいのか？恐らく現場で要調整 (2025/01/16)
+        // #rabbit queueDeclare()のオプション引数たちこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
         channel.queueDeclare(queueName, /*durable*/true, /*exclusive*/false, /*autoDelete*/false, /*arguments*/null);
     }
 
     protected void basicConsume(String queueName, LaJobUnique jobUnique, Channel channel) throws IOException {
-        // #for_now jflute basicConsume()のオプション引数autoAckやconsumerTagはこれでいいのか？恐らく現場で要調整 (2025/01/16)
+        // #rabbit basicConsume()のオプション引数autoAckやconsumerTagはこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
         DeliverCallback deliverCallback = createDeliverCallback(queueName, jobUnique);
         channel.basicConsume(queueName, /*autoAck*/true, deliverCallback, consumerTag -> {});
     }
@@ -100,23 +100,23 @@ public class RabbitMQConsumerSetupper {
         AsyncStateBridge bridge = asyncManager.bridgeState(op -> {});
         return (consumerTag, delivery) -> { // ここはまた別スレッドのはず
             bridge.cross(() -> { // launch処理内での例外ハンドリングなどをいい感じにするために
-                String messageBody = extractStringBody(delivery);
-                launchRabbitJob(queueName, jobUnique, consumerTag, messageBody);
+                String messageText = extractMessageText(delivery);
+                launchRabbitJob(queueName, jobUnique, consumerTag, messageText);
             });
         };
     }
 
-    protected String extractStringBody(Delivery delivery) {
+    protected String extractMessageText(Delivery delivery) {
         return new String(delivery.getBody(), StandardCharsets.UTF_8);
     }
 
     // ===================================================================================
     //                                                                           Lasta Job
     //                                                                           =========
-    protected void launchRabbitJob(String queueName, LaJobUnique jobUnique, String consumerTag, String messageBody) {
+    protected void launchRabbitJob(String queueName, LaJobUnique jobUnique, String consumerTag, String messageText) {
         jobManager.findJobByUniqueOf(jobUnique).alwaysPresent(job -> {
             job.launchNow(op -> { // JobはLastaJob側のスレッドで非同期で実行される
-                RabbitJobResource resource = new RabbitJobResource(queueName, consumerTag, messageBody);
+                RabbitJobResource resource = new RabbitJobResource(queueName, consumerTag, messageText);
                 op.param(RabbitJobResource.JOB_PARAMETER_KEY, resource);
 
                 // Consumerがパラレルに受け付け実行する設定になっても、同じJobはデフォルトではシリアルに実行される

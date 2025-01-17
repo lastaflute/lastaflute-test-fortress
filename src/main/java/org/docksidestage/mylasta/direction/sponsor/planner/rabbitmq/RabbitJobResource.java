@@ -17,15 +17,15 @@ public class RabbitJobResource {
     //                                                                           =========
     private final String queueName; // not null
     private final String consumerTag; // not null
-    private final String messageBody; // not null
+    private final String messageText; // not null
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RabbitJobResource(String queueName, String consumerTag, String messageBody) {
+    public RabbitJobResource(String queueName, String consumerTag, String messageText) {
         this.queueName = queueName;
         this.consumerTag = consumerTag;
-        this.messageBody = messageBody;
+        this.messageText = messageText;
     }
 
     // ===================================================================================
@@ -47,7 +47,7 @@ public class RabbitJobResource {
         return consumerTag;
     }
 
-    public String getMessageBody() {
-        return messageBody;
+    public String getMessageText() {
+        return messageText;
     }
 }

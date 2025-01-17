@@ -17,7 +17,9 @@ public class AllRabbitMQPlanner {
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    // AllJobScheduler から参照するための定数定義、名前ズレしないように
+    // AllJobScheduler から参照するための定数定義、名前ズレしないように。
+    // 外からappは参照できないので、(外の)plannerに定義して(appの)AllJobSchedulerで参照する。
+    // #rabbit 現場でのconsumerに対応するJobのユニークコードの定義 by jflute (2025/01/17)
     public static final String mysticJobUnique = "mysticJob";
     public static final String onemanJobUnique = "onemanJob";
 
@@ -44,7 +46,7 @@ public class AllRabbitMQPlanner {
     public void bootAllConsumer() {
         RabbitMQConsumerSetupper consumerSetupper = prepareConsumerSetupper();
 
-        // your queues here
+        // #rabbit 現場でのconsumerの設定 by jflute (2025/01/17)
         consumerSetupper.asyncBoot("seaQueue", LaJobUnique.of(mysticJobUnique));
         consumerSetupper.asyncBoot("landQueue", LaJobUnique.of(onemanJobUnique));
     }
@@ -61,8 +63,7 @@ public class AllRabbitMQPlanner {
     //                                         MQ Connection
     //                                         -------------
     protected ConnectionFactory prepareConnectionFactory() {
-        // your settings here
-        // #for_now jflute configを連れてきて、[app]_env.properties に定義した値を持ってくるのが良い (2025/01/17)
+        // #rabbit 現場での接続設定、configを連れてきて、[app]_env.properties に定義した値を持ってくるのが良い by jflute (2025/01/17)
         //  e.g. String host = config.getRabbitMQConsumerHost();
         ConnectionFactory factory = newConnectionFactory();
         factory.setHost("localhost");

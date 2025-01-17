@@ -71,7 +71,7 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
         whiteboxtest_prepareAccessContextForInsert();
         whiteboxtest_initializeMetaIfNeeds();
 
-        bootRabbitMQConsumer();
+        bootRabbitMQConsumer(); // #rabbit
     }
 
     // ===================================================================================
@@ -165,7 +165,7 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     // ===================================================================================
     //                                                                            RabbitMQ
     //                                                                            ========
-    protected void bootRabbitMQConsumer() {
+    protected void bootRabbitMQConsumer() { // #rabbit
         createAllRabbitMQPlanner().bootAllConsumer();
     }
 
