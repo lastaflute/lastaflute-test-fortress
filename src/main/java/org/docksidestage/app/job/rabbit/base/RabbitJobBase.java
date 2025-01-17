@@ -82,7 +82,7 @@ public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob {
     // -----------------------------------------------------
     //                                      Concrete Process
     //                                      ----------------
-    protected abstract void doRun(RabbitJobResource jobResource, MESSAGE_BODY message);
+    protected abstract void doRun(RabbitJobResource jobResource, MESSAGE_BODY messageBody);
 
     protected abstract Class<MESSAGE_BODY> getMessageJsonType();
 }
