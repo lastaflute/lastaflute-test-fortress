@@ -1,8 +1,24 @@
+/*
+ * Copyright 2015-2024 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.docksidestage.bizfw.rabbitmq;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeoutException;
 
 import javax.annotation.PreDestroy;
@@ -13,7 +29,6 @@ import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.RabbitJobResource;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.bridge.AsyncStateBridge;
-import org.lastaflute.core.util.Lato;
 import org.lastaflute.job.JobManager;
 import org.lastaflute.job.key.LaJobUnique;
 import org.slf4j.Logger;
@@ -34,6 +49,9 @@ import com.rabbitmq.client.Delivery;
  */
 public class RabbitMQConsumerManager {
 
+    // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
     private static final Logger logger = LoggerFactory.getLogger(RabbitMQConsumerManager.class);
 
     // ===================================================================================
@@ -45,25 +63,8 @@ public class RabbitMQConsumerManager {
     protected JobManager jobManager;
 
     // singletonのDIコンポーネント前提で保持する。synchronizedの中で利用すること。
-    protected final List<ConsumerThreadBlock> blockList = DfCollectionUtil.newArrayList();
-
-    public static class ConsumerThreadBlock {
-
-        private final String queueName; // not null
-
-        public ConsumerThreadBlock(String queueName) {
-            this.queueName = queueName;
-        }
-
-        @Override
-        public String toString() {
-            return Lato.string(this);
-        }
-
-        public String getQueueName() {
-            return queueName;
-        }
-    }
+    /** ポーリング用のLatch。(NotNull) */
+    protected final List<ConsumerPollingLatch> pollingLatchList = DfCollectionUtil.newArrayList();
 
     // ===================================================================================
     //                                                                               Boot
@@ -78,11 +79,13 @@ public class RabbitMQConsumerManager {
     public synchronized void asyncBoot(String queueName, LaJobUnique jobUnique, MQConnectionFactoryProvider connectionFactoryProvider) {
         DfAssertUtil.assertStringNotNullAndNotTrimmedEmpty("queueName", queueName);
         DfAssertUtil.assertObjectNotNull("jobUnique", jobUnique);
-        ConsumerThreadBlock block = new ConsumerThreadBlock(queueName); // 自前ポーリング用のブロックオブジェクト
-        blockList.add(block); // アプリ停止時に開放するようにする想定で登録
+
+        // 自前ポーリング用のラッチ (インスタンス変数登録するので献上スレッド外(前)で呼ぶこと)
+        ConsumerPollingLatch pollingLatch = preparePollingLatch(queueName);
+
         new Thread(() -> { // consumber登録後のポーリングに献上するスレッドなのでその場new
             try {
-                doBoot(queueName, jobUnique, connectionFactoryProvider, block);
+                doBoot(queueName, jobUnique, connectionFactoryProvider, pollingLatch);
             } catch (Throwable e) {
                 // ずっと止まる想定のスレッドにContextなどを保持させ続けるのも気持ち悪いから、
                 // AsyncManagerのcross()は使わずに自前でエラーハンドリングするようにした。
@@ -92,18 +95,25 @@ public class RabbitMQConsumerManager {
         }).start();
     }
 
-    protected void doBoot(String queueName, LaJobUnique jobUnique, MQConnectionFactoryProvider connectionFactoryProvider, Object block) { // in new thread and crossed
+    // -----------------------------------------------------
+    //                                     in Polling Thread
+    //                                     -----------------
+    protected void doBoot(String queueName, LaJobUnique jobUnique, MQConnectionFactoryProvider connectionFactoryProvider,
+            CountDownLatch pollingLatch) { // works in polling thread
         ConnectionFactory connectionFactory = connectionFactoryProvider.provide();
         try (Connection conn = connectionFactory.newConnection(); Channel channel = conn.createChannel()) {
             queueDeclare(queueName, channel);
             basicConsume(queueName, jobUnique, channel); // 登録だけでポーリングするわけではない
-            awaitConsumer(block); // ここで自前ポーリング、アプリ停止時に解放されてConnectionのclose()が動く
+            awaitConsumer(pollingLatch); // ここで自前ポーリング、アプリ停止時に解放されてConnectionのclose()が動く
         } catch (IOException | TimeoutException e) {
             String msg = "Failed to consume message queue: " + queueName + ", " + jobUnique;
             throw new IllegalStateException(msg, e);
         }
     }
 
+    // -----------------------------------------------------
+    //                                         Polling Steps
+    //                                         -------------
     protected void queueDeclare(String queueName, Channel channel) throws IOException {
         // #rabbit queueDeclare()のオプション引数たちこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
         channel.queueDeclare(queueName, /*durable*/true, /*exclusive*/false, /*autoDelete*/false, /*arguments*/null);
@@ -117,13 +127,13 @@ public class RabbitMQConsumerManager {
         channel.basicConsume(queueName, /*autoAck*/true, deliverCallback, consumerTag -> {});
     }
 
-    protected void awaitConsumer(Object block) {
-        synchronized (block) {
-            try {
-                block.wait(); // ここで止まって
-            } catch (InterruptedException e) {
-                throw new IllegalStateException("Interrupted the wait: block=" + block, e);
-            }
+    protected void awaitConsumer(CountDownLatch pollingLatch) {
+        try {
+            // ここで止まってポーリング状態に入り、try-with-resources の Connection は開いたままでConsumerが利用する。
+            // アプリ停止の destroy() で countDown されることで、処理が続行されて try-with-resources の close処理が実行される。
+            pollingLatch.await();
+        } catch (InterruptedException e) {
+            throw new IllegalStateException("Interrupted the consumer wait: pollingLatch=" + pollingLatch, e);
         }
     }
 
@@ -142,6 +152,38 @@ public class RabbitMQConsumerManager {
 
     protected String extractMessageText(Delivery delivery) {
         return new String(delivery.getBody(), StandardCharsets.UTF_8);
+    }
+
+    // ===================================================================================
+    //                                                                       Polling Latch
+    //                                                                       =============
+    protected ConsumerPollingLatch preparePollingLatch(String queueName) {
+        ConsumerPollingLatch pollingLatch = createConsumberPollingLatch(queueName);
+        pollingLatchList.add(pollingLatch); // アプリ停止時に開放するようにする想定で登録
+        return pollingLatch;
+    }
+
+    protected ConsumerPollingLatch createConsumberPollingLatch(String queueName) {
+        return new ConsumerPollingLatch(queueName);
+    }
+
+    public static class ConsumerPollingLatch extends CountDownLatch { // デバッグ用にキューの名前を持たせておくため
+
+        private final String queueName; // not null
+
+        public ConsumerPollingLatch(String queueName) {
+            super(/*count*/1); // close()で一回countDownされて解放されることを想定して固定数
+            this.queueName = queueName;
+        }
+
+        @Override
+        public String toString() { // キュー名を表示できるように
+            return "pollingLatch:{" + getCount() + ", " + queueName + "}";
+        }
+
+        public String getQueueName() {
+            return queueName;
+        }
     }
 
     // ===================================================================================
@@ -165,11 +207,11 @@ public class RabbitMQConsumerManager {
     //                                                                             =======
     @PreDestroy
     public synchronized void destroy() {
-        logger.info("#mq ...Notifying MQ consumer blocks: {}", blockList);
-        for (ConsumerThreadBlock block : blockList) {
-            synchronized (block) {
-                block.notify();
-            }
+        logger.info("#mq ...Releasing MQ consumer polling: pollingLatchList={}", pollingLatchList);
+        for (ConsumerPollingLatch pollingLatch : pollingLatchList) {
+            pollingLatch.countDown(); // consumerのポーリング待ちを解放
         }
+        // consumerの登録処理に失敗したlatchも含まれている可能性あるが...
+        // 別にawaitしてないlatchでcountDownしても何も起きないだけなので問題なし。
     }
 }
