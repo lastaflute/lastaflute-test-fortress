@@ -10,7 +10,7 @@ import com.rabbitmq.client.ConnectionFactory;
  * RabbitMQ のプランを立てるクラス。
  * @author jflute
  */
-public class AllRabbitMQPlanner {
+public class AllRabbitMQPlanner { // #rabbit #genbafitting
 
     // ===================================================================================
     //                                                                          Definition

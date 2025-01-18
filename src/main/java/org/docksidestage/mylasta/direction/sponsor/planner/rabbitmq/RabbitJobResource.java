@@ -5,7 +5,7 @@ import org.lastaflute.core.util.Lato;
 /**
  * @author jflute
  */
-public class RabbitJobResource {
+public class RabbitJobResource { // #rabbit
 
     // ===================================================================================
     //                                                                          Definition

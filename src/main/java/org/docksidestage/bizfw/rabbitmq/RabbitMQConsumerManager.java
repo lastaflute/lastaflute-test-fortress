@@ -16,6 +16,7 @@
 package org.docksidestage.bizfw.rabbitmq;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -41,13 +42,15 @@ import com.rabbitmq.client.DeliverCallback;
 import com.rabbitmq.client.Delivery;
 
 /**
- * RabbitMQ の Consumer の登録/接続/切断、そして、Jobへの連携を管理するクラス。<br>
- * 別スレッドで queue ごとに basicConsume() を実行してポーリングする。<br>
- * メッセージを受け取ったら、queue ごとに対応する LastaJob の Job を実行する。<br>
- * その Job は、AllJobScheduler で nonCron で登録しておく。
+ * RabbitMQ の Consumer の登録/接続/切断、そして、Jobへの連携を管理するクラス。
+ * 
+ * <p>別スレッドで queue ごとに basicConsume() を実行してポーリングする。
+ * メッセージを受け取ったら、queue ごとに対応する LastaJob の Job を実行する。
+ * その Job は、AllJobScheduler で nonCron で登録しておく。</p>
+ * 
  * @author jflute
  */
-public class RabbitMQConsumerManager {
+public class RabbitMQConsumerManager { // #rabbit
 
     // ===================================================================================
     //                                                                          Definition
@@ -90,7 +93,7 @@ public class RabbitMQConsumerManager {
                 // ずっと止まる想定のスレッドにContextなどを保持させ続けるのも気持ち悪いから、
                 // AsyncManagerのcross()は使わずに自前でエラーハンドリングするようにした。
                 // (ここではContext類は要らないはずなので)
-                throw new IllegalStateException("Failed to boot the RabbitMQ consumer: " + queueName, e);
+                logger.error("Failed to boot the RabbitMQ consumer: " + queueName, e);
             }
         }).start();
     }
@@ -102,7 +105,7 @@ public class RabbitMQConsumerManager {
             CountDownLatch pollingLatch) { // works in polling thread
         ConnectionFactory connectionFactory = connectionFactoryProvider.provide();
         try (Connection conn = connectionFactory.newConnection(); Channel channel = conn.createChannel()) {
-            queueDeclare(queueName, channel);
+            queueDeclare(queueName, channel); // まずはキューを宣言
             basicConsume(queueName, jobUnique, channel); // 登録だけでポーリングするわけではない
             awaitConsumer(pollingLatch); // ここで自前ポーリング、アプリ停止時に解放されてConnectionのclose()が動く
         } catch (IOException | TimeoutException e) {
@@ -143,7 +146,7 @@ public class RabbitMQConsumerManager {
     protected DeliverCallback createDeliverCallback(String queueName, LaJobUnique jobUnique) {
         AsyncStateBridge bridge = asyncManager.bridgeState(op -> {});
         return (consumerTag, delivery) -> { // ここはまた別スレッドのはず
-            bridge.cross(() -> { // launch処理内での例外ハンドリングなどをいい感じにするために
+            bridge.cross(() -> { // launch自体の処理の例外ハンドリングなどをいい感じにするために
                 String messageText = extractMessageText(delivery);
                 launchRabbitJob(queueName, jobUnique, consumerTag, messageText);
             });
@@ -151,7 +154,11 @@ public class RabbitMQConsumerManager {
     }
 
     protected String extractMessageText(Delivery delivery) {
-        return new String(delivery.getBody(), StandardCharsets.UTF_8);
+        return new String(delivery.getBody(), getMessageTextCharset());
+    }
+
+    protected Charset getMessageTextCharset() {
+        return StandardCharsets.UTF_8;
     }
 
     // ===================================================================================
@@ -191,7 +198,7 @@ public class RabbitMQConsumerManager {
     //                                                                           =========
     protected void launchRabbitJob(String queueName, LaJobUnique jobUnique, String consumerTag, String messageText) {
         jobManager.findJobByUniqueOf(jobUnique).alwaysPresent(job -> {
-            job.launchNow(op -> { // JobはLastaJob側のスレッドで非同期で実行される
+            job.launchNow(op -> { // Job は LastaJob側のスレッドで非同期で実行される
                 RabbitJobResource resource = new RabbitJobResource(queueName, consumerTag, messageText);
                 op.param(RabbitJobResource.JOB_PARAMETER_KEY, resource);
 

@@ -20,7 +20,7 @@ import com.rabbitmq.client.ConnectionFactory;
 /**
  * @author jflute
  */
-public interface MQConnectionFactoryProvider {
+public interface MQConnectionFactoryProvider { // #rabbit
 
     /**
      * @return (すぐに Connection生成できる状態の) RabbitMQ の ConnectionFactoryインスタンス (NotNull)

@@ -3,7 +3,6 @@
 	"http://dbflute.org/meta/lastadi10.dtd">
 <components namespace="bizfw">
 	<include path="lastaflute.xml"/>
-	<include path="rabbit_mq.xml"/>
 
 	<component class="org.docksidestage.bizfw.crosslogin.CrossLoginBridge"/>
 	<component class="org.docksidestage.bizfw.json.RuledJsonEngineKeeper"/>
