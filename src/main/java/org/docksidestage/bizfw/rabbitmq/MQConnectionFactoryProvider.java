@@ -23,7 +23,7 @@ import com.rabbitmq.client.ConnectionFactory;
 public interface MQConnectionFactoryProvider {
 
     /**
-     * @return RabbitMQ の ConnectionFactory インスタンス (NotNull)
+     * @return (すぐに Connection生成できる状態の) RabbitMQ の ConnectionFactoryインスタンス (NotNull)
      */
     ConnectionFactory provide();
 }
