@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
+import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.unit.UnitFortressJobTestCase;
 import org.lastaflute.job.JobManager;
@@ -28,6 +29,8 @@ public class AllRabbitMQPlannerTest extends UnitFortressJobTestCase {
     private FortressConfig config;
     @Resource
     private JobManager jobManager;
+    @Resource
+    private RabbitMQConsumerManager consumerManager;
 
     // ===================================================================================
     //                                                                            Settings
@@ -44,8 +47,19 @@ public class AllRabbitMQPlannerTest extends UnitFortressJobTestCase {
     }
 
     @Override
+    public void tearDown() throws Exception {
+        super.tearDown();
+        log("========================= tearDown()のあと =============================");
+    }
+
+    @Override
     protected boolean isUseJobScheduling() {
         return true; // Jobを起動するために
+    }
+
+    @Override
+    protected boolean isUseOneTimeContainer() {
+        return true; // destroyの挙動も確認するために
     }
 
     // ===================================================================================
@@ -128,14 +142,14 @@ public class AllRabbitMQPlannerTest extends UnitFortressJobTestCase {
     }
 
     private AllRabbitMQPlanner doCreateMockAllRabbitMQPlanner(Set<String> calledSet, boolean withCallback) {
-        RabbitMQMocker mocker = new RabbitMQMocker(config);
+        RabbitMQConsumberMocker mocker = new RabbitMQConsumberMocker(config, consumerManager);
         mocker.assertCall_queueDeclare(queue -> {
             calledSet.add("queueDeclare(): " + queue);
-            log("#rabbit queueDeclare(): {}", queue);
+            log("#mq queueDeclare(): {}", queue);
         });
         mocker.assertCall_basicConsume((queue, deliverCallback) -> {
             calledSet.add("basicConsume(): " + queue);
-            log("#rabbit basicConsume(): {}", queue);
+            log("#mq basicConsume(): {}", queue);
 
             if (withCallback) {
                 executeCallback(queue, deliverCallback);

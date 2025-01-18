@@ -1,9 +1,7 @@
 package org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq;
 
+import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.mylasta.direction.FortressConfig;
-import org.lastaflute.core.magic.async.AsyncManager;
-import org.lastaflute.core.util.ContainerUtil;
-import org.lastaflute.job.JobManager;
 import org.lastaflute.job.key.LaJobUnique;
 
 import com.rabbitmq.client.ConnectionFactory;
@@ -27,12 +25,14 @@ public class AllRabbitMQPlanner {
     //                                                                           Attribute
     //                                                                           =========
     protected final FortressConfig config; // not null
+    protected final RabbitMQConsumerManager consumerManager; // not null
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public AllRabbitMQPlanner(FortressConfig config) {
+    public AllRabbitMQPlanner(FortressConfig config, RabbitMQConsumerManager consumerManager) {
         this.config = config;
+        this.consumerManager = consumerManager;
     }
 
     // ===================================================================================
@@ -44,19 +44,9 @@ public class AllRabbitMQPlanner {
      * (例えば LastaFluteなら、CurtainBeforeHook にて)
      */
     public void bootAllConsumer() {
-        RabbitMQConsumerSetupper consumerSetupper = prepareConsumerSetupper();
-
         // #rabbit 現場でのconsumerの設定 by jflute (2025/01/17)
-        consumerSetupper.asyncBoot("seaQueue", LaJobUnique.of(mysticJobUnique));
-        consumerSetupper.asyncBoot("landQueue", LaJobUnique.of(onemanJobUnique));
-    }
-
-    protected RabbitMQConsumerSetupper prepareConsumerSetupper() {
-        AsyncManager asyncManager = ContainerUtil.getComponent(AsyncManager.class);
-        JobManager jobManager = ContainerUtil.getComponent(JobManager.class);
-        return new RabbitMQConsumerSetupper(asyncManager, jobManager, () -> {
-            return prepareConnectionFactory();
-        });
+        consumerManager.asyncBoot("seaQueue", LaJobUnique.of(mysticJobUnique), () -> prepareConnectionFactory());
+        consumerManager.asyncBoot("landQueue", LaJobUnique.of(onemanJobUnique), () -> prepareConnectionFactory());
     }
 
     // -----------------------------------------------------

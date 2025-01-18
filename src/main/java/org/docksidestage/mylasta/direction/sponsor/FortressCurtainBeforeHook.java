@@ -25,6 +25,7 @@ import org.dbflute.system.DBFluteSystem;
 import org.dbflute.system.provider.DfFinalTimeZoneProvider;
 import org.dbflute.util.DfTraceViewUtil;
 import org.dbflute.util.DfTypeUtil;
+import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.dbflute.allcommon.DBMetaInstanceHandler;
 import org.docksidestage.dbflute.allcommon.ImplementedBehaviorSelector;
 import org.docksidestage.mylasta.action.FortressUserBean;
@@ -170,7 +171,8 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     }
 
     protected AllRabbitMQPlanner createAllRabbitMQPlanner() {
-        return new AllRabbitMQPlanner(config);
+        RabbitMQConsumerManager consumerManager = ContainerUtil.getComponent(RabbitMQConsumerManager.class);
+        return new AllRabbitMQPlanner(config, consumerManager);
     }
 
     // ===================================================================================

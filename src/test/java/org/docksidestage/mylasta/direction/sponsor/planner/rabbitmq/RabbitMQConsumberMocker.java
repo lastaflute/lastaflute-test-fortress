@@ -11,7 +11,10 @@ import java.util.function.Consumer;
 
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.dbflute.util.DfCollectionUtil;
+import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.mylasta.direction.FortressConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
@@ -30,31 +33,35 @@ import com.rabbitmq.client.impl.recovery.RecoveryAwareChannelN;
 /**
  * @author jflute
  */
-public class RabbitMQMocker {
+public class RabbitMQConsumberMocker {
+
+    private static final Logger logger = LoggerFactory.getLogger(RabbitMQConsumberMocker.class);
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     private final FortressConfig config; // not null
+    private final RabbitMQConsumerManager consumerManager; // not null
     private Consumer<String> queueDeclareCall; // null allowed
     private BiConsumer<String, DeliverCallback> basicConsumeCall; // null allowed
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RabbitMQMocker(FortressConfig config) {
+    public RabbitMQConsumberMocker(FortressConfig config, RabbitMQConsumerManager consumerManager) {
         this.config = config;
+        this.consumerManager = consumerManager;
     }
 
     // ===================================================================================
     //                                                                         Assert Call
     //                                                                         ===========
-    public RabbitMQMocker assertCall_queueDeclare(Consumer<String> queueDeclareCall) {
+    public RabbitMQConsumberMocker assertCall_queueDeclare(Consumer<String> queueDeclareCall) {
         this.queueDeclareCall = queueDeclareCall;
         return this;
     }
 
-    public RabbitMQMocker assertCall_basicConsume(BiConsumer<String, DeliverCallback> basicConsumeCall) {
+    public RabbitMQConsumberMocker assertCall_basicConsume(BiConsumer<String, DeliverCallback> basicConsumeCall) {
         this.basicConsumeCall = basicConsumeCall;
         return this;
     }
@@ -63,7 +70,7 @@ public class RabbitMQMocker {
     //                                                                             Planner
     //                                                                             =======
     public AllRabbitMQPlanner createMockAllRabbitMQPlanner() {
-        return new AllRabbitMQPlanner(config) {
+        return new AllRabbitMQPlanner(config, consumerManager) {
             @Override
             protected ConnectionFactory newConnectionFactory() {
                 return createMockConnectionFactory();
@@ -96,13 +103,13 @@ public class RabbitMQMocker {
             }
 
             @Override
-            public void init() throws IOException, TimeoutException {
-                // do nothing
+            public void init() throws IOException, TimeoutException { // do nothing
+                logger.debug("#mq AutorecoveringConnection@init() called");
             }
 
             @Override
-            public void close() throws IOException {
-                // do nothing
+            public void close() throws IOException { // do nothing
+                logger.debug("#mq AutorecoveringConnection@close() called");
             }
         };
     }
@@ -146,8 +153,8 @@ public class RabbitMQMocker {
             }
 
             @Override
-            public void close() throws IOException, TimeoutException {
-                // do nothing
+            public void close() throws IOException, TimeoutException { // do nothing
+                logger.debug("#mq RecoveryAwareChannelN's close() called");
             }
         };
     }
@@ -209,6 +216,7 @@ public class RabbitMQMocker {
 
         @Override
         public void close() {
+            logger.debug("#mq FrameHandler's close() called");
         }
     }
 }

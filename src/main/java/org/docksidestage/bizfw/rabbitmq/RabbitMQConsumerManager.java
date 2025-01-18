@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-import java.util.function.Supplier;
 
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
@@ -14,8 +13,11 @@ import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.RabbitJobResource;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.bridge.AsyncStateBridge;
+import org.lastaflute.core.util.Lato;
 import org.lastaflute.job.JobManager;
 import org.lastaflute.job.key.LaJobUnique;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -32,6 +34,8 @@ import com.rabbitmq.client.Delivery;
  */
 public class RabbitMQConsumerManager {
 
+    private static final Logger logger = LoggerFactory.getLogger(RabbitMQConsumerManager.class);
+
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
@@ -40,7 +44,26 @@ public class RabbitMQConsumerManager {
     @Resource
     protected JobManager jobManager;
 
-    protected final List<Object> blockList = DfCollectionUtil.newArrayList();
+    // singletonのDIコンポーネント前提で保持する。synchronizedの中で利用すること。
+    protected final List<ConsumerThreadBlock> blockList = DfCollectionUtil.newArrayList();
+
+    public static class ConsumerThreadBlock {
+
+        private final String queueName; // not null
+
+        public ConsumerThreadBlock(String queueName) {
+            this.queueName = queueName;
+        }
+
+        @Override
+        public String toString() {
+            return Lato.string(this);
+        }
+
+        public String getQueueName() {
+            return queueName;
+        }
+    }
 
     // ===================================================================================
     //                                                                               Boot
@@ -50,22 +73,27 @@ public class RabbitMQConsumerManager {
      * 新しいスレッドで起動させるので、このメソッド自体はすぐに戻って来る。
      * @param queueName 起動するConsumerが対応するキューの名前 (NotNull)
      * @param jobUnique 対応する LastaJob の Job を特定するためのユニークオブジェクト (NotNull)
+     * @param connectionFactoryProvider このbootで使うMQのConnectionFactoryを提供するコールバック (NotNull)
      */
-    public synchronized void asyncBoot(String queueName, LaJobUnique jobUnique, Supplier<ConnectionFactory> connectionFactoryProvider) {
+    public synchronized void asyncBoot(String queueName, LaJobUnique jobUnique, MQConnectionFactoryProvider connectionFactoryProvider) {
         DfAssertUtil.assertStringNotNullAndNotTrimmedEmpty("queueName", queueName);
         DfAssertUtil.assertObjectNotNull("jobUnique", jobUnique);
-        Object block = new Object();
-        blockList.add(block);
-        AsyncStateBridge bridge = asyncManager.bridgeState(op -> {});
+        ConsumerThreadBlock block = new ConsumerThreadBlock(queueName); // 自前ポーリング用のブロックオブジェクト
+        blockList.add(block); // アプリ停止時に開放するようにする想定で登録
         new Thread(() -> { // consumber登録後のポーリングに献上するスレッドなのでその場new
-            bridge.cross(() -> { // ただ、boot中の例外ハンドリングとかいい感じにするために
+            try {
                 doBoot(queueName, jobUnique, connectionFactoryProvider, block);
-            });
+            } catch (Throwable e) {
+                // ずっと止まる想定のスレッドにContextなどを保持させ続けるのも気持ち悪いから、
+                // AsyncManagerのcross()は使わずに自前でエラーハンドリングするようにした。
+                // (ここではContext類は要らないはずなので)
+                throw new IllegalStateException("Failed to boot the RabbitMQ consumer: " + queueName, e);
+            }
         }).start();
     }
 
-    protected void doBoot(String queueName, LaJobUnique jobUnique, Supplier<ConnectionFactory> connectionFactoryProvider, Object block) { // in new thread and crossed
-        ConnectionFactory connectionFactory = connectionFactoryProvider.get();
+    protected void doBoot(String queueName, LaJobUnique jobUnique, MQConnectionFactoryProvider connectionFactoryProvider, Object block) { // in new thread and crossed
+        ConnectionFactory connectionFactory = connectionFactoryProvider.provide();
         try (Connection conn = connectionFactory.newConnection(); Channel channel = conn.createChannel()) {
             queueDeclare(queueName, channel);
             basicConsume(queueName, jobUnique, channel); // 登録だけでポーリングするわけではない
@@ -84,17 +112,17 @@ public class RabbitMQConsumerManager {
     protected void basicConsume(String queueName, LaJobUnique jobUnique, Channel channel) throws IOException {
         // #rabbit basicConsume()のオプション引数autoAckやconsumerTagはこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
         DeliverCallback deliverCallback = createDeliverCallback(queueName, jobUnique);
+
+        logger.info("#mq ...Registering MQ consumer: {} to {}", queueName, jobUnique);
         channel.basicConsume(queueName, /*autoAck*/true, deliverCallback, consumerTag -> {});
     }
 
     protected void awaitConsumer(Object block) {
-        while (true) {
+        synchronized (block) {
             try {
-                // TODO jflute この方法でいいのか？ (2025/01/18)
-                block.wait();
+                block.wait(); // ここで止まって
             } catch (InterruptedException e) {
-                String msg = "Interrupted the wait: block=" + block;
-                throw new IllegalStateException(msg, e);
+                throw new IllegalStateException("Interrupted the wait: block=" + block, e);
             }
         }
     }
@@ -137,8 +165,11 @@ public class RabbitMQConsumerManager {
     //                                                                             =======
     @PreDestroy
     public synchronized void destroy() {
-        for (Object block : blockList) {
-            block.notifyAll();
+        logger.info("#mq ...Notifying MQ consumer blocks: {}", blockList);
+        for (ConsumerThreadBlock block : blockList) {
+            synchronized (block) {
+                block.notify();
+            }
         }
     }
 }
