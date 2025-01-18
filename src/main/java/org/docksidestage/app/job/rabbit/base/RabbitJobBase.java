@@ -31,7 +31,7 @@ import org.lastaflute.job.LaJobRuntime;
  * @param <MESSAGE_BODY> メッセージ文字列をJSONとしてparseしたときの受け取りクラス
  * @author jflute
  */
-public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob {
+public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob { // #rabbit
 
     // ===================================================================================
     //                                                                           Attribute
@@ -63,7 +63,7 @@ public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob {
     protected MESSAGE_BODY prepareMessageBody(RabbitJobResource jobResource) {
         String messageText = jobResource.getMessageText();
 
-        // #rabbit 本当は RuledJsonEngineKeeper から作り済みのEngineインスタンスを取得する方が良い by jflute (2025/01/17)
+        // #genbafitting 本当は RuledJsonEngineKeeper から作り済みのEngineインスタンスを取得する方が良い by jflute (2025/01/17)
         // (このままだとメッセージを受け取るたびに毎回JsonEngineをnewしてしまう)
         JsonEngineResource engineResource = new JsonEngineResource();
         setupRabbitJsonRule(engineResource);
@@ -74,7 +74,7 @@ public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob {
     }
 
     protected void setupRabbitJsonRule(JsonEngineResource engineResource) {
-        // #rabbit ここで現場のJsonルールを設定する by jflute (2025/01/17)
+        // #genbafitting ここで現場のJsonルールを設定する by jflute (2025/01/17)
         JsonMappingOption mappingOption = new JsonMappingOption();
         engineResource.acceptMappingOption(mappingOption);
     }
