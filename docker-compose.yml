@@ -1,17 +1,17 @@
-version: '2'
 services:
-  fortress:
-    build: ./
-    ports:
-      - "8152:8152"
-    volumes:
-      - .:/code
-    links:
-      - db
-    networks:
-      - fortress-net
+  # fortress:
+  #   build: ./
+  #   ports:
+  #     - "8152:8152"
+  #   volumes:
+  #     - .:/code
+  #   links:
+  #     - db
+  #   networks:
+  #     - fortress-net
   intro:
     image: dbflute/dbflute-intro
+    platform: linux/x86_64
     ports:
       - "8926:8926"
     volumes:
@@ -38,6 +38,17 @@ services:
       - "3306"
     ports:
       - "3306:3306"
+    networks:
+      - fortress-net
+  rabbitmq:
+    image: rabbitmq:4.0.5-management
+    container_name: fortress-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: land
+      RABBITMQ_DEFAULT_PASS: oneman
+    ports:
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - fortress-net
 
