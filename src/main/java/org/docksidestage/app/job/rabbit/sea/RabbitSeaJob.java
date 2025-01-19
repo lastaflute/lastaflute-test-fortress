@@ -18,8 +18,8 @@ package org.docksidestage.app.job.rabbit.sea;
 import javax.annotation.Resource;
 
 import org.docksidestage.app.job.rabbit.base.RabbitJobBase;
+import org.docksidestage.bizfw.rabbitmq.RabbitJobResource;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
-import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.RabbitJobResource;
 import org.lastaflute.db.jta.stage.TransactionStage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

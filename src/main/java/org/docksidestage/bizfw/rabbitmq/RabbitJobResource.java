@@ -1,4 +1,4 @@
-package org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq;
+package org.docksidestage.bizfw.rabbitmq;
 
 import org.lastaflute.core.util.Lato;
 

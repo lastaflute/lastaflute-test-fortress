@@ -29,7 +29,6 @@ import javax.annotation.Resource;
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.DfAssertUtil;
 import org.dbflute.util.DfCollectionUtil;
-import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.RabbitJobResource;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.bridge.AsyncStateBridge;
 import org.lastaflute.job.JobManager;
