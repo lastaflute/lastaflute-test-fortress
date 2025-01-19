@@ -58,8 +58,8 @@ public class AllRabbitMQPlanner { // #rabbit
         ConnectionFactory factory = newConnectionFactory();
         factory.setHost("localhost");
         factory.setPort(5672);
-        factory.setUsername("land");
-        factory.setPassword("oneman");
+        factory.setUsername("maihama");
+        factory.setPassword("park");
         return factory;
     }
 

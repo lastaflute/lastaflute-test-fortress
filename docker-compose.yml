@@ -44,8 +44,8 @@ services:
     image: rabbitmq:4.0.5-management
     container_name: fortress-rabbitmq
     environment:
-      RABBITMQ_DEFAULT_USER: land
-      RABBITMQ_DEFAULT_PASS: oneman
+      RABBITMQ_DEFAULT_USER: maihama
+      RABBITMQ_DEFAULT_PASS: park
     ports:
       - "5672:5672"
       - "15672:15672"
