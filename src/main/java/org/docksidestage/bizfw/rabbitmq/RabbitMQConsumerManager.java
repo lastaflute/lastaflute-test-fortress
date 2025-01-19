@@ -208,6 +208,9 @@ public class RabbitMQConsumerManager { // #rabbit
 
     // #genba_fitting ackを例外有無で制御するのであれば、ここでtry/catch (かつ、launch側でJobの例外有無の判定) by jflute (2025/01/19)
     protected void doDeliver(String queueName, LaJobUnique jobUnique, String consumerTag, Delivery delivery, Channel channel) {
+        if (logger.isDebugEnabled()) {
+            logger.debug("#mq ...Delivering the queue request: {}, {}", queueName, jobUnique);
+        }
         String messageText = extractMessageText(delivery);
         launchRabbitJob(queueName, jobUnique, consumerTag, messageText);
     }

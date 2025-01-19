@@ -18,9 +18,11 @@ package org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 import javax.annotation.Resource;
 
+import org.dbflute.utflute.core.cannonball.CannonballOption;
 import org.docksidestage.dbflute.exbhv.PurchaseBhv;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.core.magic.async.AsyncManager;
@@ -38,13 +40,22 @@ import ch.qos.logback.core.util.StatusPrinter;
  */
 public class RabbitMQThroughTest extends UnitFortressBasicTestCase {
 
+    // ===================================================================================
+    //                                                                          Definition
+    //                                                                          ==========
     private static final String SEA_QUEUE = "seaQueue";
 
+    // ===================================================================================
+    //                                                                           Attribute
+    //                                                                           =========
     @Resource
     private PurchaseBhv purchaseBhv;
     @Resource
     private AsyncManager asyncManager;
 
+    // ===================================================================================
+    //                                                                            Settings
+    //                                                                            ========
     @Override
     protected boolean isUseOneTimeContainer() {
         return true;
@@ -55,14 +66,48 @@ public class RabbitMQThroughTest extends UnitFortressBasicTestCase {
         return true;
     }
 
+    @Override
+    protected void initializeAssistantDirector() {
+        // いかん、UTFluteがCurtainBeforeHookを呼び出してるけど、LastaFilterの初期化もしてるから二重になる（＞＜
+    }
+
+    // ===================================================================================
+    //                                                                               Basic
+    //                                                                               =====
     public void test_basic() throws Exception {
         publishCall(channel -> {
-            String exchange = ""; // as producer
-            String routingKey = SEA_QUEUE;
-            BasicProperties props = null;
-            byte[] bodyBytes = "{stageName: \"hangar\", oneDayShowCount: 5}".getBytes("UTF-8");
-            channel.basicPublish(exchange, routingKey, props, bodyBytes);
+            basicPublishToSea(channel);
         });
+    }
+
+    // ===================================================================================
+    //                                                                          Cannonball
+    //                                                                          ==========
+    public void test_cannonball() throws Exception {
+        cannonball(car -> {
+            try {
+                publishCall(channel -> {
+                    basicPublishToSea(channel); // どれだけログが出るか？の確認
+                });
+            } catch (Exception e) { // チェック例外なので...
+                throw new IllegalStateException("Failed to publish: " + car, e);
+            }
+        }, new CannonballOption().threadCount(3)); // 増やして試したいときはここ
+    }
+
+    private void basicPublishToSea(Channel channel) throws UnsupportedEncodingException, IOException {
+        String exchange = ""; // as producer
+        String routingKey = SEA_QUEUE;
+        BasicProperties props = null;
+        byte[] bodyBytes = prepareSeaBodyBytes();
+        channel.basicPublish(exchange, routingKey, props, bodyBytes);
+    }
+
+    // ===================================================================================
+    //                                                                         Test Helper
+    //                                                                         ===========
+    private byte[] prepareSeaBodyBytes() throws UnsupportedEncodingException {
+        return "{stageName: \"hangar\", oneDayShowCount: 5}".getBytes("UTF-8");
     }
 
     public static interface TestEasyPublisherCall {

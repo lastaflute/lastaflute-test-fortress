@@ -67,6 +67,8 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     //                                                                               Hook
     //                                                                              ======
     public void hook(FwAssistantDirector assistantDirector) {
+        logger.debug("...Hooking curtain-before.");
+
         processDBFluteSystem();
         whiteboxtest_findLoginManager();
         whiteboxtest_prepareAccessContextForInsert();
