@@ -150,6 +150,11 @@ public class RabbitMQConsumberMocker {
     private RecoveryAwareChannelN createMockRecoveryAwareChannelN(AMQConnection amqConnection, ConsumerWorkService workService) {
         return new RecoveryAwareChannelN(amqConnection, 1, workService) {
             @Override
+            public void basicQos(int prefetchCount) throws IOException {
+                // mock
+            }
+
+            @Override
             public DeclareOk queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete,
                     Map<String, Object> arguments) throws IOException {
                 if (queueDeclareCall != null) {
