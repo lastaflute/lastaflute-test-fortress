@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeoutException;
 
@@ -32,9 +33,11 @@ import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.bridge.AsyncStateBridge;
 import org.lastaflute.job.JobManager;
 import org.lastaflute.job.key.LaJobUnique;
+import org.lastaflute.job.subsidiary.LaunchedProcess;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -114,22 +117,57 @@ public class RabbitMQConsumerManager { // #rabbit
         }
     }
 
+    // ===================================================================================
+    //                                                                    Polling Consumer
+    //                                                                    ================
     // -----------------------------------------------------
-    //                                         Polling Steps
-    //                                         -------------
+    //                                               Declare
+    //                                               -------
     protected void queueDeclare(String queueName, Channel channel) throws IOException {
-        // #rabbit queueDeclare()のオプション引数たちこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
-        channel.queueDeclare(queueName, /*durable*/true, /*exclusive*/false, /*autoDelete*/false, /*arguments*/null);
+        boolean durable = isDeclarationOptionDurable();
+        boolean exclusive = isDeclarationOptionExclusive();
+        boolean autoDelete = isDeclarationOptionAutoDelete();
+        Map<String, Object> arguments = getDeclarationOptionArguments();
+        channel.queueDeclare(queueName, durable, exclusive, autoDelete, arguments);
     }
 
+    // #genbafitting queueDeclare()のオプション引数たちこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
+    protected boolean isDeclarationOptionDurable() {
+        return true; // as default
+    }
+
+    protected boolean isDeclarationOptionExclusive() {
+        return false; // as default
+    }
+
+    protected boolean isDeclarationOptionAutoDelete() {
+        return false; // as default
+    }
+
+    protected Map<String, Object> getDeclarationOptionArguments() {
+        return null; // as default
+    }
+
+    // -----------------------------------------------------
+    //                                               Consume
+    //                                               -------
     protected void basicConsume(String queueName, LaJobUnique jobUnique, Channel channel) throws IOException {
-        // #rabbit basicConsume()のオプション引数autoAckやconsumerTagはこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
-        DeliverCallback deliverCallback = createDeliverCallback(queueName, jobUnique);
+        boolean autoAck = isConsumerOptionAutoAck();
+        DeliverCallback deliverCallback = createDeliverCallback(queueName, jobUnique, channel);
+        CancelCallback cancelCallback = createCancelCallback(queueName, jobUnique, channel);
 
         logger.info("#mq ...Registering MQ consumer: {} to {}", queueName, jobUnique);
-        channel.basicConsume(queueName, /*autoAck*/true, deliverCallback, consumerTag -> {});
+        channel.basicConsume(queueName, autoAck, deliverCallback, cancelCallback);
     }
 
+    // #genbafitting basicConsume()のオプション引数autoAckはこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
+    protected boolean isConsumerOptionAutoAck() {
+        return true; // as default
+    }
+
+    // -----------------------------------------------------
+    //                                                 Await
+    //                                                 -----
     protected void awaitConsumer(CountDownLatch pollingLatch) {
         try {
             // ここで止まってポーリング状態に入り、try-with-resources の Connection は開いたままでConsumerが利用する。
@@ -143,14 +181,19 @@ public class RabbitMQConsumerManager { // #rabbit
     // -----------------------------------------------------
     //                                       DeliverCallback
     //                                       ---------------
-    protected DeliverCallback createDeliverCallback(String queueName, LaJobUnique jobUnique) {
+    protected DeliverCallback createDeliverCallback(String queueName, LaJobUnique jobUnique, Channel channel) {
         AsyncStateBridge bridge = asyncManager.bridgeState(op -> {});
         return (consumerTag, delivery) -> { // ここはまた別スレッドのはず
             bridge.cross(() -> { // launch自体の処理の例外ハンドリングなどをいい感じにするために
-                String messageText = extractMessageText(delivery);
-                launchRabbitJob(queueName, jobUnique, consumerTag, messageText);
+                doDeliver(queueName, jobUnique, consumerTag, delivery, channel);
             });
         };
+    }
+
+    // #genbafitting ackを例外有無で制御するのであれば、ここでtry/catch (かつ、launch側でJobの例外有無の判定) by jflute (2025/01/19)
+    protected void doDeliver(String queueName, LaJobUnique jobUnique, String consumerTag, Delivery delivery, Channel channel) {
+        String messageText = extractMessageText(delivery);
+        launchRabbitJob(queueName, jobUnique, consumerTag, messageText);
     }
 
     protected String extractMessageText(Delivery delivery) {
@@ -159,6 +202,16 @@ public class RabbitMQConsumerManager { // #rabbit
 
     protected Charset getMessageTextCharset() {
         return StandardCharsets.UTF_8;
+    }
+
+    // -----------------------------------------------------
+    //                                        CancelCallback
+    //                                        --------------
+    // #genbafitting cancel時の処理はこれでいいのか？恐らく現場で要調整 by jflute (2025/01/19)
+    protected CancelCallback createCancelCallback(String queueName, LaJobUnique jobUnique, Channel channel) {
+        return consumerTag -> {
+            logger.info("The queue consuming was cancelled: " + queueName + ", " + jobUnique);
+        };
     }
 
     // ===================================================================================
@@ -198,7 +251,7 @@ public class RabbitMQConsumerManager { // #rabbit
     //                                                                           =========
     protected void launchRabbitJob(String queueName, LaJobUnique jobUnique, String consumerTag, String messageText) {
         jobManager.findJobByUniqueOf(jobUnique).alwaysPresent(job -> {
-            job.launchNow(op -> { // Job は LastaJob側のスレッドで非同期で実行される
+            LaunchedProcess launchedProcess = job.launchNow(op -> { // Job は LastaJob側のスレッドで実行される
                 RabbitJobResource resource = new RabbitJobResource(queueName, consumerTag, messageText);
                 op.param(RabbitJobResource.JOB_PARAMETER_KEY, resource);
 
@@ -206,6 +259,22 @@ public class RabbitMQConsumerManager { // #rabbit
                 // もし同じJobをパラレルで実行したい場合はこちらのオプションがあるが実験的な機能ではある。
                 //op.asOutlawParallel()
             });
+            if (logger.isDebugEnabled()) {
+                logger.debug("...Launching rabbitJob: {}", launchedProcess.getScheduledJob());
+            }
+
+            // #genbafitting もし、Jobの処理をconsumerスレッドで待ちたい場合はこちら by jflute (2025/01/19)
+            // 
+            //OptionalThing<LaJobHistory> jobEnding = launchedProcess.waitForEnding();
+            //jobEnding.ifPresent(jobHistory -> { // まず確実に存在する
+            //    ExecResultType execResultType = jobHistory.getExecResultType();
+            //    if (execResultType.isErrorResult()) {
+            //        throw new IllegalStateException("RabbitJob failure: " + queueName + ", " + jobHistory);
+            //    }
+            //}).orElse(() -> { // まずありえない
+            //    // historyのlimitはデフォルトで300とかなので、信じられないほどJobが同時起動しまくってなければ大丈夫
+            //    logger.warn("*Not found the rabbitJob history: " + queueName);
+            //});
         });
     }
 
