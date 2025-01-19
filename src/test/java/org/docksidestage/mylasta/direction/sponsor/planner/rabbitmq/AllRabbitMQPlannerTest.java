@@ -160,7 +160,7 @@ public class AllRabbitMQPlannerTest extends UnitFortressJobTestCase {
     }
 
     private AllRabbitMQPlanner doCreateMockAllRabbitMQPlanner(Set<String> calledSet, boolean withCallback) {
-        RabbitMQConsumberMocker mocker = new RabbitMQConsumberMocker(config, consumerManager);
+        RabbitMQConsumerMocker mocker = new RabbitMQConsumerMocker(config, consumerManager);
         mocker.assertCall_queueDeclare(queue -> {
             calledSet.add("queueDeclare(): " + queue);
             log("#mq queueDeclare(): {}", queue);

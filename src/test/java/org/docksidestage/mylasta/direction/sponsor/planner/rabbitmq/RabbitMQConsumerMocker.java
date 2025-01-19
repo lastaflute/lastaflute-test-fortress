@@ -48,9 +48,9 @@ import com.rabbitmq.client.impl.recovery.RecoveryAwareChannelN;
 /**
  * @author jflute
  */
-public class RabbitMQConsumberMocker {
+public class RabbitMQConsumerMocker {
 
-    private static final Logger logger = LoggerFactory.getLogger(RabbitMQConsumberMocker.class);
+    private static final Logger logger = LoggerFactory.getLogger(RabbitMQConsumerMocker.class);
 
     // ===================================================================================
     //                                                                           Attribute
@@ -63,7 +63,7 @@ public class RabbitMQConsumberMocker {
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RabbitMQConsumberMocker(FortressConfig config, RabbitMQConsumerManager consumerManager) {
+    public RabbitMQConsumerMocker(FortressConfig config, RabbitMQConsumerManager consumerManager) {
         this.config = config;
         this.consumerManager = consumerManager;
     }
@@ -71,12 +71,12 @@ public class RabbitMQConsumberMocker {
     // ===================================================================================
     //                                                                         Assert Call
     //                                                                         ===========
-    public RabbitMQConsumberMocker assertCall_queueDeclare(Consumer<String> queueDeclareCall) {
+    public RabbitMQConsumerMocker assertCall_queueDeclare(Consumer<String> queueDeclareCall) {
         this.queueDeclareCall = queueDeclareCall;
         return this;
     }
 
-    public RabbitMQConsumberMocker assertCall_basicConsume(BiConsumer<String, DeliverCallback> basicConsumeCall) {
+    public RabbitMQConsumerMocker assertCall_basicConsume(BiConsumer<String, DeliverCallback> basicConsumeCall) {
         this.basicConsumeCall = basicConsumeCall;
         return this;
     }
