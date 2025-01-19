@@ -10,12 +10,12 @@ import com.rabbitmq.client.ConnectionFactory;
  * RabbitMQ のプランを立てるクラス。
  * @author jflute
  */
-public class AllRabbitMQPlanner { // #rabbit #genba_fitting
+public class AllRabbitMQPlanner { // #rabbit
 
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    // AllJobScheduler から参照するための定数定義、名前ズレしないように。
+    // #genba_fitting AllJobScheduler から参照するための定数定義、名前ズレしないように。
     // 外からappは参照できないので、(外の)plannerに定義して(appの)AllJobSchedulerで参照する。
     // #rabbit 現場でのconsumerに対応するJobのユニークコードの定義 by jflute (2025/01/17)
     public static final String mysticJobUnique = "mysticJob";
@@ -44,7 +44,7 @@ public class AllRabbitMQPlanner { // #rabbit #genba_fitting
      * (例えば LastaFluteなら、CurtainBeforeHook にて)
      */
     public void bootAllConsumer() {
-        // #rabbit 現場でのconsumerの設定 by jflute (2025/01/17)
+        // #genba_fitting 現場でのconsumerの設定 by jflute (2025/01/17)
         consumerManager.asyncBoot("seaQueue", LaJobUnique.of(mysticJobUnique), () -> prepareConnectionFactory());
         consumerManager.asyncBoot("landQueue", LaJobUnique.of(onemanJobUnique), () -> prepareConnectionFactory());
     }
@@ -53,7 +53,7 @@ public class AllRabbitMQPlanner { // #rabbit #genba_fitting
     //                                         MQ Connection
     //                                         -------------
     protected ConnectionFactory prepareConnectionFactory() {
-        // #rabbit 現場での接続設定、configを連れてきて、[app]_env.properties に定義した値を持ってくるのが良い by jflute (2025/01/17)
+        // #genba_fitting 現場での接続設定、configを連れてきて、[app]_env.properties に定義した値を持ってくるのが良い by jflute (2025/01/17)
         //  e.g. String host = config.getRabbitMQConsumerHost();
         ConnectionFactory factory = newConnectionFactory();
         factory.setHost("localhost");
