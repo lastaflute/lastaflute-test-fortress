@@ -63,7 +63,7 @@ public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob { // #rabbit
     protected MESSAGE_BODY prepareMessageBody(RabbitJobResource jobResource) {
         String messageText = jobResource.getMessageText();
 
-        // #genbafitting 本当は RuledJsonEngineKeeper から作り済みのEngineインスタンスを取得する方が良い by jflute (2025/01/17)
+        // #genba_fitting 本当は RuledJsonEngineKeeper から作り済みのEngineインスタンスを取得する方が良い by jflute (2025/01/17)
         // (このままだとメッセージを受け取るたびに毎回JsonEngineをnewしてしまう)
         JsonEngineResource engineResource = new JsonEngineResource();
         setupRabbitJsonRule(engineResource);
@@ -74,7 +74,7 @@ public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob { // #rabbit
     }
 
     protected void setupRabbitJsonRule(JsonEngineResource engineResource) {
-        // #genbafitting ここで現場のJsonルールを設定する by jflute (2025/01/17)
+        // #genba_fitting ここで現場のJsonルールを設定する by jflute (2025/01/17)
         JsonMappingOption mappingOption = new JsonMappingOption();
         engineResource.acceptMappingOption(mappingOption);
     }
