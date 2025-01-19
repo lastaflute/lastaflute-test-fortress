@@ -85,6 +85,7 @@ public class RabbitMQConsumerManager { // #rabbit
     public synchronized void asyncBoot(String queueName, LaJobUnique jobUnique, MQConnectionFactoryProvider connectionFactoryProvider) {
         DfAssertUtil.assertStringNotNullAndNotTrimmedEmpty("queueName", queueName);
         DfAssertUtil.assertObjectNotNull("jobUnique", jobUnique);
+        DfAssertUtil.assertObjectNotNull("connectionFactoryProvider", connectionFactoryProvider);
 
         // 自前ポーリング用のラッチ (インスタンス変数登録するので献上スレッド外(前)で呼ぶこと)
         ConsumerPollingLatch pollingLatch = preparePollingLatch(queueName);

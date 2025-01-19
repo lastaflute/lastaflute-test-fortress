@@ -1,5 +1,6 @@
 package org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq;
 
+import org.dbflute.util.DfAssertUtil;
 import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.job.key.LaJobUnique;
@@ -31,6 +32,8 @@ public class AllRabbitMQPlanner { // #rabbit
     //                                                                         Constructor
     //                                                                         ===========
     public AllRabbitMQPlanner(FortressConfig config, RabbitMQConsumerManager consumerManager) {
+        DfAssertUtil.assertObjectNotNull("config", config);
+        DfAssertUtil.assertObjectNotNull("consumerManager", consumerManager);
         this.config = config;
         this.consumerManager = consumerManager;
     }
