@@ -26,6 +26,7 @@ import javax.annotation.Resource;
 
 import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.mylasta.direction.FortressConfig;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.mock.RabbitMQConsumerMocker;
 import org.docksidestage.unit.UnitFortressJobTestCase;
 import org.lastaflute.job.JobManager;
 import org.lastaflute.job.LaJobHistory;
@@ -36,6 +37,7 @@ import com.rabbitmq.client.Delivery;
 import com.rabbitmq.client.Envelope;
 
 /**
+ * mockを使ったplannerのテスト。RabbitMQにはアクセスしない。
  * @author jflute
  */
 public class AllRabbitMQPlannerTest extends UnitFortressJobTestCase {

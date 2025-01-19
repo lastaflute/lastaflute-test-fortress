@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq;
+package org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.mock;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -28,6 +28,7 @@ import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.mylasta.direction.FortressConfig;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.AllRabbitMQPlanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
