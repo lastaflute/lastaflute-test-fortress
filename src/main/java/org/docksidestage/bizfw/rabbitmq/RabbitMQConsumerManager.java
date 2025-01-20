@@ -213,7 +213,7 @@ public class RabbitMQConsumerManager { // #rabbit
             logger.debug("#mq ...Delivering the queue request: {}, {}", queueName, jobUnique);
         }
         String messageText = extractMessageText(delivery);
-        launchRabbitJob(queueName, jobUnique, consumerTag, messageText);
+        launchRabbitJob(queueName, jobUnique, consumerTag, messageText, channel);
     }
 
     protected String extractMessageText(Delivery delivery) {
@@ -269,7 +269,10 @@ public class RabbitMQConsumerManager { // #rabbit
     // ===================================================================================
     //                                                                           Lasta Job
     //                                                                           =========
-    protected void launchRabbitJob(String queueName, LaJobUnique jobUnique, String consumerTag, String messageText) {
+    // #genba_fitting 業務処理の途中で channel を使って細かく制御したい場合は、Job方式だとちょっとやりづらいので... by jflute (2025/01/20)
+    // その場合はJob方式ではなく、Jobの代わりに bizfw に自前の rich component を handler にした方が良いかも。
+    // ただ、このスレッドに対して、AccessContext などのフレームワック設定をしてあげる必要ので、もう少し仕組みの実装が必要。
+    protected void launchRabbitJob(String queueName, LaJobUnique jobUnique, String consumerTag, String messageText, Channel channel) {
         jobManager.findJobByUniqueOf(jobUnique).alwaysPresent(job -> {
             LaunchedProcess launchedProcess = job.launchNow(op -> { // Job は LastaJob側のスレッドで実行される
                 RabbitJobResource resource = new RabbitJobResource(queueName, consumerTag, messageText);
@@ -284,7 +287,7 @@ public class RabbitMQConsumerManager { // #rabbit
             }
 
             // #genba_fitting もし、Jobの処理をconsumerスレッドで待ちたい場合はこちら by jflute (2025/01/19)
-            // 
+            // Jobで発生した例外内容によってchannelを使ってキューリクエストを制御したい場合は、history から例外を取得して制御する。
             //OptionalThing<LaJobHistory> jobEnding = launchedProcess.waitForEnding();
             //jobEnding.ifPresent(jobHistory -> { // まず確実に存在する
             //    ExecResultType execResultType = jobHistory.getExecResultType();
