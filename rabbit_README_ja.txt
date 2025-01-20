@@ -76,7 +76,9 @@ o 接続設定やmock設定などはひとまず決め打ちで実装してい�
 o RabbitMQのオプションなどもひとまず決め打ちで実装している
  i 現場の要件に合わせてtrue/falseなど実装を修正した方が良い
 
-o #genba_fitting でソースコード検索して、現場でフィッティングした方が良い箇所を確認すること
+o #rabbit でソースコード検索すると、RabbitMQ関連のコードや設定がヒットする
+
+o #genba_fitting でソースコード検索すると、現場で修正した方が良い箇所がヒットする
 
 o UnitTestでも起動してしまうので、ローカルでRabbitMQサーバーを準備しない開発の場合は...
  i [app]_env.properties で RabbitMQ を有効/無効にするbooleanプロパティを定義して...
