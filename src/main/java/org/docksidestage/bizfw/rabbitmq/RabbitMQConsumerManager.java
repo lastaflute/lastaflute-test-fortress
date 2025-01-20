@@ -29,9 +29,13 @@ import javax.annotation.Resource;
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.DfAssertUtil;
 import org.dbflute.util.DfCollectionUtil;
+import org.docksidestage.bizfw.rabbitmq.job.RabbitJobResource;
+import org.docksidestage.bizfw.rabbitmq.job.exception.RabbitJobChannelAckException;
+import org.docksidestage.bizfw.rabbitmq.job.exception.RabbitJobChannelRejectException;
 import org.lastaflute.core.magic.async.AsyncManager;
 import org.lastaflute.core.magic.async.bridge.AsyncStateBridge;
 import org.lastaflute.job.JobManager;
+import org.lastaflute.job.LaJobHistory;
 import org.lastaflute.job.key.LaJobUnique;
 import org.lastaflute.job.subsidiary.LaunchedProcess;
 import org.slf4j.Logger;
@@ -177,9 +181,9 @@ public class RabbitMQConsumerManager { // #rabbit
         channel.basicConsume(queueName, autoAck, deliverCallback, cancelCallback);
     }
 
-    // #genba_fitting basicConsume()のオプション引数autoAckはこれでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
+    // #genba_fitting basicConsume()のオプション引数autoAckを使うかどうかは現場次第 by jflute (2025/01/16)
     protected boolean isConsumerOptionAutoAck() {
-        return true; // as default
+        return false; // as default
     }
 
     // -----------------------------------------------------
@@ -213,7 +217,7 @@ public class RabbitMQConsumerManager { // #rabbit
             logger.debug("#mq ...Delivering the queue request: {}, {}", queueName, jobUnique);
         }
         String messageText = extractMessageText(delivery);
-        launchRabbitJob(queueName, jobUnique, consumerTag, messageText, channel);
+        launchRabbitJob(queueName, jobUnique, consumerTag, messageText, delivery, channel);
     }
 
     protected String extractMessageText(Delivery delivery) {
@@ -272,7 +276,10 @@ public class RabbitMQConsumerManager { // #rabbit
     // #genba_fitting 業務処理の途中で channel を使って細かく制御したい場合は、Job方式だとちょっとやりづらいので... by jflute (2025/01/20)
     // その場合はJob方式ではなく、Jobの代わりに bizfw に自前の rich component を handler にした方が良いかも。
     // ただ、このスレッドに対して、AccessContext などのフレームワック設定をしてあげる必要ので、もう少し仕組みの実装が必要。
-    protected void launchRabbitJob(String queueName, LaJobUnique jobUnique, String consumerTag, String messageText, Channel channel) {
+    protected void launchRabbitJob(String queueName, LaJobUnique jobUnique // queue and job
+            , String consumerTag, String messageText // request information
+            , Delivery delivery, Channel channel // rabbit components
+    ) {
         jobManager.findJobByUniqueOf(jobUnique).alwaysPresent(job -> {
             LaunchedProcess launchedProcess = job.launchNow(op -> { // Job は LastaJob側のスレッドで実行される
                 RabbitJobResource resource = new RabbitJobResource(queueName, consumerTag, messageText);
@@ -286,18 +293,37 @@ public class RabbitMQConsumerManager { // #rabbit
                 logger.debug("...Launching rabbitJob: {}", launchedProcess.getScheduledJob());
             }
 
-            // #genba_fitting もし、Jobの処理をconsumerスレッドで待ちたい場合はこちら by jflute (2025/01/19)
-            // Jobで発生した例外内容によってchannelを使ってキューリクエストを制御したい場合は、history から例外を取得して制御する。
-            //OptionalThing<LaJobHistory> jobEnding = launchedProcess.waitForEnding();
-            //jobEnding.ifPresent(jobHistory -> { // まず確実に存在する
-            //    ExecResultType execResultType = jobHistory.getExecResultType();
-            //    if (execResultType.isErrorResult()) {
-            //        throw new IllegalStateException("RabbitJob failure: " + queueName + ", " + jobHistory);
-            //    }
-            //}).orElse(() -> { // まずありえない
-            //    // historyのlimitはデフォルトで300とかなので、信じられないほどJobが同時起動しまくってなければ大丈夫
-            //    logger.warn("*Not found the rabbitJob history: " + queueName);
-            //});
+            OptionalThing<LaJobHistory> jobEnding = launchedProcess.waitForEnding(); // jobの終わりを待つ
+            jobEnding.ifPresent(jobHistory -> { // まず確実に存在する
+                handleJobHistory(queueName, delivery, channel, jobHistory);
+            }).orElse(() -> { // まずありえない
+                // historyのlimitはデフォルトで300とかなので、信じられないほどJobが同時起動しまくってなければ大丈夫
+                logger.warn("*Not found the rabbitJob history: " + queueName);
+            });
+        });
+    }
+
+    protected void handleJobHistory(String queueName, Delivery delivery, Channel channel, LaJobHistory jobHistory) {
+        jobHistory.getCause().ifPresent(cause -> {
+            long deliveryTag = delivery.getEnvelope().getDeliveryTag();
+            if (cause instanceof RabbitJobChannelAckException) {
+                if (!isConsumerOptionAutoAck()) { // autoAckでなければ (autoAckであれば不要になるので)
+                    boolean multiple = ((RabbitJobChannelAckException) cause).isMultiple();
+                    try {
+                        channel.basicAck(deliveryTag, multiple);
+                    } catch (IOException warned) {
+                        logger.warn("Failed to basicAck(): " + queueName + ", " + deliveryTag + ", " + multiple, warned);
+                    }
+                }
+            } else if (cause instanceof RabbitJobChannelRejectException) {
+                boolean requeue = ((RabbitJobChannelRejectException) cause).isRequeue();
+                try {
+                    channel.basicReject(deliveryTag, requeue);
+                } catch (IOException warned) {
+                    logger.warn("Failed to basicReject(): " + queueName + ", " + deliveryTag + ", " + requeue, warned);
+                }
+            }
+            throw new IllegalStateException("RabbitJob failure: " + queueName + ", " + jobHistory, cause);
         });
     }
 

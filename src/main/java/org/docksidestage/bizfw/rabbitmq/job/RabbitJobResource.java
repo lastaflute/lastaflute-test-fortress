@@ -1,4 +1,4 @@
-package org.docksidestage.bizfw.rabbitmq;
+package org.docksidestage.bizfw.rabbitmq.job;
 
 import org.lastaflute.core.util.Lato;
 

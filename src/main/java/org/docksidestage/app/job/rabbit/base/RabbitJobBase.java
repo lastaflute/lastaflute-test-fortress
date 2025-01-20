@@ -19,7 +19,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.docksidestage.bizfw.rabbitmq.RabbitJobResource;
+import org.docksidestage.bizfw.rabbitmq.job.RabbitJobResource;
 import org.lastaflute.core.json.JsonEngineResource;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.core.json.JsonMappingOption;
