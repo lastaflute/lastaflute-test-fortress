@@ -297,25 +297,25 @@ public class RabbitMQConsumerManager { // #rabbit
             jobEnding.ifPresent(jobHistory -> { // まず確実に存在する
                 handleJobHistory(queueName, delivery, channel, jobHistory);
             }).orElse(() -> { // まずありえない
-                // historyのlimitはデフォルトで300とかなので、信じられないほどJobが同時起動しまくってなければ大丈夫
+                // historyのlimitはデフォルトで300とかなので、信じられないほどJobが同時起動しまくってなければ大丈夫。
+                // ただ、その万が一のときの処理をどう書くか？ちょっと悩みどころなので、とりあえず warnログとしている。
                 logger.warn("*Not found the rabbitJob history: " + queueName);
             });
         });
     }
 
     protected void handleJobHistory(String queueName, Delivery delivery, Channel channel, LaJobHistory jobHistory) {
+        long deliveryTag = delivery.getEnvelope().getDeliveryTag();
         jobHistory.getCause().ifPresent(cause -> {
-            long deliveryTag = delivery.getEnvelope().getDeliveryTag();
-            if (cause instanceof RabbitJobChannelAckException) {
-                if (!isConsumerOptionAutoAck()) { // autoAckでなければ (autoAckであれば不要になるので)
-                    boolean multiple = ((RabbitJobChannelAckException) cause).isMultiple();
-                    try {
-                        channel.basicAck(deliveryTag, multiple);
-                    } catch (IOException warned) {
-                        logger.warn("Failed to basicAck(): " + queueName + ", " + deliveryTag + ", " + multiple, warned);
-                    }
+            if (cause instanceof RabbitJobChannelAckException) { // 例外業務で ack したい場合
+                // autoAckであっても例外を投げたからには basicAck() するようにしているが、もしエラーになるならやめたほうがいい
+                boolean multiple = ((RabbitJobChannelAckException) cause).isMultiple();
+                try {
+                    channel.basicAck(deliveryTag, multiple);
+                } catch (IOException warned) {
+                    logger.warn("Failed to basicAck(): " + queueName + ", " + deliveryTag + ", " + multiple, warned);
                 }
-            } else if (cause instanceof RabbitJobChannelRejectException) {
+            } else if (cause instanceof RabbitJobChannelRejectException) { // 例外業務で reject したい場合
                 boolean requeue = ((RabbitJobChannelRejectException) cause).isRequeue();
                 try {
                     channel.basicReject(deliveryTag, requeue);
@@ -324,7 +324,21 @@ public class RabbitMQConsumerManager { // #rabbit
                 }
             }
             throw new IllegalStateException("RabbitJob failure: " + queueName + ", " + jobHistory, cause);
+        }).orElse(() -> { // success
+            if (!isConsumerOptionAutoAck()) { // autoAckでなければ (autoAckであれば不要になるので)
+                boolean multiple = isBasicAckSuccessMultiple();
+                try {
+                    channel.basicAck(deliveryTag, multiple);
+                } catch (IOException warned) {
+                    logger.warn("Failed to basicAck(): " + queueName + ", " + deliveryTag + ", " + multiple, warned);
+                }
+            }
         });
+    }
+
+    protected boolean isBasicAckSuccessMultiple() {
+        // #genba_fitting 処理成功時の ack の multiple をどうするか？は現場調整必要 by jflute (2025/01/21)
+        return /*multiple*/false;
     }
 
     // ===================================================================================

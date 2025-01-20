@@ -112,6 +112,7 @@ public class AllRabbitMQPlannerTest extends UnitFortressJobTestCase {
 
     public void test_bootAllConsumer_withCallback() {
         // ## Arrange ##
+        // TODO jflute basicAck()をmockにしないと落ちる (2025/01/21)
         Set<String> calledSet = createCallerSet();
         AllRabbitMQPlanner planner = createMockAllRabbitMQPlannerWithCallback(calledSet);
 
