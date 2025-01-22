@@ -37,8 +37,14 @@ pp クラス全体像
  |
  |-bizfw
  |  |-rabbitmq
+ |  |  |-job
+ |  |  |  |-exception
+ |  |  |  |  |-RabbitJobBaseException.java           // 業務処理Jobでthrowするベース例外
+ |  |  |  |  |-RabbitJobChannelAckException.java     // 処理中断しつつもackする例外
+ |  |  |  |  |-RabbitJobChannelRejectException.java  // 処理中断しつつrejectする例外
+ |  |  |  |-RabbitJobResource.java          // MQ Consumer業務処理Jobへの共通的なパラメーター
+ |  |  |
  |  |  |-MQConnectionFactoryProvider.java // MQのConnectionFactoryの提供インターフェース
- |  |  |-RabbitJobResource.java           // MQ Consumer業務処理Jobへの共通的なパラメーター
  |  |  |-RabbitMQConsumerManager.java     // 3. MQ Consumerの登録/管理クラス (DIコンポーネント)
  |
  |-mylasta
