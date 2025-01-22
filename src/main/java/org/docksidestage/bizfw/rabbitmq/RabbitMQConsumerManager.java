@@ -94,7 +94,7 @@ public class RabbitMQConsumerManager { // #rabbit
         // 自前ポーリング用のラッチ (インスタンス変数登録するので献上スレッド外(前)で呼ぶこと)
         ConsumerPollingLatch pollingLatch = preparePollingLatch(queueName);
 
-        new Thread(() -> { // consumber登録後のポーリングに献上するスレッドなのでその場new
+        Runnable bootRunner = () -> { // consumer登録後のポーリングに献上するスレッドなのでその場new
             try {
                 doBoot(queueName, jobUnique, connectionFactoryProvider, pollingLatch);
             } catch (Throwable e) {
@@ -103,20 +103,33 @@ public class RabbitMQConsumerManager { // #rabbit
                 // (ここではContext類は要らないはずなので)
                 logger.error("Failed to boot the RabbitMQ consumer: " + queueName, e);
             }
-        }).start();
+        };
+        createPollingThread(bootRunner, queueName).start();
+    }
+
+    protected Thread createPollingThread(Runnable bootRunner, String queueName) {
+        Thread thread = new Thread(bootRunner);
+        switchThreadName(queueName, thread);
+        return thread;
+    }
+
+    protected void switchThreadName(String queueName, Thread thread) {
+        String newName = queueName + "_" + thread.getName(); // e.g. seaQueue_Thread_1
+        thread.setName(newName);
     }
 
     // -----------------------------------------------------
     //                                     in Polling Thread
     //                                     -----------------
     protected void doBoot(String queueName, LaJobUnique jobUnique, MQConnectionFactoryProvider connectionFactoryProvider,
-            CountDownLatch pollingLatch) { // works in polling thread
+            ConsumerPollingLatch pollingLatch) { // works in polling thread
         ConnectionFactory connectionFactory = connectionFactoryProvider.provide();
         try (Connection conn = connectionFactory.newConnection(); Channel channel = conn.createChannel()) {
             basicQos(queueName, channel);
             queueDeclare(queueName, channel); // まずはキューを宣言
             basicConsume(queueName, jobUnique, channel); // 登録だけでポーリングするわけではない
             awaitConsumer(pollingLatch); // ここで自前ポーリング、アプリ停止時に解放されてConnectionのclose()が動く
+            // ここでずっと止まる
         } catch (IOException | TimeoutException e) {
             String msg = "Failed to consume message queue: " + queueName + ", " + jobUnique;
             throw new IllegalStateException(msg, e);
@@ -136,7 +149,7 @@ public class RabbitMQConsumerManager { // #rabbit
         }
     }
 
-    // #genba_fitting prefetchCount これでいいのか？恐らく現場で要調整 by jflute (2025/01/16)
+    // #genba_fitting prefetchCount これでいいのか？恐らく現場で要調整 (インフラでスケールするか？など) by jflute (2025/01/16)
     protected OptionalThing<Integer> getQosOptionPrefetchCount() { // no set if empty
         return OptionalThing.of(1); // as default
     }
@@ -144,6 +157,7 @@ public class RabbitMQConsumerManager { // #rabbit
     // -----------------------------------------------------
     //                                               Declare
     //                                               -------
+    // #genba_fitting そもそも現場の運用的にqueueDeclare()が必要かどうか？必要でなければ削除。 by jflute (2025/01/22)
     protected void queueDeclare(String queueName, Channel channel) throws IOException {
         boolean durable = isDeclarationOptionDurable();
         boolean exclusive = isDeclarationOptionExclusive();
@@ -189,7 +203,7 @@ public class RabbitMQConsumerManager { // #rabbit
     // -----------------------------------------------------
     //                                                 Await
     //                                                 -----
-    protected void awaitConsumer(CountDownLatch pollingLatch) {
+    protected void awaitConsumer(ConsumerPollingLatch pollingLatch) {
         try {
             // ここで止まってポーリング状態に入り、try-with-resources の Connection は開いたままでConsumerが利用する。
             // アプリ停止の destroy() で countDown されることで、処理が続行されて try-with-resources の close処理が実行される。
@@ -357,5 +371,8 @@ public class RabbitMQConsumerManager { // #rabbit
         }
         // consumerの登録処理に失敗したlatchも含まれている可能性あるが...
         // 別にawaitしてないlatchでcountDownしても何も起きないだけなので問題なし。
+
+        // #thinking jflute アプリ停止時に、まだ動いている最中のコールバック(Job)が終わるまでdestroyを止めるって制御があった方が良い (2025/01/22)
+        // consumerDestroyLatch とか作って止める？
     }
 }
