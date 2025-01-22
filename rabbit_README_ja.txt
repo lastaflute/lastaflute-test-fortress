@@ -48,12 +48,13 @@ pp クラス全体像
  |  |  |-RabbitMQConsumerManager.java     // 3. MQ Consumerの登録/管理クラス (DIコンポーネント)
  |
  |-mylasta
- |  |-sponsor
- |     |-planer
- |     |  |-rabbitmq
- |     |     |-AllRabbitMQPlanner.java     // 2. queueの定義とMQ Consumerの登録依頼 (Managerを呼ぶ)
- |     |
- |     |-FortressCurtainBeforeHook.java    // 1. アプリ起動時のhook, ここでplannerを呼ぶ
+ |  |-direction
+ |  |  |-sponsor
+ |  |  |  |-planer
+ |  |  |  |  |-rabbitmq
+ |  |  |  |     |-AllRabbitMQPlanner.java     // 2. queueの定義とMQ Consumerの登録依頼 (Managerを呼ぶ)
+ |  |  |  |
+ |  |  |  |-FortressCurtainBeforeHook.java    // 1. アプリ起動時のhook, ここでplannerを呼ぶ
 
 [src/main/resource]
  |-app.xml         // Lasta Di の Di xml のルート、ここで rabbit_mq.xml を include
