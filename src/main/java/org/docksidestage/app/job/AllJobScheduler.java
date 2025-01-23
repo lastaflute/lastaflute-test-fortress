@@ -79,11 +79,13 @@ public class AllJobScheduler implements LaJobScheduler {
 
     private void doSchedule_Rabbit(LaCron cron) { // #rabbit
         cron.registerNonCron(RabbitSeaJob.class, waitIfConcurrent(), op -> {
-            op.uniqueBy(AllRabbitMQPlanner.mysticJobUnique);
+            op.uniqueBy(AllRabbitMQPlanner.mysticJobUnique).changeNoticeLogToDebug();
+            op.changeNoticeLogToDebug();
         });
         // second example
         cron.registerNonCron(RabbitLandJob.class, waitIfConcurrent(), op -> {
             op.uniqueBy(AllRabbitMQPlanner.onemanJobUnique);
+            op.changeNoticeLogToDebug();
         });
     }
 
