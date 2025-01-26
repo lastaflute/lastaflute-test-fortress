@@ -46,7 +46,7 @@ public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob { // #rabbit
     public void run(LaJobRuntime runtime) {
         RabbitJobResource jobResource = extractJobResource(runtime);
         MESSAGE_BODY messageBody = prepareMessageBody(jobResource);
-        doRun(jobResource, messageBody);
+        doRun(runtime, jobResource, messageBody);
     }
 
     // -----------------------------------------------------
@@ -82,7 +82,7 @@ public abstract class RabbitJobBase<MESSAGE_BODY> implements LaJob { // #rabbit
     // -----------------------------------------------------
     //                                      Concrete Process
     //                                      ----------------
-    protected abstract void doRun(RabbitJobResource jobResource, MESSAGE_BODY messageBody);
+    protected abstract void doRun(LaJobRuntime runtime, RabbitJobResource jobResource, MESSAGE_BODY messageBody);
 
     protected abstract Class<MESSAGE_BODY> getMessageJsonType();
 }

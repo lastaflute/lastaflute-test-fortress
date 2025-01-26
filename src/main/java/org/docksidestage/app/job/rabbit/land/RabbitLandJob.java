@@ -21,6 +21,7 @@ import org.docksidestage.app.job.rabbit.base.RabbitJobBase;
 import org.docksidestage.bizfw.rabbitmq.job.RabbitJobResource;
 import org.docksidestage.dbflute.exbhv.MemberBhv;
 import org.lastaflute.db.jta.stage.TransactionStage;
+import org.lastaflute.job.LaJobRuntime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +44,7 @@ public class RabbitLandJob extends RabbitJobBase<RabbitLandMessageBody> {
     //                                                                             Job Run
     //                                                                             =======
     @Override
-    protected void doRun(RabbitJobResource jobResource, RabbitLandMessageBody messageBody) {
+    protected void doRun(LaJobRuntime runtime, RabbitJobResource jobResource, RabbitLandMessageBody messageBody) {
         // #rabbit jflute ここにメッセージを受け取った場合の処理を書く (2025/01/17)
         logger.debug("お試しログ: " + messageBody.stageName + ", " + messageBody.showLastDate);
     }
