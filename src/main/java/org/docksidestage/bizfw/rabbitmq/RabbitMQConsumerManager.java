@@ -76,13 +76,13 @@ public class RabbitMQConsumerManager { // #rabbit
     //                                        Thread Control
     //                                        --------------
     // singletonのDIコンポーネント前提で保持する。スレッド間で利用されるのでスレッドセーフに。
-    /** ポーリング用のLatch。(NotNull) */
+    /** consumerのplling用のLatch。(NotNull) */
     protected final List<ConsumerPollingLatch> pollingLatchList = new CopyOnWriteArrayList<>();
 
-    /** xxx用のLatch。(NotNull) */
+    /** アプリ停止時に最後のdelivery実行終了を待つためのLatch。(NotNull) */
     protected final List<ConsumerRunningLatch> runningLatchList = new CopyOnWriteArrayList<>();
 
-    /** Consumer終了のLatch。(NotNull) */
+    /** アプリ停止時にconsumerの接続が全部closeされたことを待つためのLatch。(NotNull) */
     protected final List<ConsumerTerminatingLatch> terminatingLatchList = new CopyOnWriteArrayList<>();
 
     // -----------------------------------------------------
@@ -142,7 +142,7 @@ public class RabbitMQConsumerManager { // #rabbit
         RunningLatchContainer runningLatchContainer = new RunningLatchContainer();
         ConnectionFactory connectionFactory = connectionFactoryProvider.provide();
         try (Connection conn = connectionFactory.newConnection(); Channel channel = conn.createChannel()) {
-            terminatingLatchList.add(terminatingLatch); // destroyで待ってもらうため
+            terminatingLatchList.add(terminatingLatch); // destroy()でclose待ちしてもらうため
 
             basicQos(queueName, channel); // quality of service
             queueDeclare(queueName, channel); // まずはキューを宣言
@@ -408,7 +408,7 @@ public class RabbitMQConsumerManager { // #rabbit
         private final String queueName; // not null
 
         public ConsumerTerminatingLatch(String queueName) {
-            super(/*count*/1); // close()で一回countDownされて解放されることを想定して固定数
+            super(/*count*/1); // 接続closeで一回countDownされて解放されることを想定して固定数
             this.queueName = queueName;
         }
 
@@ -455,6 +455,9 @@ public class RabbitMQConsumerManager { // #rabbit
                 long deliveryTag = delivery.getEnvelope().getDeliveryTag();
                 basicAck(queueName, channel, deliveryTag, isBasicAckSuccessMultiple());
             });
+            // 注: LastaJob-0.5.7までだと、アプリ停止時にhistoryがクリアされてしまって、
+            // 「アプリ停止の接続close直前で終了待ちされてる最後のdelivery」のhistoryが取れず正確にackなどができない。
+            // LastaJob-0.5.8以降ではhistoryの持ち方を変更して、この時点ではまだhistoryが使える状態にする予定。
         });
     }
 
@@ -511,11 +514,22 @@ public class RabbitMQConsumerManager { // #rabbit
         // manager全体に落とすよーってお知らせして各自正常に落ちるためにあれこれ制御してもらう
         destroyingRequested = true; // pollingのcountDown()よりも先に設定することで、接続closeすれ違いを防ぐ
 
+        // pollingしてるconsumerたちに終わってーと言う
         for (ConsumerPollingLatch pollingLatch : pollingLatchList) {
             pollingLatch.countDown(); // consumerのポーリング待ちを解放
+            // 厳密には、pollingLatchListにはconsumerの登録処理に失敗したlatchも含まれている可能性あるが...
+            // 別にawaitしてないlatchでcountDownしても何も起きないだけなので問題なし。
         }
-        // 厳密には、pollingLatchListにはconsumerの登録処理に失敗したlatchも含まれている可能性あるが...
-        // 別にawaitしてないlatchでcountDownしても何も起きないだけなので問題なし。
+
+        // pollingしてるconsumerたちが接続closeまで本当に終わったかを待つ
+        // (でないと、DIコンテナのdestroy処理が先に進んじゃってMQの接続close中にアプリのプロセスが強制終了する可能性がある)
+        for (ConsumerTerminatingLatch terminatingLatch : terminatingLatchList) {
+            try {
+                terminatingLatch.await(); // consumerの接続close待ち
+            } catch (InterruptedException continued) {
+                logger.warn("Failed to await the terminating: {}", terminatingLatch, continued);
+            }
+        }
     }
 
     // ===================================================================================
