@@ -46,7 +46,16 @@ public class RabbitSeaJob extends RabbitJobBase<RabbitSeaMessageBody> {
     @Override
     protected void doRun(LaJobRuntime runtime, RabbitJobResource jobResource, RabbitSeaMessageBody messageBody) {
         // #rabbit jflute ここにメッセージを受け取った場合の処理を書く (2025/01/17)
-        logger.debug("お試しログ: " + messageBody.stageName + ", " + messageBody.oneDayShowCount);
+        logger.debug("seaのお試しログ: " + messageBody.stageName + ", " + messageBody.oneDayShowCount);
+
+        // わざと時間の掛かる処理を入れて、UnitTestでアプリ停止時の挙動を確認する
+        logger.debug("...Beginning seaのJobで時間の掛かる処理");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 600000000; i++) { // 確認するのに程よい回数、つど調整
+            sb.append("sea");
+            sb.delete(0, sb.length());
+        }
+        logger.debug("...Ending seaのJobで時間の掛かる処理");
     }
 
     @Override
