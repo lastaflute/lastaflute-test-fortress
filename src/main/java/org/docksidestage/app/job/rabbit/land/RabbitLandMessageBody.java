@@ -16,6 +16,7 @@
 package org.docksidestage.app.job.rabbit.land;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.lastaflute.core.util.Lato;
 import org.lastaflute.web.validation.Required;
@@ -32,6 +33,10 @@ public class RabbitLandMessageBody {
     /** ショーの終了日 e.g. 2019/12/13 */
     @Required
     public LocalDate showLastDate;
+
+    /** メッセージ送信日時 e.g. 2025/01/27 01:56:42.364 */
+    @Required
+    public LocalDateTime messageSendDatetime;
 
     @Override
     public String toString() {

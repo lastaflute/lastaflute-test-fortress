@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDateTime;
 
 import javax.annotation.Resource;
 
@@ -71,6 +72,12 @@ public class RabbitMQThroughTest extends UnitFortressBasicTestCase {
         // いかん、UTFluteがCurtainBeforeHookを呼び出してるけど、LastaFilterの初期化もしてるから二重になる（＞＜
     }
 
+    @Override
+    public void tearDown() throws Exception {
+        super.tearDown();
+        sleep(5000); // consumer側のログを見るためにちょっとの時間が必要
+    }
+
     // ===================================================================================
     //                                                                               Basic
     //                                                                               =====
@@ -107,7 +114,8 @@ public class RabbitMQThroughTest extends UnitFortressBasicTestCase {
     //                                                                         Test Helper
     //                                                                         ===========
     private byte[] prepareSeaBodyBytes() throws UnsupportedEncodingException {
-        return "{stageName: \"hangar\", oneDayShowCount: 5}".getBytes("UTF-8");
+        LocalDateTime currentDatetime = currentLocalDateTime(); // for debug
+        return ("{stageName: \"hangar\", oneDayShowCount: 5, messageSendDatetime: \"" + currentDatetime + "\"}").getBytes("UTF-8");
     }
 
     public static interface TestEasyPublisherCall {
@@ -120,7 +128,7 @@ public class RabbitMQThroughTest extends UnitFortressBasicTestCase {
         try (Connection conn = factory.newConnection(); Channel channel = conn.createChannel()) {
             publisher.callback(channel);
         }
-        sleep(1000); // consumer側のログを見るためにちょっとの時間が必要
+        sleep(1000);
     }
 
     private ConnectionFactory createConnectionFactory() {
