@@ -20,6 +20,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeoutException;
 
@@ -28,7 +29,6 @@ import javax.annotation.Resource;
 
 import org.dbflute.optional.OptionalThing;
 import org.dbflute.util.DfAssertUtil;
-import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.bizfw.rabbitmq.job.RabbitJobResource;
 import org.docksidestage.bizfw.rabbitmq.job.exception.RabbitJobChannelAckException;
 import org.docksidestage.bizfw.rabbitmq.job.exception.RabbitJobChannelRejectException;
@@ -72,9 +72,24 @@ public class RabbitMQConsumerManager { // #rabbit
     @Resource
     protected JobManager jobManager;
 
-    // singletonのDIコンポーネント前提で保持する。synchronizedの中で利用すること。
+    // -----------------------------------------------------
+    //                                        Thread Control
+    //                                        --------------
+    // singletonのDIコンポーネント前提で保持する。スレッド間で利用されるのでスレッドセーフに。
     /** ポーリング用のLatch。(NotNull) */
-    protected final List<ConsumerPollingLatch> pollingLatchList = DfCollectionUtil.newArrayList();
+    protected final List<ConsumerPollingLatch> pollingLatchList = new CopyOnWriteArrayList<>();
+
+    /** xxx用のLatch。(NotNull) */
+    protected final List<ConsumerRunningLatch> runningLatchList = new CopyOnWriteArrayList<>();
+
+    /** Consumer終了のLatch。(NotNull) */
+    protected final List<ConsumerTerminatingLatch> terminatingLatchList = new CopyOnWriteArrayList<>();
+
+    // -----------------------------------------------------
+    //                                    Destroying Control
+    //                                    ------------------
+    /** アプリ停止要求が来たかどうか？ */
+    protected volatile boolean destroyingRequested; // スレッド間で参照するのでスレッドセーフに
 
     // ===================================================================================
     //                                                                               Boot
@@ -123,16 +138,25 @@ public class RabbitMQConsumerManager { // #rabbit
     //                                     -----------------
     protected void doBoot(String queueName, LaJobUnique jobUnique, MQConnectionFactoryProvider connectionFactoryProvider,
             ConsumerPollingLatch pollingLatch) { // works in polling thread
+        ConsumerTerminatingLatch terminatingLatch = new ConsumerTerminatingLatch(queueName);
+        RunningLatchContainer runningLatchContainer = new RunningLatchContainer();
         ConnectionFactory connectionFactory = connectionFactoryProvider.provide();
         try (Connection conn = connectionFactory.newConnection(); Channel channel = conn.createChannel()) {
-            basicQos(queueName, channel);
+            terminatingLatchList.add(terminatingLatch); // destroyで待ってもらうため
+
+            basicQos(queueName, channel); // quality of service
             queueDeclare(queueName, channel); // まずはキューを宣言
-            basicConsume(queueName, jobUnique, channel); // 登録だけでポーリングするわけではない
+            basicConsume(queueName, jobUnique, channel, runningLatchContainer); // 登録だけでポーリングするわけではない
             awaitConsumer(pollingLatch); // ここで自前ポーリング、アプリ停止時に解放されてConnectionのclose()が動く
-            // ここでずっと止まる
+            awaitRunning(runningLatchContainer); // ここに来たということはアプリ停止なので実行中のdeliveryが終わるのを待つ
+
+            logger.info("...Closing consumer connection and channel for the queue: {}", queueName);
         } catch (IOException | TimeoutException e) {
             String msg = "Failed to consume message queue: " + queueName + ", " + jobUnique;
             throw new IllegalStateException(msg, e);
+        } finally {
+            logger.info("Closed consumer connection and channel for the queue: {}", queueName);
+            terminatingLatch.countDown(); // ポーリング終わってconnection解放したよと言うため
         }
     }
 
@@ -186,9 +210,10 @@ public class RabbitMQConsumerManager { // #rabbit
     // -----------------------------------------------------
     //                                               Consume
     //                                               -------
-    protected void basicConsume(String queueName, LaJobUnique jobUnique, Channel channel) throws IOException {
+    protected void basicConsume(String queueName, LaJobUnique jobUnique, Channel channel, RunningLatchContainer runningLatchContainer)
+            throws IOException {
         boolean autoAck = isConsumerOptionAutoAck();
-        DeliverCallback deliverCallback = createDeliverCallback(queueName, jobUnique, channel);
+        DeliverCallback deliverCallback = createDeliverCallback(queueName, jobUnique, channel, runningLatchContainer);
         CancelCallback cancelCallback = createCancelCallback(queueName, jobUnique, channel);
 
         logger.info("#mq ...Registering MQ consumer: {} to {}", queueName, jobUnique);
@@ -201,31 +226,54 @@ public class RabbitMQConsumerManager { // #rabbit
     }
 
     // -----------------------------------------------------
-    //                                                 Await
-    //                                                 -----
-    protected void awaitConsumer(ConsumerPollingLatch pollingLatch) {
-        try {
-            // ここで止まってポーリング状態に入り、try-with-resources の Connection は開いたままでConsumerが利用する。
-            // アプリ停止の destroy() で countDown されることで、処理が続行されて try-with-resources の close処理が実行される。
-            pollingLatch.await();
-        } catch (InterruptedException e) {
-            throw new IllegalStateException("Interrupted the consumer wait: pollingLatch=" + pollingLatch, e);
-        }
-    }
-
-    // -----------------------------------------------------
     //                                       DeliverCallback
     //                                       ---------------
-    protected DeliverCallback createDeliverCallback(String queueName, LaJobUnique jobUnique, Channel channel) {
+    protected DeliverCallback createDeliverCallback(String queueName, LaJobUnique jobUnique, Channel channel,
+            RunningLatchContainer runningLatchContainer) {
         AsyncStateBridge bridge = asyncManager.bridgeState(op -> {});
-        return (consumerTag, delivery) -> { // ここはまた別スレッドのはず
+        return (consumerTag, delivery) -> { // ここはまた別スレッド、1consumerで同時に1thread前提
             bridge.cross(() -> { // launch自体の処理の例外ハンドリングなどをいい感じにするために
-                doDeliver(queueName, jobUnique, consumerTag, delivery, channel);
+                // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+                // アプリ停止要求時に接続closeが最後のdeliveryの処理が完了するのを待つためのlatch
+                // _/_/_/_/_/_/_/_/_/_/
+                ConsumerRunningLatch runningLatch = new ConsumerRunningLatch(queueName);
+                runningLatchContainer.setup(runningLatch);
+                try {
+                    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+                    // アプリ停止要求時の接続closeすれ違いによってdelivery動いちゃったときにreject
+                    // o polling側がclose直前で実行中deliveryの終了を待ってcloseしようとした瞬間にまた次のdeliveryに入りこまれたとき
+                    // o polling側がcloseした直後の瞬間にまた次のdeliveryに入りこまれたとき (このときは接続切れてるのでrejectもできない)
+                    //
+                    // 補足: 接続closeの実行中delivery待ちよりも前に destroyingRequested は true になる
+                    // _/_/_/_/_/_/_/_/_/_/
+                    // #hope jflute 本当は新規メッセージの受付を止めるってのができたらこれやらなくてもいいのだけど... (2025/01/28)
+                    if (destroyingRequested) { // delivery動いちゃったけど、すでにdestroy要求が来ているとき (closeすれ違いなど)
+                        rejectOnDestroyingIfPossible(queueName, channel, delivery); // できたらrejectする
+                        return; // 仮にrejectうまくいってなかったとしても、どうにもならないのでおしまい
+                    }
+
+                    // _/_/_/_/_/_/_/_/_/_/
+                    // ようやっと本処理ここ
+                    // _/_/_/_/
+                    doDeliver(queueName, jobUnique, consumerTag, delivery, channel);
+                } finally {
+                    runningLatch.countDown(); // 終わったからアプリ停止のために接続closeしてもいいよと言うため
+                    runningLatchContainer.clear();
+                }
             });
         };
     }
 
-    // #genba_fitting ackを例外有無で制御するのであれば、ここでtry/catch (かつ、launch側でJobの例外有無の判定) by jflute (2025/01/19)
+    protected void rejectOnDestroyingIfPossible(String queueName, Channel channel, Delivery delivery) {
+        long deliveryTag = delivery.getEnvelope().getDeliveryTag();
+        try {
+            boolean requeue = true; // アプリ停止のcloseすれ違いで実行できなかったので次回に動いてねと
+            channel.basicReject(deliveryTag, requeue);
+        } catch (IOException continued) { // このときはすでに接続close()終わってたら例外、どうにもできないのでログ残して終わり
+            logger.warn("#mq Failed to basicReject() in destroy-requested state: {}", queueName, continued);
+        }
+    }
+
     protected void doDeliver(String queueName, LaJobUnique jobUnique, String consumerTag, Delivery delivery, Channel channel) {
         if (logger.isDebugEnabled()) {
             logger.debug("#mq ...Delivering the queue request: {}, {}", queueName, jobUnique);
@@ -248,13 +296,40 @@ public class RabbitMQConsumerManager { // #rabbit
     // #genba_fitting cancel時の処理はこれでいいのか？恐らく現場で要調整 by jflute (2025/01/19)
     protected CancelCallback createCancelCallback(String queueName, LaJobUnique jobUnique, Channel channel) {
         return consumerTag -> {
-            logger.info("The queue consuming was cancelled: " + queueName + ", " + jobUnique);
+            logger.info("The queue consuming was cancelled: {}, {}", queueName, jobUnique);
         };
     }
 
+    // -----------------------------------------------------
+    //                                                 Await
+    //                                                 -----
+    protected void awaitConsumer(ConsumerPollingLatch pollingLatch) {
+        try {
+            // ここで止まってポーリング状態に入り、try-with-resources の Connection は開いたままでConsumerが利用する。
+            // アプリ停止の destroy() で countDown されることで、処理が続行されて try-with-resources の close処理が実行される。
+            pollingLatch.await();
+        } catch (InterruptedException e) {
+            throw new IllegalStateException("Interrupted the consumer wait: pollingLatch=" + pollingLatch, e);
+        }
+    }
+
+    protected void awaitRunning(RunningLatchContainer runningLatchContainer) {
+        ConsumerRunningLatch runningLatch = runningLatchContainer.getRunningLatch();
+        if (runningLatch != null) { // 実行中のdeliveryがあれば
+            try {
+                runningLatch.await(); // 終わるまで待つ (delivery終わるときにcountDown()してもらう想定)
+            } catch (InterruptedException continued) { // もうアプリ停止の処理なので
+                logger.info("#mq Failed to await running latch: {}", runningLatch, continued);
+            }
+        }
+    }
+
     // ===================================================================================
-    //                                                                       Polling Latch
-    //                                                                       =============
+    //                                                                      Thread Control
+    //                                                                      ==============
+    // -----------------------------------------------------
+    //                                         Polling Latch
+    //                                         -------------
     protected ConsumerPollingLatch preparePollingLatch(String queueName) {
         ConsumerPollingLatch pollingLatch = createConsumberPollingLatch(queueName);
         pollingLatchList.add(pollingLatch); // アプリ停止時に開放するようにする想定で登録
@@ -284,6 +359,69 @@ public class RabbitMQConsumerManager { // #rabbit
         }
     }
 
+    // -----------------------------------------------------
+    //                                         Running Latch
+    //                                         -------------
+    // 1consumerで同時に1thread前提の作りをしている。万が一複数threadになったら、listで持つ？
+    public static class RunningLatchContainer {
+
+        private volatile ConsumerRunningLatch runningLatch; // スレッド間で共有するため, null allowed
+
+        public ConsumerRunningLatch getRunningLatch() { // null allowed
+            return runningLatch;
+        }
+
+        public synchronized void setup(ConsumerRunningLatch runningLatch) {
+            DfAssertUtil.assertObjectNotNull("runningLatch", runningLatch);
+            this.runningLatch = runningLatch;
+        }
+
+        public synchronized void clear() {
+            this.runningLatch = null;
+        }
+    }
+
+    public static class ConsumerRunningLatch extends CountDownLatch { // 型間違いをしないためにも別クラスで作る
+
+        private final String queueName; // not null
+
+        public ConsumerRunningLatch(String queueName) {
+            super(/*count*/1); // 一つのdeliverの終了で一回countDownされて接続closeされる想定で固定数
+            this.queueName = queueName;
+        }
+
+        @Override
+        public String toString() { // キュー名を表示できるように
+            return "runningLatch:{" + getCount() + ", " + queueName + "}";
+        }
+
+        public String getQueueName() {
+            return queueName;
+        }
+    }
+
+    // -----------------------------------------------------
+    //                                     Terminating Latch
+    //                                     -----------------
+    public static class ConsumerTerminatingLatch extends CountDownLatch { // こっちも型間違いで別クラスに
+
+        private final String queueName; // not null
+
+        public ConsumerTerminatingLatch(String queueName) {
+            super(/*count*/1); // close()で一回countDownされて解放されることを想定して固定数
+            this.queueName = queueName;
+        }
+
+        @Override
+        public String toString() { // キュー名を表示できるように
+            return "terminatingLatch:{" + getCount() + ", " + queueName + "}";
+        }
+
+        public String getQueueName() {
+            return queueName;
+        }
+    }
+
     // ===================================================================================
     //                                                                           Lasta Job
     //                                                                           =========
@@ -298,7 +436,6 @@ public class RabbitMQConsumerManager { // #rabbit
             LaunchedProcess launchedProcess = job.launchNow(op -> { // Job は LastaJob側のスレッドで実行される
                 RabbitJobResource resource = new RabbitJobResource(queueName, consumerTag, messageText);
                 op.param(RabbitJobResource.JOB_PARAMETER_KEY, resource);
-
                 // Consumerがパラレルに受け付け実行する設定になっても、同じJobはデフォルトではシリアルに実行される
                 // もし同じJobをパラレルで実行したい場合はこちらのオプションがあるが実験的な機能ではある。
                 //op.asOutlawParallel()
@@ -314,6 +451,9 @@ public class RabbitMQConsumerManager { // #rabbit
                 // historyのlimitはデフォルトで300とかなので、信じられないほどJobが同時起動しまくってなければ大丈夫。
                 // ただ、その万が一のときの処理をどう書くか？ちょっと悩みどころなので、とりあえず warnログとしている。
                 logger.warn("*Not found the rabbitJob history: {}", queueName);
+
+                long deliveryTag = delivery.getEnvelope().getDeliveryTag();
+                basicAck(queueName, channel, deliveryTag, isBasicAckSuccessMultiple());
             });
         });
     }
@@ -332,6 +472,7 @@ public class RabbitMQConsumerManager { // #rabbit
             throw new IllegalStateException("RabbitJob failure: " + queueName + ", " + jobHistory, cause);
         }).orElse(() -> { // success
             if (!isConsumerOptionAutoAck()) { // autoAckでなければ (autoAckであれば不要になるので)
+                logger.debug("...Acknowledging the queue message as success: {}", queueName);
                 basicAck(queueName, channel, deliveryTag, isBasicAckSuccessMultiple());
             }
         });
@@ -364,15 +505,23 @@ public class RabbitMQConsumerManager { // #rabbit
     //                                                                             Destroy
     //                                                                             =======
     @PreDestroy
-    public synchronized void destroy() {
+    public synchronized void destroy() { // destroy中に asyncBoot() で新しいconsumerが登録しないようにsync
         logger.info("#mq ...Releasing MQ consumer polling: pollingLatchList={}", pollingLatchList);
+
+        // manager全体に落とすよーってお知らせして各自正常に落ちるためにあれこれ制御してもらう
+        destroyingRequested = true; // pollingのcountDown()よりも先に設定することで、接続closeすれ違いを防ぐ
+
         for (ConsumerPollingLatch pollingLatch : pollingLatchList) {
             pollingLatch.countDown(); // consumerのポーリング待ちを解放
         }
-        // consumerの登録処理に失敗したlatchも含まれている可能性あるが...
+        // 厳密には、pollingLatchListにはconsumerの登録処理に失敗したlatchも含まれている可能性あるが...
         // 別にawaitしてないlatchでcountDownしても何も起きないだけなので問題なし。
+    }
 
-        // #thinking jflute アプリ停止時に、まだ動いている最中のコールバック(Job)が終わるまでdestroyを止めるって制御があった方が良い (2025/01/22)
-        // consumerDestroyLatch とか作って止める？
+    // ===================================================================================
+    //                                                                            Accessor
+    //                                                                            ========
+    public boolean isDestroyingRequested() {
+        return destroyingRequested;
     }
 }
