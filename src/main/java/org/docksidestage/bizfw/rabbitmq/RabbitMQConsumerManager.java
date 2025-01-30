@@ -509,27 +509,55 @@ public class RabbitMQConsumerManager { // #rabbit
     //                                                                             =======
     @PreDestroy
     public synchronized void destroy() { // destroy中に asyncBoot() で新しいconsumerが登録しないようにsync
-        logger.info("#mq ...Releasing MQ consumer polling: pollingLatchList={}", pollingLatchList);
-
         // manager全体に落とすよーってお知らせして各自正常に落ちるためにあれこれ制御してもらう
         destroyingRequested = true; // pollingのcountDown()よりも先に設定することで、接続closeすれ違いを防ぐ
 
         // pollingしてるconsumerたちに終わってーと言う
+        countDownPolling();
+
+        // pollingしてるconsumerたちが接続closeまで本当に終わったかを待つ
+        // (でないと、DIコンテナのdestroy処理が先に進んじゃってMQの接続close中にアプリのプロセスが強制終了する可能性がある)
+        awaitTerminating();
+    }
+
+    protected void countDownPolling() {
+        logger.info("#mq ...Releasing MQ consumer polling: pollingLatchList={}", pollingLatchList);
         for (ConsumerPollingLatch pollingLatch : pollingLatchList) {
             pollingLatch.countDown(); // consumerのポーリング待ちを解放
             // 厳密には、pollingLatchListにはconsumerの登録処理に失敗したlatchも含まれている可能性あるが...
             // 別にawaitしてないlatchでcountDownしても何も起きないだけなので問題なし。
         }
+    }
 
-        // pollingしてるconsumerたちが接続closeまで本当に終わったかを待つ
-        // (でないと、DIコンテナのdestroy処理が先に進んじゃってMQの接続close中にアプリのプロセスが強制終了する可能性がある)
+    protected void awaitTerminating() {
+        recoverFreezedTerminating();
+
+        // まだ実行中のdeliveryがあるなどで接続closeがちょっと遅れているようであればここでちょっと待つ
+        logger.info("#mq ...Awaiting MQ consumer terminating: terminatingLatchList={}", terminatingLatchList);
         for (ConsumerTerminatingLatch terminatingLatch : terminatingLatchList) {
             try {
                 terminatingLatch.await(); // consumerの接続close待ち
-            } catch (InterruptedException continued) {
+            } catch (InterruptedException continued) { // もうアプリ停止時なので落とさない
                 logger.warn("Failed to await the terminating: {}", terminatingLatch, continued);
             }
         }
+        logger.info("#mq Complete ending of MQ consumer: terminatingLatchList={}", terminatingLatchList);
+    }
+
+    protected void recoverFreezedTerminating() {
+        new Thread(() -> {
+            // こんだけ待っても終わらないterminatingあったら強制的にcountDownさせる
+            // (万が一終わらないterminatingがあってdestroyが終わらず止まってしまうのを避けるため)
+            try {
+                Thread.sleep(10000L);
+            } catch (InterruptedException continued) {
+                logger.warn("Failed to sleep the thread for terminating recovery count-down.", continued);
+            }
+            logger.info("#mq ...Releasing MQ consumer terminating forcedly: terminatingLatchList={}", terminatingLatchList);
+            for (ConsumerTerminatingLatch terminatingLatch : terminatingLatchList) {
+                terminatingLatch.countDown(); // 強制
+            }
+        }).start();
     }
 
     // ===================================================================================
