@@ -331,12 +331,12 @@ public class RabbitMQConsumerManager { // #rabbit
     //                                         Polling Latch
     //                                         -------------
     protected ConsumerPollingLatch preparePollingLatch(String queueName) {
-        ConsumerPollingLatch pollingLatch = createConsumberPollingLatch(queueName);
+        ConsumerPollingLatch pollingLatch = createConsumerPollingLatch(queueName);
         pollingLatchList.add(pollingLatch); // アプリ停止時に開放するようにする想定で登録
         return pollingLatch;
     }
 
-    protected ConsumerPollingLatch createConsumberPollingLatch(String queueName) {
+    protected ConsumerPollingLatch createConsumerPollingLatch(String queueName) {
         return new ConsumerPollingLatch(queueName);
     }
 
