@@ -27,6 +27,8 @@ import javax.annotation.Resource;
 import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.mock.RabbitMQConsumerMocker;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.queue.LandMQAgent;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.queue.SeaMQAgent;
 import org.docksidestage.unit.UnitFortressJobTestCase;
 import org.lastaflute.job.JobManager;
 import org.lastaflute.job.LaJobHistory;
@@ -140,8 +142,8 @@ public class AllRabbitMQPlannerTest extends UnitFortressJobTestCase {
         List<String> uniqueList = jobHistoryList.stream().map(history -> {
             return history.getJobUnique().get().value();
         }).collect(Collectors.toList());
-        assertTrue(uniqueList.contains(AllRabbitMQPlanner.mysticJobUnique));
-        assertTrue(uniqueList.contains(AllRabbitMQPlanner.onemanJobUnique));
+        assertTrue(uniqueList.contains(SeaMQAgent.JOB_UNIQUE_CODE));
+        assertTrue(uniqueList.contains(LandMQAgent.JOB_UNIQUE_CODE));
     }
 
     // ===================================================================================

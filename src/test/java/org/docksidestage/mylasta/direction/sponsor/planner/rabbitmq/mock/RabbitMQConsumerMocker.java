@@ -29,6 +29,8 @@ import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.AllRabbitMQPlanner;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.queue.LandMQAgent;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.queue.SeaMQAgent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -87,9 +89,25 @@ public class RabbitMQConsumerMocker {
     //                                                                             =======
     public AllRabbitMQPlanner createMockAllRabbitMQPlanner() {
         return new AllRabbitMQPlanner(config, consumerManager) {
+
             @Override
-            protected ConnectionFactory newConnectionFactory() {
-                return createMockConnectionFactory();
+            protected SeaMQAgent createSeaMQAgent() {
+                return new SeaMQAgent(config, consumerManager) {
+                    @Override
+                    protected ConnectionFactory newConnectionFactory() {
+                        return createMockConnectionFactory();
+                    }
+                };
+            }
+
+            @Override
+            protected LandMQAgent createLandMQAgent() {
+                return new LandMQAgent(config, consumerManager) {
+                    @Override
+                    protected ConnectionFactory newConnectionFactory() {
+                        return createMockConnectionFactory();
+                    }
+                };
             }
         };
     }

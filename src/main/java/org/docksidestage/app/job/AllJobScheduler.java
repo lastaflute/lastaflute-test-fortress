@@ -30,7 +30,8 @@ import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.logic.context.AccessContextLogic.ClientInfoSupplier;
 import org.docksidestage.app.logic.context.AccessContextLogic.UserInfoSupplier;
 import org.docksidestage.app.logic.context.AccessContextLogic.UserTypeSupplier;
-import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.AllRabbitMQPlanner;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.queue.LandMQAgent;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.queue.SeaMQAgent;
 import org.lastaflute.job.LaCron;
 import org.lastaflute.job.LaJobRunner;
 import org.lastaflute.job.LaJobScheduler;
@@ -79,12 +80,12 @@ public class AllJobScheduler implements LaJobScheduler {
 
     private void doSchedule_Rabbit(LaCron cron) { // #rabbit
         cron.registerNonCron(RabbitSeaJob.class, waitIfConcurrent(), op -> {
-            op.uniqueBy(AllRabbitMQPlanner.mysticJobUnique).changeNoticeLogToDebug();
+            op.uniqueBy(SeaMQAgent.JOB_UNIQUE_CODE).changeNoticeLogToDebug();
             op.changeNoticeLogToDebug();
         });
         // second example
         cron.registerNonCron(RabbitLandJob.class, waitIfConcurrent(), op -> {
-            op.uniqueBy(AllRabbitMQPlanner.onemanJobUnique);
+            op.uniqueBy(LandMQAgent.JOB_UNIQUE_CODE);
             op.changeNoticeLogToDebug();
         });
     }

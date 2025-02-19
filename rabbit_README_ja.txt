@@ -52,6 +52,11 @@ pp クラス全体像
  |  |  |-sponsor
  |  |  |  |-planer
  |  |  |  |  |-rabbitmq
+ |  |  |  |     |-queue
+ |  |  |  |     |  |-base
+ |  |  |  |     |  |  |-MQBaseAgent.java      // 個々のキューへ接続/起動する抽象クラス
+ |  |  |  |     |  |-LandMQAgent.java         // exampleである "Landキュー" へ接続/起動
+ |  |  |  |     |  |-SeaMQAgent.java          // exampleである "Seaキュー" へ接続/起動
  |  |  |  |     |-AllRabbitMQPlanner.java     // 2. queueの定義とMQ Consumerの登録依頼 (Managerを呼ぶ)
  |  |  |  |
  |  |  |  |-FortressCurtainBeforeHook.java    // 1. アプリ起動時のhook, ここでplannerを呼ぶ
