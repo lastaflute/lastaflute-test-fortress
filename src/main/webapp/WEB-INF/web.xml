@@ -10,6 +10,8 @@
 	<filter>
 		<filter-name>lastaFilter</filter-name>
 		<filter-class>org.lastaflute.web.LastaFilter</filter-class>
+
+		<!-- the test of RequestLoggingFilter mask for request parameter -->
 		<init-param>
 			<param-name>maskParamSet</param-name>
 			<param-value>secureSea,secureLand,secureMiraco</param-value>
