@@ -24,10 +24,14 @@ import org.docksidestage.app.job.challenge.BonvoJob;
 import org.docksidestage.app.job.challenge.DstoreJob;
 import org.docksidestage.app.job.challenge.PiariJob;
 import org.docksidestage.app.job.concurrent.MysticConcurrentJob;
+import org.docksidestage.app.job.rabbit.land.RabbitLandJob;
+import org.docksidestage.app.job.rabbit.sea.RabbitSeaJob;
 import org.docksidestage.app.logic.context.AccessContextLogic;
 import org.docksidestage.app.logic.context.AccessContextLogic.ClientInfoSupplier;
 import org.docksidestage.app.logic.context.AccessContextLogic.UserInfoSupplier;
 import org.docksidestage.app.logic.context.AccessContextLogic.UserTypeSupplier;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.queue.LandMQAgent;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.queue.SeaMQAgent;
 import org.lastaflute.job.LaCron;
 import org.lastaflute.job.LaJobRunner;
 import org.lastaflute.job.LaJobScheduler;
@@ -68,6 +72,21 @@ public class AllJobScheduler implements LaJobScheduler {
         cron.registerNonCron(MysticConcurrentJob.class, errorIfConcurrent(), op -> op.uniqueBy("mystic-error"));
         cron.registerNonCron(MysticConcurrentJob.class, waitIfConcurrent(), op -> {
             op.uniqueBy("mystic-parallel").grantOutlawParallel();
+        });
+
+        // test of RabbitMQ
+        doSchedule_Rabbit(cron);
+    }
+
+    private void doSchedule_Rabbit(LaCron cron) { // #rabbit
+        cron.registerNonCron(RabbitSeaJob.class, waitIfConcurrent(), op -> {
+            op.uniqueBy(SeaMQAgent.JOB_UNIQUE_CODE).changeNoticeLogToDebug();
+            op.changeNoticeLogToDebug();
+        });
+        // second example
+        cron.registerNonCron(RabbitLandJob.class, waitIfConcurrent(), op -> {
+            op.uniqueBy(LandMQAgent.JOB_UNIQUE_CODE);
+            op.changeNoticeLogToDebug();
         });
     }
 
