@@ -10,6 +10,10 @@
 	<filter>
 		<filter-name>lastaFilter</filter-name>
 		<filter-class>org.lastaflute.web.LastaFilter</filter-class>
+		<init-param>
+			<param-name>maskParamSet</param-name>
+			<param-value>secureSea,secureLand,secureMiraco</param-value>
+		</init-param>
 	</filter>
 
     <!-- ================================================================================= -->
