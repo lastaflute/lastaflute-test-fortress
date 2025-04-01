@@ -8567,9 +8567,9 @@
           {
             "name": "seaStringCustomTwo",
             "type": "string",
-            "pattern": ".sea*$",
             "minLength": 4,
             "maxLength": 10,
+            "pattern": ".sea*$",
             "in": "query",
             "required": false,
             "collectionFormat": "multi"
@@ -8577,9 +8577,9 @@
           {
             "name": "seaWhole",
             "type": "string",
-            "pattern": ".*hangar$",
             "minLength": 3,
             "maxLength": 9,
+            "pattern": ".*hangar$",
             "in": "query",
             "required": true,
             "collectionFormat": "multi"
@@ -8604,8 +8604,8 @@
             "name": "landMinMax",
             "type": "integer",
             "format": "int32",
-            "minimum": 4,
             "maximum": 32,
+            "minimum": 4,
             "in": "query",
             "required": false,
             "collectionFormat": "multi"
@@ -8621,8 +8621,8 @@
           {
             "name": "landIntegerCustomTwo",
             "type": "string",
-            "minimum": 4,
             "maximum": 6,
+            "minimum": 4,
             "in": "query",
             "required": false,
             "collectionFormat": "multi"
@@ -15211,6 +15211,256 @@
         }
       ]
     },
+    "/wx/security/request/jsonbody/": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "BasicItemBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody"
+            }
+          },
+          "400": {
+            "description": "Client Error (e.g. Validation Error, Business Error, Broken JSON Format)"
+          },
+          "403": {
+            "description": "Forbidden (e.g. CSRF Forbidden)"
+          },
+          "404": {
+            "description": "Not Found (e.g. Wrong URL)"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/security/request/jsonbody/error": {
+      "post": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "BasicItemBody",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody"
+            }
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody"
+            }
+          },
+          "400": {
+            "description": "Client Error (e.g. Validation Error, Business Error, Broken JSON Format)"
+          },
+          "403": {
+            "description": "Forbidden (e.g. CSRF Forbidden)"
+          },
+          "404": {
+            "description": "Not Found (e.g. Wrong URL)"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/security/request/parameter/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "secureSea",
+            "type": "string",
+            "in": "query",
+            "required": false,
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "secureLand",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false,
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "openPiari",
+            "type": "string",
+            "format": "date",
+            "in": "query",
+            "default": "2000-01-01",
+            "required": false,
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "secureMiraco",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false,
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestParameterAction%24BasicItemForm"
+            }
+          },
+          "400": {
+            "description": "Client Error (e.g. Validation Error, Business Error, Broken JSON Format)"
+          },
+          "403": {
+            "description": "Forbidden (e.g. CSRF Forbidden)"
+          },
+          "404": {
+            "description": "Not Found (e.g. Wrong URL)"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
+    "/wx/security/request/parameter/error": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [
+          {
+            "name": "secureSea",
+            "type": "string",
+            "in": "query",
+            "required": false,
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "secureLand",
+            "type": "integer",
+            "format": "int32",
+            "in": "query",
+            "required": false,
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "openPiari",
+            "type": "string",
+            "format": "date",
+            "in": "query",
+            "default": "2000-01-01",
+            "required": false,
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "secureMiraco",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false,
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestParameterAction%24BasicItemForm"
+            }
+          },
+          "400": {
+            "description": "Client Error (e.g. Validation Error, Business Error, Broken JSON Format)"
+          },
+          "403": {
+            "description": "Forbidden (e.g. CSRF Forbidden)"
+          },
+          "404": {
+            "description": "Not Found (e.g. Wrong URL)"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
     "/wx/thymeleaf/parade": {
       "get": {
         "summary": "@author jflute",
@@ -18126,15 +18376,15 @@
         },
         "seaStringCustomTwo": {
           "type": "string",
-          "pattern": ".sea*$",
           "minLength": 4,
-          "maxLength": 10
+          "maxLength": 10,
+          "pattern": ".sea*$"
         },
         "seaWhole": {
           "type": "string",
-          "pattern": ".*hangar$",
           "minLength": 3,
-          "maxLength": 9
+          "maxLength": 9,
+          "pattern": ".*hangar$"
         },
         "landPlain": {
           "type": "integer",
@@ -18147,8 +18397,8 @@
         "landMinMax": {
           "type": "integer",
           "format": "int32",
-          "minimum": 4,
-          "maximum": 32
+          "maximum": 32,
+          "minimum": 4
         },
         "landIntegerCustomOne": {
           "type": "string",
@@ -18156,8 +18406,8 @@
         },
         "landIntegerCustomTwo": {
           "type": "string",
-          "minimum": 4,
-          "maximum": 6
+          "maximum": 6,
+          "minimum": 4
         },
         "landWhole": {
           "type": "integer",
@@ -18377,15 +18627,15 @@
         },
         "sea_string_custom_two": {
           "type": "string",
-          "pattern": ".sea*$",
           "minLength": 4,
-          "maxLength": 10
+          "maxLength": 10,
+          "pattern": ".sea*$"
         },
         "sea_whole": {
           "type": "string",
-          "pattern": ".*hangar$",
           "minLength": 3,
-          "maxLength": 9
+          "maxLength": 9,
+          "pattern": ".*hangar$"
         },
         "land_plain": {
           "type": "integer",
@@ -18398,8 +18648,8 @@
         "land_min_max": {
           "type": "integer",
           "format": "int32",
-          "minimum": 4,
-          "maximum": 32
+          "maximum": 32,
+          "minimum": 4
         },
         "land_integer_custom_one": {
           "type": "string",
@@ -18407,8 +18657,8 @@
         },
         "land_integer_custom_two": {
           "type": "string",
-          "minimum": 4,
-          "maximum": 6
+          "maximum": 6,
+          "minimum": 4
         },
         "land_whole": {
           "type": "integer",
@@ -18695,15 +18945,15 @@
         },
         "sea_string_custom_two": {
           "type": "string",
-          "pattern": ".sea*$",
           "minLength": 4,
-          "maxLength": 10
+          "maxLength": 10,
+          "pattern": ".sea*$"
         },
         "sea_whole": {
           "type": "string",
-          "pattern": ".*hangar$",
           "minLength": 3,
-          "maxLength": 9
+          "maxLength": 9,
+          "pattern": ".*hangar$"
         },
         "land_plain": {
           "type": "integer",
@@ -18716,8 +18966,8 @@
         "land_min_max": {
           "type": "integer",
           "format": "int32",
-          "minimum": 4,
-          "maximum": 32
+          "maximum": 32,
+          "minimum": 4
         },
         "land_integer_custom_one": {
           "type": "string",
@@ -18725,8 +18975,8 @@
         },
         "land_integer_custom_two": {
           "type": "string",
-          "minimum": 4,
-          "maximum": 6
+          "maximum": 6,
+          "minimum": 4
         },
         "land_whole": {
           "type": "integer",
@@ -18864,6 +19114,104 @@
         },
         "second": {
           "type": "object"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction$BasicItemBody$NestedMapPart": {
+      "type": "object",
+      "properties": {
+        "secure_lando": {
+          "description": "e.g. oneman",
+          "type": "string",
+          "example": "oneman"
+        },
+        "landodo": {
+          "description": "e.g. oneoneman",
+          "type": "string",
+          "example": "oneoneman"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction$BasicItemBody$MapPart": {
+      "type": "object",
+      "properties": {
+        "dstore": {
+          "description": "e.g. ambahotel",
+          "type": "string",
+          "example": "ambahotel"
+        },
+        "secure_bonvo": {
+          "description": "e.g. shop",
+          "type": "string",
+          "example": "shop"
+        },
+        "dohotel": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody%24NestedMapPart"
+        },
+        "secure_dodohotel": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody%24NestedMapPart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction$BasicItemBody": {
+      "type": "object",
+      "properties": {
+        "secure_sea": {
+          "description": "e.g. mystic",
+          "type": "string",
+          "example": "mystic"
+        },
+        "secure_land": {
+          "description": "e.g. 83",
+          "type": "integer",
+          "format": "int32",
+          "example": 83
+        },
+        "open_piari": {
+          "description": "e.g. 2019-04-07",
+          "type": "string",
+          "format": "date",
+          "example": "2019-04-07"
+        },
+        "secure_miraco": {
+          "description": "e.g. [harborSide, riverSide]",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "harborSide",
+            "riverSide"
+          ]
+        },
+        "secure_amba": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody%24MapPart"
+        },
+        "ssador": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody%24MapPart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.security.WxSecurityRequestParameterAction$BasicItemForm": {
+      "type": "object",
+      "properties": {
+        "secureSea": {
+          "type": "string"
+        },
+        "secureLand": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "openPiari": {
+          "type": "string",
+          "format": "date",
+          "example": "2000-01-01"
+        },
+        "secureMiraco": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

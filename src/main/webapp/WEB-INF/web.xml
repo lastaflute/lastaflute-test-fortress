@@ -14,7 +14,11 @@
 		<!-- the test of RequestLoggingFilter mask for request parameter -->
 		<init-param>
 			<param-name>maskParamSet</param-name>
-			<param-value>secureSea,secureLand,secureMiraco</param-value>
+			<param-value>
+				secureSea,secureLand,secureMiraco
+				, secure_sea, secure_land, secure_miraco, secure_amba, secure_bonvo
+				, secure_dodohotel, secure_lando
+			</param-value>
 		</init-param>
 	</filter>
 
