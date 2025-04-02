@@ -17,7 +17,7 @@
 			<param-value>
 				secureSea,secureLand,secureMiraco
 				, secure_sea, secure_land, secure_miraco, secure_amba, secure_bonvo
-				, secure_dodohotel, secure_lando
+				, secure_dodohotel, secure_dododohotel_list, secure_lando
 			</param-value>
 		</init-param>
 	</filter>

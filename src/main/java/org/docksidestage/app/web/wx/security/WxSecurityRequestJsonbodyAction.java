@@ -79,6 +79,8 @@ public class WxSecurityRequestJsonbodyAction extends FortressBaseAction {
             public NestedMapPart dohotel;
 
             public NestedMapPart secureDodohotel;
+
+            public List<String> secureDododohotelList;
         }
 
         public static class NestedMapPart {
