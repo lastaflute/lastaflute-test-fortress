@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
 import javax.annotation.Resource;
 
 import org.dbflute.remoteapi.exception.RemoteApiIOException;
-import org.docksidestage.remote.fortressman.RemoteFortressBhv;
+import org.docksidestage.remote.fortressman.RemoteFortressManBhv;
 import org.docksidestage.remote.fortressman.wx.multipart.RemoteFrMultipartParam;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.web.ruts.multipart.MultipartFormFile;
@@ -19,7 +19,7 @@ import org.lastaflute.web.ruts.multipart.MultipartFormFile;
 public class RemoteFortressBhvTest extends UnitFortressBasicTestCase {
 
     @Resource
-    private RemoteFortressBhv fortressBhv;
+    private RemoteFortressManBhv fortressBhv;
 
     public void test_requestWxMultipart_basic() throws IOException {
         // ## Arrange ##

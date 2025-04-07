@@ -36,7 +36,7 @@ public class RemoteRequestXmlBodyTest extends UnitFortressBasicTestCase {
     private MemberBhv memberBhv;
 
     @Resource
-    private RemoteFortressBhv remoteFortressBhv;
+    private RemoteFortressManBhv remoteFortressManBhv;
 
     public void test_xml_body() throws Exception {
         RemoteXmlParam param = new RemoteXmlParam();
@@ -44,7 +44,7 @@ public class RemoteRequestXmlBodyTest extends UnitFortressBasicTestCase {
         param.land = 1983;
 
         try {
-            remoteFortressBhv.requestXmlBody(param);
+            remoteFortressManBhv.requestXmlBody(param);
 
             // for visual check
         } catch (RuntimeException continued) {

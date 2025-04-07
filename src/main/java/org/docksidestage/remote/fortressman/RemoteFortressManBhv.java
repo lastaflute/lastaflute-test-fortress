@@ -52,12 +52,12 @@ import org.lastaflute.web.servlet.request.RequestManager;
 /**
  * @author jflute
  */
-public class RemoteFortressBhv extends LastaRemoteBehavior {
+public class RemoteFortressManBhv extends LastaRemoteBehavior {
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RemoteFortressBhv(RequestManager requestManager) {
+    public RemoteFortressManBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
