@@ -165,7 +165,15 @@ public class RemoteFortressManBhv extends LastaRemoteBehavior {
                 @Override
                 public void prepareEnclosingRequest(HttpEntityEnclosingRequest enclosingRequest, Object param, FlutyRemoteApiRule rule) {
                     RemoteXmlParam xmlParam = (RemoteXmlParam) param;
-                    String xml = "<sea>" + xmlParam.sea + "</sea>" + "\n<land>" + xmlParam.land + "</land>";
+
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>").append("\n");
+                    sb.append("<maihama>").append("\n");
+                    sb.append("  <sea>").append(xmlParam.sea).append("</sea>").append("\n");
+                    sb.append("  <land>").append(xmlParam.land).append("</land>").append("\n");
+                    sb.append("</maihama>").append("\n");
+                    String xml = sb.toString();
+
                     final String charsetName = rule.getRequestBodyCharset().name();
                     final StringEntity entity = new StringEntity(xml, charsetName);
                     entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "text/xml"));

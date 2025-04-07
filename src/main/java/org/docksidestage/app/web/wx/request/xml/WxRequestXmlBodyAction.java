@@ -15,9 +15,11 @@
  */
 package org.docksidestage.app.web.wx.request.xml;
 
+import java.io.StringReader;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.xml.bind.JAXB;
 
 import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
@@ -49,8 +51,12 @@ public class WxRequestXmlBodyAction extends FortressBaseAction {
     // self-parse way
     @Execute
     public JsonResponse<Map<String, Object>> index() {
-        String body = requestManager.getRequestBody();
-        logger.debug("#xml: \n{}", body);
-        return asJson(DfCollectionUtil.newHashMap("body", body));
+        String requestBody = requestManager.getRequestBody();
+        logger.debug("#requestBody: \n{}", requestBody);
+
+        WxRequestXmlBodyBody xmlBodyBody = JAXB.unmarshal(new StringReader(requestBody), WxRequestXmlBodyBody.class);
+        logger.debug("#xmlBodyBody: \n{}", xmlBodyBody);
+
+        return asJson(DfCollectionUtil.newHashMap("body", requestBody));
     }
 }
