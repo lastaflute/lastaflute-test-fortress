@@ -22,11 +22,8 @@ public class DbConcurrentCrossVMHook extends ConcurrentCrossVMHook {
     }
 
     // ===================================================================================
-    //                                                                      Hook Beginning
-    //                                                                      ==============
-    // -----------------------------------------------------
-    //                                             Duplicate
-    //                                             ---------
+    //                                                                  Duplicate Override
+    //                                                                  ==================
     @Override
     protected boolean determineDuplicateBoot(ReadableJobState jobState) {
         boolean registeredSuccess = tryRegisteringJob(jobState);
@@ -62,9 +59,9 @@ public class DbConcurrentCrossVMHook extends ConcurrentCrossVMHook {
         }
     }
 
-    // -----------------------------------------------------
-    //                                              Neighbor
-    //                                              --------
+    // ===================================================================================
+    //                                                                   Neighbor Override
+    //                                                                   =================
     @Override
     protected boolean determineNeighborExecutingNow(ReadableJobState jobState) {
         return false; // no implementation for now
@@ -75,9 +72,9 @@ public class DbConcurrentCrossVMHook extends ConcurrentCrossVMHook {
         // no implementation for now
     }
 
-    // -----------------------------------------------------
-    //                                        Mark Executing
-    //                                        --------------
+    // ===================================================================================
+    //                                                                  Executing Override
+    //                                                                  ==================
     @Override
     protected void markExecuting(ReadableJobState jobState, LocalDateTime activationTime, CrossVMState crossVMState) {
         // >>>>>
@@ -87,8 +84,8 @@ public class DbConcurrentCrossVMHook extends ConcurrentCrossVMHook {
     }
 
     // ===================================================================================
-    //                                                                         Hook Ending
-    //                                                                         ===========
+    //                                                                     Ending Override
+    //                                                                     ===============
     @Override
     protected void closeExecuting(ReadableJobState jobState, CrossVMState crossVMState, LocalDateTime endTime) {
         // >>>>>
