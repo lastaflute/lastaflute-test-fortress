@@ -304,6 +304,7 @@
 			<plugin>
 				<!-- the test of jacoco use, see the following pull request for the detail:
 				 https://github.com/lastaflute/lastaflute-example-harbor/pull/14
+				 $ mvn -e clean verify
 				 -->
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -330,6 +331,25 @@
 						<configuration>
 							<dataFile>${project.build.directory}/jacoco.exec</dataFile>
 							<outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+							<excludes>
+								<!-- DBFlute auto-generated classes (extended classes are target) -->
+								<exclude>**/dbflute/**/allcommon/**/*.class</exclude>
+								<exclude>**/dbflute/**/bsbhv/**/*.class</exclude>
+								<exclude>**/dbflute/**/bsentity/**/*.class</exclude>
+								<exclude>**/dbflute/**/cbean/bs/**/*.class</exclude>
+								<exclude>**/dbflute/**/cbean/cq/bs/**/*.class</exclude>
+								<exclude>**/dbflute/**/cbean/cq/ciq/**/*.class</exclude>
+								<exclude>**/dbflute/**/cbean/nss/**/*.class</exclude>
+
+								<!-- LastaFlute auto-generated classes -->
+								<exclude>**/mylasta/action/**/*.class</exclude> <!-- also contains manual UserBean -->
+								<exclude>**/mylasta/appcls/**/*.class</exclude>
+								<exclude>**/mylasta/namedcls/**/*.class</exclude>
+								<exclude>**/mylasta/webcls/**/*.class</exclude>
+								<exclude>**/mylasta/mail/**/*.class</exclude>
+								<exclude>**/mylasta/template/**/*.class</exclude>
+								<exclude>**/remote/**/*.class</exclude> <!-- also contains manual behaviors -->
+							</excludes>
 						</configuration>
 					</execution>
 				</executions>
