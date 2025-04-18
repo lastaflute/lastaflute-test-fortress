@@ -17,6 +17,7 @@ package org.docksidestage.whitebox.job;
 
 import javax.annotation.Resource;
 
+import org.dbflute.helper.message.ExceptionMessageBuilder;
 import org.dbflute.optional.OptionalThing;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 import org.lastaflute.job.JobManager;
@@ -26,6 +27,8 @@ import org.lastaflute.job.key.LaJobUnique;
 import org.lastaflute.job.subsidiary.ExecResultType;
 import org.lastaflute.job.subsidiary.LaunchNowOption;
 import org.lastaflute.job.subsidiary.LaunchedProcess;
+
+import junit.framework.AssertionFailedError;
 
 /**
  * @author jflute
@@ -122,6 +125,17 @@ public class WxJobConcurrentTest extends UnitFortressBasicTestCase {
     private void assertJobHistory(OptionalThing<LaJobHistory> optHistory, ExecResultType execResultType) {
         LaJobHistory history = optHistory.get();
         log(history);
-        assertEquals(execResultType, history.getExecResultType());
+        try {
+            assertEquals(execResultType, history.getExecResultType());
+        } catch (AssertionFailedError e) { // for debug (because of sensitive result)
+            ExceptionMessageBuilder br = new ExceptionMessageBuilder();
+            br.addNotice("Assertion failure of equal for the Job history.");
+            br.addItem("Job History");
+            br.addElement(history);
+            br.addItem("Job Cause");
+            br.addElement(history.getCause().map(cause -> cause.getMessage()).orElse(null));
+            String msg = br.buildExceptionMessage();
+            throw new IllegalStateException(msg, e);
+        }
     }
 }
