@@ -9675,6 +9675,45 @@
         }
       ]
     },
+    "/wx/request/xml/body/": {
+      "get": {
+        "summary": "@author jflute",
+        "description": "@author jflute",
+        "parameters": [],
+        "tags": [
+          "wx"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Client Error (e.g. Validation Error, Business Error, Broken JSON Format)"
+          },
+          "403": {
+            "description": "Forbidden (e.g. CSRF Forbidden)"
+          },
+          "404": {
+            "description": "Not Found (e.g. Wrong URL)"
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "header",
+          "type": "string",
+          "required": true,
+          "name": "hangar",
+          "default": "mystic"
+        }
+      ]
+    },
     "/wx/response/html/empty/": {
       "get": {
         "summary": "@author jflute",
@@ -19150,6 +19189,12 @@
         },
         "secure_dodohotel": {
           "$ref": "#/definitions/org.docksidestage.app.web.wx.security.WxSecurityRequestJsonbodyAction%24BasicItemBody%24NestedMapPart"
+        },
+        "secure_dododohotel_list": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
