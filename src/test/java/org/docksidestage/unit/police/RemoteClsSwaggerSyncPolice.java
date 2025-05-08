@@ -1,0 +1,217 @@
+/*
+ * Copyright 2015-2024 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+package org.docksidestage.unit.police;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.dbflute.helper.beans.DfBeanDesc;
+import org.dbflute.helper.beans.DfPropertyDesc;
+import org.dbflute.helper.beans.factory.DfBeanDescFactory;
+import org.dbflute.helper.message.ExceptionMessageBuilder;
+import org.dbflute.jdbc.Classification;
+import org.dbflute.utflute.core.PlainTestCase;
+import org.dbflute.util.DfReflectionUtil;
+import org.dbflute.util.Srl;
+import org.dbflute.util.Srl.ScopeInfo;
+
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+import com.github.javaparser.javadoc.Javadoc;
+import com.github.javaparser.javadoc.description.JavadocDescription;
+
+/**
+ * @author jflute
+ */
+public class RemoteClsSwaggerSyncPolice extends PlainTestCase {
+
+    // ===================================================================================
+    //                                                                           Main Test
+    //                                                                           =========
+    public void test_sync() {
+        policeStoryOfJavaClassChase((srcFile, clazz) -> {
+            if (isRemotePackage(srcFile, clazz) && isRemoteBeanClass(srcFile, clazz)) {
+                syncCodeSet(srcFile, clazz);
+            }
+        });
+    }
+
+    // -----------------------------------------------------
+    //                                                Remote
+    //                                                ------
+    protected boolean isRemotePackage(File srcFile, Class<?> clazz) {
+        return clazz.getName().contains(".remote.");
+    }
+
+    protected boolean isRemoteBeanClass(File srcFile, Class<?> clazz) {
+        final String fqcn = clazz.getName();
+        return fqcn.endsWith("Param") || fqcn.endsWith("Return") // standard
+                || fqcn.endsWith("Body") || fqcn.endsWith("Result") // like Action
+                || fqcn.endsWith("Request") || fqcn.endsWith("Response"); // like http
+    }
+
+    // ===================================================================================
+    //                                                                         Synchronize
+    //                                                                         ===========
+    protected void syncCodeSet(File srcFile, Class<?> clazz) {
+        Map<String, Javadoc> variableJavadocMap = null; // lazy loaded for performance
+        final DfBeanDesc beanDesc = DfBeanDescFactory.getBeanDesc(clazz);
+        final List<String> proppertyNameList = beanDesc.getProppertyNameList();
+        for (String propertyName : proppertyNameList) {
+            final DfPropertyDesc propertyDesc = beanDesc.getPropertyDesc(propertyName); // always exists
+            final Class<?> propertyType = propertyDesc.getPropertyType();
+            if (!Classification.class.isAssignableFrom(propertyType)) { // others
+                continue;
+            }
+            // CDef here
+            if (variableJavadocMap == null) { // first classification at this class
+                variableJavadocMap = prepareVariableJavadocMap(srcFile, clazz);
+            }
+            final Set<String> clsCodeSet = extractClsCodeSet(propertyType); // not null, not empty
+            final Set<String> javadocCodeSet = extractJavadocCodeSet(variableJavadocMap, propertyName); // null allowed
+            // use for debug
+            //showComparison(fqcn, propertyName, clsCodeSet, javadocCodeSet);
+            if (javadocCodeSet != null) { // you can synchronize
+                if (!clsCodeSet.equals(javadocCodeSet)) { // unmatched
+                    throwDifferentClassificationSetException(clazz, propertyType, propertyName, clsCodeSet, javadocCodeSet);
+                }
+            } else { // no javadoc? or no enum attribute?
+                handleSwaggerComparisonNotFound(srcFile, clazz, propertyDesc, clsCodeSet);
+            }
+        }
+    }
+
+    // ===================================================================================
+    //                                                                      Classification
+    //                                                                      ==============
+    protected Set<String> extractClsCodeSet(Class<?> propertyType) {
+        return invoke_listAll(propertyType).stream().map(cls -> cls.code()).collect(Collectors.toSet());
+    }
+
+    protected List<Classification> invoke_listAll(Class<?> propertyType) {
+        Method listAllMethod = DfReflectionUtil.getAccessibleMethod(propertyType, "listAll", (Class[]) null);
+        assertNotNull("Not found the listAll() method: " + propertyType, listAllMethod);
+        @SuppressWarnings("unchecked")
+        List<Classification> clsList = (List<Classification>) DfReflectionUtil.invoke(listAllMethod, null, (Object[]) null); // static
+        return clsList;
+    }
+
+    // ===================================================================================
+    //                                                                         Java Parser
+    //                                                                         ===========
+    protected Map<String, Javadoc> prepareVariableJavadocMap(File srcFile, Class<?> clazz) {
+        final Map<String, Javadoc> variableJavadocMap = new HashMap<String, Javadoc>();
+        parseClassSource(srcFile, clazz).ifPresent(compilationUnit -> {
+            final VoidVisitorAdapter<Void> adapter = new VoidVisitorAdapter<Void>() {
+                public void visit(final FieldDeclaration fieldDeclaration, final Void voiz) {
+                    final Optional<Javadoc> optJavaDoc = fieldDeclaration.getJavadoc();
+                    optJavaDoc.ifPresent(javadoc -> {
+                        List<Node> childNodes = fieldDeclaration.getChildNodes();
+                        if (!childNodes.isEmpty()) { // basically true
+                            final Node lastNode = childNodes.get(childNodes.size() - 1); // is variable part
+                            final String variableName = lastNode.toString();
+                            variableJavadocMap.put(variableName, javadoc);
+                        }
+                    });
+                    super.visit(fieldDeclaration, voiz);
+                }
+
+                public void visit(final MethodDeclaration methodDeclaration, final Void voiz) {
+                    // all fields are public by RemoteApiGen so method style is unsupported
+                }
+            };
+            adapter.visit(compilationUnit, (Void) null);
+        });
+        return variableJavadocMap;
+    }
+
+    protected Optional<CompilationUnit> parseClassSource(File srcFile, Class<?> clazz) {
+        try (FileInputStream in = new FileInputStream(srcFile)) {
+            return new JavaParser().parse(in).getResult();
+        } catch (IOException ignored) {
+            return Optional.empty();
+        }
+    }
+
+    protected Set<String> extractJavadocCodeSet(Map<String, Javadoc> variableJavadocMap, String propertyName) {
+        final Javadoc javadoc = variableJavadocMap.get(propertyName);
+        if (javadoc != null) { // false if no javadoc field (non RemoteApiGen?)
+            final JavadocDescription description = javadoc.getDescription();
+            final String javadocText = description.toText();
+            final ScopeInfo scopeFirst = Srl.extractScopeFirst(javadocText, "enumValue=[", "]");
+            if (scopeFirst != null) { // false if e.g. non RemoteApiGen class
+                final String content = scopeFirst.getContent();
+                return Srl.splitListTrimmed(content, ",").stream().collect(Collectors.toSet());
+            }
+        }
+        return null; // not found as several reasons
+    }
+
+    // ===================================================================================
+    //                                                                        Notification
+    //                                                                        ============
+    protected void showComparison(String fqcn, String propertyName, Set<String> clsCodeSet, Set<String> javadocCodeSet) {
+        final String rearName = Srl.substringFirstRear(fqcn, ".remote.");
+        log(rearName + propertyName + " :: cls=" + clsCodeSet + " == javadoc=" + javadocCodeSet);
+    }
+
+    protected void throwDifferentClassificationSetException(Class<?> clazz, Class<?> propertyType, String propertyName,
+            Set<String> clsCodeSet, Set<String> javadocCodeSet) {
+        final ExceptionMessageBuilder br = new ExceptionMessageBuilder();
+        br.addNotice("Different classification set with Swagger.");
+        br.addItem("Advice");
+        br.addElement("Confirm your namedcls dfprop definition and swagger definition.");
+        br.addElement("For example:");
+        br.addElement("  (x): cls=[SEA, LAND] / swagger=[LAND, PIARI]");
+        br.addElement("  (x): cls=[SEA, LAND] / swagger=[SEA, LAND, PIARI]");
+        br.addElement("  (o): cls=[SEA, LAND] / swagger=[SEA, LAND]");
+        br.addItem("Target Class");
+        br.addElement(clazz.getName()); // FQCN, e.g. Return class
+        br.addItem("Target Property");
+        br.addElement("type: " + propertyType.getName()); // FQCN, e.g. ...CDef.MemberStatus
+        br.addElement("name: " + propertyName);
+        br.addItem("Classification");
+        br.addElement("clsCodeSet: " + clsCodeSet);
+        br.addItem("Swagger");
+        br.addElement("javadocCodeSet: " + javadocCodeSet);
+        final String msg = br.buildExceptionMessage();
+        if (isWarningLogOnly()) {
+            log(msg);
+        } else {
+            throw new IllegalStateException(msg);
+        }
+    }
+
+    protected boolean isWarningLogOnly() {
+        return true; // as you like it
+    }
+
+    protected void handleSwaggerComparisonNotFound(File srcFile, Class<?> clazz, DfPropertyDesc propertyDesc, Set<String> clsCodeSet) {
+        // do nothing as default
+    }
+}
