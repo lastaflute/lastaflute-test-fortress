@@ -15,6 +15,8 @@
  */
 package org.docksidestage.unit.police;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -32,10 +34,12 @@ import org.dbflute.helper.beans.factory.DfBeanDescFactory;
 import org.dbflute.helper.message.ExceptionMessageBuilder;
 import org.dbflute.jdbc.Classification;
 import org.dbflute.optional.OptionalThing;
-import org.dbflute.utflute.core.PlainTestCase;
+import org.dbflute.utflute.core.policestory.javaclass.PoliceStoryJavaClassHandler;
 import org.dbflute.util.DfReflectionUtil;
 import org.dbflute.util.Srl;
 import org.dbflute.util.Srl.ScopeInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
@@ -60,17 +64,21 @@ import com.github.javaparser.javadoc.description.JavadocDescription;
  * 
  * @author jflute
  */
-public class RemoteClsSwaggerSyncPolice extends PlainTestCase {
+public class RemoteClsSwaggerSyncPolice implements PoliceStoryJavaClassHandler {
 
     // ===================================================================================
-    //                                                                           Main Test
-    //                                                                           =========
-    public void test_sync() {
-        policeStoryOfJavaClassChase((srcFile, clazz) -> {
-            if (isRemotePackage(srcFile, clazz) && isRemoteBeanClass(srcFile, clazz)) {
-                syncCodeSet(srcFile, clazz);
-            }
-        });
+    //                                                                          Definition
+    //                                                                          ==========
+    private static final Logger logger = LoggerFactory.getLogger(RemoteClsSwaggerSyncPolice.class);
+
+    // ===================================================================================
+    //                                                                        Handle Class
+    //                                                                        ============
+    @Override
+    public void handle(File srcFile, Class<?> clazz) {
+        if (isRemotePackage(srcFile, clazz) && isRemoteBeanClass(srcFile, clazz)) {
+            syncCodeSet(srcFile, clazz);
+        }
     }
 
     // -----------------------------------------------------
@@ -105,7 +113,7 @@ public class RemoteClsSwaggerSyncPolice extends PlainTestCase {
                 variableJavadocMap = prepareVariableJavadocMap(srcFile, clazz);
             }
             final Set<String> clsCodeSet = extractClsCodeSet(propertyType); // not null, not empty
-            OptionalThing<Set<String>> optJavadocCodeSet = extractJavadocCodeSet(variableJavadocMap, propertyName);
+            final OptionalThing<Set<String>> optJavadocCodeSet = extractJavadocCodeSet(variableJavadocMap, propertyName);
             // use for debug
             //showComparison(fqcn, propertyName, clsCodeSet, javadocCodeSet);
             optJavadocCodeSet.ifPresent(javadocCodeSet -> { // you can synchronize
@@ -121,14 +129,14 @@ public class RemoteClsSwaggerSyncPolice extends PlainTestCase {
     // ===================================================================================
     //                                                                      Classification
     //                                                                      ==============
-    protected Set<String> extractClsCodeSet(Class<?> propertyType) {
-        return invoke_listAll(propertyType).stream().map(cls -> cls.code()).collect(Collectors.toSet());
+    protected Set<String> extractClsCodeSet(Class<?> clsPropertyType) {
+        return invoke_listAll(clsPropertyType).stream().map(cls -> cls.code()).collect(Collectors.toSet());
     }
 
-    protected List<Classification> invoke_listAll(Class<?> propertyType) {
+    protected List<Classification> invoke_listAll(Class<?> clsPropertyType) {
         // generated CDef always has the listAll() method as static
-        final Method listAllMethod = DfReflectionUtil.getAccessibleMethod(propertyType, "listAll", (Class[]) null);
-        assertNotNull("Not found the listAll() method: " + propertyType, listAllMethod);
+        final Method listAllMethod = DfReflectionUtil.getAccessibleMethod(clsPropertyType, "listAll", (Class[]) null);
+        assertNotNull("Not found the listAll() method: " + clsPropertyType, listAllMethod);
         @SuppressWarnings("unchecked")
         final List<Classification> clsList = (List<Classification>) DfReflectionUtil.invoke(listAllMethod, null, (Object[]) null); // static
         return clsList;
@@ -138,12 +146,11 @@ public class RemoteClsSwaggerSyncPolice extends PlainTestCase {
     //                                                                         Java Parser
     //                                                                         ===========
     protected Map<String, Javadoc> prepareVariableJavadocMap(File srcFile, Class<?> clazz) {
-        final Map<String, Javadoc> variableJavadocMap = new HashMap<String, Javadoc>();
+        final Map<String, Javadoc> variableJavadocMap = new HashMap<String, Javadoc>(); // of one class
         parseClassSource(srcFile, clazz).ifPresent(compilationUnit -> {
             final VoidVisitorAdapter<Void> adapter = new VoidVisitorAdapter<Void>() {
                 public void visit(FieldDeclaration fieldDeclaration, Void voiz) {
-                    final Optional<Javadoc> optJavaDoc = fieldDeclaration.getJavadoc();
-                    optJavaDoc.ifPresent(javadoc -> {
+                    fieldDeclaration.getJavadoc().ifPresent(javadoc -> {
                         // #for_now jflute is there better way to get property name? (2025/05/09)
                         final List<Node> childNodes = fieldDeclaration.getChildNodes();
                         if (!childNodes.isEmpty()) { // basically true
@@ -196,7 +203,7 @@ public class RemoteClsSwaggerSyncPolice extends PlainTestCase {
     //                                                                        ============
     protected void showComparison(String fqcn, String propertyName, Set<String> clsCodeSet, Set<String> javadocCodeSet) {
         final String rearName = Srl.substringFirstRear(fqcn, ".remote.");
-        log(rearName + propertyName + " :: cls=" + clsCodeSet + " == javadoc=" + javadocCodeSet);
+        logger.debug(rearName + propertyName + " :: cls=" + clsCodeSet + " == javadoc=" + javadocCodeSet);
     }
 
     protected void throwDifferentClassificationSetException(Class<?> clazz, Class<?> propertyType, String propertyName,
@@ -220,17 +227,29 @@ public class RemoteClsSwaggerSyncPolice extends PlainTestCase {
         br.addElement("javadocCodeSet: " + javadocCodeSet);
         final String msg = br.buildExceptionMessage();
         if (isWarningLogOnly()) {
-            log(msg);
+            logger.info(msg);
         } else {
-            throw new IllegalStateException(msg);
+            throw new DifferentClassificationSetException(msg);
         }
     }
 
     protected boolean isWarningLogOnly() { // you can customize
-        return true; // as you like it
+        return false; // as you like it
     }
 
     protected void handleSwaggerComparisonNotFound(File srcFile, Class<?> clazz, DfPropertyDesc propertyDesc, Set<String> clsCodeSet) {
-        // do nothing as default
+        // do nothing as default, as you like it
+    }
+
+    /**
+     * @author jflute
+     */
+    public static class DifferentClassificationSetException extends RuntimeException {
+
+        private static final long serialVersionUID = 1L;
+
+        public DifferentClassificationSetException(String msg) {
+            super(msg);
+        }
     }
 }
