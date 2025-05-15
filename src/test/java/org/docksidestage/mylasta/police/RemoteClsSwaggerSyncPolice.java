@@ -174,7 +174,9 @@ public class RemoteClsSwaggerSyncPolice implements PoliceStoryJavaClassHandler {
     protected Optional<CompilationUnit> parseClassSource(File srcFile, Class<?> clazz) {
         try (FileInputStream in = new FileInputStream(srcFile)) {
             return new JavaParser().parse(in).getResult();
-        } catch (IOException ignored) { // possible?, just in case
+        } catch (IOException continued) { // possible?, just in case
+            // if occured, confirm the stack trace by modifying this code
+            logger.debug("*Cannot parse the source file: {}, {}", srcFile, continued.getMessage());
             return Optional.empty();
         }
     }
