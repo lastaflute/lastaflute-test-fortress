@@ -23,8 +23,8 @@ import org.dbflute.utflute.lastaflute.police.NonActionExtendsActionPolice;
 import org.dbflute.utflute.lastaflute.police.NonWebHasWebReferencePolice;
 import org.dbflute.utflute.lastaflute.police.WebPackageNinjaReferencePolice;
 import org.dbflute.util.Srl;
+import org.docksidestage.mylasta.police.RemoteClsSwaggerSyncPolice;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
-import org.docksidestage.unit.police.RemoteClsSwaggerSyncPolice;
 
 /**
  * @author jflute
