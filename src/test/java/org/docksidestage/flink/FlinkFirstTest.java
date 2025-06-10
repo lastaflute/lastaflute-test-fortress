@@ -42,34 +42,20 @@ public class FlinkFirstTest extends PlainTestCase {
 
     private static final Logger logger = LoggerFactory.getLogger(FlinkFirstTest.class);
 
-    public void test_demo() throws Exception {
+    public void test_execute_flink_first() throws Exception {
         Configuration configuration = new Configuration();
         configuration.set(DeploymentOptions.TARGET, "umeyan"); // needed
         configuration.set(DeploymentOptions.ATTACHED, true); // needed
 
-        @SuppressWarnings("resource")
-        StreamExecutionEnvironment env = new StreamExecutionEnvironment(new PipelineExecutorServiceLoader() {
-            @Override
-            public PipelineExecutorFactory getExecutorFactory(Configuration configuration) throws Exception {
-                return createPipelineExecutorFactory(configuration);
-            }
-
-            public Stream<String> getExecutorNames() {
-                throw new IllegalArgumentException("よばれてない？");
-            }
-        }, configuration, ClassLoader.getSystemClassLoader());
-
+        StreamExecutionEnvironment env = createStreamExecutionEnvironment(configuration);
         DataStreamSource<String> source = env.fromData("sea", "land", "piari"); // has env
         SingleOutputStreamOperator<String> operator = source.map(text -> {
-            logger.debug("aaaaaaaa: " + Thread.currentThread().hashCode());
+            logger.debug("toUpperCase(): thread={}", Thread.currentThread().hashCode());
+            // to show callers
             //new RuntimeException().printStackTrace();
-            System.out.println("待つぞ1");
             return text.toUpperCase(); // 業務処理のつもり
         }).map(text -> {
-            logger.debug("aaaaaaaa: " + Thread.currentThread().hashCode());
-            //new RuntimeException().printStackTrace();
-            System.out.println("待つぞ2");
-            Thread.sleep(3000L);
+            logger.debug("plus +: thread={}", Thread.currentThread().hashCode());
             return text + "+"; // 業務処理のつもり
         });
 
@@ -84,15 +70,30 @@ public class FlinkFirstTest extends PlainTestCase {
         PIARI
         PIARI
          */
-
-        // Apache Flink の Backpressure の仕組みについて調べた
-        // https://soonraah.github.io/posts/backpressure-for-flink/
-
         operator.print(); // ここでログが出るわけじゃない、ログを出す処理を予約している？ (実行に必須ではない)
-        //operator.print(); // ここでログが出るわけじゃない、ログを出す処理を予約している？ (実行に必須ではない)
+        //operator.print();
 
         JobExecutionResult result = env.execute("maihama"); // ここで実際に実行する (期待値: ログが出る)
         log(result);
+
+        // Apache Flink の Backpressure の仕組みについて調べた
+        // https://soonraah.github.io/posts/backpressure-for-flink/
+    }
+
+    // ===================================================================================
+    //                                                                        Assist Logic
+    //                                                                        ============
+    private StreamExecutionEnvironment createStreamExecutionEnvironment(Configuration configuration) {
+        return new StreamExecutionEnvironment(new PipelineExecutorServiceLoader() {
+            @Override
+            public PipelineExecutorFactory getExecutorFactory(Configuration configuration) throws Exception {
+                return createPipelineExecutorFactory(configuration);
+            }
+
+            public Stream<String> getExecutorNames() { // not called if local executor?
+                throw new IllegalStateException("getExecutorNames() called");
+            }
+        }, configuration, ClassLoader.getSystemClassLoader());
     }
 
     // TODO jflute LocalExecutorFactoryのThreadの管理を見てみたい (2025/06/10)
