@@ -33,6 +33,26 @@ public class WxBizpkgOnionarcAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    /*
+    app
+     |-biz
+     |  |-application
+     |  |  |-domOnionarcSeaAppService (or Usecase)
+     |  |
+     |  |-domain
+     |  |  |-model
+     |  |  |  |-OnionarcSea
+     |  |  |-repository
+     |  |  |  |-OnionarcSeaInfraRepository
+     |  |  |-service
+     |  |  |  |-OnionarcSeaDomainService
+     |  |
+     |  |-infrastructure
+     |     |-OnionarcSeaInfraRepository
+     |
+     |-web
+        |-sea.SeaAction
+     */
     @Resource
     private OnionarcSeaAppService seaAppService;
     @Resource
