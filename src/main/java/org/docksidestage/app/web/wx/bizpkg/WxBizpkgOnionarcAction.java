@@ -18,6 +18,7 @@ package org.docksidestage.app.web.wx.bizpkg;
 import javax.annotation.Resource;
 
 import org.docksidestage.app.biz.onionarc.application.OnionarcSeaAppService;
+import org.docksidestage.app.biz.onionarc.application.OnionarcSeaAppUsecase;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -34,6 +35,8 @@ public class WxBizpkgOnionarcAction extends FortressBaseAction {
     //                                                                           =========
     @Resource
     private OnionarcSeaAppService seaAppService;
+    @Resource
+    private OnionarcSeaAppUsecase seaAppUsecase; // other naming way
 
     // ===================================================================================
     //                                                                             Execute
@@ -44,6 +47,7 @@ public class WxBizpkgOnionarcAction extends FortressBaseAction {
     @Execute
     public JsonResponse<Void> index() {
         seaAppService.save();
+        seaAppUsecase.save();
         return JsonResponse.asEmptyBody();
     }
 }
