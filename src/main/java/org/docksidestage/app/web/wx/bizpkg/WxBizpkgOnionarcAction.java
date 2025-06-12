@@ -37,7 +37,7 @@ public class WxBizpkgOnionarcAction extends FortressBaseAction {
     app
      |-biz
      |  |-application
-     |  |  |-domOnionarcSeaAppService (or Usecase)
+     |  |  |-OnionarcSeaAppService (or Usecase)
      |  |
      |  |-domain
      |  |  |-model
@@ -60,7 +60,7 @@ public class WxBizpkgOnionarcAction extends FortressBaseAction {
 
     // ===================================================================================
     //                                                                             Execute
-    //                                                                             =======
+    //                                                                                =======
     // [success]
     // http://localhost:8151/fortress/wx/bizpkg/onionarc/
     //
