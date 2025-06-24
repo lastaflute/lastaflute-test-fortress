@@ -80,7 +80,7 @@ public class ChouPerJobMiniClusterFactory {
         return miniCluster.submitJob(executionPlan).thenApplyAsync(FunctionUtils.uncheckedFunction(submissionResult -> {
             waitUntilJobInitializationFinished(userCodeClassloader, miniCluster, submissionResult);
             return submissionResult;
-        })).thenApply(result -> {
+        })).thenApply(result -> { // 重要なここ
             // by ForkJoinPool.commonPool-worker
             LOG.debug("@@@ MinCluster@submitJob()::thenApply(): result={}", result);
             return createMiniClusterJobClient(userCodeClassloader, miniCluster, result);

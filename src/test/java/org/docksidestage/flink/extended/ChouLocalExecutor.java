@@ -120,6 +120,7 @@ public class ChouLocalExecutor implements PipelineExecutor {
                 .whenComplete((ignored, throwable) -> {
                     // by ForkJoinPool.commonPool-worker
                     LOG.debug("@@@ LocalExecutor@execute()::whenComplete(): ignored=", ignored);
+                    new RuntimeException().printStackTrace();
                     if (throwable == null) {
                         PipelineExecutorUtils.notifyJobStatusListeners(pipeline, streamGraph, jobStatusChangedListeners);
                     } else {

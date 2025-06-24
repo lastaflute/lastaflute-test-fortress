@@ -1,13 +1,11 @@
 
 
-
-
       +----------------------------+
       | StreamExecutionEnvironment |
-      |                            |                 +----------------+
+      |                            |              *  +----------------+
       |            transformations | <>------------- | Transformation |
       |                            |                 +----------------+
-      |                            | make                           |-PhysicalTransformation
+      |                            | new & make                     |-PhysicalTransformation
       |                            | ------------+                  |  |-TransformationWithLineage
  +-<> | executorServiceLoader      |             |                  |  |  |-SourceTransformation <-+
  |    |                            |             |                  |  |    (by env.fromData())    |
@@ -90,7 +88,7 @@
     |      |                             |                               |
     |      |                 +-------------+  start()                    |
     v      |                 | submitJob() | ---------+ submitJob()      |
-    |      |                 +-------------+          |                  |
+    |      |                 +-------------+ (new)    |                  |
     |      |         returns                          |                  |
     |      |      +--- CompletableFuture<JobClient>   v                  |
     |      |      |                          +-------------+  new        |
@@ -131,5 +129,28 @@
                                         | JobExecutionResult | <---+
                                         +--------------------+
                                         returns to application
+
+
+to be continued...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
