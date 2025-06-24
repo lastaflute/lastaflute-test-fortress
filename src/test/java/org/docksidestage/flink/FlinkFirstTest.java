@@ -84,8 +84,9 @@ public class FlinkFirstTest extends PlainTestCase {
         // 実行に必須ではない。print()しなくても、operatorたちに仕込んだログは出力されるので実行はされている。
         //operator.print();
 
+        log("@@@ ...Executing by enviroment: env=", env);
         JobExecutionResult result = env.execute("maihama"); // ここで実際に実行する (期待値: ログが出る)
-        log(result);
+        log("@@@ result={}", result);
 
         // Apache Flink の Backpressure の仕組みについて調べた
         // https://soonraah.github.io/posts/backpressure-for-flink/

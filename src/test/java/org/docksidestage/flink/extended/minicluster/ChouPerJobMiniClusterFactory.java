@@ -13,14 +13,13 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.flink.extended;
+package org.docksidestage.flink.extended.minicluster;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 import org.apache.flink.api.common.JobSubmissionResult;
-import org.apache.flink.client.program.PerJobMiniClusterFactory;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.PipelineOptions;
 import org.apache.flink.configuration.RestOptions;
@@ -28,8 +27,6 @@ import org.apache.flink.configuration.TaskManagerOptions;
 import org.apache.flink.core.execution.JobClient;
 import org.apache.flink.runtime.client.JobInitializationException;
 import org.apache.flink.runtime.minicluster.MiniCluster;
-import org.apache.flink.runtime.minicluster.MiniClusterConfiguration;
-import org.apache.flink.runtime.minicluster.MiniClusterJobClient;
 import org.apache.flink.runtime.minicluster.RpcServiceSharing;
 import org.apache.flink.streaming.api.graph.ExecutionPlan;
 import org.apache.flink.util.MathUtils;
@@ -45,28 +42,28 @@ public class ChouPerJobMiniClusterFactory {
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    private static final Logger LOG = LoggerFactory.getLogger(PerJobMiniClusterFactory.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ChouPerJobMiniClusterFactory.class);
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
     private final Configuration configuration;
-    private final Function<? super MiniClusterConfiguration, ? extends MiniCluster> miniClusterFactory;
+    private final Function<? super ChouMiniClusterConfiguration, ? extends ChouMiniCluster> miniClusterFactory;
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
     public static ChouPerJobMiniClusterFactory create() {
-        return new ChouPerJobMiniClusterFactory(new Configuration(), MiniCluster::new);
+        return new ChouPerJobMiniClusterFactory(new Configuration(), ChouMiniCluster::new);
     }
 
     public static ChouPerJobMiniClusterFactory createWithFactory(Configuration configuration,
-            Function<? super MiniClusterConfiguration, ? extends MiniCluster> miniClusterFactory) {
+            Function<? super ChouMiniClusterConfiguration, ? extends ChouMiniCluster> miniClusterFactory) {
         return new ChouPerJobMiniClusterFactory(configuration, miniClusterFactory);
     }
 
     private ChouPerJobMiniClusterFactory(Configuration configuration,
-            Function<? super MiniClusterConfiguration, ? extends MiniCluster> miniClusterFactory) {
+            Function<? super ChouMiniClusterConfiguration, ? extends ChouMiniCluster> miniClusterFactory) {
         this.configuration = configuration;
         this.miniClusterFactory = miniClusterFactory;
     }
@@ -76,16 +73,20 @@ public class ChouPerJobMiniClusterFactory {
     //                                                                          ==========
     /** Starts a {@link MiniCluster} and submits a job. */
     public CompletableFuture<JobClient> submitJob(ExecutionPlan executionPlan, ClassLoader userCodeClassloader) throws Exception {
-        MiniClusterConfiguration miniClusterConfig = getMiniClusterConfig(executionPlan.getMaximumParallelism());
-        MiniCluster miniCluster = miniClusterFactory.apply(miniClusterConfig);
+        ChouMiniClusterConfiguration miniClusterConfig = getMiniClusterConfig(executionPlan.getMaximumParallelism());
+        ChouMiniCluster miniCluster = miniClusterFactory.apply(miniClusterConfig);
         miniCluster.start();
 
         return miniCluster.submitJob(executionPlan).thenApplyAsync(FunctionUtils.uncheckedFunction(submissionResult -> {
             waitUntilJobInitializationFinished(userCodeClassloader, miniCluster, submissionResult);
             return submissionResult;
         })).thenApply(result -> {
+            // by ForkJoinPool.commonPool-worker
+            LOG.debug("@@@ MinCluster@submitJob()::thenApply(): result={}", result);
             return createMiniClusterJobClient(userCodeClassloader, miniCluster, result);
         }).whenComplete((ignored, throwable) -> {
+            // by ForkJoinPool.commonPool-worker
+            LOG.debug("@@@ MinCluster@submitJob()::whenComplete(): ignored={}", ignored);
             if (throwable != null) {
                 // We failed to create the JobClient and must shutdown to ensure
                 // cleanup.
@@ -94,7 +95,7 @@ public class ChouPerJobMiniClusterFactory {
         }).thenApply(Function.identity());
     }
 
-    private MiniClusterConfiguration getMiniClusterConfig(int maximumParallelism) {
+    private ChouMiniClusterConfiguration getMiniClusterConfig(int maximumParallelism) {
         Configuration configuration = new Configuration(this.configuration);
 
         if (!configuration.contains(RestOptions.BIND_PORT)) {
@@ -115,27 +116,27 @@ public class ChouPerJobMiniClusterFactory {
                 .orElseGet(() -> finalMaximumParallelism > 0 ? MathUtils.divideRoundUp(finalMaximumParallelism, numTaskManagers)
                         : TaskManagerOptions.NUM_TASK_SLOTS.defaultValue());
 
-        return new MiniClusterConfiguration.Builder().setConfiguration(configuration)
+        return new ChouMiniClusterConfiguration.Builder().setConfiguration(configuration)
                 .setNumTaskManagers(numTaskManagers)
                 .setRpcServiceSharing(RpcServiceSharing.SHARED)
                 .setNumSlotsPerTaskManager(numSlotsPerTaskManager)
                 .build();
     }
 
-    private void waitUntilJobInitializationFinished(ClassLoader userCodeClassloader, MiniCluster miniCluster,
+    private void waitUntilJobInitializationFinished(ClassLoader userCodeClassloader, ChouMiniCluster miniCluster,
             JobSubmissionResult submissionResult) throws JobInitializationException {
         org.apache.flink.client.ClientUtils.waitUntilJobInitializationFinished(
                 () -> miniCluster.getJobStatus(submissionResult.getJobID()).get(),
                 () -> miniCluster.requestJobResult(submissionResult.getJobID()).get(), userCodeClassloader);
     }
 
-    private MiniClusterJobClient createMiniClusterJobClient(ClassLoader userCodeClassloader, MiniCluster miniCluster,
+    private ChouMiniClusterJobClient createMiniClusterJobClient(ClassLoader userCodeClassloader, ChouMiniCluster miniCluster,
             JobSubmissionResult result) {
-        return new MiniClusterJobClient(result.getJobID(), miniCluster, userCodeClassloader,
-                MiniClusterJobClient.JobFinalizationBehavior.SHUTDOWN_CLUSTER);
+        return new ChouMiniClusterJobClient(result.getJobID(), miniCluster, userCodeClassloader,
+                ChouMiniClusterJobClient.JobFinalizationBehavior.SHUTDOWN_CLUSTER);
     }
 
-    private static void shutDownCluster(MiniCluster miniCluster) {
+    private static void shutDownCluster(ChouMiniCluster miniCluster) {
         miniCluster.closeAsync().whenComplete((ignored, throwable) -> {
             if (throwable != null) {
                 LOG.warn("Shutdown of MiniCluster failed.", throwable);

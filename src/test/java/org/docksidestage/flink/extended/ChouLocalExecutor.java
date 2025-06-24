@@ -26,7 +26,6 @@ import java.util.function.Function;
 
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.api.dag.Pipeline;
-import org.apache.flink.client.deployment.executors.LocalExecutor;
 import org.apache.flink.client.deployment.executors.PipelineExecutorUtils;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.DeploymentOptions;
@@ -34,10 +33,11 @@ import org.apache.flink.core.execution.JobClient;
 import org.apache.flink.core.execution.JobStatusChangedListener;
 import org.apache.flink.core.execution.JobStatusChangedListenerUtils;
 import org.apache.flink.core.execution.PipelineExecutor;
-import org.apache.flink.runtime.minicluster.MiniCluster;
-import org.apache.flink.runtime.minicluster.MiniClusterConfiguration;
 import org.apache.flink.streaming.api.graph.StreamGraph;
 import org.apache.flink.util.concurrent.ExecutorThreadFactory;
+import org.docksidestage.flink.extended.minicluster.ChouMiniCluster;
+import org.docksidestage.flink.extended.minicluster.ChouMiniClusterConfiguration;
+import org.docksidestage.flink.extended.minicluster.ChouPerJobMiniClusterFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +50,7 @@ public class ChouLocalExecutor implements PipelineExecutor {
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    private static final Logger LOG = LoggerFactory.getLogger(LocalExecutor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ChouLocalExecutor.class);
 
     private static final int THREAD_COUNT = 2;
     public static final String NAME = "local";
@@ -59,7 +59,7 @@ public class ChouLocalExecutor implements PipelineExecutor {
     //                                                                           Attribute
     //                                                                           =========
     private final Configuration configuration;
-    private final Function<MiniClusterConfiguration, MiniCluster> miniClusterFactory;
+    private final Function<ChouMiniClusterConfiguration, ChouMiniCluster> miniClusterFactory;
     private final List<JobStatusChangedListener> jobStatusChangedListeners;
     private final ExecutorService executorService = Executors.newFixedThreadPool(THREAD_COUNT, createThreadFactory());
 
@@ -76,15 +76,15 @@ public class ChouLocalExecutor implements PipelineExecutor {
     //                                                                         Constructor
     //                                                                         ===========
     public static ChouLocalExecutor create(Configuration configuration) {
-        return new ChouLocalExecutor(configuration, miniConf -> new MiniCluster(miniConf));
+        return new ChouLocalExecutor(configuration, miniConf -> new ChouMiniCluster(miniConf));
     }
 
     public static ChouLocalExecutor createWithFactory(Configuration configuration,
-            Function<MiniClusterConfiguration, MiniCluster> miniClusterFactory) {
+            Function<ChouMiniClusterConfiguration, ChouMiniCluster> miniClusterFactory) {
         return new ChouLocalExecutor(configuration, miniClusterFactory);
     }
 
-    private ChouLocalExecutor(Configuration configuration, Function<MiniClusterConfiguration, MiniCluster> miniClusterFactory) {
+    private ChouLocalExecutor(Configuration configuration, Function<ChouMiniClusterConfiguration, ChouMiniCluster> miniClusterFactory) {
         this.configuration = configuration;
         this.miniClusterFactory = miniClusterFactory;
         this.jobStatusChangedListeners = JobStatusChangedListenerUtils
@@ -97,6 +97,9 @@ public class ChouLocalExecutor implements PipelineExecutor {
     @Override
     public CompletableFuture<JobClient> execute(Pipeline pipeline, Configuration configuration, ClassLoader userCodeClassloader)
             throws Exception {
+        // by main thread
+        LOG.debug("@@@ LocalExecutor@execute(): pipeline=", pipeline);
+
         checkNotNull(pipeline);
         checkNotNull(configuration);
 
@@ -115,6 +118,8 @@ public class ChouLocalExecutor implements PipelineExecutor {
         return ChouPerJobMiniClusterFactory.createWithFactory(effectiveConfig, miniClusterFactory)
                 .submitJob(streamGraph, userCodeClassloader)
                 .whenComplete((ignored, throwable) -> {
+                    // by ForkJoinPool.commonPool-worker
+                    LOG.debug("@@@ LocalExecutor@execute()::whenComplete(): ignored=", ignored);
                     if (throwable == null) {
                         PipelineExecutorUtils.notifyJobStatusListeners(pipeline, streamGraph, jobStatusChangedListeners);
                     } else {
