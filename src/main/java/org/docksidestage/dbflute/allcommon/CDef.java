@@ -475,16 +475,16 @@ public interface CDef extends Classification {
      * category of product. self reference
      */
     public enum ProductCategory implements CDef {
-        /** Music */
-        Music("MSC", "Music"),
         /** Food */
         Food("FOD", "Food"),
+        /** Music */
+        Music("MSC", "Music"),
         /** Herb: of Food */
         Herb("HEB", "Herb"),
-        /** MusicCD: of Music */
-        MusicCD("MCD", "MusicCD"),
         /** Instruments: of Music */
-        Instruments("INS", "Instruments");
+        Instruments("INS", "Instruments"),
+        /** MusicCD: of Music */
+        MusicCD("MCD", "MusicCD");
         private static ZzzoneSlimmer<ProductCategory> _slimmer = new ZzzoneSlimmer<>(ProductCategory.class, values());
         private String _code; private String _alias;
         private ProductCategory(String code, String alias) { _code = code; _alias = alias; }
