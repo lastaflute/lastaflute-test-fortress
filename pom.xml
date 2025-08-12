@@ -44,7 +44,7 @@
 
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.8.1</commons.lang.version>
-		<commons.fileupload.version>1.5</commons.fileupload.version>
+		<commons.fileupload.version>1.6.0</commons.fileupload.version>
 		<eclipse.collections.version>11.0.0</eclipse.collections.version>
 
 		<!-- Testing -->
