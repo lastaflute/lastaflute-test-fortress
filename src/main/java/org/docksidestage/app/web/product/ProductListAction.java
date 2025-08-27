@@ -31,6 +31,7 @@ import org.lastaflute.web.login.AllowAnyoneAccess;
 import org.lastaflute.web.response.HtmlResponse;
 
 /**
+ * 商品検索画面。
  * @author jflute
  */
 @AllowAnyoneAccess
@@ -47,6 +48,12 @@ public class ProductListAction extends FortressBaseAction {
     // ===================================================================================
     //                                                                             Execute
     //                                                                             =======
+    /**
+     * 商品検索画面の表示。検索処理も含む。
+     * @param pageNumber ページングの表示対象ページ番号 (NotNull, EmptyAllowed: ページがなければデフォルトページ)
+     * @param form 検索条件、商品名など (NotNull)
+     * @return 商品一覧画面 (NotNull)
+     */
     @Execute
     public HtmlResponse index(OptionalThing<Integer> pageNumber, ProductSearchForm form) {
         validate(form, messages -> {}, () -> {
@@ -64,8 +71,6 @@ public class ProductListAction extends FortressBaseAction {
         });
     }
 
-    // #hope showDerived() as JsonResponse by jflute (2016/08/08)
-
     // ===================================================================================
     //                                                                              Select
     //                                                                              ======
@@ -74,18 +79,18 @@ public class ProductListAction extends FortressBaseAction {
         return productBhv.selectPage(cb -> {
             cb.setupSelect_ProductStatus();
             cb.setupSelect_ProductCategory();
-            cb.specify().derivedPurchase().max(purchaseCB -> {
+            cb.specify().derivedPurchase().max(purchaseCB -> { // 直近の購入日時
                 purchaseCB.specify().columnPurchaseDatetime();
             }, Product.ALIAS_latestPurchaseDate);
-            if (form.productName != null) {
+            if (form.productName != null) { // 商品名のキーワード検索
                 cb.query().setProductName_LikeSearch(form.productName, op -> op.likeContain());
             }
-            if (form.purchaseMemberName != null) {
+            if (form.purchaseMemberName != null) { // その商品を購入した会員の名前のキーワード検索
                 cb.query().existsPurchase(purchaseCB -> {
                     purchaseCB.query().queryMember().setMemberName_LikeSearch(form.purchaseMemberName, op -> op.likeContain());
                 });
             }
-            if (form.productStatus != null) {
+            if (form.productStatus != null) { // 商品スターテス
                 cb.query().setProductStatusCode_Equal_AsProductStatus(form.productStatus);
             }
             cb.query().addOrderBy_ProductName_Asc();
