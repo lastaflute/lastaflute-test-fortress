@@ -44,8 +44,6 @@ public abstract class BsPurchaseBhv extends AbstractBehaviorWritable<Purchase, P
     //                                                                          Definition
     //                                                                          ==========
     /*df:beginQueryPath*/
-    /** Example for group-by on MySQL-5.6 */
-    public static final String PATH_selectMemberMonthlyPurchase = "selectMemberMonthlyPurchase";
     /*df:endQueryPath*/
 
     // ===================================================================================

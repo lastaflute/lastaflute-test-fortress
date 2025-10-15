@@ -22,11 +22,11 @@
 		<dbflute.version>1.2.8</dbflute.version>
 		<mysql.jdbc.version>8.0.33</mysql.jdbc.version>
 		<lasta.di.version>0.9.2</lasta.di.version>
-		<lastaflute.version>1.2.7</lastaflute.version>
+		<lastaflute.version>1.2.8-A-SNAPSHOT</lastaflute.version>
 		<lasta.thymeleaf.version>0.4.3</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.7</lasta.job.version>
 		<lasta.remoteapi.version>0.5.1</lasta.remoteapi.version>
-		<lasta.meta.version>0.6.2</lasta.meta.version>
+		<lasta.meta.version>0.6.3</lasta.meta.version>
 		<openapidiff.version>2.0.1</openapidiff.version>
 
 		<!-- Partner Library -->
@@ -44,7 +44,7 @@
 
 		<!-- GoodNeighbor Library -->
 		<commons.lang.version>3.8.1</commons.lang.version>
-		<commons.fileupload.version>1.5</commons.fileupload.version>
+		<commons.fileupload.version>1.6.0</commons.fileupload.version>
 		<eclipse.collections.version>11.0.0</eclipse.collections.version>
 
 		<!-- Testing -->
@@ -301,6 +301,59 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<!-- the test of jacoco use, see the following pull request for the detail:
+				 https://github.com/lastaflute/lastaflute-example-harbor/pull/14
+				 $ mvn -e clean verify
+				 -->
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.13</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report-from-exec</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<dataFile>${project.build.directory}/jacoco.exec</dataFile>
+							<outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+							<excludes>
+								<!-- DBFlute auto-generated classes (extended classes are target) -->
+								<exclude>**/dbflute/**/allcommon/**/*.class</exclude>
+								<exclude>**/dbflute/**/bsbhv/**/*.class</exclude>
+								<exclude>**/dbflute/**/bsentity/**/*.class</exclude>
+								<exclude>**/dbflute/**/cbean/bs/**/*.class</exclude>
+								<exclude>**/dbflute/**/cbean/cq/bs/**/*.class</exclude>
+								<exclude>**/dbflute/**/cbean/cq/ciq/**/*.class</exclude>
+								<exclude>**/dbflute/**/cbean/nss/**/*.class</exclude>
+
+								<!-- LastaFlute auto-generated classes -->
+								<exclude>**/mylasta/action/**/*.class</exclude> <!-- also contains manual UserBean -->
+								<exclude>**/mylasta/appcls/**/*.class</exclude>
+								<exclude>**/mylasta/namedcls/**/*.class</exclude>
+								<exclude>**/mylasta/webcls/**/*.class</exclude>
+								<exclude>**/mylasta/mail/**/*.class</exclude>
+								<exclude>**/mylasta/template/**/*.class</exclude>
+								<exclude>**/remote/**/*.class</exclude> <!-- also contains manual behaviors -->
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -329,11 +382,21 @@
 	</profiles>
 
 	<repositories>
-		<repository>
+		<repository> <!-- for old snapshot -->
 			<id>sonatype-oss-public</id>
 			<url>https://oss.sonatype.org/content/groups/public/</url>
 			<releases>
 				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository> <!-- needs to use snapshot -->
+			<id>central-portal-snapshots</id>
+			<url>https://central.sonatype.com/repository/maven-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>

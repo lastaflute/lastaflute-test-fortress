@@ -20,5 +20,5 @@
 	<component name="remoteMaihamaHangarBhv" class="org.docksidestage.remote.maihama.hangar.RemoteMaihamaHangarBhv"/>
 
 	<!-- fortress (single project) -->
-	<component name="remoteFortressBhv" class="org.docksidestage.remote.fortressman.RemoteFortressBhv"/>
+	<component name="remoteFortressManBhv" class="org.docksidestage.remote.fortressman.RemoteFortressManBhv"/>
 </components>

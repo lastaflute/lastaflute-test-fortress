@@ -13,20 +13,21 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.dbflute.exentity.customize;
+package org.docksidestage.app.biz.onionarc.application;
 
-import org.docksidestage.dbflute.bsentity.customize.BsMemberMonthlyPurchase;
+import javax.annotation.Resource;
+
+import org.docksidestage.app.biz.onionarc.domain.service.OnionarcSeaDomainService;
 
 /**
- * The entity of MemberMonthlyPurchase.
- * <p>
- * You can implement your original methods here.
- * This class remains when re-generating.
- * </p>
- * @author DBFlute(AutoGenerator)
+ * @author jflute
  */
-public class MemberMonthlyPurchase extends BsMemberMonthlyPurchase {
+public class OnionarcSeaAppUsecase {
 
-    /** The serial version UID for object serialization. (Default) */
-    private static final long serialVersionUID = 1L;
+    @Resource
+    private OnionarcSeaDomainService seaDomainService;
+
+    public void save() {
+        seaDomainService.save();
+    }
 }

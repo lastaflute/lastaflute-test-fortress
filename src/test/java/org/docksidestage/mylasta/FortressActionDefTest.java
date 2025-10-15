@@ -23,6 +23,7 @@ import org.dbflute.utflute.lastaflute.police.NonActionExtendsActionPolice;
 import org.dbflute.utflute.lastaflute.police.NonWebHasWebReferencePolice;
 import org.dbflute.utflute.lastaflute.police.WebPackageNinjaReferencePolice;
 import org.dbflute.util.Srl;
+import org.docksidestage.mylasta.police.RemoteClsSwaggerSyncPolice;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
 
 /**
@@ -30,6 +31,9 @@ import org.docksidestage.unit.UnitFortressBasicTestCase;
  */
 public class FortressActionDefTest extends UnitFortressBasicTestCase {
 
+    // ===================================================================================
+    //                                                                          LastaFlute
+    //                                                                          ==========
     public void test_component() throws Exception {
         policeStoryOfJavaClassChase(new ActionComponentPolice(tp -> getComponent(tp)));
     }
@@ -70,5 +74,17 @@ public class FortressActionDefTest extends UnitFortressBasicTestCase {
 
     public void test_lastaPresentsSomething() throws Exception {
         policeStoryOfJavaClassChase(new LastaPresentsSomethingPolice().formImmutable().bodyImmutable());
+    }
+
+    // ===================================================================================
+    //                                                                         Application
+    //                                                                         ===========
+    public void test_remoteCls_with_Swagger() {
+        policeStoryOfJavaClassChase(new RemoteClsSwaggerSyncPolice() {
+            @Override
+            protected boolean isWarningLogOnly() {
+                return true; // fortress already has broken classes so logging only for now
+            }
+        });
     }
 }
