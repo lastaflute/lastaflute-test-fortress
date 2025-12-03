@@ -43,7 +43,7 @@
 		<swagger.ui.version>3.35.0</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
-		<commons.lang.version>3.8.1</commons.lang.version>
+		<commons.lang.version>3.18.0</commons.lang.version>
 		<commons.fileupload.version>1.6.0</commons.fileupload.version>
 		<eclipse.collections.version>11.0.0</eclipse.collections.version>
 
