@@ -2601,11 +2601,12 @@
     },
     "/product/list": {
       "get": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
+        "summary": "商品検索画面。, 商品検索画面の表示。検索処理も含む。",
+        "description": "商品検索画面。\n\n@author jflute\n\n---\n\n商品検索画面の表示。検索処理も含む。\n\n@param pageNumber ページングの表示対象ページ番号 (NotNull, EmptyAllowed: ページがなければデフォルトページ)\n@param form 検索条件、商品名など (NotNull)\n@return 商品一覧画面 (NotNull)",
         "parameters": [
           {
             "name": "productName",
+            "description": "商品名のキーワード条件値 (NullAllowed: 非必須)",
             "type": "string",
             "minLength": 0,
             "maxLength": 10,
@@ -2615,13 +2616,13 @@
           },
           {
             "name": "productStatus",
+            "description": "商品種別の条件値 (NullAllowed: 非必須): * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)",
             "type": "string",
             "enum": [
               "ONS",
               "PST",
               "SST"
             ],
-            "description": " * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)",
             "in": "query",
             "default": "ONS",
             "required": false,
@@ -2629,6 +2630,7 @@
           },
           {
             "name": "purchaseMemberName",
+            "description": "その商品を購入した会員の名前のキーワード条件値 (NullAllowed: 非必須)",
             "type": "string",
             "minLength": 0,
             "maxLength": 5,
@@ -2661,11 +2663,12 @@
     },
     "/product/list/{pageNumber}": {
       "get": {
-        "summary": "@author jflute",
-        "description": "@author jflute",
+        "summary": "商品検索画面。, 商品検索画面の表示。検索処理も含む。",
+        "description": "商品検索画面。\n\n@author jflute\n\n---\n\n商品検索画面の表示。検索処理も含む。\n\n@param pageNumber ページングの表示対象ページ番号 (NotNull, EmptyAllowed: ページがなければデフォルトページ)\n@param form 検索条件、商品名など (NotNull)\n@return 商品一覧画面 (NotNull)",
         "parameters": [
           {
             "name": "pageNumber",
+            "description": "ページングの表示対象ページ番号",
             "type": "integer",
             "format": "int32",
             "in": "path",
@@ -2673,6 +2676,7 @@
           },
           {
             "name": "productName",
+            "description": "商品名のキーワード条件値 (NullAllowed: 非必須)",
             "type": "string",
             "minLength": 0,
             "maxLength": 10,
@@ -2682,13 +2686,13 @@
           },
           {
             "name": "productStatus",
+            "description": "商品種別の条件値 (NullAllowed: 非必須): * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)",
             "type": "string",
             "enum": [
               "ONS",
               "PST",
               "SST"
             ],
-            "description": " * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)",
             "in": "query",
             "default": "ONS",
             "required": false,
@@ -2696,6 +2700,7 @@
           },
           {
             "name": "purchaseMemberName",
+            "description": "その商品を購入した会員の名前のキーワード条件値 (NullAllowed: 非必須)",
             "type": "string",
             "minLength": 0,
             "maxLength": 5,

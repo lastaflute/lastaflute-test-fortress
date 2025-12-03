@@ -146,6 +146,12 @@ dl.column-content dd span {
 	color: #AA7777;
 }
 
+.deprecatedtable {
+	/* more viewable than SchemaHTML because old tables are main here */
+	color: #3F7E5E; /* comment-out color */
+	font-size: 1.0em;
+}
+
 /* -------------------------------------------------
                                   Hacomment Modal
 ------------------------------------------------- */
@@ -538,6 +544,7 @@ dl.column-content dd span {
     };
     /**
      * @author hakiba
+	 * @author shiny
      */
     var HacommentUtil = new function(){
         /**
@@ -887,6 +894,11 @@ dl.column-content dd span {
         createSaveHacommentFunction: function (diffCode, diffMap) {
             var that = this;
             return function () {
+                // prevent modal from opening if user is selecting text (for copy/paste)
+                var selection = window.getSelection();
+                if (selection && selection.toString().length > 0) {
+                    return;
+                }
                 // get modal window element
                 var modalElement = document.getElementById("hacomment-modal");
                 modalElement.style.display = "block";
