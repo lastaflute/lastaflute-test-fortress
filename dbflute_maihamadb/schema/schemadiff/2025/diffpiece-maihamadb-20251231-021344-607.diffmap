@@ -1,0 +1,29 @@
+map:{
+    ; 2025/12/31 02:13:44.607 = map:{
+        ; diffDate = 2025/12/31 02:13:44.607
+        ; tableCount = map:{
+            ; next = 20
+            ; previous = 16
+        }
+        ; diffAuthor = jflute
+        ; diffGitBranch = master
+        ; tableDiff = map:{
+            ; summary_product = map:{
+                ; tableName = summary_product
+                ; diffType = ADD
+            }
+            ; summary_withdrawal = map:{
+                ; tableName = summary_withdrawal
+                ; diffType = ADD
+            }
+            ; white_summary_basic_product = map:{
+                ; tableName = white_summary_basic_product
+                ; diffType = ADD
+            }
+            ; white_summary_complex_product = map:{
+                ; tableName = white_summary_complex_product
+                ; diffType = ADD
+            }
+        }
+    }
+}

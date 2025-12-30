@@ -28,5 +28,9 @@
 	<component name="purchasePaymentBhv" class="org.docksidestage.dbflute.exbhv.PurchasePaymentBhv"/>
 	<component name="regionBhv" class="org.docksidestage.dbflute.exbhv.RegionBhv"/>
 	<component name="serviceRankBhv" class="org.docksidestage.dbflute.exbhv.ServiceRankBhv"/>
+	<component name="summaryProductBhv" class="org.docksidestage.dbflute.exbhv.SummaryProductBhv"/>
+	<component name="summaryWithdrawalBhv" class="org.docksidestage.dbflute.exbhv.SummaryWithdrawalBhv"/>
+	<component name="whiteSummaryBasicProductBhv" class="org.docksidestage.dbflute.exbhv.WhiteSummaryBasicProductBhv"/>
+	<component name="whiteSummaryComplexProductBhv" class="org.docksidestage.dbflute.exbhv.WhiteSummaryComplexProductBhv"/>
 	<component name="withdrawalReasonBhv" class="org.docksidestage.dbflute.exbhv.WithdrawalReasonBhv"/>
 </components>

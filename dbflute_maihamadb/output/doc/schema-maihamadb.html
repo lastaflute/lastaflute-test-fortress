@@ -750,6 +750,50 @@ pre.spolicyviodisp {
 		<td class="subcell">WithdrawalReason</td>
 		<td class="subcell"></td>
 	</tr>
+	<tr>
+		<td class="rownumcell">17</td>
+		<td class="aliascell">VIEW</td>
+		<td class="namecell" data-name="summary_product"><a href="#summary_product" title="type=VIEW, primaryKey={}, nameLength=15, columnCount=5">SUMMARY_PRODUCT</a></td>
+		<td class="typecell">VIEW</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="commentcell summary_product_comment"><pre>&nbsp;</pre></td>
+		<td class="subcell">SummaryProduct</td>
+		<td class="subcell">2025/12/31</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">18</td>
+		<td class="aliascell">VIEW</td>
+		<td class="namecell" data-name="summary_withdrawal"><a href="#summary_withdrawal" title="type=VIEW, primaryKey={}, nameLength=18, columnCount=9">SUMMARY_WITHDRAWAL</a></td>
+		<td class="typecell">VIEW</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="commentcell summary_withdrawal_comment"><pre>&nbsp;</pre></td>
+		<td class="subcell">SummaryWithdrawal</td>
+		<td class="subcell">2011/08/27</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">19</td>
+		<td class="aliascell">VIEW</td>
+		<td class="namecell" data-name="white_summary_basic_product"><a href="#white_summary_basic_product" title="type=VIEW, primaryKey={}, nameLength=27, columnCount=4">WHITE_SUMMARY_BASIC_PRODUCT</a></td>
+		<td class="typecell">VIEW</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="commentcell white_summary_basic_product_comment"><pre>&nbsp;</pre></td>
+		<td class="subcell">WhiteSummaryBasicProduct</td>
+		<td class="subcell">2025/12/31</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">20</td>
+		<td class="aliascell">VIEW</td>
+		<td class="namecell" data-name="white_summary_complex_product"><a href="#white_summary_complex_product" title="type=VIEW, primaryKey={}, nameLength=29, columnCount=5">WHITE_SUMMARY_COMPLEX_PRODUCT</a></td>
+		<td class="typecell">VIEW</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="commentcell white_summary_complex_product_comment"><pre>&nbsp;</pre></td>
+		<td class="subcell">WhiteSummaryComplexProduct</td>
+		<td class="subcell">2025/12/31</td>
+	</tr>
 	</tbody>
 </table>
 
@@ -3317,6 +3361,598 @@ pre.spolicyviodisp {
 	</tbody>
 </table>
 
+<h2 id="summary_product" title="type=VIEW, primaryKey={}, nameLength=15, columnCount=5">
+(VIEW)SUMMARY_PRODUCT
+&nbsp;<span class="tablefirstdatetitle">since 2025/12/31</span>
+</h2>
+<div class="tablecomment summary_product_comment" data-name="summary_product"><pre></pre></div>
+<input type="hidden" value="summary_product">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>Default</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="summary_product-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">商品ID</td>
+		<td class=" columnnamecell" id="summary_product_product_id">PRODUCT_ID</td>
+		<td class="typecell">INT</td>
+		<td class="sizecell"> 10 </td>
+		<td class="defvalcell"> 0</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">productId</td>
+		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">商品名称</td>
+		<td class=" columnnamecell" id="summary_product_product_name">PRODUCT_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 50 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。
+実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜</pre></td>
+		<td class="subcell">productName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">商品ハンドルコード</td>
+		<td class=" columnnamecell" id="summary_product_product_handle_code">PRODUCT_HANDLE_CODE</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 100 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...</pre></td>
+		<td class="subcell">productHandleCode</td>
+		<td class="subcell">String</td>
+		<td class="subcell">2011/08/27</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">商品ステータスコード</td>
+		<td class=" columnnamecell" id="summary_product_product_status_code">PRODUCT_STATUS_CODE</td>
+		<td class="typecell">CHAR</td>
+		<td class="sizecell"> 3 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>商品ステータスを識別するコード。</pre></td>
+		<td class="subcell">productStatusCode</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell"></td>
+		<td class=" columnnamecell" id="summary_product_latest_purchase_datetime">LATEST_PURCHASE_DATETIME</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">latestPurchaseDatetime</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="summary_withdrawal" title="type=VIEW, primaryKey={}, nameLength=18, columnCount=9">
+(VIEW)SUMMARY_WITHDRAWAL
+&nbsp;<span class="tablefirstdatetitle">since 2011/08/27</span>
+</h2>
+<div class="tablecomment summary_withdrawal_comment" data-name="summary_withdrawal"><pre></pre></div>
+<input type="hidden" value="summary_withdrawal">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="summary_withdrawal-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">会員ID</td>
+		<td class=" columnnamecell" id="summary_withdrawal_member_id">MEMBER_ID</td>
+		<td class="typecell">INT</td>
+		<td class="sizecell"> 10 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>連番として自動採番される。会員IDだけに限らず採番方法はDBMS次第。</pre></td>
+		<td class="subcell">memberId</td>
+		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">会員名称</td>
+		<td class=" columnnamecell" id="summary_withdrawal_member_name">MEMBER_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 100 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>会員のフルネームの名称。
+苗字と名前を分けて管理することが多いが、ここでは単純にひとまとめ。</pre></td>
+		<td class="subcell">memberName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">退会理由コード</td>
+		<td class=" columnnamecell" id="summary_withdrawal_withdrawal_reason_code">WITHDRAWAL_REASON_CODE</td>
+		<td class="typecell">CHAR</td>
+		<td class="sizecell"> 3 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>定型的な退会した理由を参照するコード。
+何も言わずに退会する会員もいるので必須項目ではない。</pre></td>
+		<td class="subcell">withdrawalReasonCode</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">退会理由テキスト</td>
+		<td class=" columnnamecell" id="summary_withdrawal_withdrawal_reason_text">WITHDRAWAL_REASON_TEXT</td>
+		<td class="typecell">TEXT</td>
+		<td class="sizecell"> 65535 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>退会理由の内容。
+テキスト形式なので目いっぱい書けるが、そうするとUI側できれいに見せるのが大変でしょうね。</pre></td>
+		<td class="subcell">withdrawalReasonText</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">退会理由入力テキスト</td>
+		<td class=" columnnamecell" id="summary_withdrawal_withdrawal_reason_input_text">WITHDRAWAL_REASON_INPUT_TEXT</td>
+		<td class="typecell">TEXT</td>
+		<td class="sizecell"> 65535 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>会員がフリーテキストで入力できる退会理由。
+もう言いたいこと言ってもらう感じ。サイト運営側としてはこういうのは真摯に受け止めて改善していきたいところ。</pre></td>
+		<td class="subcell">withdrawalReasonInputText</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">6</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">退会日時</td>
+		<td class=" columnnamecell" id="summary_withdrawal_withdrawal_datetime">WITHDRAWAL_DATETIME</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>退会した瞬間の日時。
+正式会員日時と違い、こっちは one-to-one の別テーブルで管理されている。</pre></td>
+		<td class="subcell">withdrawalDatetime</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">7</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">会員ステータスコード</td>
+		<td class=" columnnamecell" id="summary_withdrawal_member_status_code">MEMBER_STATUS_CODE</td>
+		<td class="typecell">CHAR</td>
+		<td class="sizecell"> 3 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>会員ステータスを参照するコード。
+ステータスが変わるたびに、このカラムが更新される。</pre></td>
+		<td class="subcell">memberStatusCode</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">8</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">会員ステータス名称</td>
+		<td class=" columnnamecell" id="summary_withdrawal_member_status_name">MEMBER_STATUS_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 50 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>表示用の名称。
+国際化対応するときはもっと色々考える必要があるかと...ということで英語名カラムがないので、そのまま区分値メソッド名の一部としても利用される。</pre></td>
+		<td class="subcell">memberStatusName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">9</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell"></td>
+		<td class=" columnnamecell" id="summary_withdrawal_max_purchase_price">MAX_PURCHASE_PRICE</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">maxPurchasePrice</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="white_summary_basic_product" title="type=VIEW, primaryKey={}, nameLength=27, columnCount=4">
+(VIEW)WHITE_SUMMARY_BASIC_PRODUCT
+&nbsp;<span class="tablefirstdatetitle">since 2025/12/31</span>
+</h2>
+<div class="tablecomment white_summary_basic_product_comment" data-name="white_summary_basic_product"><pre></pre></div>
+<input type="hidden" value="white_summary_basic_product">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>Default</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="white_summary_basic_product-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">商品ID</td>
+		<td class=" columnnamecell" id="white_summary_basic_product_product_id">PRODUCT_ID</td>
+		<td class="typecell">INT</td>
+		<td class="sizecell"> 10 </td>
+		<td class="defvalcell"> 0</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">productId</td>
+		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">商品名称</td>
+		<td class=" columnnamecell" id="white_summary_basic_product_product_name">PRODUCT_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 50 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。
+実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜</pre></td>
+		<td class="subcell">productName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">商品ハンドルコード</td>
+		<td class=" columnnamecell" id="white_summary_basic_product_product_handle_code">PRODUCT_HANDLE_CODE</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 100 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...</pre></td>
+		<td class="subcell">productHandleCode</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">商品ステータスコード</td>
+		<td class=" columnnamecell" id="white_summary_basic_product_product_status_code">PRODUCT_STATUS_CODE</td>
+		<td class="typecell">CHAR</td>
+		<td class="sizecell"> 3 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>商品ステータスを識別するコード。</pre></td>
+		<td class="subcell">productStatusCode</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="white_summary_complex_product" title="type=VIEW, primaryKey={}, nameLength=29, columnCount=5">
+(VIEW)WHITE_SUMMARY_COMPLEX_PRODUCT
+&nbsp;<span class="tablefirstdatetitle">since 2025/12/31</span>
+</h2>
+<div class="tablecomment white_summary_complex_product_comment" data-name="white_summary_complex_product"><pre></pre></div>
+<input type="hidden" value="white_summary_complex_product">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>Default</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="white_summary_complex_product-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">商品ID</td>
+		<td class=" columnnamecell" id="white_summary_complex_product_product_id">PRODUCT_ID</td>
+		<td class="typecell">INT</td>
+		<td class="sizecell"> 10 </td>
+		<td class="defvalcell"> 0</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">productId</td>
+		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">商品名称</td>
+		<td class=" columnnamecell" id="white_summary_complex_product_product_name">PRODUCT_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 50 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。
+実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜</pre></td>
+		<td class="subcell">productName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">商品ハンドルコード</td>
+		<td class=" columnnamecell" id="white_summary_complex_product_product_handle_code">PRODUCT_HANDLE_CODE</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 100 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...</pre></td>
+		<td class="subcell">productHandleCode</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">商品ステータスコード</td>
+		<td class=" columnnamecell" id="white_summary_complex_product_product_status_code">PRODUCT_STATUS_CODE</td>
+		<td class="typecell">CHAR</td>
+		<td class="sizecell"> 3 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>商品ステータスを識別するコード。</pre></td>
+		<td class="subcell">productStatusCode</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell"></td>
+		<td class=" columnnamecell" id="white_summary_complex_product_latest_purchase_datetime">LATEST_PURCHASE_DATETIME</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">latestPurchaseDatetime</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
 
 <h2 id="cdef">Classification Definition</h2>
 <table>
@@ -4646,6 +5282,95 @@ function StoreClient() {
 				}
 				, 'DISPLAY_ORDER': {
 					'databaseComment': 'もう、ご想像の通りです。'
+				}
+			}
+		}
+		, 'summary_product': {
+			'databaseComment': ''
+			, 'columns': {
+				'PRODUCT_ID': {
+					'databaseComment': ''
+				}
+				, 'PRODUCT_NAME': {
+					'databaseComment': 'ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。<br>実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜'
+				}
+				, 'PRODUCT_HANDLE_CODE': {
+					'databaseComment': 'これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...'
+				}
+				, 'PRODUCT_STATUS_CODE': {
+					'databaseComment': '商品ステータスを識別するコード。'
+				}
+				, 'LATEST_PURCHASE_DATETIME': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'summary_withdrawal': {
+			'databaseComment': ''
+			, 'columns': {
+				'MEMBER_ID': {
+					'databaseComment': '連番として自動採番される。会員IDだけに限らず採番方法はDBMS次第。'
+				}
+				, 'MEMBER_NAME': {
+					'databaseComment': '会員のフルネームの名称。<br>苗字と名前を分けて管理することが多いが、ここでは単純にひとまとめ。'
+				}
+				, 'WITHDRAWAL_REASON_CODE': {
+					'databaseComment': '定型的な退会した理由を参照するコード。<br>何も言わずに退会する会員もいるので必須項目ではない。'
+				}
+				, 'WITHDRAWAL_REASON_TEXT': {
+					'databaseComment': '退会理由の内容。<br>テキスト形式なので目いっぱい書けるが、そうするとUI側できれいに見せるのが大変でしょうね。'
+				}
+				, 'WITHDRAWAL_REASON_INPUT_TEXT': {
+					'databaseComment': '会員がフリーテキストで入力できる退会理由。<br>もう言いたいこと言ってもらう感じ。サイト運営側としてはこういうのは真摯に受け止めて改善していきたいところ。'
+				}
+				, 'WITHDRAWAL_DATETIME': {
+					'databaseComment': '退会した瞬間の日時。<br>正式会員日時と違い、こっちは&nbsp;one-to-one&nbsp;の別テーブルで管理されている。'
+				}
+				, 'MEMBER_STATUS_CODE': {
+					'databaseComment': '会員ステータスを参照するコード。<br>ステータスが変わるたびに、このカラムが更新される。'
+				}
+				, 'MEMBER_STATUS_NAME': {
+					'databaseComment': '表示用の名称。<br>国際化対応するときはもっと色々考える必要があるかと...ということで英語名カラムがないので、そのまま区分値メソッド名の一部としても利用される。'
+				}
+				, 'MAX_PURCHASE_PRICE': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'white_summary_basic_product': {
+			'databaseComment': ''
+			, 'columns': {
+				'PRODUCT_ID': {
+					'databaseComment': ''
+				}
+				, 'PRODUCT_NAME': {
+					'databaseComment': 'ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。<br>実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜'
+				}
+				, 'PRODUCT_HANDLE_CODE': {
+					'databaseComment': 'これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...'
+				}
+				, 'PRODUCT_STATUS_CODE': {
+					'databaseComment': '商品ステータスを識別するコード。'
+				}
+			}
+		}
+		, 'white_summary_complex_product': {
+			'databaseComment': ''
+			, 'columns': {
+				'PRODUCT_ID': {
+					'databaseComment': ''
+				}
+				, 'PRODUCT_NAME': {
+					'databaseComment': 'ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。<br>実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜'
+				}
+				, 'PRODUCT_HANDLE_CODE': {
+					'databaseComment': 'これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ...'
+				}
+				, 'PRODUCT_STATUS_CODE': {
+					'databaseComment': '商品ステータスを識別するコード。'
+				}
+				, 'LATEST_PURCHASE_DATETIME': {
+					'databaseComment': ''
 				}
 			}
 		}
