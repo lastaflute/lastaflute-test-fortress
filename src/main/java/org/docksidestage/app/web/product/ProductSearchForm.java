@@ -20,15 +20,19 @@ import org.hibernate.validator.constraints.Length;
 import org.lastaflute.core.util.Lato;
 
 /**
+ * 検索条件、商品名など。
  * @author jflute
  */
 public class ProductSearchForm {
 
+    /** 商品名のキーワード条件値 (NullAllowed: 非必須) */
     @Length(max = 10) // #simple_for_example just for validtion example
     public String productName;
 
+    /** 商品種別の条件値 (NullAllowed: 非必須) */
     public CDef.ProductStatus productStatus;
 
+    /** その商品を購入した会員の名前のキーワード条件値 (NullAllowed: 非必須) */
     @Length(max = 5) // #simple_for_example just for validtion example
     public String purchaseMemberName;
 

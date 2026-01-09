@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.dbflute.bsentity.customize.dbmeta;
+package org.docksidestage.dbflute.bsentity.dbmeta;
 
 import java.util.List;
 import java.util.Map;
@@ -25,20 +25,20 @@ import org.dbflute.dbmeta.name.*;
 import org.dbflute.dbmeta.property.PropertyGateway;
 import org.dbflute.dbway.DBDef;
 import org.docksidestage.dbflute.allcommon.*;
-import org.docksidestage.dbflute.exentity.customize.*;
+import org.docksidestage.dbflute.exentity.*;
 
 /**
- * The DB meta of MemberMonthlyPurchase. (Singleton)
+ * The DB meta of summary_product. (Singleton)
  * @author DBFlute(AutoGenerator)
  */
-public class MemberMonthlyPurchaseDbm extends AbstractDBMeta {
+public class SummaryProductDbm extends AbstractDBMeta {
 
     // ===================================================================================
     //                                                                           Singleton
     //                                                                           =========
-    private static final MemberMonthlyPurchaseDbm _instance = new MemberMonthlyPurchaseDbm();
-    private MemberMonthlyPurchaseDbm() {}
-    public static MemberMonthlyPurchaseDbm getInstance() { return _instance; }
+    private static final SummaryProductDbm _instance = new SummaryProductDbm();
+    private SummaryProductDbm() {}
+    public static SummaryProductDbm getInstance() { return _instance; }
 
     // ===================================================================================
     //                                                                       Current DBDef
@@ -57,13 +57,11 @@ public class MemberMonthlyPurchaseDbm extends AbstractDBMeta {
     protected final Map<String, PropertyGateway> _epgMap = newHashMap();
     { xsetupEpg(); }
     protected void xsetupEpg() {
-        setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getMemberId(), (et, vl) -> ((MemberMonthlyPurchase)et).setMemberId(cti(vl)), "memberId");
-        setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getMemberName(), (et, vl) -> ((MemberMonthlyPurchase)et).setMemberName((String)vl), "memberName");
-        setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getPurchaseMonth(), (et, vl) -> ((MemberMonthlyPurchase)et).setPurchaseMonth(ctld(vl)), "purchaseMonth");
-        setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getPurchasePriceAvg(), (et, vl) -> ((MemberMonthlyPurchase)et).setPurchasePriceAvg(ctb(vl)), "purchasePriceAvg");
-        setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getPurchasePriceMax(), (et, vl) -> ((MemberMonthlyPurchase)et).setPurchasePriceMax(cti(vl)), "purchasePriceMax");
-        setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getPurchaseCount(), (et, vl) -> ((MemberMonthlyPurchase)et).setPurchaseCount(cti(vl)), "purchaseCount");
-        setupEpg(_epgMap, et -> ((MemberMonthlyPurchase)et).getServicePointCount(), (et, vl) -> ((MemberMonthlyPurchase)et).setServicePointCount(cti(vl)), "servicePointCount");
+        setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductId(), (et, vl) -> ((SummaryProduct)et).setProductId(cti(vl)), "productId");
+        setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductName(), (et, vl) -> ((SummaryProduct)et).setProductName((String)vl), "productName");
+        setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductHandleCode(), (et, vl) -> ((SummaryProduct)et).setProductHandleCode((String)vl), "productHandleCode");
+        setupEpg(_epgMap, et -> ((SummaryProduct)et).getProductStatusCode(), (et, vl) -> ((SummaryProduct)et).setProductStatusCode((String)vl), "productStatusCode");
+        setupEpg(_epgMap, et -> ((SummaryProduct)et).getLatestPurchaseDatetime(), (et, vl) -> ((SummaryProduct)et).setLatestPurchaseDatetime(ctldt(vl)), "latestPurchaseDatetime");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
@@ -71,72 +69,60 @@ public class MemberMonthlyPurchaseDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                          Table Info
     //                                                                          ==========
-    protected final String _tableDbName = "MemberMonthlyPurchase";
-    protected final String _tableDispName = "MemberMonthlyPurchase";
-    protected final String _tablePropertyName = "memberMonthlyPurchase";
-    protected final TableSqlName _tableSqlName = new TableSqlName("MemberMonthlyPurchase", _tableDbName);
+    protected final String _tableDbName = "summary_product";
+    protected final String _tableDispName = "SUMMARY_PRODUCT";
+    protected final String _tablePropertyName = "summaryProduct";
+    protected final TableSqlName _tableSqlName = new TableSqlName("SUMMARY_PRODUCT", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }
     public String getTablePropertyName() { return _tablePropertyName; }
     public TableSqlName getTableSqlName() { return _tableSqlName; }
+    protected final String _tableAlias = "VIEW";
+    public String getTableAlias() { return _tableAlias; }
 
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnMemberId = cci("MEMBER_ID", "MEMBER_ID", null, "会員ID", Integer.class, "memberId", null, false, false, false, "INT", 11, 0, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnMemberName = cci("MEMBER_NAME", "MEMBER_NAME", null, "会員名称", String.class, "memberName", null, false, false, false, "VARCHAR", 100, 0, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnPurchaseMonth = cci("PURCHASE_MONTH", "PURCHASE_MONTH", null, null, java.time.LocalDate.class, "purchaseMonth", null, false, false, false, "DATE", 10, 0, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnPurchasePriceAvg = cci("PURCHASE_PRICE_AVG", "PURCHASE_PRICE_AVG", null, null, java.math.BigDecimal.class, "purchasePriceAvg", null, false, false, false, "DECIMAL", 14, 4, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnPurchasePriceMax = cci("PURCHASE_PRICE_MAX", "PURCHASE_PRICE_MAX", null, null, Integer.class, "purchasePriceMax", null, false, false, false, "INT", 11, 0, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnPurchaseCount = cci("PURCHASE_COUNT", "PURCHASE_COUNT", null, "購入数量", Integer.class, "purchaseCount", null, false, false, false, "INT", 11, 0, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnServicePointCount = cci("SERVICE_POINT_COUNT", "SERVICE_POINT_COUNT", null, "サービスポイント数", Integer.class, "servicePointCount", null, false, false, false, "INT", 11, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnProductId = cci("PRODUCT_ID", "PRODUCT_ID", null, "商品ID", Integer.class, "productId", null, false, false, false, "INT", 10, 0, null, "0", false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnProductName = cci("PRODUCT_NAME", "PRODUCT_NAME", null, "商品名称", String.class, "productName", null, false, false, false, "VARCHAR", 50, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnProductHandleCode = cci("PRODUCT_HANDLE_CODE", "PRODUCT_HANDLE_CODE", null, "商品ハンドルコード", String.class, "productHandleCode", null, false, false, false, "VARCHAR", 100, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnProductStatusCode = cci("PRODUCT_STATUS_CODE", "PRODUCT_STATUS_CODE", null, "商品ステータスコード", String.class, "productStatusCode", null, false, false, false, "CHAR", 3, 0, null, null, false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnLatestPurchaseDatetime = cci("LATEST_PURCHASE_DATETIME", "LATEST_PURCHASE_DATETIME", null, null, java.time.LocalDateTime.class, "latestPurchaseDatetime", null, false, false, false, "DATETIME", 19, 0, null, null, false, null, null, null, null, null, false);
 
     /**
-     * (会員ID)MEMBER_ID: {INT(11), refers to member.MEMBER_ID}
+     * (商品ID)PRODUCT_ID: {INT(10), default=[0]}
      * @return The information object of specified column. (NotNull)
      */
-    public ColumnInfo columnMemberId() { return _columnMemberId; }
+    public ColumnInfo columnProductId() { return _columnProductId; }
     /**
-     * (会員名称)MEMBER_NAME: {VARCHAR(100), refers to member.MEMBER_NAME}
+     * (商品名称)PRODUCT_NAME: {VARCHAR(50)}
      * @return The information object of specified column. (NotNull)
      */
-    public ColumnInfo columnMemberName() { return _columnMemberName; }
+    public ColumnInfo columnProductName() { return _columnProductName; }
     /**
-     * PURCHASE_MONTH: {DATE(10)}
+     * (商品ハンドルコード)PRODUCT_HANDLE_CODE: {VARCHAR(100)}
      * @return The information object of specified column. (NotNull)
      */
-    public ColumnInfo columnPurchaseMonth() { return _columnPurchaseMonth; }
+    public ColumnInfo columnProductHandleCode() { return _columnProductHandleCode; }
     /**
-     * PURCHASE_PRICE_AVG: {DECIMAL(14, 4)}
+     * (商品ステータスコード)PRODUCT_STATUS_CODE: {CHAR(3)}
      * @return The information object of specified column. (NotNull)
      */
-    public ColumnInfo columnPurchasePriceAvg() { return _columnPurchasePriceAvg; }
+    public ColumnInfo columnProductStatusCode() { return _columnProductStatusCode; }
     /**
-     * PURCHASE_PRICE_MAX: {INT(11)}
+     * LATEST_PURCHASE_DATETIME: {DATETIME(19)}
      * @return The information object of specified column. (NotNull)
      */
-    public ColumnInfo columnPurchasePriceMax() { return _columnPurchasePriceMax; }
-    /**
-     * (購入数量)PURCHASE_COUNT: {INT(11), refers to purchase.PURCHASE_COUNT}
-     * @return The information object of specified column. (NotNull)
-     */
-    public ColumnInfo columnPurchaseCount() { return _columnPurchaseCount; }
-    /**
-     * (サービスポイント数)SERVICE_POINT_COUNT: {INT(11), refers to member_service.SERVICE_POINT_COUNT}
-     * @return The information object of specified column. (NotNull)
-     */
-    public ColumnInfo columnServicePointCount() { return _columnServicePointCount; }
+    public ColumnInfo columnLatestPurchaseDatetime() { return _columnLatestPurchaseDatetime; }
 
     protected List<ColumnInfo> ccil() {
         List<ColumnInfo> ls = newArrayList();
-        ls.add(columnMemberId());
-        ls.add(columnMemberName());
-        ls.add(columnPurchaseMonth());
-        ls.add(columnPurchasePriceAvg());
-        ls.add(columnPurchasePriceMax());
-        ls.add(columnPurchaseCount());
-        ls.add(columnServicePointCount());
+        ls.add(columnProductId());
+        ls.add(columnProductName());
+        ls.add(columnProductHandleCode());
+        ls.add(columnProductStatusCode());
+        ls.add(columnLatestPurchaseDatetime());
         return ls;
     }
 
@@ -174,27 +160,27 @@ public class MemberMonthlyPurchaseDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                           Type Name
     //                                                                           =========
-    public String getEntityTypeName() { return "org.docksidestage.dbflute.exentity.customize.MemberMonthlyPurchase"; }
-    public String getConditionBeanTypeName() { return null; }
-    public String getBehaviorTypeName() { return null; }
+    public String getEntityTypeName() { return "org.docksidestage.dbflute.exentity.SummaryProduct"; }
+    public String getConditionBeanTypeName() { return "org.docksidestage.dbflute.cbean.SummaryProductCB"; }
+    public String getBehaviorTypeName() { return "org.docksidestage.dbflute.exbhv.SummaryProductBhv"; }
 
     // ===================================================================================
     //                                                                         Object Type
     //                                                                         ===========
-    public Class<MemberMonthlyPurchase> getEntityType() { return MemberMonthlyPurchase.class; }
+    public Class<SummaryProduct> getEntityType() { return SummaryProduct.class; }
 
     // ===================================================================================
     //                                                                     Object Instance
     //                                                                     ===============
-    public MemberMonthlyPurchase newEntity() { return new MemberMonthlyPurchase(); }
+    public SummaryProduct newEntity() { return new SummaryProduct(); }
 
     // ===================================================================================
     //                                                                   Map Communication
     //                                                                   =================
     public void acceptPrimaryKeyMap(Entity et, Map<String, ? extends Object> mp)
-    { doAcceptPrimaryKeyMap((MemberMonthlyPurchase)et, mp); }
+    { doAcceptPrimaryKeyMap((SummaryProduct)et, mp); }
     public void acceptAllColumnMap(Entity et, Map<String, ? extends Object> mp)
-    { doAcceptAllColumnMap((MemberMonthlyPurchase)et, mp); }
+    { doAcceptAllColumnMap((SummaryProduct)et, mp); }
     public Map<String, Object> extractPrimaryKeyMap(Entity et) { return doExtractPrimaryKeyMap(et); }
     public Map<String, Object> extractAllColumnMap(Entity et) { return doExtractAllColumnMap(et); }
 }

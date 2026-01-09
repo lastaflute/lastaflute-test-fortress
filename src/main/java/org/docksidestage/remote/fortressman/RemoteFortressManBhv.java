@@ -20,17 +20,23 @@ import java.io.InputStream;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.NameValuePair;
 import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
 import org.dbflute.helper.beans.DfPropertyDesc;
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.dbflute.remoteapi.exception.RemoteApiHttpClientErrorException;
 import org.dbflute.remoteapi.mapping.FlRemoteMappingPolicy;
 import org.dbflute.remoteapi.mapping.FlVacantMappingPolicy;
+import org.dbflute.remoteapi.sender.body.RequestBodySender;
 import org.docksidestage.remote.fortressman.base.RemoteFrUnifiedFailureResult;
 import org.docksidestage.remote.fortressman.base.RemoteFrUnifiedFailureResult.RemoteUnifiedFailureType;
 import org.docksidestage.remote.fortressman.wx.multipart.RemoteFrMultipartParam;
+import org.docksidestage.remote.fortressman.wx.xml.RemoteXmlParam;
 import org.lastaflute.core.json.JsonMappingOption;
 import org.lastaflute.core.message.UserMessage;
 import org.lastaflute.core.message.UserMessages;
@@ -46,12 +52,12 @@ import org.lastaflute.web.servlet.request.RequestManager;
 /**
  * @author jflute
  */
-public class RemoteFortressBhv extends LastaRemoteBehavior {
+public class RemoteFortressManBhv extends LastaRemoteBehavior {
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public RemoteFortressBhv(RequestManager requestManager) {
+    public RemoteFortressManBhv(RequestManager requestManager) {
         super(requestManager);
     }
 
@@ -91,8 +97,8 @@ public class RemoteFortressBhv extends LastaRemoteBehavior {
     }
 
     // ===================================================================================
-    //                                                                             Execute
-    //                                                                             =======
+    //                                                                   Request Multipart
+    //                                                                   =================
     // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
     // *self-call so you cannot request action to action when hot deploy
     // _/_/_/_/_/_/_/_/_/_/
@@ -148,5 +154,32 @@ public class RemoteFortressBhv extends LastaRemoteBehavior {
                 throw new IllegalStateException("Failed to get input stream: formFile" + formFile, e);
             }
         }
+    }
+
+    // ===================================================================================
+    //                                                                         Request XML
+    //                                                                         ===========
+    public void requestXmlBody(RemoteXmlParam param) {
+        doRequestPost(void.class, "/wx/request/xml/body", noMoreUrl(), param, rule -> {
+            rule.sendBodyBy(new RequestBodySender() {
+                @Override
+                public void prepareEnclosingRequest(HttpEntityEnclosingRequest enclosingRequest, Object param, FlutyRemoteApiRule rule) {
+                    RemoteXmlParam xmlParam = (RemoteXmlParam) param;
+
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>").append("\n");
+                    sb.append("<maihama>").append("\n");
+                    sb.append("  <sea>").append(xmlParam.sea).append("</sea>").append("\n");
+                    sb.append("  <land>").append(xmlParam.land).append("</land>").append("\n");
+                    sb.append("</maihama>").append("\n");
+                    String xml = sb.toString();
+
+                    final String charsetName = rule.getRequestBodyCharset().name();
+                    final StringEntity entity = new StringEntity(xml, charsetName);
+                    entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "text/xml"));
+                    enclosingRequest.setEntity(entity);
+                }
+            });
+        });
     }
 }

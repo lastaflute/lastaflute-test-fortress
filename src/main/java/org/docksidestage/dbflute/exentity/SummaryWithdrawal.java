@@ -13,19 +13,19 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.dbflute.exentity.customize;
+package org.docksidestage.dbflute.exentity;
 
-import org.docksidestage.dbflute.bsentity.customize.BsMemberMonthlyPurchase;
+import org.docksidestage.dbflute.bsentity.BsSummaryWithdrawal;
 
 /**
- * The entity of MemberMonthlyPurchase.
+ * The entity of SUMMARY_WITHDRAWAL.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.
  * </p>
  * @author DBFlute(AutoGenerator)
  */
-public class MemberMonthlyPurchase extends BsMemberMonthlyPurchase {
+public class SummaryWithdrawal extends BsSummaryWithdrawal {
 
     /** The serial version UID for object serialization. (Default) */
     private static final long serialVersionUID = 1L;

@@ -13,21 +13,17 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.dbflute.exbhv.pmbean;
+package org.docksidestage.dbflute.cbean;
 
-import org.docksidestage.dbflute.bsbhv.pmbean.BsMemberMonthlyPurchasePmb;
+import org.docksidestage.dbflute.cbean.bs.BsSummaryWithdrawalCB;
 
 /**
- * <!-- df:beginClassDescription -->
- * The typed parameter-bean of MemberMonthlyPurchase. <span style="color: #AD4747">(typed to list, entity)</span><br>
- * This is related to "<span style="color: #AD4747">selectMemberMonthlyPurchase</span>" on PurchaseBhv, <br>
- * described as "Example for group-by on MySQL-5.6". <br>
- * <!-- df:endClassDescription -->
+ * The condition-bean of SUMMARY_WITHDRAWAL.
  * <p>
  * You can implement your original methods here.
  * This class remains when re-generating.
  * </p>
  * @author DBFlute(AutoGenerator)
  */
-public class MemberMonthlyPurchasePmb extends BsMemberMonthlyPurchasePmb {
+public class SummaryWithdrawalCB extends BsSummaryWithdrawalCB {
 }

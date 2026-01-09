@@ -1,7 +1,6 @@
 {
   "editor.defaultFormatter": "redhat.java",
-  "java.format.settings.profile": "DBFlute Style",
-  "java.format.settings.url": "https://dbflute.org/meta/friends/eclipse/dbflute-eclipse-code-formatter.xml",
+  "java.format.settings.url": "",
   "editor.formatOnSave": true,
   "java.saveActions.organizeImports": true
 }

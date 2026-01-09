@@ -146,6 +146,12 @@ dl.column-content dd span {
 	color: #AA7777;
 }
 
+.deprecatedtable {
+	/* more viewable than SchemaHTML because old tables are main here */
+	color: #3F7E5E; /* comment-out color */
+	font-size: 1.0em;
+}
+
 /* -------------------------------------------------
                                   Hacomment Modal
 ------------------------------------------------- */
@@ -214,92 +220,21 @@ dl.column-content dd span {
 <p class="sistersublink"><a href="./properties-maihamadb.html">to PropertiesHTML</a></p>
 </div>
 
-<div class="section diffCode_20240728143407">
+<div class="section diffCode_20251231021344">
 	<h2>
-		<span class="titlediffno">diffNo. 9:</span> <span class="titlediffdatepart">2024/07/28</span> <span class="titledifftimepart">14:34:07</span>
+		<span class="titlediffno">diffNo. 8:</span> <span class="titlediffdatepart">2025/12/31</span> <span class="titledifftimepart">02:13:44</span>
 		<span class="titlediffauthor">by jflute</span>
-		<span class="titlediffgitbranch">on jakarta21</span>
+		<span class="titlediffgitbranch">on master</span>
 	</h2>
 	<pre class="diffcomment"></pre>
-	<p class="tablecount">table count: 1&nbsp;-&gt;&nbsp;16</p>
+	<p class="tablecount">table count: 16&nbsp;-&gt;&nbsp;20</p>
 
 	<h3>Add Table</h3>
 	<ul class="table-content">
-		<li><a href="./schema-maihamadb.html#member_address">MEMBER_ADDRESS</a></li>
-		<li><a href="./schema-maihamadb.html#member_following">MEMBER_FOLLOWING</a></li>
-		<li><a href="./schema-maihamadb.html#member_login">MEMBER_LOGIN</a></li>
-		<li><a href="./schema-maihamadb.html#member_security">MEMBER_SECURITY</a></li>
-		<li><a href="./schema-maihamadb.html#member_service">MEMBER_SERVICE</a></li>
-		<li><a href="./schema-maihamadb.html#member_status">MEMBER_STATUS</a></li>
-		<li><a href="./schema-maihamadb.html#member_withdrawal">MEMBER_WITHDRAWAL</a></li>
-		<li><a href="./schema-maihamadb.html#product">PRODUCT</a></li>
-		<li><a href="./schema-maihamadb.html#product_category">PRODUCT_CATEGORY</a></li>
-		<li><a href="./schema-maihamadb.html#product_status">PRODUCT_STATUS</a></li>
-		<li><a href="./schema-maihamadb.html#purchase">PURCHASE</a></li>
-		<li><a href="./schema-maihamadb.html#purchase_payment">PURCHASE_PAYMENT</a></li>
-		<li><a href="./schema-maihamadb.html#region">REGION</a></li>
-		<li><a href="./schema-maihamadb.html#service_rank">SERVICE_RANK</a></li>
-		<li><a href="./schema-maihamadb.html#withdrawal_reason">WITHDRAWAL_REASON</a></li>
-	</ul>
-	<h3>Change Table</h3>
-	<div class="table-content">
-		<h4><a href="./schema-maihamadb.html#member">MEMBER</a></h4>
-		<div class="change-table-content">
-			<h5>Add FK</h5>
-			<ul class="column-content">
-				<li>FK_MEMBER_MEMBER_STATUS</li>
-			</ul>
-			<h5>Add Index</h5>
-			<ul class="column-content">
-				<li>FK_MEMBER_MEMBER_STATUS</li>
-				<li>IX_MEMBER_FORMALIZED_DATETIME</li>
-				<li>IX_MEMBER_MEMBER_NAME</li>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="section diffCode_20240728143334">
-	<h2>
-		<span class="titlediffno">diffNo. 8:</span> <span class="titlediffdatepart">2024/07/28</span> <span class="titledifftimepart">14:33:34</span>
-		<span class="titlediffauthor">by jflute</span>
-		<span class="titlediffgitbranch">on jakarta21</span>
-	</h2>
-	<pre class="diffcomment"></pre>
-	<p class="tablecount">table count: 16&nbsp;-&gt;&nbsp;1</p>
-
-	<h3>Change Table</h3>
-	<div class="table-content">
-		<h4>MEMBER</h4>
-		<div class="change-table-content">
-			<h5>Delete FK</h5>
-			<ul class="column-content">
-				<li>FK_MEMBER_MEMBER_STATUS</li>
-			</ul>
-			<h5>Delete Index</h5>
-			<ul class="column-content">
-				<li>FK_MEMBER_MEMBER_STATUS</li>
-				<li>IX_MEMBER_FORMALIZED_DATETIME</li>
-				<li>IX_MEMBER_MEMBER_NAME</li>
-			</ul>
-		</div>
-	</div>
-	<h3>Delete Table</h3>
-	<ul class="table-content">
-		<li>MEMBER_ADDRESS</li>
-		<li>MEMBER_FOLLOWING</li>
-		<li>MEMBER_LOGIN</li>
-		<li>MEMBER_SECURITY</li>
-		<li>MEMBER_SERVICE</li>
-		<li>MEMBER_STATUS</li>
-		<li>MEMBER_WITHDRAWAL</li>
-		<li>PRODUCT</li>
-		<li>PRODUCT_CATEGORY</li>
-		<li>PRODUCT_STATUS</li>
-		<li>PURCHASE</li>
-		<li>PURCHASE_PAYMENT</li>
-		<li>REGION</li>
-		<li>SERVICE_RANK</li>
-		<li>WITHDRAWAL_REASON</li>
+		<li><a href="./schema-maihamadb.html#summary_product">SUMMARY_PRODUCT</a></li>
+		<li><a href="./schema-maihamadb.html#summary_withdrawal">SUMMARY_WITHDRAWAL</a></li>
+		<li><a href="./schema-maihamadb.html#white_summary_basic_product">WHITE_SUMMARY_BASIC_PRODUCT</a></li>
+		<li><a href="./schema-maihamadb.html#white_summary_complex_product">WHITE_SUMMARY_COMPLEX_PRODUCT</a></li>
 	</ul>
 </div>
 <div class="section diffCode_20150621160408">
@@ -626,6 +561,7 @@ dl.column-content dd span {
     };
     /**
      * @author hakiba
+	 * @author shiny
      */
     var HacommentUtil = new function(){
         /**
@@ -699,12 +635,8 @@ dl.column-content dd span {
             ]
         };
         this.pickupStore = {
-            '20240728143407' : {
-                'diffDate' : '2024/07/28 14:34:07',
-                'diffComment' : ''
-            }
-            , '20240728143334' : {
-                'diffDate' : '2024/07/28 14:33:34',
+            '20251231021344' : {
+                'diffDate' : '2025/12/31 02:13:44',
                 'diffComment' : ''
             }
             , '20150621160408' : {
@@ -983,6 +915,11 @@ dl.column-content dd span {
         createSaveHacommentFunction: function (diffCode, diffMap) {
             var that = this;
             return function () {
+                // prevent modal from opening if user is selecting text (for copy/paste)
+                var selection = window.getSelection();
+                if (selection && selection.toString().length > 0) {
+                    return;
+                }
                 // get modal window element
                 var modalElement = document.getElementById("hacomment-modal");
                 modalElement.style.display = "block";

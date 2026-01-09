@@ -593,6 +593,95 @@
             <unique-column name="DISPLAY_ORDER" position="1"/>
         </unique>
     </table>
+    <table comment="VIEW" name="summary_product"
+        schema="maihamadb.$$NoNameSchema$$" type="VIEW">
+        <column comment="商品ID" dbType="INT" default="0"
+            javaType="Integer" name="PRODUCT_ID" size="10" type="INTEGER"/>
+        <column
+            comment="商品名称 : ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。&#xa;実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜"
+            dbType="VARCHAR" javaType="String" name="PRODUCT_NAME"
+            size="50" type="VARCHAR"/>
+        <column
+            comment="商品ハンドルコード : これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ..."
+            dbType="VARCHAR" javaType="String"
+            name="PRODUCT_HANDLE_CODE" size="100" type="VARCHAR"/>
+        <column comment="商品ステータスコード : 商品ステータスを識別するコード。" dbType="CHAR"
+            javaType="String" name="PRODUCT_STATUS_CODE" size="3" type="CHAR"/>
+        <column comment="" dbType="DATETIME"
+            javaType="java.time.LocalDateTime"
+            name="LATEST_PURCHASE_DATETIME" size="19" type="TIMESTAMP"/>
+    </table>
+    <table comment="VIEW" name="summary_withdrawal"
+        schema="maihamadb.$$NoNameSchema$$" type="VIEW">
+        <column comment="会員ID : 連番として自動採番される。会員IDだけに限らず採番方法はDBMS次第。"
+            dbType="INT" javaType="Integer" name="MEMBER_ID"
+            required="true" size="10" type="INTEGER"/>
+        <column
+            comment="会員名称 : 会員のフルネームの名称。&#xa;苗字と名前を分けて管理することが多いが、ここでは単純にひとまとめ。"
+            dbType="VARCHAR" javaType="String" name="MEMBER_NAME"
+            size="100" type="VARCHAR"/>
+        <column
+            comment="退会理由コード : 定型的な退会した理由を参照するコード。&#xa;何も言わずに退会する会員もいるので必須項目ではない。"
+            dbType="CHAR" javaType="String"
+            name="WITHDRAWAL_REASON_CODE" size="3" type="CHAR"/>
+        <column
+            comment="退会理由テキスト : 退会理由の内容。&#xa;テキスト形式なので目いっぱい書けるが、そうするとUI側できれいに見せるのが大変でしょうね。"
+            dbType="TEXT" javaType="String"
+            name="WITHDRAWAL_REASON_TEXT" size="65535" type="LONGVARCHAR"/>
+        <column
+            comment="退会理由入力テキスト : 会員がフリーテキストで入力できる退会理由。&#xa;もう言いたいこと言ってもらう感じ。サイト運営側としてはこういうのは真摯に受け止めて改善していきたいところ。"
+            dbType="TEXT" javaType="String"
+            name="WITHDRAWAL_REASON_INPUT_TEXT" size="65535" type="LONGVARCHAR"/>
+        <column
+            comment="退会日時 : 退会した瞬間の日時。&#xa;正式会員日時と違い、こっちは one-to-one の別テーブルで管理されている。"
+            dbType="DATETIME" javaType="java.time.LocalDateTime"
+            name="WITHDRAWAL_DATETIME" required="true" size="19" type="TIMESTAMP"/>
+        <column
+            comment="会員ステータスコード : 会員ステータスを参照するコード。&#xa;ステータスが変わるたびに、このカラムが更新される。"
+            dbType="CHAR" javaType="String" name="MEMBER_STATUS_CODE"
+            size="3" type="CHAR"/>
+        <column
+            comment="会員ステータス名称 : 表示用の名称。&#xa;国際化対応するときはもっと色々考える必要があるかと...ということで英語名カラムがないので、そのまま区分値メソッド名の一部としても利用される。"
+            dbType="VARCHAR" javaType="String" name="MEMBER_STATUS_NAME"
+            size="50" type="VARCHAR"/>
+        <column comment="" dbType="BIGINT" javaType="Long"
+            name="MAX_PURCHASE_PRICE" size="19" type="BIGINT"/>
+    </table>
+    <table comment="VIEW" name="white_summary_basic_product"
+        schema="maihamadb.$$NoNameSchema$$" type="VIEW">
+        <column comment="商品ID" dbType="INT" default="0"
+            javaType="Integer" name="PRODUCT_ID" required="true"
+            size="10" type="INTEGER"/>
+        <column
+            comment="商品名称 : ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。&#xa;実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜"
+            dbType="VARCHAR" javaType="String" name="PRODUCT_NAME"
+            required="true" size="50" type="VARCHAR"/>
+        <column
+            comment="商品ハンドルコード : これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ..."
+            dbType="VARCHAR" javaType="String"
+            name="PRODUCT_HANDLE_CODE" required="true" size="100" type="VARCHAR"/>
+        <column comment="商品ステータスコード : 商品ステータスを識別するコード。" dbType="CHAR"
+            javaType="String" name="PRODUCT_STATUS_CODE" required="true"
+            size="3" type="CHAR"/>
+    </table>
+    <table comment="VIEW" name="white_summary_complex_product"
+        schema="maihamadb.$$NoNameSchema$$" type="VIEW">
+        <column comment="商品ID" dbType="INT" default="0"
+            javaType="Integer" name="PRODUCT_ID" size="10" type="INTEGER"/>
+        <column
+            comment="商品名称 : ExampleDBとして、コメントの少ないケースを表現するため、あえてコメントを控えている。&#xa;実業務ではしっかりとコメントを入れることが強く強く推奨される。「よりによってこのテーブルでやらないでよ！」あわわ、何も聞こえません〜"
+            dbType="VARCHAR" javaType="String" name="PRODUCT_NAME"
+            size="50" type="VARCHAR"/>
+        <column
+            comment="商品ハンドルコード : これだけは書いておこう、商品を識別する業務上のコード。よく品番とか言うかもしれませんねぇ..."
+            dbType="VARCHAR" javaType="String"
+            name="PRODUCT_HANDLE_CODE" size="100" type="VARCHAR"/>
+        <column comment="商品ステータスコード : 商品ステータスを識別するコード。" dbType="CHAR"
+            javaType="String" name="PRODUCT_STATUS_CODE" size="3" type="CHAR"/>
+        <column comment="" dbType="DATETIME"
+            javaType="java.time.LocalDateTime"
+            name="LATEST_PURCHASE_DATETIME" size="19" type="TIMESTAMP"/>
+    </table>
     <table comment="退会理由 : 会員に選ばせる定型的な退会理由のマスタ。そういえば、これ表示順カラムがないですねぇ..."
         name="withdrawal_reason" schema="maihamadb.$$NoNameSchema$$" type="TABLE">
         <column comment="退会理由コード" dbType="CHAR" javaType="String"

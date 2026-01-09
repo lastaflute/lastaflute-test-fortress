@@ -1,6 +1,5 @@
 package org.docksidestage.bizfw.whitebox.fess;
 
-import org.docksidestage.app.web.base.login.fess.TrialFessLoginAssist;
 import org.lastaflute.core.util.ContainerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,8 +29,9 @@ public class WhiteFessSearchEngineClient {
         // _/_/_/_/_/_/_/_/_/_/
         logger.debug("#fess getComponent() test here:");
 
-        TrialFessLoginAssist loginAssist = ContainerUtil.getComponent(TrialFessLoginAssist.class);
-        logger.debug("  getComponent(loginAssist): " + loginAssist);
+        // // #for_now jflute hotdeploy destroyer police so comment it out (2025/03/31)
+        //TrialFessLoginAssist loginAssist = ContainerUtil.getComponent(TrialFessLoginAssist.class);
+        //logger.debug("  getComponent(loginAssist): " + loginAssist);
 
         // recommended way
         TrialFessLoginManager loginManager = ContainerUtil.getComponent(TrialFessLoginManager.class);
