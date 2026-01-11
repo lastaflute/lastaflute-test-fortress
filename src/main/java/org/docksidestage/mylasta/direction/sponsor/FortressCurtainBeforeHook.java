@@ -25,10 +25,12 @@ import org.dbflute.system.DBFluteSystem;
 import org.dbflute.system.provider.DfFinalTimeZoneProvider;
 import org.dbflute.util.DfTraceViewUtil;
 import org.dbflute.util.DfTypeUtil;
+import org.docksidestage.bizfw.rabbitmq.RabbitMQConsumerManager;
 import org.docksidestage.dbflute.allcommon.DBMetaInstanceHandler;
 import org.docksidestage.dbflute.allcommon.ImplementedBehaviorSelector;
 import org.docksidestage.mylasta.action.FortressUserBean;
 import org.docksidestage.mylasta.direction.FortressConfig;
+import org.docksidestage.mylasta.direction.sponsor.planner.rabbitmq.AllRabbitMQPlanner;
 import org.lastaflute.core.direction.CurtainBeforeHook;
 import org.lastaflute.core.direction.FwAssistantDirector;
 import org.lastaflute.core.message.UserMessages;
@@ -65,10 +67,14 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
     //                                                                               Hook
     //                                                                              ======
     public void hook(FwAssistantDirector assistantDirector) {
+        logger.debug("...Hooking curtain-before.");
+
         processDBFluteSystem();
         whiteboxtest_findLoginManager();
         whiteboxtest_prepareAccessContextForInsert();
         whiteboxtest_initializeMetaIfNeeds();
+
+        bootRabbitMQConsumer(); // #rabbit
     }
 
     // ===================================================================================
@@ -157,6 +163,18 @@ public class FortressCurtainBeforeHook implements CurtainBeforeHook {
         RequestManager requestManager = ContainerUtil.getComponent(RequestManager.class);
         new ActionValidator<UserMessages>(requestManager, () -> new UserMessages(), ActionValidator.DEFAULT_GROUPS);
         logger.debug("Loaded Hibernate Validator classes: {}", preparePerformanceView(before));
+    }
+
+    // ===================================================================================
+    //                                                                            RabbitMQ
+    //                                                                            ========
+    protected void bootRabbitMQConsumer() { // #rabbit
+        createAllRabbitMQPlanner().bootAllConsumer();
+    }
+
+    protected AllRabbitMQPlanner createAllRabbitMQPlanner() {
+        RabbitMQConsumerManager consumerManager = ContainerUtil.getComponent(RabbitMQConsumerManager.class);
+        return new AllRabbitMQPlanner(config, consumerManager);
     }
 
     // ===================================================================================
