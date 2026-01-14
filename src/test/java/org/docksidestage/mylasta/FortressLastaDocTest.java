@@ -53,6 +53,10 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
     }
 
+    public void test_openapi() {
+        saveOpenapiMeta(new SwaggerAction());
+    }
+
     protected void copyToResourcesJson() throws IOException {
         log("...Copying new swagger.json to resources JSON file to compare with previous swagger.json");
         FileTextIO fileTextIO = new FileTextIO().encodeAsUTF8();
