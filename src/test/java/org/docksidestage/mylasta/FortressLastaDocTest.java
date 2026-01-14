@@ -15,7 +15,6 @@
  */
 package org.docksidestage.mylasta;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 
@@ -44,7 +43,7 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         saveSwaggerMeta(new SwaggerAction());
 
         // to compare with previous swagger.json
-        copyToResourcesJson();
+        copyToResourcesJson("swagger.json", "fortress_whole_lasta_swagger.json");
 
         // same json so no diff
         //verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
@@ -53,19 +52,22 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
     }
 
-    public void test_openapi() {
+    public void test_openapiMeta() throws Exception {
         saveOpenapiMeta(new SwaggerAction());
+
+        // to compare with previous swagger.json
+        copyToResourcesJson("openapi.json", "fortress_whole_lasta_openapi.json");
     }
 
-    protected void copyToResourcesJson() throws IOException {
-        log("...Copying new swagger.json to resources JSON file to compare with previous swagger.json");
+    // ===================================================================================
+    //                                                                        Option Logic
+    //                                                                        ============
+    protected void copyToResourcesJson(String jsonName, String wholeName) throws IOException {
+        log("...Copying new {} to resources JSON file to compare with previous {}", jsonName, jsonName);
         FileTextIO fileTextIO = new FileTextIO().encodeAsUTF8();
         String projectPath = getProjectDir().getCanonicalPath();
-        String outputText = fileTextIO.read(projectPath + "/target/lastadoc/swagger.json");
-        String resourcesFile = projectPath + "/src/main/resources/swagger/fortress_whole_lasta_swagger.json";
-        if (!new File(resourcesFile).exists()) {
-            throw new IllegalStateException("Not found the resources JSON file: " + resourcesFile);
-        }
+        String outputText = fileTextIO.read(projectPath + "/target/lastadoc/" + jsonName);
+        String resourcesFile = projectPath + "/src/main/resources/swagger/" + wholeName;
         fileTextIO.write(resourcesFile, outputText);
     }
 
