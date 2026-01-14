@@ -26,7 +26,7 @@
 		<lasta.thymeleaf.version>0.4.3</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.7</lasta.job.version>
 		<lasta.remoteapi.version>0.5.1</lasta.remoteapi.version>
-		<lasta.meta.version>0.6.4-A-SNAPSHOT</lasta.meta.version>
+		<lasta.meta.version>0.6.4-B-SNAPSHOT</lasta.meta.version>
 		<openapidiff.version>2.1.6</openapidiff.version> <!-- lasta-meta optional -->
 		<swagger.parser.v2.version>2.1.37</swagger.parser.v2.version> <!-- lasta-meta optional -->
 
@@ -50,7 +50,7 @@
 
 		<!-- Testing -->
 		<junit.version>4.8.2</junit.version> <!-- is latest version without hamcrest -->
-		<utflute.version>0.9.9-A-SNAPSHOT</utflute.version>
+		<utflute.version>0.9.9-B-SNAPSHOT</utflute.version>
 	</properties>
 
 	<licenses>
