@@ -40,7 +40,7 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         saveLastaDocMeta();
     }
 
-    public void test_swaggerJson() throws Exception {
+    public void test_swaggerMeta() throws Exception {
         saveSwaggerMeta(new SwaggerAction());
 
         // to compare with previous swagger.json
