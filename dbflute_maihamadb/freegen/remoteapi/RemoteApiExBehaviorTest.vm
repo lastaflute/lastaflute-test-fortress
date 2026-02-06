@@ -1,0 +1,421 @@
+##
+## Copyright 2017-2021 the original author or authors.
+##
+## Licensed under the Apache License, Version 2.0 (the "License");
+## you may not use this file except in compliance with the License.
+## You may obtain a copy of the License at
+##
+##     http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing, software
+## distributed under the License is distributed on an "AS IS" BASIS,
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+## either express or implied. See the License for the specific language
+## governing permissions and limitations under the License.
+##
+##########################################################################################
+##### Ready for generation.
+##########################################################################################
+#set ($remoteApiLogic = $scriptEngine.get('remoteApiLogic'))
+#set ($rule = $scriptEngine.get('remoteApiRule'))
+#set ($typeMap = {})
+#set ($put = $typeMap.putAll($scriptEngine.invokeMethod($rule, 'typeMap')))
+##
+##########################################################################################
+##### Copyright & package & import.
+##########################################################################################
+${manager.allClassCopyright}package ${data.package};
+
+#set ($importList = [])
+#set($added = $importList.add('org.lastaflute.web.servlet.request.RequestManager'))
+#set ($parameterFlg = false)
+#set ($returnFlg = false)
+#if ($rule['behaviorMethodGeneration'])
+#foreach($method in $data.bsBehavior.methodList)
+#if (${method.paramBean.className} && ${method.paramBean.className} != '')
+#set($added = $importList.add("${method.paramBean.package}.${method.paramBean.className}"))
+#set ($parameterFlg = true)
+#end
+#if (${method.returnBean.package} && ${method.returnBean.package} != '' && ${method.returnBean.className} && ${method.returnBean.className} != '')
+#set($added = $importList.add("${method.returnBean.package}.${method.returnBean.className}"))
+#set ($returnFlg = true)
+#end
+#end
+#end
+#if ($parameterFlg)
+#set($added = $importList.add('java.util.function.Consumer'))
+#end
+#set($added = $importList.add("org.docksidestage.unit.UnitRemoteapigenTestCase"))
+#set($added = $importList.add("javax.annotation.Resource"))
+#if ($returnFlg)
+#set($added = $importList.add("org.slf4j.Logger"))
+#set($added = $importList.add("org.slf4j.LoggerFactory"))
+#end
+#set($added = $importList.add("org.dbflute.remoteapi.mock.MockHttpClient"))
+#set ($categolizedImportClassList = $scriptEngine.invokeMethod($remoteApiLogic, 'deriveCategolizedImportClassList', $importList, $data.package, $scriptEngine.invokeMethod($rule, 'importOrderList')))
+#foreach($categolizedImportClass in $categolizedImportClassList)
+#foreach($importClass in $categolizedImportClass)
+import ${importClass};
+#end
+
+#end
+##
+##########################################################################################
+##### Class definition.
+##########################################################################################
+/**
+ * The behavior test for remote API of ${data.remoteApiExp}.
+ * @author FreeGen
+ */
+public class ${data.className}Test extends UnitRemoteapigenTestCase {
+##########################################################################################
+##### Property definition.
+##########################################################################################
+
+#if ($returnFlg)
+    private static final Logger logger = LoggerFactory.getLogger(${data.className}Test.class);
+
+#end
+    @Resource
+    private RequestManager requestManager;
+##########################################################################################
+##### Method definition.
+##########################################################################################
+#if ($rule['behaviorMethodGeneration'])
+#set ($behaviorRequestMethodSignatureList = [])
+#foreach($method in $data.bsBehavior.methodList)
+#set ($behaviorRequestMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRequestMethodName', $method.api))
+#set ($behaviorRuleMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRuleMethodName', $method.api))
+#foreach($pathVariableEntry in $method.pathVariables.entrySet())
+#set ($pathVariableName = $scriptEngine.invokeMethod($rule, 'fieldName', $data.api, {'in': 'path'}, $pathVariableEntry.key))
+#set ($behaviorRuleMethodName = "$behaviorRuleMethodName$manager.initCap($pathVariableName)")
+#end
+#set ($parameterList = [])
+#set ($parameterDefinition = '')
+#set ($moreUrl = '')
+#set ($returnBeanClassName = 'void')
+#foreach($pathVariableEntry in $method.pathVariables.entrySet())
+#set ($pathVariableName = $scriptEngine.invokeMethod($rule, 'fieldName', $data.api, {'in': 'path'}, $pathVariableEntry.key))
+#set ($pathVariable = $pathVariableEntry.value)
+#if ($pathVariable.type == 'array')
+#if ($scriptEngine.invokeMethod($rule, 'pathVariableManualMappingClass', $api, $pathVariable))
+#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<$scriptEngine.invokeMethod($rule, 'pathVariableManualMappingClass', $api, $pathVariable))>"))
+#elseif (${typeMap[$pathVariable.items.format]})
+#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<${typeMap[$pathVariable.items.format]}>")
+#elseif (${typeMap[$pathVariable.items.type]})
+#set ($pathVariableClass = "${typeMap[$pathVariable.type]}<${typeMap[$pathVariable.items.type]}>")
+#end
+#elseif ($scriptEngine.invokeMethod($rule, 'pathVariableManualMappingClass', $api, $pathVariable))
+#set ($pathVariableClass = $scriptEngine.invokeMethod($rule, 'pathVariableManualMappingClass', $api, $pathVariable))
+#elseif (${typeMap[$pathVariable.format]})
+#set ($pathVariableClass = ${typeMap[$pathVariable.format]})
+#elseif (${typeMap[$pathVariable.type]})
+#set ($pathVariableClass = ${typeMap[$pathVariable.type]})
+#end
+#set ($pathVariable.name = $pathVariableName)
+#set ($enumValueComment = '')
+#set ($nestType = '')
+#if ($pathVariable.enum)
+#set ($enumValueComment = "(enumValue=$pathVariable.enum) ")
+#elseif ($pathVariable.items.enum)
+#set ($enumValueComment = "(enumValue=$pathVariable.items.enum) ")
+#end
+#if ($scriptEngine.invokeMethod($rule, 'pathVariableManualMappingDescription', $api, $pathVariable))
+#set ($added = $parameterList.add({ 'name': ${pathVariableName}, 'class': ${pathVariableClass}, 'description': "The value of path variable for ${pathVariableName}. ${enumValueComment}(${scriptEngine.invokeMethod($rule, 'pathVariableManualMappingDescription', $api, $pathVariable)}) (NotNull)"}))
+#elseif ($pathVariable.description)
+#set ($added = $parameterList.add({ 'name': ${pathVariableName}, 'class': ${pathVariableClass}, 'description': "The value of path variable for ${pathVariableName}. ${enumValueComment}(${pathVariable.description}) (NotNull)"}))
+#else
+#set ($added = $parameterList.add({ 'name': ${pathVariableName}, 'class': ${pathVariableClass}, 'description': "The value of path variable for ${pathVariableName}. ${enumValueComment}(NotNull)"}))
+#end
+#set ($parameterDefinition = "${parameterDefinition}${pathVariableClass} ${pathVariableName}, ")
+#set ($moreUrl = "${moreUrl}${pathVariableName}, ")
+#end
+#set ($paramBeanClassName = '')
+#if (${method.paramBean.className})
+#set ($paramBeanClassName = ${method.paramBean.className})
+#if ($method.paramBeanArray)
+#set ($paramBeanClassName = "java.util.List<${paramBeanClassName}>")
+#end
+#set ($parameterDefinition = "${parameterDefinition}Consumer<${paramBeanClassName}> paramLambda")
+#set ($added = $parameterList.add({ 'name': 'paramLambda', 'class': 'Consumer', 'description': "The callback for $paramBeanClassName. (NotNull)"}))
+#end
+#set ($parameterDefinition = $parameterDefinition.replaceAll(', $', ''))
+#set ($moreUrl = $moreUrl.replaceAll('^(.+), $', 'moreUrl($1)'))
+#if ($moreUrl == '')
+#set ($moreUrl = 'noMoreUrl()')
+#end
+#set ($returnBeanClassName = ${method.returnBean.className})
+#if ($method.returnBeanArray)
+#set ($returnBeanClassName = "${typeMap['array']}<${returnBeanClassName}>")
+#end
+#set ($returnBeanClassName = $scriptEngine.invokeMethod($rule, 'unDefinitionKey', ${returnBeanClassName}))
+#set ($parameterSignature = "")
+#foreach($parameter in $parameterList)
+    #set ($parameterSignature = "$parameterSignature|$parameter['class']")
+#end
+#set ($behaviorRequestMethodSignature = "$behaviorRequestMethodName$parameterSignature")
+#if ($behaviorRequestMethodSignatureList.contains($behaviorRequestMethodSignature))
+#foreach($pathVariableEntry in $method.pathVariables.entrySet())
+#set ($behaviorRequestMethodName = "$behaviorRequestMethodName$manager.initCap($pathVariableName)")
+#end
+#set ($behaviorRequestMethodSignature = "$behaviorRequestMethodName$parameterSignature")
+#end
+#set($added = $behaviorRequestMethodSignatureList.add($behaviorRequestMethodSignature))
+
+#set ($behaviorRequestTestMethodName = "test_$behaviorRequestMethodName")
+#set ($parameterSignature = "")
+#foreach($parameter in $parameterList)
+    #set ($parameterSignature = "$parameterSignature|$parameter['class']")
+#end
+#set ($behaviorRequestMethodSignature = "$behaviorRequestTestMethodName")
+#if ($behaviorRequestMethodSignatureList.contains($behaviorRequestMethodSignature))
+#foreach($pathVariableEntry in $method.pathVariables.entrySet())
+#set ($behaviorRequestTestMethodName = "$behaviorRequestTestMethodName$manager.initCap($pathVariableName)")
+#end
+#set ($behaviorRequestMethodSignature = "$behaviorRequestTestMethodName$parameterSignature")
+#end
+#set($added = $behaviorRequestMethodSignatureList.add($behaviorRequestMethodSignature))
+##########################################################################################
+########## Method definition. test method.
+##########################################################################################
+    public void $behaviorRequestTestMethodName() {
+#if (!$parameterList.isEmpty())
+#[[        // ## Arrange ##]]#
+#foreach($parameter in $parameterList)
+#if ($parameter['class'] == "Boolean")
+        $parameter['class'] $parameter.name = Boolean.TRUE;
+#elseif ($parameter['class'] == "Integer")
+        $parameter['class'] $parameter.name = 1;
+#elseif ($parameter['class'] == "Long")
+        $parameter['class'] $parameter.name = 1L;
+#elseif ($parameter['class'] == "String")
+        $parameter['class'] $parameter.name = "$parameter.name";
+#elseif ($parameter['class'] == "List")
+        $parameter['class'] $parameter.name = new ArrayList<>();
+#elseif ($parameter['class'].startsWith("org.eclipse.collections.api.list.ImmutableList"))
+        $parameter['class'] $parameter.name = org.eclipse.collections.impl.factory.Lists.immutable.empty();
+#elseif ($parameter['class'].contains(".CDef."))
+        $parameter['class'] $parameter.name = ${parameter['class']}.values()[0];
+#elseif ($parameter.name != "paramLambda")
+        $parameter['class'] $parameter.name = null;
+#end
+#end
+#if (${method.paramBean.className} && ${method.paramBean.className} != '')
+        Consumer<${paramBeanClassName}> paramLambda = param -> {
+#if ($method.paramBeanArray)
+            $method.paramBean.className rowParam = new ${method.paramBean.className}();
+#foreach($propertyEntry in $method.paramBean.properties.entrySet())
+            #generateTestRequestPropertySetting($method.paramBean, $propertyEntry, "rowParam")
+#end
+            param.add(rowParam);
+#else
+#foreach($propertyEntry in $method.paramBean.properties.entrySet())
+            #generateTestRequestPropertySetting($method.paramBean, $propertyEntry, "param")
+#end
+#end
+        };
+#end
+
+#end
+#[[        // ## Act ##]]#
+#if ($returnBeanClassName == 'void')
+#set ($json = "null")
+#elseif ($method.returnBeanArray)
+#set ($json = '"[]"')
+#elseif ($returnBeanClassName == 'String')
+#set ($json = '"String"')
+#elseif ($returnBeanClassName == 'Integer')
+#set ($json = '"1"')
+#else
+#set ($json = '"{}"')
+#end
+        #if ($returnBeanClassName != 'void')$returnBeanClassName#if ($method.returnBeanArray) list#else returnBean#end = #end
+createBhv($json).$behaviorRequestMethodName(#foreach($parameter in $parameterList)$parameter.name#if( $foreach.hasNext ), #end#end);
+#if ($returnBeanClassName != 'void')
+
+#[[        // ## Assert ##]]#
+#if ($method.returnBeanArray)
+        list.forEach(returnBean -> {
+#foreach($propertyEntry in $method.returnBean.properties.entrySet())
+#set ($fieldName = ${scriptEngine.invokeMethod($rule, 'fieldName', $data.api, $method.returnBean, $propertyEntry.key)})
+#if ($propertyEntry.value['$ref'] || $propertyEntry.value.type == 'array')
+            logger.debug("$fieldName={}", returnBean.$fieldName); // TODO nest property check
+#foreach($nestPropertyEntry in $propertyEntry.value.properties.entrySet())
+            logger.debug("$fieldName.${nestPropertyEntry.fieldName}={}", returnBean.$fieldName.${nestPropertyEntry.fieldName});
+#end
+#else
+            logger.debug("$fieldName={}", returnBean.$fieldName);
+#end
+#end
+        });
+#elseif (!$method.returnBean.properties)
+        logger.debug("returnBean={}", returnBean);
+#else
+#foreach($propertyEntry in $method.returnBean.properties.entrySet())
+#set ($fieldName = ${scriptEngine.invokeMethod($rule, 'fieldName', $data.api, $method.returnBean, $propertyEntry.key)})
+#if ($propertyEntry.value['$ref'] || $propertyEntry.value.type == 'array')
+        logger.debug("$fieldName={}", returnBean.$fieldName); // TODO nest property check
+#foreach($nestPropertyEntry in $propertyEntry.value.properties.entrySet())
+        logger.debug("$fieldName.${nestPropertyEntry.fieldName}={}", returnBean.$fieldName.${nestPropertyEntry.fieldName});
+#end
+#else
+        logger.debug("$fieldName={}", returnBean.$fieldName);
+#end
+#end
+#end
+#end
+    }
+#end
+#end
+
+##########################################################################################
+########## Method definition. create Behavior method.
+##########################################################################################
+    private ${data.className} createBhv(String json) {
+        MockHttpClient client = MockHttpClient.create(response -> {
+            if (json == null) {
+                response.asJsonNoContent(request -> true);
+            } else {
+                response.asJsonDirectly(json, request -> true);
+            }
+        });
+        registerMock(client);
+        ${data.className} bhv = new ${data.className}(requestManager);
+        inject(bhv);
+        return bhv;
+    }
+}
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## generate test request property setting.
+## @param topLevelBean topLevelBean definition of bean where field is declared. (NotNull)
+## @param propertyEntry top level bean class or nest bean class property entry. (NotNull)
+## @param requestBeanVariableName variable name, either param or rowParam (NotNull)
+## _/_/_/_/_/_/_/_/_/_/
+#macro(generateTestRequestPropertySetting, $bean, $propertyEntry, $requestBeanVariableName)
+#set ($fieldName = ${scriptEngine.invokeMethod($rule, 'fieldName', $data.api, $bean, $propertyEntry.key)})
+#set ($property = $propertyEntry.value)
+#set ($property.name = $fieldName)
+#set ($fieldClass = '')
+#set ($enumValueComment = '')
+#set ($nestType = '')
+#if ($property.enum)
+#set ($enumValueComment = "(enumValue=$property.enum) ")
+#elseif ($property.items.enum)
+#set ($enumValueComment = "(enumValue=$property.items.enum) ")
+#end
+#if ($property.type == 'array')
+#if ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $bean.className, $property))
+#set ($fieldClass = "${typeMap[$property.type]}<$scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $bean.className, $property)>")
+#elseif (${typeMap[$property.items.format]})
+#set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.format]}>")
+#elseif (${typeMap[$property.items.type]})
+#set ($fieldClass = "${typeMap[$property.type]}<${typeMap[$property.items.type]}>")
+#elseif ($property.items['$ref'] || ($property.items && $property.items.allOf[0]['$ref']))
+#if ($property.items['$ref'])
+#set ($nestType = $generator.getClass().forName('java.net.URLDecoder').decode($property.items['$ref'].replace('#/definitions/', ''), 'UTF-8'))
+#elseif ($property.items && $property.items.allOf[0]['$ref'])
+#set ($nestType = $generator.getClass().forName('java.net.URLDecoder').decode($property.items.allOf[0]['$ref'].replace('#/definitions/', ''), 'UTF-8'))
+#end
+#adjustType($nestType)
+#set ($fieldClass = "${typeMap[$property.type]}<$adjustType>")
+#end
+#elseif ($scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $bean.className, $property))
+#set ($fieldClass = $scriptEngine.invokeMethod($rule, 'beanPropertyManualMappingClass', $data.api, $bean.className, $property))
+#elseif (${typeMap[$property.format]})
+#set ($fieldClass = ${typeMap[$property.format]})
+#elseif (${typeMap[$property.type]})
+#set ($fieldClass = ${typeMap[$property.type]})
+#elseif ($property['$ref'] || $property.allOf[0]['$ref'])
+#if ($property['$ref'])
+#set ($nestType = $generator.getClass().forName('java.net.URLDecoder').decode($property['$ref'].replace('#/definitions/', ''), 'UTF-8'))
+#elseif ($property.allOf[0]['$ref'])
+#set ($nestType = $generator.getClass().forName('java.net.URLDecoder').decode($property.allOf[0]['$ref'].replace('#/definitions/', ''), 'UTF-8'))
+#end
+#adjustType($nestType)
+#set ($fieldClass = $adjustType)
+#end
+#if ($fieldClass == '')
+#set ($fieldClass = ${typeMap['']})
+#end
+#if ($fieldClass == "Integer")
+$requestBeanVariableName.$fieldName = 1;
+#elseif ($fieldClass == "Long")
+$requestBeanVariableName.$fieldName = 1L;
+#elseif ($fieldClass == "Float")
+$requestBeanVariableName.$fieldName = 1F;
+#elseif ($fieldClass == "Double")
+$requestBeanVariableName.$fieldName = 1D;
+#elseif ($fieldClass == "Boolean")
+$requestBeanVariableName.$fieldName = Boolean.TRUE;
+#elseif ($fieldClass == "java.time.LocalDate")
+$requestBeanVariableName.$fieldName = java.time.LocalDate.now();
+#elseif ($fieldClass == "java.time.LocalDateTime")
+$requestBeanVariableName.$fieldName = java.time.LocalDateTime.now();
+#elseif ($fieldClass == "String")
+$requestBeanVariableName.$fieldName = "$fieldName";
+#elseif ($property.type == 'array')
+#set ($newList = 'org.dbflute.util.DfCollectionUtil.newArrayList')
+#if ($fieldClass.startsWith('org.eclipse.collections.api.list.ImmutableList'))
+#set ($newList = 'org.eclipse.collections.impl.factory.Lists.immutable.of')
+#end
+#if (${typeMap[$property.items.type]} == "String")
+$requestBeanVariableName.$fieldName = $newList("$fieldName");
+#else
+$requestBeanVariableName.$fieldName = $newList(); // TODO
+#end
+#elseif ($fieldClass.contains("java.util.Map"))
+$requestBeanVariableName.$fieldName = new ${fieldClass.replace("java.util.Map", "java.util.LinkedHashMap")}();
+#elseif ($property.type == 'file')
+$requestBeanVariableName.$fieldName = new org.lastaflute.web.ruts.multipart.MultipartFormFile() {
+                @Override
+                public byte[] getFileData() throws java.io.IOException {
+                    return null;
+                }
+
+                @Override
+                public java.io.InputStream getInputStream() throws java.io.IOException {
+                    return null;
+                }
+
+                @Override
+                public String getContentType() {
+                    return null;
+                }
+
+                @Override
+                public int getFileSize() {
+                    return 0;
+                }
+
+                @Override
+                public String getFileName() {
+                    return null;
+                }
+
+                @Override
+                public void destroy() {
+                }
+            };
+#elseif ($property.enum)
+$requestBeanVariableName.$fieldName = ${fieldClass}.codeOf("$property.enum[0]");
+#elseif ($fieldClass.contains(".CDef."))
+$requestBeanVariableName.$fieldName = ${fieldClass}.values()[0];
+#else
+$requestBeanVariableName.$fieldName = new $paramBeanClassName.${fieldClass}(); // TODO
+#end
+#end
+## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+## Adjust java type of e.g. property. e.g. java.util.List to List
+## @param type The type of java type. (NotNull)
+## @return adjustType The filtered expression of the type. (NotNull)
+## _/_/_/_/_/_/_/_/_/_/
+#macro(adjustType, $type)
+#set ($adjustType = ${type})
+#set ($index = ${adjustType.lastIndexOf('.')})
+#if ($index != -1)
+#set ($index = $index + 1)
+#set ($adjustType = ${adjustType.substring($index)})
+#end
+#set ($adjustType = $adjustType.replaceAll("^.*\$", ''))
+#set ($adjustType = $scriptEngine.invokeMethod($rule, 'nestClassName', $schema, $adjustType))
+#end

@@ -13,46 +13,31 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
+##########################################################################################
+## This file is the entry point for RemoteApiGen.
+## Called from FreeGen's ControlFreeGen.vm.
+##########################################################################################
+##########################################################################################
+##### Ready for generation.
+##########################################################################################
+##### Preparing to execute javascript.
+##### Use an instance of javax.script.ScriptEngine from the FreeGen manage object.
+##### This instance may change its substance depending on DBFlute's Script Engine search rule.
+##### Initially, it was supposed to be Nashorn with Java built-in,
+##### but since it will disappear after Java 15, there is a possibility that it is an alternative engine such as sai.
+##### $scriptEngine must be a class that implements ScriptEngine, Invocable.
+##### The following is a class that handles ScriptEngine for FreeGen of DBFlute.
+##### https://github.com/dbflute/dbflute-core/blob/develop/dbflute-engine/src/main/java/org/dbflute/logic/manage/freegen/table/json/engine/DfFrgJavaScriptJsonEngine.java
 #set ($scriptEngine = $manager.createJavaScriptEngine())
-$scriptEngine.put('scriptEngine', $scriptEngine)
+#####
+##### Set to use FreeGen objects when running javascirpt.
 $scriptEngine.put('generator', $generator)
 $scriptEngine.put('manager', $manager)
+#####
+##########################################################################################
+##### Generation process.
+##########################################################################################
+##### Evaluate (eval) the load process of the JS file and call the function.
 $scriptEngine.eval('load("./freegen/remoteapi/ControlFreeGenRemoteApiJava.js");')
 $scriptEngine.invokeFunction('process', $requestList)
-
-## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-## generate indent.
-## @param package package (NotNull)
-## @param importList importList (NotNull)
-## _/_/_/_/_/_/_/_/_/_/
-#macro(generateIndent, $indentSize)
-#foreach($nest in [0..$indentSize])    #end
-#end
-## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-## generate imports.
-## @param importList importList (NotNull)
-## @param package package (NotNull)
-## @param importOrderList importOrderList (NotNull)
-## _/_/_/_/_/_/_/_/_/_/
-#macro(generateImports, $importList, $package, $importOrderList)
-#set ($sortImportMap = $generator.getClass().forName('java.util.TreeMap').newInstance())
-#foreach($import in $importList)
-#if ($import.substring(0, $import.lastIndexOf('.')) != $package)
-#set ($importOrderIndex = -1)
-#foreach($importOrder in $importOrderList)
-#if ($importOrder != -1 && $importOrder == $import.substring(0, $import.indexOf('.')))
-#set ($importOrderIndex = $foreach.index)
-#end
-#end
-#set($put = $sortImportMap.put("${importOrderIndex}$import.substring(0, $import.lastIndexOf('.'))     $import.substring($import.lastIndexOf('.'))", $import))
-#end
-#end
-#set ($preImport = '.')
-#foreach($import in $sortImportMap.values())
-#if ($import.substring(0, $import.indexOf('.')) != $preImport.substring(0, $preImport.indexOf('.')))
-#set ($preImport = $import)
-
-#end
-import ${import};
-#end
-#end
+#####

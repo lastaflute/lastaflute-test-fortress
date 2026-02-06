@@ -80,8 +80,8 @@ public abstract class BsRemoteSwaggerTrickyUrlcharacterBhv extends AbstractRemot
      * httpMethod: GET
      * </pre>
      */
-    public void requestDot() {
-        doRequestDot(rule -> {});
+    public void requestDotdot() {
+        doRequestDotdot(rule -> {});
     }
 
     /**
@@ -92,9 +92,9 @@ public abstract class BsRemoteSwaggerTrickyUrlcharacterBhv extends AbstractRemot
      * </pre>
      * @param ruleLambda The callback for setting rule as dynamic requirement. (NotNull)
      */
-    protected void doRequestDot(Consumer<FlutyRemoteApiRule> ruleLambda) {
+    protected void doRequestDotdot(Consumer<FlutyRemoteApiRule> ruleLambda) {
         doRequestGet(void.class, "/urlcharacter/dot.dot/", noMoreUrl(), noQuery(), rule -> {
-            ruleOfDot(rule);
+            ruleOfDotdot(rule);
             ruleLambda.accept(rule);
         });
     }
@@ -103,6 +103,6 @@ public abstract class BsRemoteSwaggerTrickyUrlcharacterBhv extends AbstractRemot
      * Set up method-level rule of /urlcharacter/dot.dot/.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
-    protected void ruleOfDot(FlutyRemoteApiRule rule) {
+    protected void ruleOfDotdot(FlutyRemoteApiRule rule) {
     }
 }

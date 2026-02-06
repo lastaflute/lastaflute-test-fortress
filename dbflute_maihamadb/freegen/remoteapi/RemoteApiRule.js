@@ -3,47 +3,74 @@
 //                                                                              Definition
 //                                                                              ==========
 /**
- * Request Type.
- * @typedef {Object} Request
- */
-
-/**
  * API Type.
  * @typedef {Object} Api
- * @property {string} api.schema - Schema.
- * @property {string} api.url - URL.
- * @property {string} api.httpMethod - HttpMethod.
- * @property {string[]} api.consumes - Consumes.
- * @property {string[]} api.produces - Produces.
+ * @property {string} - schema of the remote api. (NotNull, NotEmpty)
+ * @property {string} url - target url of the remote api. (NotNull, NotEmpty)
+ * @property {string} httpMethod - target httpMethod of the remote api. (NotNull, NotEmpty)
+ * @property {string[]} consumes - target consumes of the remote api. (NotNull, EmptyAllowed)
+ * @property {string[]} produces - target produces of the remote api. (NotNull, EmptyAllowed)
  */
 
 /**
- * PathVariable Type.
+ * PathVariable Type.<br/>
+ * see below for details.<br/>
+ * <ul>
+ *   <li>https://swagger.io/specification/v2/#parameter-object</li>
+ *   <li>https://swagger.io/specification/v2/#data-types</li>
+ * </ul>
  * @typedef {Object} PathVariable
- * @property {string} pathVariable.name - Name.
- * @property {string} pathVariable.in - In.
- * @property {string} pathVariable.required - Required.(optional)
- * @property {string} pathVariable.description - Description.(optional)
- * @property {string} pathVariable.type - Type.(optional)
- * @property {string} pathVariable.format - Format.(optional)
- * @property {string} pathVariable.default - Default.(optional)
- * @property {Items} pathVariable.items - Items.(optional)
- * @property {Schema} pathVariable.schema - Schema.(optional)
- * @property {string} pathVariable.enum - Enum.(optional)
+ * @property {string} name - path variable name. (NotNull, NotEmpty)
+ * @property {string} in - parameter location. 'path' fixed. (NotNull, NotEmpty)
+ * @property {boolean} required - true if the parameter is required. (NotNull)
+ * @property {string} description - parameter description. (NullAllowed)
+ * @property {string} type - parameter type. e.g. string, integer, number, boolean, array (NotNull, NotEmpty)
+ * @property {string} format - parameter format. e.g. int32, int64, float, double, byte, binary, date, date-time, password (NullAllowed)
+ * @property {string} default - parameter default. (NullAllowed)
+ * @property {Items} items - required if type is "array". describes the type of items in the array.. (NullAllowed)
+ * @property {Schema} schema - property schema. (NullAllowed)
+ * @property {string} enum - lists possible values. (NullAllowed)
  */
 
 /**
- * Property Type.
+ * Property(query、formData、body field) Type.<br/>
+ * see below for details.<br/>
+ * <ul>
+ *   <li>https://swagger.io/specification/v2/#parameter-object</li>
+ *   <li>https://swagger.io/specification/v2/#data-types</li>
+ * </ul>
  * @typedef {Object} Property
- * @property {string} property.name - Name.
- * @property {string} property.required - Required.(optional)
- * @property {string} property.description - Description.(optional)
- * @property {string} property.type - Type.(optional)
- * @property {string} property.format - Format.(optional)
- * @property {string} property.default - Default.(optional)
- * @property {Items} property.items - Items.(optional)
- * @property {Schema} property.schema - Schema.(optional)
- * @property {string} property.enum - Enum.(optional)
+ * @property {string} name - property(query、formData、body field) name. (NotNull, NotEmpty)
+ * @property {string} in - parameter location. 'path' fixed. (NotNull, NotEmpty)
+ * @property {boolean} required - true if the parameter is required. (NotNull)
+ * @property {string} description - parameter description. (NullAllowed)
+ * @property {string} type - parameter type. e.g. string, integer, array (NotNull, NotEmpty)
+ * @property {string} format - parameter format. (NullAllowed)
+ * @property {string} default - parameter default. (NullAllowed)
+ * @property {Items} items - required if type is "array". describes the type of items in the array.. (NullAllowed)
+ * @property {Schema} schema - property schema. (NullAllowed)
+ * @property {string} enum - lists possible values. (NullAllowed)
+ */
+
+/**
+ * Top Level Bean Type.
+ * Information on the top class of beans in param and return. That is, it is not the nested part class.
+ * About remoteApiExp.
+ * Used in the description of javadoc.
+ * The values that can be taken differ for each automatically generated class.
+ * For Top Level Beans, the URL of the remote API on which this class is used is set.
+ * @typedef {Object} TopLevelBean
+ * @property {Api} api - API. (NotNull)
+ * @property {string} package - Package of this class. (NotNull, NotEmpty)
+ * @property {string} className - class name without package of this class.  (NotNull, NotEmpty)
+ * @property {string} definitionKey - The definition key for the swagger specification. (NotNull, NotEmpty)
+ * @property {string} extendsClass - Extends class with package of this class. (NullAllowed)
+ * @property {string} implementsClasses - Implements classes (Interface) with package of this class. (NullAllowed)
+ * @property {Property[]} properties - Properties of this class. (NotNull, EmptyAllowed)
+ * @property {string} beanPurposeType - bean purpose type of this class. e.g. param, return (NotNull, NotEmpty)
+ * @property {string} remoteApiExp - remote api expression. See the description of the Top Level Bean itself for details. (NotNull, NotEmpty)
+ * @property {Object} definitionMap - All schema definitions for remote api. (NotNull)
+ * @property {string} in - Type of this class. e.g. json, xml (NotNull, NotEmpty)
  */
 
 var baseRule = {
@@ -51,7 +78,10 @@ var baseRule = {
     // ===================================================================================
     //                                                                               Const
     //                                                                               =====
-    /** field naming. */
+    /**
+     * Field naming rules.<br/>
+     * Generally, the API Field is a snake case, and Java is a camel case, so it is used to fill the gap.
+     */
     FIELD_NAMING: {
         CAMEL_TO_LOWER_SNAKE: 'CAMEL_TO_LOWER_SNAKE'
     },
@@ -60,27 +90,29 @@ var baseRule = {
     //                                                                               Base
     //                                                                              ======
     /**
-     * Return schema.
-     * @param {Request} request - Request. (NotNull)
-     * @return {string} schema. (NotNull)
+     * Return the schema of the remote api.<br/>
+     * This schema is used for packages, class name prefixes, and so on.
+     * @param {org.dbflute.logic.manage.freegen.DfFreeGenRequest} request - freeGen request settings. (NotNull)
+     * @return {string} the schema of the remote api. (NotNull)
      */
     schema: function(request) {
         return request.requestName.replace(/^RemoteApi/g, '');
     },
 
     /**
-     * Return schema package.
-     * @param {Api} api - API. (NotNull)
-     * @return {string} schema package. (NotNull)
+     * Return the java schema package of the remote api.
+     * @param {string} schema - schema of the remote api. (NotNull, NotEmpty)
+     * @return {string} the java schema package of the remote api. (NotNull, NotEmpty)
      */
     schemaPackage: function(schema) {
         return manager.decamelize(schema).replace(/_/g, '.').toLowerCase();
     },
 
     /**
-     * Return true if target.
+     * Return true if the api is to be generated.<br/>
+     * Suppresses the generation of unused api.
      * @param {Api} api - API. (NotNull)
-     * @return {boolean} true if target. (NotNull)
+     * @return {boolean} true if the api is to be generated. (NotNull)
      */
     target: function(api) {
         // p1us2er0 fixedly all target (2019/08/31)
@@ -89,103 +121,84 @@ var baseRule = {
     },
 
     /**
-     * Return filtered URL.
+     * Return filtered URL.<br/>
+     * Exclude prefixes and version numbers contained in URLs. e.g. /api/xxx, /v1/xxx<br/>
+     * If excluded, you must include the excluded URL in AbstractRemoteFortress${Schema}Bhv#getUrlBase.
      * @param {Api} api - API. (NotNull)
-     * @return {boolean} filtered URL. (NotNull)
+     * @return {string} filtered URL. (NotNull)
      */
-    url: function(api) { return api.url; },
+    url: function(api) {
+        return api.url;
+    },
 
     /**
-     * Return subPackage.
+     * Return the java sub schema package of the remote api.
      * @param {Api} api - API. (NotNull)
-     * @return {string} subPackage. (NotNull)
+     * @return {string} the java sub package of the remote api. (NotNull, NotEmpty)
      */
     subPackage: function(api) {
-        return api.url.replace(/(_|-|^\/|\/$)/g, '').replace(/\/\{.*?\}/g, '').replace(/\..+$/g, '').replace(/\//g, '.').toLowerCase();
-    },
-
-    // ===================================================================================
-    //                                                                               DiXml
-    //                                                                               =====
-    /**
-     * Return di xml path for target container lasta di.
-     * @param {string} schema - schema. (NotNull)
-     * @return {string} di xml path for target container lasta di. (NotNull)
-     */
-    diXmlPath: function(schema, resourceFilePath) {
-        return '../resources/remoteapi/di/remoteapi_' + this.schemaPackage(schema).replace(/\./g, '-') + '.xml';
-    },
-
-    /**
-     * Return dicon path for target container seasar.
-     * @param {string} schema - schema. (NotNull)
-     * @return {string} dicon path for target container seasar. (NotNull)
-     */
-    diconPath: function(schema, resourceFilePath) {
-        return '../resources/remoteapi/di/remoteapi_' + this.schemaPackage(schema).replace(/\./g, '-') + '.dicon';
-    },
-
-    /**
-     * Return java config class name for target container spring.
-     * @param {string} schema - schema. (NotNull)
-     * @return {string} java config class name for target container spring. (NotNull)
-     */
-    javaConfigClassName: function(schema) {
-        return 'Remote' + schema + 'BeansJavaConfig';
+        // 1. Remove symbols that cannot be used in java package name. And remove leading and trailing slashes.
+        // 2. Remove path variable.
+        // 3. Replace slashes with dots.
+        return api.url.replace(/(_|-|\.|^\/|\/$)/g, '').replace(/\/\{.*?\}/g, '').replace(/\//g, '.').toLowerCase();
     },
 
     // ===================================================================================
     //                                                                            Behavior
     //                                                                            ========
-    /** true for automatically generating behavior classes. */
+    /** true to generate behavior classes. */
     behaviorClassGeneration: true,
-    /** true for automatically generating behavior methods. */
+    /** true to generate behavior class methods. */
     behaviorMethodGeneration: true,
-    /** behavior method access modifier. */
+    /** behavior class method access modifier. */
     behaviorMethodAccessModifier: 'public',
-    /** framework behavior class. */
+
+    /**
+     * A class provided by Framework inherited by the parent class of behavior class.<br/>
+     * If there is an extended class for the entire project, specify the extended class.
+     */
     frameworkBehaviorClass: 'org.lastaflute.remoteapi.LastaRemoteBehavior',
 
     /**
-     * Return abstract behavior class name.
-     * @param {string} schema - schema. (NotNull)
-     * @return {string} abstract behavior class name. (NotNull)
+     * Return abstract behavior class name without package.
+     * @param {string} schema - schema of the remote api. (NotNull, NotEmpty)
+     * @return {string} the abstract behavior class name without package. (NotNull, NotEmpty)
      */
     abstractBehaviorClassName: function(schema) {
         return 'AbstractRemote' + schema + 'Bhv';
     },
 
     /**
-     * Return filtered behavior subPackage.
+     * Return the java behavior sub package.
      * @param {Api} api - API. (NotNull)
-     * @return {string} filtered behavior subPackage. (NotNull)
+     * @return {string} the java behavior sub package. (NotNull, NotEmpty)
      */
     behaviorSubPackage: function(api) {
         return this.subPackage(api).replace(/^([^.]*)\.(.+)/, '$1');
     },
 
     /**
-     * Return bsBehavior class name.
+     * Return bsBehavior class name without package.
      * @param {Api} api - API. (NotNull)
-     * @return {string} bsBehavior class name. (NotNull)
+     * @return {string} bsBehavior class name without package. (NotNull, NotEmpty)
      */
     bsBehaviorClassName: function(api) {
         return 'BsRemote' + api.schema + manager.initCap(manager.camelize(this.behaviorSubPackage(api).replace(/\./g, '_'))) + 'Bhv';
     },
 
     /**
-     * Return exBehavior class name.
+     * Return exBehavior class name without package.
      * @param {Api} api - API. (NotNull)
-     * @return {string} exBehavior class name. (NotNull)
+     * @return {string} exBehavior class name without package. (NotNull, NotEmpty)
      */
     exBehaviorClassName: function(api) {
         return 'Remote' + api.schema + manager.initCap(manager.camelize(this.behaviorSubPackage(api).replace(/\./g, '_'))) + 'Bhv';
     },
 
     /**
-     * Return behavior request method name.
+     * Return the behavior request method name.
      * @param {Api} api - API. (NotNull)
-     * @return {string} behavior request method name. (NotNull)
+     * @return {string} the behavior request method name. (NotNull, NotEmpty)
      */
     behaviorRequestMethodName: function(api) {
         var methodPart = manager.camelize(this.subPackage(api).replace(this.behaviorSubPackage(api), '').replace(/\./g, '_'));
@@ -193,9 +206,9 @@ var baseRule = {
     },
 
     /**
-     * Return behavior rule method name.
+     * Return the behavior rule method name.
      * @param {Api} api - API. (NotNull)
-     * @return {string} behavior rule method name. (NotNull)
+     * @return {string} the behavior rule method name. (NotNull, NotEmpty)
      */
     behaviorRuleMethodName: function(api) {
         var methodPart = manager.camelize(this.subPackage(api).replace(this.behaviorSubPackage(api), '').replace(/\./g, '_'));
@@ -203,12 +216,12 @@ var baseRule = {
     },
 
     // ===================================================================================
-    //                                                                        Param/Return
-    //                                                                        ============
+    //                                                                  Param/Return(base)
+    //                                                                  ==================
     /**
-     * Return filtered bean subPackage.
+     * Return the java bean sub package.
      * @param {Api} api - API. (NotNull)
-     * @return {string} filtered bean subPackage. (NotNull)
+     * @return {string} the java bean sub package. (NotNull, NotEmpty)
      */
     beanSubPackage: function(api) {
         var package = this.subPackage(api);
@@ -219,48 +232,10 @@ var baseRule = {
     },
 
     /**
-     * Return filterd definition key.
-     * e.g. Filter common header pattern class.
-     * @param {string} definitionKey - definition key. (NotNull)
-     * @return {string} filterd definition key. (NotNull)
-     */
-    definitionKey: function(definitionKey) { return definitionKey; },
-
-    /**
-     * Returns definition key before filtering from the filtered definition key.
-     * e.g. Restore the class of the filtered common header pattern.
-     * @param {string} definitionKey - filterd definition key. (NotNull)
-     * @return {string} definition key before filtering from the filtered definition key. (NotNull)
-     */
-    unDefinitionKey: function(definitionKey) { return definitionKey; },
-
-    beanExtendsDefinitionGeneration: false,
-
-    /**
-     * Return filtered bean definition subPackage.
-     * @param {Request} request - Request. (NotNull)
-     * @param {string} definitionKey - definition key. (NotNull)
-     * @return {string} filtered bean subPackage. (NotNull)
-     */
-    beanExtendsDefinitionSubPackage: function(request, definitionKey) {
-        return 'definition';
-    },
-
-    /**
-     * Return bean definition class name.
-     * @param {Request} request - Request. (NotNull)
-     * @param {string} definitionKey - definition key. (NotNull)
-     * @return {string} bean definition class name. (NotNull)
-     */
-    beanExtendsDefinitionClassName: function(request, definitionKey) {
-        return definitionKey.replace(/.*\./g, '').replace(/(<|>)/g, '') + 'Definition';
-    },
-
-    /**
-     * Return bean class name.
+     * Return bean class name without package.
      * @param {Api} api - API. (NotNull)
      * @param {boolean} detail - detail. (NotNull)
-     * @return {string} bean class name. (NotNull)
+     * @return {string} bean class name without package. (NotNull)
      */
     beanClassName: function(api, detail) {
         var namePart = detail ? api.url.replace(/(_|-|^\/|\/$|\{|\})/g, '').replace(/\//g, '_').toLowerCase(): this.subPackage(api);
@@ -268,87 +243,200 @@ var baseRule = {
     },
 
     /**
-     * Return param extends class.
+     * Return param extends class with package.
      * @param {Api} api - API. (NotNull)
      * @param {Object} properties - properties. (NotNull)
-     * @return {string} param extends class. (NullAllowed)
+     * @return {string} param extends class with package. (NullAllowed)
      */
     paramExtendsClass: function(api, properties) {
         return null;
     },
 
     /**
-     * Return param implements classes.
+     * Return param implements classes (Interface) with package.
      * @param {Api} api - API. (NotNull)
      * @param {Object} properties - properties. (NotNull)
-     * @return {string} param implements classes. (NullAllowed)
+     * @return {string} param Implements classes (Interface) with package. (NullAllowed)
      */
     paramImplementsClasses: function(api, properties) {
         return null;
     },
 
     /**
-     * Return param class name.
+     * Return param class name without package.
      * @param {Api} api - API. (NotNull)
      * @param {boolean} detail - detail. (NotNull)
-     * @return {string} param class name. (NotNull)
+     * @return {string} param class name without package. (NotNull)
      */
     paramClassName: function(api, detail) {
         return this.beanClassName(api, detail) + 'Param';
     },
 
     /**
-     * Return return extends class.
+     * Return return extends class with package.
      * @param {Api} api - API. (NotNull)
      * @param {Object} properties - properties. (NotNull)
-     * @return {string} return extends class. (NullAllowed)
+     * @return {string} return extends class with package. (NullAllowed)
      */
     returnExtendsClass: function(api, properties) {
         return null;
     },
 
     /**
-     * Return return implements classes.
+     * Return return implements classes (Interface) with package.
      * @param {Api} api - API. (NotNull)
      * @param {Object} properties - properties. (NotNull)
-     * @return {string} return implements classes. (NullAllowed)
+     * @return {string} return implements classes (Interface) with package. (NullAllowed)
      */
     returnImplementsClasses: function(api, properties) {
         return null;
     },
 
     /**
-     * Return returnClassName.
+     * Return returnClassName without package.
      * @param {Api} api - API. (NotNull)
      * @param {boolean} detail - detail. (NotNull)
-     * @return {string} returnClassName. (NotNull)
+     * @return {string} return class name without package. (NotNull)
      */
     returnClassName: function(api, detail) {
         return this.beanClassName(api, detail) + 'Return';
     },
 
     /**
-     * Return nest class name.
+     * Return nest class name without package.
      * @param {Api} api - API. (NotNull)
-     * @param {string} className - class name. (NotNull)
-     * @return {string} nest class name. (NotNull)
+     * @param {string} nestClassName - Nest class name without package. (NotNull)
+     * @return {string} Nest class name without package. (NotNull)
      */
-    nestClassName: function(api, className) {
-        return className.replace(/(Part|Result|Model|Bean)$/, '') + 'Part';
+    nestClassName: function(api, nestClassName) {
+        return nestClassName.replace(/(Part|Result|Model|Bean)$/, '') + 'Part';
     },
 
     /**
-     * Return field name.
+     * Return true if the property is to be generated.
      * @param {Api} api - API. (NotNull)
-     * @param {string} fieldName - field name. (NotNull)
-     * @return {string} field name. (NotNull)
+     * @param {TopLevelBean} topLevelBean - definition of bean where field is declared. (NotNull)
+     * @param {string} jsonFieldName - json field name. (NotNull)
+     * @return {boolean} true if target. (NotNull)
      */
-    fieldName: function(api, bean, fieldName) {
-        var fieldNaming = this.fieldNamingMapping()[bean.in];
+    targetField: function(api, topLevelBean, fieldName) {
+        return true;
+    },
+
+    /**
+     * Return java field name.
+     * @param {Api} api - API. (NotNull)
+     * @param {TopLevelBean} topLevelBean - definition of bean where field is declared. (NotNull)
+     * @param {string} jsonFieldName - json field name. (NotNull)
+     * @return {string} java field name. (NotNull)
+     */
+    fieldName: function(api, topLevelBean, jsonFieldName) {
+        var fieldNaming = this.fieldNamingMapping()[topLevelBean.in];
+        // #for_now Add a branch when the types of FIELD_NAMING increase. I want to be able to solve it with a loop if possible by p1us2er0 (2022/05/04)
+        // In addition, it is necessary to add conversion processing to the provided class of lasta-remoteapi.
         if (fieldNaming === this.FIELD_NAMING.CAMEL_TO_LOWER_SNAKE) {
-            return manager.initUncap(manager.camelize(fieldName));
+            return manager.initUncap(manager.camelize(jsonFieldName));
         }
-        return fieldName;
+        return jsonFieldName;
+    },
+
+    /**
+     * Return true for custom java field name.
+     * If neither of the following is true, it is considered custom.
+     * 1. Swagger field name and java field name are an exact match.
+     * 2. Swagger field name and java field name are the simple conversion of camel case -> snake case.
+     *    Judgment of simple conversion of camel case-> snake case,
+     *    After camel case -> snake case, reverse conversion is done to match the original name (reversible).
+     *
+     * If it is determined to be custom, @SerializedName will be added for serialization / deserialization at the time of automatic generation.
+     * @param {Api} api - API. (NotNull)
+     * @param {TopLevelBean} topLevelBean - definition of bean where field is declared. (NotNull)
+     * @param {string} jsonFieldName - json field name. (NotNull)
+     * @return {boolean} Return true for custom java field name. (NotNull)
+     */
+    isCustomFieldName: function(api, topLevelBean, jsonFieldName) {
+        var adjustedFieldName = this.fieldName(api, topLevelBean, jsonFieldName);
+        if (adjustedFieldName.equals(jsonFieldName)) {
+            return false;
+        }
+        var fieldNaming = this.fieldNamingMapping()[topLevelBean.in];
+        // #for_now Add a branch when the types of FIELD_NAMING increase. I want to be able to solve it with a loop if possible by p1us2er0 (2022/05/04)
+        // In addition, it is necessary to add conversion processing to the provided class of lasta-remoteapi.
+        if (fieldNaming === this.FIELD_NAMING.CAMEL_TO_LOWER_SNAKE) {
+            return !manager.decamelize(adjustedFieldName).toLowerCase().equals(jsonFieldName);
+        }
+        return true;
+    },
+
+    // ===================================================================================
+    //                                                           Param/Return(gap pattern)
+    //                                                           =========================
+    /** true if the raram/return bean is a gap pattern. */
+    beanExtendsDefinitionGeneration: false,
+
+    /**
+     * Return filtered bean definition(gap pattern Extends class) subPackage.
+     * @param {org.dbflute.logic.manage.freegen.DfFreeGenRequest} request - freeGen request settings. (NotNull)
+     * @param {string} definitionKey - The definition key for the swagger specification. (NotNull, NotEmpty)
+     * @return {string} filtered bean subPackage. (NotNull, NotEmpty)
+     */
+    beanExtendsDefinitionSubPackage: function(request, definitionKey) {
+        return 'definition';
+    },
+
+    /**
+     * Return bean definition(gap pattern Extends class) class name without package.
+     * @param {org.dbflute.logic.manage.freegen.DfFreeGenRequest} request - freeGen request settings. (NotNull)
+     * @param {string} definitionKey - The definition key for the swagger specification. (NotNull, NotEmpty)
+     * @return {string} bean definition class name without package. (NotNull, NotEmpty)
+     */
+    beanExtendsDefinitionClassName: function(request, definitionKey) {
+        return definitionKey.replace(/.*\./g, '').replace(/(<|>)/g, '') + 'Definition';
+    },
+
+    // ===================================================================================
+    //                                                             Param/Return(irregular)
+    //                                                             =======================
+    /**
+     * Return filterd definition key for the swagger specification.
+     * e.g. Filter common header pattern class.
+     * http://dbflute.seasar.org/ja/lastaflute/howto/impldesign/jsondesign.html#jsonerrorexp
+     * @param {string} definitionKey - The definition key for the swagger specification. (NotNull, NotEmpty)
+     * @return {string} filterd definition key for the swagger specification. (NotNull, NotEmpty)
+     */
+    definitionKey: function(definitionKey) {
+        return definitionKey;
+    },
+
+    /**
+     * Return definition key for the swagger specification before filtering from the filtered definition key for the swagger specification.
+     * e.g. Restore the class of the filtered common header pattern.
+     * @param {string} definitionKey - filterd definition key for the swagger specification. (NotNull, NotEmpty)
+     * @return {string} definition key for the swagger specification before filtering from the filtered definition key for the swagger specification. (NotNull, NotEmpty)
+     */
+    unDefinitionKey: function(definitionKey) {
+        return definitionKey;
+    },
+
+    // ===================================================================================
+    //                                                                              Di xml
+    //                                                                              ======
+    /**
+     * Return di xml path for target container lasta di.
+     * @param {string} schema - schema of the remote api. (NotNull, NotEmpty)
+     * @return {string} di xml path for target container lasta di. (NotNull, NotEmpty)
+     */
+    diXmlPath: function(schema, resourceFilePath) {
+        return '../resources/remoteapi/di/remoteapi_' + this.schemaPackage(schema).replace(/\./g, '-') + '.xml';
+    },
+
+    /**
+     * Return java config class name without package for target container spring.
+     * @param {string} schema - schema of the remote api. (NotNull, NotEmpty)
+     * @return {string} java config class name without package for target container spring. (NotNull, NotEmpty)
+     */
+    javaConfigClassName: function(schema) {
+        return 'Remote' + schema + 'BeansJavaConfig';
     },
 
     // ===================================================================================
@@ -361,15 +449,18 @@ var baseRule = {
     //                                                                              Option
     //                                                                              ======
     /**
-     * Return java import order list.
-     * @return java import order list. (NotNull)
+     * Return the order list of categolized package of import.<br/>
+     * Specify top packages to categorize.
+     * @return {string[]} The order list of categolized package of import. (NotNull, EmptyAllowed)
      */
     importOrderList: function() {
         return ['java', 'javax', 'junit', 'org', 'com', 'net', 'ognl', 'mockit', 'jp'];
     },
 
     /**
-     * Return field naming mapping.
+     * Return java field naming rule mapping for OpenAPI parameter type.<br/>
+     * OpenAPI parameter types are path, query, formData, json(body and consumes not contains 'application/xml'), xml(body and consumes contains 'application/xml').<br/>
+     * If this.FIELD_NAMING.CAMEL_TO_LOWER_SNAKE is specified, field names in Java will be camel case and snake case when sending API.
      * @return field naming mapping. (NotNull)
      */
     fieldNamingMapping: function() {
@@ -383,7 +474,7 @@ var baseRule = {
     },
 
     /**
-     * Return java property type mapping.
+     * Return java field type mapping for OpenAPI parameter data type.
      * e.g. java.util.List -> org.eclipse.collections.api.list.ImmutableList, java.time.LocalDate -> String etc.
      * @return typeMap The map of type conversion, swagger type to java type. (NotNull)
      */
@@ -407,7 +498,7 @@ var baseRule = {
     },
 
     /**
-     * Return path variable manual mapping class.
+     * Manually map classes for path variables.
      * @param {Api} api - API. (NotNull)
      * @param {PathVariable} pathVariable - path variable. (NotNull)
      * @return {string} path variable manual mapping class. (NullAllowed)
@@ -417,7 +508,7 @@ var baseRule = {
     },
 
     /**
-     * Return bean property manual mapping class.
+     * Manually map classes for bean property.
      * @param {Api} api - API. (NotNull)
      * @param {string} beanClassName - bean class name. (NotNull)
      * @param {Property} property - property. (NotNull)
@@ -428,7 +519,7 @@ var baseRule = {
     },
 
     /**
-     * Return path variable manual mapping description.
+     * Manually description for path variables.
      * @param {Api} api - API. (NotNull)
      * @param {PathVariable} pathVariable - path variable. (NotNull)
      * @return {string} path variable manual mapping description. (NullAllowed)
@@ -438,7 +529,7 @@ var baseRule = {
     },
 
     /**
-     * Return bean property manual mapping description.
+     * Manually description for bean property.
      * @param {Api} api - API. (NotNull)
      * @param {string} beanClassName - bean class name. (NotNull)
      * @param {Property} property - property. (NotNull)
@@ -449,8 +540,9 @@ var baseRule = {
     },
 
     /**
-     * Return delete target.
-     * @param {Request} request - rquest. (NotNull)
+     * Determines whether files are eligible for deletion during cleanup after auto-generation.
+     * By default, files with ' @author FreeGen' are eligible for deletion.
+     * @param {org.dbflute.logic.manage.freegen.DfFreeGenRequest} request - freeGen request settings. (NotNull)
      * @return {File} file. (NotNull)
      * @return {boolean} delete target. (NotNull)
      */

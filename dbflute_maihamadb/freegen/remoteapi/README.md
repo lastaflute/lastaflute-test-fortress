@@ -118,6 +118,15 @@ remotePetstorePetBhv.requestPost(param -> {
 });
 ```
 
+## experimental
+ 
+- Generate test code.
+
+  ```
+  export FREE_GEN_REMOTEAPI_TEST=true
+  sh manage.sh 12
+  ```
+
 ## Supported remote api product
 - [lasta-remoteapi](https://github.com/lastaflute/lasta-remoteapi)
 

@@ -17,6 +17,8 @@ package org.docksidestage.remote.maihama.showbase.member.add.register;
 
 import org.lastaflute.core.util.Lato;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * The bean class as return for remote API of POST /member/add/register.
  * @author FreeGen
@@ -24,48 +26,63 @@ import org.lastaflute.core.util.Lato;
 public class RemoteMemberAddRegisterReturn {
 
     /** The property of purchaseCount. (PURCHASE_COUNT: (Derived Referrer)) (NullAllowed) */
+    @SerializedName("_purchaseCount")
     public Integer purchaseCount;
 
     /** The property of latestLoginDatetime. (LATEST_LOGIN_DATETIME: (Derived Referrer)) (NullAllowed) */
+    @SerializedName("_latestLoginDatetime")
     public java.time.LocalDateTime latestLoginDatetime;
 
     /** The property of memberId. ((会員ID)MEMBER_ID: {PK, ID, NotNull, INT(10), FK to MEMBER_ADDRESS}) (NullAllowed) */
+    @SerializedName("_memberId")
     public Integer memberId;
 
     /** The property of memberName. ((会員名称)MEMBER_NAME: {IX, NotNull, VARCHAR(100)}) (NullAllowed) */
+    @SerializedName("_memberName")
     public String memberName;
 
     /** The property of memberAccount. ((会員アカウント)MEMBER_ACCOUNT: {UQ, NotNull, VARCHAR(50)}) (NullAllowed) */
+    @SerializedName("_memberAccount")
     public String memberAccount;
 
     /** The property of memberStatusCode. ((会員ステータスコード)MEMBER_STATUS_CODE: {IX, NotNull, CHAR(3), FK to member_status, classification=MemberStatus}) (NullAllowed) */
+    @SerializedName("_memberStatusCode")
     public String memberStatusCode;
 
     /** The property of formalizedDatetime. ((正式会員日時)FORMALIZED_DATETIME: {IX, DATETIME(19)}) (NullAllowed) */
+    @SerializedName("_formalizedDatetime")
     public java.time.LocalDateTime formalizedDatetime;
 
     /** The property of birthdate. ((生年月日)BIRTHDATE: {DATE(10)}) (NullAllowed) */
+    @SerializedName("_birthdate")
     public java.time.LocalDate birthdate;
 
     /** The property of registerDatetime. ((登録日時)REGISTER_DATETIME: {NotNull, DATETIME(19)}) (NullAllowed) */
+    @SerializedName("_registerDatetime")
     public java.time.LocalDateTime registerDatetime;
 
     /** The property of registerUser. ((登録ユーザー)REGISTER_USER: {NotNull, VARCHAR(200)}) (NullAllowed) */
+    @SerializedName("_registerUser")
     public String registerUser;
 
     /** The property of updateDatetime. ((更新日時)UPDATE_DATETIME: {NotNull, DATETIME(19)}) (NullAllowed) */
+    @SerializedName("_updateDatetime")
     public java.time.LocalDateTime updateDatetime;
 
     /** The property of updateUser. ((更新ユーザー)UPDATE_USER: {NotNull, VARCHAR(200)}) (NullAllowed) */
+    @SerializedName("_updateUser")
     public String updateUser;
 
     /** The property of versionNo. ((バージョン番号)VERSION_NO: {NotNull, BIGINT(19)}) (NullAllowed) */
+    @SerializedName("_versionNo")
     public Long versionNo;
 
     /** The property of memberStatus. (NullAllowed) */
+    @SerializedName("_memberStatus")
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
     /** The property of memberAddressAsValid. (NullAllowed) */
+    @SerializedName("_memberAddressAsValid")
     @javax.validation.Valid
     public MemberAddressPart memberAddressAsValid;
 
@@ -77,6 +94,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberLoginAsLatest. (NullAllowed) */
+    @SerializedName("_memberLoginAsLatest")
     @javax.validation.Valid
     public MemberLoginPart memberLoginAsLatest;
 
@@ -88,6 +106,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberSecurityAsOne. (NullAllowed) */
+    @SerializedName("_memberSecurityAsOne")
     @javax.validation.Valid
     public MemberSecurityPart memberSecurityAsOne;
 
@@ -99,6 +118,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberServiceAsOne. (NullAllowed) */
+    @SerializedName("_memberServiceAsOne")
     @javax.validation.Valid
     public MemberServicePart memberServiceAsOne;
 
@@ -110,6 +130,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberWithdrawalAsOne. (NullAllowed) */
+    @SerializedName("_memberWithdrawalAsOne")
     @javax.validation.Valid
     public MemberWithdrawalPart memberWithdrawalAsOne;
 
@@ -121,21 +142,27 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of memberAddressList. ((会員住所情報)MEMBER_ADDRESS by MEMBER_ID, named 'memberAddressList') (NullAllowed) */
+    @SerializedName("_memberAddressList")
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberAddressList;
 
     /** The property of memberFollowingByMyMemberIdList. ((会員フォローイング)MEMBER_FOLLOWING by MY_MEMBER_ID, named 'memberFollowingByMyMemberIdList') (NullAllowed) */
+    @SerializedName("_memberFollowingByMyMemberIdList")
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberFollowingByMyMemberIdList;
 
     /** The property of memberFollowingByYourMemberIdList. ((会員フォローイング)MEMBER_FOLLOWING by YOUR_MEMBER_ID, named 'memberFollowingByYourMemberIdList') (NullAllowed) */
+    @SerializedName("_memberFollowingByYourMemberIdList")
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberFollowingByYourMemberIdList;
 
     /** The property of memberLoginList. ((会員ログイン)MEMBER_LOGIN by MEMBER_ID, named 'memberLoginList') (NullAllowed) */
+    @SerializedName("_memberLoginList")
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> memberLoginList;
 
     /** The property of purchaseList. ((購入)PURCHASE by MEMBER_ID, named 'purchaseList') (NullAllowed) */
+    @SerializedName("_purchaseList")
     public org.eclipse.collections.api.list.ImmutableList<java.util.Map<String, Object>> purchaseList;
 
     /** The property of uniqueDrivenProperties. (NullAllowed) */
+    @SerializedName("__uniqueDrivenProperties")
     @javax.validation.Valid
     public EntityUniqueDrivenPropertiesPart uniqueDrivenProperties;
 
@@ -147,6 +174,7 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of modifiedProperties. (NullAllowed) */
+    @SerializedName("__modifiedProperties")
     @javax.validation.Valid
     public EntityModifiedPropertiesPart modifiedProperties;
 
@@ -158,10 +186,12 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of specifiedProperties. (NullAllowed) */
+    @SerializedName("__specifiedProperties")
     @javax.validation.Valid
     public EntityModifiedPropertiesPart specifiedProperties;
 
     /** The property of derivedMap. (NullAllowed) */
+    @SerializedName("__derivedMap")
     @javax.validation.Valid
     public EntityDerivedMapPart derivedMap;
 
@@ -173,9 +203,11 @@ public class RemoteMemberAddRegisterReturn {
     }
 
     /** The property of undefinedClassificationSelectAllowed. (NullAllowed) */
+    @SerializedName("_undefinedClassificationSelectAllowed")
     public Boolean undefinedClassificationSelectAllowed;
 
     /** The property of createdBySelect. (NullAllowed) */
+    @SerializedName("__createdBySelect")
     public Boolean createdBySelect;
 
     @Override
