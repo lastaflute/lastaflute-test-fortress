@@ -25,7 +25,7 @@
 		<lastaflute.version>1.2.8</lastaflute.version>
 		<lasta.thymeleaf.version>0.4.3</lasta.thymeleaf.version>
 		<lasta.job.version>0.5.7</lasta.job.version>
-		<lasta.remoteapi.version>0.5.1</lasta.remoteapi.version>
+		<lasta.remoteapi.version>0.5.2</lasta.remoteapi.version>
 		<lasta.meta.version>0.6.4</lasta.meta.version>
 		<openapidiff.version>2.1.6</openapidiff.version> <!-- lasta-meta optional -->
 		<swagger.parser.v2.version>2.1.37</swagger.parser.v2.version> <!-- lasta-meta optional -->
