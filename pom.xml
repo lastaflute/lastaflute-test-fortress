@@ -40,7 +40,7 @@
 
 		<servlet.version>4.0.1</servlet.version>
 		<jetty.boot.version>0.5.4</jetty.boot.version>
-		<tomcat.boot.version>0.8.5</tomcat.boot.version>
+		<tomcat.boot.version>0.8.6</tomcat.boot.version>
 		<swagger.ui.version>3.35.0</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
