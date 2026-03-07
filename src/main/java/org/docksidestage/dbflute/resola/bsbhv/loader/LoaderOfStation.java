@@ -22,35 +22,7 @@ import org.docksidestage.dbflute.resola.exbhv.*;
 import org.docksidestage.dbflute.resola.exentity.*;
 
 /**
- * The referrer loader of STATION as TABLE. <br>
- * <pre>
- * [primary key]
- *     STATION_ID
- *
- * [column]
- *     STATION_ID, STATION_NAME, BIRTHDATE, HOME_COUNT, WORKING_KILOMETER
- *
- * [sequence]
- *     
- *
- * [identity]
- *     
- *
- * [version-no]
- *     
- *
- * [foreign table]
- *     
- *
- * [referrer table]
- *     
- *
- * [foreign property]
- *     
- *
- * [referrer property]
- *     
- * </pre>
+ * The referrer loader of STATION as TABLE.
  * @author DBFlute(AutoGenerator)
  */
 public class LoaderOfStation {
