@@ -20,12 +20,14 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
 public class SuperSimpleBody {
 
+    @Required
     public String sea;
     public Integer land;
     public LocalDate piari;

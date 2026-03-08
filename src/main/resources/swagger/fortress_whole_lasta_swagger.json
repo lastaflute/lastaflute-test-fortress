@@ -5749,7 +5749,8 @@
             "name": "land",
             "type": "integer",
             "format": "int32",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "name": "iamForm",
@@ -5834,7 +5835,8 @@
             "name": "land",
             "type": "integer",
             "format": "int32",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "name": "iamForm",
@@ -5890,7 +5892,8 @@
             "name": "land",
             "type": "integer",
             "format": "int32",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "name": "iamForm",
@@ -5935,7 +5938,8 @@
             "name": "land",
             "type": "integer",
             "format": "int32",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "name": "iamForm",
@@ -6082,7 +6086,8 @@
             "name": "land",
             "type": "integer",
             "format": "int32",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "name": "iamForm",
@@ -17304,6 +17309,9 @@
     },
     "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody": {
       "type": "object",
+      "required": [
+        "sea"
+      ],
       "properties": {
         "sea": {
           "type": "string"
@@ -17333,6 +17341,9 @@
     },
     "java.util.List\u003corg.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult\u003e": {
       "type": "object",
+      "required": [
+        "key"
+      ],
       "properties": {
         "key": {
           "type": "string"
@@ -17382,6 +17393,10 @@
     },
     "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult": {
       "type": "object",
+      "required": [
+        "land",
+        "sea"
+      ],
       "properties": {
         "sea": {
           "type": "string"
@@ -17556,6 +17571,9 @@
     },
     "org.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult": {
       "type": "object",
+      "required": [
+        "key"
+      ],
       "properties": {
         "key": {
           "type": "string"
@@ -17618,6 +17636,9 @@
     },
     "org.docksidestage.app.web.wx.remogen.bean.recycle.ThemeColorResult": {
       "type": "object",
+      "required": [
+        "color_name"
+      ],
       "properties": {
         "color_name": {
           "type": "string"

@@ -15,12 +15,16 @@
  */
 package org.docksidestage.app.web.wx.remogen.bean.recycle;
 
+import org.lastaflute.web.validation.Required;
+
 /**
  * @author jflute
  */
 public class ThemeColorResult {
 
+    @Required
     public final String colorName;
+
     public final String rgb;
 
     public ThemeColorResult(String key, String rgb) {

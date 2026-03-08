@@ -15,13 +15,19 @@
  */
 package org.docksidestage.app.web.wx.remogen.bean.simple;
 
+import org.lastaflute.web.validation.Required;
+
 /**
  * @author jflute
  */
 public class SuperSimpleResult {
 
+    @Required
     public final String sea;
+
+    @Required
     public final Integer land;
+
     public String iamResult;
 
     public SuperSimpleResult(String sea, Integer land) {

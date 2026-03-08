@@ -16,6 +16,7 @@
 package org.docksidestage.app.web.wx.remogen.bean.simple;
 
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
@@ -23,7 +24,10 @@ import org.lastaflute.core.util.Lato;
 public class SuperSimpleForm {
 
     public String sea;
+
+    @Required
     public Integer land;
+
     public String iamForm;
 
     @Override

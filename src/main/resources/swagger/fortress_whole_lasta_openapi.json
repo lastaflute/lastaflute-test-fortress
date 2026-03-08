@@ -5731,6 +5731,7 @@
         }, {
           "name" : "land",
           "in" : "query",
+          "required" : true,
           "schema" : {
             "type" : "integer",
             "format" : "int32"
@@ -5820,6 +5821,7 @@
         }, {
           "name" : "land",
           "in" : "query",
+          "required" : true,
           "schema" : {
             "type" : "integer",
             "format" : "int32"
@@ -5880,6 +5882,7 @@
         }, {
           "name" : "land",
           "in" : "query",
+          "required" : true,
           "schema" : {
             "type" : "integer",
             "format" : "int32"
@@ -5929,6 +5932,7 @@
         }, {
           "name" : "land",
           "in" : "query",
+          "required" : true,
           "schema" : {
             "type" : "integer",
             "format" : "int32"
@@ -6080,6 +6084,7 @@
         }, {
           "name" : "land",
           "in" : "query",
+          "required" : true,
           "schema" : {
             "type" : "integer",
             "format" : "int32"
@@ -17384,6 +17389,7 @@
         }
       },
       "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody" : {
+        "required" : [ "sea" ],
         "type" : "object",
         "properties" : {
           "sea" : {
@@ -17412,6 +17418,7 @@
         }
       },
       "java.util.List<org.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult>" : {
+        "required" : [ "key" ],
         "type" : "object",
         "properties" : {
           "key" : {
@@ -17461,6 +17468,7 @@
         }
       },
       "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleResult" : {
+        "required" : [ "land", "sea" ],
         "type" : "object",
         "properties" : {
           "sea" : {
@@ -17615,6 +17623,7 @@
         }
       },
       "org.docksidestage.app.web.wx.remogen.bean.recycle.KeyValueResult" : {
+        "required" : [ "key" ],
         "type" : "object",
         "properties" : {
           "key" : {
@@ -17673,6 +17682,7 @@
         }
       },
       "org.docksidestage.app.web.wx.remogen.bean.recycle.ThemeColorResult" : {
+        "required" : [ "color_name" ],
         "type" : "object",
         "properties" : {
           "color_name" : {
