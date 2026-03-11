@@ -29,11 +29,21 @@ public class SuperSimpleBody {
 
     @Required
     public String sea;
+
     public Integer land;
+
     public LocalDate piari;
+
     public LocalDateTime bonvo;
+
     public LocalTime dstore;
-    public String iamBody;
+
+    @Required
+    public Boolean amba;
+
+    public String miraco;
+
+    public Long dohotel;
 
     @Override
     public String toString() {

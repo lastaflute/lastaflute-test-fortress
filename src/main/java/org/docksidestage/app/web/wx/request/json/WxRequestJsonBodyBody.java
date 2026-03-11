@@ -17,40 +17,85 @@ package org.docksidestage.app.web.wx.request.json;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.docksidestage.dbflute.allcommon.CDef;
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
  */
 public class WxRequestJsonBodyBody {
 
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // test of notnull/required annotation for RemoteApiGen (2026/03/11)
+    // _/_/_/_/_/_/_/_/
+
     public String sea;
 
+    @NotNull
+    public String seaDockside;
+
+    @NotNull
+    public List<String> seaHangar;
+
+    @Required
+    public List<String> seaMagiclamp;
+
+    @NotNull
     public Integer land;
 
     public LocalDate piari;
 
     public LocalDateTime bonvo;
 
+    @Required
     public Boolean dstore;
 
+    @NotNull
     public CDef.MemberStatus amba;
 
+    @Valid
     public MiracoPart miraco;
 
     public static class MiracoPart {
 
-        public String sta;
+        @Required
+        @Valid
+        public ToscanaPart toscana;
+
+        @NotNull
+        @Valid
+        public List<VeneziaPart> veneziaList;
+    }
+
+    public static class ToscanaPart {
+
+        @Required
+        public String parkEntranceView;
+
+        public String hotelEntranceView;
+
+        @NotNull
+        public String nannimoView;
+    }
+
+    public static class VeneziaPart {
+
+        public String canalView;
+
+        @Required
+        public String riverView;
     }
 
     @Valid
-    public WhitePart white;
+    public DohotelPart dohotel;
 
-    public static class WhitePart {
+    public static class DohotelPart {
 
         public CDef.WhiteConfusingFormatBodying formatBodying;
     }

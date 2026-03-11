@@ -17389,7 +17389,7 @@
         }
       },
       "org.docksidestage.app.web.wx.remogen.bean.simple.SuperSimpleBody" : {
-        "required" : [ "sea" ],
+        "required" : [ "amba", "sea" ],
         "type" : "object",
         "properties" : {
           "sea" : {
@@ -17412,8 +17412,15 @@
             "type" : "string",
             "example" : "00:00:00.000"
           },
-          "iam_body" : {
+          "amba" : {
+            "type" : "boolean"
+          },
+          "miraco" : {
             "type" : "string"
+          },
+          "dohotel" : {
+            "type" : "integer",
+            "format" : "int64"
           }
         }
       },
@@ -18256,15 +18263,49 @@
           }
         }
       },
-      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$MiracoPart" : {
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$ToscanaPart" : {
+        "required" : [ "nannimo_view", "park_entrance_view" ],
         "type" : "object",
         "properties" : {
-          "sta" : {
+          "park_entrance_view" : {
+            "type" : "string"
+          },
+          "hotel_entrance_view" : {
+            "type" : "string"
+          },
+          "nannimo_view" : {
             "type" : "string"
           }
         }
       },
-      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$WhitePart" : {
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$VeneziaPart" : {
+        "required" : [ "river_view" ],
+        "type" : "object",
+        "properties" : {
+          "canal_view" : {
+            "type" : "string"
+          },
+          "river_view" : {
+            "type" : "string"
+          }
+        }
+      },
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$MiracoPart" : {
+        "required" : [ "toscana", "venezia_list" ],
+        "type" : "object",
+        "properties" : {
+          "toscana" : {
+            "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody%24ToscanaPart"
+          },
+          "venezia_list" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody%24VeneziaPart"
+            }
+          }
+        }
+      },
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$DohotelPart" : {
         "type" : "object",
         "properties" : {
           "format_bodying" : {
@@ -18276,10 +18317,26 @@
         }
       },
       "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody" : {
+        "required" : [ "amba", "dstore", "land", "sea_dockside", "sea_hangar", "sea_magiclamp" ],
         "type" : "object",
         "properties" : {
           "sea" : {
             "type" : "string"
+          },
+          "sea_dockside" : {
+            "type" : "string"
+          },
+          "sea_hangar" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "sea_magiclamp" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
           },
           "land" : {
             "type" : "integer",
@@ -18306,8 +18363,8 @@
           "miraco" : {
             "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody%24MiracoPart"
           },
-          "white" : {
-            "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody%24WhitePart"
+          "dohotel" : {
+            "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody%24DohotelPart"
           }
         }
       },
