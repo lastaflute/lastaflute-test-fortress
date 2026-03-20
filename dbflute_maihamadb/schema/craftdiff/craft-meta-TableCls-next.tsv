@@ -1,0 +1,7 @@
+"UNIQUE_CODE"	"TARGET_DATA"
+"member_status::FML"	"Formalized|1"
+"member_status::PRV"	"Provisional|3"
+"member_status::WDL"	"Withdrawal|2"
+"product_status::ONS"	"OnSaleProduction|1"
+"product_status::PST"	"ProductionStop|2"
+"product_status::SST"	"SaleStop|3"

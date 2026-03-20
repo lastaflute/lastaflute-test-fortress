@@ -1,0 +1,24 @@
+[Saved Previous Resources]: 2026/01/21 19:38:57
+playsql/migration/previous/replace-schema-00-system.sql
+playsql/migration/previous/replace-schema-10-basic.sql
+playsql/migration/previous/replace-schema-20-view.sql
+playsql/migration/previous/take-finally.sql
+playsql/migration/previous/data/ut/reversetsv/UTF-8/loadingControlMap.dataprop
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_05-MEMBER_SECURITY.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_02_02-PURCHASE_PAYMENT.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_02_01-PURCHASE.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_02-MEMBER_ADDRESS.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/reverse-data-result.dfmark
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_01-MEMBER.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/tsv-data-result.dfmark
+playsql/migration/previous/data/ut/reversetsv/UTF-8/.gitignore
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_04-MEMBER_LOGIN.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_08-PRODUCT.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_03-MEMBER_FOLLOWING.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_06-MEMBER_SERVICE.tsv
+playsql/migration/previous/data/ut/reversetsv/UTF-8/cyclic_01_07-MEMBER_WITHDRAWAL.tsv
+playsql/migration/previous/data/common/xls/xls-data-result.dfmark
+playsql/migration/previous/data/common/xls/10-master.xls
+(20 files)
+
+Look at the log for detail.

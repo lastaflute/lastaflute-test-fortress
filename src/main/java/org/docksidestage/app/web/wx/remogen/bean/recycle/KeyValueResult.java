@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2024 the original author or authors.
+ * Copyright 2015-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,16 @@
  */
 package org.docksidestage.app.web.wx.remogen.bean.recycle;
 
+import org.lastaflute.web.validation.Required;
+
 /**
  * @author jflute
  */
 public class KeyValueResult {
 
+    @Required
     public final String key;
+
     public final Object value;
 
     public KeyValueResult(String key, Object value) {

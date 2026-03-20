@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2024 the original author or authors.
+ * Copyright 2015-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package org.docksidestage.app.web.wx.remogen.bean.simple;
 
 import org.lastaflute.core.util.Lato;
+import org.lastaflute.web.validation.Required;
 
 /**
  * @author jflute
@@ -23,7 +24,10 @@ import org.lastaflute.core.util.Lato;
 public class SuperSimpleForm {
 
     public String sea;
+
+    @Required
     public Integer land;
+
     public String iamForm;
 
     @Override

@@ -13,15 +13,30 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
+##########################################################################################
+##### Ready for generation.
+##########################################################################################
+#set ($remoteApiLogic = $scriptEngine.get('remoteApiLogic'))
 #set ($rule = $scriptEngine.get('remoteApiRule'))
+##
+##########################################################################################
+##### Copyright & package & import.
+##########################################################################################
 ${manager.allClassCopyright}package org.lastaflute.spring;
+
 #set ($importList = [])
 #set($added = $importList.add('org.lastaflute.web.servlet.request.RequestManager'))
 #set($added = $importList.add('org.springframework.context.annotation.Bean'))
 #set($added = $importList.add('org.springframework.context.annotation.Configuration'))
 #set($added = $importList.add('org.springframework.context.annotation.Lazy'))
-#generateImports($importList, $data.package, $scriptEngine.invokeMethod($rule, 'importOrderList'))
+#set ($categolizedImportClassList = $scriptEngine.invokeMethod($remoteApiLogic, 'deriveCategolizedImportClassList', $importList, $data.package, $scriptEngine.invokeMethod($rule, 'importOrderList')))
+#foreach($categolizedImportClass in $categolizedImportClassList)
+#foreach($importClass in $categolizedImportClass)
+import ${importClass};
+#end
 
+#end
+##
 /**
  * The Java configuration of LastaFlute beans for Spring Framework. <br>
  * You can inject them by importing this class in your auto configuration class.

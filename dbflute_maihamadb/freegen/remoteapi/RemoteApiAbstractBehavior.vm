@@ -13,11 +13,18 @@
 ## either express or implied. See the License for the specific language
 ## governing permissions and limitations under the License.
 ##
+##########################################################################################
+##### Copyright & package & import.
+##########################################################################################
 ${manager.allClassCopyright}package ${data.package};
 
 import org.dbflute.remoteapi.FlutyRemoteApiRule;
 import org.lastaflute.web.servlet.request.RequestManager;
 
+##
+##########################################################################################
+##### Class definition.
+##########################################################################################
 /**
  * The base class of all remote API behaviors as ${data.remoteApiExp}.
  * <p>
@@ -38,6 +45,9 @@ public abstract class ${data.className} extends ${data.frameworkBehaviorClass} {
         super(requestManager);
     }
 
+##########################################################################################
+##### Method definition.
+##########################################################################################
     // ===================================================================================
     //                                                                          Initialize
     //                                                                          ==========

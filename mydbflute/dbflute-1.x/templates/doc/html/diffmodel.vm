@@ -1,5 +1,5 @@
 ##
-## Copyright 2014-2025 the original author or authors.
+## Copyright 2014-2026 the original author or authors.
 ##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
@@ -161,9 +161,9 @@ dl.column-content dd {
 dl.column-content dd span {
 	display: block;
 	float: left;
-	width: 6em;
+	width: 8em; /* diff title space */
 	margin-right: 1.5em;
-	border-right: dotted 2px #333;
+	border-right: dotted 2px #333; /* diff delimiter */
 	font-weight: bold;
 	font-size: 80%;
 	color: #AA7777;

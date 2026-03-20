@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2024 the original author or authors.
+ * Copyright 2015-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.docksidestage.mylasta;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 
@@ -40,11 +39,11 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         saveLastaDocMeta();
     }
 
-    public void test_swaggerJson() throws Exception {
+    public void test_swaggerMeta() throws Exception {
         saveSwaggerMeta(new SwaggerAction());
 
         // to compare with previous swagger.json
-        copyToResourcesJson();
+        copyToResourcesJson("swagger.json", "fortress_whole_lasta_swagger.json");
 
         // same json so no diff
         //verifyYourSwaggerSync("./target/lastadoc/swagger.json", op -> {});
@@ -53,15 +52,23 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
     }
 
-    protected void copyToResourcesJson() throws IOException {
-        log("...Copying new swagger.json to resources JSON file to compare with previous swagger.json");
+    // // #for_now jflute まだjakartaのUTFluteでサポートされていない (2026/03/20)
+    //public void test_openapiMeta() throws Exception {
+    //    saveOpenapiMeta(new SwaggerAction());
+    //
+    //    // to compare with previous swagger.json
+    //    copyToResourcesJson("openapi.json", "fortress_whole_lasta_openapi.json");
+    //}
+
+    // ===================================================================================
+    //                                                                        Option Logic
+    //                                                                        ============
+    protected void copyToResourcesJson(String jsonName, String wholeName) throws IOException {
+        log("...Copying new {} to resources JSON file to compare with previous {}", jsonName, jsonName);
         FileTextIO fileTextIO = new FileTextIO().encodeAsUTF8();
         String projectPath = getProjectDir().getCanonicalPath();
-        String outputText = fileTextIO.read(projectPath + "/target/lastadoc/swagger.json");
-        String resourcesFile = projectPath + "/src/main/resources/swagger/fortress_whole_lasta_swagger.json";
-        if (!new File(resourcesFile).exists()) {
-            throw new IllegalStateException("Not found the resources JSON file: " + resourcesFile);
-        }
+        String outputText = fileTextIO.read(projectPath + "/target/lastadoc/" + jsonName);
+        String resourcesFile = projectPath + "/src/main/resources/swagger/" + wholeName;
         fileTextIO.write(resourcesFile, outputText);
     }
 
