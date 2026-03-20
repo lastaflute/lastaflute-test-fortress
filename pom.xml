@@ -40,7 +40,7 @@
 
 		<servlet.version>6.0.0</servlet.version> <!-- #jakarta -->
 		<jetty.boot.version>2.0.0-A-SNAPSHOT</jetty.boot.version> <!-- #jakarta -->
-		<tomcat.boot.version>2.0.1</tomcat.boot.version> <!-- #jakarta -->
+		<tomcat.boot.version>3.0.0-A-SNAPSHOT</tomcat.boot.version> <!-- #jakarta -->
 		<swagger.ui.version>3.35.0</swagger.ui.version>
 
 		<!-- GoodNeighbor Library -->
