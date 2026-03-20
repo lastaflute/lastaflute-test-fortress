@@ -16,9 +16,7 @@
 package org.docksidestage.app.web.wx.request.json;
 
 import java.util.List;
-import java.util.Map;
 
-import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.app.web.base.FortressBaseAction;
 import org.lastaflute.web.Execute;
 import org.lastaflute.web.login.AllowAnyoneAccess;
@@ -32,47 +30,47 @@ public class WxRequestJsonBodyAction extends FortressBaseAction {
 
     // http://localhost:8151/fortress/wx/request/json/body/
     @Execute
-    public JsonResponse<Map<String, Object>> index(WxRequestJsonBodyBody body) {
-        return asJson(DfCollectionUtil.newHashMap("body", body));
+    public JsonResponse<WxRequestJsonBodyResult> index(WxRequestJsonBodyBody body) {
+        return asJson(new WxRequestJsonBodyResult());
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/list
     @Execute
-    public JsonResponse<Map<String, Object>> list(List<WxRequestJsonBodyBody> body) {
-        return asJson(DfCollectionUtil.newHashMap("body", body));
+    public JsonResponse<WxRequestJsonBodyResult> list(List<WxRequestJsonBodyBody> body) {
+        return asJson(new WxRequestJsonBodyResult());
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/clienterror
     @Execute
-    public JsonResponse<Map<String, Object>> clienterror(WxRequestJsonBodyBody body) {
+    public JsonResponse<WxRequestJsonBodyResult> clienterror(WxRequestJsonBodyBody body) {
         verifyOrClientError("forcedly client error", false);
         throw new IllegalStateException("no way");
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/systemerror
     @Execute
-    public JsonResponse<Map<String, Object>> systemerror(WxRequestJsonBodyBody body) {
+    public JsonResponse<WxRequestJsonBodyResult> systemerror(WxRequestJsonBodyBody body) {
         throw new IllegalStateException("body: " + body);
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/validated
     @Execute
-    public JsonResponse<Map<String, Object>> validated(WxRequestJsonBodyValidatedBody body) {
+    public JsonResponse<WxRequestJsonBodyResult> validated(WxRequestJsonBodyValidatedBody body) {
         validateApi(body, messages -> {});
-        return asJson(DfCollectionUtil.newHashMap("body", body));
+        return asJson(new WxRequestJsonBodyResult());
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/validatedlonely
     //  => Lonely validator annotations, so call validateApi().
     @Execute
-    public JsonResponse<Map<String, Object>> validatedlonely(WxRequestJsonBodyValidatedBody body) {
-        return asJson(DfCollectionUtil.newHashMap("body", body));
+    public JsonResponse<WxRequestJsonBodyResult> validatedlonely(WxRequestJsonBodyValidatedBody body) {
+        return asJson(new WxRequestJsonBodyResult());
     }
 
     // http://localhost:8151/fortress/wx/request/json/body/validatedlonelylist
     //  => #hope jflute Lonely validator annotations, so call validateApi().
     @Execute
-    public JsonResponse<Map<String, Object>> validatedlonelylist(List<WxRequestJsonBodyValidatedBody> bodyList) {
-        return asJson(DfCollectionUtil.newHashMap("bodyList", bodyList));
+    public JsonResponse<WxRequestJsonBodyResult> validatedlonelylist(List<WxRequestJsonBodyValidatedBody> bodyList) {
+        return asJson(new WxRequestJsonBodyResult());
     }
 }

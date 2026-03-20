@@ -8642,7 +8642,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
                 }
               }
             }
@@ -8707,7 +8707,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
                 }
               }
             }
@@ -8758,7 +8758,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
                 }
               }
             }
@@ -8809,7 +8809,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
                 }
               }
             }
@@ -8860,7 +8860,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
                 }
               }
             }
@@ -8911,7 +8911,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
                 }
               }
             }
@@ -8976,7 +8976,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
                 }
               }
             }
@@ -18365,6 +18365,111 @@
           },
           "dohotel" : {
             "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody%24DohotelPart"
+          }
+        }
+      },
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult$ToscanaPart" : {
+        "required" : [ "nannimo_view", "park_entrance_view" ],
+        "type" : "object",
+        "properties" : {
+          "park_entrance_view" : {
+            "type" : "string"
+          },
+          "hotel_entrance_view" : {
+            "type" : "string"
+          },
+          "nannimo_view" : {
+            "type" : "string"
+          }
+        }
+      },
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult$VeneziaPart" : {
+        "required" : [ "river_view" ],
+        "type" : "object",
+        "properties" : {
+          "canal_view" : {
+            "type" : "string"
+          },
+          "river_view" : {
+            "type" : "string"
+          }
+        }
+      },
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult$MiracoPart" : {
+        "required" : [ "toscana", "venezia_list" ],
+        "type" : "object",
+        "properties" : {
+          "toscana" : {
+            "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult%24ToscanaPart"
+          },
+          "venezia_list" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult%24VeneziaPart"
+            }
+          }
+        }
+      },
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult$DohotelPart" : {
+        "type" : "object",
+        "properties" : {
+          "format_bodying" : {
+            "type" : "string",
+            "description" : " * `SEA` - Sea, sea. * `LAN` - Land, land. :: fromCls(CDef$WhiteConfusingFormatBodying)",
+            "example" : "SEA",
+            "enum" : [ "SEA", "LAN" ]
+          }
+        }
+      },
+      "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult" : {
+        "required" : [ "amba", "dstore", "land", "sea_dockside", "sea_hangar", "sea_magiclamp" ],
+        "type" : "object",
+        "properties" : {
+          "sea" : {
+            "type" : "string"
+          },
+          "sea_dockside" : {
+            "type" : "string"
+          },
+          "sea_hangar" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "sea_magiclamp" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "land" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "piari" : {
+            "type" : "string",
+            "format" : "date",
+            "example" : "2000-01-01"
+          },
+          "bonvo" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "dstore" : {
+            "type" : "boolean"
+          },
+          "amba" : {
+            "type" : "string",
+            "description" : " * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)",
+            "example" : "FML",
+            "enum" : [ "FML", "WDL", "PRV" ]
+          },
+          "miraco" : {
+            "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult%24MiracoPart"
+          },
+          "dohotel" : {
+            "$ref" : "#/components/schemas/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult%24DohotelPart"
           }
         }
       },

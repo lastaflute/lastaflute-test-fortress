@@ -8544,8 +8544,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "type": "object",
-              "properties": {}
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
             }
           },
           "400": {
@@ -8605,8 +8604,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "type": "object",
-              "properties": {}
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
             }
           },
           "400": {
@@ -8657,8 +8655,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "type": "object",
-              "properties": {}
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
             }
           },
           "400": {
@@ -8709,8 +8706,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "type": "object",
-              "properties": {}
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
             }
           },
           "400": {
@@ -8761,8 +8757,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "type": "object",
-              "properties": {}
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
             }
           },
           "400": {
@@ -8813,8 +8808,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "type": "object",
-              "properties": {}
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
             }
           },
           "400": {
@@ -8874,8 +8868,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "type": "object",
-              "properties": {}
+              "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult"
             }
           },
           "400": {
@@ -18414,6 +18407,134 @@
         },
         "dohotel": {
           "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody%24DohotelPart"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult$ToscanaPart": {
+      "type": "object",
+      "required": [
+        "nannimo_view",
+        "park_entrance_view"
+      ],
+      "properties": {
+        "park_entrance_view": {
+          "type": "string"
+        },
+        "hotel_entrance_view": {
+          "type": "string"
+        },
+        "nannimo_view": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult$VeneziaPart": {
+      "type": "object",
+      "required": [
+        "river_view"
+      ],
+      "properties": {
+        "canal_view": {
+          "type": "string"
+        },
+        "river_view": {
+          "type": "string"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult$MiracoPart": {
+      "type": "object",
+      "required": [
+        "toscana",
+        "venezia_list"
+      ],
+      "properties": {
+        "toscana": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult%24ToscanaPart"
+        },
+        "venezia_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult%24VeneziaPart"
+          }
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult$DohotelPart": {
+      "type": "object",
+      "properties": {
+        "format_bodying": {
+          "type": "string",
+          "enum": [
+            "SEA",
+            "LAN"
+          ],
+          "description": " * `SEA` - Sea, sea. * `LAN` - Land, land. :: fromCls(CDef$WhiteConfusingFormatBodying)",
+          "example": "SEA"
+        }
+      }
+    },
+    "org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult": {
+      "type": "object",
+      "required": [
+        "amba",
+        "dstore",
+        "land",
+        "sea_dockside",
+        "sea_hangar",
+        "sea_magiclamp"
+      ],
+      "properties": {
+        "sea": {
+          "type": "string"
+        },
+        "sea_dockside": {
+          "type": "string"
+        },
+        "sea_hangar": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sea_magiclamp": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "land": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "piari": {
+          "type": "string",
+          "format": "date",
+          "example": "2000-01-01"
+        },
+        "bonvo": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2000-01-01T00:00:00.000"
+        },
+        "dstore": {
+          "type": "boolean"
+        },
+        "amba": {
+          "type": "string",
+          "enum": [
+            "FML",
+            "WDL",
+            "PRV"
+          ],
+          "description": " * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)",
+          "example": "FML"
+        },
+        "miraco": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult%24MiracoPart"
+        },
+        "dohotel": {
+          "$ref": "#/definitions/org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyResult%24DohotelPart"
         }
       }
     },
