@@ -26,7 +26,7 @@ public class RemoteWxResponseHtmlListPagenumberParam {
     /** The property of memberName. (NullAllowed) */
     public String memberName;
 
-    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) (NullAllowed) */
+    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) (* `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
     /** The property of purchaseProductName. (NullAllowed) */

@@ -26,7 +26,7 @@ public class RemoteWxValidatorParam {
     /** The property of productName. (NullAllowed) */
     public String productName;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) ( * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)) (NullAllowed) */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (* `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)) (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.ProductStatus productStatus;
 
     /** The property of purchaseMemberName. (NullAllowed) */
@@ -62,7 +62,7 @@ public class RemoteWxValidatorParam {
     /** The property of piariWrapBool. (NullAllowed) */
     public Boolean piariWrapBool;
 
-    /** The property of bonvoStatus. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) (NullAllowed) */
+    /** The property of bonvoStatus. (enumValue=[FML, WDL, PRV]) (* `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) (NullAllowed) */
     public String bonvoStatus;
 
     /** The property of dstoreStringList. (NullAllowed) */

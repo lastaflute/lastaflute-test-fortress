@@ -45,7 +45,7 @@ public class RemoteLidoFollowingListReturn extends org.docksidestage.bizfw.remot
         @Required
         public String memberName;
 
-        /** The property of memberStatusCode. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
+        /** The property of memberStatusCode. (enumValue=[FML, WDL, PRV]) (* `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
         @Required
         public String memberStatusCode;
     }
@@ -69,7 +69,7 @@ public class RemoteLidoFollowingListReturn extends org.docksidestage.bizfw.remot
         @Required
         public String memberName;
 
-        /** The property of memberStatusCode. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
+        /** The property of memberStatusCode. (enumValue=[FML, WDL, PRV]) (* `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
         @Required
         public String memberStatusCode;
     }

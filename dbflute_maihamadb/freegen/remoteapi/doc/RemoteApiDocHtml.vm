@@ -27,12 +27,12 @@
     </thead>
     <tbody id="rempteapi-$data.schema-list-body">
 #foreach($exBehavior in $data.exBehaviorMap.values())
-#foreach($method in $exBehavior.bsBehavior.methodList)
+#foreach($methodResource in $exBehavior.bsBehavior.methodResourceList)
     <tr>
         <td class="rowcellnum">${foreach.count}</td>
-        <td class="rowcell"><a href="#$manager.htmlEscapeAsId($method.api.url)::$manager.htmlEscapeAsId($method.api.httpMethod)">$method.api.url</a></td>
-        <td class="rowcell">$method.api.httpMethod</td>
-#set ($behaviorRequestMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRequestMethodName', $method.api))
+        <td class="rowcell"><a href="#$manager.htmlEscapeAsId($methodResource.api.url)::$manager.htmlEscapeAsId($methodResource.api.httpMethod)">$methodResource.api.url</a></td>
+        <td class="rowcell">$methodResource.api.httpMethod</td>
+#set ($behaviorRequestMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRequestMethodName', $methodResource.api))
         <td class="rowcell">$manager.htmlEscape($exBehavior.className)#$manager.htmlEscape($behaviorRequestMethodName)()</td>
     </tr>
 #end
@@ -41,27 +41,27 @@
 </table>
 
 #foreach($exBehavior in $data.exBehaviorMap.values())
-#foreach($method in $exBehavior.bsBehavior.methodList)
-<h3 id="$manager.htmlEscapeAsId($method.api.url)::$manager.htmlEscapeAsId($method.api.httpMethod)">
-$manager.htmlEscape($method.api.url) ($method.api.httpMethod)
+#foreach($methodResource in $exBehavior.bsBehavior.methodResourceList)
+<h3 id="$manager.htmlEscapeAsId($methodResource.api.url)::$manager.htmlEscapeAsId($methodResource.api.httpMethod)">
+$manager.htmlEscape($methodResource.api.url) ($methodResource.api.httpMethod)
 </h3>
 <p>
-#set ($behaviorRequestMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRequestMethodName', $method.api))
+#set ($behaviorRequestMethodName = $scriptEngine.invokeMethod($rule, 'behaviorRequestMethodName', $methodResource.api))
 <span class="doctitle">Request Method:</span> <span class="docmainvalue">$manager.htmlEscape($exBehavior.className)#$manager.htmlEscape($behaviorRequestMethodName)()</span>
 </p>
-#if (!$method.pathVariables.isEmpty())
+#if (!$methodResource.pathVariables.isEmpty())
 <span class="doctitle">URL Parameter:</span>
 #set ($urlParameter = {})
-#set ($put = $urlParameter.put('properties', $method.pathVariables))
+#set ($put = $urlParameter.put('properties', $methodResource.pathVariables))
 $generator.parse("remoteapi/doc/RemoteApiDocHtmlBean.vm", null, "data", $urlParameter)
 #end
-#if ($method.paramBean.className)
-<span class="doctitle">Param as:</span> <span class="docsubvalue">$manager.htmlEscape($method.paramBean.className)</span>
-$generator.parse("remoteapi/doc/RemoteApiDocHtmlBean.vm", null, "data", $method.paramBean)
+#if ($methodResource.paramBean.className)
+<span class="doctitle">Param as:</span> <span class="docsubvalue">$manager.htmlEscape($methodResource.paramBean.className)</span>
+$generator.parse("remoteapi/doc/RemoteApiDocHtmlBean.vm", null, "data", $methodResource.paramBean)
 #end
-#if ($method.returnBean.className)
-<span class="doctitle">Return as:</span> <span class="docsubvalue">$manager.htmlEscape($method.returnBean.className)</span>
-$generator.parse("remoteapi/doc/RemoteApiDocHtmlBean.vm", null, "data", $method.returnBean)
+#if ($methodResource.returnBean.className)
+<span class="doctitle">Return as:</span> <span class="docsubvalue">$manager.htmlEscape($methodResource.returnBean.className)</span>
+$generator.parse("remoteapi/doc/RemoteApiDocHtmlBean.vm", null, "data", $methodResource.returnBean)
 #end
 #end
 #end

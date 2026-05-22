@@ -26,7 +26,7 @@ public class RemoteOnparadeParam {
     /** The property of productName. (NullAllowed) */
     public String productName;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) ( * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)) (NullAllowed) */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (* `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(CDef$ProductStatus)) (NullAllowed) */
     public org.docksidestage.dbflute.allcommon.CDef.ProductStatus productStatus;
 
     /** The property of purchaseMemberName. (NullAllowed) */

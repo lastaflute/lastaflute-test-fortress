@@ -46,7 +46,7 @@ public class RemoteJobExecuteReturn {
     @Required
     public java.util.Map<String, Object> endTitleRoll;
 
-    /** The property of execResultType. (enumValue=[SUCCESS, QUIT_BY_CONCURRENT, ERROR_BY_CONCURRENT, CAUSED_BY_APPLICATION, CAUSED_BY_FRAMEWORK, UNKNOWN]) ( * `SUCCESS` - SUCCESS, . * `QUIT_BY_CONCURRENT` - QUIT_BY_CONCURRENT, . * `ERROR_BY_CONCURRENT` - ERROR_BY_CONCURRENT, . * `CAUSED_BY_APPLICATION` - CAUSED_BY_APPLICATION, . * `CAUSED_BY_FRAMEWORK` - CAUSED_BY_FRAMEWORK, . * `UNKNOWN` - UNKNOWN, . :: fromCls(JobExecuteResult$ExecResultTypePart)) */
+    /** The property of execResultType. (enumValue=[SUCCESS, QUIT_BY_CONCURRENT, ERROR_BY_CONCURRENT, CAUSED_BY_APPLICATION, CAUSED_BY_FRAMEWORK, UNKNOWN]) (* `SUCCESS` - SUCCESS, . * `QUIT_BY_CONCURRENT` - QUIT_BY_CONCURRENT, . * `ERROR_BY_CONCURRENT` - ERROR_BY_CONCURRENT, . * `CAUSED_BY_APPLICATION` - CAUSED_BY_APPLICATION, . * `CAUSED_BY_FRAMEWORK` - CAUSED_BY_FRAMEWORK, . * `UNKNOWN` - UNKNOWN, . :: fromCls(JobExecuteResult$ExecResultTypePart)) */
     @Required
     public String execResultType;
 

@@ -1,5 +1,5 @@
 ##
-## Copyright 2017-2021 the original author or authors.
+## Copyright 2017-2026 the original author or authors.
 ##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
@@ -51,8 +51,14 @@ public class ${data.className}#if ($data.extendsClass && $data.extendsClass != '
 ##########################################################################################
 #set($nestTypeFullNameList = [])
 #foreach($propertyEntry in $data.properties.entrySet())
+##
+## #{BeanProperty}
+##
 #set($property = $scriptEngine.invokeMethod($remoteApiLogic, 'deriveBeanProperty', $rule, $data, $data.className, $propertyEntry, $nestTypeFullNameList, []))
+## the property may be out of target e.g. rule.targetField() 
+#if ($property.fieldName)
 #generateBeanProperty($property, 0)
+#end
 #end
 
     @Override
@@ -62,7 +68,7 @@ public class ${data.className}#if ($data.extendsClass && $data.extendsClass != '
 }
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_//_/_/_/_/_/_/
 ## generate bean property.
-## @param property generate bean property information. (NotNull)
+## @param property generate bean property information. {BeanProperty} (NotNull)
 ## @param indentSize indent size. (NotNull)
 ## _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_//_/_/_/_/_/_/
 #macro(generateBeanProperty, $property, $indentSize)
@@ -73,14 +79,16 @@ ${indent}${property.javadocComment}
 ${indent}${annotation}
 #end
 ${indent}public ${property.fieldClass} ${property.fieldName};
-#if ($property.nestType)
+## nestBean is #{BeanNestBean}
+#if ($property.nestBean)
 
 ${indent}/**
-${indent} * The part class of ${property.nestType.nestType}.
+${indent} * The part class of ${property.nestBean.nestType}.
 ${indent} * @author FreeGen
 ${indent} */
-${indent}public static class ${property.nestType.nestType} {
-#foreach($nestProperty in $property.nestType.propertyList)
+${indent}public static class ${property.nestBean.nestType} {
+## nestProperty is #{BeanProperty}
+#foreach($nestProperty in $property.nestBean.propertyList)
 #set ($indentSizeNest = $indentSize + 1)
 #generateBeanProperty($nestProperty, $indentSizeNest)
 #set ($indentSizeNest = $indentSize - 1)

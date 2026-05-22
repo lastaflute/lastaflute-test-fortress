@@ -6,65 +6,112 @@
 // =======================================================================================
 //                                                                              Definition
 //                                                                              ==========
+// {PathVariable}, {TopLevelBean} types are defined on RemoteApiRule.js
 /**
- * Method Type.
- * @typedef {Object} Method
- * @property {Api} api - The information of api. (NotNull)
+ * ExBehavior Type.
+ * Extended Behaviorに相当。Base Behaviorの情報も保持する。
+ * 
+ * You can search it on code by: #{ExBehavior}
+ * 
+ * @typedef {Object} ExBehavior
+ * @property {string} package - The full package of this behavior class. (NotNull, NotEmpty)
+ * @property {string} className - The class name without package of this class.  (NotNull, NotEmpty)
+ * @property {string} remoteApiExp - The expression of the remote api used in JSDoc, e.g. lido.product (NotNull)
+ * @property {BsBehavior} bsBehavior - The parent class of this behavior as generation gap pattern. (NotNull)
+ */
+
+/**
+ * BsBehavior Type.
+ * Base Behaviorに相当。requestメソッドなどのメソッド情報も保持する。
+ * 
+ * You can search it on code by: #{BsBehavior}
+ * 
+ * @typedef {Object} BsBehavior
+ * @property {string} package - The full package of this behavior class. (NotNull, NotEmpty)
+ * @property {string} className - The class name without package of this class.  (NotNull, NotEmpty)
+ * @property {string} remoteApiExp - The expression of the remote api used in JSDoc, e.g. lido.product (NotNull)
+ * @property {RequestMethodResource[]} methodResourceList - The array of resource for request method on base behavior. (NotNull)
+ */
+
+/**
+ * RequestMethodResource Type.
+ * Behaviorのrequestメソッド(one API)の基本情報(IN/OUTなどの外観)に相当。
+ * 
+ * You can search it on code by: #{RequestMethodResource}
+ * 
+ * @typedef {Object} RequestMethodResource
+ * @property {Api} api - The API metadata corresponding to the bean. (NotNull)
  * @property {PathVariable[]} pathVariables - The array of path variables. (NotNull, EmptyAllowed)
- * @property {TopLevelBean} paramBean - The information of param bean. (NotNull)
- * @property {boolean} paramBeanArray - true if the paramBea is array. (NotNull)
- * @property {TopLevelBean} returnBean - The information of return bean. (NotNull)
+ * @property {TopLevelBean} paramBean - The information of param bean as top level. (NotNull)
+ * @property {boolean} paramBeanArray - true if the paramBean is array. (NotNull)
+ * @property {TopLevelBean} returnBean - The information of return bean as top level. (NotNull)
  * @property {boolean} returnBeanArray - true if the returnBean is array. (NotNull)
  */
 
 /**
- * Parameter Type.
- * @typedef {Object} Parameter
- * @property {string} name - The parameter Name. (NotEmpty)
+ * MethodParameter Type.
+ * requestメソッドの引数に相当。
+ * 
+ * You can search it on code by: #{MethodParameter}
+ * 
+ * @typedef {Object} MethodParameter
+ * @property {string} name - The parameter name, requestメソッドの引数名. (NotEmpty)
  * @property {string} class - The class name without package of parameter. (NotEmpty)
- * @property {string} description - The description of parameter. (NotEmpty)
+ * @property {string} description - The description of parameter for e.g. JavaDoc. (NotEmpty)
  */
 
 /**
  * BehaviorMethod Type.
+ * Behavior の one API 対応のメソッドたち (request, ruleOf) に相当。
+ * 
+ * You can search it on code by: #{BehaviorMethod}
+ * 
  * @typedef {Object} BehaviorMethod
- * @property {Method} method - The information of method. (NotNull).
+ * @property {RequestMethodResource} exteriorResource - The resource of method exterior for one API. (NotNull).
  * @property {string} behaviorRequestMethodName - The behavior request method name. e.g. requestXxx, requestXxxGet (NotEmpty).
  * @property {string} callDoRequestMethodName - The call doRequest method name. e.g. doRequestGet, doRequestPost (NotEmpty).
- * @property {string} param - one of param, query(param), noQuery(), noRequestBody() (NotEmpty).
+ * @property {string} param - The Java code expression of "param" argument, e.g. param, query(param), noQuery(), noRequestBody() (NotEmpty).
  * @property {string} behaviorRuleMethodName - The behavior rule method name. e.g. ruleOfXxx, ruleOfXxxGet (NotEmpty).
- * @property {Parameter[]} parameterList - the list of parameter of behavior method. (NotNull, EmptyAllowed)
- * @property {string} parameterDefinition - the parameter definition of behavior request method. (NotNull, EmptyAllowed)
- * @property {string} parameterDefinitionRule - the parameter definition of behavior rule method. (NotNull, EmptyAllowed)
- * @property {string} moreUrl - one of moreUrl(xxx), noMoreUrl(). (NotNull, NotEmpty)
- * @property {string} paramBeanClassName - the param bean class without package of behavior method. (NotNull, EmptyAllowed)
- * @property {string} returnBeanClassName - the return bean class without package of behavior method. (NotNull, EmptyAllowed)
+ * @property {MethodParameter[]} parameterList - The list of parameter on behavior method. (NotNull, EmptyAllowed)
+ * @property {string} parameterDefinition - The Java code expression of parameter definition for request method. e.g. "Consumer<...Param> paramLambda" (NotNull, EmptyAllowed)
+ * @property {string} parameterDefinitionRule - The Java code expression of parameter definition for rule method. e.g. e.g. "Consumer<FlutyRemoteApiRule> ruleLambda" (NotNull, EmptyAllowed)
+ * @property {string} moreUrl - The Java code expression of e.g. moreUrl(xxx) or noMoreUrl() (NotNull, NotEmpty)
+ * @property {string} paramBeanClassName - The type expression of param bean class without package. e.g. ...Param, List<...Param> (NotNull, EmptyAllowed)
+ * @property {string} returnBeanClassName - The type expression of return bean class without package.  e.g. void, ...Return, List<...Return> (NotNull, EmptyAllowed)
  */
+// ↑RequestMethodResourceがロジックの中で入り乱れるので、BehaviorMethodの変数名は exteriorResource (メソッドの外観リソース) にした。(2026/03/15)
+
+/**
+ * BeanProperty Type.
+ * 自動生成されるBeanクラスの 1 Property情報に相当。主に自動生成コードの情報。
+ * 
+ * You can search it on code by: #{BeanProperty}
+ * 
+ * @typedef {Object} BeanProperty
+ * @property {string} fieldName - The instance variable (field) name of the property. (NotNull, NotEmpty)
+ * @property {string[]} annotationList - The Java code expression of annotation for the instance variable. e.g. "@Required" (NotNull)
+ * @property {string} javadocComment - The whole expression of Javadoc for the instance variable. (NotNull, NotEmpty)
+ * @property {string} fieldClass - The class name (without package if necessary) of the instance variable. (NotNull, NotEmpty)
+ * @property {BeanNestBean} nestBean - The metadata of nest bean for the property. (NullAllowed: when no nest)
+ */
+
+/**
+ * BeanNestBean Type.
+ * BeanのネストクラスのBeanの総合情報に相当。主に自動生成コードの情報。
+ * 
+ * You can search it on code by: #{BeanNestBean}
+ * 
+ * @typedef {Object} BeanNestBean
+ * @property {string} nestType - The class name with package of nest class. (NotNull, NotEmpty)
+ * @property {BeanProperty} propertyList - The list of bean property for the nest bean. (NotNull, NotEmpty)
+ */
+
 
 var remoteApiLogic = {
 
     // ===================================================================================
-    //                                                                               Logic
-    //                                                                               =====
-    /**
-     * Returns the indent.
-     * This indent is used in the auto-generated Java code.
-     * Fixed indentation is written directly in the Velocity template, but is used when the indentation needs to be calculated.
-     * Fixed indentation of Velocity template It is unified with 4 spaces.
-     * @param {number} indentSize indent size. (NotNull)
-     * @return {string} indent. e.g. if size is 2, the string is 8 spaces. (NotNull)
-     */
-    indent: function(indentSize) {
-        // #for_now I want to set the initial value of indent to 0 size. by p1us2er0 (2022/05/04)
-        // but it is not possible at this time due to a processing problem on the vm side.
-        // Organize when refactoring the vm.
-        var indent = '    ';
-        for (var index = 0; index < indentSize; index++) {
-            indent += '    ';
-        }
-        return indent;
-    },
-
+    //                                                                      General Import
+    //                                                                      ==============
     /**
      * Derive the java import class list separated by categolized package.
      * Unique and sort java import class list. And return the java import class list separated by categolized package.
@@ -89,9 +136,10 @@ var remoteApiLogic = {
         uniqueImportClassList.sort(function(preImportClass, currentImportClass) {
             // Sort at the categolized of the importClass package name.
             // Use importCategolizedPackageOrderList. e.g. java, javax, junit, org, com ...
-            preImportCategolizedPackageOrderIndex = Number.MAX_VALUE;
-            currentImportCategolizedPackageOrderIndex = Number.MAX_VALUE;
+            var preImportCategolizedPackageOrderIndex = Number.MAX_VALUE;
+            var currentImportCategolizedPackageOrderIndex = Number.MAX_VALUE;
             importCategolizedPackageOrderList.forEach(function(importCategolizedPackageOrder, importCategolizedPackageOrderIndex) {
+                // packageなしクラスを取り扱うことは想定の必要もないくらいありえないので、indexOf()の-1の可能性はチェックなし (2026/05/16)
                 if (importCategolizedPackageOrder === preImportClass.substring(0, preImportClass.indexOf('.'))) {
                     preImportCategolizedPackageOrderIndex = importCategolizedPackageOrderIndex;
                 }
@@ -105,9 +153,9 @@ var remoteApiLogic = {
             }
 
             // Sort at the importClass package name.
-            var prePackage = preImportClass.substring(0, preImportClass.lastIndexOf('.'));
-            var currentPackage = currentImportClass.substring(0, currentImportClass.lastIndexOf('.'));
-            var packageCompare = prePackage.localeCompare(currentPackage);
+            var preImportPackage = preImportClass.substring(0, preImportClass.lastIndexOf('.'));
+            var currentImportPackage = currentImportClass.substring(0, currentImportClass.lastIndexOf('.'));
+            var packageCompare = preImportPackage.localeCompare(currentImportPackage);
             if (packageCompare !== 0) {
                 return packageCompare;
             }
@@ -139,45 +187,48 @@ var remoteApiLogic = {
         return categolizedImportClassList;
     },
 
+    // ===================================================================================
+    //                                                                     Behavior Method
+    //                                                                     ===============
     /**
-     * Derive the behavior method list.
-     * @param {Object} rule remote api rule. (NotNull)
-     * @param {Method[]} methodList The list of The method information. (NotNull, EmptyAllowed)
+     * Derive the behavior method list. (for one behavior)
+     * @param {RemoteApiRule} rule - RemoteApiRule.js object. (NotNull)
+     * @param {RequestMethodResource[]} methodResourceList The list of request method resources for one behavior. (NotNull, EmptyAllowed)
      * @return {BehaviorMethod[]} The list of behavior method information. (NotNull, EmptyAllowed)
      */
-    deriveBehaviorMethodList: function(rule, methodList) {
+    deriveBehaviorMethodList: function(rule, methodResourceList) {
         if (!rule.behaviorMethodGeneration) {
             return [];
         }
 
-        var behaviorMethodList = [];
+        var behaviorMethodList = []; // #{BehaviorMethod}
         var behaviorRequestMethodSignatureList = [];
-        methodList.forEach(function(method) {
-
-            var behaviorMethod = {
-                method: method,
-                behaviorRequestMethodName: rule.behaviorRequestMethodName(method.api),
-                callDoRequestMethodName: null,
-                param: null,
-                behaviorRuleMethodName: rule.behaviorRuleMethodName(method.api),
-                parameterList: [],
-                parameterDefinition: '',
-                parameterDefinitionRule: '',
-                moreUrl: '',
-                paramBeanClassName: null,
-                returnBeanClassName: 'void',
+        methodResourceList.forEach(function(methodResource) {
+            var behaviorApi = methodResource.api;
+            var behaviorMethod = { // new #{BehaviorMethod}
+                exteriorResource: methodResource,  // #{RequestMethodResource}
+                behaviorRequestMethodName: rule.behaviorRequestMethodName(behaviorApi), // e.g. requestProductList
+                callDoRequestMethodName: null,     // e.g. doRequestGet, doRequestPost
+                param: null,                       // e.g. param, query(param), noQuery(), noRequestBody()
+                behaviorRuleMethodName: rule.behaviorRuleMethodName(behaviorApi), // e.g. ruleOfProductList
+                parameterList: [],                 // array of #{MethodParameter}
+                parameterDefinition: '',           // e.g. Consumer<...Param> paramLambda
+                parameterDefinitionRule: '',       // e.g. Consumer<FlutyRemoteApiRule> ruleLambda
+                moreUrl: '',                       // e.g. moreUrl(xxx) or noMoreUrl()
+                paramBeanClassName: null,          // e.g. ...Param, List<...Param>
+                returnBeanClassName: 'void',       // e.g. void, ...Return, List<...Return>
             };
             behaviorMethodList.push(behaviorMethod);
 
             var typeMap = rule.typeMap();
 
             // Analyze pathVariables.
-            method.pathVariables.entrySet().forEach(function(pathVariableEntry) {
-                var pathVariableName = rule.fieldName(method.api, {'in': 'path'}, pathVariableEntry.key);
+            methodResource.pathVariables.entrySet().forEach(function(pathVariableEntry) {
+                var pathVariableName = rule.fieldName(behaviorApi, {'in': 'path'}, pathVariableEntry.key);
                 behaviorMethod.behaviorRuleMethodName = behaviorMethod.behaviorRuleMethodName + manager.initCap(pathVariableName);
 
                 var pathVariable = pathVariableEntry.value;
-                var pathVariableManualMappingClass = rule.pathVariableManualMappingClass(method.api, pathVariable);
+                var pathVariableManualMappingClass = rule.pathVariableManualMappingClass(behaviorApi, pathVariable);
                 var pathVariableClass = '';
                 if (pathVariable.type === 'array') {
                     if (pathVariableManualMappingClass) {
@@ -195,56 +246,71 @@ var remoteApiLogic = {
                     pathVariableClass = typeMap[pathVariable.type];
                 }
 
-                // TODO p1us2er0 temporary for beanPropertyManualMappingDescription. (2017/10/10)
+                // #thinking p1us2er0 temporary for beanPropertyManualMappingDescription. (2017/10/10)
                 pathVariable.name = pathVariableName;
                 var enumValueComment = '';
-                var nestType = '';
                 if (pathVariable.enum) {
                     enumValueComment = '(enumValue=' + pathVariable.enum + ') ';
                 } else if (pathVariable.items && pathVariable.items.enum) {
                     enumValueComment = '(enumValue=' + pathVariable.items.enum + ') ';
                 }
 
-                var pathVariableDescription = rule.pathVariableManualMappingDescription(method.api, pathVariable);
+                var pathVariableDescription = rule.pathVariableManualMappingDescription(behaviorApi, pathVariable);
                 if (!pathVariableDescription) {
                     pathVariableDescription = pathVariable.description;
                 }
-                behaviorMethod.parameterList.push({ 'name': pathVariableName, 'class': pathVariableClass, 'description': 'The value of path variable for ' + pathVariableName + '. ' + enumValueComment + (pathVariableDescription ? '(' + pathVariableDescription + ') ' : '') + '(NotNull)'});
+                var pathVariableParameter = { // new #{MethodParameter}
+                    'name': pathVariableName,
+                    'class': pathVariableClass,
+                    'description': 'The value of path variable for ' + pathVariableName + '. ' + enumValueComment
+                                   + (pathVariableDescription ? '(' + pathVariableDescription + ') ' : '') + '(NotNull)'
+                };
+                behaviorMethod.parameterList.push(pathVariableParameter);
 
-                behaviorMethod.parameterDefinition = behaviorMethod.parameterDefinition + pathVariableClass + ' ' + pathVariableName + ', ';
+                behaviorMethod.parameterDefinition = behaviorMethod.parameterDefinition
+                                                     + pathVariableClass + ' ' + pathVariableName + ', ';
+
                 behaviorMethod.moreUrl = behaviorMethod.moreUrl + pathVariableName + ', ';
             });
 
             if (behaviorMethod.moreUrl) {
-                behaviorMethod.moreUrl = behaviorMethod.moreUrl.replaceAll('^(.+), $', 'moreUrl($1)');
+                behaviorMethod.moreUrl = behaviorMethod.moreUrl.replace(/^(.+), $/, 'moreUrl($1)');
             } else {
                 behaviorMethod.moreUrl = 'noMoreUrl()';
             }
 
             // Analyze paramBean.
-            if (method.paramBean.className) {
-                behaviorMethod.paramBeanClassName = method.paramBean.className;
-                if (method.paramBeanArray) {
+            if (methodResource.paramBean.className) {
+                behaviorMethod.paramBeanClassName = methodResource.paramBean.className;
+                if (methodResource.paramBeanArray) { // arrayならarray表現で囲う
+                    // paramBeanの方はコールバックで落ちてくるだけなのでListはtypeMap参照せずに固定になっている (2026/03/19)
                     behaviorMethod.paramBeanClassName = 'java.util.List<' + behaviorMethod.paramBeanClassName + '>';
                 }
-                behaviorMethod.parameterDefinition = behaviorMethod.parameterDefinition + 'Consumer<' + behaviorMethod.paramBeanClassName + '> paramLambda';
-                behaviorMethod.parameterList.push({ 'name': 'paramLambda', 'class': 'Consumer', 'description': 'The callback for ' + behaviorMethod.paramBeanClassName + '. (NotNull)'});
+                behaviorMethod.parameterDefinition = behaviorMethod.parameterDefinition
+                                                     + 'Consumer<' + behaviorMethod.paramBeanClassName + '> paramLambda';
+                var paramParameter = { // new #{MethodParameter}
+                    'name': 'paramLambda',
+                    'class': 'Consumer',
+                    'description': 'The callback for ' + behaviorMethod.paramBeanClassName + '. (NotNull)'
+                };
+                behaviorMethod.parameterList.push(paramParameter);
             }
 
             if (behaviorMethod.parameterDefinition) {
-                behaviorMethod.parameterDefinition = behaviorMethod.parameterDefinition.replaceAll(', $', '');
+                behaviorMethod.parameterDefinition = behaviorMethod.parameterDefinition.replace(/, $/, '');
             }
 
             behaviorMethod.parameterDefinitionRule = behaviorMethod.parameterDefinition;
-            if (behaviorMethod.parameterDefinitionRule) {
+            if (behaviorMethod.parameterDefinitionRule) { // すでに先の引数があったらカンマ付ける
                 behaviorMethod.parameterDefinitionRule = behaviorMethod.parameterDefinitionRule + ', ';
             }
-            behaviorMethod.parameterDefinitionRule = behaviorMethod.parameterDefinitionRule + 'Consumer<FlutyRemoteApiRule> ruleLambda';
+            behaviorMethod.parameterDefinitionRule = behaviorMethod.parameterDefinitionRule
+                                                     + 'Consumer<FlutyRemoteApiRule> ruleLambda';
 
             // Analyze returnBean.
-            if (method.returnBean.className) {
-                behaviorMethod.returnBeanClassName = method.returnBean.className;
-                if (method.returnBeanArray) {
+            if (methodResource.returnBean.className) {
+                behaviorMethod.returnBeanClassName = methodResource.returnBean.className;
+                if (methodResource.returnBeanArray) { // arrayならarray表現で囲う
                     behaviorMethod.returnBeanClassName = typeMap['array'] + '<' + behaviorMethod.returnBeanClassName + '>';
                 }
             }
@@ -252,15 +318,21 @@ var remoteApiLogic = {
             behaviorMethod.returnBeanClassName = rule.unDefinitionKey(behaviorMethod.returnBeanClassName);
 
             // Adjust method name.
-            var parameterSignature = '';
+            var parameterSignature = ''; // 1メソッドの引数セットを一意に識別する文字列 (生成コードで使われるわけじゃない)
             behaviorMethod.parameterList.forEach(function(parameter) {
                 parameterSignature = parameterSignature + '|' + parameter['class'];
             });
 
+            // requestメソッドをメソッド名と引数で一意に識別する文字列 (生成コードで使われるわけじゃない)
             var behaviorRequestMethodSignature = behaviorMethod.behaviorRequestMethodName + parameterSignature;
+
+            // 同じ引数セットのrequestメソッドがすでに存在していたら、メソッド名にパス変数名を入れる。
+            // #thinking jflute でも、パス変数もparameterListに入ってるから引数だけで区別されるので、どういうケース想定？ (2026/03/19)
+            // e.g. /lido/product/list/ と /lido/product/list/{pageNumber} は、どちらも requestProductList() になるので。
+            // (続き)試しに、この Signature 関連の処理をまるごと削除して自動生成しても本家テストでは生成コード何も変わらなかった。 (2026/03/19)
             if (behaviorRequestMethodSignatureList.indexOf(behaviorRequestMethodSignature) >= 0) {
-                method.pathVariables.entrySet().forEach(function(pathVariableEntry) {
-                    var pathVariableName = rule.fieldName(method.api, {'in': 'path'}, pathVariableEntry.key);
+                methodResource.pathVariables.entrySet().forEach(function(pathVariableEntry) {
+                    var pathVariableName = rule.fieldName(behaviorApi, {'in': 'path'}, pathVariableEntry.key);
                     behaviorMethod.behaviorRequestMethodName = behaviorMethod.behaviorRequestMethodName + manager.initCap(pathVariableName);
                 });
                 behaviorRequestMethodSignature = behaviorMethod.behaviorRequestMethodName + parameterSignature;
@@ -271,14 +343,14 @@ var remoteApiLogic = {
 
             // Adjust call doRequestMethodName.
             var calloRequestSuffix = '';
-            if (behaviorMethod.method.api.httpMethod === 'delete' && behaviorMethod.method.paramBean.in === 'json') {
+            if (behaviorApi.httpMethod === 'delete' && methodResource.paramBean.in === 'json') {
                 calloRequestSuffix = 'Enclosing';
             }
 
-            behaviorMethod.callDoRequestMethodName = 'doRequest' + manager.initCap(behaviorMethod.method.api.httpMethod) + calloRequestSuffix;
+            behaviorMethod.callDoRequestMethodName = 'doRequest' + manager.initCap(behaviorApi.httpMethod) + calloRequestSuffix;
 
             // Analyze param.
-            if (behaviorMethod.method.api.httpMethod === 'get' || behaviorMethod.method.api.httpMethod === 'delete') {
+            if (behaviorApi.httpMethod === 'get' || behaviorApi.httpMethod === 'delete') {
                 behaviorMethod.param = 'noQuery()';
             } else {
                 behaviorMethod.param = 'noRequestBody()';
@@ -290,30 +362,49 @@ var remoteApiLogic = {
                 json: 'param',
                 xml: 'param',
             };
-            if (paramMap[behaviorMethod.method.paramBean.in]) {
-                behaviorMethod.param = paramMap[behaviorMethod.method.paramBean.in];
+            if (paramMap[methodResource.paramBean.in]) {
+                behaviorMethod.param = paramMap[methodResource.paramBean.in];
             }
         });
 
         return behaviorMethodList;
     },
 
+    // ===================================================================================
+    //                                                                RemoteApiBean Import
+    //                                                                ====================
+    // _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+    // #hope jflute topLevelBean, ネスト呼び出しの時もtop(root)のbeanが引数で指定されるが... (2026/03/11)
+    // rule.js内ではネストのbeanも区別したいので、topとcurrentを両方入れる、もしくは、stackでチェーン渡しするかしたいところ。
+    // そして、rule.js の targetField も刷新したいところ。ただし、互換性のために別関数を用意することにはなる。
+    // _/_/_/_/_/_/_/_/
+    // {ApiProperty}, {TopLevelBean} types are defined on RemoteApiRule.js
     /**
-     * Derive the bean import list.
-     * @param {Object} rule remote api rule. (NotNull)
-     * @param {TopLevelBean} topLevelBean definition of bean where field is declared. (NotNull)
-     * @param {Object} properties properties. (NotNull)
-     * @param {Object} importList bean import list. (NotNull)
-     * @param {Object} definitionMap All schema definitions for remote api. (NotNull)
+     * Derive the bean import list for the specified properties.
+     * @param {RemoteApiRule} rule - RemoteApiRule.js object. (NotNull)
+     * @param {TopLevelBean} topLevelBean そのプロパティたち(properties)を定義しているbeanだが、ネストのときも常にtop(root)のBeanになる (NotNull)
+     * @param {Map<String, ApiProperty>} properties API仕様の "properties" に相当するオブジェクト (NotNull)
+     * @param {List<String>} importList The mutable list of import statement, added by this. (NotNull)
+     * @param {Map<String, Object>} definitionMap The mutable map of all schema definitions for remote api. (NotNull)
      */
     deriveBeanImportList: function(rule, topLevelBean, properties, importList, definitionMap) {
+        if (!properties.size) { // size() で not function というエラーが出るケースがあったので (2026/03/07)
+            return;
+        }
         if (properties.size() === 0) {
             return;
         }
+        // #thinking jflute topLevelBean=PetDefinition のときだけ topLevelBean.api が null になるのなぜ？(しかもdefetcだけ) (2026/03/12)
+        //if (!topLevelBean.api) {
+        //    print('@@@1 topLevelBean=' + topLevelBean.className);
+        //}
 
         var serializedNameTargetList = ['query', 'formData', 'json'];
         properties.entrySet().forEach(function(propertyEntry) {
-            var property = propertyEntry.value;
+            if (!remoteApiLogic.determineTargetBeanProperty(rule, topLevelBean, propertyEntry.key)) {
+                return; // to avoid unused import statement (2026/03/12)
+            }
+            var property = propertyEntry.value; // #{ApiProperty}
             if (serializedNameTargetList.indexOf(topLevelBean.in) >= 0 && rule.isCustomFieldName(topLevelBean.api, topLevelBean, propertyEntry.key)) {
                 importList.add('com.google.gson.annotations.SerializedName');
             } else if (topLevelBean.in === 'xml') {
@@ -324,8 +415,8 @@ var remoteApiLogic = {
                 importList.add(property.type === 'array' ? 'javax.validation.constraints.NotNull' : 'org.lastaflute.web.validation.Required');
             }
 
-            var nestType = null;
-            if (property.items && property.items['$ref']) {
+            var nestType = null; // e.g. org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$ToscanaPart
+            if (property.items && property.items['$ref']) { // #{ElementItem}
                 nestType = java.net.URLDecoder.decode(property.items['$ref'].replace('#/definitions/', ''), 'UTF-8');
             } else if (property.items && property.items.allOf && property.items.allOf[0]['$ref']) {
                 nestType = java.net.URLDecoder.decode(property.items.allOf[0]['$ref'].replace('#/definitions/', ''), 'UTF-8');
@@ -335,9 +426,29 @@ var remoteApiLogic = {
                 nestType = java.net.URLDecoder.decode(property.allOf[0]['$ref'].replace('#/definitions/', ''), 'UTF-8');
             }
 
-            if (nestType && definitionMap[nestType] && definitionMap[nestType].properties.size() !== 0) {
-                definitionMap[nestType].properties.entrySet().forEach(function(nestPropertyEntry) {
-                    nestPropertyEntry.value.required = definitionMap[nestType].required && definitionMap[nestType].required.contains(nestPropertyEntry.key);
+            if (!nestType) {
+                return;
+            }
+            var nestDefinition = definitionMap[nestType];
+            if (!nestDefinition) {
+                return;
+            }
+            var nestProperties = nestDefinition.properties;
+            if (!nestProperties) { // no properties case
+                // e.g.
+                //  "org.docksidestage.app.web.wx.remogen.bean.suffix.NoSuffixCompletely$ResortPark": {
+                //    "type": "object"
+                //  },
+                return;
+            }
+            if (nestProperties.size() !== 0) {
+                nestProperties.entrySet().forEach(function(nestPropertyEntry) {
+                    // #thinking jflute このrequiredの導出/反映、その後の処理に影響してるだろうか？ (2026/03/12)
+                    // #for_now jflute targetField()でスキップで良いか迷ったので、ひとまずtargetField()は後にした (2026/03/12)
+                    nestPropertyEntry.value.required = nestDefinition.required && nestDefinition.required.contains(nestPropertyEntry.key);
+                    if (!remoteApiLogic.determineTargetBeanProperty(rule, topLevelBean, nestPropertyEntry.key)) {
+                        return; // to avoid unused import statement (2026/03/12)
+                    }
                     var nestProperty = nestPropertyEntry.value;
                     if (serializedNameTargetList.indexOf(topLevelBean.in) >= 0 && rule.isCustomFieldName(topLevelBean.api, topLevelBean, nestPropertyEntry.key)) {
                         importList.add('com.google.gson.annotations.SerializedName');
@@ -353,37 +464,48 @@ var remoteApiLogic = {
                 if (definitionMap.containsKey(nestType)) {
                     var definition = definitionMap[nestType];
                     definitionMap.remove(nestType);
+
+                    // recursive call here
                     remoteApiLogic.deriveBeanImportList(rule, topLevelBean, definition.properties, importList, definitionMap);
                 }
             }
         });
     },
 
+    // ===================================================================================
+    //                                                              RemoteApiBean Property
+    //                                                              ======================
+    // {ApiProperty}, {TopLevelBean} types are defined on RemoteApiRule.js
     /**
-     * Derive the bean property.
-     * @param {Object} rule remote api rule. (NotNull)
-     * @param {TopLevelBean} topLevelBean definition of bean where field is declared. (NotNull)
-     * @param {Object} clazz top level bean class or nest bean class. (NotNull)
-     * @param {Object} propertyEntry top level bean class or nest bean class property entry. (NotNull)
-     * @param {Object} nestTypeFullNameList nest type full name list to avoid auto-generating duplicates. (NotNull)
-     * @param {Object} nestTypeList nest type list to avoid auto-generating duplicates. (NotNull)
+     * Derive the bean property metadata for the specified property.
+     * targetFieldの判定は含んでいる。対象外の場合は空オブジェクトが戻される。
+     * @param {RemoteApiRule} rule - RemoteApiRule.js object. (NotNull)
+     * @param {TopLevelBean} topLevelBean そのプロパティたち(properties)を定義しているbeanだが、ネストのときも常にtop(root)のBeanになる (NotNull)
+     * @param {string} beanClassName The class name without package for the top level or nest bean. (NotNull)
+     * @param {Map.Entry<String, ApiProperty>} propertyEntry top level bean class or nest bean class property entry of properties. (NotNull)
+     * @param {List<String>} nestTypeFullNameList nest type full name list to avoid auto-generating duplicates. (NotNull)
+     * @param {List<String>} nestTypeList nest type list to avoid auto-generating duplicates. (NotNull)
+     * @return {BeanProperty} The metadata of the property, having e.g. fieldName, fieldClass. (NotNull, EmptyAllowed: if no target)
      */
-    deriveBeanProperty: function(rule, topLevelBean, clazz, propertyEntry, nestTypeFullNameList, nestTypeList) {
-        if (!rule.targetField(topLevelBean.api, topLevelBean, propertyEntry.key)) {
-            return;
+    deriveBeanProperty: function(rule, topLevelBean, beanClassName, propertyEntry, nestTypeFullNameList, nestTypeList) {
+        if (!remoteApiLogic.determineTargetBeanProperty(rule, topLevelBean, propertyEntry.key)) {
+            // #for_now jflute nullだとvm側でうまく判定できなかったので、fieldName の有無などで判定してもらう (2026/03/09)
+            return {};
         }
-    
-        var propertyInfo = {
-            fieldName: rule.fieldName(topLevelBean.api, topLevelBean, propertyEntry.key),
-            annotationList: [],
-            javadocComment: null,
-            fieldClass: null,
-            nestType: null,
-        };
 
-        var property = propertyEntry.value;
-        // TODO p1us2er0 temporary for beanPropertyManualMappingDescription. (2017/10/10)
-        property.name = propertyInfo.fieldName;
+        var beanProperty = { // new #{BeanProperty}
+            fieldName: rule.fieldName(topLevelBean.api, topLevelBean, propertyEntry.key),
+            annotationList: [], // e.g. @Required, @javax.validation.Valid
+            javadocComment: null, // e.g. /** ... */
+            fieldClass: null, // e.g. String, Integer, ToscanaPart, java.util.List<ToscanaPart>
+            nestBean: null, // #{BeanNestBean}
+        };
+    
+        var property = propertyEntry.value; // #{ApiProperty}
+
+        // #thinking p1us2er0 temporary for beanPropertyManualMappingDescription. (2017/10/10)
+        // #thinking jflute rule.js の fieldName() で微調整された名前を rule.js の別の関数で参照させるためにってこと？ (2026/03/22)
+        property.name = beanProperty.fieldName;
 
         // javadoc comment
         var enumValueComment = '';
@@ -392,42 +514,51 @@ var remoteApiLogic = {
         } else if (property.items && property.items.enum) {
             enumValueComment = '(enumValue=' + property.items.enum + ') ';
         }
-        
+
         var description = property.description;
-        if (rule.beanPropertyManualMappingDescription(topLevelBean.api, clazz, property)) {
-            description = rule.beanPropertyManualMappingDescription(topLevelBean.api, clazz, property);
+        if (rule.beanPropertyManualMappingDescription(topLevelBean.api, beanClassName, property)) {
+            description = rule.beanPropertyManualMappingDescription(topLevelBean.api, beanClassName, property);
         }
-        propertyInfo.javadocComment = '/** The property of ' + propertyInfo.fieldName + '. ' + enumValueComment + (property.description ? '(' + property.description + ') ' : '') + (property.required ? '' : '(NullAllowed) ') + '*/';
+        if (description) {
+            // enumのプロパティの不要な空白 e.g. "( *" が "(*" になる。(2026/05/15) 
+            description = description.replace(/\n+/g, ' ').trim();
+        }
+        beanProperty.javadocComment = '/** The property of ' + beanProperty.fieldName + '. ' + enumValueComment
+                                      + (description ? '(' + description + ') ' : '')
+                                      + (property.required ? '' : '(NullAllowed) ') + '*/';
 
         // annotation
         var serializedNameTargetList = ['query', 'formData', 'json'];
         if (serializedNameTargetList.indexOf(topLevelBean.in) >= 0 && rule.isCustomFieldName(topLevelBean.api, topLevelBean, propertyEntry.key)) {
-            propertyInfo.annotationList.push('@SerializedName("' + propertyEntry.key + '")');
+            beanProperty.annotationList.push('@SerializedName("' + propertyEntry.key + '")');
         } else if (topLevelBean.in == 'xml') {
-            propertyInfo.annotationList.push('@XmlElement(name = "' + propertyEntry.key + '")');
+            beanProperty.annotationList.push('@XmlElement(name = "' + propertyEntry.key + '")');
         }
         if (property.required) {
-            propertyInfo.annotationList.push(property.type == 'array' ? '@NotNull' : '@Required');
+            beanProperty.annotationList.push(property.type == 'array' ? '@NotNull' : '@Required');
         }
-        
+
         // field class
         var adjustNestType = function(rule, topLevelBean, nestType) {
             var index = nestType.lastIndexOf('.');
-            if (index != -1) {
+            if (index != -1) { // basically true
+                // e.g. org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$ToscanaPart
+                //      => WxRequestJsonBodyBody$ToscanaPart
                 nestType = nestType.substring(index + 1);
             }
-            return rule.nestClassName(topLevelBean.api, nestType.replaceAll('^.*\\$', ''));
+            var pureNestClassName = nestType.replace(/^.*[\$]/, ''); // e.g. WxRequestJsonBodyBody$ToscanaPart => ToscanaPart
+            return rule.nestClassName(topLevelBean.api, pureNestClassName); // e.g. ProductRowBean => ProductRowPart
         };
 
-        var nestType = '';
-        var typeMap = rule.typeMap();
+        var nestType = ''; // e.g. org.docksidestage.app.web.wx.request.json.WxRequestJsonBodyBody$ToscanaPart
+        var typeMap = rule.typeMap(); // e.g. { ..., 'int32': 'Integer', ..., 'string': 'String', ... }
         if (property.type == 'array') {
-            if (rule.beanPropertyManualMappingClass(topLevelBean.api, clazz, property)) {
-                propertyInfo.fieldClass = typeMap[property.type] + '<' + rule.beanPropertyManualMappingClass(topLevelBean.api, clazz, property) + '>';
+            if (rule.beanPropertyManualMappingClass(topLevelBean.api, beanClassName, property)) {
+                beanProperty.fieldClass = typeMap[property.type] + '<' + rule.beanPropertyManualMappingClass(topLevelBean.api, beanClassName, property) + '>';
             } else if (typeMap[property.items.format]) {
-                propertyInfo.fieldClass = typeMap[property.type] + '<' + typeMap[property.items.format] + '>';
+                beanProperty.fieldClass = typeMap[property.type] + '<' + typeMap[property.items.format] + '>';
             } else if (typeMap[property.items.type]) {
-                propertyInfo.fieldClass = typeMap[property.type] + '<' + typeMap[property.items.type] + '>';
+                beanProperty.fieldClass = typeMap[property.type] + '<' + typeMap[property.items.type] + '>';
             } else if (property.items['$ref'] || (property.items && property.items.allOf[0]['$ref'])) {
                 if (property.items['$ref']) {
                     nestType = java.net.URLDecoder.decode(property.items['$ref'].replace('#/definitions/', ''), 'UTF-8');
@@ -435,31 +566,35 @@ var remoteApiLogic = {
                     nestType = java.net.URLDecoder.decode(property.items.allOf[0]['$ref'].replace('#/definitions/', ''), 'UTF-8');
                 }
 
-                propertyInfo.fieldClass = typeMap[property.type] + '<' + adjustNestType(rule, topLevelBean, nestType) + '>';
-                propertyInfo.annotationList.push('@javax.validation.Valid');
+                beanProperty.fieldClass = typeMap[property.type] + '<' + adjustNestType(rule, topLevelBean, nestType) + '>';
+                beanProperty.annotationList.push('@javax.validation.Valid');
             }
-        } else if (rule.beanPropertyManualMappingClass(topLevelBean.api, clazz, property)) {
-            propertyInfo.fieldClass = rule.beanPropertyManualMappingClass(topLevelBean.api, clazz, property);
+        } else if (rule.beanPropertyManualMappingClass(topLevelBean.api, beanClassName, property)) {
+            beanProperty.fieldClass = rule.beanPropertyManualMappingClass(topLevelBean.api, beanClassName, property);
         } else if (typeMap[property.format]) {
-            propertyInfo.fieldClass = typeMap[property.format];
+            beanProperty.fieldClass = typeMap[property.format];
         } else if (typeMap[property.type]) {
-            propertyInfo.fieldClass = typeMap[property.type];
-        } else if (property['$ref'] || property.allOf[0]['$ref']) {
+            beanProperty.fieldClass = typeMap[property.type];
+        } else if (property['$ref'] || (property.allOf && property.allOf[0]['$ref'])) {
             if (property['$ref']) {
                 nestType = java.net.URLDecoder.decode(property['$ref'].replace('#/definitions/', ''), 'UTF-8');
             } else if (property.allOf[0]['$ref']) {
                 nestType = java.net.URLDecoder.decode(property.allOf[0]['$ref'].replace('#/definitions/', ''), 'UTF-8');
-            }
-            
-            propertyInfo.fieldClass = adjustNestType(rule, topLevelBean, nestType);
-            propertyInfo.annotationList.push('@javax.validation.Valid');
+            } // logically else no way here
+            beanProperty.fieldClass = adjustNestType(rule, topLevelBean, nestType);
+            beanProperty.annotationList.push('@javax.validation.Valid');
+        } else { // type も ref も何も指定がないプロパティのとき
+            // 古い RemoteApiGen に合わせて、デフォルト String にする。
+            // https://github.com/dbflute-example/dbflute-example-with-remoteapi-gen/issues/34
+            beanProperty.fieldClass = java.lang.String.class.getSimpleName();
         }
 
-        if (propertyInfo.fieldClass == '') {
-            propertyInfo.fieldClass = typeMap[''];
+        if (beanProperty.fieldClass == '') {
+            beanProperty.fieldClass = typeMap[''];
         }
 
-        var deriveNestType = function(rule, topLevelBean, nestType, nestTypeFullNameList, nestTypeList) {
+        // @return The metadata of nest type, having e.g. nestType, propertyList. (NullAllowed: when no nest)
+        var deriveNestBean = function(rule, topLevelBean, nestType, nestTypeFullNameList, nestTypeList) {
             if (!nestType
                     || nestTypeList.contains(nestType)
                     || nestTypeFullNameList.contains(nestType)
@@ -470,26 +605,71 @@ var remoteApiLogic = {
             nestTypeList.add(nestType);
             nestTypeFullNameList.add(java.lang.String.join('_', nestTypeList));
     
-            var nestTypeInfo = {
-                nestType: adjustNestType(rule, topLevelBean, nestType),
-                propertyList: [],
+            var beanNestBean = { // new #{BeanNestBean}
+                nestType: adjustNestType(rule, topLevelBean, nestType), // e.g. ToscanaPart
+                propertyList: [], // #{BeanProperty}
             };
-    
-            if (topLevelBean.definitionMap[nestType] && topLevelBean.definitionMap[nestType].properties.size() !== 0) {
-                topLevelBean.definitionMap[nestType].properties.entrySet().forEach(function(nestPropertyEntry) {
-                    if (rule.targetField(topLevelBean.api, topLevelBean, nestPropertyEntry.key)) {
-                        nestTypeInfo.propertyList.push(remoteApiLogic.deriveBeanProperty(rule, topLevelBean, nestType, nestPropertyEntry, nestTypeFullNameList, nestTypeList));
-                    }
-                });
+
+            var nestDefinition = topLevelBean.definitionMap[nestType];
+            if (nestDefinition) {
+                var nestProperties = nestDefinition.properties; // may be no properties case
+                if (nestProperties && nestProperties.size() !== 0) {
+                    nestProperties.entrySet().forEach(function(nestPropertyEntry) {
+                        if (remoteApiLogic.determineTargetBeanProperty(rule, topLevelBean, nestPropertyEntry.key)) {
+                            // recursive call here
+                            var nestBeanProperty = remoteApiLogic.deriveBeanProperty(rule // #{BeanProperty}
+                                                                                   , topLevelBean
+                                                                                   , nestType
+                                                                                   , nestPropertyEntry
+                                                                                   , nestTypeFullNameList
+                                                                                   , nestTypeList);
+                            beanNestBean.propertyList.push(nestBeanProperty);
+                        }
+                    });
+                }
             }
-    
             nestTypeList.remove(nestTypeList.size() - 1);
-    
-            return nestTypeInfo;
+            return beanNestBean;
         };
+        beanProperty.nestBean = deriveNestBean(rule, topLevelBean, nestType, nestTypeFullNameList, nestTypeList);
 
-        propertyInfo.nestType = deriveNestType(rule, topLevelBean, nestType, nestTypeFullNameList, nestTypeList);
+        return beanProperty;
+    },
 
-        return propertyInfo;
+    // {ApiProperty}, {TopLevelBean} types are defined on RemoteApiRule.js
+    /**
+     * Determine whether the bean property is target field.
+     * targetFieldの呼び出しを一元管理するために作った関数。
+     * 将来、ruleのtargetField()をリファクタリングするかもしれないというのもあるし、
+     * 重要な関数なので何かとあれこれしたいかもしれないのでラップしておく。
+     * @param {RemoteApiRule} rule - RemoteApiRule.js object. (NotNull)
+     * @param {TopLevelBean} topLevelBean そのプロパティたち(properties)を定義しているbeanだが、ネストのときも常にtop(root)のBeanになる (NotNull)
+     * @param {string} propertyName The name of the bean property. (NotNull)
+     * @return {boolean} true if target. (NotNull)
+     */
+    determineTargetBeanProperty: function(rule, topLevelBean, propertyName) {
+        return rule.targetField(topLevelBean.api, topLevelBean, propertyName);
+    },
+
+    // ===================================================================================
+    //                                                                      General Helper
+    //                                                                      ==============
+    /**
+     * Returns the indent.
+     * This indent is used in the auto-generated Java code.
+     * Fixed indentation is written directly in the Velocity template, but is used when the indentation needs to be calculated.
+     * Fixed indentation of Velocity template It is unified with 4 spaces.
+     * @param {number} indentSize indent size. (NotNull)
+     * @return {string} indent. e.g. if size is 2, the string is 8 spaces. (NotNull)
+     */
+    indent: function(indentSize) {
+        // #for_now I want to set the initial value of indent to 0 size. by p1us2er0 (2022/05/04)
+        // but it is not possible at this time due to a processing problem on the vm side.
+        // Organize when refactoring the vm.
+        var indent = '    ';
+        for (var index = 0; index < indentSize; index++) {
+            indent += '    ';
+        }
+        return indent;
     }
 };

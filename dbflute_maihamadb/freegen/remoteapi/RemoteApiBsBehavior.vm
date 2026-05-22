@@ -1,5 +1,5 @@
 ##
-## Copyright 2017-2021 the original author or authors.
+## Copyright 2017-2026 the original author or authors.
 ##
 ## Licensed under the Apache License, Version 2.0 (the "License");
 ## you may not use this file except in compliance with the License.
@@ -30,12 +30,12 @@ ${manager.allClassCopyright}package ${data.package};
 #if ($rule['behaviorMethodGeneration'])
 #set($added = $importList.add('java.util.function.Consumer'))
 #set($added = $importList.add('org.dbflute.remoteapi.FlutyRemoteApiRule'))
-#foreach($method in $data.methodList)
-#if (${method.paramBean.className})
-#set($added = $importList.add("${method.paramBean.package}.${method.paramBean.className}"))
+#foreach($methodResource in $data.methodResourceList)
+#if (${methodResource.paramBean.className})
+#set($added = $importList.add("${methodResource.paramBean.package}.${methodResource.paramBean.className}"))
 #end
-#if (${method.returnBean.package} && ${method.returnBean.className})
-#set($added = $importList.add("${method.returnBean.package}.${method.returnBean.className}"))
+#if (${methodResource.returnBean.package} && ${methodResource.returnBean.className})
+#set($added = $importList.add("${methodResource.returnBean.package}.${methodResource.returnBean.className}"))
 #end
 #end
 #end
@@ -68,7 +68,7 @@ public abstract class ${data.className} extends ${data.abstractBehavior.classNam
 ##########################################################################################
 ##### Method definition.
 ##########################################################################################
-#set ($behaviorMethodList = $scriptEngine.invokeMethod($remoteApiLogic, 'deriveBehaviorMethodList', $rule, $data.methodList))
+#set ($behaviorMethodList = $scriptEngine.invokeMethod($remoteApiLogic, 'deriveBehaviorMethodList', $rule, $data.methodResourceList))
 #foreach($behaviorMethod in $behaviorMethodList)
 
 #if ($foreach.index == 0)
@@ -80,13 +80,14 @@ public abstract class ${data.className} extends ${data.abstractBehavior.classNam
 ########## Method definition. request method.
 ##########################################################################################
     /**
-     * Request remote call to ${behaviorMethod.method.api.url}. (auto-generated method)<br>
+     * Request remote call to ${behaviorMethod.exteriorResource.api.url}. (auto-generated method)<br>
      * <pre>
-     * url: $behaviorMethod.method.api.url
-     * httpMethod: $behaviorMethod.method.api.httpMethod.toUpperCase()
+     * url: $behaviorMethod.exteriorResource.api.url
+     * httpMethod: $behaviorMethod.exteriorResource.api.httpMethod.toUpperCase()
      * </pre>
+## #{MethodParameter}
 #foreach($parameter in ${behaviorMethod.parameterList})
-     * @param $parameter.name $parameter.description
+     * @param ${parameter.name} ${parameter.description}
 #end
 #if (${behaviorMethod.returnBeanClassName} != 'void')
      * @return The bean object as return type, receiving response body. (NotNull)
@@ -100,10 +101,10 @@ public abstract class ${data.className} extends ${data.abstractBehavior.classNam
 ########## Method definition. doRequest method.
 ##########################################################################################
     /**
-     * Request remote call to ${behaviorMethod.method.api.url}. (auto-generated method)<br>
+     * Request remote call to ${behaviorMethod.exteriorResource.api.url}. (auto-generated method)<br>
      * <pre>
-     * url: $behaviorMethod.method.api.url
-     * httpMethod: $behaviorMethod.method.api.httpMethod.toUpperCase()
+     * url: $behaviorMethod.exteriorResource.api.url
+     * httpMethod: $behaviorMethod.exteriorResource.api.httpMethod.toUpperCase()
      * </pre>
 #foreach($parameter in ${behaviorMethod.parameterList})
      * @param $parameter.name $parameter.description
@@ -115,8 +116,8 @@ public abstract class ${data.className} extends ${data.abstractBehavior.classNam
      */
     protected ${behaviorMethod.returnBeanClassName} do$manager.initCap(${behaviorMethod.behaviorRequestMethodName})($!{behaviorMethod.parameterDefinitionRule}) {
 #if (${behaviorMethod.paramBeanClassName})
-#if ($behaviorMethod.method.paramBeanArray)
-        ${behaviorMethod.paramBeanClassName} param = new java.util.ArrayList<${behaviorMethod.method.paramBean.className}>();
+#if ($behaviorMethod.exteriorResource.paramBeanArray)
+        ${behaviorMethod.paramBeanClassName} param = new java.util.ArrayList<${behaviorMethod.exteriorResource.paramBean.className}>();
 #else
         ${behaviorMethod.paramBeanClassName} param = new ${behaviorMethod.paramBeanClassName}();
 #end
@@ -128,8 +129,8 @@ public abstract class ${data.className} extends ${data.abstractBehavior.classNam
 #else
 #set ($returnType = "${behaviorMethod.returnBeanClassName}.class")
 #end
-        #if (${behaviorMethod.returnBeanClassName} != 'void')return #{end}${behaviorMethod.callDoRequestMethodName}($returnType, "${behaviorMethod.method.api.url}", ${behaviorMethod.moreUrl}, ${behaviorMethod.param}, rule -> {
-#if ($behaviorMethod.method.paramBean.in == 'formData')
+        #if (${behaviorMethod.returnBeanClassName} != 'void')return #{end}${behaviorMethod.callDoRequestMethodName}($returnType, "${behaviorMethod.exteriorResource.api.url}", ${behaviorMethod.moreUrl}, ${behaviorMethod.param}, rule -> {
+#if ($behaviorMethod.exteriorResource.paramBean.in == 'formData')
             rule.sendBodyBy(
                     new org.lastaflute.remoteapi.sender.body.LaFormSender(new org.dbflute.remoteapi.mapping.FlVacantMappingPolicy()));
 #end
@@ -142,7 +143,7 @@ public abstract class ${data.className} extends ${data.abstractBehavior.classNam
 ########## Method definition. ruleOf method.
 ##########################################################################################
     /**
-     * Set up method-level rule of ${behaviorMethod.method.api.url}.<br>
+     * Set up method-level rule of ${behaviorMethod.exteriorResource.api.url}.<br>
      * @param rule The rule that class default rule is already set. (NotNull)
      */
     protected void ${behaviorMethod.behaviorRuleMethodName}(FlutyRemoteApiRule rule) {

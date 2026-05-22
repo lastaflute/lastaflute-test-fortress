@@ -86,7 +86,7 @@ public class RemoteWxRequestJsonBodySwaggerParam {
     /** The property of dstore. (NullAllowed) */
     public Boolean dstore;
 
-    /** The property of amba. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) (NullAllowed) */
+    /** The property of amba. (enumValue=[FML, WDL, PRV]) (* `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) (NullAllowed) */
     public String amba;
 
     /** The property of miraco. (NullAllowed) */
@@ -113,7 +113,7 @@ public class RemoteWxRequestJsonBodySwaggerParam {
      */
     public static class WhitePart {
 
-        /** The property of formatBodying. (enumValue=[SEA, LAN]) ( * `SEA` - Sea, sea. * `LAN` - Land, land. :: fromCls(CDef$WhiteConfusingFormatBodying)) (NullAllowed) */
+        /** The property of formatBodying. (enumValue=[SEA, LAN]) (* `SEA` - Sea, sea. * `LAN` - Land, land. :: fromCls(CDef$WhiteConfusingFormatBodying)) (NullAllowed) */
         public String formatBodying;
     }
 

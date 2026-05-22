@@ -86,7 +86,7 @@ public class RemoteWxRequestFormSwaggerParam {
     /** The property of dstore. (NullAllowed) */
     public Boolean dstore;
 
-    /** The property of amba. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) (NullAllowed) */
+    /** The property of amba. (enumValue=[FML, WDL, PRV]) (* `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) (NullAllowed) */
     public String amba;
 
     /** The property of miraco. (NullAllowed) */

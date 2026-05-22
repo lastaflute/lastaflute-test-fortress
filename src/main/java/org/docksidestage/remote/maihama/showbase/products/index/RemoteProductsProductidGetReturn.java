@@ -34,7 +34,7 @@ public class RemoteProductsProductidGetReturn {
     @Required
     public String productName;
 
-    /** The property of productStatus. (enumValue=[ONS, PST, SST]) ( * `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(AppCDef$PublicProductStatus)) */
+    /** The property of productStatus. (enumValue=[ONS, PST, SST]) (* `ONS` - OnSaleProduction. * `PST` - ProductionStop. * `SST` - SaleStop. :: fromCls(AppCDef$PublicProductStatus)) */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.ProductStatus productStatus;
 

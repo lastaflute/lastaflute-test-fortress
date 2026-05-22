@@ -42,7 +42,7 @@ public class RemoteMembersPutParam {
     /** The property of typeFailureInteger. (NullAllowed) */
     public Integer typeFailureInteger;
 
-    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
+    /** The property of memberStatus. (enumValue=[FML, WDL, PRV]) (* `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
     @Required
     public org.docksidestage.dbflute.allcommon.CDef.MemberStatus memberStatus;
 
@@ -52,7 +52,7 @@ public class RemoteMembersPutParam {
     /** The property of updateDatetime. (NullAllowed) */
     public java.time.LocalDateTime updateDatetime;
 
-    /** The property of previousStatus. (enumValue=[FML, WDL, PRV]) ( * `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
+    /** The property of previousStatus. (enumValue=[FML, WDL, PRV]) (* `FML` - Formalized. * `WDL` - Withdrawal. * `PRV` - Provisional. :: fromCls(CDef$MemberStatus)) */
     @Required
     public String previousStatus;
 
