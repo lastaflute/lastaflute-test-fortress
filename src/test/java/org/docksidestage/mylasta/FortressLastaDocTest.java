@@ -23,6 +23,7 @@ import org.dbflute.util.DfCollectionUtil;
 import org.docksidestage.FortressTomcatBoot;
 import org.docksidestage.app.web.SwaggerAction;
 import org.docksidestage.unit.UnitFortressBasicTestCase;
+import org.lastaflute.meta.SwaggerOption;
 import org.lastaflute.meta.agent.yourswagger.YourSwaggerSyncOption;
 
 /**
@@ -52,11 +53,24 @@ public class FortressLastaDocTest extends UnitFortressBasicTestCase {
         //verifyYourSwaggerSync("/swagger/fortress_openapi3_example.json", op -> customizeDiff(op));
     }
 
-    public void test_openapiMeta() throws Exception {
+    public void test_openapiMeta_basic() throws Exception {
         saveOpenapiMeta(new SwaggerAction());
 
         // to compare with previous swagger.json
         copyToResourcesJson("openapi.json", "fortress_whole_lasta_openapi.json");
+    }
+
+    public void test_openapiMeta_sea() throws Exception {
+        saveOpenapiMeta(new SwaggerAction() {
+            @Override
+            protected void customizeSwaggerOption(SwaggerOption op) {
+                // TODO jflute 色々とカスタマイズしてみたい (2026/05/15)
+                super.customizeSwaggerOption(op);
+            }
+        });
+
+        // to compare with previous swagger.json
+        copyToResourcesJson("openapi-sea.json", "fortress_whole_lasta_openapi-sea.json");
     }
 
     // ===================================================================================

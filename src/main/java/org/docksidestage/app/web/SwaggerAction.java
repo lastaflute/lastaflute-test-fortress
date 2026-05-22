@@ -24,6 +24,7 @@ import org.docksidestage.app.web.base.FortressBaseAction;
 import org.docksidestage.mylasta.direction.FortressConfig;
 import org.lastaflute.core.json.JsonManager;
 import org.lastaflute.meta.SwaggerGenerator;
+import org.lastaflute.meta.SwaggerOption;
 import org.lastaflute.meta.agent.SwaggerAgent;
 import org.lastaflute.meta.swagger.diff.SwaggerDiff;
 import org.lastaflute.meta.swagger.web.LaActionSwaggerable;
@@ -68,7 +69,7 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     @Execute
     public JsonResponse<Map<String, Object>> json() { // using Lasta-presents json
         verifySwaggerAllowed();
-        Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
+        Map<String, Object> swaggerMap = newSwaggerGenerator().generateSwaggerMap(op -> {
             op.addHeaderParameter("hangar", "mystic"); // test for header
 
             // test for HTTP status
@@ -84,6 +85,7 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
             //    return resource;
             //});
             //op.suppressDefaultFailureHttpStatus();
+            customizeSwaggerOption(op);
         });
         return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
     }
@@ -122,7 +124,7 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
     @Execute
     public JsonResponse<Map<String, Object>> limitedTargetJson() { // for small test
         verifySwaggerAllowed();
-        Map<String, Object> swaggerMap = new SwaggerGenerator().generateSwaggerMap(op -> {
+        Map<String, Object> swaggerMap = newSwaggerGenerator().generateSwaggerMap(op -> {
             op.derivedTargetActionDocMeta(actionDocMeta -> {
                 return DfCollectionUtil.newArrayList( //
                         "/lido/following/list", //
@@ -130,8 +132,20 @@ public class SwaggerAction extends FortressBaseAction implements LaActionSwagger
                         "/lido/following/delete", //
                         "/lido/product/price/update/{productId}").contains(actionDocMeta.getUrl());
             });
+            customizeSwaggerOption(op);
         });
         return asJson(swaggerMap).switchMappingOption(op -> {}); // not to depend on application settings
+    }
+
+    // ===================================================================================
+    //                                                                        Assist Logic
+    //                                                                        ============
+    protected SwaggerGenerator newSwaggerGenerator() { // you can override
+        return new SwaggerGenerator();
+    }
+
+    protected void customizeSwaggerOption(SwaggerOption op) { // you can override
+        // nothing as default
     }
 
     // ===================================================================================
