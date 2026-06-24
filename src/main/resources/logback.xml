@@ -8,7 +8,7 @@
   <property resource="fortress_env_${lasta.env}.properties" />
   <property name="domain.name" value="fortress"/>
   <property name="log.level" value="${log.level:-debug}"/>
-  <property name="log.pattern" value="%d [%t] %-5p \\(%C{0}@%M\\(\\):%L\\) - %m%n"/>
+  <property name="log.pattern" value="%d [%t] %-5p \(%C{0}@%M\(\):%L\) - %m%n"/>
   <property name="log.file.basedir" value="${log.file.basedir:-/tmp/lastaflute/undefinedbasedir}"/>
   <property name="log.file.encoding" value="UTF-8"/>
   <property name="backup.date.suffix" value="_%d{yyyyMMdd}"/>
