@@ -9,6 +9,7 @@
 	<include path="lasta_job.xml"/>
 	<include path="remote_api.xml"/>
 	<include path="bizfw.xml"/>
+	<include path="rabbit_mq.xml"/> <!-- #rabbit -->
 
 	<!-- test at WxDiXmlExpressionTest for boot speed
 	 <include path="trial_di.xml"/>
